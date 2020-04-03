@@ -1,0 +1,1618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Creating a Client &mdash; Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/tutorials/ruby-driver-create-client.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Ruby Driver Manual" href="../index.html" />
+<link rel="next" title="Authentication" href="ruby-driver-authentication.html" />
+<link rel="prev" title="Quick Start" href="../quick-start.html" /></head>
+<body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+     {'gtm.start': new Date().getTime(),event:'gtm.js'}
+   );var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <!-- End Google Tag Manager -->
+<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Ruby Driver"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
+   </script>
+    <script src="../_static/navbar.min.js"></script>
+  
+
+  <div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="../index.html">Ruby Driver Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+        
+        
+        master (upcoming)<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        
+          
+          <li class="active">
+          
+            <a href="#" data-path="ruby-driver/current">
+              
+              master (upcoming)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
+              
+              Version 2.12 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
+              
+              Version 2.11
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
+              
+              Version 2.10
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
+              
+              Version 2.9
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
+              
+              Version 2.8
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
+              
+              Version 2.7
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
+              
+              Version 2.6
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
+              
+              Version 2.5
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
+              
+              Version 2.4
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
+              
+              Version 2.3
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
+              
+              Version 2.2
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
+              
+              Version 2.0
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
+              
+              1.x
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-crud-operations.html">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-bulk-operations.html">Bulk Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="http://api.mongodb.com/ruby/current/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="tutorials/ruby-driver-create-client">
+
+                
+  <div class="bc">
+    
+      
+    
+    
+  </div>
+                
+                  <div class="section" id="creating-a-client">
+<h1>Creating a Client<a class="headerlink" href="#creating-a-client" title="Permalink to this headline">¶</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><a class="reference internal" href="#using-mongo-client" id="id2">Using <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code></a><ul>
+<li><a class="reference internal" href="#database" id="id3">Database</a></li>
+<li><a class="reference internal" href="#direct-connection" id="id4">Direct Connection</a></li>
+<li><a class="reference internal" href="#replica-set-connection" id="id5">Replica Set Connection</a></li>
+<li><a class="reference internal" href="#sharded-cluster-connection" id="id6">Sharded Cluster Connection</a></li>
+<li><a class="reference internal" href="#srv-uris" id="id7">SRV URIs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#client-options" id="id8">Client Options</a><ul>
+<li><a class="reference internal" href="#ruby-options" id="id9">Ruby Options</a></li>
+<li><a class="reference internal" href="#uri-options" id="id10">URI Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#timeout-options" id="id11">Timeout Options</a><ul>
+<li><a class="reference internal" href="#server-selection-timeout" id="id12"><code class="docutils literal notranslate"><span class="pre">server_selection_timeout</span></code></a></li>
+<li><a class="reference internal" href="#socket-timeout" id="id13"><code class="docutils literal notranslate"><span class="pre">socket_timeout</span></code></a></li>
+<li><a class="reference internal" href="#connect-timeout" id="id14"><code class="docutils literal notranslate"><span class="pre">connect_timeout</span></code></a></li>
+<li><a class="reference internal" href="#wait-queue-timeout" id="id15"><code class="docutils literal notranslate"><span class="pre">wait_queue_timeout</span></code></a></li>
+<li><a class="reference internal" href="#max-time-ms" id="id16"><code class="docutils literal notranslate"><span class="pre">max_time_ms</span></code></a></li>
+<li><a class="reference internal" href="#wtimeout" id="id17"><code class="docutils literal notranslate"><span class="pre">wtimeout</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tls-connections" id="id18">TLS Connections</a><ul>
+<li><a class="reference internal" href="#using-intermediate-certificates" id="id19">Using Intermediate Certificates</a></li>
+<li><a class="reference internal" href="#specifying-multiple-ca-certificates" id="id20">Specifying Multiple CA Certificates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ipv4-ipv6-connections" id="id21">IPv4/IPv6 Connections</a></li>
+<li><a class="reference internal" href="#tcp-keepalive-configuration" id="id22">TCP Keepalive Configuration</a></li>
+<li><a class="reference internal" href="#details-on-connection-pooling" id="id23">Details on Connection Pooling</a></li>
+<li><a class="reference internal" href="#usage-with-forking-servers" id="id24">Usage with Forking Servers</a></li>
+<li><a class="reference internal" href="#details-on-retryable-reads" id="id25">Details on Retryable Reads</a><ul>
+<li><a class="reference internal" href="#modern-retryable-reads" id="id26">Modern Retryable Reads</a></li>
+<li><a class="reference internal" href="#legacy-retryable-reads" id="id27">Legacy Retryable Reads</a></li>
+<li><a class="reference internal" href="#disabling-retryable-reads" id="id28">Disabling Retryable Reads</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#details-on-retryable-writes" id="id29">Details on Retryable Writes</a><ul>
+<li><a class="reference internal" href="#modern-retryable-writes" id="id30">Modern Retryable Writes</a></li>
+<li><a class="reference internal" href="#legacy-retryable-writes" id="id31">Legacy Retryable Writes</a></li>
+<li><a class="reference internal" href="#disabling-retryable-writes" id="id32">Disabling Retryable Writes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logging" id="id33">Logging</a><ul>
+<li><a class="reference internal" href="#changing-the-logger-level" id="id34">Changing the Logger Level</a></li>
+<li><a class="reference internal" href="#truncation" id="id35">Truncation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#development-configuration" id="id36">Development Configuration</a></li>
+<li><a class="reference internal" href="#production-configuration" id="id37">Production Configuration</a></li>
+</ul>
+</div>
+<div class="section" id="using-mongo-client">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code><a class="headerlink" href="#using-mongo-client" title="Permalink to this headline">¶</a></h2>
+<p>To connect to a MongoDB deployment, create a <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> object.
+Provide a list of hosts and options or a <a class="reference external" href="http://docs.mongodb.com/manual/reference/connection-string/">connection string URI</a> to the``Mongo::Client`` constructor.
+The client’s selected database defaults to <code class="docutils literal notranslate"><span class="pre">admin</span></code>.</p>
+<p>By default, the driver will automatically detect the topology used by the
+deployment and connect appropriately.</p>
+<p>To connect to a local standalone MongoDB deployment, specify the host and
+port of the server. In most cases you would also specify the database name
+to connect to; if no database name is specified, the client will use the
+<code class="docutils literal notranslate"><span class="pre">admin</span></code> database:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">)</span>
+
+<span class="c1"># Or using the URI syntax:</span>
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://127.0.0.1:27017/mydb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The hostname <code class="docutils literal notranslate"><span class="pre">localhost</span></code> is treated specially by the driver and will
+be resolved to IPv4 addresses only.</p>
+</div>
+<p>To <cite>connect to MongoDB Atlas &lt;https://docs.atlas.mongodb.com/driver-connection/&gt;</cite>,
+specify the Atlas deployment URI:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb+srv://username:myRealPassword@cluster0.mongodb.net/mydb?w=majority&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The driver will discover all nodes in the cluster and connect to them as
+needed.</p>
+<div class="section" id="database">
+<h3>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h3>
+<p>Usually the client will connect to a specific database. It is possible to
+change the active database by calling <code class="docutils literal notranslate"><span class="pre">Client#use</span></code> to obtain a new <code class="docutils literal notranslate"><span class="pre">Client</span></code>
+instance configured to use the new database. For example, it is common to
+perform operations on the <code class="docutils literal notranslate"><span class="pre">admin</span></code> database:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">)</span>
+<span class="n">admin_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+<span class="c1"># Issue an administrative command</span>
+<span class="n">admin_client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="ss">replSetGetConfig</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">documents</span><span class="o">.</span><span class="n">first</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="direct-connection">
+<h3>Direct Connection<a class="headerlink" href="#direct-connection" title="Permalink to this headline">¶</a></h3>
+<p>If the deployment is a replica set, the driver will by default discover all
+members of the replica set given the address of any one member, and will
+dispatch operations to the appropriate member (for example, writes would be
+dispatched to the primary).</p>
+<p>To force all operations to be performed on the designated server, specify the
+<code class="docutils literal notranslate"><span class="pre">direct_connection</span></code> option:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;1.2.3.4:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span> <span class="ss">direct_connection</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span>
+
+<span class="c1"># Or using the URI syntax:</span>
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://1.2.3.4:27017/mydb?directConnection=true&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="replica-set-connection">
+<span id="ruby-driver-connect-replica-set"></span><h3>Replica Set Connection<a class="headerlink" href="#replica-set-connection" title="Permalink to this headline">¶</a></h3>
+<p>To connect to a <a class="reference external" href="http://docs.mongodb.com/manual/replication/">replica set</a> deployment managed by a
+service providing SRV URIs (such as MongoDB Atlas), connect to the URI:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb+srv://username:myRealPassword@cluster0.mongodb.net/test?w=majority&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>If not using SRV URIs, it is sufficient to pass the address of any node in the
+replica set to the driver; the driver will then automatically discover the
+remaining nodes. However, it is recommended to specify all nodes that are part
+of the replica set, so that in the event of one or more nodes being unavailable
+(for example, due to maintenance or reconfiguration) the driver can still
+connect to the replica set.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span><span class="p">,</span> <span class="s1">&#39;127.0.0.1:27018&#39;</span> <span class="o">]</span><span class="p">,</span>
+  <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span> <span class="ss">replica_set</span><span class="p">:</span> <span class="s1">&#39;myapp&#39;</span><span class="p">)</span>
+
+<span class="c1"># Or using the URI syntax:</span>
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://127.0.0.1:27017,127.0.0.1:27018/mydb?replicaSet=myapp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sharded-cluster-connection">
+<span id="ruby-driver-connect-sharded-cluster"></span><h3>Sharded Cluster Connection<a class="headerlink" href="#sharded-cluster-connection" title="Permalink to this headline">¶</a></h3>
+<p>To connect to a <a class="reference external" href="http://docs.mongodb.com/manual/sharding/">sharded cluster</a> deployment managed by a
+service providing SRV URIs (such as MongoDB Atlas), connect to the URI:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb+srv://username:myRealPassword@cluster0.mongodb.net/test?w=majority&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>When the driver connects to a sharded cluster via an SRV URI, it will monitor
+the SRV records of the address specified in the URI for changes and will
+automatically add and remove <code class="docutils literal notranslate"><span class="pre">mongos</span></code> hosts to/from its list of servers as
+they are added and removed to/from the sharded cluster.</p>
+<p>If not using SRV URIs, pass the addresses of one or more
+<a class="reference external" href="http://docs.mongodb.com/manual/reference/program/mongos/">mongos</a> hosts. Unlike with
+replica set deployments, the driver is not able to discover all <code class="docutils literal notranslate"><span class="pre">mongos</span></code>
+nodes in a sharded cluster when not using SRV URIs. It is not required that all
+<code class="docutils literal notranslate"><span class="pre">mongos</span></code> node addresses are given to the driver - the driver will balance
+the operation load among the nodes it is given. Specifying more nodes will
+spread the operation load accordingly.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;1.2.3.4:27017&#39;</span><span class="p">,</span> <span class="s1">&#39;1.2.3.5:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;mydb&#39;</span><span class="p">)</span>
+
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://1.2.3.4:27017,1.2.3.5:27017/mydb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="srv-uris">
+<h3>SRV URIs<a class="headerlink" href="#srv-uris" title="Permalink to this headline">¶</a></h3>
+<p>When the driver connects to a
+<a class="reference external" href="http://docs.mongodb.com/manualreference/connection-string/#dns-seedlist-connection-format">mongodb+srv protocol</a>
+URI, keep in mind the following:</p>
+<ol class="arabic simple">
+<li>SRV URI lookup is performed synchronously when the client is constructed.</li>
+</ol>
+<blockquote>
+<div>If this lookup fails for any reason, client construction will fail with an
+exception. When a client is constructed with a list of hosts, the driver
+will attempt to contact and monitor those hosts for as long as the client
+object exists. If one of these hosts does not resolve initially but becomes
+resolvable later, the driver will be able to establish a connection to such
+a host when it becomes available. The initial SRV URI lookup must succeed
+on the first attempt; subsequent host lookups will be retried by the driver
+as needed.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>The driver looks up URI options in the DNS TXT records corresponding to the</li>
+</ol>
+<blockquote>
+<div>SRV records. These options can be overridden by URI options specified in the
+URI and by Ruby options, in this order.</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>If the topology of the constructed <code class="docutils literal notranslate"><span class="pre">Client</span></code> object is unknown or a</li>
+</ol>
+<blockquote>
+<div>sharded cluster, the driver will begin monitoring the specified SRV DNS
+records for changes and will automatically update the list of servers in the
+cluster. The updates will stop if the topology becomes a single or a replica
+set.</div></blockquote>
+</div>
+</div>
+<div class="section" id="client-options">
+<span id="ruby-driver-client-options"></span><h2>Client Options<a class="headerlink" href="#client-options" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code>’s constructor accepts a number of options configuring the
+behavior of the driver. The options can be provided in the options hash as
+Ruby options, in the URI as URI options, or both. If both a Ruby option and
+the analogous URI option are provided, the Ruby option takes precedence.</p>
+<div class="section" id="ruby-options">
+<h3>Ruby Options<a class="headerlink" href="#ruby-options" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The options passed directly should be symbols.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Unless otherwise specified, Ruby options that deal with times are given in
+seconds.</p>
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="28%" />
+<col width="44%" />
+<col width="11%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:app_name</span></code></td>
+<td>Application name that is printed to the mongod logs upon establishing a connection
+in server versions &gt;= 3.4.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:auth_mech</span></code></td>
+<td>Specifies the authenticaion mechanism to use. Can be one of:
+<code class="docutils literal notranslate"><span class="pre">:gssapi</span></code>, <code class="docutils literal notranslate"><span class="pre">:mongodb_cr</span></code>, <code class="docutils literal notranslate"><span class="pre">:mongodb_x509</span></code>, <code class="docutils literal notranslate"><span class="pre">:plain</span></code>,
+<code class="docutils literal notranslate"><span class="pre">:scram</span></code>, <code class="docutils literal notranslate"><span class="pre">:scram256</span></code>. GSSAPI (Kerberos) authentication
+<a class="reference internal" href="ruby-driver-authentication.html#kerberos"><span class="std std-ref">requires additional dependencies</span></a>.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Symbol</span></code></td>
+<td>If user credentials are not supplied, <code class="docutils literal notranslate"><span class="pre">nil</span></code>. If user credentials
+are supplied, the default depends on server version.
+MongoDB 4.0 and later: <code class="docutils literal notranslate"><span class="pre">:scram256</span></code> if user credentials correspond
+to a user which supports SCRAM-SHA-256 authentication, otherwise
+<code class="docutils literal notranslate"><span class="pre">:scram</span></code>.
+MongoDB 3.0-3.6: <code class="docutils literal notranslate"><span class="pre">:scram</span></code>.
+MongoDB 2.6: <code class="docutils literal notranslate"><span class="pre">:mongodb_cr</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:auth_mech_properties</span></code></td>
+<td>Provides additional authentication mechanism properties.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Hash</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:auth_source</span></code></td>
+<td>Specifies the authentication source.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>For MongoDB 2.6 and later: <strong>admin</strong> if credentials are
+supplied, otherwise the current database</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:auto_encryption_options</span></code></td>
+<td><p class="first">A <code class="docutils literal notranslate"><span class="pre">Hash</span></code> of options for configuring automatic encryption.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">:key_vault_client</span></code> - A client connected to the MongoDB instance
+storing the encryption data keys (<code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code>, defaults to the
+top-level client instance).</li>
+<li><code class="docutils literal notranslate"><span class="pre">:key_vault_namespace</span></code> - The namespace of the key vault collection
+in the format <code class="docutils literal notranslate"><span class="pre">&quot;database.collection&quot;</span></code> (<code class="docutils literal notranslate"><span class="pre">String</span></code>, required).</li>
+<li><code class="docutils literal notranslate"><span class="pre">:kms_providers</span></code> - Key management service configuration information.
+One or both of the keys <code class="docutils literal notranslate"><span class="pre">:local</span></code> and <code class="docutils literal notranslate"><span class="pre">:aws</span></code> must be specified
+(<code class="docutils literal notranslate"><span class="pre">Hash</span></code>, required). See the “The <code class="docutils literal notranslate"><span class="pre">kms_providers</span></code> option`` section of the
+<a class="reference internal" href="client-side-encryption.html#client-side-encryption"><span class="std std-ref">Client-Side Encryption tutorial</span></a> for more
+information about this option.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:schema_map</span></code> - The JSONSchema for one or more collections specifying
+which fields should be encrypted (<code class="docutils literal notranslate"><span class="pre">Hash</span></code>, optional, defaults to <code class="docutils literal notranslate"><span class="pre">nil</span></code>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">:bypass_auto_encryption</span></code> - Whether to skip automatic encryption when
+performing database operations (<code class="docutils literal notranslate"><span class="pre">Boolean</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">:extra_options</span></code> - Options related to spawning mongocryptd (<code class="docutils literal notranslate"><span class="pre">Hash</span></code>,
+optional, defaults to <code class="docutils literal notranslate"><span class="pre">nil</span></code>).</li>
+</ul>
+<p class="last">For more information about formatting these options, see the
+“Auto-Encryption Options” section of the <a class="reference internal" href="client-side-encryption.html#client-side-encryption"><span class="std std-ref">Client-Side Encryption tutorial</span></a>.</p>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">Hash</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:compressors</span></code></td>
+<td>A list of potential compressors to use, in order of preference. The driver chooses the first
+compressor that is also supported by the server. Currently the driver only supports ‘zlib’.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Array&lt;String&gt;</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:connect</span></code></td>
+<td><strong>Deprecated.</strong> Disables deployment topology discovery normally
+performed by the dirver and forces the cluster topology to a specific
+type. Choices: <code class="docutils literal notranslate"><span class="pre">:direct</span></code>, <code class="docutils literal notranslate"><span class="pre">:replica_set</span></code> or <code class="docutils literal notranslate"><span class="pre">:sharded</span></code>.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Symbol</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:connect_timeout</span></code></td>
+<td>The number of seconds to wait to establish a socket connection
+before raising an exception.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Float</span></code></td>
+<td>10 seconds</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:database</span></code></td>
+<td>The name of the database to connect to.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>admin</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:direct_connection</span></code></td>
+<td>Connect directly to the specified host, do not discover deployment
+topology.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></td>
+<td>false</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:heartbeat_frequency</span></code></td>
+<td>The number of seconds for the server monitors to refresh
+server states asynchronously.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Float</span></code></td>
+<td>10</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:id_generator</span></code></td>
+<td>A custom object to generate ids for documents. Must respond to #generate.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Object</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:local_threshold</span></code></td>
+<td>Specifies the maximum latency in seconds between the nearest
+server and the servers that can be available for selection to operate on.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Float</span></code></td>
+<td>0.015</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:logger</span></code></td>
+<td>A custom logger.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Object</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">Logger</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:max_idle_time</span></code></td>
+<td>The maximum seconds a socket can remain idle since it has been checked in to the pool.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Integer</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:max_pool_size</span></code></td>
+<td>The maximum size of the connection pool for each server.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Integer</span></code></td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:max_read_retries</span></code></td>
+<td>The maximum number of read retries, when legacy read retries are used.
+Set to 0 to disable legacy read retries.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Integer</span></code></td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:max_write_retries</span></code></td>
+<td>The maximum number of write retries, when legacy write retries are used.
+Set to 0 to disable legacy write retries.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Integer</span></code></td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:min_pool_size</span></code></td>
+<td>The minimum number of connections in the connection pool for each
+server. The driver does not create connections eagerly - a connection
+is only created when a MongoDB operation is to be executed and there
+are no available connections, and the total number of established
+connections to the target server is below <code class="docutils literal notranslate"><span class="pre">:max_pool_size</span></code>.
+However, once connections to a particular server are created, up to
+<code class="docutils literal notranslate"><span class="pre">:min_pool_size</span></code> connections will be kept in the connection pool
+by the driver.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Integer</span></code></td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:monitoring</span></code></td>
+<td>The monitoring object.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Object</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:password</span></code></td>
+<td>The password of the user to authenticate with.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:platform</span></code></td>
+<td>Platform information to include in the metadata printed to the mongod logs upon establishing a
+connection in server versions &gt;= 3.4.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:read</span></code></td>
+<td><p class="first">Specifies the read preference mode and tag sets for selecting servers
+as a <code class="docutils literal notranslate"><span class="pre">Hash</span></code>. Allowed Keys in the hash are <code class="docutils literal notranslate"><span class="pre">:mode</span></code>, <code class="docutils literal notranslate"><span class="pre">:tag_sets</span></code> and
+<code class="docutils literal notranslate"><span class="pre">:max_staleness</span></code>.</p>
+<div class="last button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:read</span> <span class="o">=&gt;</span>
+  <span class="p">{</span> <span class="ss">:mode</span> <span class="o">=&gt;</span> <span class="ss">:secondary</span><span class="p">,</span>
+    <span class="ss">:tag_sets</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="s2">&quot;berlin&quot;</span> <span class="o">]</span><span class="p">,</span>
+    <span class="ss">:max_staleness</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">Hash</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:mode</span> <span class="pre">=&gt;</span> <span class="pre">:primary</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:read_concern</span></code></td>
+<td>Specifies the read concern options. The only valid key is <code class="docutils literal notranslate"><span class="pre">level</span></code>, for which the valid
+values are <code class="docutils literal notranslate"><span class="pre">:local</span></code>, <code class="docutils literal notranslate"><span class="pre">:majority</span></code>, and <code class="docutils literal notranslate"><span class="pre">:snapshot</span></code>.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Hash</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:read_retry_interval</span></code></td>
+<td>The interval, in seconds, in which reads on a mongos are retried.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Integer</span></code></td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:replica_set</span></code></td>
+<td>When connecting to a replica set, this is the name of the set to
+filter servers by.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:retry_writes</span></code></td>
+<td>If a single-statement write operation fails from a network error, the driver automatically retries it once
+when connected to server versions 3.6+.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></td>
+<td>true</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:sdam_proc</span></code></td>
+<td><p class="first">Since the client begins monitoring the deployment in background as
+soon as it is constructed, constructing a client and then subscribing
+to <a class="reference external" href="sdam">SDAM</a> events in a separate statement may result in the
+subscriber not receiving some of the SDAM events. The <code class="docutils literal notranslate"><span class="pre">:sdam_proc</span></code>
+option permits adding event subscribers on the client being constructed
+before any SDAM events are published.</p>
+<p>Pass a <code class="docutils literal notranslate"><span class="pre">Proc</span></code> which will be called with the <code class="docutils literal notranslate"><span class="pre">Client</span></code> as the argument
+after the client’s event subscription mechanism has been initialized
+but before any of the servers are added to the client. Use this
+<code class="docutils literal notranslate"><span class="pre">Proc</span></code> to set up SDAM event subscribers on the client.</p>
+<p class="last">Note: the client is not fully constructed when the <code class="docutils literal notranslate"><span class="pre">Proc</span></code> provided in
+<code class="docutils literal notranslate"><span class="pre">:sdam_proc</span> <span class="pre">is</span> <span class="pre">invoked,</span> <span class="pre">in</span> <span class="pre">particular</span> <span class="pre">the</span> <span class="pre">cluster</span> <span class="pre">is</span> <span class="pre">nil</span> <span class="pre">at</span> <span class="pre">this</span> <span class="pre">time.</span>
+<span class="pre">``:sdam_proc</span></code> procedure should limit itself to calling
+<code class="docutils literal notranslate"><span class="pre">Client#subscribe</span></code> and <code class="docutils literal notranslate"><span class="pre">Client#unsubscribe</span></code> methods on on the
+passed client only.</p>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">Proc</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:server_selection_timeout</span></code></td>
+<td>The number of seconds to wait for an appropriate server to
+be selected for an operation to be executed before raising an exception.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Float</span></code></td>
+<td>30</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:socket_timeout</span></code></td>
+<td>The number of seconds to wait for an operation to execute on a
+socket before raising an exception.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Float</span></code></td>
+<td>5 seconds</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:ssl</span></code></td>
+<td>Tell the client to connect to the servers via SSL.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></td>
+<td>false</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:ssl_ca_cert</span></code></td>
+<td>The file path containing concatenated certificate authority certificates used to validate certs
+passed from the other end of the connection. One of :ssl_ca_cert, :ssl_ca_cert_string or :ssl_ca_cert_object
+(in order of priority) is required for :ssl_verify.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:ssl_ca_cert_object</span></code></td>
+<td>An array of OpenSSL::X509::Certificate representing the certificate authority certificates used to
+validate certs passed from the other end of the connection. One of :ssl_ca_cert, :ssl_ca_cert_string or
+:ssl_ca_cert_object (in order of priority) is required for :ssl_verify.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Array&lt;</span> <span class="pre">OpenSSL::X509::Certificate</span> <span class="pre">&gt;</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:ssl_ca_cert_string</span></code></td>
+<td>A string containing concatenated certificate authority certificates used to validate certs
+passed from the other end of the connection. One of :ssl_ca_cert, :ssl_ca_cert_string or :ssl_ca_cert_object
+(in order of priority) is required for :ssl_verify.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:ssl_cert</span></code></td>
+<td><p class="first">Path to the client certificate file used to identify the application to
+the MongoDB servers. The file may also contain the certificate’s private
+key; if so, the private key is ignored by this option. The file may
+also contain intermediate certificates forming the certificate chain
+from the client certificate to the CA certificate; any intermediate
+certificates will be parsed by the driver and provided to the OpenSSL
+context in <code class="docutils literal notranslate"><span class="pre">extra_chain_cert</span></code> attribute. If intermediate certificates
+are provided, they must follow the client certificate which must be
+the first certificate in the file.</p>
+<p class="last">This option, if present, takes precedence over <code class="docutils literal notranslate"><span class="pre">:ssl_cert_string</span></code> and
+<code class="docutils literal notranslate"><span class="pre">:ssl_cert_object</span></code> options.</p>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:ssl_cert_object</span></code></td>
+<td>The OpenSSL::X509::Certificate used to identify the application to
+the MongoDB servers. Only one certificate may be passed through this
+option.</td>
+<td><code class="docutils literal notranslate"><span class="pre">OpenSSL::X509::Certificate</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:ssl_cert_string</span></code></td>
+<td><p class="first">A string containing the PEM-encoded certificate used to identify the
+application to the MongoDB servers. The string may also contain the
+certificate’s private key; if so, the private key is ignored by this
+option. The string may also contain intermediate certificates forming
+the certificate chain from the client certificate to the CA certificate;
+any intermediate certificates will be parsed by the driver and provided
+to the OpenSSL context in <code class="docutils literal notranslate"><span class="pre">extra_chain_cert</span></code> attribute. If intermediate
+certificates are provided, they must follow the client certificate which
+must be the first certificatet in the string.</p>
+<p class="last">This option, if present, takes precedence over the <code class="docutils literal notranslate"><span class="pre">:ssl_cert_object</span></code>
+option.</p>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:ssl_key</span></code></td>
+<td>The private keyfile used to identify the connection against MongoDB. Note that even if the key is stored in
+the same file as the certificate, both need to be explicitly specified. This option, if present, takes
+precedence over the values of :ssl_key_string and :ssl_key_object.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:ssl_key_object</span></code></td>
+<td>The private key used to identify the connection against MongoDB.</td>
+<td><code class="docutils literal notranslate"><span class="pre">OpenSSL::PKey</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:ssl_key_pass_phrase</span></code></td>
+<td>A passphrase for the private key.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:ssl_key_string</span></code></td>
+<td>A string containing the PEM-encoded private key used to identify the connection against MongoDB.
+This parameter, if present, takes precedence over the value of option :ssl_key_object.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:ssl_verify</span></code></td>
+<td>Whether to perform peer certificate validation and hostname verification. Note that
+the decision of whether to validate certificates will be overridden if
+:ssl_verify_certificate is set, and the decision of whether to validate hostnames will be
+overridden if :ssl_verify_hostname is set.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></td>
+<td>true</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:ssl_verify_certificate</span></code></td>
+<td>Whether to perform peer certificate validation. This setting overrides :ssl_verify with
+respect to whether certificate validation is performed.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></td>
+<td>true</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:ssl_verify_hostname</span></code></td>
+<td>Whether to perform peer hostname validation. This setting overrides :ssl_verify with
+respect to whether hostname validation is performed.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></td>
+<td>true</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:truncate_logs</span></code></td>
+<td>Whether to truncate the logs at the default 250 characters.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></td>
+<td>true</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:user</span></code></td>
+<td>The name of the user to authenticate with.</td>
+<td><code class="docutils literal notranslate"><span class="pre">String</span></code></td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:wait_queue_timeout</span></code></td>
+<td>The number of seconds to wait for a connection in the connection
+pool to become available.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Float</span></code></td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:write</span></code></td>
+<td>Deprecated. Equivalent to <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> option. If both <code class="docutils literal notranslate"><span class="pre">:write</span></code>
+and <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> are specified, their values must be identical.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Hash</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">w:</span> <span class="pre">1</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:write_concern</span></code></td>
+<td><p class="first">Specifies write concern options as a <code class="docutils literal notranslate"><span class="pre">Hash</span></code>.
+Keys in the hash can be <code class="docutils literal notranslate"><span class="pre">:w</span></code>, <code class="docutils literal notranslate"><span class="pre">:wtimeout</span></code>, <code class="docutils literal notranslate"><span class="pre">:j</span></code>, <code class="docutils literal notranslate"><span class="pre">:fsync</span></code>.</p>
+<div class="last button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span> <span class="ss">w</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">Hash</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">w:</span> <span class="pre">1</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:zlib_compression_level</span></code></td>
+<td>The Zlib compression level to use, if using compression. See Ruby’s Zlib module for valid levels.</td>
+<td><code class="docutils literal notranslate"><span class="pre">Integer</span></code></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="uri-options">
+<h3>URI Options<a class="headerlink" href="#uri-options" title="Permalink to this headline">¶</a></h3>
+<p>Since the URI options are required to be in camel case, which is not the Ruby
+standard, the following table shows URI options and their corresponding Ruby
+options.</p>
+<p>URI options are explained in detail in the <a class="reference external" href="http://docs.mongodb.com/manual/reference/connection-string/">Connection URI reference</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Options that are set in <strong>milliseconds</strong> in the URI are
+represented as a <code class="docutils literal notranslate"><span class="pre">float</span></code> in Ruby and the units are <strong>seconds</strong>.</p>
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">URI Option</th>
+<th class="head">Ruby Option</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>appName=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:app_name</span> <span class="pre">=&gt;</span> <span class="pre">String</span></code></td>
+</tr>
+<tr class="row-odd"><td>authMechanism=String</td>
+<td><p class="first"><code class="docutils literal notranslate"><span class="pre">:auth_mech</span> <span class="pre">=&gt;</span> <span class="pre">Symbol</span></code></p>
+<p>Auth mechanism values are converted as follows from URI options to
+Ruby options:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">GSSAPI</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">:gssapi</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MONGODB-CR</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">:mongodb_cr</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MONGODB-X509</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">:mongodb_x509</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PLAIN</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">:plain</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SCRAM-SHA-1</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">:scram</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SCRAM-SHA-256</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">:scram256</span></code></li>
+</ul>
+<p class="last">If a different value is provided for auth mechanism, it is converted
+to the Ruby option unmodified and retains its <code class="docutils literal notranslate"><span class="pre">String</span></code> type.
+Note that, while currently the driver allows a <code class="docutils literal notranslate"><span class="pre">Client</span></code> instance
+to be constructed with an unrecognized auth mechanism, this behavior
+<a class="reference external" href="https://jira.mongodb.org/browse/RUBY-1745">may change in a future version of the driver</a>.</p>
+</td>
+</tr>
+<tr class="row-even"><td>authMechanismProperties=Strings</td>
+<td><p class="first"><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:auth_mech_properties</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">:service_realm</span> <span class="pre">=&gt;</span> <span class="pre">String,</span> <span class="pre">:canonicalize_host_name</span> <span class="pre">=&gt;</span> <span class="pre">true|false,</span> <span class="pre">:service_name</span> <span class="pre">=&gt;</span> <span class="pre">String</span> <span class="pre">}</span> <span class="pre">}</span></code></p>
+<p class="last">Specified as comma-separated key:value pairs, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;SERVICE_REALM:foo,CANONICALIZE_HOST_NAME:TRUE&quot;</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>authSource=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:auth_source</span> <span class="pre">=&gt;</span> <span class="pre">String</span></code></td>
+</tr>
+<tr class="row-even"><td>compressors=Strings</td>
+<td><p class="first"><code class="docutils literal notranslate"><span class="pre">:compressors</span> <span class="pre">=&gt;</span> <span class="pre">Array&lt;String&gt;</span></code></p>
+<p class="last">Specified as a comma-separated list. Note that the Ruby driver only supports zlib
+compression; however, other drivers may support snappy. For maximum compatibility with
+drivers, specify <code class="docutils literal notranslate"><span class="pre">&quot;snappy,zlib&quot;</span></code>; if compatibility with other drivers is not a concern,
+specify <code class="docutils literal notranslate"><span class="pre">&quot;zlib&quot;.</span></code> Compression is not enabled by default and when using MongoDB 4.0 and
+earlier, so zlib compression must be manually enabled on the server in order for the Ruby
+driver to compress wire protocol data.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>connect=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:connect</span> <span class="pre">=&gt;</span> <span class="pre">Symbol</span></code></td>
+</tr>
+<tr class="row-even"><td>connectTimeoutMS=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:connect_timeout</span> <span class="pre">=&gt;</span> <span class="pre">Float</span></code></td>
+</tr>
+<tr class="row-odd"><td>directConnection=Boolean</td>
+<td><code class="docutils literal notranslate"><span class="pre">:direct_connection</span> <span class="pre">=&gt;</span> <span class="pre">Boolean</span></code></td>
+</tr>
+<tr class="row-even"><td>fsync=Boolean</td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:write_concern</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">:fsync</span> <span class="pre">=&gt;</span> <span class="pre">true|false</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-odd"><td>heartbeatFrequencyMS=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:heartbeat_frequency</span> <span class="pre">=&gt;</span> <span class="pre">Float</span></code></td>
+</tr>
+<tr class="row-even"><td>journal=Boolean</td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:write_concern</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">:j</span> <span class="pre">=&gt;</span> <span class="pre">true|false</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-odd"><td>localThresholdMS=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:local_threshold</span> <span class="pre">=&gt;</span> <span class="pre">Float</span></code></td>
+</tr>
+<tr class="row-even"><td>maxIdleTimeMS=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:max_idle_time</span> <span class="pre">=&gt;</span> <span class="pre">Float</span></code></td>
+</tr>
+<tr class="row-odd"><td>maxStalenessSeconds=Integer</td>
+<td><p class="first"><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:read</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">:max_staleness</span> <span class="pre">=&gt;</span> <span class="pre">Integer</span> <span class="pre">}}</span></code></p>
+<p class="last">If the maxStalenessSeconds URI option value is -1, the driver treats
+this as if the option was not given at all. Otherwise,
+if the option value is numeric, the Ruby option is set to the
+specified value converted to an <code class="docutils literal notranslate"><span class="pre">Integer</span></code>.
+Note that numeric values greater than 0 but less than 90, or less than
+-1, are accepted by the <code class="docutils literal notranslate"><span class="pre">Client</span></code> constructor but will cause server
+selection to fail (unless the option is changed via, for example, the
+<code class="docutils literal notranslate"><span class="pre">with</span></code> method prior to any operations being performed on the driver).
+If the option value is non-numeric, it is ignored and the driver
+treats this case as if the option was not given at all.</p>
+</td>
+</tr>
+<tr class="row-even"><td>maxPoolSize=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:max_pool_size</span> <span class="pre">=&gt;</span> <span class="pre">Integer</span></code></td>
+</tr>
+<tr class="row-odd"><td>minPoolSize=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:min_pool_size</span> <span class="pre">=&gt;</span> <span class="pre">Integer</span></code></td>
+</tr>
+<tr class="row-even"><td>readConcernLevel=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:read_concern</span> <span class="pre">=&gt;</span> <span class="pre">Hash</span></code></td>
+</tr>
+<tr class="row-odd"><td>readPreference=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:read</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">:mode</span> <span class="pre">=&gt;</span> <span class="pre">Symbol</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-even"><td>readPreferenceTags=Strings</td>
+<td><p class="first"><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:read</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">:tag_sets</span> <span class="pre">=&gt;</span> <span class="pre">Array&lt;Hash&gt;</span> <span class="pre">}}</span></code></p>
+<p class="last">Each instance of the readPreferenceTags field is a comma-separated key:value pair which will appear in the :tag_sets array in the order they are specified. For instance, <code class="docutils literal notranslate"><span class="pre">&quot;readPreferenceTags=dc:ny,rack:1&amp;readPreferenceTags=dc:ny&quot;</span></code> will be converted to <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">{</span> <span class="pre">'dc'</span> <span class="pre">=&gt;</span> <span class="pre">'ny',</span> <span class="pre">'rack'</span> <span class="pre">=&gt;</span> <span class="pre">'1'</span> <span class="pre">},</span> <span class="pre">{</span> <span class="pre">'dc'</span> <span class="pre">=&gt;</span> <span class="pre">'ny'</span> <span class="pre">}]</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>replicaSet=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:replica_set</span> <span class="pre">=&gt;</span> <span class="pre">String</span></code></td>
+</tr>
+<tr class="row-even"><td>retryWrites=Boolean</td>
+<td><code class="docutils literal notranslate"><span class="pre">:retry_writes</span> <span class="pre">=&gt;</span> <span class="pre">boolean</span></code></td>
+</tr>
+<tr class="row-odd"><td>serverSelectionTimeoutMS=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:server_selection_timeout</span> <span class="pre">=&gt;</span> <span class="pre">Float</span></code></td>
+</tr>
+<tr class="row-even"><td>socketTimeoutMS=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:socket_timeout</span> <span class="pre">=&gt;</span> <span class="pre">Float</span></code></td>
+</tr>
+<tr class="row-odd"><td>ssl=Boolean</td>
+<td><code class="docutils literal notranslate"><span class="pre">:ssl</span> <span class="pre">=&gt;</span> <span class="pre">true|false</span></code></td>
+</tr>
+<tr class="row-even"><td>tls=Boolean</td>
+<td><code class="docutils literal notranslate"><span class="pre">:ssl</span> <span class="pre">=&gt;</span> <span class="pre">boolean</span></code></td>
+</tr>
+<tr class="row-odd"><td>tlsAllowInvalidCertificates=Boolean</td>
+<td><p class="first"><code class="docutils literal notranslate"><span class="pre">:ssl_verify_certificate</span> <span class="pre">=&gt;</span> <span class="pre">boolean</span></code></p>
+<p class="last">Because <code class="docutils literal notranslate"><span class="pre">tlsAllowInvalidCertificates</span></code> uses <code class="docutils literal notranslate"><span class="pre">true</span></code> to signify that verification
+should be disabled and <code class="docutils literal notranslate"><span class="pre">ssl_verify_certificate</span></code> uses <code class="docutils literal notranslate"><span class="pre">false</span></code> to signify that
+verification should be disabled, the boolean is inverted before being used to set
+<code class="docutils literal notranslate"><span class="pre">ssl_verify_certificate</span></code>.</p>
+</td>
+</tr>
+<tr class="row-even"><td>tlsAllowInvalidHostnames=Boolean</td>
+<td><p class="first"><code class="docutils literal notranslate"><span class="pre">:ssl_verify_hostname</span> <span class="pre">=&gt;</span> <span class="pre">boolean</span></code></p>
+<p class="last">Because <code class="docutils literal notranslate"><span class="pre">tlsAllowInvalidHostnames</span></code> uses <code class="docutils literal notranslate"><span class="pre">true</span></code> to signify that verification
+should be disabled and <code class="docutils literal notranslate"><span class="pre">ssl_verify_hostname</span></code> uses <code class="docutils literal notranslate"><span class="pre">false</span></code> to signify that
+verification should be disabled, the boolean is inverted before being used to set
+<code class="docutils literal notranslate"><span class="pre">ssl_verify_hostname</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>tlsCAFile=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:ssl_ca_cert</span> <span class="pre">=&gt;</span> <span class="pre">String</span></code></td>
+</tr>
+<tr class="row-even"><td>tlsCertificateKeyFile=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:ssl_cert</span> <span class="pre">=&gt;</span> <span class="pre">String</span></code></td>
+</tr>
+<tr class="row-odd"><td>tlsCertificateKeyFile=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:ssl_key</span> <span class="pre">=&gt;</span> <span class="pre">String</span></code></td>
+</tr>
+<tr class="row-even"><td>tlsCertificateKeyFilePassword=String</td>
+<td><code class="docutils literal notranslate"><span class="pre">:ssl_key_pass_phrase</span> <span class="pre">=&gt;</span> <span class="pre">String</span></code></td>
+</tr>
+<tr class="row-odd"><td>tlsInsecure=Boolean</td>
+<td><p class="first"><code class="docutils literal notranslate"><span class="pre">:ssl_verify</span> <span class="pre">=&gt;</span> <span class="pre">boolean</span></code></p>
+<p class="last">Because tlsInsecure uses <code class="docutils literal notranslate"><span class="pre">true</span></code> to signify that verification should be disabled and
+<code class="docutils literal notranslate"><span class="pre">ssl_verify</span></code> uses <code class="docutils literal notranslate"><span class="pre">false</span></code> to signify that verification should be disabled, the boolean
+is inverted before being used to set <code class="docutils literal notranslate"><span class="pre">ssl_verify</span></code>.</p>
+</td>
+</tr>
+<tr class="row-even"><td>w=Integer|String</td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:write_concern</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">:w</span> <span class="pre">=&gt;</span> <span class="pre">Integer|String</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-odd"><td>waitQueueTimeoutMS=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:wait_queue_timeout</span> <span class="pre">=&gt;</span> <span class="pre">Float</span></code></td>
+</tr>
+<tr class="row-even"><td>wtimeoutMS=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:write_concern</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">:wtimeout</span> <span class="pre">=&gt;</span> <span class="pre">Integer</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-odd"><td>zlibCompressionLevel=Integer</td>
+<td><code class="docutils literal notranslate"><span class="pre">:zlib_compression_level</span> <span class="pre">=&gt;</span> <span class="pre">Integer</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="timeout-options">
+<h2>Timeout Options<a class="headerlink" href="#timeout-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="server-selection-timeout">
+<h3><code class="docutils literal notranslate"><span class="pre">server_selection_timeout</span></code><a class="headerlink" href="#server-selection-timeout" title="Permalink to this headline">¶</a></h3>
+<p>When executing an operation, the number of seconds to wait for the driver
+to find an appropriate server to send an operation to. Defaults to 30.</p>
+<p>In replica set deployments, this timeout should be set to exceed the typical
+<a class="reference external" href="http://docs.mongodb.com/manual/core/replica-set-elections/">replica set election times</a>
+in order for the driver to transparently handle primary changes. This timeout
+also allows the application and the database to be started simultaneously;
+the application will wait up to this much time for the database to become
+available.</p>
+<p>If the application server is behind a reverse proxy, server selection timeout
+should be lower than the request timeout configured on the reverse proxy (for
+example, this applies to deployments on Heroku which has a fixed 30 second
+timeout in the routing layer). In development this value can be lowered to
+provide quicker failure when the server is not running.</p>
+</div>
+<div class="section" id="socket-timeout">
+<h3><code class="docutils literal notranslate"><span class="pre">socket_timeout</span></code><a class="headerlink" href="#socket-timeout" title="Permalink to this headline">¶</a></h3>
+<p>The number of seconds to wait for a socket read or write to complete on
+regular (non-monitoring) connections. Default is no timeout.</p>
+<p>This timeout should take into account both network latency and operation
+duration. For example, setting this timeout to 5 seconds will abort queries
+taking more than 5 seconds to execute on the server with <code class="docutils literal notranslate"><span class="pre">Mongo::Error::SocketTimeoutError</span></code>.</p>
+<p>Note that even though by default there is no socket timeout set, the
+operating system may still time out read operations depending on its
+configuration. The keepalive settings are intended to detect broken network
+connections (as opposed to aborting operations simply because they take a
+long time to execute).</p>
+<p>Note that if an operation is timed out by the driver due to exceeding the
+<code class="docutils literal notranslate"><span class="pre">socket_timeout</span></code> value, it is not aborted on the server. For this reason
+it is recommended to use <code class="docutils literal notranslate"><span class="pre">max_time_ms</span></code> option for potentially long running
+operations, as this will abort their execution on the server.</p>
+<p>This option does not apply to monitoring connections.</p>
+</div>
+<div class="section" id="connect-timeout">
+<h3><code class="docutils literal notranslate"><span class="pre">connect_timeout</span></code><a class="headerlink" href="#connect-timeout" title="Permalink to this headline">¶</a></h3>
+<p>The number of seconds to wait for a socket connection to be established to
+a server. Defaults to 10. This timeout is also used as both connect timeout
+and socket timeout for monitoring connections.</p>
+</div>
+<div class="section" id="wait-queue-timeout">
+<h3><code class="docutils literal notranslate"><span class="pre">wait_queue_timeout</span></code><a class="headerlink" href="#wait-queue-timeout" title="Permalink to this headline">¶</a></h3>
+<p>The number of seconds to wait for a connection in the connection pool to
+become available. Defaults to 10.</p>
+<p>As of driver version 2.11, this timeout should be set to a value at least
+as large as <code class="docutils literal notranslate"><span class="pre">connect_timeout</span></code> because connection pool now fully establishes
+connections prior to returning them, which may require several network
+round trips.</p>
+</div>
+<div class="section" id="max-time-ms">
+<h3><code class="docutils literal notranslate"><span class="pre">max_time_ms</span></code><a class="headerlink" href="#max-time-ms" title="Permalink to this headline">¶</a></h3>
+<p>Specified as an option on a particular operation, the number of milliseconds
+to allow the operation to execute for on the server. Not set by default.</p>
+<p>Consider using this option instead of a <code class="docutils literal notranslate"><span class="pre">socket_timeout</span></code> for potentially
+long running operations to be interrupted on the server when they take too
+long.</p>
+</div>
+<div class="section" id="wtimeout">
+<h3><code class="docutils literal notranslate"><span class="pre">wtimeout</span></code><a class="headerlink" href="#wtimeout" title="Permalink to this headline">¶</a></h3>
+<p>The number of milliseconds to wait for a write to be acknowledged by the
+number of servers specified in the write concern. Not set by default, which
+instructs the server to apply its default. This option can be set globally
+on the client or passed to individual operations under <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code>.</p>
+</div>
+</div>
+<div class="section" id="tls-connections">
+<h2>TLS Connections<a class="headerlink" href="#tls-connections" title="Permalink to this headline">¶</a></h2>
+<p>To connect to the MongoDB cluster using TLS, pass <code class="docutils literal notranslate"><span class="pre">tls</span></code> Ruby or URI option
+to the <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> constructor. TLS must be explicitly configured on the
+client side when the cluster requires TLS connections - there is currently no
+automatic detection of whether TLS is required.</p>
+<p>The driver will attempt to verify the server’s TLS certificate by default, and
+will abort the connection if this verification fails. In order for this
+verification to succeed, you may need to specify the certificate authority
+that the server certificate is signed with via <code class="docutils literal notranslate"><span class="pre">tlsCAFile</span></code> URI option or
+<code class="docutils literal notranslate"><span class="pre">ssl_ca_cert</span></code> Ruby option. If these options are not given, the driver will
+use the default system root certificate store as the trust anchor; if these
+options are given, the default system root certificate store will not be used.
+To omit TLS certificate verification by the client, which is not
+recommended, specify <code class="docutils literal notranslate"><span class="pre">tlsInsecure=true</span></code> URI option or <code class="docutils literal notranslate"><span class="pre">ssl_verify:</span> <span class="pre">false</span></code>
+Ruby option.</p>
+<p>By default, MongoDB server will verify the connecting clients’ TLS certificates,
+which requires the client to specify a client certificate when connecting.
+This can be accomplished through <code class="docutils literal notranslate"><span class="pre">tlsCertificateKeyFile</span></code> URI option which
+takes as the argument the path to a single file containing both the certificate
+and the corresponding private key, or through <code class="docutils literal notranslate"><span class="pre">:ssl_cert</span></code> and <code class="docutils literal notranslate"><span class="pre">:ssl_key</span></code>
+Ruby options. The Ruby options allow passing separace certificate and key files
+to the driver, but also can be pointed at the single PEM file containing both
+the certificate and the corresponding private key. Further information on
+configuring MongoDB server for TLS is available in the <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/configure-ssl/">MongoDB manual</a>.</p>
+<div class="section" id="using-intermediate-certificates">
+<h3>Using Intermediate Certificates<a class="headerlink" href="#using-intermediate-certificates" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to use certificate chains for both the client and the server
+certificates. When using chains, the certificate authority parameter should
+be configured to contain the trusted root certificates only; the intermediate
+certificates, if any, should be provided in the server or client certificates
+by concatenating them after the leaf server and client certificates, respectively.</p>
+<p><code class="docutils literal notranslate"><span class="pre">:ssl_cert</span></code> and <code class="docutils literal notranslate"><span class="pre">:ssl_cert_string</span></code> Ruby options, as well as
+<code class="docutils literal notranslate"><span class="pre">tlsCertificateKeyFile</span></code> URI option, support certificate chains.
+<code class="docutils literal notranslate"><span class="pre">:ssl_cert_object</span></code> Ruby option, which takes an instance of
+<code class="docutils literal notranslate"><span class="pre">OpenSSL::X509::Certificate</span></code>, does not support certificate chains.</p>
+<p>The Ruby driver performs strict X.509 certificate verification, which requires
+that both of the following fields are set in the intermediate certificate(s):</p>
+<ul class="simple">
+<li>X509v3 Basic Constraints: CA: TRUE – Can sign certificates</li>
+<li>X509v3 Key Usage: Key Cert Sign – Can sign certificates</li>
+</ul>
+<p>More information about these flags can be found <a class="reference external" href="https://stackoverflow.com/questions/5795256/what-is-the-difference-between-the-x-509-v3-extensions-basic-constraints-and-key">here</a>.</p>
+<p>It is a common pitfall to concatenate intermediate certificates to the root
+CA certificates passed in <code class="docutils literal notranslate"><span class="pre">tlsCAFile</span></code> / <code class="docutils literal notranslate"><span class="pre">ssl_ca_cert</span></code> options. By doing
+so, the intermediate certificates are elevated to trusted status and are
+themselves not verified against the actual CA root. More information on this
+issue is available <a class="reference external" href="https://mail.python.org/pipermail/cryptography-dev/2016-August/000676.html">here</a>.</p>
+</div>
+<div class="section" id="specifying-multiple-ca-certificates">
+<h3>Specifying Multiple CA Certificates<a class="headerlink" href="#specifying-multiple-ca-certificates" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">:ssl_ca_cert</span></code> Ruby option and <code class="docutils literal notranslate"><span class="pre">tlsCAFile</span></code> URI option can be used with
+a file containing multiple certificates. All certificates thus referenced
+will become trust anchors.</p>
+<p><code class="docutils literal notranslate"><span class="pre">:ssl_ca_cert_object</span></code> option takes an array of certificates, and thus
+can also be used to add multiple certificates as certificate authorities.</p>
+<p><code class="docutils literal notranslate"><span class="pre">:ssl_ca_cert_string</span></code> option supports passing only one CA certificate to the
+driver.</p>
+<p>Intermediate certificates should not be specified in files given to any
+of these options, because they would then not be verified against actual
+trusted CA certificates.</p>
+</div>
+</div>
+<div class="section" id="ipv4-ipv6-connections">
+<h2>IPv4/IPv6 Connections<a class="headerlink" href="#ipv4-ipv6-connections" title="Permalink to this headline">¶</a></h2>
+<p>When a client is constructed with <code class="docutils literal notranslate"><span class="pre">localhost</span></code> as the host name, it will
+attempt an IPv4 connection only (i.e. if <code class="docutils literal notranslate"><span class="pre">localhost</span></code> resolves to
+<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> and <code class="docutils literal notranslate"><span class="pre">::1</span></code>, the driver will only try to connect to
+<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>).</p>
+<p>When a client is constructed with hostnames other than <code class="docutils literal notranslate"><span class="pre">localhost</span></code>, it will
+attempt both IPv4 and IPv6 connections depending on the addresses that the
+hostnames resolve to. The driver respects the order in which <code class="docutils literal notranslate"><span class="pre">getaddrinfo</span></code>
+returns the addresses, and will attempt to connect to them sequentially.
+The first successful connection will be used.</p>
+<p>The driver does not currently implement the Happy Eyeballs algorithm.</p>
+</div>
+<div class="section" id="tcp-keepalive-configuration">
+<h2>TCP Keepalive Configuration<a class="headerlink" href="#tcp-keepalive-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The driver sets TCP keepalive by default. The following default values are also set if the system
+value can be determined and if the driver default value is less than the system value.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">tcp_keepalive_time</span></code>: 300 seconds</li>
+<li><code class="docutils literal notranslate"><span class="pre">tcp_keepalive_intvl</span></code>: 10 seconds</li>
+<li><code class="docutils literal notranslate"><span class="pre">tcp_keepalive_cnt</span></code>: 9 probes</li>
+</ul>
+<p>Please see the <a class="reference external" href="https://github.com/mongodb/specifications/blob/master/source/server-selection/server-selection.rst#serverselectiontimeoutms">MongoDB Diagnostics FAQ keepalive section</a>
+for instructions on setting these values at the system level.</p>
+</div>
+<div class="section" id="details-on-connection-pooling">
+<h2>Details on Connection Pooling<a class="headerlink" href="#details-on-connection-pooling" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> instances have a connection pool per server that the client
+is connected to. The pool creates connections on demand to support concurrent
+MongoDB operations issued by the application. There is no thread-affinity
+for connections.</p>
+<p>The client instance opens one additional connection per known server
+for monitoring the server’s state.</p>
+<p>The size of each connection pool is capped at <code class="docutils literal notranslate"><span class="pre">max_pool_size</span></code>, which defaults
+to 5. When a thread in the application begins an operation on MongoDB, it tries
+to retrieve a connection from the pool to send that operation on. If there
+are some connections available in the pool, it checks out a connection from
+the pool and uses it for the operation. If there are no connections available
+and the size of the pool is less than the <code class="docutils literal notranslate"><span class="pre">max_pool_size</span></code>, a new connection
+will be created. If all connections are in use and the pool has reached its
+maximum size, the thread waits for a connection to be returned to the pool by
+another thread.</p>
+<p>The number of seconds the thread will wait for a connection to become available
+is configurable. This setting, called <code class="docutils literal notranslate"><span class="pre">wait_queue_timeout</span></code>, is defined in
+seconds. If this timeout is reached, a <code class="docutils literal notranslate"><span class="pre">Timeout::Error</span></code> is raised. The
+default is 1 second.</p>
+<p>As of driver version 2.11, the driver eagerly creates connections up to
+<code class="docutils literal notranslate"><span class="pre">min_pool_size</span></code> setting. Prior to driver version 2.11, the driver always
+created connections on demand. In all versions of the driver, once a connection
+is established, it will be kept in the pool by the driver as long as the pool
+size does not exceed <code class="docutils literal notranslate"><span class="pre">min_pool_size</span></code>.</p>
+<p>Note that, if <code class="docutils literal notranslate"><span class="pre">min_pool_size</span></code> is set to a value greater than zero, the
+driver will establish that many connections to secondaries in replica set
+deployments even if the application does not perform secondary reads. The
+purpose of these connections is to provide faster failover when the primary
+changes.</p>
+<p>Here is an example of estimating the number of connections a multi-threaded
+application will open: A client connected to a 3-node replica set opens 3
+monitoring sockets. It also opens as many sockets as needed to support a
+multi-threaded application’s concurrent operations on each server, up to
+<code class="docutils literal notranslate"><span class="pre">max_pool_size</span></code>. If the application only uses the primary (the default),
+then only the primary connection pool grows and the total connections is at
+most 8 (5 connections for the primary pool + 3 monitoring connections).
+If the application uses a read preference to query the secondaries, their
+pools also grow and the total connections can reach 18 (5 + 5 + 5 + 3).</p>
+<p>The default configuration for a <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> works for most applications:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s2">&quot;localhost:27017&quot;</span><span class="o">]</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Create this client <strong>once</strong> for each process, and reuse it for all operations.
+It is a common mistake to create a new client for each request, which is very
+inefficient and not what the client was designed for.</p>
+<p>To support extremely high numbers of concurrent MongoDB operations within one
+process, increase <code class="docutils literal notranslate"><span class="pre">max_pool_size</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s2">&quot;localhost:27017&quot;</span><span class="o">]</span><span class="p">,</span> <span class="ss">max_pool_size</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Any number of threads are allowed to wait for connections to become available,
+and they can wait the default (1 second) or the <code class="docutils literal notranslate"><span class="pre">wait_queue_timeout</span></code> setting:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s2">&quot;localhost:27017&quot;</span><span class="o">]</span><span class="p">,</span> <span class="ss">wait_queue_timeout</span><span class="p">:</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">#close</span></code> is called on a client by any thread, all connections are closed:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage-with-forking-servers">
+<h2>Usage with Forking Servers<a class="headerlink" href="#usage-with-forking-servers" title="Permalink to this headline">¶</a></h2>
+<p><em>Note:</em> Applications using Mongoid should follow <a class="reference external" href="https://docs.mongodb.com/mongoid/current/tutorials/mongoid-configuration/#usage-with-forking-servers">Mongoid’s forking guidance</a>.
+The sample code below is provided for applications using the Ruby driver directly.</p>
+<p>When using the Mongo Ruby driver with a forking web server such as Unicorn,
+worker processes should generally each have their own Mongo::Client instances.
+This is because:</p>
+<ol class="arabic simple">
+<li>The background threads remain in the parent process and are not transfered
+to the child process.</li>
+<li>File descriptors like network sockets are shared between parent and
+child processes.</li>
+</ol>
+<p>It is recommended to not create any Mongo::Client instances prior to the fork.
+If the parent process needs to perform operations on the MongoDB database,
+reset the client in an <code class="docutils literal notranslate"><span class="pre">after_fork</span></code> handler which is defined in
+<code class="docutils literal notranslate"><span class="pre">unicorn.rb</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">after_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
+  <span class="vg">$client</span><span class="o">.</span><span class="n">close</span>
+  <span class="vg">$client</span><span class="o">.</span><span class="n">reconnect</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>The above code assumes your Mongo::Client instance is stored in the $client
+global variable. It also keeps the MongoDB connection in the parent process
+around, and this connection will continue to consume resources such as
+a connection slot. If the parent process performs one time operation(s) on
+MongoDB and does not need its MongoDB connection once workers are forked,
+the following code will close the connection in the parent:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">before_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
+  <span class="vg">$client</span><span class="o">.</span><span class="n">close</span>
+<span class="k">end</span>
+
+<span class="n">after_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
+  <span class="vg">$client</span><span class="o">.</span><span class="n">reconnect</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p><em>Note:</em> This pattern should be used with Ruby driver version 2.6.2 or higher.
+Previous driver versions did not recreate monitoring threads when reconnecting.</p>
+<p><em>Note:</em> If the parent process performs operations on the Mongo client and
+does not close it, the parent process will continue consuming a connection slot
+in the cluster and will continue monitoring the cluster for as long as the
+parent remains alive.</p>
+</div>
+<div class="section" id="details-on-retryable-reads">
+<h2>Details on Retryable Reads<a class="headerlink" href="#details-on-retryable-reads" title="Permalink to this headline">¶</a></h2>
+<p>The driver implements two mechanisms for retrying reads: modern and legacy.
+As of driver version 2.9.0, the modern mechanism is used by default, and the
+legacy mechanism is deprecated.</p>
+<div class="section" id="modern-retryable-reads">
+<h3>Modern Retryable Reads<a class="headerlink" href="#modern-retryable-reads" title="Permalink to this headline">¶</a></h3>
+<p>When the modern mechanism is used, read operations are retried once in the
+event of a network error, a “not master” error, or a “node is recovering” error.
+The following operations are covered:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Collection.html#find-instance_method">Collection#find</a>
+and related methods</li>
+<li><a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Collection.html#aggregate-instance_method">Collection#aggregate</a></li>
+<li><a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Collection.html#count-instance_method">Collection#count</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Collection.html#count_documents-instance_method">Collection#count_documents</a></li>
+<li>Change stream helpers: <a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Collection.html#watch-instance_method">Collection#watch</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Database.html#watch-instance_method">Database#watch</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Client.html#watch-instance_method">Client#watch</a></li>
+<li>Enumeration commands: <a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Client.html#list_mongo_databases-instance_method">Client#list_mongo_databases</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Client.html#list_databases-instance_method">Client#list_databases</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Client.html#database_names-instance_method">Client#database_names</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Database.html#collection_names-instance_method">Database#collection_names</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Database.html#collections-instance_method">Database#collections</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Database.html#list_collections-instance_method">Database#list_collections</a>,
+<a class="reference external" href="http://api.mongodb.com/ruby/current/Mongo/Collection.html#indexes-instance_method">Collection#indexes</a></li>
+</ul>
+<p>When an operation returns a cursor, only the initial read command can be retried.
+<code class="docutils literal notranslate"><span class="pre">getMore</span></code> operations on cursors are not retried by driver version 2.9.0 or
+newer. Additionally, when a read operation is retried, a new server for the
+operation is selected; this may result in the retry being sent to a different
+server from the one which received the first read.</p>
+<p>The behavior of modern retryable reads is covered in detail by the
+<a class="reference external" href="https://github.com/mongodb/specifications/blob/master/source/retryable-reads/retryable-reads.rst">retryable reads specification</a>.</p>
+<p>Note that the modern retryable reads can only be used with MongoDB 3.6 and
+higher servers. When used with MongoDB 3.4 and lower servers, Ruby driver
+version 2.9.0 and higher will not retry reads by default - the application
+must explicitly request legacy retryable reads by setting the
+<code class="docutils literal notranslate"><span class="pre">retry_reads:</span> <span class="pre">false</span></code> client option or using <code class="docutils literal notranslate"><span class="pre">retryReads=false</span></code> URI option.</p>
+</div>
+<div class="section" id="legacy-retryable-reads">
+<h3>Legacy Retryable Reads<a class="headerlink" href="#legacy-retryable-reads" title="Permalink to this headline">¶</a></h3>
+<p>The legacy read retry behavior of the Ruby driver is available by setting the
+<code class="docutils literal notranslate"><span class="pre">retry_reads:</span> <span class="pre">false</span></code> client option or passing the <code class="docutils literal notranslate"><span class="pre">retryReads=false</span></code> URI
+option to the client.</p>
+<p>When using legacy read retry behavior, the number of retries can be set
+by specifying the <code class="docutils literal notranslate"><span class="pre">max_read_retries</span></code> client option. When using driver version
+2.9.0 or higher, the set of operations which would be retried with legacy
+retryable reads is identical to the one described above for modern retryable
+reads. In older driver versions the behavior of legacy retryable writes was
+different in that some of the operations were not retried.</p>
+<p>As of driver version 2.9.0, legacy read retries perform server selection prior
+to retrying the operation, as modern retriable writes do. In older driver
+versions read retries would be sent to the same server which the initial read
+was sent to.</p>
+</div>
+<div class="section" id="disabling-retryable-reads">
+<h3>Disabling Retryable Reads<a class="headerlink" href="#disabling-retryable-reads" title="Permalink to this headline">¶</a></h3>
+<p>To disable all read retries, set the following client options:
+<code class="docutils literal notranslate"><span class="pre">retry_reads:</span> <span class="pre">false,</span> <span class="pre">max_read_retries:</span> <span class="pre">0</span></code>.</p>
+</div>
+</div>
+<div class="section" id="details-on-retryable-writes">
+<h2>Details on Retryable Writes<a class="headerlink" href="#details-on-retryable-writes" title="Permalink to this headline">¶</a></h2>
+<p>The driver implements two mechanisms for retrying writes: modern and legacy.
+As of driver version 2.9.0, the modern mechanism is used by default on servers
+that support it, and the legacy mechanism is deprecated and disabled by default
+on all server versions.</p>
+<p>The following write methods used in day-to-day operations on collections
+are subject to write retries:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">collection#insert_one</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">collection#update_one</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">collection#delete_one</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">collection#replace_one</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">collection#find_one_and_update</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">collection#find_one_and_replace</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">collection#find_one_and_delete</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">collection#bulk_write</span></code> (for all single statement ops, i.e. not for <code class="docutils literal notranslate"><span class="pre">update_many</span></code> or <code class="docutils literal notranslate"><span class="pre">delete_many</span></code>)</li>
+</ul>
+<div class="section" id="modern-retryable-writes">
+<h3>Modern Retryable Writes<a class="headerlink" href="#modern-retryable-writes" title="Permalink to this headline">¶</a></h3>
+<p>The modern mechanism will retry failing writes once when the driver is
+connected to a MongoDB 3.6 or higher replica set or a sharded cluster,
+because they require an oplog on the serer. Modern mechanism will not retry
+writes when the driver is connected to a standalone MongoDB server or
+server versions 3.4 or older.</p>
+<p>The following errors will cause writes to be retried:</p>
+<ul class="simple">
+<li>Network errors including timeouts</li>
+<li>“not master” errors</li>
+<li>“node is recovering” errors</li>
+</ul>
+<p>Prior to retrying the write the driver will perform server selection,
+since the server that the original write was sent to is likely no longer
+usable.</p>
+</div>
+<div class="section" id="legacy-retryable-writes">
+<h3>Legacy Retryable Writes<a class="headerlink" href="#legacy-retryable-writes" title="Permalink to this headline">¶</a></h3>
+<p>If modern retryable writes mechanism is disabled by setting the client
+option <code class="docutils literal notranslate"><span class="pre">retry_writes:</span> <span class="pre">false</span></code> or by using the <code class="docutils literal notranslate"><span class="pre">retryWrites=false</span></code>
+URI option, the driver will utilize the legacy retryable writes mechanism.
+The legacy mechanism retries writes on the same operations as the modern
+mechanism. By default the legacy mechanism retries once, like the modern
+mechanism does; to change the number of retries, set <code class="docutils literal notranslate"><span class="pre">:max_write_retries</span></code>
+client option.</p>
+<p>The difference between legacy and modern retry mechanisms is that the
+legacy mechanism retries writes for a different set
+of errors compared to the modern mechanism, and specifically does not
+retry writes when a network timeout is encountered.</p>
+</div>
+<div class="section" id="disabling-retryable-writes">
+<h3>Disabling Retryable Writes<a class="headerlink" href="#disabling-retryable-writes" title="Permalink to this headline">¶</a></h3>
+<p>To disable all write retries, set the following client options:
+<code class="docutils literal notranslate"><span class="pre">retry_writes:</span> <span class="pre">false,</span> <span class="pre">max_write_retries:</span> <span class="pre">0</span></code>.</p>
+</div>
+</div>
+<div class="section" id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>You can either use the default global driver logger or set your own. To set your own:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">other_logger</span>
+</pre></div>
+</div>
+</div>
+<p>See the <a class="reference external" href="http://ruby-doc.org/stdlib-2.2.0/libdoc/logger/rdoc/Logger.html">Ruby Logger documentation</a>
+for more information on the default logger API and available levels.</p>
+<div class="section" id="changing-the-logger-level">
+<h3>Changing the Logger Level<a class="headerlink" href="#changing-the-logger-level" title="Permalink to this headline">¶</a></h3>
+<p>To change the logger level:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">WARN</span>
+</pre></div>
+</div>
+</div>
+<p>For more control, a logger can be passed to a client for per-client control over logging.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">my_logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vg">$stdout</span><span class="p">)</span>
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="ss">:logger</span> <span class="o">=&gt;</span> <span class="n">my_logger</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="truncation">
+<h3>Truncation<a class="headerlink" href="#truncation" title="Permalink to this headline">¶</a></h3>
+<p>The default logging truncates logs at 250 characters by default. To turn this off pass an
+option to the client instance.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="ss">:truncate_logs</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="development-configuration">
+<h2>Development Configuration<a class="headerlink" href="#development-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Driver’s default configuration is suitable for production deployment.
+In development, some settings can be adjusted to provide a better developer
+experience.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">:server_selection_timeout</span></code>: set this to a low value (e.g., <code class="docutils literal notranslate"><span class="pre">1</span></code>)
+if your MongoDB server is running locally and you start it manually. A low
+server selection timeout will cause the driver to fail quickly when there is
+no server running.</li>
+</ul>
+</div>
+<div class="section" id="production-configuration">
+<h2>Production Configuration<a class="headerlink" href="#production-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Please consider the following when deploying an application using the Ruby
+driver in production:</p>
+<ul class="simple">
+<li>As of driver version 2.11, the <code class="docutils literal notranslate"><span class="pre">:min_pool_size</span></code> client option is completely
+respected - the driver will create that many connections to each server
+identified as a standalone, primary or secondary. In previous driver versions
+the driver created connections on demand. Applications using <code class="docutils literal notranslate"><span class="pre">:min_pool_size</span></code>
+will see an increase in the number of idle connections to all servers as of
+driver version 2.11, and especially to secondaries in replica set deployments
+and to nodes in sharded clusters.</li>
+<li>If the application is reverse proxied to by another web server or a load
+balancer, <code class="docutils literal notranslate"><span class="pre">server_selection_timeout</span></code> should generally be set to a lower
+value than the reverse proxy’s read timeout. For exampe, <a class="reference external" href="https://devcenter.heroku.com/articles/request-timeout">Heroku request timeout</a> is 30 seconds and
+is not configurable; if deploying a Ruby application using MongoDB to Heroku,
+consider lowering server selection timeout to 20 or 15 seconds.</li>
+</ul>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="../quick-start.html" title="Previous Section: Quick Start"><span>Quick Start</span></a>
+      <a class="btn-next-text" href="ruby-driver-authentication.html" title="Next Section: Authentication"><span>Authentication</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
+  </script></body>
+</html>

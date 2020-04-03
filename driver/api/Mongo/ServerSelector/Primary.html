@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Mongo::ServerSelector::Primary
+  
+    &mdash; mongo-2.12.0.rc0
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongo::ServerSelector::Primary";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span>
+     &raquo; 
+    <span class="title">Primary</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Mongo::ServerSelector::Primary
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Mongo::ServerSelector::Primary</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Selectable</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongo/server_selector/primary.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Encapsulates specifications for selecting the primary server given a list</p>
+
+<pre class="code ruby"><code class="ruby">of candidates.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="SERVER_FORMATTED_NAME-constant" class="">SERVER_FORMATTED_NAME =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Name of the this read preference in the server&#39;s format.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>primary</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Selectable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Selectable.html#max_staleness-instance_method" title="Mongo::ServerSelector::Selectable#max_staleness (method)">#max_staleness</a></span>, <span class='object_link'><a href="Selectable.html#options-instance_method" title="Mongo::ServerSelector::Selectable#options (method)">#options</a></span>, <span class='object_link'><a href="Selectable.html#tag_sets-instance_method" title="Mongo::ServerSelector::Selectable#tag_sets (method)">#tag_sets</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">#<strong>name</strong>  &#x21d2; Symbol </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the name of the server mode type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#slave_ok%3F-instance_method" title="#slave_ok? (instance method)">#<strong>slave_ok?</strong>  &#x21d2; false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether the slaveOk bit should be set on wire protocol messages.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tags_allowed%3F-instance_method" title="#tags_allowed? (instance method)">#<strong>tags_allowed?</strong>  &#x21d2; false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether tag sets are allowed to be defined for this server preference.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_doc-instance_method" title="#to_doc (instance method)">#<strong>to_doc</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert this server preference definition into a format appropriate   for a mongodb server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_mongos-instance_method" title="#to_mongos (instance method)">#<strong>to_mongos</strong>  &#x21d2; nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert this server preference definition into a format appropriate   for a mongos server.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Selectable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Selectable.html#==-instance_method" title="Mongo::ServerSelector::Selectable#== (method)">#==</a></span>, <span class='object_link'><a href="Selectable.html#candidates-instance_method" title="Mongo::ServerSelector::Selectable#candidates (method)">#candidates</a></span>, <span class='object_link'><a href="Selectable.html#initialize-instance_method" title="Mongo::ServerSelector::Selectable#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Selectable.html#inspect-instance_method" title="Mongo::ServerSelector::Selectable#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Selectable.html#local_threshold-instance_method" title="Mongo::ServerSelector::Selectable#local_threshold (method)">#local_threshold</a></span>, <span class='object_link'><a href="Selectable.html#local_threshold_with_cluster-instance_method" title="Mongo::ServerSelector::Selectable#local_threshold_with_cluster (method)">#local_threshold_with_cluster</a></span>, <span class='object_link'><a href="Selectable.html#select_server-instance_method" title="Mongo::ServerSelector::Selectable#select_server (method)">#select_server</a></span>, <span class='object_link'><a href="Selectable.html#server_selection_timeout-instance_method" title="Mongo::ServerSelector::Selectable#server_selection_timeout (method)">#server_selection_timeout</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="name-instance_method">
+  
+    #<strong>name</strong>  &#x21d2; <tt><span class='object_link'><a href="../../Symbol.html" title="Symbol (class)">Symbol</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the name of the server mode type.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the name of the server mode for this preference.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Symbol.html" title="Symbol (class)">Symbol</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>:primary</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/primary.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='symbol'>:primary</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="slave_ok?-instance_method">
+  
+    #<strong>slave_ok?</strong>  &#x21d2; <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Whether the slaveOk bit should be set on wire protocol messages.</p>
+
+<pre class="code ruby"><code class="ruby">I.e. whether the operation can be performed on a secondary server.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>false</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/primary.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_slave_ok?'>slave_ok?</span>
+  <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="tags_allowed?-instance_method">
+  
+    #<strong>tags_allowed?</strong>  &#x21d2; <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Whether tag sets are allowed to be defined for this server preference.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>false</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/primary.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_tags_allowed?'>tags_allowed?</span>
+  <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_doc-instance_method">
+  
+    #<strong>to_doc</strong>  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert this server preference definition into a format appropriate</p>
+
+<pre class="code ruby"><code class="ruby">for a mongodb server.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Convert this server preference definition into a format</p>
+</div></p>
+      
+      <pre class="example code"><code>for a server.
+preference = Mongo::ServerSelector::Primary.new
+preference.to_doc</code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The server preference formatted for a mongodb server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/primary.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_doc'>to_doc</span>
+  <span class='ivar'>@doc</span> <span class='op'>||=</span> <span class='lbrace'>{</span> <span class='label'>mode:</span> <span class='const'><span class='object_link'><a href="#SERVER_FORMATTED_NAME-constant" title="Mongo::ServerSelector::Primary::SERVER_FORMATTED_NAME (constant)">SERVER_FORMATTED_NAME</a></span></span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_mongos-instance_method">
+  
+    #<strong>to_mongos</strong>  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert this server preference definition into a format appropriate</p>
+
+<pre class="code ruby"><code class="ruby">for a mongos server.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Convert this server preference definition into a format</p>
+</div></p>
+      
+      <pre class="example code"><code>for mongos.
+preference = Mongo::ServerSelector::Primary.new
+preference.to_mongos</code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>nil</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/primary.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_mongos'>to_mongos</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:40:41 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>

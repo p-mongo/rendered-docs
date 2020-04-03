@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Mongo::Operation
+  
+    &mdash; mongo-2.12.0.rc0
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongo::Operation";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (O)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span>
+     &raquo; 
+    <span class="title">Operation</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Mongo::Operation
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongo/operation.rb<span class="defines">,<br />
+  lib/mongo/operation/drop.rb,<br /> lib/mongo/operation/find.rb,<br /> lib/mongo/operation/count.rb,<br /> lib/mongo/operation/create.rb,<br /> lib/mongo/operation/delete.rb,<br /> lib/mongo/operation/insert.rb,<br /> lib/mongo/operation/result.rb,<br /> lib/mongo/operation/update.rb,<br /> lib/mongo/operation/command.rb,<br /> lib/mongo/operation/explain.rb,<br /> lib/mongo/operation/indexes.rb,<br /> lib/mongo/operation/distinct.rb,<br /> lib/mongo/operation/get_more.rb,<br /> lib/mongo/operation/aggregate.rb,<br /> lib/mongo/operation/drop_index.rb,<br /> lib/mongo/operation/map_reduce.rb,<br /> lib/mongo/operation/users_info.rb,<br /> lib/mongo/operation/create_user.rb,<br /> lib/mongo/operation/drop/op_msg.rb,<br /> lib/mongo/operation/find/legacy.rb,<br /> lib/mongo/operation/find/op_msg.rb,<br /> lib/mongo/operation/find/result.rb,<br /> lib/mongo/operation/op_msg_base.rb,<br /> lib/mongo/operation/remove_user.rb,<br /> lib/mongo/operation/update_user.rb,<br /> lib/mongo/operation/count/op_msg.rb,<br /> lib/mongo/operation/create_index.rb,<br /> lib/mongo/operation/drop/command.rb,<br /> lib/mongo/operation/find/command.rb,<br /> lib/mongo/operation/kill_cursors.rb,<br /> lib/mongo/operation/shared/write.rb,<br /> lib/mongo/operation/count/command.rb,<br /> lib/mongo/operation/create/op_msg.rb,<br /> lib/mongo/operation/delete/legacy.rb,<br /> lib/mongo/operation/delete/op_msg.rb,<br /> lib/mongo/operation/delete/result.rb,<br /> lib/mongo/operation/drop_database.rb,<br /> lib/mongo/operation/insert/legacy.rb,<br /> lib/mongo/operation/insert/op_msg.rb,<br /> lib/mongo/operation/insert/result.rb,<br /> lib/mongo/operation/parallel_scan.rb,<br /> lib/mongo/operation/shared/idable.rb,<br /> lib/mongo/operation/update/legacy.rb,<br /> lib/mongo/operation/update/op_msg.rb,<br /> lib/mongo/operation/update/result.rb,<br /> lib/mongo/operation/command/op_msg.rb,<br /> lib/mongo/operation/create/command.rb,<br /> lib/mongo/operation/delete/command.rb,<br /> lib/mongo/operation/explain/legacy.rb,<br /> lib/mongo/operation/explain/op_msg.rb,<br /> lib/mongo/operation/explain/result.rb,<br /> lib/mongo/operation/indexes/legacy.rb,<br /> lib/mongo/operation/indexes/op_msg.rb,<br /> lib/mongo/operation/indexes/result.rb,<br /> lib/mongo/operation/insert/command.rb,<br /> lib/mongo/operation/shared/limited.rb,<br /> lib/mongo/operation/update/command.rb,<br /> lib/mongo/operation/command/command.rb,<br /> lib/mongo/operation/distinct/op_msg.rb,<br /> lib/mongo/operation/explain/command.rb,<br /> lib/mongo/operation/get_more/legacy.rb,<br /> lib/mongo/operation/get_more/op_msg.rb,<br /> lib/mongo/operation/get_more/result.rb,<br /> lib/mongo/operation/indexes/command.rb,<br /> lib/mongo/operation/aggregate/op_msg.rb,<br /> lib/mongo/operation/aggregate/result.rb,<br /> lib/mongo/operation/collections_info.rb,<br /> lib/mongo/operation/distinct/command.rb,<br /> lib/mongo/operation/get_more/command.rb,<br /> lib/mongo/operation/list_collections.rb,<br /> lib/mongo/operation/aggregate/command.rb,<br /> lib/mongo/operation/drop_index/op_msg.rb,<br /> lib/mongo/operation/map_reduce/op_msg.rb,<br /> lib/mongo/operation/map_reduce/result.rb,<br /> lib/mongo/operation/shared/executable.rb,<br /> lib/mongo/operation/users_info/op_msg.rb,<br /> lib/mongo/operation/users_info/result.rb,<br /> lib/mongo/operation/create_user/op_msg.rb,<br /> lib/mongo/operation/delete/bulk_result.rb,<br /> lib/mongo/operation/drop_index/command.rb,<br /> lib/mongo/operation/find/legacy/result.rb,<br /> lib/mongo/operation/insert/bulk_result.rb,<br /> lib/mongo/operation/map_reduce/command.rb,<br /> lib/mongo/operation/remove_user/op_msg.rb,<br /> lib/mongo/operation/shared/specifiable.rb,<br /> lib/mongo/operation/update/bulk_result.rb,<br /> lib/mongo/operation/update_user/op_msg.rb,<br /> lib/mongo/operation/users_info/command.rb,<br /> lib/mongo/operation/create_index/op_msg.rb,<br /> lib/mongo/operation/create_user/command.rb,<br /> lib/mongo/operation/kill_cursors/legacy.rb,<br /> lib/mongo/operation/kill_cursors/op_msg.rb,<br /> lib/mongo/operation/remove_user/command.rb,<br /> lib/mongo/operation/update_user/command.rb,<br /> lib/mongo/operation/create_index/command.rb,<br /> lib/mongo/operation/drop_database/op_msg.rb,<br /> lib/mongo/operation/kill_cursors/command.rb,<br /> lib/mongo/operation/parallel_scan/op_msg.rb,<br /> lib/mongo/operation/parallel_scan/result.rb,<br /> lib/mongo/operation/update/legacy/result.rb,<br /> lib/mongo/operation/drop_database/command.rb,<br /> lib/mongo/operation/parallel_scan/command.rb,<br /> lib/mongo/operation/collections_info/result.rb,<br /> lib/mongo/operation/list_collections/op_msg.rb,<br /> lib/mongo/operation/list_collections/result.rb,<br /> lib/mongo/operation/list_collections/command.rb,<br /> lib/mongo/operation/shared/op_msg_or_command.rb,<br /> lib/mongo/operation/shared/response_handling.rb,<br /> lib/mongo/operation/shared/polymorphic_lookup.rb,<br /> lib/mongo/operation/shared/polymorphic_result.rb,<br /> lib/mongo/operation/shared/sessions_supported.rb,<br /> lib/mongo/operation/shared/object_id_generator.rb,<br /> lib/mongo/operation/shared/result/aggregatable.rb,<br /> lib/mongo/operation/shared/executable_no_validate.rb,<br /> lib/mongo/operation/shared/op_msg_or_find_command.rb,<br /> lib/mongo/operation/shared/write_concern_supported.rb,<br /> lib/mongo/operation/shared/read_preference_supported.rb,<br /> lib/mongo/operation/shared/bypass_document_validation.rb,<br /> lib/mongo/operation/shared/causal_consistency_supported.rb,<br /> lib/mongo/operation/shared/executable_transaction_label.rb,<br /> lib/mongo/operation/shared/op_msg_or_list_indexes_command.rb,<br /> lib/mongo/operation/shared/result/use_legacy_error_parser.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Operation/BypassDocumentValidation.html" title="Mongo::Operation::BypassDocumentValidation (module)">BypassDocumentValidation</a></span>, <span class='object_link'><a href="Operation/CausalConsistencySupported.html" title="Mongo::Operation::CausalConsistencySupported (module)">CausalConsistencySupported</a></span>, <span class='object_link'><a href="Operation/Executable.html" title="Mongo::Operation::Executable (module)">Executable</a></span>, <span class='object_link'><a href="Operation/ExecutableNoValidate.html" title="Mongo::Operation::ExecutableNoValidate (module)">ExecutableNoValidate</a></span>, <span class='object_link'><a href="Operation/ExecutableTransactionLabel.html" title="Mongo::Operation::ExecutableTransactionLabel (module)">ExecutableTransactionLabel</a></span>, <span class='object_link'><a href="Operation/Idable.html" title="Mongo::Operation::Idable (module)">Idable</a></span>, <span class='object_link'><a href="Operation/Limited.html" title="Mongo::Operation::Limited (module)">Limited</a></span>, <span class='object_link'><a href="Operation/OpMsgOrCommand.html" title="Mongo::Operation::OpMsgOrCommand (module)">OpMsgOrCommand</a></span>, <span class='object_link'><a href="Operation/OpMsgOrFindCommand.html" title="Mongo::Operation::OpMsgOrFindCommand (module)">OpMsgOrFindCommand</a></span>, <span class='object_link'><a href="Operation/OpMsgOrListIndexesCommand.html" title="Mongo::Operation::OpMsgOrListIndexesCommand (module)">OpMsgOrListIndexesCommand</a></span>, <span class='object_link'><a href="Operation/PolymorphicLookup.html" title="Mongo::Operation::PolymorphicLookup (module)">PolymorphicLookup</a></span>, <span class='object_link'><a href="Operation/PolymorphicResult.html" title="Mongo::Operation::PolymorphicResult (module)">PolymorphicResult</a></span>, <span class='object_link'><a href="Operation/ReadPreferenceSupported.html" title="Mongo::Operation::ReadPreferenceSupported (module)">ReadPreferenceSupported</a></span>, <span class='object_link'><a href="Operation/ResponseHandling.html" title="Mongo::Operation::ResponseHandling (module)">ResponseHandling</a></span>, <span class='object_link'><a href="Operation/SessionsSupported.html" title="Mongo::Operation::SessionsSupported (module)">SessionsSupported</a></span>, <span class='object_link'><a href="Operation/Specifiable.html" title="Mongo::Operation::Specifiable (module)">Specifiable</a></span>, <span class='object_link'><a href="Operation/Write.html" title="Mongo::Operation::Write (module)">Write</a></span>, <span class='object_link'><a href="Operation/WriteConcernSupported.html" title="Mongo::Operation::WriteConcernSupported (module)">WriteConcernSupported</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Operation/Aggregate.html" title="Mongo::Operation::Aggregate (class)">Aggregate</a></span>, <span class='object_link'><a href="Operation/CollectionsInfo.html" title="Mongo::Operation::CollectionsInfo (class)">CollectionsInfo</a></span>, <span class='object_link'><a href="Operation/Command.html" title="Mongo::Operation::Command (class)">Command</a></span>, <span class='object_link'><a href="Operation/Count.html" title="Mongo::Operation::Count (class)">Count</a></span>, <span class='object_link'><a href="Operation/Create.html" title="Mongo::Operation::Create (class)">Create</a></span>, <span class='object_link'><a href="Operation/CreateIndex.html" title="Mongo::Operation::CreateIndex (class)">CreateIndex</a></span>, <span class='object_link'><a href="Operation/CreateUser.html" title="Mongo::Operation::CreateUser (class)">CreateUser</a></span>, <span class='object_link'><a href="Operation/Delete.html" title="Mongo::Operation::Delete (class)">Delete</a></span>, <span class='object_link'><a href="Operation/Distinct.html" title="Mongo::Operation::Distinct (class)">Distinct</a></span>, <span class='object_link'><a href="Operation/Drop.html" title="Mongo::Operation::Drop (class)">Drop</a></span>, <span class='object_link'><a href="Operation/DropDatabase.html" title="Mongo::Operation::DropDatabase (class)">DropDatabase</a></span>, <span class='object_link'><a href="Operation/DropIndex.html" title="Mongo::Operation::DropIndex (class)">DropIndex</a></span>, <span class='object_link'><a href="Operation/Explain.html" title="Mongo::Operation::Explain (class)">Explain</a></span>, <span class='object_link'><a href="Operation/Find.html" title="Mongo::Operation::Find (class)">Find</a></span>, <span class='object_link'><a href="Operation/GetMore.html" title="Mongo::Operation::GetMore (class)">GetMore</a></span>, <span class='object_link'><a href="Operation/Indexes.html" title="Mongo::Operation::Indexes (class)">Indexes</a></span>, <span class='object_link'><a href="Operation/Insert.html" title="Mongo::Operation::Insert (class)">Insert</a></span>, <span class='object_link'><a href="Operation/KillCursors.html" title="Mongo::Operation::KillCursors (class)">KillCursors</a></span>, <span class='object_link'><a href="Operation/ListCollections.html" title="Mongo::Operation::ListCollections (class)">ListCollections</a></span>, <span class='object_link'><a href="Operation/MapReduce.html" title="Mongo::Operation::MapReduce (class)">MapReduce</a></span>, <span class='object_link'><a href="Operation/ObjectIdGenerator.html" title="Mongo::Operation::ObjectIdGenerator (class)">ObjectIdGenerator</a></span>, <span class='object_link'><a href="Operation/OpMsgBase.html" title="Mongo::Operation::OpMsgBase (class)">OpMsgBase</a></span>, <span class='object_link'><a href="Operation/ParallelScan.html" title="Mongo::Operation::ParallelScan (class)">ParallelScan</a></span>, <span class='object_link'><a href="Operation/RemoveUser.html" title="Mongo::Operation::RemoveUser (class)">RemoveUser</a></span>, <span class='object_link'><a href="Operation/Result.html" title="Mongo::Operation::Result (class)">Result</a></span>, <span class='object_link'><a href="Operation/Update.html" title="Mongo::Operation::Update (class)">Update</a></span>, <span class='object_link'><a href="Operation/UpdateUser.html" title="Mongo::Operation::UpdateUser (class)">UpdateUser</a></span>, <span class='object_link'><a href="Operation/UsersInfo.html" title="Mongo::Operation::UsersInfo (class)">UsersInfo</a></span>
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="Q-constant" class="">Q =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The q field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>q</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="U-constant" class="">U =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The u field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>u</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="LIMIT-constant" class="">LIMIT =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The limit field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>limit</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="MULTI-constant" class="">MULTI =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The multi field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>multi</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="UPSERT-constant" class="">UPSERT =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The upsert field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>upsert</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="COLLATION-constant" class="">COLLATION =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The collation field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>collation</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="ARRAY_FILTERS-constant" class="">ARRAY_FILTERS =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The array filters field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>arrayFilters</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="OPERATION_TIME-constant" class="">OPERATION_TIME =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The operation time field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>operationTime</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="CLUSTER_TIME-constant" class="deprecated">CLUSTER_TIME =
+          <div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
+
+<p>The cluster time field constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$clusterTime</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:40:29 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>

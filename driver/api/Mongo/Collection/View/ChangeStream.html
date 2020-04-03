@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Mongo::Collection::View::ChangeStream
+  
+    &mdash; mongo-2.12.0.rc0
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongo::Collection::View::ChangeStream";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Mongo.html" title="Mongo (module)">Mongo</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Collection.html" title="Mongo::Collection (class)">Collection</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../View.html" title="Mongo::Collection::View (class)">View</a></span></span>
+     &raquo; 
+    <span class="title">ChangeStream</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Mongo::Collection::View::ChangeStream
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Aggregation.html" title="Mongo::Collection::View::Aggregation (class)">Aggregation</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Aggregation.html" title="Mongo::Collection::View::Aggregation (class)">Aggregation</a></span></li>
+          
+            <li class="next">Mongo::Collection::View::ChangeStream</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="ChangeStream/Retryable.html" title="Mongo::Collection::View::ChangeStream::Retryable (module)">Retryable</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongo/collection/view/change_stream.rb<span class="defines">,<br />
+  lib/mongo/collection/view/change_stream/retryable.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Only available in server versions 3.6 and higher.</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>ChangeStreams do not work properly with JRuby because of the issue documented here: <a href="https://github.com/jruby/jruby/issues/4212">github.com/jruby/jruby/issues/4212</a>. Namely, JRuby eagerly evaluates #next on an Enumerator in a background green thread, therefore calling #next on the change stream will cause getMores to be called in a loop in the background.</p>
+</div>
+  </div>
+
+
+<p>Provides behavior around a `$changeStream` pipeline stage in the aggregation framework. Specifying this stage allows users to request that notifications are sent for all changes to a particular collection or database.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="ChangeStream/Retryable.html" title="Mongo::Collection::View::ChangeStream::Retryable (module)">Retryable</a></span>
+    
+  
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="FULL_DOCUMENT_DEFAULT-constant" class="">FULL_DOCUMENT_DEFAULT =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The fullDocument option default value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The fullDocument option default value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>default</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="DATABASE-constant" class="">DATABASE =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Returns Used to indicate that the change stream should listen for changes on the entire database rather than just the collection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Symbol.html" title="Symbol (class)">Symbol</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Used to indicate that the change stream should listen for changes on the entire database rather than just the collection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.6.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='symbol'>:database</span></pre></dd>
+      
+        <dt id="CLUSTER-constant" class="">CLUSTER =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Returns Used to indicate that the change stream should listen for changes on the entire cluster rather than just the collection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Symbol.html" title="Symbol (class)">Symbol</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Used to indicate that the change stream should listen for changes on the entire cluster rather than just the collection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.6.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='symbol'>:cluster</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="Aggregation.html" title="Mongo::Collection::View::Aggregation (class)">Aggregation</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Aggregation.html#REROUTE-constant" title="Mongo::Collection::View::Aggregation::REROUTE (constant)">Aggregation::REROUTE</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../../Loggable.html" title="Mongo::Loggable (module)">Loggable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Loggable.html#PREFIX-constant" title="Mongo::Loggable::PREFIX (constant)">Loggable::PREFIX</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Explainable.html" title="Mongo::Collection::View::Explainable (module)">Explainable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Explainable.html#ALL_PLANS_EXECUTION-constant" title="Mongo::Collection::View::Explainable::ALL_PLANS_EXECUTION (constant)">Explainable::ALL_PLANS_EXECUTION</a></span>, <span class='object_link'><a href="Explainable.html#EXECUTION_STATS-constant" title="Mongo::Collection::View::Explainable::EXECUTION_STATS (constant)">Explainable::EXECUTION_STATS</a></span>, <span class='object_link'><a href="Explainable.html#QUERY_PLANNER-constant" title="Mongo::Collection::View::Explainable::QUERY_PLANNER (constant)">Explainable::QUERY_PLANNER</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#options-instance_method" title="#options (instance method)">#<strong>options</strong>  &#x21d2; BSON::Document </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The change stream options.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Aggregation.html" title="Mongo::Collection::View::Aggregation (class)">Aggregation</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Aggregation.html#view-instance_method" title="Mongo::Collection::View::Aggregation#view (method)">#view</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close-instance_method" title="#close (instance method)">#<strong>close</strong>  &#x21d2; nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Close the change stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#closed%3F-instance_method" title="#closed? (instance method)">#<strong>closed?</strong>  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Is the change stream closed?.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each-instance_method" title="#each (instance method)">#<strong>each</strong> {|Each| ... } &#x21d2; Enumerator </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Iterate through documents returned by the change stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(view, pipeline, changes_for, options = {})  &#x21d2; ChangeStream </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Initialize the change stream for the provided collection view, pipeline and options.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">#<strong>inspect</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get a formatted string for use in inspection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resume_token-instance_method" title="#resume_token (instance method)">#<strong>resume_token</strong>  &#x21d2; BSON::Document | nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the resume token that the stream will use to automatically resume, if one exists.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_enum-instance_method" title="#to_enum (instance method)">#<strong>to_enum</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#try_next-instance_method" title="#try_next (instance method)">#<strong>try_next</strong>  &#x21d2; BSON::Document | nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return one document from the change stream, if one is available.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Aggregation.html" title="Mongo::Collection::View::Aggregation (class)">Aggregation</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Aggregation.html#allow_disk_use-instance_method" title="Mongo::Collection::View::Aggregation#allow_disk_use (method)">#allow_disk_use</a></span>, <span class='object_link'><a href="Aggregation.html#explain-instance_method" title="Mongo::Collection::View::Aggregation#explain (method)">#explain</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../Retryable.html" title="Mongo::Retryable (module)">Retryable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Retryable.html#legacy_write_with_retry-instance_method" title="Mongo::Retryable#legacy_write_with_retry (method)">#legacy_write_with_retry</a></span>, <span class='object_link'><a href="../../Retryable.html#nro_write_with_retry-instance_method" title="Mongo::Retryable#nro_write_with_retry (method)">#nro_write_with_retry</a></span>, <span class='object_link'><a href="../../Retryable.html#read_with_one_retry-instance_method" title="Mongo::Retryable#read_with_one_retry (method)">#read_with_one_retry</a></span>, <span class='object_link'><a href="../../Retryable.html#read_with_retry-instance_method" title="Mongo::Retryable#read_with_retry (method)">#read_with_retry</a></span>, <span class='object_link'><a href="../../Retryable.html#read_with_retry_cursor-instance_method" title="Mongo::Retryable#read_with_retry_cursor (method)">#read_with_retry_cursor</a></span>, <span class='object_link'><a href="../../Retryable.html#write_with_retry-instance_method" title="Mongo::Retryable#write_with_retry (method)">#write_with_retry</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../Loggable.html" title="Mongo::Loggable (module)">Loggable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Loggable.html#log_debug-instance_method" title="Mongo::Loggable#log_debug (method)">#log_debug</a></span>, <span class='object_link'><a href="../../Loggable.html#log_error-instance_method" title="Mongo::Loggable#log_error (method)">#log_error</a></span>, <span class='object_link'><a href="../../Loggable.html#log_fatal-instance_method" title="Mongo::Loggable#log_fatal (method)">#log_fatal</a></span>, <span class='object_link'><a href="../../Loggable.html#log_info-instance_method" title="Mongo::Loggable#log_info (method)">#log_info</a></span>, <span class='object_link'><a href="../../Loggable.html#log_warn-instance_method" title="Mongo::Loggable#log_warn (method)">#log_warn</a></span>, <span class='object_link'><a href="../../Loggable.html#logger-instance_method" title="Mongo::Loggable#logger (method)">#logger</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Explainable.html" title="Mongo::Collection::View::Explainable (module)">Explainable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Explainable.html#explain-instance_method" title="Mongo::Collection::View::Explainable#explain (method)">#explain</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Iterable.html" title="Mongo::Collection::View::Iterable (module)">Iterable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Iterable.html#close_query-instance_method" title="Mongo::Collection::View::Iterable#close_query (method)">#close_query</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(view, pipeline, changes_for, options = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Collection::View::ChangeStream (class)">ChangeStream</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Initialize the change stream for the provided collection view, pipeline and options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Create the new change stream view.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Mongo::Collection::View::ChangeStream (class)">ChangeStream</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>view</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../View.html" title="Mongo::Collection::View (class)">Collection::View</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The collection view.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>pipeline</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Hash&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The pipeline of operators to filter the change notifications.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The change stream options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:full_document</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Allowed values: &#39;default&#39;, &#39;updateLookup&#39;. Defaults to &#39;default&#39;. When set to &#39;updateLookup&#39;, the change notification for partial updates will include both a delta describing the changes to the document, as well as a copy of the entire document that was changed from some time after the change occurred.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:resume_after</span>
+          <span class="type">(<tt>BSON::Document</tt>, <tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Specifies the logical starting point for the new change stream.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_await_time_ms</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The maximum amount of time for the server to wait on new documents to satisfy a change stream query.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:batch_size</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The number of documents to return per batch.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:collation</span>
+          <span class="type">(<tt>BSON::Document</tt>, <tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The collation to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:start_at_operation_time</span>
+          <span class="type">(<tt>BSON::Timestamp</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Only return changes that occurred at or after the specified timestamp. Any command run against the server will return a cluster time that can be used here. Only recognized by server versions 4.0+.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:start_after</span>
+          <span class="type">(<tt>Bson::Document</tt>, <tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Similar to :resume_after, this option takes a resume token and starts a new change stream returning the first notification after the token. This will allow users to watch collections that have been dropped and recreated or newly renamed collections without missing any notifications.</p>
+
+<p>The server will report an error if `startAfter` and `resumeAfter` are both specified.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 92</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_changes_for'>changes_for</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@view</span> <span class='op'>=</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='ivar'>@changes_for</span> <span class='op'>=</span> <span class='id identifier rubyid_changes_for'>changes_for</span>
+  <span class='ivar'>@change_stream_filters</span> <span class='op'>=</span> <span class='id identifier rubyid_pipeline'>pipeline</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+  <span class='ivar'>@start_after</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:start_after</span><span class='rbracket'>]</span>
+
+  <span class='comment'># The resume token tracked by the change stream, used only
+</span>  <span class='comment'># when there is no cursor, or no cursor resume token
+</span>  <span class='ivar'>@resume_token</span> <span class='op'>=</span> <span class='ivar'>@start_after</span> <span class='op'>||</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:resume_after</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_create_cursor!'>create_cursor!</span>
+
+  <span class='comment'># We send different parameters when we resume a change stream
+</span>  <span class='comment'># compared to when we send the first query
+</span>  <span class='ivar'>@resuming</span> <span class='op'>=</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="options-instance_method">
+  
+    #<strong>options</strong>  &#x21d2; <tt>BSON::Document</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The change stream options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>BSON::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The change stream options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='ivar'>@options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="close-instance_method">
+  
+    #<strong>close</strong>  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>This method attempts to close the cursor used by the change stream, which in turn closes the server-side change stream cursor. This method ignores any errors that occur when closing the server-side cursor.</p>
+</div>
+  </div>
+
+
+<p>Close the change stream.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Close the change stream.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Always nil.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 202</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_closed?'>closed?</span>
+    <span class='kw'>begin</span>
+      <span class='ivar'>@cursor</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Error/OperationFailure.html" title="Mongo::Error::OperationFailure (class)">OperationFailure</a></span></span>      <span class='comment'># ignore
+</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@cursor</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="closed?-instance_method">
+  
+    #<strong>closed?</strong>  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Is the change stream closed?</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Determine whether the change stream is closed.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_closed?'>closed?</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If the change stream is closed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+221
+222
+223</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 221</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_closed?'>closed?</span>
+  <span class='ivar'>@cursor</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each-instance_method">
+  
+    #<strong>each</strong> {|Each| ... } &#x21d2; <tt>Enumerator</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Iterate through documents returned by the change stream.</p>
+
+<p>This method retries once per error on resumable errors (two consecutive errors result in the second error being raised, an error which is recovered from resets the error count to zero).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Iterate through the stream of documents.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_document'>document</span><span class='op'>|</span>
+  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_document'>document</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>Each</span>
+      
+      
+        <span class='type'>(<tt>BSON::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>change stream document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The enumerator.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+126
+127
+128
+129
+130
+131
+132
+133
+134</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 126</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>StopIteration</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>if</span> <span class='id identifier rubyid_closed?'>closed?</span>
+  <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_document'>document</span> <span class='op'>=</span> <span class='id identifier rubyid_try_next'>try_next</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_document'>document</span> <span class='kw'>if</span> <span class='id identifier rubyid_document'>document</span>
+  <span class='kw'>end</span>
+<span class='kw'>rescue</span> <span class='const'>StopIteration</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inspect-instance_method">
+  
+    #<strong>inspect</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get a formatted string for use in inspection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Inspect the change stream object.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The change stream inspection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+233
+234
+235
+236</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 233</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Mongo::Collection::View:ChangeStream:0x</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> filters=</span><span class='embexpr_beg'>#{</span><span class='ivar'>@change_stream_filters</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>options=</span><span class='embexpr_beg'>#{</span><span class='ivar'>@options</span><span class='embexpr_end'>}</span><span class='tstring_content'> resume_token=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resume_token'>resume_token</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="resume_token-instance_method">
+  
+    #<strong>resume_token</strong>  &#x21d2; <tt>BSON::Document | nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the resume token that the stream will use to automatically resume, if one exists.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the change stream resume token.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_resume_token'>resume_token</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>BSON::Document | nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The change stream resume token.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.10.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+247
+248
+249
+250</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 247</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_resume_token'>resume_token</span>
+  <span class='id identifier rubyid_cursor_resume_token'>cursor_resume_token</span> <span class='op'>=</span> <span class='ivar'>@cursor</span><span class='period'>.</span><span class='id identifier rubyid_resume_token'>resume_token</span> <span class='kw'>if</span> <span class='ivar'>@cursor</span>
+  <span class='id identifier rubyid_cursor_resume_token'>cursor_resume_token</span> <span class='op'>||</span> <span class='ivar'>@resume_token</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_enum-instance_method">
+  
+    #<strong>to_enum</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 178</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_enum'>to_enum</span>
+  <span class='id identifier rubyid_enum'>enum</span> <span class='op'>=</span> <span class='kw'>super</span>
+  <span class='id identifier rubyid_enum'>enum</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:instance_variable_set</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>@obj</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_enum'>enum</span>
+    <span class='kw'>def</span> <span class='id identifier rubyid_try_next'>try_next</span>
+      <span class='ivar'>@obj</span><span class='period'>.</span><span class='id identifier rubyid_try_next'>try_next</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_enum'>enum</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="try_next-instance_method">
+  
+    #<strong>try_next</strong>  &#x21d2; <tt>BSON::Document | nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return one document from the change stream, if one is available.</p>
+
+<p>Retries once on a resumable error.</p>
+
+<p>Raises StopIteration if the change stream is closed.</p>
+
+<p>This method will wait up to max_await_time_ms milliseconds for changes from the server, and if no changes are received it will return nil.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>BSON::Document | nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A change stream document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>StopIteration</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.6.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/change_stream.rb', line 148</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_try_next'>try_next</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>StopIteration</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>if</span> <span class='id identifier rubyid_closed?'>closed?</span>
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='ivar'>@cursor</span><span class='period'>.</span><span class='id identifier rubyid_try_next'>try_next</span>
+  <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../../../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Error.html" title="Mongo::Error (class)">Error</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_change_stream_resumable?'>change_stream_resumable?</span>
+      <span class='id identifier rubyid_raise'>raise</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Rerun initial aggregation.
+</span>    <span class='comment'># Any errors here will stop iteration and break out of this
+</span>    <span class='comment'># method.
+</span>
+    <span class='comment'># Save cursor&#39;s resume token so we can use it
+</span>    <span class='comment'># to create a new cursor
+</span>    <span class='ivar'>@resume_token</span> <span class='op'>=</span> <span class='ivar'>@cursor</span><span class='period'>.</span><span class='id identifier rubyid_resume_token'>resume_token</span>
+
+    <span class='id identifier rubyid_close'>close</span>
+    <span class='id identifier rubyid_create_cursor!'>create_cursor!</span>
+    <span class='kw'>retry</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># We need to verify each doc has an _id, so we
+</span>  <span class='comment'># have a resume token to work with
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_doc'>doc</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_doc'>doc</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Error/MissingResumeToken.html" title="Mongo::Error::MissingResumeToken (class)">MissingResumeToken</a></span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_doc'>doc</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:40:43 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Mongo::Error::Parser
+  
+    &mdash; mongo-2.12.0.rc0
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongo::Error::Parser";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span>
+     &raquo; 
+    <span class="title">Parser</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Mongo::Error::Parser
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Mongo::Error::Parser</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="SdamErrorDetection.html" title="Mongo::Error::SdamErrorDetection (module)">SdamErrorDetection</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongo/error/parser.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Class for parsing the various forms that errors can come in from MongoDB command responses.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="SdamErrorDetection.html" title="Mongo::Error::SdamErrorDetection (module)">SdamErrorDetection</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SdamErrorDetection.html#NODE_RECOVERING_CODES-constant" title="Mongo::Error::SdamErrorDetection::NODE_RECOVERING_CODES (constant)">SdamErrorDetection::NODE_RECOVERING_CODES</a></span>, <span class='object_link'><a href="SdamErrorDetection.html#NODE_SHUTTING_DOWN_CODES-constant" title="Mongo::Error::SdamErrorDetection::NODE_SHUTTING_DOWN_CODES (constant)">SdamErrorDetection::NODE_SHUTTING_DOWN_CODES</a></span>, <span class='object_link'><a href="SdamErrorDetection.html#NOT_MASTER_CODES-constant" title="Mongo::Error::SdamErrorDetection::NOT_MASTER_CODES (constant)">SdamErrorDetection::NOT_MASTER_CODES</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#code-instance_method" title="#code (instance method)">#<strong>code</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Code The error code parsed from the document.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#code_name-instance_method" title="#code_name (instance method)">#<strong>code_name</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Code_name The error code name parsed from the document.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document-instance_method" title="#document (instance method)">#<strong>document</strong>  &#x21d2; BSON::Document </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Document The returned document.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#labels-instance_method" title="#labels (instance method)">#<strong>labels</strong>  &#x21d2; Array&lt;String&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Labels The set of labels associated with the error.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#message-instance_method" title="#message (instance method)">#<strong>message</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Message The error message parsed from the document.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#replies-instance_method" title="#replies (instance method)">#<strong>replies</strong>  &#x21d2; Array&lt;Protocol::Message&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Replies The message replies.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wtimeout-instance_method" title="#wtimeout (instance method)">#<strong>wtimeout</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(document, replies = nil, options = nil)  &#x21d2; Parser </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create the new parser with the returned document.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_concern_error%3F-instance_method" title="#write_concern_error? (instance method)">#<strong>write_concern_error?</strong>  &#x21d2; true | false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether the document includes a write concern error.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_concern_error_code-instance_method" title="#write_concern_error_code (instance method)">#<strong>write_concern_error_code</strong>  &#x21d2; Integer | nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The error code for the write concern error, if a write concern error is present and has a code.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_concern_error_code_name-instance_method" title="#write_concern_error_code_name (instance method)">#<strong>write_concern_error_code_name</strong>  &#x21d2; String | nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The code name for the write concern error, if a write concern error is present and has a code name.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="SdamErrorDetection.html" title="Mongo::Error::SdamErrorDetection (module)">SdamErrorDetection</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SdamErrorDetection.html#node_recovering%3F-instance_method" title="Mongo::Error::SdamErrorDetection#node_recovering? (method)">#node_recovering?</a></span>, <span class='object_link'><a href="SdamErrorDetection.html#node_shutting_down%3F-instance_method" title="Mongo::Error::SdamErrorDetection#node_shutting_down? (method)">#node_shutting_down?</a></span>, <span class='object_link'><a href="SdamErrorDetection.html#not_master%3F-instance_method" title="Mongo::Error::SdamErrorDetection#not_master? (method)">#not_master?</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(document, replies = nil, options = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Error::Parser (class)">Parser</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create the new parser with the returned document.</p>
+
+<p>In legacy mode, the code and codeName fields of the document are not examined because the status (ok: 1) is not part of the document and there is no way to distinguish successful from failed responses using the document itself, and a successful response may legitimately have { code: 123, codeName: &#39;foo&#39; } as the contents of a user-inserted document. The legacy server versions do not fill out code nor codeName thus not reading them does not lose information.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Create the new parser.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Mongo::Error::Parser (class)">Parser</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>errmsg</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>failed</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>document</span>
+      
+      
+        <span class='type'>(<tt>BSON::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The returned document.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>replies</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Protocol::Message</a></span>&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The message replies.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:legacy</span>
+          <span class="type">(<tt>true | false</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Whether document and replies are from a legacy (pre-3.2) response</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_replies'>replies</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@document</span> <span class='op'>=</span> <span class='id identifier rubyid_document'>document</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@replies</span> <span class='op'>=</span> <span class='id identifier rubyid_replies'>replies</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span>
+    <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+  <span class='kw'>else</span>
+    <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+  <span class='id identifier rubyid_parse!'>parse!</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="code-instance_method">
+  
+    #<strong>code</strong>  &#x21d2; <tt>Integer</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns code The error code parsed from the document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>code The error code parsed from the document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.6.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_code'>code</span>
+  <span class='ivar'>@code</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="code_name-instance_method">
+  
+    #<strong>code_name</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns code_name The error code name parsed from the document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>code_name The error code name parsed from the document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.6.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_code_name'>code_name</span>
+  <span class='ivar'>@code_name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="document-instance_method">
+  
+    #<strong>document</strong>  &#x21d2; <tt>BSON::Document</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns document The returned document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>BSON::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>document The returned document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_document'>document</span>
+  <span class='ivar'>@document</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="labels-instance_method">
+  
+    #<strong>labels</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns labels The set of labels associated with the error.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>labels The set of labels associated with the error.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.7.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_labels'>labels</span>
+  <span class='ivar'>@labels</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="message-instance_method">
+  
+    #<strong>message</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns message The error message parsed from the document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>message The error message parsed from the document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='ivar'>@message</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="replies-instance_method">
+  
+    #<strong>replies</strong>  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Protocol::Message</a></span>&gt;</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns replies The message replies.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Protocol::Message</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>replies The message replies.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_replies'>replies</span>
+  <span class='ivar'>@replies</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="wtimeout-instance_method">
+  
+    #<strong>wtimeout</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_wtimeout'>wtimeout</span>
+  <span class='ivar'>@wtimeout</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="write_concern_error?-instance_method">
+  
+    #<strong>write_concern_error?</strong>  &#x21d2; <tt>true | false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns Whether the document includes a write concern error. A failure may have a top level error and a write concern error or either one of the two.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true | false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the document includes a write concern error. A failure may have a top level error and a write concern error or either one of the two.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.10.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111
+112
+113</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 111</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error?'>write_concern_error?</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_concern_error_code-instance_method">
+  
+    #<strong>write_concern_error_code</strong>  &#x21d2; <tt>Integer | nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The error code for the write concern error, if a write concern error is present and has a code.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer | nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The error code for the write concern error, if a write concern error is present and has a code.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.10.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code'>write_concern_error_code</span>
+  <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>code</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_concern_error_code_name-instance_method">
+  
+    #<strong>write_concern_error_code_name</strong>  &#x21d2; <tt>String | nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The code name for the write concern error, if a write concern error is present and has a code name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String | nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The code name for the write concern error, if a write concern error is present and has a code name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.10.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 129</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code_name'>write_concern_error_code_name</span>
+  <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>codeName</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:40:35 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>

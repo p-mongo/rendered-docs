@@ -1,0 +1,651 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Collations &mdash; Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/tutorials/ruby-driver-collations.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Ruby Driver Manual" href="../index.html" />
+<link rel="next" title="Aggregation" href="ruby-driver-aggregation.html" />
+<link rel="prev" title="Indexing" href="ruby-driver-indexing.html" /></head>
+<body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+     {'gtm.start': new Date().getTime(),event:'gtm.js'}
+   );var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <!-- End Google Tag Manager -->
+<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Ruby Driver"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
+   </script>
+    <script src="../_static/navbar.min.js"></script>
+  
+
+  <div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="../index.html">Ruby Driver Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+        
+        
+        master (upcoming)<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        
+          
+          <li class="active">
+          
+            <a href="#" data-path="ruby-driver/current">
+              
+              master (upcoming)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
+              
+              Version 2.12 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
+              
+              Version 2.11
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
+              
+              Version 2.10
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
+              
+              Version 2.9
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
+              
+              Version 2.8
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
+              
+              Version 2.7
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
+              
+              Version 2.6
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
+              
+              Version 2.5
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
+              
+              Version 2.4
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
+              
+              Version 2.3
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
+              
+              Version 2.2
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
+              
+              Version 2.0
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
+              
+              1.x
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-crud-operations.html">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-bulk-operations.html">Bulk Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="http://api.mongodb.com/ruby/current/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="tutorials/ruby-driver-collations">
+
+                
+  <div class="bc">
+    
+      
+    
+    
+  </div>
+                
+                  <div class="section" id="collations">
+<h1>Collations<a class="headerlink" href="#collations" title="Permalink to this headline">¶</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a></li>
+<li><a class="reference internal" href="#usage" id="id2">Usage</a></li>
+<li><a class="reference internal" href="#operations-that-support-collation" id="id3">Operations that Support Collation</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.4.</span></p>
+</div>
+<p>Collations are sets of rules for how to compare strings, typically in a
+particular natural language.</p>
+<p>For example, in Canadian French, the last accent in a given word
+determines the sorting order.</p>
+<p>Consider the following French words:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; coté &lt; côte &lt; côté
+</pre></div>
+</div>
+</div>
+<p>The sort order using the Canadian French collation would result in
+the following:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; côte &lt; coté &lt; côté
+</pre></div>
+</div>
+</div>
+<p>If collation is unspecified, MongoDB uses the simple binary comparison for
+strings.  As such, the sort order of the words would be:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; coté &lt; côte &lt; côté
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>You can specify a default collation for collections and indexes when
+they are created, or specify a collation for CRUD operations and
+aggregations. For operations that support collation, MongoDB uses the
+collection’s default collation unless the operation specifies a
+different collation.</p>
+<div class="section" id="collation-parameters">
+<h3>Collation Parameters<a class="headerlink" href="#collation-parameters" title="Permalink to this headline">¶</a></h3>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="s1">&#39;locale&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s1">&#39;caseLevel&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s1">&#39;caseFirst&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s1">&#39;strength&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s1">&#39;numericOrdering&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s1">&#39;alternate&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s1">&#39;maxVariable&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s1">&#39;normalization&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s1">&#39;backwards&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The only required parameter is <code class="docutils literal notranslate"><span class="pre">locale</span></code>, which the server parses as
+an <a class="reference external" href="http://userguide.icu-project.org/locale">ICU format locale ID</a>.
+For example, set <code class="docutils literal notranslate"><span class="pre">locale</span></code> to <code class="docutils literal notranslate"><span class="pre">en_US</span></code> to represent US English
+or <code class="docutils literal notranslate"><span class="pre">fr_CA</span></code> to represent Canadian French.</p>
+<p>For a complete description of the available parameters, see the
+<a class="reference external" href="http://docs.mongodb.com/manual/reference/collation">MongoDB manual entry</a>.</p>
+</div>
+<div class="section" id="assign-a-default-collation-to-a-collection">
+<span id="collation-on-collection"></span><h3>Assign a Default Collation to a Collection<a class="headerlink" href="#assign-a-default-collation-to-a-collection" title="Permalink to this headline">¶</a></h3>
+<p>The following example creates a new collection
+called <code class="docutils literal notranslate"><span class="pre">contacts</span></code> on the <code class="docutils literal notranslate"><span class="pre">test</span></code> database and assigns a default
+collation with the <code class="docutils literal notranslate"><span class="pre">fr_CA</span></code> locale. Specifying a collation when you
+create the collection ensures that all operations involving a query
+that are run against the
+<code class="docutils literal notranslate"><span class="pre">contacts</span></code> collection use the <code class="docutils literal notranslate"><span class="pre">fr_CA</span></code> collation, unless the query
+specifies another collation. Any indexes on the new collection also
+inherit the default collation, unless the creation command specifies
+another collation.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">[</span><span class="ss">:contacts</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;fr_CA&quot;</span> <span class="p">}</span> <span class="p">}</span> <span class="o">].</span><span class="n">create</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="assign-a-collation-to-an-index">
+<span id="collation-on-index"></span><h3>Assign a Collation to an Index<a class="headerlink" href="#assign-a-collation-to-an-index" title="Permalink to this headline">¶</a></h3>
+<p>To specify a collation for an index, use the <code class="docutils literal notranslate"><span class="pre">collation</span></code>
+option when you create the index.</p>
+<p>The following example creates an index on the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+field of the <code class="docutils literal notranslate"><span class="pre">address_book</span></code> collection, with the <code class="docutils literal notranslate"><span class="pre">unique</span></code> parameter
+enabled and a default collation with <code class="docutils literal notranslate"><span class="pre">locale</span></code> set to <code class="docutils literal notranslate"><span class="pre">en_US</span></code>.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">indexes</span><span class="o">.</span><span class="n">create_one</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
+                                        <span class="s2">&quot;unique&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+                                        <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en_US&quot;</span> <span class="p">}</span>
+                                       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To use this index, make sure your queries also specify the same
+collation. The following query uses the above index:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;first_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Adam&quot;</span> <span class="p">},</span>
+                            <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en_US&quot;</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>The following queries do <strong>NOT</strong> use the index. The first query uses no
+collation, and the second uses a collation with a different <code class="docutils literal notranslate"><span class="pre">strength</span></code>
+value than the collation on the index.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;first_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Adam&quot;</span> <span class="p">})</span>
+
+<span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;first_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Adam&quot;</span> <span class="p">},</span>
+                            <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en_US&quot;</span><span class="p">,</span> <span class="s2">&quot;strength&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="operations-that-support-collation">
+<h2>Operations that Support Collation<a class="headerlink" href="#operations-that-support-collation" title="Permalink to this headline">¶</a></h2>
+<p>All reading, updating, and deleting methods support collation. Some
+examples are listed below.</p>
+<div class="section" id="find-and-sort">
+<h3><code class="docutils literal notranslate"><span class="pre">find()</span></code> and <code class="docutils literal notranslate"><span class="pre">sort()</span></code><a class="headerlink" href="#find-and-sort" title="Permalink to this headline">¶</a></h3>
+<p>Individual queries can specify a collation to use when matching
+and sorting results. The following query and sort operation uses
+a German collation with the <code class="docutils literal notranslate"><span class="pre">locale</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">de</span></code>.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:contacts</span><span class="o">].</span><span class="n">find</span><span class="p">({</span> <span class="s2">&quot;city&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;New York&quot;</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;de&quot;</span> <span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="find-one-and-update">
+<h3><code class="docutils literal notranslate"><span class="pre">find_one_and_update()</span></code><a class="headerlink" href="#find-one-and-update" title="Permalink to this headline">¶</a></h3>
+<p>A collection called <code class="docutils literal notranslate"><span class="pre">names</span></code> contains the following documents:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Hans&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Gunter&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Günter&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Jürgen&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The following <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code> operation on the collection
+does not specify a collation.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:names</span><span class="o">].</span><span class="n">find_one_and_update</span><span class="p">(</span> <span class="p">{</span><span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$lt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Gunter&quot;</span> <span class="p">}},</span>
+  <span class="p">{</span> <span class="s2">&quot;$set&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;verified&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>Because <code class="docutils literal notranslate"><span class="pre">Gunter</span></code> is lexically first in the collection,
+the above operation returns no results and updates no documents.</p>
+<p>Consider the same <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code> operation but with the
+collation specified.  The locale is set to <code class="docutils literal notranslate"><span class="pre">de&#64;collation=phonebook</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some locales have a <code class="docutils literal notranslate"><span class="pre">collation=phonebook</span></code> option available for
+use with languages which sort proper nouns differently from other
+words. According to the <code class="docutils literal notranslate"><span class="pre">de&#64;collation=phonebook</span></code> collation,
+characters with umlauts come before the same characters without
+umlauts.</p>
+</div>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:names</span><span class="o">].</span><span class="n">find_one_and_update</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$lt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Gunter&quot;</span> <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="s2">&quot;$set&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;verified&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;de@collation=phonebook&quot;</span> <span class="p">},</span>
+      <span class="ss">:return_document</span> <span class="o">=&gt;</span> <span class="ss">:after</span> <span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The operation returns the following updated document:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="p">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;Günter&quot;</span><span class="p">,</span> <span class="s2">&quot;verified&quot;</span> <span class="p">=&gt;</span> <span class="kc">true</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="find-one-and-delete">
+<h3><code class="docutils literal notranslate"><span class="pre">find_one_and_delete()</span></code><a class="headerlink" href="#find-one-and-delete" title="Permalink to this headline">¶</a></h3>
+<p>Set the <code class="docutils literal notranslate"><span class="pre">numericOrdering</span></code> collation parameter to <code class="docutils literal notranslate"><span class="pre">true</span></code>
+to compare numeric string by their numeric values.</p>
+<p>The collection <code class="docutils literal notranslate"><span class="pre">numbers</span></code> contains the following documents:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;16&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;179&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The following example matches the first document in which field <code class="docutils literal notranslate"><span class="pre">a</span></code>
+has a numeric value greater than 100 and deletes it.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">docs</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">find_one_and_delete</span><span class="p">({</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$gt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;100&quot;</span> <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;numericOrdering&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span>  <span class="p">}</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>After the above operation, the following documents remain in the
+collection:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;16&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>If you perform the same operation without collation, the server deletes
+the first document it finds in which the lexical value of <code class="docutils literal notranslate"><span class="pre">a</span></code> is
+greater than <code class="docutils literal notranslate"><span class="pre">&quot;100&quot;</span></code>.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:numbers</span><span class="o">]</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">find_one_and_delete</span><span class="p">({</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$gt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;100&quot;</span> <span class="p">}</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>After the above operation the document in which <code class="docutils literal notranslate"><span class="pre">a</span></code> was equal to
+<code class="docutils literal notranslate"><span class="pre">&quot;16&quot;</span></code> has been deleted, and the following documents remain in the
+collection:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;179&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="delete-many">
+<h3><code class="docutils literal notranslate"><span class="pre">delete_many()</span></code><a class="headerlink" href="#delete-many" title="Permalink to this headline">¶</a></h3>
+<p>You can use collations with all the various bulk operations which
+exist in the Ruby driver.</p>
+<p>The collection <code class="docutils literal notranslate"><span class="pre">recipes</span></code> contains the following documents:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;veggie empanadas&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Spanish&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;beef bourgignon&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;French&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;chicken molé&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Mexican&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;chicken paillard&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;french&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;pozole verde&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Mexican&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Setting the <code class="docutils literal notranslate"><span class="pre">strength</span></code> parameter of the collation document to <code class="docutils literal notranslate"><span class="pre">1</span></code>
+or <code class="docutils literal notranslate"><span class="pre">2</span></code> causes the server to disregard case in the query filter. The
+following example uses a case-insensitive query filter
+to delete all records in which the <code class="docutils literal notranslate"><span class="pre">cuisine</span></code> field matches
+<code class="docutils literal notranslate"><span class="pre">French</span></code>.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">recipes</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:recipes</span><span class="o">]</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="n">recipes</span><span class="o">.</span><span class="n">delete_many</span><span class="p">({</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;French&quot;</span> <span class="p">},</span>
+                             <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en_US&quot;</span><span class="p">,</span> <span class="s2">&quot;strength&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>After the above operation runs, the documents with <code class="docutils literal notranslate"><span class="pre">_id</span></code> values of
+<code class="docutils literal notranslate"><span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">4</span></code> are deleted from the collection.</p>
+</div>
+<div class="section" id="aggregation">
+<h3>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this headline">¶</a></h3>
+<p>To use collation with an aggregation operation, specify a collation in
+the aggregation options.</p>
+<p>The following aggregation example uses a collection called <code class="docutils literal notranslate"><span class="pre">names</span></code>
+and groups the <code class="docutils literal notranslate"><span class="pre">first_name</span></code> field together, counts the total
+number of results in each group, and sorts the
+results by German phonebook order.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">aggregation</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+  <span class="o">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;$group&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;$first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;name_count&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$sum&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;$sort&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span>
+    <span class="p">},</span>
+
+  <span class="o">]</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;de@collation=phonebook&quot;</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">aggregation</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
+  <span class="c1">#=&gt; Yields a BSON::Document.</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="ruby-driver-indexing.html" title="Previous Section: Indexing"><span>Indexing</span></a>
+      <a class="btn-next-text" href="ruby-driver-aggregation.html" title="Next Section: Aggregation"><span>Aggregation</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
+  </script></body>
+</html>

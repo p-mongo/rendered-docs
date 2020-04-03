@@ -1,0 +1,1073 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>BSON 4.x Tutorial &mdash; Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/tutorials/bson-v4.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Ruby Driver Manual" href="../index.html" />
+<link rel="up" title="BSON" href="../bson-tutorials.html" />
+<link rel="next" title="BSON 3.x Tutorial" href="bson-v3.html" />
+<link rel="prev" title="BSON" href="../bson-tutorials.html" /></head>
+<body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+     {'gtm.start': new Date().getTime(),event:'gtm.js'}
+   );var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <!-- End Google Tag Manager -->
+<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Ruby Driver"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
+   </script>
+    <script src="../_static/navbar.min.js"></script>
+  
+
+  <div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="../index.html">Ruby Driver Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+        
+        
+        master (upcoming)<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        
+          
+          <li class="active">
+          
+            <a href="#" data-path="ruby-driver/current">
+              
+              master (upcoming)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
+              
+              Version 2.12 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
+              
+              Version 2.11
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
+              
+              Version 2.10
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
+              
+              Version 2.9
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
+              
+              Version 2.8
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
+              
+              Version 2.7
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
+              
+              Version 2.6
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
+              
+              Version 2.5
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
+              
+              Version 2.4
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
+              
+              Version 2.3
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
+              
+              Version 2.2
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
+              
+              Version 2.0
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
+              
+              1.x
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-crud-operations.html">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-bulk-operations.html">Bulk Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li><li class="toctree-l1 current"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul class="current"><li class="toctree-l2 current"><a class="reference internal current" href="">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="http://api.mongodb.com/ruby/current/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="tutorials/bson-v4">
+
+                
+  <div class="bc">
+    
+      <ul>
+          <li><a href="../bson-tutorials.html">BSON</a><span class="bcpoint"> > </span></li>
+            <li>BSON 4.x Tutorial</li> 
+      </ul>
+    
+    
+  </div>
+                
+                  <div class="section" id="bson-4-x-tutorial">
+<span id="ruby-bson-tutorial-4-0"></span><h1>BSON 4.x Tutorial<a class="headerlink" href="#bson-4-x-tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="contents twocols local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><a class="reference internal" href="#installation" id="id1">Installation</a></li>
+<li><a class="reference internal" href="#use-with-activesupport" id="id2">Use With ActiveSupport</a></li>
+<li><a class="reference internal" href="#bson-serialization" id="id3">BSON Serialization</a></li>
+<li><a class="reference internal" href="#byte-buffers" id="id4">Byte Buffers</a></li>
+<li><a class="reference internal" href="#supported-classes" id="id5">Supported Classes</a></li>
+<li><a class="reference internal" href="#json-serialization" id="id6">JSON Serialization</a></li>
+<li><a class="reference internal" href="#time-instances" id="id7">Time Instances</a></li>
+<li><a class="reference internal" href="#date-and-datetime-instances" id="id8">Date And DateTime Instances</a></li>
+<li><a class="reference internal" href="#regular-expressions" id="id9">Regular Expressions</a></li>
+</ul>
+</div>
+<p>This tutorial discusses using the Ruby BSON library.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The BSON library can be installed from <a class="reference external" href="http://rubygems.org">Rubygems</a>
+manually or with bundler.</p>
+<p>To install the gem manually:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>gem install bson -v <span class="s1">&#39;~&gt; 4.0&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>To install the gem with bundler, include the following in your <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s1">&#39;bson&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 4.0&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>The BSON library is compatible with MRI &gt;= 2.3 and JRuby &gt;= 9.2.</p>
+</div>
+<div class="section" id="use-with-activesupport">
+<h2>Use With ActiveSupport<a class="headerlink" href="#use-with-activesupport" title="Permalink to this headline">¶</a></h2>
+<p>Serialization for ActiveSupport-defined classes, such as TimeWithZone, is
+not loaded by default to avoid a hard dependency of BSON on ActiveSupport.
+When using BSON in an application that also uses ActiveSupport, the
+ActiveSupport-related code must be explicitly required:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;bson&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;bson/active_support&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-serialization">
+<h2>BSON Serialization<a class="headerlink" href="#bson-serialization" title="Permalink to this headline">¶</a></h2>
+<p>Getting a Ruby object’s raw BSON representation is done by calling <code class="docutils literal notranslate"><span class="pre">to_bson</span></code>
+on the Ruby object, which will return a <code class="docutils literal notranslate"><span class="pre">BSON::ByteBuffer</span></code>. For example:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Shall I compare thee to a summer&#39;s day&quot;</span><span class="o">.</span><span class="n">to_bson</span>
+<span class="mi">1024</span><span class="o">.</span><span class="n">to_bson</span>
+</pre></div>
+</div>
+</div>
+<p>Generating an object from BSON is done via calling <code class="docutils literal notranslate"><span class="pre">from_bson</span></code> on the class
+you wish to instantiate and passing it a <code class="docutils literal notranslate"><span class="pre">BSON::ByteBuffer</span></code> instance.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">String</span><span class="o">.</span><span class="n">from_bson</span><span class="p">(</span><span class="n">byte_buffer</span><span class="p">)</span>
+<span class="no">BSON</span><span class="o">::</span><span class="no">Int32</span><span class="o">.</span><span class="n">from_bson</span><span class="p">(</span><span class="n">byte_buffer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="byte-buffers">
+<h2>Byte Buffers<a class="headerlink" href="#byte-buffers" title="Permalink to this headline">¶</a></h2>
+<p>BSON library 4.0 introduces the use of native byte buffers in MRI and JRuby
+instead of using <code class="docutils literal notranslate"><span class="pre">StringIO</span></code>, for improved performance.</p>
+<div class="section" id="writing">
+<h3>Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
+<p>To create a <code class="docutils literal notranslate"><span class="pre">ByteBuffer</span></code> for writing (i.e. serializing to BSON),
+instantiate <code class="docutils literal notranslate"><span class="pre">BSON::ByteBuffer</span></code> with no arguments:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">ByteBuffer</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</div>
+<p>To write raw bytes to the byte buffer with no transformations, use
+<code class="docutils literal notranslate"><span class="pre">put_byte</span></code> and <code class="docutils literal notranslate"><span class="pre">put_bytes</span></code> methods. They take a byte string as the argument
+and copy this string into the buffer. <code class="docutils literal notranslate"><span class="pre">put_byte</span></code> enforces that the argument
+is a string of length 1; <code class="docutils literal notranslate"><span class="pre">put_bytes</span></code> accepts any length strings.
+The strings can contain null bytes.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="o">.</span><span class="n">put_byte</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">buffer</span><span class="o">.</span><span class="n">put_bytes</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xff\xfe\x00\xfd</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">put_byte</span></code> and <code class="docutils literal notranslate"><span class="pre">put_bytes</span></code> do not write a BSON type byte prior to
+writing the argument to the byte buffer.</p>
+</div>
+<p>Subsequent write methods write objects of particular types in the
+<a class="reference external" href="http://bsonspec.org/spec.html">BSON spec</a>. Note that the type indicated
+by the method name takes precedence over the type of the argument -
+for example, if a floating-point value is given to <code class="docutils literal notranslate"><span class="pre">put_int32</span></code>, it is
+coerced into an integer and the resulting integer is written to the byte
+buffer.</p>
+<p>To write a UTF-8 string (BSON type 0x02) to the byte buffer, use <code class="docutils literal notranslate"><span class="pre">put_string</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="o">.</span><span class="n">put_string</span><span class="p">(</span><span class="s2">&quot;hello, world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Note that BSON strings are always encoded in UTF-8. Therefore, the
+argument must be either in UTF-8 or in an encoding convertable to UTF-8
+(i.e. not binary). If the argument is in an encoding other than UTF-8,
+the string is first converted to UTF-8 and the UTF-8 encoded version is
+written to the buffer. The string must be valid in its claimed encoding,
+including being valid UTF-8 if the encoding is UTF-8.
+The string may contain null bytes.</p>
+<p>The BSON specification also defines a CString type, which is used for
+example for document keys. To write CStrings to the buffer, use <code class="docutils literal notranslate"><span class="pre">put_cstring</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="o">.</span><span class="n">put_cstring</span><span class="p">(</span><span class="s2">&quot;hello, world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>As with regular strings, CStrings in BSON must be UTF-8 encoded. If the
+argument is not in UTF-8, it is converted to UTF-8 and the resulting string
+is written to the buffer. Unlike <code class="docutils literal notranslate"><span class="pre">put_string</span></code>, the UTF-8 encoding of
+the argument given to <code class="docutils literal notranslate"><span class="pre">put_cstring</span></code> cannot have any null bytes, since the
+CString serialization format in BSON is null terminated.</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">put_string</span></code>, <code class="docutils literal notranslate"><span class="pre">put_cstring</span></code> also accepts symbols and integers.
+In all cases the argument is stringified prior to being written:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="o">.</span><span class="n">put_cstring</span><span class="p">(</span><span class="ss">:hello</span><span class="p">)</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">put_cstring</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To write a 32-bit or a 64-bit integer to the byte buffer, use
+<code class="docutils literal notranslate"><span class="pre">put_int32</span></code> and <code class="docutils literal notranslate"><span class="pre">put_int64</span></code> methods respectively. Note that Ruby
+integers can be arbitrarily large; if the value being written exceeds the
+range of a 32-bit or a 64-bit integer, <code class="docutils literal notranslate"><span class="pre">put_int32</span></code> and <code class="docutils literal notranslate"><span class="pre">put_int64</span></code>
+raise <code class="docutils literal notranslate"><span class="pre">RangeError</span></code>.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="o">.</span><span class="n">put_int32</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">put_int64</span><span class="p">(</span><span class="mi">123456789012345</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If <code class="docutils literal notranslate"><span class="pre">put_int32</span></code> or <code class="docutils literal notranslate"><span class="pre">put_int64</span></code> are given floating point arguments,
+the arguments are first coerced into integers and the integers are
+written to the byte buffer.</p>
+</div>
+<p>To write a 64-bit floating point value to the byte buffer, use <code class="docutils literal notranslate"><span class="pre">put_double</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="o">.</span><span class="n">put_double</span><span class="p">(</span><span class="mi">3</span><span class="o">.</span><span class="mi">14159</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To obtain the serialized data as a byte string (for example, to send the data
+over a socket), call <code class="docutils literal notranslate"><span class="pre">to_s</span></code> on the buffer:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">ByteBuffer</span><span class="o">.</span><span class="n">new</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">put_string</span><span class="p">(</span><span class="s1">&#39;testing&#39;</span><span class="p">)</span>
+<span class="n">socket</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">ByteBuffer</span></code> keeps track of read and write positions separately.
+There is no way to rewind the buffer for writing - <code class="docutils literal notranslate"><span class="pre">rewind</span></code> only affects
+the read position.</p>
+</div>
+</div>
+<div class="section" id="reading">
+<h3>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h3>
+<p>To create a <code class="docutils literal notranslate"><span class="pre">ByteBuffer</span></code> for reading (i.e. deserializing from BSON),
+instantiate <code class="docutils literal notranslate"><span class="pre">BSON::ByteBuffer</span></code> with a byte string as the argument:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">ByteBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="c1"># a read mode buffer.</span>
+</pre></div>
+</div>
+</div>
+<p>Reading from the buffer is done via the following API:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="o">.</span><span class="n">get_byte</span> <span class="c1"># Pulls a single byte from the buffer.</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">get_bytes</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1"># Pulls n number of bytes from the buffer.</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">get_cstring</span> <span class="c1"># Pulls a null-terminated string from the buffer.</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">get_double</span> <span class="c1"># Pulls a 64-bit floating point from the buffer.</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">get_int32</span> <span class="c1"># Pulls a 32-bit integer (4 bytes) from the buffer.</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">get_int64</span> <span class="c1"># Pulls a 64-bit integer (8 bytes) from the buffer.</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">get_string</span> <span class="c1"># Pulls a UTF-8 string from the buffer.</span>
+</pre></div>
+</div>
+</div>
+<p>To restart reading from the beginning of a buffer, use <code class="docutils literal notranslate"><span class="pre">rewind</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="o">.</span><span class="n">rewind</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">ByteBuffer</span></code> keeps track of read and write positions separately.
+<code class="docutils literal notranslate"><span class="pre">rewind</span></code> only affects the read position.</p>
+</div>
+</div>
+</div>
+<div class="section" id="supported-classes">
+<h2>Supported Classes<a class="headerlink" href="#supported-classes" title="Permalink to this headline">¶</a></h2>
+<p>Core Ruby classes that have representations in the BSON specification and
+will have a <code class="docutils literal notranslate"><span class="pre">to_bson</span></code> method defined for them are: <code class="docutils literal notranslate"><span class="pre">Object</span></code>, <code class="docutils literal notranslate"><span class="pre">Array</span></code>,
+<code class="docutils literal notranslate"><span class="pre">FalseClass</span></code>, <code class="docutils literal notranslate"><span class="pre">Float</span></code>, <code class="docutils literal notranslate"><span class="pre">Hash</span></code>, <code class="docutils literal notranslate"><span class="pre">Integer</span></code>, <code class="docutils literal notranslate"><span class="pre">NilClass</span></code>, <code class="docutils literal notranslate"><span class="pre">Regexp</span></code>,
+<code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> (deprecated), <code class="docutils literal notranslate"><span class="pre">Time</span></code>, <code class="docutils literal notranslate"><span class="pre">TrueClass</span></code>.</p>
+<p>In addition to the core Ruby objects, BSON also provides some special types
+specific to the specification:</p>
+<div class="section" id="bson-binary">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code><a class="headerlink" href="#bson-binary" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code> objects to store arbitrary binary data. The <code class="docutils literal notranslate"><span class="pre">Binary</span></code>
+objects can be constructed from binary strings as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;binary_string&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary:0x47113101192900 type=generic data=0x62696e6172795f73...&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">Binary</span></code> objects are created with BSON binary subtype 0
+(<code class="docutils literal notranslate"><span class="pre">:generic</span></code>). The subtype can be explicitly specified to indicate that
+the bytes encode a particular type of data:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;binary_string&quot;</span><span class="p">,</span> <span class="ss">:user</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary:0x47113101225420 type=user data=0x62696e6172795f73...&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Valid subtypes are <code class="docutils literal notranslate"><span class="pre">:generic</span></code>, <code class="docutils literal notranslate"><span class="pre">:function</span></code>, <code class="docutils literal notranslate"><span class="pre">:old</span></code>, <code class="docutils literal notranslate"><span class="pre">:uuid_old</span></code>,
+<code class="docutils literal notranslate"><span class="pre">:uuid</span></code>, <code class="docutils literal notranslate"><span class="pre">:md5</span></code> and <code class="docutils literal notranslate"><span class="pre">:user</span></code>.</p>
+<p>The data and the subtype can be retrieved from <code class="docutils literal notranslate"><span class="pre">Binary</span></code> instances using
+<code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">type</span></code> attributes, as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">binary</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;binary_string&quot;</span><span class="p">,</span> <span class="ss">:user</span><span class="p">)</span>
+<span class="n">binary</span><span class="o">.</span><span class="n">data</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;binary_string&quot;</span>
+<span class="n">binary</span><span class="o">.</span><span class="n">type</span>
+<span class="o">=&gt;</span> <span class="ss">:user</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code> objects always store the data in <code class="docutils literal notranslate"><span class="pre">BINARY</span></code> encoding,
+regardless of the encoding that the string passed to the constructor
+was in:</p>
+<div class="last button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;binary_string&quot;</span>
+<span class="n">str</span><span class="o">.</span><span class="n">encoding</span>
+<span class="c1"># =&gt; #&lt;Encoding:US-ASCII&gt;</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+<span class="n">binary</span><span class="o">.</span><span class="n">data</span>
+<span class="c1"># =&gt; &quot;binary_string&quot;</span>
+<span class="n">binary</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">encoding</span>
+<span class="c1"># =&gt; #&lt;Encoding:ASCII-8BIT&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="uuid-methods">
+<h4>UUID Methods<a class="headerlink" href="#uuid-methods" title="Permalink to this headline">¶</a></h4>
+<p>To create a UUID BSON::Binary (binary subtype 4) from its RFC 4122-compliant
+string representation, use the <code class="docutils literal notranslate"><span class="pre">from_uuid</span></code> method:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">uuid_str</span> <span class="o">=</span> <span class="s2">&quot;00112233-4455-6677-8899-aabbccddeeff&quot;</span>
+<span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">from_uuid</span><span class="p">(</span><span class="n">uuid_str</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary:0x46986653612880 type=uuid data=0x0011223344556677...&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>To stringify a UUID BSON::Binary to an RFC 4122-compliant representation,
+use the <code class="docutils literal notranslate"><span class="pre">to_uuid</span></code> method:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">binary</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x00\x11\x22\x33\x44\x55\x66\x77\x88\x99\xAA\xBB\xCC\xDD\xEE\xFF</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s1">&#39;BINARY&#39;</span><span class="p">),</span> <span class="ss">:uuid</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="o">&lt;</span><span class="no">BSON</span><span class="o">::</span><span class="ss">Binary</span><span class="p">:</span><span class="mh">0x46942046606480</span> <span class="n">type</span><span class="o">=</span><span class="n">uuid</span> <span class="n">data</span><span class="o">=</span><span class="mh">0x0011223344556677</span><span class="o">...&gt;</span>
+<span class="n">binary</span><span class="o">.</span><span class="n">to_uuid</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;00112233-4455-6677-8899aabbccddeeff&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>The standard representation may be explicitly specified when invoking both
+<code class="docutils literal notranslate"><span class="pre">from_uuid</span></code> and <code class="docutils literal notranslate"><span class="pre">to_uuid</span></code> methods:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">binary</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">from_uuid</span><span class="p">(</span><span class="n">uuid_str</span><span class="p">,</span> <span class="ss">:standard</span><span class="p">)</span>
+<span class="n">binary</span><span class="o">.</span><span class="n">to_uuid</span><span class="p">(</span><span class="ss">:standard</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">:standard</span></code> representation can only be used with a Binary
+of subtype <code class="docutils literal notranslate"><span class="pre">:uuid</span></code> (not <code class="docutils literal notranslate"><span class="pre">:uuid_old</span></code>).</p>
+</div>
+<div class="section" id="legacy-uuids">
+<h4>Legacy UUIDs<a class="headerlink" href="#legacy-uuids" title="Permalink to this headline">¶</a></h4>
+<p>Data stored in BSON::Binary objects of subtype 3 (<code class="docutils literal notranslate"><span class="pre">:uuid_old</span></code>) may be
+persisted in one of three different byte orders depending on which driver
+created the data. The byte orders are CSharp legacy, Java legacy and Python
+legacy. The Python legacy byte order is the same as the standard RFC 4122
+byte order; CSharp legacy and Java legacy byte orders have some of the bytes
+swapped.</p>
+<p>The Binary object containing a legacy UUID does not encode <em>which</em> format
+the UUID is stored in. Therefore, methods that convert to and from the legacy
+UUID format take the desired format, or representation, as their argument.
+An application may copy legacy UUID Binary objects without knowing which byte
+order they store their data in.</p>
+<p>The following methods for working with legacy UUIDs are provided for
+interoperability with existing deployments storing data in legacy UUID formats.
+It is recommended that new applications use the <code class="docutils literal notranslate"><span class="pre">:uuid</span></code> (subtype 4) format
+only, which is compliant with RFC 4122.</p>
+<p>To stringify a legacy UUID BSON::Binary, use the <code class="docutils literal notranslate"><span class="pre">to_uuid</span></code> method specifying
+the desired representation. Accepted representations are <code class="docutils literal notranslate"><span class="pre">:csharp_legacy</span></code>,
+<code class="docutils literal notranslate"><span class="pre">:java_legacy</span></code> and <code class="docutils literal notranslate"><span class="pre">:python_legacy</span></code>. Note that a legacy UUID BSON::Binary
+cannot be stringified without specifying a representation.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">binary</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x00\x11\x22\x33\x44\x55\x66\x77\x88\x99\xAA\xBB\xCC\xDD\xEE\xFF</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s1">&#39;BINARY&#39;</span><span class="p">),</span> <span class="ss">:uuid_old</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="o">&lt;</span><span class="no">BSON</span><span class="o">::</span><span class="ss">Binary</span><span class="p">:</span><span class="mh">0x46942046606480</span> <span class="n">type</span><span class="o">=</span><span class="n">uuid</span> <span class="n">data</span><span class="o">=</span><span class="mh">0x0011223344556677</span><span class="o">...&gt;</span>
+
+<span class="n">binary</span><span class="o">.</span><span class="n">to_uuid</span>
+<span class="c1"># =&gt; ArgumentError (Representation must be specified for BSON::Binary objects of type :uuid_old)</span>
+
+<span class="n">binary</span><span class="o">.</span><span class="n">to_uuid</span><span class="p">(</span><span class="ss">:csharp_legacy</span><span class="p">)</span>
+<span class="c1"># =&gt; &quot;33221100-5544-7766-8899aabbccddeeff&quot;</span>
+
+<span class="n">binary</span><span class="o">.</span><span class="n">to_uuid</span><span class="p">(</span><span class="ss">:java_legacy</span><span class="p">)</span>
+<span class="c1"># =&gt; &quot;77665544-3322-1100-ffeeddccbbaa9988&quot;</span>
+
+<span class="n">binary</span><span class="o">.</span><span class="n">to_uuid</span><span class="p">(</span><span class="ss">:python_legacy</span><span class="p">)</span>
+<span class="c1"># =&gt; &quot;00112233-4455-6677-8899aabbccddeeff&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>To create a legacy UUID BSON::Binary from the string representation of the
+UUID, use the <code class="docutils literal notranslate"><span class="pre">from_uuid</span></code> method specifying the desired representation:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">uuid_str</span> <span class="o">=</span> <span class="s2">&quot;00112233-4455-6677-8899-aabbccddeeff&quot;</span>
+
+<span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">from_uuid</span><span class="p">(</span><span class="n">uuid_str</span><span class="p">,</span> <span class="ss">:csharp_legacy</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary:0x46986653650480 type=uuid_old data=0x3322110055447766...&gt;</span>
+
+<span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">from_uuid</span><span class="p">(</span><span class="n">uuid_str</span><span class="p">,</span> <span class="ss">:java_legacy</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary:0x46986653663960 type=uuid_old data=0x7766554433221100...&gt;</span>
+
+<span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">from_uuid</span><span class="p">(</span><span class="n">uuid_str</span><span class="p">,</span> <span class="ss">:python_legacy</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary:0x46986653686300 type=uuid_old data=0x0011223344556677...&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>These methods can be used to convert from one representation to another:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Binary</span><span class="o">.</span><span class="n">from_uuid</span><span class="p">(</span><span class="s1">&#39;77665544-3322-1100-ffeeddccbbaa9988&#39;</span><span class="p">,</span><span class="ss">:java_legacy</span><span class="p">)</span><span class="o">.</span><span class="n">to_uuid</span><span class="p">(</span><span class="ss">:csharp_legacy</span><span class="p">)</span>
+<span class="c1"># =&gt; &quot;33221100-5544-7766-8899aabbccddeeff&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-code">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::Code</span></code><a class="headerlink" href="#bson-code" title="Permalink to this headline">¶</a></h3>
+<p>Represents a string of JavaScript code.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Code</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;this.value = 5;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-codewithscope">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::CodeWithScope</span></code><a class="headerlink" href="#bson-codewithscope" title="Permalink to this headline">¶</a></h3>
+<p>Represents a string of JavaScript code with a hash of values.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">CodeWithScope</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;this.value = age;&quot;</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-document">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code><a class="headerlink" href="#bson-document" title="Permalink to this headline">¶</a></h3>
+<p>This is a subclass of <code class="docutils literal notranslate"><span class="pre">Hash</span></code> that stores all keys as strings, but allows
+access to them with symbol keys.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Document</span><span class="o">[</span><span class="ss">:key</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="o">]</span>
+<span class="no">BSON</span><span class="o">::</span><span class="no">Document</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-maxkey">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::MaxKey</span></code><a class="headerlink" href="#bson-maxkey" title="Permalink to this headline">¶</a></h3>
+<p>Represents a value in BSON that will always compare higher to another value.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">MaxKey</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-minkey">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::MinKey</span></code><a class="headerlink" href="#bson-minkey" title="Permalink to this headline">¶</a></h3>
+<p>Represents a value in BSON that will always compare lower to another value.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">MinKey</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-objectid">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::ObjectId</span></code><a class="headerlink" href="#bson-objectid" title="Permalink to this headline">¶</a></h3>
+<p>Represents a 12 byte unique identifier for an object on a given machine.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">ObjectId</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-timestamp">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::Timestamp</span></code><a class="headerlink" href="#bson-timestamp" title="Permalink to this headline">¶</a></h3>
+<p>Represents a special time with a start and increment value.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Timestamp</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-undefined">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::Undefined</span></code><a class="headerlink" href="#bson-undefined" title="Permalink to this headline">¶</a></h3>
+<p>Represents a placeholder for a value that was not provided.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Undefined</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bson-decimal128">
+<h3><code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code><a class="headerlink" href="#bson-decimal128" title="Permalink to this headline">¶</a></h3>
+<p>Represents a 128-bit decimal-based floating-point value capable of emulating
+decimal rounding with exact precision.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate with a String</span>
+<span class="no">BSON</span><span class="o">::</span><span class="no">Decimal128</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;1.28&quot;</span><span class="p">)</span>
+
+<span class="c1"># Instantiate with a BigDecimal</span>
+<span class="n">d</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="mi">28</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="no">BSON</span><span class="o">::</span><span class="no">Decimal128</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="symbol">
+<h3><code class="docutils literal notranslate"><span class="pre">Symbol</span></code><a class="headerlink" href="#symbol" title="Permalink to this headline">¶</a></h3>
+<p>The BSON specification defines a symbol type which allows round-tripping
+Ruby <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> values (i.e., a Ruby <code class="docutils literal notranslate"><span class="pre">Symbol``is</span> <span class="pre">encoded</span> <span class="pre">into</span> <span class="pre">a</span> <span class="pre">BSON</span> <span class="pre">symbol</span>
+<span class="pre">and</span> <span class="pre">a</span> <span class="pre">BSON</span> <span class="pre">symbol</span> <span class="pre">is</span> <span class="pre">decoded</span> <span class="pre">into</span> <span class="pre">a</span> <span class="pre">Ruby</span> <span class="pre">``Symbol</span></code>). However, since most
+programming langauges do not have a native symbol type, to promote
+interoperabilty, MongoDB deprecated the BSON symbol type and encourages
+strings to be used instead.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In BSON, hash <em>keys</em> are always strings. Non-string values will be
+stringified when used as hash keys:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<p>Hash.from_bson({foo: ‘bar’}.to_bson)
+# =&gt; {“foo”=&gt;”bar”}</p>
+<p class="last">Hash.from_bson({1 =&gt; 2}.to_bson)
+# =&gt; {“1”=&gt;2}</p>
+</div>
+<p>By default, the BSON library encodes <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> hash values as strings and
+decodes BSON symbols into Ruby <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> values:</p>
+<blockquote>
+<div><div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<p>{foo: :bar}.to_bson.to_s
+# =&gt; “x12x00x00x00x02foox00x04x00x00x00barx00x00”</p>
+<p># 0x02 is the string type
+Hash.from_bson(BSON::ByteBuffer.new(“x12x00x00x00x02foox00x04x00x00x00barx00x00”.force_encoding(‘BINARY’)))
+# =&gt; {“foo”=&gt;”bar”}</p>
+<p># 0x0E is the symbol type
+Hash.from_bson(BSON::ByteBuffer.new(“x12x00x00x00x0Efoox00x04x00x00x00barx00x00”.force_encoding(‘BINARY’)))
+# =&gt; {“foo”=&gt;:bar}</p>
+</div></blockquote>
+<p>To force encoding of Ruby symbols to BSON symbols, wrap the Ruby symbols in
+<code class="docutils literal notranslate"><span class="pre">BSON::Symbol::Raw</span></code>:</p>
+<blockquote>
+<div><div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<p>{foo: BSON::Symbol::Raw.new(:bar)}.to_bson.to_s
+# =&gt; “x12x00x00x00x0Efoox00x04x00x00x00barx00x00”</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="json-serialization">
+<h2>JSON Serialization<a class="headerlink" href="#json-serialization" title="Permalink to this headline">¶</a></h2>
+<p>Some BSON types have special representations in JSON. These are as follows
+and will be automatically serialized in the form when calling <code class="docutils literal notranslate"><span class="pre">to_json</span></code> on
+them.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Object</th>
+<th class="head">JSON</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;$binary&quot;</span> <span class="pre">:</span> <span class="pre">&quot;\x01&quot;,</span> <span class="pre">&quot;$type&quot;</span> <span class="pre">:</span> <span class="pre">&quot;md5&quot;</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">BSON::Code</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;$code&quot;</span> <span class="pre">:</span> <span class="pre">&quot;this.v</span> <span class="pre">=</span> <span class="pre">5&quot;</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">BSON::CodeWithScope</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;$code&quot;</span> <span class="pre">:</span> <span class="pre">&quot;this.v</span> <span class="pre">=</span> <span class="pre">value&quot;,</span> <span class="pre">&quot;$scope&quot;</span> <span class="pre">:</span> <span class="pre">{</span> <span class="pre">v</span> <span class="pre">=&gt;</span> <span class="pre">5</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">BSON::MaxKey</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;$maxKey&quot;</span> <span class="pre">:</span> <span class="pre">1</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">BSON::MinKey</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;$minKey&quot;</span> <span class="pre">:</span> <span class="pre">1</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">BSON::ObjectId</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;$oid&quot;</span> <span class="pre">:</span> <span class="pre">&quot;4e4d66343b39b68407000001&quot;</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">BSON::Timestamp</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;t&quot;</span> <span class="pre">:</span> <span class="pre">5,</span> <span class="pre">&quot;i&quot;</span> <span class="pre">:</span> <span class="pre">30</span> <span class="pre">}</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Regexp</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;$regex&quot;</span> <span class="pre">:</span> <span class="pre">&quot;[abc]&quot;,</span> <span class="pre">&quot;$options&quot;</span> <span class="pre">:</span> <span class="pre">&quot;i&quot;</span> <span class="pre">}</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="time-instances">
+<h2>Time Instances<a class="headerlink" href="#time-instances" title="Permalink to this headline">¶</a></h2>
+<p>Times in Ruby can have nanosecond precision. Times in BSON (and MongoDB)
+can only have millisecond precision. When Ruby <code class="docutils literal notranslate"><span class="pre">Time</span></code> instances are
+serialized to BSON or Extended JSON, the times are floored to the nearest
+millisecond.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The time as always rounded down. If the time precedes the Unix epoch
+(January 1, 1970 00:00:00 UTC), the absolute value of the time would
+increase:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<p class="last">time = Time.utc(1960, 1, 1, 0, 0, 0, 999_999)
+time.to_f
+# =&gt; -315619199.000001
+time.floor(3).to_f
+# =&gt; -315619199.001</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">JRuby as of version 9.2.11.0 <a class="reference external" href="https://github.com/jruby/jruby/issues/6104">rounds pre-Unix epoch times up rather than
+down</a>. bson-ruby works around
+this and correctly floors the times when serializing on JRuby.</p>
+</div>
+<p>Because of this flooring, applications are strongly recommended to perform
+all time calculations using integer math, as inexactness of floating point
+calculations may produce unexpected results.</p>
+</div>
+<div class="section" id="date-and-datetime-instances">
+<h2>Date And DateTime Instances<a class="headerlink" href="#date-and-datetime-instances" title="Permalink to this headline">¶</a></h2>
+<p>BSON only supports storing the time as the number of seconds since the
+Unix epoch. Ruby’s <code class="docutils literal notranslate"><span class="pre">Date</span></code> and <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> instances can be serialized
+to BSON, but when the BSON is deserialized the times will be returned as
+<code class="docutils literal notranslate"><span class="pre">Time</span></code> instances.</p>
+</div>
+<div class="section" id="regular-expressions">
+<h2>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">¶</a></h2>
+<p>Ruby regular expressions always have BSON regular expressions’ equivalent of
+‘m’ flag on. In order for behavior to be preserved between the two, the ‘m’
+option is always added when a Ruby regular expression is serialized to BSON.</p>
+<p>There is a class provided by the bson gem, <code class="docutils literal notranslate"><span class="pre">Regexp::Raw</span></code>, to allow Ruby users
+to get around this. You can simply create a regular expression like this:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;^b403158&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>This code example illustrates the difference between serializing a core Ruby
+<code class="docutils literal notranslate"><span class="pre">Regexp</span></code> versus a <code class="docutils literal notranslate"><span class="pre">Regexp::Raw</span></code> object:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">regexp_ruby</span> <span class="o">=</span> <span class="sr">/^b403158/</span>
+<span class="c1"># =&gt; /^b403158/</span>
+<span class="n">regexp_ruby</span><span class="o">.</span><span class="n">to_bson</span>
+<span class="c1"># =&gt; #&lt;BSON::ByteBuffer:0x007fcf20ab8028&gt;</span>
+<span class="n">_</span><span class="o">.</span><span class="n">to_s</span>
+<span class="c1"># =&gt; &quot;^b403158\x00m\x00&quot;</span>
+<span class="n">regexp_raw</span> <span class="o">=</span> <span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;^b403158&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;BSON::Regexp::Raw:0x007fcf21808f98 @pattern=&quot;^b403158&quot;, @options=&quot;&quot;&gt;</span>
+<span class="n">regexp_raw</span><span class="o">.</span><span class="n">to_bson</span>
+<span class="c1"># =&gt; #&lt;BSON::ByteBuffer:0x007fcf213622f0&gt;</span>
+<span class="n">_</span><span class="o">.</span><span class="n">to_s</span>
+<span class="c1"># =&gt; &quot;^b403158\x00\x00&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Please use the <code class="docutils literal notranslate"><span class="pre">Regexp::Raw</span></code> class to instantiate your BSON regular
+expressions to get the exact pattern and options you want.</p>
+<p>When regular expressions are deserialized, they return a wrapper that holds the
+raw regex string, but do not compile it. In order to get the Ruby <code class="docutils literal notranslate"><span class="pre">Regexp</span></code>
+object, one must call <code class="docutils literal notranslate"><span class="pre">compile</span></code> on the returned object.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">regex</span> <span class="o">=</span> <span class="no">Regexp</span><span class="o">.</span><span class="n">from_bson</span><span class="p">(</span><span class="n">byte_buffer</span><span class="p">)</span>
+<span class="n">regex</span><span class="o">.</span><span class="n">pattern</span> <span class="c1">#=&gt; Returns the pattern as a string.</span>
+<span class="n">regex</span><span class="o">.</span><span class="n">options</span> <span class="c1">#=&gt; Returns the raw options as a String.</span>
+<span class="n">regex</span><span class="o">.</span><span class="n">compile</span> <span class="c1">#=&gt; Returns the compiled Ruby Regexp object.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="../bson-tutorials.html" title="Previous Section: BSON"><span>BSON</span></a>
+      <a class="btn-next-text" href="bson-v3.html" title="Next Section: BSON 3.x Tutorial"><span>BSON 3.x Tutorial</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
+  </script></body>
+</html>

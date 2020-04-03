@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Driver Compatibility &mdash; Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/reference/driver-compatibility.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Ruby Driver Manual" href="../index.html" />
+<link rel="next" title="Additional Resources" href="additional-resources.html" />
+<link rel="prev" title="BSON 3.x Tutorial" href="../tutorials/bson-v3.html" /></head>
+<body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+     {'gtm.start': new Date().getTime(),event:'gtm.js'}
+   );var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <!-- End Google Tag Manager -->
+<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Ruby Driver"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
+   </script>
+    <script src="../_static/navbar.min.js"></script>
+  
+
+  <div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="../index.html">Ruby Driver Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+        
+        
+        master (upcoming)<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        
+          
+          <li class="active">
+          
+            <a href="#" data-path="ruby-driver/current">
+              
+              master (upcoming)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
+              
+              Version 2.12 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
+              
+              Version 2.11
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
+              
+              Version 2.10
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
+              
+              Version 2.9
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
+              
+              Version 2.8
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
+              
+              Version 2.7
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
+              
+              Version 2.6
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
+              
+              Version 2.5
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
+              
+              Version 2.4
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
+              
+              Version 2.3
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
+              
+              Version 2.2
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
+              
+              Version 2.0
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
+              
+              1.x
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/user-management.html">User Management</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-crud-operations.html">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-bulk-operations.html">Bulk Operations</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/client-side-encryption.html">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="http://api.mongodb.com/ruby/current/">API</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="reference/driver-compatibility">
+
+                
+  <div class="bc">
+    
+      
+    
+    
+  </div>
+                
+                  <div class="section" id="driver-compatibility">
+<span id="reference-compatibility-ruby"></span><h1>Driver Compatibility<a class="headerlink" href="#driver-compatibility" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mongodb-compatibility">
+<span id="reference-compatibility-mongodb-ruby"></span><h2>MongoDB Compatibility<a class="headerlink" href="#mongodb-compatibility" title="Permalink to this headline">¶</a></h2>
+<p>The following compatibility table specifies the recommended
+version(s) of the MongoDB Ruby driver for use with a specific version of
+MongoDB.</p>
+<p>The first column lists the driver versions.</p>
+<table border="1" class="compatibility-large no-padding docutils">
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">Ruby Driver</th>
+<th class="head">MongoDB 4.2</th>
+<th class="head">MongoDB 4.0</th>
+<th class="head">MongoDB 3.6</th>
+<th class="head">MongoDB 3.4</th>
+<th class="head">MongoDB 3.2</th>
+<th class="head">MongoDB 3.0</th>
+<th class="head">MongoDB 2.6</th>
+<th class="head">MongoDB 2.4</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">2.12</th>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.11</th>
+<td>✓ <a class="footnote-reference" href="#client-side-encryption" id="id1">[2]</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><th class="stub">2.10</th>
+<td>✓ <a class="footnote-reference" href="#srv-polling" id="id2">[1]</a> <a class="footnote-reference" href="#client-side-encryption" id="id3">[2]</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.9</th>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><th class="stub">2.8</th>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.7</th>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><th class="stub">2.6</th>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.5</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><th class="stub">2.4</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.3</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><th class="stub">2.2</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.0</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="srv-polling" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Polling of SRV records in sharded topologies is
+implemented as of driver version 2.11.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="client-side-encryption" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Client-side encryption is implemented as of
+driver version 2.12.</td></tr>
+</tbody>
+</table>
+<p>The driver does not support older versions of MongoDB.</p>
+</div>
+<div class="section" id="ruby-compatibility">
+<span id="reference-compatibility-language-ruby"></span><h2>Ruby Compatibility<a class="headerlink" href="#ruby-compatibility" title="Permalink to this headline">¶</a></h2>
+<p>The following compatibility table specifies the recommended
+version(s) of the MongoDB Ruby driver for use with a specific version of
+Ruby.</p>
+<p>The first column lists the driver versions. “D” in a column means support
+for that Ruby version is deprecated.</p>
+<table border="1" class="compatibility-large no-padding docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">Ruby Driver</th>
+<th class="head">Ruby 2.7</th>
+<th class="head">Ruby 2.6</th>
+<th class="head">Ruby 2.5</th>
+<th class="head">Ruby 2.4</th>
+<th class="head">Ruby 2.3</th>
+<th class="head">Ruby 2.2</th>
+<th class="head">Ruby 2.1</th>
+<th class="head">Ruby 2.0</th>
+<th class="head">Ruby 1.9</th>
+<th class="head">JRuby 9.2</th>
+<th class="head">JRuby 9.1</th>
+<th class="head">JRuby</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">2.12</th>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.11</th>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><th class="stub">2.10</th>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>D</td>
+<td>D</td>
+<td>D</td>
+<td>D</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.9</th>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>D</td>
+<td>D</td>
+<td>D</td>
+<td>D</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><th class="stub">2.8</th>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.7</th>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><th class="stub">2.6</th>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.5</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><th class="stub">2.4</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.3</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><th class="stub">2.2</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><th class="stub">2.1</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><th class="stub">2.0</th>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>The driver does not support older versions of Ruby.</p>
+</div>
+<div class="section" id="rails-activesupport-compatibility">
+<h2>Rails/ActiveSupport Compatibility<a class="headerlink" href="#rails-activesupport-compatibility" title="Permalink to this headline">¶</a></h2>
+<p>The Ruby driver does not depend on ActiveSupport. However, when an
+application uses ActiveSupport or Ruby on Rails,
+it must load the driver’s ActiveSupport
+compatibility code for behavior like time serialization to be correct:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;mongo/active_support&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>Applications using Mongoid 7.0.6 or newer do not need to explicitly load
+the driver’s ActiveSupport code, since Mongoid automatically does so.</p>
+</div>
+<div class="section" id="atlas-compatibility">
+<h2>Atlas Compatibility<a class="headerlink" href="#atlas-compatibility" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/mongodb/mongo-ruby-driver/releases/tag/v2.6.1">Driver version 2.6.1</a>
+or higher is recommended when using MongoDB Atlas, as this version has
+significant SSL performance improvements.</p>
+<p>When running on JRuby and connecting to Atlas Free Tier,
+<a class="reference external" href="https://github.com/mongodb/mongo-ruby-driver/releases/tag/v2.6.4">driver version 2.6.4</a>
+or higher and Java 8 or higher are required.</p>
+</div>
+<div class="section" id="mongo-kerberos-compatibility">
+<h2><code class="docutils literal notranslate"><span class="pre">mongo_kerberos</span></code> Compatibility<a class="headerlink" href="#mongo-kerberos-compatibility" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="jruby-kerberos">
+<h2>JRuby Kerberos<a class="headerlink" href="#jruby-kerberos" title="Permalink to this headline">¶</a></h2>
+<p>If the <code class="docutils literal notranslate"><span class="pre">mongo_kerberos</span></code> gem is used for Kerberos authentication with JRuby, the the JVM system
+property “sun.security.jgss.native” to will be set to “true” in order to facilitate the use of
+the system cache of TGTs (e.g. TGTs obtained with <code class="docutils literal notranslate"><span class="pre">kinit</span></code>). Any other use of the JGSS library
+will also be affected by this setting, meaning any TGTs in the system cache will be available for
+obtaining Kerberos credentials as well.</p>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="../tutorials/bson-v3.html" title="Previous Section: BSON 3.x Tutorial"><span>BSON 3.x Tutorial</span></a>
+      <a class="btn-next-text" href="additional-resources.html" title="Next Section: Additional Resources"><span>Additional Resources</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
+  </script></body>
+</html>

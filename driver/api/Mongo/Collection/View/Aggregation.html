@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Mongo::Collection::View::Aggregation
+  
+    &mdash; mongo-2.12.0.rc0
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongo::Collection::View::Aggregation";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Mongo.html" title="Mongo (module)">Mongo</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Collection.html" title="Mongo::Collection (class)">Collection</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../View.html" title="Mongo::Collection::View (class)">View</a></span></span>
+     &raquo; 
+    <span class="title">Aggregation</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Mongo::Collection::View::Aggregation
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Mongo::Collection::View::Aggregation</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  <dl>
+      <dt>Extended by:</dt>
+      <dd>Forwardable</dd>
+  </dl>
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Enumerable, <span class='object_link'><a href="Explainable.html" title="Mongo::Collection::View::Explainable (module)">Explainable</a></span>, <span class='object_link'><a href="Immutable.html" title="Mongo::Collection::View::Immutable (module)">Immutable</a></span>, <span class='object_link'><a href="Iterable.html" title="Mongo::Collection::View::Iterable (module)">Iterable</a></span>, <span class='object_link'><a href="../../Loggable.html" title="Mongo::Loggable (module)">Loggable</a></span>, <span class='object_link'><a href="../../Retryable.html" title="Mongo::Retryable (module)">Retryable</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongo/collection/view/aggregation.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Provides behavior around an aggregation pipeline on a collection view.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="ChangeStream.html" title="Mongo::Collection::View::ChangeStream (class)">ChangeStream</a></span></p>
+</div>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="REROUTE-constant" class="deprecated">REROUTE =
+          <div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
+
+<p>The reroute message.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Rerouting the Aggregation operation to the primary server.</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../../Loggable.html" title="Mongo::Loggable (module)">Loggable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Loggable.html#PREFIX-constant" title="Mongo::Loggable::PREFIX (constant)">Loggable::PREFIX</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Explainable.html" title="Mongo::Collection::View::Explainable (module)">Explainable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Explainable.html#ALL_PLANS_EXECUTION-constant" title="Mongo::Collection::View::Explainable::ALL_PLANS_EXECUTION (constant)">Explainable::ALL_PLANS_EXECUTION</a></span>, <span class='object_link'><a href="Explainable.html#EXECUTION_STATS-constant" title="Mongo::Collection::View::Explainable::EXECUTION_STATS (constant)">Explainable::EXECUTION_STATS</a></span>, <span class='object_link'><a href="Explainable.html#QUERY_PLANNER-constant" title="Mongo::Collection::View::Explainable::QUERY_PLANNER (constant)">Explainable::QUERY_PLANNER</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pipeline-instance_method" title="#pipeline (instance method)">#<strong>pipeline</strong>  &#x21d2; Array&lt;Hash&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Pipeline The aggregation pipeline.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#view-instance_method" title="#view (instance method)">#<strong>view</strong>  &#x21d2; View </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>View The collection view.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Immutable.html" title="Mongo::Collection::View::Immutable (module)">Immutable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Immutable.html#options-instance_method" title="Mongo::Collection::View::Immutable#options (method)">#options</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allow_disk_use-instance_method" title="#allow_disk_use (instance method)">#<strong>allow_disk_use</strong>(value = nil)  &#x21d2; true, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set to true if disk usage is allowed during the aggregation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#explain-instance_method" title="#explain (instance method)">#<strong>explain</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the explain plan for the aggregation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(view, pipeline, options = {})  &#x21d2; Aggregation </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Initialize the aggregation for the provided collection view, pipeline and options.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../Retryable.html" title="Mongo::Retryable (module)">Retryable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Retryable.html#legacy_write_with_retry-instance_method" title="Mongo::Retryable#legacy_write_with_retry (method)">#legacy_write_with_retry</a></span>, <span class='object_link'><a href="../../Retryable.html#nro_write_with_retry-instance_method" title="Mongo::Retryable#nro_write_with_retry (method)">#nro_write_with_retry</a></span>, <span class='object_link'><a href="../../Retryable.html#read_with_one_retry-instance_method" title="Mongo::Retryable#read_with_one_retry (method)">#read_with_one_retry</a></span>, <span class='object_link'><a href="../../Retryable.html#read_with_retry-instance_method" title="Mongo::Retryable#read_with_retry (method)">#read_with_retry</a></span>, <span class='object_link'><a href="../../Retryable.html#read_with_retry_cursor-instance_method" title="Mongo::Retryable#read_with_retry_cursor (method)">#read_with_retry_cursor</a></span>, <span class='object_link'><a href="../../Retryable.html#write_with_retry-instance_method" title="Mongo::Retryable#write_with_retry (method)">#write_with_retry</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../Loggable.html" title="Mongo::Loggable (module)">Loggable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Loggable.html#log_debug-instance_method" title="Mongo::Loggable#log_debug (method)">#log_debug</a></span>, <span class='object_link'><a href="../../Loggable.html#log_error-instance_method" title="Mongo::Loggable#log_error (method)">#log_error</a></span>, <span class='object_link'><a href="../../Loggable.html#log_fatal-instance_method" title="Mongo::Loggable#log_fatal (method)">#log_fatal</a></span>, <span class='object_link'><a href="../../Loggable.html#log_info-instance_method" title="Mongo::Loggable#log_info (method)">#log_info</a></span>, <span class='object_link'><a href="../../Loggable.html#log_warn-instance_method" title="Mongo::Loggable#log_warn (method)">#log_warn</a></span>, <span class='object_link'><a href="../../Loggable.html#logger-instance_method" title="Mongo::Loggable#logger (method)">#logger</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Iterable.html" title="Mongo::Collection::View::Iterable (module)">Iterable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Iterable.html#close_query-instance_method" title="Mongo::Collection::View::Iterable#close_query (method)">#close_query</a></span>, <span class='object_link'><a href="Iterable.html#each-instance_method" title="Mongo::Collection::View::Iterable#each (method)">#each</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(view, pipeline, options = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Collection::View::Aggregation (class)">Aggregation</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Initialize the aggregation for the provided collection view, pipeline and options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Create the new aggregation view.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Mongo::Collection::View::Aggregation (class)">Aggregation</a></span></span><span class='period'>.</span><span class='id identifier rubyid_view'><span class='object_link'><a href="#view-instance_method" title="Mongo::Collection::View::Aggregation#view (method)">view</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>view</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../View.html" title="Mongo::Collection::View (class)">Collection::View</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The collection view.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>pipeline</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Hash&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The pipeline of operations.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The aggregation options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@view</span> <span class='op'>=</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='ivar'>@pipeline</span> <span class='op'>=</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="pipeline-instance_method">
+  
+    #<strong>pipeline</strong>  &#x21d2; <tt>Array&lt;Hash&gt;</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns pipeline The aggregation pipeline.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Hash&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>pipeline The aggregation pipeline.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pipeline'>pipeline</span>
+  <span class='ivar'>@pipeline</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="view-instance_method">
+  
+    #<strong>view</strong>  &#x21d2; <tt><span class='object_link'><a href="../View.html" title="Mongo::Collection::View (class)">View</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns view The collection view.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../View.html" title="Mongo::Collection::View (class)">View</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>view The collection view.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='ivar'>@view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="allow_disk_use-instance_method">
+  
+    #<strong>allow_disk_use</strong>(value = nil)  &#x21d2; <tt>true</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set to true if disk usage is allowed during the aggregation.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Set disk usage flag.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_aggregation'>aggregation</span><span class='period'>.</span><span class='id identifier rubyid_allow_disk_use'>allow_disk_use</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The flag value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>, <tt><span class='object_link'><a href="" title="Mongo::Collection::View::Aggregation (class)">Aggregation</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The aggregation if a value was set or the value if used as a getter.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_allow_disk_use'>allow_disk_use</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_configure'>configure</span><span class='lparen'>(</span><span class='symbol'>:allow_disk_use</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="explain-instance_method">
+  
+    #<strong>explain</strong>  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the explain plan for the aggregation.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the explain plan for the aggregation.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_aggregation'>aggregation</span><span class='period'>.</span><span class='id identifier rubyid_explain'>explain</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The explain plan.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_explain'>explain</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>explain:</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:40:42 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>

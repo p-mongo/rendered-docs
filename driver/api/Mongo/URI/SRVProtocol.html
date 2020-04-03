@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Mongo::URI::SRVProtocol
+  
+    &mdash; mongo-2.12.0.rc0
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongo::URI::SRVProtocol";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../URI.html" title="Mongo::URI (class)">URI</a></span></span>
+     &raquo; 
+    <span class="title">SRVProtocol</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Mongo::URI::SRVProtocol
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../URI.html" title="Mongo::URI (class)">Mongo::URI</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../URI.html" title="Mongo::URI (class)">Mongo::URI</a></span></li>
+          
+            <li class="next">Mongo::URI::SRVProtocol</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongo/uri/srv_protocol.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Parser for a URI using the mongodb+srv protocol, which specifies a DNS to query for SRV records. The driver will query the DNS server for SRV records on &lt;hostname&gt;.&lt;domainname&gt;, prefixed with _mongodb._tcp The SRV records can then be used as the seedlist for a Mongo::Client. The driver also queries for a TXT record providing default connection string options. Only one TXT record is allowed, and only a subset of Mongo::Client options is allowed.</p>
+
+<p>Please refer to the Initial DNS Seedlist Discovery spec for details.</p>
+
+<p><a href="https://github.com/mongodb/specifications/blob/master/source/initial-dns-seedlist-discovery">github.com/mongodb/specifications/blob/master/source/initial-dns-seedlist-discovery</a></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Use the uri string to make a client connection.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client.html" title="Mongo::Client (class)">Client</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Client.html#initialize-instance_method" title="Mongo::Client#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mongodb+srv://test6.test.build.10gen.cc/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="../URI.html" title="Mongo::URI (class)">Mongo::URI</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../URI.html#AUTH_DELIM-constant" title="Mongo::URI::AUTH_DELIM (constant)">AUTH_DELIM</a></span>, <span class='object_link'><a href="../URI.html#AUTH_MECH_MAP-constant" title="Mongo::URI::AUTH_MECH_MAP (constant)">AUTH_MECH_MAP</a></span>, <span class='object_link'><a href="../URI.html#AUTH_USER_PWD_DELIM-constant" title="Mongo::URI::AUTH_USER_PWD_DELIM (constant)">AUTH_USER_PWD_DELIM</a></span>, <span class='object_link'><a href="../URI.html#DATABASE_DELIM-constant" title="Mongo::URI::DATABASE_DELIM (constant)">DATABASE_DELIM</a></span>, <span class='object_link'><a href="../URI.html#HELP-constant" title="Mongo::URI::HELP (constant)">HELP</a></span>, <span class='object_link'><a href="../URI.html#HOST_DELIM-constant" title="Mongo::URI::HOST_DELIM (constant)">HOST_DELIM</a></span>, <span class='object_link'><a href="../URI.html#HOST_PORT_DELIM-constant" title="Mongo::URI::HOST_PORT_DELIM (constant)">HOST_PORT_DELIM</a></span>, <span class='object_link'><a href="../URI.html#INDIV_URI_OPTS_DELIM-constant" title="Mongo::URI::INDIV_URI_OPTS_DELIM (constant)">INDIV_URI_OPTS_DELIM</a></span>, <span class='object_link'><a href="../URI.html#INVALID_OPTS_DELIM-constant" title="Mongo::URI::INVALID_OPTS_DELIM (constant)">INVALID_OPTS_DELIM</a></span>, <span class='object_link'><a href="../URI.html#INVALID_OPTS_VALUE_DELIM-constant" title="Mongo::URI::INVALID_OPTS_VALUE_DELIM (constant)">INVALID_OPTS_VALUE_DELIM</a></span>, <span class='object_link'><a href="../URI.html#INVALID_SCHEME-constant" title="Mongo::URI::INVALID_SCHEME (constant)">INVALID_SCHEME</a></span>, <span class='object_link'><a href="../URI.html#MONGODB_SCHEME-constant" title="Mongo::URI::MONGODB_SCHEME (constant)">MONGODB_SCHEME</a></span>, <span class='object_link'><a href="../URI.html#MONGODB_SRV_SCHEME-constant" title="Mongo::URI::MONGODB_SRV_SCHEME (constant)">MONGODB_SRV_SCHEME</a></span>, <span class='object_link'><a href="../URI.html#PERCENT_CHAR-constant" title="Mongo::URI::PERCENT_CHAR (constant)">PERCENT_CHAR</a></span>, <span class='object_link'><a href="../URI.html#READ_MODE_MAP-constant" title="Mongo::URI::READ_MODE_MAP (constant)">READ_MODE_MAP</a></span>, <span class='object_link'><a href="../URI.html#REPEATABLE_OPTIONS-constant" title="Mongo::URI::REPEATABLE_OPTIONS (constant)">REPEATABLE_OPTIONS</a></span>, <span class='object_link'><a href="../URI.html#SCHEME-constant" title="Mongo::URI::SCHEME (constant)">SCHEME</a></span>, <span class='object_link'><a href="../URI.html#SCHEME_DELIM-constant" title="Mongo::URI::SCHEME_DELIM (constant)">SCHEME_DELIM</a></span>, <span class='object_link'><a href="../URI.html#UNESCAPED_DATABASE-constant" title="Mongo::URI::UNESCAPED_DATABASE (constant)">UNESCAPED_DATABASE</a></span>, <span class='object_link'><a href="../URI.html#UNESCAPED_UNIX_SOCKET-constant" title="Mongo::URI::UNESCAPED_UNIX_SOCKET (constant)">UNESCAPED_UNIX_SOCKET</a></span>, <span class='object_link'><a href="../URI.html#UNESCAPED_USER_PWD-constant" title="Mongo::URI::UNESCAPED_USER_PWD (constant)">UNESCAPED_USER_PWD</a></span>, <span class='object_link'><a href="../URI.html#UNIX_SOCKET-constant" title="Mongo::URI::UNIX_SOCKET (constant)">UNIX_SOCKET</a></span>, <span class='object_link'><a href="../URI.html#UNSAFE-constant" title="Mongo::URI::UNSAFE (constant)">UNSAFE</a></span>, <span class='object_link'><a href="../URI.html#URI_OPTS_DELIM-constant" title="Mongo::URI::URI_OPTS_DELIM (constant)">URI_OPTS_DELIM</a></span>, <span class='object_link'><a href="../URI.html#URI_OPTS_VALUE_DELIM-constant" title="Mongo::URI::URI_OPTS_VALUE_DELIM (constant)">URI_OPTS_VALUE_DELIM</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../Loggable.html" title="Mongo::Loggable (module)">Loggable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Loggable.html#PREFIX-constant" title="Mongo::Loggable::PREFIX (constant)">Loggable::PREFIX</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#query_hostname-instance_method" title="#query_hostname (instance method)">#<strong>query_hostname</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The hostname that is specified in the URI and used to look up SRV records.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#srv_records-instance_method" title="#srv_records (instance method)">#<strong>srv_records</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#srv_result-instance_method" title="#srv_result (instance method)">#<strong>srv_result</strong>  &#x21d2; Srv::Result </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>SRV lookup result.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../URI.html" title="Mongo::URI (class)">Mongo::URI</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../URI.html#options-instance_method" title="Mongo::URI#options (method)">#options</a></span>, <span class='object_link'><a href="../URI.html#servers-instance_method" title="Mongo::URI#servers (method)">#servers</a></span>, <span class='object_link'><a href="../URI.html#uri_options-instance_method" title="Mongo::URI#uri_options (method)">#uri_options</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#client_options-instance_method" title="#client_options (instance method)">#<strong>client_options</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the options hash that needs to be passed to a Mongo::Client on instantiation, so we don&#39;t have to merge the txt record options, credentials, and database in at that point - we only have a single point here.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../URI.html" title="Mongo::URI (class)">Mongo::URI</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../URI.html#credentials-instance_method" title="Mongo::URI#credentials (method)">#credentials</a></span>, <span class='object_link'><a href="../URI.html#database-instance_method" title="Mongo::URI#database (method)">#database</a></span>, <span class='object_link'><a href="../URI.html#get-class_method" title="Mongo::URI.get (method)">get</a></span>, <span class='object_link'><a href="../URI.html#initialize-instance_method" title="Mongo::URI#initialize (method)">#initialize</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Address/Validator.html" title="Mongo::Address::Validator (module)">Address::Validator</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Address/Validator.html#validate_address_str!-instance_method" title="Mongo::Address::Validator#validate_address_str! (method)">#validate_address_str!</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Loggable.html" title="Mongo::Loggable (module)">Loggable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Loggable.html#log_debug-instance_method" title="Mongo::Loggable#log_debug (method)">#log_debug</a></span>, <span class='object_link'><a href="../Loggable.html#log_error-instance_method" title="Mongo::Loggable#log_error (method)">#log_error</a></span>, <span class='object_link'><a href="../Loggable.html#log_fatal-instance_method" title="Mongo::Loggable#log_fatal (method)">#log_fatal</a></span>, <span class='object_link'><a href="../Loggable.html#log_info-instance_method" title="Mongo::Loggable#log_info (method)">#log_info</a></span>, <span class='object_link'><a href="../Loggable.html#log_warn-instance_method" title="Mongo::Loggable#log_warn (method)">#log_warn</a></span>, <span class='object_link'><a href="../Loggable.html#logger-instance_method" title="Mongo::Loggable#logger (method)">#logger</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="../URI.html#initialize-instance_method" title="Mongo::URI#initialize (method)">Mongo::URI</a></span></p>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="query_hostname-instance_method">
+  
+    #<strong>query_hostname</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>The hostname that is specified in the URI and used to look up SRV records.</p>
+
+<p>This attribute needs to be defined because SRVProtocol changes #servers to be the result of the lookup rather than the hostname specified in the URI.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The hostname used in SRV lookup.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/srv_protocol.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_query_hostname'>query_hostname</span>
+  <span class='ivar'>@query_hostname</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="srv_records-instance_method">
+  
+    #<strong>srv_records</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/srv_protocol.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_srv_records'>srv_records</span>
+  <span class='ivar'>@srv_records</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="srv_result-instance_method">
+  
+    #<strong>srv_result</strong>  &#x21d2; <tt><span class='object_link'><a href="../Srv/Result.html" title="Mongo::Srv::Result (class)">Srv::Result</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns SRV lookup result.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Srv/Result.html" title="Mongo::Srv::Result (class)">Srv::Result</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>SRV lookup result.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/srv_protocol.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_srv_result'>srv_result</span>
+  <span class='ivar'>@srv_result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="client_options-instance_method">
+  
+    #<strong>client_options</strong>  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the options hash that needs to be passed to a Mongo::Client on instantiation, so we don&#39;t have to merge the txt record options, credentials, and database in at that point - we only have a single point here.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the client options.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_client_options'>client_options</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The options passed to the Mongo::Client</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/srv_protocol.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_client_options'>client_options</span>
+  <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='ivar'>@txt_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>ssl:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_uri_options'>uri_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:database</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_database'>database</span><span class='rparen'>)</span>
+  <span class='ivar'>@user</span> <span class='op'>?</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_opts'>opts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:40:38 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>
