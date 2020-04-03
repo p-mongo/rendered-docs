@@ -451,10 +451,12 @@ copy</a>
 <div class="section" id="kerberos-gssapi">
 <span id="kerberos"></span><h3>Kerberos (GSSAPI)<a class="headerlink" href="#kerberos-gssapi" title="Permalink to this headline">¶</a></h3>
 <p><em>Requires MongoDB Enterprise Edition.</em></p>
-<p>MongoDB Enterprise Edition supports Kerberos authentication.</p>
-<p>To use the Kerberos authentication mechanism,
-<a class="reference external" href="https://rubygems.org/gems/mongo_kerberos">mongo_kerberos</a> must be
-installed. Add to your <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>:</p>
+<p>To configure the MongoDB server to use Kerberos, please refer to the
+<a class="reference external" href="http://docs.mongodb.com/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">server Kerberos documentation</a>.</p>
+<p>To use the Kerberos authentication mechanism with the Ruby MongoDB driver,
+an additional library implementing the Kerberos authenticator -
+<a class="reference external" href="https://rubygems.org/gems/mongo_kerberos">mongo_kerberos</a> - must be
+installed. To do so, add to your <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -465,7 +467,7 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>… and in your application:</p>
+<p>… and add to your application code:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -476,6 +478,15 @@ copy</a>
 </pre></div>
 </div>
 </div>
+<p>When Kerberos authentication is used, the password is not specified in
+driver configuration and it is not sent to the MongoDB server by the driver.
+Instead a Kerberos session must be established externally to the driver
+and this session is used by the driver to prove the user’s identity to
+the server. Establishing this session requires that the host system is
+configured for Kerberos authentication; refer to the <a class="reference external" href="https://web.mit.edu/kerberos/krb5-latest/doc/admin/install_clients.html">Kerberos documentation</a>
+or your operating system documentation for the details.</p>
+<p>If using Kerberos with <strong>MRI</strong>, use the <a class="reference external" href="https://web.mit.edu/kerberos/krb5-latest/doc/user/user_commands/kinit.html">kinit utility</a>
+to establish a Kerberos session.</p>
 <p>To use Kerberos in the Ruby driver with <strong>MRI</strong>, create a ticket-granting
 ticket using <code class="docutils literal notranslate"><span class="pre">kinit</span></code>. See
 <a class="reference external" href="http://linux.die.net/man/1/kinit">this documentation</a> for more
