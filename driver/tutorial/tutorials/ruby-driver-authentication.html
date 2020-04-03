@@ -478,20 +478,15 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>When Kerberos authentication is used, the password is not specified in
-driver configuration and it is not sent to the MongoDB server by the driver.
+<p>If using Kerberos authentication with <strong>MRI</strong>, the password is not specified
+in driver configuration and it is not sent to the MongoDB server by the driver.
 Instead a Kerberos session must be established externally to the driver
 and this session is used by the driver to prove the user’s identity to
 the server. Establishing this session requires that the host system is
 configured for Kerberos authentication; refer to the <a class="reference external" href="https://web.mit.edu/kerberos/krb5-latest/doc/admin/install_clients.html">Kerberos documentation</a>
-or your operating system documentation for the details.</p>
-<p>If using Kerberos with <strong>MRI</strong>, use the <a class="reference external" href="https://web.mit.edu/kerberos/krb5-latest/doc/user/user_commands/kinit.html">kinit utility</a>
+or your operating system documentation for details. Use the <a class="reference external" href="https://web.mit.edu/kerberos/krb5-latest/doc/user/user_commands/kinit.html">kinit utility</a>
 to establish a Kerberos session.</p>
-<p>To use Kerberos in the Ruby driver with <strong>MRI</strong>, create a ticket-granting
-ticket using <code class="docutils literal notranslate"><span class="pre">kinit</span></code>. See
-<a class="reference external" href="http://linux.die.net/man/1/kinit">this documentation</a> for more
-information.</p>
-<p>To use Kerberos in the Ruby driver with <strong>JRuby</strong>, do the following:</p>
+<p>If using Kerberos authentication with <strong>JRuby</strong>, do the following:</p>
 <ol class="arabic simple">
 <li>Specify several system properties so that the underlying GSSAPI Java
 libraries can acquire a Kerberos ticket. See the <a class="reference external" href="http://mongodb.github.io/mongo-java-driver/3.0/driver/reference/connecting/authenticating/#kerberos-gssapi">MongoDB Java
