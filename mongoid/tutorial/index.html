@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Mongoid &mdash; Mongoid Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/index.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="http://docs.mongodb.com/mongoid/" />
+  
+   <link rel="stylesheet" href="_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="_static/css/navbar.min.css" type="text/css" />
+    
+    <script type="text/javascript" src="_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<!-- <link rel="index" title="Index" href="genindex.html" /> -->
+<link rel="search" title="Search" href="search.html" />
+<link rel="top" title="Mongoid Manual" href="#" />
+<link rel="next" title="Getting Started (Sinatra)" href="tutorials/getting-started-sinatra.html" /><script type='text/javascript'>
+   var gptadslots=[];
+   var googletag = googletag || {};
+   googletag.cmd = googletag.cmd || [];
+   (function(){ var gads = document.createElement('script');
+      gads.async = true; gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+   })();
+</script>
+
+<script type="text/javascript">
+   googletag.cmd.push(function() {
+
+      var pathname = location.href;
+      
+      if ( (pathname.indexOf("auth") >= 0) || (pathname.indexOf("security") >= 0) ) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/security', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if ( (pathname.indexOf("crud") >= 0) ||  (pathname.indexOf("query") >= 0) || (pathname.indexOf("insert") >= 0) || (pathname.indexOf("update") >= 0) || (pathname.indexOf("remove") >= 0) || (pathname.indexOf("delete") >= 0) || (pathname.indexOf("aggregation") >= 0) ) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/crud', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("shard") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/sharding', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("replica") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/replication', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("model") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/data-modeling', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("administration") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/support', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("install-mongodb-on-windows") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/install-mongodb-on-windows', [160, 600], 'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("tutorial/getting-started") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/docs_server_gettingstarted', [160, 600], 'mongodb-docs-1').addService(googletag.pubads());
+      } else {
+         //Adslot 1 declaration
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      }
+      googletag.pubads().enableSingleRequest();
+      googletag.pubads().enableAsyncRendering();
+      googletag.enableServices();
+   });
+</script></head>
+<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+     {'gtm.start': new Date().getTime(),event:'gtm.js'}
+   );var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <!-- End Google Tag Manager -->
+<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
+    <script src="_static/navbar.min.js"></script>
+  
+
+  <div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a class="index-link" href="#">Mongoid Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+        
+        
+        master (upcoming)<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        
+          
+          <li class="active">
+          
+            <a href="#" data-path="mongoid/current">
+              
+              master (upcoming)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/7.1">
+              
+              Version 7.1 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/7.0">
+              
+              Version 7.0
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/6.4">
+              
+              Version 6.4
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/6.3">
+              
+              Version 6.3
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/6.2">
+              
+              Version 6.2
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/6.1">
+              
+              Version 6.1
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/5.2">
+              
+              Version 5.2
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+<ul><li class="toctree-l1"><a class="reference internal" href="tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/7.0/api/">API</a></li></ul>
+
+
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="index">
+
+                
+  <div class="bc">
+    
+      
+    
+    
+  </div>
+                
+                  <div class="section" id="mongoid">
+<span id="ruby-mongoid-tutorial"></span><h1>Mongoid<a class="headerlink" href="#mongoid" title="Permalink to this headline">¶</a></h1>
+<p>Mongoid is the officially supported object-document mapper (ODM)
+for MongoDB in Ruby.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/getting-started-rails.html">Getting Started (Rails)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-documents.html">Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-persistence.html">Persistence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-queries.html">Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-relations.html">Associations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-nested-attributes.html">Nested Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-validation.html">Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-indexes.html">Indexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/sharding.html">Sharding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-sessions.html">Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-transactions.html">Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-rails.html">Rails Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/mongoid-upgrade.html">Upgrading Mongoid</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/7.0/api/">API</a></li>
+</ul>
+</div>
+<p>For documentation on Mongoid 3 and 4, see <a class="reference external" href="http://mongoid.github.io">http://mongoid.github.io</a>.</p>
+</div>
+
+                
+    <div id="btnv">
+      <a class="btn-next-text" href="tutorials/getting-started-sinatra.html" title="Next Section: Getting Started (Sinatra)"><span>Getting Started (Sinatra)</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> <div id='mongodb-docs-1'>
+   <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('mongodb-docs-1'); });
+   </script>
+</div>
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+      <div id="rating-panel"></div>
+    
+    <div class="clearfix"></div>
+  </div>
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = [];
+  </script></body>
+</html>

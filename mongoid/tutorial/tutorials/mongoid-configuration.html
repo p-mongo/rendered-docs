@@ -1,0 +1,911 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Configuration &mdash; Mongoid Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/tutorials/mongoid-configuration.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="http://docs.mongodb.com/mongoid/tutorials/mongoid-configuration" />
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Mongoid Manual" href="../index.html" />
+<link rel="next" title="Documents" href="mongoid-documents.html" />
+<link rel="prev" title="Installation" href="mongoid-installation.html" /><script type='text/javascript'>
+   var gptadslots=[];
+   var googletag = googletag || {};
+   googletag.cmd = googletag.cmd || [];
+   (function(){ var gads = document.createElement('script');
+      gads.async = true; gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+   })();
+</script>
+
+<script type="text/javascript">
+   googletag.cmd.push(function() {
+
+      var pathname = location.href;
+      
+      if ( (pathname.indexOf("auth") >= 0) || (pathname.indexOf("security") >= 0) ) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/security', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if ( (pathname.indexOf("crud") >= 0) ||  (pathname.indexOf("query") >= 0) || (pathname.indexOf("insert") >= 0) || (pathname.indexOf("update") >= 0) || (pathname.indexOf("remove") >= 0) || (pathname.indexOf("delete") >= 0) || (pathname.indexOf("aggregation") >= 0) ) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/crud', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("shard") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/sharding', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("replica") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/replication', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("model") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/data-modeling', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("administration") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/support', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("install-mongodb-on-windows") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/install-mongodb-on-windows', [160, 600], 'mongodb-docs-1').addService(googletag.pubads());
+      } else if (pathname.indexOf("tutorial/getting-started") >= 0) {
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org/docs_server_gettingstarted', [160, 600], 'mongodb-docs-1').addService(googletag.pubads());
+      } else {
+         //Adslot 1 declaration
+         gptadslots[1]= googletag.defineSlot('/40039723/docs.mongodb.org', [[160,600],[243,202],[293,244]],'mongodb-docs-1').addService(googletag.pubads());
+      }
+      googletag.pubads().enableSingleRequest();
+      googletag.pubads().enableAsyncRendering();
+      googletag.enableServices();
+   });
+</script></head>
+<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+     {'gtm.start': new Date().getTime(),event:'gtm.js'}
+   );var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <!-- End Google Tag Manager -->
+<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
+    <script src="../_static/navbar.min.js"></script>
+  
+
+  <div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a class="index-link" href="../index.html">Mongoid Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+        
+        
+        master (upcoming)<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        
+          
+          <li class="active">
+          
+            <a href="#" data-path="mongoid/current">
+              
+              master (upcoming)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/7.1">
+              
+              Version 7.1 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/7.0">
+              
+              Version 7.0
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/6.4">
+              
+              Version 6.4
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/6.3">
+              
+              Version 6.3
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/6.2">
+              
+              Version 6.2
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/6.1">
+              
+              Version 6.1
+            </a>
+          </li>
+        
+          
+          <li>
+          
+            <a class="version-selector" href="#" data-path="mongoid/5.2">
+              
+              Version 5.2
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/7.0/api/">API</a></li></ul>
+
+
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="tutorials/mongoid-configuration">
+
+                
+  <div class="bc">
+    
+      
+    
+    
+  </div>
+                
+                  <div class="section" id="configuration">
+<span id="mongoid-configuration"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><a class="reference internal" href="#generating-default-configuration" id="id4">Generating Default Configuration</a></li>
+<li><a class="reference internal" href="#loading-mongoid-configuration" id="id5">Loading Mongoid Configuration</a></li>
+<li><a class="reference internal" href="#configuration-options" id="id6">Mongoid Configuration</a></li>
+<li><a class="reference internal" href="#logging" id="id7">Logging</a></li>
+<li><a class="reference internal" href="#time-zones" id="id8">Time Zones</a></li>
+<li><a class="reference internal" href="#usage-with-forking-servers" id="id9">Usage with Forking Servers</a></li>
+<li><a class="reference internal" href="#development-configuration" id="id10">Development Configuration</a></li>
+</ul>
+</div>
+<p>Mongoid is customarily configured through a <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> file that specifies
+options and clients. The simplest configuration is as follows, which configures
+Mongoid to talk to a MongoDB server at “localhost:27017” and use the database
+named “mongoid”.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
+  <span class="nt">clients</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span>
+      <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongoid</span>
+      <span class="nt">hosts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">localhost:27017</span>
+</pre></div>
+</div>
+</div>
+<p>The top level key in the configuration file, <code class="docutils literal notranslate"><span class="pre">development</span></code> in the above
+example, refers to the environment name which the application is executing in,
+i.e. <code class="docutils literal notranslate"><span class="pre">development</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code> or <code class="docutils literal notranslate"><span class="pre">production</span></code>. The third level key,
+<code class="docutils literal notranslate"><span class="pre">default</span></code> in the above example, refers to the Mongo client name.
+Most applications will use a single client named <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
+<div class="section" id="generating-default-configuration">
+<h2>Generating Default Configuration<a class="headerlink" href="#generating-default-configuration" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Ruby on Rails, you can have Mongoid generate a default
+configuration file for you by running the following command:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span>rails g mongoid:config
+</pre></div>
+</div>
+</div>
+<p>The configuration file will be placed in <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code>.</p>
+<p>If you are not using Ruby on Rails, you can copy the minimal configuration
+given above and save it as <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code>.</p>
+</div>
+<div class="section" id="loading-mongoid-configuration">
+<h2>Loading Mongoid Configuration<a class="headerlink" href="#loading-mongoid-configuration" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Ruby on Rails, Mongoid configuration is automatically loaded
+for the current environment as stored in <code class="docutils literal notranslate"><span class="pre">Rails.env</span></code> when the application
+loads.</p>
+<p>You may need to configure the ORM for your application to be Mongoid by
+adding the following to <code class="docutils literal notranslate"><span class="pre">application.rb</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">orm</span> <span class="ss">:mongoid</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>If you are not using Ruby on Rails, Mongoid configuration must be loaded
+manually. This can be done via the <code class="docutils literal notranslate"><span class="pre">Mongoid.load!</span></code> method, which takes
+the configuration file path as its argument, as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use automatically detected environment name</span>
+<span class="no">Mongoid</span><span class="o">.</span><span class="n">load!</span><span class="p">(</span><span class="s2">&quot;path/to/your/mongoid.yml&quot;</span><span class="p">)</span>
+
+<span class="c1"># Specify environment name manually</span>
+<span class="no">Mongoid</span><span class="o">.</span><span class="n">load!</span><span class="p">(</span><span class="s2">&quot;path/to/your/mongoid.yml&quot;</span><span class="p">,</span> <span class="ss">:production</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>When Mongoid is asked to automatically detect the environment name,
+it does so by examining the following sources, in order:</p>
+<ul class="simple">
+<li>If <code class="docutils literal notranslate"><span class="pre">Rails</span></code> top level constant is defined, <code class="docutils literal notranslate"><span class="pre">Rails.env</span></code>.</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">Sinatra</span></code> top level constant is defined, <code class="docutils literal notranslate"><span class="pre">Sinatra::Base.environment</span></code>.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">RACK_ENV</span></code> environment variable.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">MONGOID_ENV</span></code> environment variable.</li>
+</ul>
+<p>It is also possible to configure Mongoid directly in Ruby, without using
+a configuration file. This configuration style does not support the concept
+of environments - whatever configuration is provided, it is applied to the
+current environment - but it does support defining multiple clients.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">hosts</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">,</span>
+    <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;my_db&#39;</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="n">config</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="ss">:warn</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Mongoid must be configured <em>before</em> any component of it is used or referenced.
+Once a component is used or referenced, changing configuration may not apply
+changes to already instantiated components.</p>
+</div>
+</div>
+<div class="section" id="configuration-options">
+<span id="id1"></span><h2>Mongoid Configuration<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h2>
+<p>The following annotated example <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> demonstrates how Mongoid
+can be configured.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
+  <span class="c1"># Configure available database clients. (required)</span>
+  <span class="nt">clients</span><span class="p">:</span>
+    <span class="c1"># Define the default client. (required)</span>
+    <span class="nt">default</span><span class="p">:</span>
+      <span class="c1"># A uri may be defined for a client:</span>
+      <span class="c1"># uri: &#39;mongodb://user:password@myhost1.mydomain.com:27017/my_db&#39;</span>
+      <span class="c1"># Please see driver documentation for details. Alternatively, you can</span>
+      <span class="c1"># define the following:</span>
+      <span class="c1">#</span>
+      <span class="c1"># Define the name of the default database that Mongoid can connect to.</span>
+      <span class="c1"># (required).</span>
+      <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_db</span>
+      <span class="c1"># Provide the hosts the default client can connect to. Must be an array</span>
+      <span class="c1"># of host:port pairs. (required)</span>
+      <span class="nt">hosts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">myhost1.mydomain.com:27017</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">myhost2.mydomain.com:27017</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">myhost3.mydomain.com:27017</span>
+      <span class="nt">options</span><span class="p">:</span>
+        <span class="c1"># These options are Ruby driver options, documented in</span>
+        <span class="c1"># https://docs.mongodb.com/ruby-driver/current/tutorials/ruby-driver-create-client/</span>
+
+        <span class="c1"># Change the default write concern. (default = { w: 1 })</span>
+        <span class="nt">write</span><span class="p">:</span>
+          <span class="nt">w</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+        <span class="c1"># Change the default read preference. Valid options for mode are: :secondary,</span>
+        <span class="c1"># :secondary_preferred, :primary, :primary_preferred, :nearest</span>
+        <span class="c1"># (default: primary)</span>
+        <span class="nt">read</span><span class="p">:</span>
+          <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:secondary_preferred</span>
+          <span class="nt">tag_sets</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="nt">use</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
+
+        <span class="c1"># The name of the user for authentication.</span>
+        <span class="nt">user</span><span class="p">:</span> <span class="s">&#39;user&#39;</span>
+
+        <span class="c1"># The password of the user for authentication.</span>
+        <span class="nt">password</span><span class="p">:</span> <span class="s">&#39;password&#39;</span>
+
+        <span class="c1"># The user&#39;s database roles.</span>
+        <span class="nt">roles</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="s">&#39;dbOwner&#39;</span>
+
+        <span class="c1"># Change the default authentication mechanism. Valid options are: :scram,</span>
+        <span class="c1"># :mongodb_cr, :mongodb_x509, and :plain. (default on 3.0 is :scram, default</span>
+        <span class="c1"># on 2.4 and 2.6 is :plain)</span>
+        <span class="nt">auth_mech</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:scram</span>
+
+        <span class="c1"># The database or source to authenticate the user against. (default: admin)</span>
+        <span class="nt">auth_source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
+
+        <span class="c1"># Force the driver to connect in a specific way instead of auto-</span>
+        <span class="c1"># discovering. Can be one of: :direct, :replica_set, :sharded. Set to :direct</span>
+        <span class="c1"># when connecting to hidden members of a replica set.</span>
+        <span class="nt">connect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:direct</span>
+
+        <span class="c1"># Change the default time in seconds the server monitors refresh their status</span>
+        <span class="c1"># via ismaster commands. (default: 10)</span>
+        <span class="nt">heartbeat_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+
+        <span class="c1"># The time in seconds for selecting servers for a near read preference. (default: 0.015)</span>
+        <span class="nt">local_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.015</span>
+
+        <span class="c1"># The timeout in seconds for selecting a server for an operation. (default: 30)</span>
+        <span class="nt">server_selection_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+
+        <span class="c1"># The maximum number of connections in the connection pool. (default: 5)</span>
+        <span class="nt">max_pool_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+
+        <span class="c1"># The minimum number of connections in the connection pool. (default: 1)</span>
+        <span class="nt">min_pool_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+        <span class="c1"># The time to wait, in seconds, in the connection pool for a connection</span>
+        <span class="c1"># to be checked in before timing out. (default: 1)</span>
+        <span class="nt">wait_queue_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+        <span class="c1"># The time to wait to establish a connection before timing out, in seconds.</span>
+        <span class="c1"># (default: 10)</span>
+        <span class="nt">connect_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+
+        <span class="c1"># The timeout to wait to execute operations on a socket before raising an error.</span>
+        <span class="c1"># (default: nil)</span>
+        <span class="nt">socket_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+
+        <span class="c1"># The name of the replica set to connect to. Servers provided as seeds that do</span>
+        <span class="c1"># not belong to this replica set will be ignored.</span>
+        <span class="nt">replica_set</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_replica_set</span>
+
+        <span class="c1"># Whether to connect to the servers via ssl. (default: false)</span>
+        <span class="nt">ssl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+        <span class="c1"># The certificate file used to identify the connection against MongoDB.</span>
+        <span class="nt">ssl_cert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/my.cert</span>
+
+        <span class="c1"># The private keyfile used to identify the connection against MongoDB.</span>
+        <span class="c1"># Note that even if the key is stored in the same file as the certificate,</span>
+        <span class="c1"># both need to be explicitly specified.</span>
+        <span class="nt">ssl_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/my.key</span>
+
+        <span class="c1"># A passphrase for the private key.</span>
+        <span class="nt">ssl_key_pass_phrase</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
+
+        <span class="c1"># Whether or not to do peer certification validation. (default: true)</span>
+        <span class="nt">ssl_verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+        <span class="c1"># The file containing a set of concatenated certification authority certifications</span>
+        <span class="c1"># used to validate certs passed from the other end of the connection.</span>
+        <span class="nt">ssl_ca_cert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/ca.cert</span>
+
+        <span class="c1"># Compressors to use. (default is to not use compression)</span>
+        <span class="nt">compressors</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">zlib</span><span class="p p-Indicator">]</span>
+
+  <span class="c1"># Configure Mongoid specific options. (optional)</span>
+  <span class="nt">options</span><span class="p">:</span>
+    <span class="c1"># Include the root model name in json serialization. (default: false)</span>
+    <span class="nt">include_root_in_json</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+    <span class="c1"># Include the _type field in serialization. (default: false)</span>
+    <span class="nt">include_type_for_serialization</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+    <span class="c1"># Preload all models in development, needed when models use</span>
+    <span class="c1"># inheritance. (default: false)</span>
+    <span class="nt">preload_models</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+    <span class="c1"># Raise an error when performing a #find and the document is not found.</span>
+    <span class="c1"># (default: true)</span>
+    <span class="nt">raise_not_found_error</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+    <span class="c1"># Raise an error when defining a scope with the same name as an</span>
+    <span class="c1"># existing method. (default: false)</span>
+    <span class="nt">scope_overwrite_exception</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+    <span class="c1"># Use ActiveSupport&#39;s time zone in time operations instead of</span>
+    <span class="c1"># the Ruby default time zone. See the time zone section below for</span>
+    <span class="c1"># further information. (default: true)</span>
+    <span class="nt">use_activesupport_time_zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+    <span class="c1"># Return stored times as UTC. See the time zone section below for</span>
+    <span class="c1"># further information. Most applications should not use this option.</span>
+    <span class="c1"># (default: false)</span>
+    <span class="nt">use_utc</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+    <span class="c1"># Set the Mongoid and Ruby driver log levels when Mongoid is not using</span>
+    <span class="c1"># Ruby on Rails logger instance. (default: :info)</span>
+    <span class="nt">log_level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:info</span>
+
+    <span class="c1"># Whether to join nested persistence contexts for atomic operations</span>
+    <span class="c1"># to parent contexts by default. (default: false)</span>
+    <span class="nt">join_contexts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+<p>The Ruby driver options may be found in
+<a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/tutorials/ruby-driver-create-client/">the driver documentation</a>.</p>
+</div>
+<div class="section" id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>When configuring logging, it is important to keep in mind that Mongoid
+provides a model layer on top of the MongoDB Ruby driver, and the driver
+dispatches the CRUD operations to the MongoDB deployment. Therefore, some
+of the logging output in an application using Mongoid comes from Mongoid
+itself, and some comes from the driver.</p>
+<p>The Mongo client is a Ruby driver client instance, therefore
+the logger of a Mongo client is the Ruby driver logger, not the Mongoid
+logger. In other words:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ruby driver logger, not Mongoid logger</span>
+<span class="no">Mongoid</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="ss">:default</span><span class="p">)</span><span class="o">.</span><span class="n">logger</span>
+</pre></div>
+</div>
+</div>
+<p>Depending on whether Mongoid is used in a Ruby on Rails application, and how
+both Mongoid and Ruby driver are configured, they may use the same logger
+instance or different instances, potentially with different configurations.</p>
+<div class="section" id="in-ruby-on-rails-application">
+<h3>In Ruby on Rails Application<a class="headerlink" href="#in-ruby-on-rails-application" title="Permalink to this headline">¶</a></h3>
+<p>When used in a Ruby on Rails application, Mongoid by default inherits
+the logger and the log level from Rails, and sets the driver’s logger
+to the same logger instance:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">logger</span> <span class="o">===</span> <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span>
+<span class="c1"># =&gt; true</span>
+
+<span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span> <span class="o">===</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span>
+<span class="c1"># =&gt; true</span>
+</pre></div>
+</div>
+</div>
+<p>To change the log level, use <a class="reference external" href="https://guides.rubyonrails.org/debugging_rails_applications.html#log-levels">standard Rails configuration</a>.
+Place the following in one of environment configuration files, such as
+<code class="docutils literal notranslate"><span class="pre">config/environments/production.rb</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="ss">:debug</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">log_level</span></code> Mongoid <a class="reference external" href="configuration-options">configuration option</a>
+is not used when Mongoid operates in a Rails application, because Mongoid
+inherits Rails’ log level in this case.</p>
+</div>
+<p>To configure either Mongoid or driver logger differently from the Rails logger,
+use an initializer as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">after_initialize</span> <span class="k">do</span>
+    <span class="c1"># Change Mongoid log destination and/or level</span>
+    <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Change driver log destination and/or level</span>
+    <span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is currently no provision in the Ruby standard library <code class="docutils literal notranslate"><span class="pre">Logger</span></code>
+to return the log device (i.e. the <code class="docutils literal notranslate"><span class="pre">IO</span></code> object) that a logger is using.
+To have, for example, Mongoid and/or the Ruby driver log to the
+standard Rails log file (e.g. <code class="docutils literal notranslate"><span class="pre">log/development.log</span></code>) but with a
+different level from standard Rails logger (<code class="docutils literal notranslate"><span class="pre">Rails.logger</span></code>), the
+file must be opened separately and the resulting <code class="docutils literal notranslate"><span class="pre">IO</span></code> object passed to
+the <code class="docutils literal notranslate"><span class="pre">Logger</span></code> constructor.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Since by default Mongoid sets its own logger and the driver’s logger to the
+same instance as the Rails logger, modifying any of the instances affects
+all of them. For example the following changes log level for all three
+loggers, unless the application assigned a separate <code class="docutils literal notranslate"><span class="pre">Logger</span></code> instance
+to <cite>Mongo::Logger.logger`</cite> as described above:</p>
+<div class="last button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="standalone">
+<h3>Standalone<a class="headerlink" href="#standalone" title="Permalink to this headline">¶</a></h3>
+<p>When not loaded in a Ruby on Rails application, Mongoid respects the
+<code class="docutils literal notranslate"><span class="pre">log_level</span></code> top level <a class="reference external" href="configuration-options">configuration option</a>.
+It can be given in the configuration file as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
+  <span class="nt">clients</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span>
+      <span class="c1"># ...</span>
+  <span class="nt">options</span><span class="p">:</span>
+    <span class="nt">log_level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:debug</span>
+</pre></div>
+</div>
+</div>
+<p>… or when configuring Mongoid inline:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="ss">:debug</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>The default log destination in Mongoid 7.1 and higher is standard error.
+The default log destination in Mongoid 7.0 and lower is standard output.
+To change the log destination, create a new logger instance as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>To change the Ruby driver log level or destination:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>To set the driver logger to be the same as the Mongoid logger:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Mongoid does not alter the driver’s logger when running in
+standalone mode.</p>
+</div>
+</div>
+</div>
+<div class="section" id="time-zones">
+<span id="id3"></span><h2>Time Zones<a class="headerlink" href="#time-zones" title="Permalink to this headline">¶</a></h2>
+<p>Ruby has limited time zone support in the standard library. ActiveSupport
+(which Mongoid depends on) offers more comprehensive time zone support.
+Importantly, Ruby and ActiveSupport may be configured with different default
+time zones.</p>
+<p>While a thorough treatment of time zones in Ruby is outside the scope
+of this tutorial, the easiest and most reliable way of achieving correct
+time zone handling is as follows:</p>
+<ol class="arabic simple">
+<li>Set the operating system’s time zone to UTC. For example, on Linux:</li>
+</ol>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span>cp /usr/share/zoneinfo/UTC /etc/localtime
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Set ActiveSupport’s time zone to UTC:</li>
+</ol>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># If using Rails, in application.rb:</span>
+<span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">time_zone</span> <span class="o">=</span> <span class="s1">&#39;UTC&#39;</span>
+<span class="k">end</span>
+
+<span class="c1"># If not using Rails:</span>
+<span class="no">Time</span><span class="o">.</span><span class="n">zone</span> <span class="o">=</span> <span class="s1">&#39;UTC&#39;</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Store and persist all times in UTC. Perform all calculations on times
+in UTC.</li>
+<li>When working with user input in local time, convert such user input to UTC
+times as soon as possible, and then work with the UTC times.</li>
+<li>When rendering or otherwise presenting times, convert them to local time
+after performing all calculations, when actually rendering.</li>
+<li>Date to time (for example, the time when a particular day starts or ends)
+conversions are a common source of errors. Such conversions should generally
+be performed while explicitly specifying the time zone in which the date
+is understood to be.</li>
+</ol>
+<p>Applications using Mongoid should generally configure ActiveSupport’s
+time zone as described above, and then use <code class="docutils literal notranslate"><span class="pre">Time.zone</span></code> rather than <code class="docutils literal notranslate"><span class="pre">Time</span></code>
+(for example, <code class="docutils literal notranslate"><span class="pre">Time.zone.now</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Time.now</span></code>) to invoke the
+ActiveSupport time zone machinery. This also helps achieve correct results
+when the system time zone is not UTC, as is common in development environments.</p>
+<p>Note that MongoDB stores all times in UTC without time zone information.</p>
+<p>Mongoid offers the following time zone-related configuration options:</p>
+<ul>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code>: If true, prefer to work with times using
+<code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code>. Values in fields of type <code class="docutils literal notranslate"><span class="pre">Time</span></code>
+will be returned as instances of <code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code>.
+When parsing times without time zone information (such as when
+mongoizing strings or arrays to time), assume the times are specified
+in ActiveSupport’s time zone. This is the default.</p>
+<p>If false, prefer to work with times using Ruby standard library <code class="docutils literal notranslate"><span class="pre">Time</span></code> class.
+Values in fields of type <code class="docutils literal notranslate"><span class="pre">Time</span></code> will be returned as <code class="docutils literal notranslate"><span class="pre">Time</span></code> instances.
+When parsing times without time zone information, assume the times
+are specified in the Ruby time zone.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code> setting does not affect
+fields of types <code class="docutils literal notranslate"><span class="pre">Date</span></code> or <code class="docutils literal notranslate"><span class="pre">DateTime</span></code>, which use <code class="docutils literal notranslate"><span class="pre">Date</span></code> and
+<code class="docutils literal notranslate"><span class="pre">DateTime</span></code> classes for their values, respectively.</p>
+<p>Also note that Mongoid may still utilize both <code class="docutils literal notranslate"><span class="pre">Time</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code> classes internally, as appropriate,
+regardless of the <code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code> setting.</p>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">use_utc</span></code>:
+If true, times stored in MongoDB will be returned in UTC.
+If false, times stored in MongoDB will be returned in local time
+(as instances of either <code class="docutils literal notranslate"><span class="pre">Time</span></code> or <code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code>,
+respectively in the Ruby default time zone or the ActiveSupport time zone,
+based on the value of <code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code> setting).
+The default is false.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">use_utc</span></code> setting does not affect how times are parsed - parsing
+is always done in local time when the input being parsed does not
+include time zone information. To parse dates in UTC, set the
+system/Ruby or ActiveSupport time zone to UTC (as mentioned above,
+setting all three to UTC leads to the fewest headaches).</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code> to true and <code class="docutils literal notranslate"><span class="pre">Time.zone</span></code> to
+UTC (and using ActiveSupport time machinery for all time-related
+operations) is recommended over setting <code class="docutils literal notranslate"><span class="pre">use_utc</span></code> to true.</p>
+</li>
+</ul>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code> and <code class="docutils literal notranslate"><span class="pre">use_utc</span></code> options do not
+throw away time zone information when it is available. For example, a Time
+instance does have an associated time zone, and this time zone will be used
+even if it is different from ActiveSupport’s configured time zone when
+<code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code> is true.</p>
+</div>
+<div class="section" id="usage-with-forking-servers">
+<h2>Usage with Forking Servers<a class="headerlink" href="#usage-with-forking-servers" title="Permalink to this headline">¶</a></h2>
+<p>When using Mongoid with a forking web server such as Unicorn, worker processes
+need to recreate driver client instances to ensure that background threads
+monitoring the MongoDB cluster are recreated as they are not transfered into
+child processes through forks, and file descriptors and synchronization
+primitives are not shared between workers.</p>
+<p>It is recommended to not perform any operations on Mongoid models in the
+parent process prior to the fork. If the parent process needs to perform
+operations on the MongoDB database, reset all clients in an <code class="docutils literal notranslate"><span class="pre">after_fork</span></code>
+handler which is defined in <code class="docutils literal notranslate"><span class="pre">unicorn.rb</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">after_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
+  <span class="no">Mongoid</span><span class="o">::</span><span class="no">Clients</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">client</span><span class="o">|</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">close</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">reconnect</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>If the parent process does not need to perform operations on the MongoDB
+cluster after child processes are forked, close the client in the parent:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">before_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
+  <span class="no">Mongoid</span><span class="o">.</span><span class="n">disconnect_clients</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p><em>Note:</em> This pattern should be used with Ruby driver version 2.6.2 or higher.
+Previous driver versions did not recreate monitoring threads when reconnecting.</p>
+<p><em>Note:</em> If the parent process performs operations on the Mongo client and
+does not close it, the parent process will continue consuming a connection slot
+in the cluster and will continue monitoring the cluster for as long as the
+parent remains alive.</p>
+</div>
+<div class="section" id="development-configuration">
+<h2>Development Configuration<a class="headerlink" href="#development-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Driver’s default configuration is suitable for production deployment.
+In development, some settings can be adjusted to provide a better developer
+experience.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">:server_selection_timeout</span></code>: set this to a low value (e.g., <code class="docutils literal notranslate"><span class="pre">1</span></code>)</li>
+</ul>
+<p>if your MongoDB server is running locally and you start it manually. A low
+server selection timeout will cause the driver to fail quickly when there is
+no server running.</p>
+<p>Sample recommended development configuration:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
+  <span class="nt">clients</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span>
+      <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongoid</span>
+      <span class="nt">hosts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">localhost:27017</span>
+      <span class="nt">options</span><span class="p">:</span>
+        <span class="nt">server_selection_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="mongoid-installation.html" title="Previous Section: Installation"><span>Installation</span></a>
+      <a class="btn-next-text" href="mongoid-documents.html" title="Next Section: Documents"><span>Documents</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> <div id='mongodb-docs-1'>
+   <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('mongodb-docs-1'); });
+   </script>
+</div>
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+      <div id="rating-panel"></div>
+    
+    <div class="clearfix"></div>
+  </div>
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = [];
+  </script></body>
+</html>

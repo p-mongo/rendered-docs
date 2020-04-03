@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Mongoid::Document
+  
+    &mdash; mongoid-7.1.0
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongoid::Document";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span>
+     &raquo; 
+    <span class="title">Document</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Mongoid::Document
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  <dl>
+      <dt>Extended by:</dt>
+      <dd>ActiveSupport::Concern</dd>
+  </dl>
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="Composable.html" title="Mongoid::Composable (module)">Composable</a></span>, <span class='object_link'><a href="Touchable/InstanceMethods.html" title="Mongoid::Touchable::InstanceMethods (module)">Touchable::InstanceMethods</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongoid/document.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>This is the base module for all domain objects that need to be persisted to the database as documents.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Document/ClassMethods.html" title="Mongoid::Document::ClassMethods (module)">ClassMethods</a></span>
+    
+  
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="ILLEGAL_KEY-constant" class="">ILLEGAL_KEY =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Regex for matching illegal BSON keys. Note that bson 4.1 has the constant BSON::String::ILLEGAL_KEY that should be used instead. When ruby driver 2.3.0 is released and Mongoid can be updated to require &gt;= 2.3.0, the BSON constant can be used.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>6.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(\A[$])|(\.)</span><span class='regexp_end'>/</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Composable.html" title="Mongoid::Composable (module)">Composable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Composable.html#MODULES-constant" title="Mongoid::Composable::MODULES (constant)">Composable::MODULES</a></span>, <span class='object_link'><a href="Composable.html#RESERVED_METHOD_NAMES-constant" title="Mongoid::Composable::RESERVED_METHOD_NAMES (constant)">Composable::RESERVED_METHOD_NAMES</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Interceptable.html" title="Mongoid::Interceptable (module)">Interceptable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Interceptable.html#CALLBACKS-constant" title="Mongoid::Interceptable::CALLBACKS (constant)">Interceptable::CALLBACKS</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Association.html" title="Mongoid::Association (module)">Association</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association.html#MACRO_MAPPING-constant" title="Mongoid::Association::MACRO_MAPPING (constant)">Association::MACRO_MAPPING</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Association/Depending.html" title="Mongoid::Association::Depending (module)">Association::Depending</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association/Depending.html#RESTRICT_ERROR_MSG-constant" title="Mongoid::Association::Depending::RESTRICT_ERROR_MSG (constant)">Association::Depending::RESTRICT_ERROR_MSG</a></span>, <span class='object_link'><a href="Association/Depending.html#STRATEGIES-constant" title="Mongoid::Association::Depending::STRATEGIES (constant)">Association::Depending::STRATEGIES</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Persistable.html" title="Mongoid::Persistable (module)">Persistable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable.html#LIST_OPERATIONS-constant" title="Mongoid::Persistable::LIST_OPERATIONS (constant)">Persistable::LIST_OPERATIONS</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Matchable.html" title="Mongoid::Matchable (module)">Matchable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Matchable.html#MATCHERS-constant" title="Mongoid::Matchable::MATCHERS (constant)">Matchable::MATCHERS</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Fields.html" title="Mongoid::Fields (module)">Fields</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Fields.html#IDS-constant" title="Mongoid::Fields::IDS (constant)">Fields::IDS</a></span>, <span class='object_link'><a href="Fields.html#TYPE_MAPPINGS-constant" title="Mongoid::Fields::TYPE_MAPPINGS (constant)">Fields::TYPE_MAPPINGS</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Atomic.html" title="Mongoid::Atomic (module)">Atomic</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Atomic.html#UPDATES-constant" title="Mongoid::Atomic::UPDATES (constant)">Atomic::UPDATES</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#__selected_fields-instance_method" title="#__selected_fields (instance method)">#<strong>__selected_fields</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute __selected_fields.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new_record-instance_method" title="#new_record (instance method)">#<strong>new_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute new_record.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Stateful.html" title="Mongoid::Stateful (module)">Stateful</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Stateful.html#destroyed=-instance_method" title="Mongoid::Stateful#destroyed= (method)">#destroyed</a></span>, <span class='object_link'><a href="Stateful.html#flagged_for_destroy=-instance_method" title="Mongoid::Stateful#flagged_for_destroy= (method)">#flagged_for_destroy</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Association.html" title="Mongoid::Association (module)">Association</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association.html#_association-instance_method" title="Mongoid::Association#_association (method)">#_association</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Attributes.html" title="Mongoid::Attributes (module)">Attributes</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Attributes.html#attributes-instance_method" title="Mongoid::Attributes#attributes (method)">#attributes</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#as_document-instance_method" title="#as_document (instance method)">#<strong>as_document</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return a hash of the entire document hierarchy from this document and below.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#as_json-instance_method" title="#as_json (instance method)">#<strong>as_json</strong>(options = nil)  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Calls #as_json on the document with additional, Mongoid-specific options.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#becomes-instance_method" title="#becomes (instance method)">#<strong>becomes</strong>(klass)  &#x21d2; Document </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns an instance of the specified class with the attributes, errors, and embedded documents of the current document.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#freeze-instance_method" title="#freeze (instance method)">#<strong>freeze</strong>  &#x21d2; Document </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Freezes the internal attributes of the document.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#frozen%3F-instance_method" title="#frozen? (instance method)">#<strong>frozen?</strong>  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if the document is frozen.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hash-instance_method" title="#hash (instance method)">#<strong>hash</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Delegates to identity in order to allow two records of the same identity to work with something like:.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#identity-instance_method" title="#identity (instance method)">#<strong>identity</strong>  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A Document&#39;s is identified absolutely by its class and database id:.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(attrs = nil)  &#x21d2; Document </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Instantiate a new <code>Document</code>, setting the Document&#39;s attributes if given.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#model_name-instance_method" title="#model_name (instance method)">#<strong>model_name</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the model name of the document.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_a-instance_method" title="#to_a (instance method)">#<strong>to_a</strong>  &#x21d2; Array&lt;Document&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return an array with this <code>Document</code> only in it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_key-instance_method" title="#to_key (instance method)">#<strong>to_key</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the key value for the document.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Touchable/InstanceMethods.html" title="Mongoid::Touchable::InstanceMethods (module)">Touchable::InstanceMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Touchable/InstanceMethods.html#touch-instance_method" title="Mongoid::Touchable::InstanceMethods#touch (method)">#touch</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Composable.html" title="Mongoid::Composable (module)">Composable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Composable.html#include_root_in_jsonx-class_method" title="Mongoid::Composable.include_root_in_jsonx (method)">include_root_in_jsonx</a></span>, <span class='object_link'><a href="Composable.html#prohibited_methods-class_method" title="Mongoid::Composable.prohibited_methods (method)">prohibited_methods</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Equality.html" title="Mongoid::Equality (module)">Equality</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Equality.html#<=>-instance_method" title="Mongoid::Equality#&lt;=&gt; (method)">#<=></a></span>, <span class='object_link'><a href="Equality.html#==-instance_method" title="Mongoid::Equality#== (method)">#==</a></span>, <span class='object_link'><a href="Equality.html#===-instance_method" title="Mongoid::Equality#=== (method)">#===</a></span>, <span class='object_link'><a href="Equality.html#eql%3F-instance_method" title="Mongoid::Equality#eql? (method)">#eql?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Copyable.html" title="Mongoid::Copyable (module)">Copyable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Copyable.html#clone-instance_method" title="Mongoid::Copyable#clone (method)">#clone</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Interceptable.html" title="Mongoid::Interceptable (module)">Interceptable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Interceptable.html#callback_executable%3F-instance_method" title="Mongoid::Interceptable#callback_executable? (method)">#callback_executable?</a></span>, <span class='object_link'><a href="Interceptable.html#in_callback_state%3F-instance_method" title="Mongoid::Interceptable#in_callback_state? (method)">#in_callback_state?</a></span>, <span class='object_link'><a href="Interceptable.html#run_after_callbacks-instance_method" title="Mongoid::Interceptable#run_after_callbacks (method)">#run_after_callbacks</a></span>, <span class='object_link'><a href="Interceptable.html#run_before_callbacks-instance_method" title="Mongoid::Interceptable#run_before_callbacks (method)">#run_before_callbacks</a></span>, <span class='object_link'><a href="Interceptable.html#run_callbacks-instance_method" title="Mongoid::Interceptable#run_callbacks (method)">#run_callbacks</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Validatable.html" title="Mongoid::Validatable (module)">Validatable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Validatable.html#begin_validate-instance_method" title="Mongoid::Validatable#begin_validate (method)">#begin_validate</a></span>, <span class='object_link'><a href="Validatable.html#exit_validate-instance_method" title="Mongoid::Validatable#exit_validate (method)">#exit_validate</a></span>, <span class='object_link'><a href="Validatable.html#performing_validations%3F-instance_method" title="Mongoid::Validatable#performing_validations? (method)">#performing_validations?</a></span>, <span class='object_link'><a href="Validatable.html#read_attribute_for_validation-instance_method" title="Mongoid::Validatable#read_attribute_for_validation (method)">#read_attribute_for_validation</a></span>, <span class='object_link'><a href="Validatable.html#valid%3F-instance_method" title="Mongoid::Validatable#valid? (method)">#valid?</a></span>, <span class='object_link'><a href="Validatable.html#validated%3F-instance_method" title="Mongoid::Validatable#validated? (method)">#validated?</a></span>, <span class='object_link'><a href="Validatable.html#validating_with_query%3F-instance_method" title="Mongoid::Validatable#validating_with_query? (method)">#validating_with_query?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Traversable.html" title="Mongoid::Traversable (module)">Traversable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Traversable.html#_children-instance_method" title="Mongoid::Traversable#_children (method)">#_children</a></span>, <span class='object_link'><a href="Traversable.html#_parent-instance_method" title="Mongoid::Traversable#_parent (method)">#_parent</a></span>, <span class='object_link'><a href="Traversable.html#_parent=-instance_method" title="Mongoid::Traversable#_parent= (method)">#_parent=</a></span>, <span class='object_link'><a href="Traversable.html#_reset_memoized_children!-instance_method" title="Mongoid::Traversable#_reset_memoized_children! (method)">#_reset_memoized_children!</a></span>, <span class='object_link'><a href="Traversable.html#_root-instance_method" title="Mongoid::Traversable#_root (method)">#_root</a></span>, <span class='object_link'><a href="Traversable.html#_root%3F-instance_method" title="Mongoid::Traversable#_root? (method)">#_root?</a></span>, <span class='object_link'><a href="Traversable.html#collect_children-instance_method" title="Mongoid::Traversable#collect_children (method)">#collect_children</a></span>, <span class='object_link'><a href="Traversable.html#flag_children_persisted-instance_method" title="Mongoid::Traversable#flag_children_persisted (method)">#flag_children_persisted</a></span>, <span class='object_link'><a href="Traversable.html#hereditary%3F-instance_method" title="Mongoid::Traversable#hereditary? (method)">#hereditary?</a></span>, <span class='object_link'><a href="Traversable.html#parentize-instance_method" title="Mongoid::Traversable#parentize (method)">#parentize</a></span>, <span class='object_link'><a href="Traversable.html#remove_child-instance_method" title="Mongoid::Traversable#remove_child (method)">#remove_child</a></span>, <span class='object_link'><a href="Traversable.html#reset_persisted_children-instance_method" title="Mongoid::Traversable#reset_persisted_children (method)">#reset_persisted_children</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Cacheable.html" title="Mongoid::Cacheable (module)">Cacheable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Cacheable.html#cache_key-instance_method" title="Mongoid::Cacheable#cache_key (method)">#cache_key</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Stateful.html" title="Mongoid::Stateful (module)">Stateful</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Stateful.html#destroyed%3F-instance_method" title="Mongoid::Stateful#destroyed? (method)">#destroyed?</a></span>, <span class='object_link'><a href="Stateful.html#flagged_for_destroy%3F-instance_method" title="Mongoid::Stateful#flagged_for_destroy? (method)">#flagged_for_destroy?</a></span>, <span class='object_link'><a href="Stateful.html#new_record%3F-instance_method" title="Mongoid::Stateful#new_record? (method)">#new_record?</a></span>, <span class='object_link'><a href="Stateful.html#persisted%3F-instance_method" title="Mongoid::Stateful#persisted? (method)">#persisted?</a></span>, <span class='object_link'><a href="Stateful.html#pushable%3F-instance_method" title="Mongoid::Stateful#pushable? (method)">#pushable?</a></span>, <span class='object_link'><a href="Stateful.html#readonly%3F-instance_method" title="Mongoid::Stateful#readonly? (method)">#readonly?</a></span>, <span class='object_link'><a href="Stateful.html#settable%3F-instance_method" title="Mongoid::Stateful#settable? (method)">#settable?</a></span>, <span class='object_link'><a href="Stateful.html#updateable%3F-instance_method" title="Mongoid::Stateful#updateable? (method)">#updateable?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Shardable.html" title="Mongoid::Shardable (module)">Shardable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Shardable.html#shard_key_fields-instance_method" title="Mongoid::Shardable#shard_key_fields (method)">#shard_key_fields</a></span>, <span class='object_link'><a href="Shardable.html#shard_key_selector-instance_method" title="Mongoid::Shardable#shard_key_selector (method)">#shard_key_selector</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Serializable.html" title="Mongoid::Serializable (module)">Serializable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Serializable.html#serializable_hash-instance_method" title="Mongoid::Serializable#serializable_hash (method)">#serializable_hash</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Selectable.html" title="Mongoid::Selectable (module)">Selectable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Selectable.html#atomic_selector-instance_method" title="Mongoid::Selectable#atomic_selector (method)">#atomic_selector</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Reloadable.html" title="Mongoid::Reloadable (module)">Reloadable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Reloadable.html#reload-instance_method" title="Mongoid::Reloadable#reload (method)">#reload</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Association.html" title="Mongoid::Association (module)">Association</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association.html#association_name-instance_method" title="Mongoid::Association#association_name (method)">#association_name</a></span>, <span class='object_link'><a href="Association.html#embedded%3F-instance_method" title="Mongoid::Association#embedded? (method)">#embedded?</a></span>, <span class='object_link'><a href="Association.html#embedded_many%3F-instance_method" title="Mongoid::Association#embedded_many? (method)">#embedded_many?</a></span>, <span class='object_link'><a href="Association.html#embedded_one%3F-instance_method" title="Mongoid::Association#embedded_one? (method)">#embedded_one?</a></span>, <span class='object_link'><a href="Association.html#referenced_many%3F-instance_method" title="Mongoid::Association#referenced_many? (method)">#referenced_many?</a></span>, <span class='object_link'><a href="Association.html#referenced_one%3F-instance_method" title="Mongoid::Association#referenced_one? (method)">#referenced_one?</a></span>, <span class='object_link'><a href="Association.html#reload_relations-instance_method" title="Mongoid::Association#reload_relations (method)">#reload_relations</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Association/Reflections.html" title="Mongoid::Association::Reflections (module)">Association::Reflections</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association/Reflections.html#reflect_on_all_association-instance_method" title="Mongoid::Association::Reflections#reflect_on_all_association (method)">#reflect_on_all_association</a></span>, <span class='object_link'><a href="Association/Reflections.html#reflect_on_association-instance_method" title="Mongoid::Association::Reflections#reflect_on_association (method)">#reflect_on_association</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Association/Macros.html" title="Mongoid::Association::Macros (module)">Association::Macros</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association/Macros.html#associations-instance_method" title="Mongoid::Association::Macros#associations (method)">#associations</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Association/Depending.html" title="Mongoid::Association::Depending (module)">Association::Depending</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association/Depending.html#apply_delete_dependencies!-instance_method" title="Mongoid::Association::Depending#apply_delete_dependencies! (method)">#apply_delete_dependencies!</a></span>, <span class='object_link'><a href="Association/Depending.html#define_dependency!-class_method" title="Mongoid::Association::Depending.define_dependency! (method)">define_dependency!</a></span>, <span class='object_link'><a href="Association/Depending.html#validate!-class_method" title="Mongoid::Association::Depending.validate! (method)">validate!</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Association/Accessors.html" title="Mongoid::Association::Accessors (module)">Association::Accessors</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association/Accessors.html#__build__-instance_method" title="Mongoid::Association::Accessors#__build__ (method)">#__build__</a></span>, <span class='object_link'><a href="Association/Accessors.html#create_relation-instance_method" title="Mongoid::Association::Accessors#create_relation (method)">#create_relation</a></span>, <span class='object_link'><a href="Association/Accessors.html#reset_relation_criteria-instance_method" title="Mongoid::Association::Accessors#reset_relation_criteria (method)">#reset_relation_criteria</a></span>, <span class='object_link'><a href="Association/Accessors.html#set_relation-instance_method" title="Mongoid::Association::Accessors#set_relation (method)">#set_relation</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Association/Referenced/Syncable.html" title="Mongoid::Association::Referenced::Syncable (module)">Association::Referenced::Syncable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association/Referenced/Syncable.html#_syncable%3F-instance_method" title="Mongoid::Association::Referenced::Syncable#_syncable? (method)">#_syncable?</a></span>, <span class='object_link'><a href="Association/Referenced/Syncable.html#_synced-instance_method" title="Mongoid::Association::Referenced::Syncable#_synced (method)">#_synced</a></span>, <span class='object_link'><a href="Association/Referenced/Syncable.html#_synced%3F-instance_method" title="Mongoid::Association::Referenced::Syncable#_synced? (method)">#_synced?</a></span>, <span class='object_link'><a href="Association/Referenced/Syncable.html#remove_inverse_keys-instance_method" title="Mongoid::Association::Referenced::Syncable#remove_inverse_keys (method)">#remove_inverse_keys</a></span>, <span class='object_link'><a href="Association/Referenced/Syncable.html#update_inverse_keys-instance_method" title="Mongoid::Association::Referenced::Syncable#update_inverse_keys (method)">#update_inverse_keys</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Association/Referenced/CounterCache.html" title="Mongoid::Association::Referenced::CounterCache (module)">Association::Referenced::CounterCache</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association/Referenced/CounterCache.html#define_callbacks!-class_method" title="Mongoid::Association::Referenced::CounterCache.define_callbacks! (method)">define_callbacks!</a></span>, <span class='object_link'><a href="Association/Referenced/CounterCache.html#reset_counters-instance_method" title="Mongoid::Association::Referenced::CounterCache#reset_counters (method)">#reset_counters</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Association/Referenced/AutoSave.html" title="Mongoid::Association::Referenced::AutoSave (module)">Association::Referenced::AutoSave</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Association/Referenced/AutoSave.html#__autosaving__-instance_method" title="Mongoid::Association::Referenced::AutoSave#__autosaving__ (method)">#__autosaving__</a></span>, <span class='object_link'><a href="Association/Referenced/AutoSave.html#autosaved%3F-instance_method" title="Mongoid::Association::Referenced::AutoSave#autosaved? (method)">#autosaved?</a></span>, <span class='object_link'><a href="Association/Referenced/AutoSave.html#changed_for_autosave%3F-instance_method" title="Mongoid::Association::Referenced::AutoSave#changed_for_autosave? (method)">#changed_for_autosave?</a></span>, <span class='object_link'><a href="Association/Referenced/AutoSave.html#define_autosave!-class_method" title="Mongoid::Association::Referenced::AutoSave.define_autosave! (method)">define_autosave!</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable.html" title="Mongoid::Persistable (module)">Persistable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable.html#atomically-instance_method" title="Mongoid::Persistable#atomically (method)">#atomically</a></span>, <span class='object_link'><a href="Persistable.html#fail_due_to_callback!-instance_method" title="Mongoid::Persistable#fail_due_to_callback! (method)">#fail_due_to_callback!</a></span>, <span class='object_link'><a href="Persistable.html#fail_due_to_validation!-instance_method" title="Mongoid::Persistable#fail_due_to_validation! (method)">#fail_due_to_validation!</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Unsettable.html" title="Mongoid::Persistable::Unsettable (module)">Persistable::Unsettable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Unsettable.html#unset-instance_method" title="Mongoid::Persistable::Unsettable#unset (method)">#unset</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Upsertable.html" title="Mongoid::Persistable::Upsertable (module)">Persistable::Upsertable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Upsertable.html#upsert-instance_method" title="Mongoid::Persistable::Upsertable#upsert (method)">#upsert</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Updatable.html" title="Mongoid::Persistable::Updatable (module)">Persistable::Updatable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Updatable.html#update-instance_method" title="Mongoid::Persistable::Updatable#update (method)">#update</a></span>, <span class='object_link'><a href="Persistable/Updatable.html#update!-instance_method" title="Mongoid::Persistable::Updatable#update! (method)">#update!</a></span>, <span class='object_link'><a href="Persistable/Updatable.html#update_attribute-instance_method" title="Mongoid::Persistable::Updatable#update_attribute (method)">#update_attribute</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Settable.html" title="Mongoid::Persistable::Settable (module)">Persistable::Settable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Settable.html#set-instance_method" title="Mongoid::Persistable::Settable#set (method)">#set</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Savable.html" title="Mongoid::Persistable::Savable (module)">Persistable::Savable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Savable.html#save-instance_method" title="Mongoid::Persistable::Savable#save (method)">#save</a></span>, <span class='object_link'><a href="Persistable/Savable.html#save!-instance_method" title="Mongoid::Persistable::Savable#save! (method)">#save!</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Renamable.html" title="Mongoid::Persistable::Renamable (module)">Persistable::Renamable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Renamable.html#rename-instance_method" title="Mongoid::Persistable::Renamable#rename (method)">#rename</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Pushable.html" title="Mongoid::Persistable::Pushable (module)">Persistable::Pushable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Pushable.html#add_to_set-instance_method" title="Mongoid::Persistable::Pushable#add_to_set (method)">#add_to_set</a></span>, <span class='object_link'><a href="Persistable/Pushable.html#push-instance_method" title="Mongoid::Persistable::Pushable#push (method)">#push</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Pullable.html" title="Mongoid::Persistable::Pullable (module)">Persistable::Pullable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Pullable.html#pull-instance_method" title="Mongoid::Persistable::Pullable#pull (method)">#pull</a></span>, <span class='object_link'><a href="Persistable/Pullable.html#pull_all-instance_method" title="Mongoid::Persistable::Pullable#pull_all (method)">#pull_all</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Positional.html" title="Mongoid::Positional (module)">Positional</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Positional.html#positionally-instance_method" title="Mongoid::Positional#positionally (method)">#positionally</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Poppable.html" title="Mongoid::Persistable::Poppable (module)">Persistable::Poppable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Poppable.html#pop-instance_method" title="Mongoid::Persistable::Poppable#pop (method)">#pop</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Logical.html" title="Mongoid::Persistable::Logical (module)">Persistable::Logical</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Logical.html#bit-instance_method" title="Mongoid::Persistable::Logical#bit (method)">#bit</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Incrementable.html" title="Mongoid::Persistable::Incrementable (module)">Persistable::Incrementable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Incrementable.html#inc-instance_method" title="Mongoid::Persistable::Incrementable#inc (method)">#inc</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Destroyable.html" title="Mongoid::Persistable::Destroyable (module)">Persistable::Destroyable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Destroyable.html#destroy-instance_method" title="Mongoid::Persistable::Destroyable#destroy (method)">#destroy</a></span>, <span class='object_link'><a href="Persistable/Destroyable.html#destroy!-instance_method" title="Mongoid::Persistable::Destroyable#destroy! (method)">#destroy!</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Deletable.html" title="Mongoid::Persistable::Deletable (module)">Persistable::Deletable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Deletable.html#delete-instance_method" title="Mongoid::Persistable::Deletable#delete (method)">#delete</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Persistable/Creatable.html" title="Mongoid::Persistable::Creatable (module)">Persistable::Creatable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Persistable/Creatable.html#insert-instance_method" title="Mongoid::Persistable::Creatable#insert (method)">#insert</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Matchable.html" title="Mongoid::Matchable (module)">Matchable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Matchable.html#_matches%3F-instance_method" title="Mongoid::Matchable#_matches? (method)">#_matches?</a></span>, <span class='object_link'><a href="Matchable.html#matcher-class_method" title="Mongoid::Matchable.matcher (method)">matcher</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Fields.html" title="Mongoid::Fields (module)">Fields</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Fields.html#apply_default-instance_method" title="Mongoid::Fields#apply_default (method)">#apply_default</a></span>, <span class='object_link'><a href="Fields.html#apply_defaults-instance_method" title="Mongoid::Fields#apply_defaults (method)">#apply_defaults</a></span>, <span class='object_link'><a href="Fields.html#apply_post_processed_defaults-instance_method" title="Mongoid::Fields#apply_post_processed_defaults (method)">#apply_post_processed_defaults</a></span>, <span class='object_link'><a href="Fields.html#apply_pre_processed_defaults-instance_method" title="Mongoid::Fields#apply_pre_processed_defaults (method)">#apply_pre_processed_defaults</a></span>, <span class='object_link'><a href="Fields.html#attribute_names-instance_method" title="Mongoid::Fields#attribute_names (method)">#attribute_names</a></span>, <span class='object_link'><a href="Fields.html#database_field_name-instance_method" title="Mongoid::Fields#database_field_name (method)">#database_field_name</a></span>, <span class='object_link'><a href="Fields.html#lazy_settable%3F-instance_method" title="Mongoid::Fields#lazy_settable? (method)">#lazy_settable?</a></span>, <span class='object_link'><a href="Fields.html#option-class_method" title="Mongoid::Fields.option (method)">option</a></span>, <span class='object_link'><a href="Fields.html#options-class_method" title="Mongoid::Fields.options (method)">options</a></span>, <span class='object_link'><a href="Fields.html#using_object_ids%3F-instance_method" title="Mongoid::Fields#using_object_ids? (method)">#using_object_ids?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Evolvable.html" title="Mongoid::Evolvable (module)">Evolvable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Evolvable.html#__evolve_object_id__-instance_method" title="Mongoid::Evolvable#__evolve_object_id__ (method)">#__evolve_object_id__</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Attributes.html" title="Mongoid::Attributes (module)">Attributes</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Attributes.html#assign_attributes-instance_method" title="Mongoid::Attributes#assign_attributes (method)">#assign_attributes</a></span>, <span class='object_link'><a href="Attributes.html#attribute_missing%3F-instance_method" title="Mongoid::Attributes#attribute_missing? (method)">#attribute_missing?</a></span>, <span class='object_link'><a href="Attributes.html#attribute_present%3F-instance_method" title="Mongoid::Attributes#attribute_present? (method)">#attribute_present?</a></span>, <span class='object_link'><a href="Attributes.html#attributes_before_type_cast-instance_method" title="Mongoid::Attributes#attributes_before_type_cast (method)">#attributes_before_type_cast</a></span>, <span class='object_link'><a href="Attributes.html#has_attribute%3F-instance_method" title="Mongoid::Attributes#has_attribute? (method)">#has_attribute?</a></span>, <span class='object_link'><a href="Attributes.html#has_attribute_before_type_cast%3F-instance_method" title="Mongoid::Attributes#has_attribute_before_type_cast? (method)">#has_attribute_before_type_cast?</a></span>, <span class='object_link'><a href="Attributes.html#read_attribute-instance_method" title="Mongoid::Attributes#read_attribute (method)">#read_attribute</a></span>, <span class='object_link'><a href="Attributes.html#read_attribute_before_type_cast-instance_method" title="Mongoid::Attributes#read_attribute_before_type_cast (method)">#read_attribute_before_type_cast</a></span>, <span class='object_link'><a href="Attributes.html#remove_attribute-instance_method" title="Mongoid::Attributes#remove_attribute (method)">#remove_attribute</a></span>, <span class='object_link'><a href="Attributes.html#typed_attributes-instance_method" title="Mongoid::Attributes#typed_attributes (method)">#typed_attributes</a></span>, <span class='object_link'><a href="Attributes.html#write_attribute-instance_method" title="Mongoid::Attributes#write_attribute (method)">#write_attribute</a></span>, <span class='object_link'><a href="Attributes.html#write_attributes-instance_method" title="Mongoid::Attributes#write_attributes (method)">#write_attributes</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Attributes/Readonly.html" title="Mongoid::Attributes::Readonly (module)">Attributes::Readonly</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Attributes/Readonly.html#attribute_writable%3F-instance_method" title="Mongoid::Attributes::Readonly#attribute_writable? (method)">#attribute_writable?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Attributes/Processing.html" title="Mongoid::Attributes::Processing (module)">Attributes::Processing</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Attributes/Processing.html#process_attributes-instance_method" title="Mongoid::Attributes::Processing#process_attributes (method)">#process_attributes</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Clients.html" title="Mongoid::Clients (module)">Clients</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Clients.html#clear-class_method" title="Mongoid::Clients.clear (method)">clear</a></span>, <span class='object_link'><a href="Clients.html#clients-class_method" title="Mongoid::Clients.clients (method)">clients</a></span>, <span class='object_link'><a href="Clients.html#default-class_method" title="Mongoid::Clients.default (method)">default</a></span>, <span class='object_link'><a href="Clients.html#disconnect-class_method" title="Mongoid::Clients.disconnect (method)">disconnect</a></span>, <span class='object_link'><a href="Clients.html#set-class_method" title="Mongoid::Clients.set (method)">set</a></span>, <span class='object_link'><a href="Clients.html#with_name-class_method" title="Mongoid::Clients.with_name (method)">with_name</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Clients/Sessions.html" title="Mongoid::Clients::Sessions (module)">Clients::Sessions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Clients/Sessions.html#with_session-instance_method" title="Mongoid::Clients::Sessions#with_session (method)">#with_session</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Clients/Options.html" title="Mongoid::Clients::Options (module)">Clients::Options</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Clients/Options.html#collection-instance_method" title="Mongoid::Clients::Options#collection (method)">#collection</a></span>, <span class='object_link'><a href="Clients/Options.html#collection_name-instance_method" title="Mongoid::Clients::Options#collection_name (method)">#collection_name</a></span>, <span class='object_link'><a href="Clients/Options.html#mongo_client-instance_method" title="Mongoid::Clients::Options#mongo_client (method)">#mongo_client</a></span>, <span class='object_link'><a href="Clients/Options.html#persistence_context-instance_method" title="Mongoid::Clients::Options#persistence_context (method)">#persistence_context</a></span>, <span class='object_link'><a href="Clients/Options.html#with-instance_method" title="Mongoid::Clients::Options#with (method)">#with</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Changeable.html" title="Mongoid::Changeable (module)">Changeable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Changeable.html#changed-instance_method" title="Mongoid::Changeable#changed (method)">#changed</a></span>, <span class='object_link'><a href="Changeable.html#changed%3F-instance_method" title="Mongoid::Changeable#changed? (method)">#changed?</a></span>, <span class='object_link'><a href="Changeable.html#changed_attributes-instance_method" title="Mongoid::Changeable#changed_attributes (method)">#changed_attributes</a></span>, <span class='object_link'><a href="Changeable.html#changes-instance_method" title="Mongoid::Changeable#changes (method)">#changes</a></span>, <span class='object_link'><a href="Changeable.html#children_changed%3F-instance_method" title="Mongoid::Changeable#children_changed? (method)">#children_changed?</a></span>, <span class='object_link'><a href="Changeable.html#move_changes-instance_method" title="Mongoid::Changeable#move_changes (method)">#move_changes</a></span>, <span class='object_link'><a href="Changeable.html#post_persist-instance_method" title="Mongoid::Changeable#post_persist (method)">#post_persist</a></span>, <span class='object_link'><a href="Changeable.html#previous_changes-instance_method" title="Mongoid::Changeable#previous_changes (method)">#previous_changes</a></span>, <span class='object_link'><a href="Changeable.html#remove_change-instance_method" title="Mongoid::Changeable#remove_change (method)">#remove_change</a></span>, <span class='object_link'><a href="Changeable.html#setters-instance_method" title="Mongoid::Changeable#setters (method)">#setters</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Atomic.html" title="Mongoid::Atomic (module)">Atomic</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Atomic.html#add_atomic_pull-instance_method" title="Mongoid::Atomic#add_atomic_pull (method)">#add_atomic_pull</a></span>, <span class='object_link'><a href="Atomic.html#add_atomic_unset-instance_method" title="Mongoid::Atomic#add_atomic_unset (method)">#add_atomic_unset</a></span>, <span class='object_link'><a href="Atomic.html#atomic_array_add_to_sets-instance_method" title="Mongoid::Atomic#atomic_array_add_to_sets (method)">#atomic_array_add_to_sets</a></span>, <span class='object_link'><a href="Atomic.html#atomic_array_pulls-instance_method" title="Mongoid::Atomic#atomic_array_pulls (method)">#atomic_array_pulls</a></span>, <span class='object_link'><a href="Atomic.html#atomic_array_pushes-instance_method" title="Mongoid::Atomic#atomic_array_pushes (method)">#atomic_array_pushes</a></span>, <span class='object_link'><a href="Atomic.html#atomic_attribute_name-instance_method" title="Mongoid::Atomic#atomic_attribute_name (method)">#atomic_attribute_name</a></span>, <span class='object_link'><a href="Atomic.html#atomic_delete_modifier-instance_method" title="Mongoid::Atomic#atomic_delete_modifier (method)">#atomic_delete_modifier</a></span>, <span class='object_link'><a href="Atomic.html#atomic_insert_modifier-instance_method" title="Mongoid::Atomic#atomic_insert_modifier (method)">#atomic_insert_modifier</a></span>, <span class='object_link'><a href="Atomic.html#atomic_path-instance_method" title="Mongoid::Atomic#atomic_path (method)">#atomic_path</a></span>, <span class='object_link'><a href="Atomic.html#atomic_paths-instance_method" title="Mongoid::Atomic#atomic_paths (method)">#atomic_paths</a></span>, <span class='object_link'><a href="Atomic.html#atomic_position-instance_method" title="Mongoid::Atomic#atomic_position (method)">#atomic_position</a></span>, <span class='object_link'><a href="Atomic.html#atomic_pulls-instance_method" title="Mongoid::Atomic#atomic_pulls (method)">#atomic_pulls</a></span>, <span class='object_link'><a href="Atomic.html#atomic_pushes-instance_method" title="Mongoid::Atomic#atomic_pushes (method)">#atomic_pushes</a></span>, <span class='object_link'><a href="Atomic.html#atomic_sets-instance_method" title="Mongoid::Atomic#atomic_sets (method)">#atomic_sets</a></span>, <span class='object_link'><a href="Atomic.html#atomic_unsets-instance_method" title="Mongoid::Atomic#atomic_unsets (method)">#atomic_unsets</a></span>, <span class='object_link'><a href="Atomic.html#atomic_updates-instance_method" title="Mongoid::Atomic#atomic_updates (method)">#atomic_updates</a></span>, <span class='object_link'><a href="Atomic.html#delayed_atomic_pulls-instance_method" title="Mongoid::Atomic#delayed_atomic_pulls (method)">#delayed_atomic_pulls</a></span>, <span class='object_link'><a href="Atomic.html#delayed_atomic_sets-instance_method" title="Mongoid::Atomic#delayed_atomic_sets (method)">#delayed_atomic_sets</a></span>, <span class='object_link'><a href="Atomic.html#delayed_atomic_unsets-instance_method" title="Mongoid::Atomic#delayed_atomic_unsets (method)">#delayed_atomic_unsets</a></span>, <span class='object_link'><a href="Atomic.html#flag_as_destroyed-instance_method" title="Mongoid::Atomic#flag_as_destroyed (method)">#flag_as_destroyed</a></span>, <span class='object_link'><a href="Atomic.html#flagged_destroys-instance_method" title="Mongoid::Atomic#flagged_destroys (method)">#flagged_destroys</a></span>, <span class='object_link'><a href="Atomic.html#process_flagged_destroys-instance_method" title="Mongoid::Atomic#process_flagged_destroys (method)">#process_flagged_destroys</a></span></p>
+
+  
+  
+  
+  
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="__selected_fields=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="__selected_fields-instance_method">
+  
+    #<strong>__selected_fields</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute __selected_fields.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid___selected_fields'>__selected_fields</span>
+  <span class='ivar'>@__selected_fields</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="new_record-instance_method">
+  
+    #<strong>new_record</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute new_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new_record'>new_record</span>
+  <span class='ivar'>@new_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="as_document-instance_method">
+  
+    #<strong>as_document</strong>  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return a hash of the entire document hierarchy from this document and below. Used when the attributes are needed for everything and not just the current document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the full hierarchy.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_as_document'>as_document</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A hash of all attributes in the hierarchy.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+179
+180
+181</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 179</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_as_document'>as_document</span>
+  <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_as_attributes'>as_attributes</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="as_json-instance_method">
+  
+    #<strong>as_json</strong>(options = nil)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Rails 6 changes return value of as_json for non-primitive types such as BSON::ObjectId. In Rails &lt;= 5, as_json returned these as instances of the class. In Rails 6, these are returned serialized to primitive types (e.g. “$oid”=&gt;“5bcfc40bde340b37feda98e9”). See <a href="https://github.com/rails/rails/commit/2e5cb980a448e7f4ab00df6e9ad4c1cc456616aa">github.com/rails/rails/commit/2e5cb980a448e7f4ab00df6e9ad4c1cc456616aa</a> for more information.</p>
+</div>
+  </div>
+
+
+<p>Calls #as_json on the document with additional, Mongoid-specific options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the document as json.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_as_json'>as_json</span><span class='lparen'>(</span><span class='label'>compact:</span> <span class='kw'>true</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:compact</span>
+          <span class="type">(<tt>true</tt>, <tt>false</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Whether to include fields with nil values in the json document.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The document as json.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>5.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+203
+204
+205
+206
+207
+208
+209</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 203</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_as_json'>as_json</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>super</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:compact</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_rv'>rv</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="becomes-instance_method">
+  
+    #<strong>becomes</strong>(klass)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns an instance of the specified class with the attributes, errors, and embedded documents of the current document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Return a subclass document as a superclass instance.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_manager'>manager</span><span class='period'>.</span><span class='id identifier rubyid_becomes'>becomes</span><span class='lparen'>(</span><span class='const'>Person</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>klass</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The class to become.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An instance of the specified class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If the class doesn&#39;t include Mongoid::Document</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 224</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_becomes'>becomes</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>A class which includes Mongoid::Document is expected</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_became'>became</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_clone_document'>clone_document</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid__id'>_id</span> <span class='op'>=</span> <span class='id identifier rubyid__id'>_id</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@changed_attributes</span><span class='comma'>,</span> <span class='id identifier rubyid_changed_attributes'>changed_attributes</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@errors</span><span class='comma'>,</span> <span class='const'>ActiveModel</span><span class='op'>::</span><span class='const'>Errors</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_became'>became</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@messages</span><span class='comma'>,</span> <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='symbol'>:@messages</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@new_record</span><span class='comma'>,</span> <span class='id identifier rubyid_new_record?'>new_record?</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@destroyed</span><span class='comma'>,</span> <span class='id identifier rubyid_destroyed?'>destroyed?</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_changed_attributes'>changed_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_type</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid__type'>_type</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+  <span class='comment'># mark embedded docs as persisted
+</span>  <span class='id identifier rubyid_embedded_relations'>embedded_relations</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_meta'>meta</span><span class='op'>|</span>
+    <span class='id identifier rubyid_without_autobuild'>without_autobuild</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_relation'>relation</span> <span class='op'>=</span> <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+      <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='id identifier rubyid_relation'>relation</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@new_record</span><span class='comma'>,</span> <span class='id identifier rubyid_new_record?'>new_record?</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_became'>became</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="freeze-instance_method">
+  
+    #<strong>freeze</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Freezes the internal attributes of the document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Freeze the document</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_freeze'>freeze</span>
+  <span class='id identifier rubyid_as_attributes'>as_attributes</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span> <span class='kw'>and</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="frozen?-instance_method">
+  
+    #<strong>frozen?</strong>  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if the document is frozen</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Check if frozen</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_frozen?'>frozen?</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True if frozen, else false.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_frozen?'>frozen?</span>
+  <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_frozen?'>frozen?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hash-instance_method">
+  
+    #<strong>hash</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Delegates to identity in order to allow two records of the same identity to work with something like:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='lbracket'>[</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span> <span class='rbracket'>]</span> <span class='op'>&amp;</span>
+<span class='lbracket'>[</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='int'>4</span><span class='rparen'>)</span> <span class='rbracket'>]</span> <span class='comment'># =&gt; [ Person.find(1) ]
+</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the hash.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The hash of the document&#39;s identity.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hash'>hash</span>
+  <span class='id identifier rubyid_identity'>identity</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="identity-instance_method">
+  
+    #<strong>identity</strong>  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>A Document&#39;s is identified absolutely by its class and database id:</p>
+
+<p>Person.first.identity #=&gt; [Person, BSON::ObjectId(&#39;4f775130a04745933a000003&#39;)]</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the identity</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_identity'>identity</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An array containing [document.class, document._id]</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_identity'>identity</span>
+  <span class='lbracket'>[</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__id'>_id</span> <span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(attrs = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Instantiate a new <code>Document</code>, setting the Document&#39;s attributes if given. If no attributes are provided, they will be initialized with an empty <code>Hash</code>.</p>
+
+<p>If a primary key is defined, the document&#39;s id will be set to that key, otherwise it will be set to a fresh <code>BSON::ObjectId</code> string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Create a new document.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sir</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>attrs</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The attributes to set up the document with.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@__parent</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid__building'>_building</span> <span class='kw'>do</span>
+    <span class='ivar'>@new_record</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='ivar'>@attributes</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='id identifier rubyid_apply_pre_processed_defaults'>apply_pre_processed_defaults</span>
+    <span class='id identifier rubyid_apply_default_scoping'>apply_default_scoping</span>
+    <span class='id identifier rubyid_process_attributes'>process_attributes</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='kw'>yield</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_apply_post_processed_defaults'>apply_post_processed_defaults</span>    <span class='comment'># @todo: #2586: Need to have access to parent document in these
+</span>    <span class='comment'>#   callbacks.
+</span>
+    <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='symbol'>:initialize</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid__initialize_callbacks'>_initialize_callbacks</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="model_name-instance_method">
+  
+    #<strong>model_name</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the model name of the document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Return the model name.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_model_name'>model_name</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The model name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.16</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+141
+142
+143</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 141</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_model_name'>model_name</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_model_name'>model_name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_a-instance_method">
+  
+    #<strong>to_a</strong>  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return an array with this <code>Document</code> only in it.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Return the document in an array.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Mongoid::Document (module)">Document</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An array with the document as its only item.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 165</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
+  <span class='lbracket'>[</span> <span class='kw'>self</span> <span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_key-instance_method">
+  
+    #<strong>to_key</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the key value for the document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Return the key.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_to_key'>to_key</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The id of the document or nil if new.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+153
+154
+155</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 153</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_key'>to_key</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_persisted?'>persisted?</span> <span class='op'>||</span> <span class='id identifier rubyid_destroyed?'>destroyed?</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:50:58 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>

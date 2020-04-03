@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Mongoid::Association::Referenced::AutoSave
+  
+    &mdash; mongoid-7.1.0
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongoid::Association::Referenced::AutoSave";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Association.html" title="Mongoid::Association (module)">Association</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Referenced.html" title="Mongoid::Association::Referenced (module)">Referenced</a></span></span>
+     &raquo; 
+    <span class="title">AutoSave</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Mongoid::Association::Referenced::AutoSave
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  <dl>
+      <dt>Extended by:</dt>
+      <dd>ActiveSupport::Concern</dd>
+  </dl>
+  
+  
+  
+  
+
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="../../Association.html" title="Mongoid::Association (module)">Mongoid::Association</a></span></dd>
+  </dl>
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongoid/association/referenced/auto_save.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#define_autosave!-class_method" title="define_autosave! (class method)">.<strong>define_autosave!</strong>(association)  &#x21d2; Class </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Define the autosave method on an association&#39;s owning class for an associated object.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#__autosaving__-instance_method" title="#__autosaving__ (instance method)">#<strong>__autosaving__</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Begin the associated autosave.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#autosaved%3F-instance_method" title="#autosaved? (instance method)">#<strong>autosaved?</strong>  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Used to prevent infinite loops in associated autosaves.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#changed_for_autosave%3F-instance_method" title="#changed_for_autosave? (instance method)">#<strong>changed_for_autosave?</strong>(doc)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Check if there is changes for auto-saving.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="define_autosave!-class_method">
+  
+    .<strong>define_autosave!</strong>(association)  &#x21d2; <tt>Class</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Define the autosave method on an association&#39;s owning class for an associated object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Define the autosave method:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../../Association.html" title="Mongoid::Association (module)">Association</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Referenced.html" title="Mongoid::Association::Referenced (module)">Referenced</a></span></span><span class='op'>::</span><span class='const'>Autosave</span><span class='period'>.</span><span class='id identifier rubyid_define_autosave!'>define_autosave!</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>association</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Association.html" title="Mongoid::Association (module)">Association</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The association for which autosaving is enabled.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The association&#39;s owner class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>7.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/auto_save.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_define_autosave!'>define_autosave!</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_association'>association</span><span class='period'>.</span><span class='id identifier rubyid_inverse_class'>inverse_class</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_klass'>klass</span><span class='op'>|</span>
+    <span class='id identifier rubyid_save_method'>save_method</span> <span class='op'>=</span> <span class='symbol'>:&quot;autosave_documents_for_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_association'>association</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_save_method'>save_method</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_before_callback_halted?'>before_callback_halted?</span>
+        <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_before_callback_halted'>before_callback_halted</span> <span class='op'>=</span> <span class='kw'>false</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid___autosaving__'>__autosaving__</span> <span class='kw'>do</span>
+          <span class='kw'>if</span> <span class='id identifier rubyid_relation'>relation</span> <span class='op'>=</span> <span class='id identifier rubyid_ivar'>ivar</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+            <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_relation'>relation</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>|</span>
+              <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_with'>with</span><span class='lparen'>(</span><span class='id identifier rubyid_persistence_context'>persistence_context</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_d'>d</span><span class='op'>|</span>
+                <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+              <span class='kw'>end</span>
+            <span class='kw'>end</span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_after_save'>after_save</span> <span class='id identifier rubyid_save_method'>save_method</span><span class='comma'>,</span> <span class='label'>unless:</span> <span class='symbol'>:autosaved?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="__autosaving__-instance_method">
+  
+    #<strong>__autosaving__</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Begin the associated autosave.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Begin autosave.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid___autosaving__'>__autosaving__</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.1.3</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/auto_save.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid___autosaving__'>__autosaving__</span>
+  <span class='const'><span class='object_link'><a href="../../Threaded.html" title="Mongoid::Threaded (module)">Threaded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_begin_autosave'><span class='object_link'><a href="../../Threaded.html#begin_autosave-instance_method" title="Mongoid::Threaded#begin_autosave (method)">begin_autosave</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>yield</span>
+<span class='kw'>ensure</span>
+  <span class='const'><span class='object_link'><a href="../../Threaded.html" title="Mongoid::Threaded (module)">Threaded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_exit_autosave'><span class='object_link'><a href="../../Threaded.html#exit_autosave-instance_method" title="Mongoid::Threaded#exit_autosave (method)">exit_autosave</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="autosaved?-instance_method">
+  
+    #<strong>autosaved?</strong>  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Used to prevent infinite loops in associated autosaves.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Is the document autosaved?</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_autosaved?'>autosaved?</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Has the document already been autosaved?</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/auto_save.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_autosaved?'>autosaved?</span>
+  <span class='const'><span class='object_link'><a href="../../Threaded.html" title="Mongoid::Threaded (module)">Threaded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_autosaved?'><span class='object_link'><a href="../../Threaded.html#autosaved%3F-instance_method" title="Mongoid::Threaded#autosaved? (method)">autosaved?</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="changed_for_autosave?-instance_method">
+  
+    #<strong>changed_for_autosave?</strong>(doc)  &#x21d2; <tt><span class='object_link'><a href="../../Boolean.html" title="Mongoid::Boolean (class)">Boolean</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Check if there is changes for auto-saving</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_changed_for_autosave?'>changed_for_autosave?</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Return true if there is changes on self or in</p>
+</div></p>
+      
+      <pre class="example code"><code>autosaved associations.</code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Boolean.html" title="Mongoid::Boolean (class)">Boolean</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.1.3</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/auto_save.rb', line 43</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_changed_for_autosave?'>changed_for_autosave?</span><span class='lparen'>(</span><span class='id identifier rubyid_doc'>doc</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_new_record?'>new_record?</span> <span class='op'>||</span> <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_changed?'>changed?</span> <span class='op'>||</span> <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_marked_for_destruction?'>marked_for_destruction?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:51:06 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>

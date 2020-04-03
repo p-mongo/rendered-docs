@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Mongoid::Matchable
+  
+    &mdash; mongoid-7.1.0
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongoid::Matchable";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (M)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span>
+     &raquo; 
+    <span class="title">Matchable</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Mongoid::Matchable
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  <dl>
+      <dt>Extended by:</dt>
+      <dd>ActiveSupport::Concern</dd>
+  </dl>
+  
+  
+  
+  
+
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="Composable.html" title="Mongoid::Composable (module)">Composable</a></span></dd>
+  </dl>
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongoid/matchable.rb<span class="defines">,<br />
+  lib/mongoid/matchable/eq.rb,<br /> lib/mongoid/matchable/gt.rb,<br /> lib/mongoid/matchable/in.rb,<br /> lib/mongoid/matchable/lt.rb,<br /> lib/mongoid/matchable/ne.rb,<br /> lib/mongoid/matchable/or.rb,<br /> lib/mongoid/matchable/all.rb,<br /> lib/mongoid/matchable/and.rb,<br /> lib/mongoid/matchable/gte.rb,<br /> lib/mongoid/matchable/lte.rb,<br /> lib/mongoid/matchable/nin.rb,<br /> lib/mongoid/matchable/nor.rb,<br /> lib/mongoid/matchable/size.rb,<br /> lib/mongoid/matchable/exists.rb,<br /> lib/mongoid/matchable/regexp.rb,<br /> lib/mongoid/matchable/default.rb,<br /> lib/mongoid/matchable/elem_match.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>This module contains all the behavior for Ruby implementations of MongoDB selectors.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>4.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Matchable/All.html" title="Mongoid::Matchable::All (class)">All</a></span>, <span class='object_link'><a href="Matchable/And.html" title="Mongoid::Matchable::And (class)">And</a></span>, <span class='object_link'><a href="Matchable/Default.html" title="Mongoid::Matchable::Default (class)">Default</a></span>, <span class='object_link'><a href="Matchable/ElemMatch.html" title="Mongoid::Matchable::ElemMatch (class)">ElemMatch</a></span>, <span class='object_link'><a href="Matchable/Eq.html" title="Mongoid::Matchable::Eq (class)">Eq</a></span>, <span class='object_link'><a href="Matchable/Exists.html" title="Mongoid::Matchable::Exists (class)">Exists</a></span>, <span class='object_link'><a href="Matchable/Gt.html" title="Mongoid::Matchable::Gt (class)">Gt</a></span>, <span class='object_link'><a href="Matchable/Gte.html" title="Mongoid::Matchable::Gte (class)">Gte</a></span>, <span class='object_link'><a href="Matchable/In.html" title="Mongoid::Matchable::In (class)">In</a></span>, <span class='object_link'><a href="Matchable/Lt.html" title="Mongoid::Matchable::Lt (class)">Lt</a></span>, <span class='object_link'><a href="Matchable/Lte.html" title="Mongoid::Matchable::Lte (class)">Lte</a></span>, <span class='object_link'><a href="Matchable/Ne.html" title="Mongoid::Matchable::Ne (class)">Ne</a></span>, <span class='object_link'><a href="Matchable/Nin.html" title="Mongoid::Matchable::Nin (class)">Nin</a></span>, <span class='object_link'><a href="Matchable/Nor.html" title="Mongoid::Matchable::Nor (class)">Nor</a></span>, <span class='object_link'><a href="Matchable/Or.html" title="Mongoid::Matchable::Or (class)">Or</a></span>, <span class='object_link'><a href="Matchable/Regexp.html" title="Mongoid::Matchable::Regexp (class)">Regexp</a></span>, <span class='object_link'><a href="Matchable/Size.html" title="Mongoid::Matchable::Size (class)">Size</a></span>
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="MATCHERS-constant" class="">MATCHERS =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Hash lookup for the matcher for a specific operation.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$all</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/All.html" title="Mongoid::Matchable::All (class)">All</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$and</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/And.html" title="Mongoid::Matchable::And (class)">And</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$elemMatch</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/ElemMatch.html" title="Mongoid::Matchable::ElemMatch (class)">ElemMatch</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$eq</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Eq.html" title="Mongoid::Matchable::Eq (class)">Eq</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$exists</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Exists.html" title="Mongoid::Matchable::Exists (class)">Exists</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$gt</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Gt.html" title="Mongoid::Matchable::Gt (class)">Gt</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$gte</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Gte.html" title="Mongoid::Matchable::Gte (class)">Gte</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$in</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/In.html" title="Mongoid::Matchable::In (class)">In</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$lt</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Lt.html" title="Mongoid::Matchable::Lt (class)">Lt</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$lte</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Lte.html" title="Mongoid::Matchable::Lte (class)">Lte</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$ne</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Ne.html" title="Mongoid::Matchable::Ne (class)">Ne</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$nin</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Nin.html" title="Mongoid::Matchable::Nin (class)">Nin</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$nor</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Nor.html" title="Mongoid::Matchable::Nor (class)">Nor</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$or</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Or.html" title="Mongoid::Matchable::Or (class)">Or</a></span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$size</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Matchable/Size.html" title="Mongoid::Matchable::Size (class)">Size</a></span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_with_indifferent_access'>with_indifferent_access</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#matcher-class_method" title="matcher (class method)">.<strong>matcher</strong>(document, key, value)  &#x21d2; Matcher </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the matcher for the supplied key and value.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_matches%3F-instance_method" title="#_matches? (instance method)">#<strong>_matches?</strong>(selector)  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Determines if this document has the attributes to match the supplied MongoDB selector.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="matcher-class_method">
+  
+    .<strong>matcher</strong>(document, key, value)  &#x21d2; <tt>Matcher</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Get the matcher for the supplied key and value. Will determine the class name from the key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the matcher.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Mongoid::Matchable (module)">Matchable</a></span></span><span class='period'>.</span><span class='id identifier rubyid_matcher'>matcher</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$in</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>document</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Document.html" title="Mongoid::Document (module)">Document</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The document to check.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The field name.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>, <tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The value or selector.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Matcher</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The matcher.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0.rc.7</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/matchable.rb', line 117</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_matcher'>matcher</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_matcher'>matcher</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#MATCHERS-constant" title="Mongoid::Matchable::MATCHERS (constant)">MATCHERS</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_matcher'>matcher</span>
+      <span class='id identifier rubyid_matcher'>matcher</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_extract_attribute'>extract_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='const'><span class='object_link'><a href="Matchable/Default.html" title="Mongoid::Matchable::Default (class)">Default</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Matchable/Default.html#initialize-instance_method" title="Mongoid::Matchable::Default#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_extract_attribute'>extract_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_regexp?'>regexp?</span>
+    <span class='const'><span class='object_link'><a href="Matchable/Regexp.html" title="Mongoid::Matchable::Regexp (class)">Regexp</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Matchable/Default.html#initialize-instance_method" title="Mongoid::Matchable::Default#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_extract_attribute'>extract_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>case</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+      <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$or</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Matchable/Or.html" title="Mongoid::Matchable::Or (class)">Or</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Matchable/Default.html#initialize-instance_method" title="Mongoid::Matchable::Default#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
+      <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$and</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Matchable/And.html" title="Mongoid::Matchable::And (class)">And</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Matchable/Default.html#initialize-instance_method" title="Mongoid::Matchable::Default#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
+      <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$nor</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Matchable/Nor.html" title="Mongoid::Matchable::Nor (class)">Nor</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Matchable/Default.html#initialize-instance_method" title="Mongoid::Matchable::Default#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
+      <span class='kw'>else</span> <span class='const'><span class='object_link'><a href="Matchable/Default.html" title="Mongoid::Matchable::Default (class)">Default</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Matchable/Default.html#initialize-instance_method" title="Mongoid::Matchable::Default#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_extract_attribute'>extract_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="_matches?-instance_method">
+  
+    #<strong>_matches?</strong>(selector)  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Determines if this document has the attributes to match the supplied MongoDB selector. Used for matching on embedded associations.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Does the document match?</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid__matches?'>_matches?</span><span class='lparen'>(</span><span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$in</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>selector</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The MongoDB selector.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True if matches, false if not.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/matchable.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid__matches?'>_matches?</span><span class='lparen'>(</span><span class='id identifier rubyid_selector'>selector</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_selector'>selector</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_item'>item</span><span class='op'>|</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$not</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+          <span class='id identifier rubyid_item'>item</span> <span class='op'>=</span> <span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+          <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_matcher'>matcher</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_item'>item</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid__matches?'>_matches?</span><span class='lparen'>(</span><span class='id identifier rubyid_item'>item</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_matcher'>matcher</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='const'>Hash</span><span class='lbracket'>[</span><span class='op'>*</span><span class='id identifier rubyid_item'>item</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid__matches?'>_matches?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='lbracket'>[</span><span class='op'>*</span><span class='id identifier rubyid_item'>item</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_matcher'>matcher</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid__matches?'>_matches?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:50:59 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>

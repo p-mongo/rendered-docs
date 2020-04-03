@@ -1,0 +1,4057 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Mongoid::Criteria
+  
+    &mdash; mongoid-7.1.0
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongoid::Criteria";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span>
+     &raquo; 
+    <span class="title">Criteria</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Mongoid::Criteria
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Mongoid::Criteria</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Enumerable, Inspectable, <span class='object_link'><a href="Clients/Options.html" title="Mongoid::Clients::Options (module)">Mongoid::Clients::Options</a></span>, <span class='object_link'><a href="Clients/Sessions.html" title="Mongoid::Clients::Sessions (module)">Mongoid::Clients::Sessions</a></span>, <span class='object_link'><a href="Contextual.html" title="Mongoid::Contextual (module)">Contextual</a></span>, <span class='object_link'><a href="Criteria/Findable.html" title="Mongoid::Criteria::Findable (module)">Findable</a></span>, <span class='object_link'><a href="Criteria/Includable.html" title="Mongoid::Criteria::Includable (module)">Includable</a></span>, <span class='object_link'><a href="Criteria/Marshalable.html" title="Mongoid::Criteria::Marshalable (module)">Marshalable</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html" title="Mongoid::Criteria::Modifiable (module)">Modifiable</a></span>, <span class='object_link'><a href="Criteria/Options.html" title="Mongoid::Criteria::Options (module)">Options</a></span>, <span class='object_link'><a href="Criteria/Queryable.html" title="Mongoid::Criteria::Queryable (module)">Queryable</a></span>, <span class='object_link'><a href="Criteria/Scopable.html" title="Mongoid::Criteria::Scopable (module)">Scopable</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongoid/criteria.rb<span class="defines">,<br />
+  lib/mongoid/criteria/options.rb,<br /> lib/mongoid/criteria/findable.rb,<br /> lib/mongoid/criteria/scopable.rb,<br /> lib/mongoid/criteria/queryable.rb,<br /> lib/mongoid/criteria/includable.rb,<br /> lib/mongoid/criteria/modifiable.rb,<br /> lib/mongoid/criteria/permission.rb,<br /> lib/mongoid/criteria/marshalable.rb,<br /> lib/mongoid/criteria/queryable/key.rb,<br /> lib/mongoid/criteria/queryable/smash.rb,<br /> lib/mongoid/criteria/queryable/options.rb,<br /> lib/mongoid/criteria/queryable/optional.rb,<br /> lib/mongoid/criteria/queryable/pipeline.rb,<br /> lib/mongoid/criteria/queryable/selector.rb,<br /> lib/mongoid/criteria/queryable/storable.rb,<br /> lib/mongoid/criteria/queryable/macroable.rb,<br /> lib/mongoid/criteria/queryable/mergeable.rb,<br /> lib/mongoid/criteria/queryable/aggregable.rb,<br /> lib/mongoid/criteria/queryable/expandable.rb,<br /> lib/mongoid/criteria/queryable/selectable.rb,<br /> lib/mongoid/criteria/queryable/extensions/set.rb,<br /> lib/mongoid/criteria/queryable/extensions/date.rb,<br /> lib/mongoid/criteria/queryable/extensions/hash.rb,<br /> lib/mongoid/criteria/queryable/extensions/time.rb,<br /> lib/mongoid/criteria/queryable/extensions/array.rb,<br /> lib/mongoid/criteria/queryable/extensions/range.rb,<br /> lib/mongoid/criteria/queryable/extensions/object.rb,<br /> lib/mongoid/criteria/queryable/extensions/regexp.rb,<br /> lib/mongoid/criteria/queryable/extensions/string.rb,<br /> lib/mongoid/criteria/queryable/extensions/symbol.rb,<br /> lib/mongoid/criteria/queryable/extensions/boolean.rb,<br /> lib/mongoid/criteria/queryable/extensions/numeric.rb,<br /> lib/mongoid/criteria/queryable/extensions/date_time.rb,<br /> lib/mongoid/criteria/queryable/extensions/nil_class.rb,<br /> lib/mongoid/criteria/queryable/extensions/big_decimal.rb,<br /> lib/mongoid/criteria/queryable/extensions/time_with_zone.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The <code>Criteria</code> class is the core object needed in Mongoid to retrieve objects from the database. It is a DSL that essentially sets up the selector and options arguments that get passed on to a Mongo::Collection in the Ruby driver. Each method on the <code>Criteria</code> returns self to they can be chained in order to create a readable criterion to be executed against the database.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Criteria/Findable.html" title="Mongoid::Criteria::Findable (module)">Findable</a></span>, <span class='object_link'><a href="Criteria/Includable.html" title="Mongoid::Criteria::Includable (module)">Includable</a></span>, <span class='object_link'><a href="Criteria/Marshalable.html" title="Mongoid::Criteria::Marshalable (module)">Marshalable</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html" title="Mongoid::Criteria::Modifiable (module)">Modifiable</a></span>, <span class='object_link'><a href="Criteria/Options.html" title="Mongoid::Criteria::Options (module)">Options</a></span>, <span class='object_link'><a href="Criteria/Permission.html" title="Mongoid::Criteria::Permission (module)">Permission</a></span>, <span class='object_link'><a href="Criteria/Queryable.html" title="Mongoid::Criteria::Queryable (module)">Queryable</a></span>, <span class='object_link'><a href="Criteria/Scopable.html" title="Mongoid::Criteria::Scopable (module)">Scopable</a></span>
+    
+  
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="CHECK-constant" class="">CHECK =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Static array used to check with method missing - we only need to ever instantiate once.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>4.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='rbracket'>]</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#association-instance_method" title="#association (instance method)">#<strong>association</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute association.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#embedded-instance_method" title="#embedded (instance method)">#<strong>embedded</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute embedded.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#klass-instance_method" title="#klass (instance method)">#<strong>klass</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute klass.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parent_document-instance_method" title="#parent_document (instance method)">#<strong>parent_document</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute parent_document.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Criteria/Modifiable.html" title="Mongoid::Criteria::Modifiable (module)">Modifiable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Modifiable.html#create_attrs-instance_method" title="Mongoid::Criteria::Modifiable#create_attrs (method)">#create_attrs</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#create_attrs+Additional+attributes+to+add+to+the+Document+upon+creation%2E-instance_method" title="Mongoid::Criteria::Modifiable#create_attrs Additional attributes to add to the Document upon creation. (method)">#create_attrs Additional attributes to add to the Document upon creation.</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Criteria/Queryable.html" title="Mongoid::Criteria::Queryable (module)">Queryable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable.html#aliases-instance_method" title="Mongoid::Criteria::Queryable#aliases (method)">#aliases</a></span>, <span class='object_link'><a href="Criteria/Queryable.html#aliases+The+aliases%2E-instance_method" title="Mongoid::Criteria::Queryable#aliases The aliases. (method)">#aliases The aliases.</a></span>, <span class='object_link'><a href="Criteria/Queryable.html#driver-instance_method" title="Mongoid::Criteria::Queryable#driver (method)">#driver</a></span>, <span class='object_link'><a href="Criteria/Queryable.html#driver+The+Mongo+driver+being+used%2E-instance_method" title="Mongoid::Criteria::Queryable#driver The Mongo driver being used. (method)">#driver The Mongo driver being used.</a></span>, <span class='object_link'><a href="Criteria/Queryable.html#serializers-instance_method" title="Mongoid::Criteria::Queryable#serializers (method)">#serializers</a></span>, <span class='object_link'><a href="Criteria/Queryable.html#serializers+The+serializers%2E-instance_method" title="Mongoid::Criteria::Queryable#serializers The serializers. (method)">#serializers The serializers.</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Criteria/Queryable/Optional.html" title="Mongoid::Criteria::Queryable::Optional (module)">Queryable::Optional</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable/Optional.html#options-instance_method" title="Mongoid::Criteria::Queryable::Optional#options (method)">#options</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#options+The+query+options%2E-instance_method" title="Mongoid::Criteria::Queryable::Optional#options The query options. (method)">#options The query options.</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Criteria/Queryable/Aggregable.html" title="Mongoid::Criteria::Queryable::Aggregable (module)">Queryable::Aggregable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable/Aggregable.html#aggregating=-instance_method" title="Mongoid::Criteria::Queryable::Aggregable#aggregating= (method)">#aggregating</a></span>, <span class='object_link'><a href="Criteria/Queryable/Aggregable.html#aggregating+Flag+for+whether+or+not+we+are+aggregating%2E-instance_method" title="Mongoid::Criteria::Queryable::Aggregable#aggregating Flag for whether or not we are aggregating. (method)">#aggregating Flag for whether or not we are aggregating.</a></span>, <span class='object_link'><a href="Criteria/Queryable/Aggregable.html#pipeline-instance_method" title="Mongoid::Criteria::Queryable::Aggregable#pipeline (method)">#pipeline</a></span>, <span class='object_link'><a href="Criteria/Queryable/Aggregable.html#pipeline+The+aggregation+pipeline%2E-instance_method" title="Mongoid::Criteria::Queryable::Aggregable#pipeline The aggregation pipeline. (method)">#pipeline The aggregation pipeline.</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Criteria/Queryable/Mergeable.html" title="Mongoid::Criteria::Queryable::Mergeable (module)">Queryable::Mergeable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable/Mergeable.html#strategy-instance_method" title="Mongoid::Criteria::Queryable::Mergeable#strategy (method)">#strategy</a></span>, <span class='object_link'><a href="Criteria/Queryable/Mergeable.html#strategy+The+name+of+the+current+strategy%2E-instance_method" title="Mongoid::Criteria::Queryable::Mergeable#strategy The name of the current strategy. (method)">#strategy The name of the current strategy.</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#==-instance_method" title="#== (instance method)">#<strong>==</strong>(other)  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns true if the supplied <code>Enumerable</code> or <code>Criteria</code> is equal to the results of this <code>Criteria</code> or the criteria itself.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#as_json-instance_method" title="#as_json (instance method)">#<strong>as_json</strong>(options = nil)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Needed to properly get a criteria back as json.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cache-instance_method" title="#cache (instance method)">#<strong>cache</strong>  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Tells the criteria that the cursor that gets returned needs to be cached.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cached%3F-instance_method" title="#cached? (instance method)">#<strong>cached?</strong>  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Will return true if the cache option has been set.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#documents-instance_method" title="#documents (instance method)">#<strong>documents</strong>  &#x21d2; Array&lt;Document&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the documents from the embedded criteria.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#documents=-instance_method" title="#documents= (instance method)">#<strong>documents=</strong>(docs)  &#x21d2; Array&lt;Document&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set the embedded documents on the criteria.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#embedded%3F-instance_method" title="#embedded? (instance method)">#<strong>embedded?</strong>  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Is the criteria for embedded documents?.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#empty_and_chainable%3F-instance_method" title="#empty_and_chainable? (instance method)">#<strong>empty_and_chainable?</strong>  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Is the criteria an empty but chainable criteria?.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_id-instance_method" title="#extract_id (instance method)">#<strong>extract_id</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Extract a single id from the provided criteria.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extras-instance_method" title="#extras (instance method)">#<strong>extras</strong>(extras)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Adds a criterion to the <code>Criteria</code> that specifies additional options to be passed to the Ruby driver, in the exact format for the driver.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#field_list-instance_method" title="#field_list (instance method)">#<strong>field_list</strong>  &#x21d2; Array&lt;String&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the list of included fields.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#for_js-instance_method" title="#for_js (instance method)">#<strong>for_js</strong>(javascript, scope = {})  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Find documents by the provided javascript and scope.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#freeze-instance_method" title="#freeze (instance method)">#<strong>freeze</strong>  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>When freezing a criteria we need to initialize the context first otherwise the setting of the context on attempted iteration will raise a runtime error.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(klass)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Initialize the new criteria.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#merge-instance_method" title="#merge (instance method)">#<strong>merge</strong>(other)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Merges another object with this <code>Criteria</code> and returns a new criteria.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#merge!-instance_method" title="#merge! (instance method)">#<strong>merge!</strong>(other)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Merge the other criteria into this one.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#none-instance_method" title="#none (instance method)">#<strong>none</strong>  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns a criteria that will always contain zero results and never hits the database.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#only-instance_method" title="#only (instance method)">#<strong>only</strong>(*args)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Overriden to include _type in the fields.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-instance_method" title="#read (instance method)">#<strong>read</strong>(value = nil)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set the read preference for the criteria.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#respond_to%3F-instance_method" title="#respond_to? (instance method)">#<strong>respond_to?</strong>(name, include_private = false)  &#x21d2; true, false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns true if criteria responds to the given method.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_criteria-instance_method" title="#to_criteria (instance method)">#<strong>to_criteria</strong>  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convenience for objects that want to be merged into a criteria.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_proc-instance_method" title="#to_proc (instance method)">#<strong>to_proc</strong>  &#x21d2; Proc </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert the criteria to a proc.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">#<strong>type</strong>(types)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Adds a criterion to the <code>Criteria</code> that specifies a type or an Array of types that must be matched.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#where-instance_method" title="#where (instance method)">#<strong>where</strong>(expression)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This is the general entry point for most MongoDB queries.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#without-instance_method" title="#without (instance method)">#<strong>without</strong>(*args)  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Overriden to exclude _id from the fields.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#without_options-instance_method" title="#without_options (instance method)">#<strong>without_options</strong>  &#x21d2; Criteria </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get a version of this criteria without the options.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Clients/Sessions.html" title="Mongoid::Clients::Sessions (module)">Mongoid::Clients::Sessions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Clients/Sessions.html#with_session-instance_method" title="Mongoid::Clients::Sessions#with_session (method)">#with_session</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Clients/Options.html" title="Mongoid::Clients::Options (module)">Mongoid::Clients::Options</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Clients/Options.html#collection-instance_method" title="Mongoid::Clients::Options#collection (method)">#collection</a></span>, <span class='object_link'><a href="Clients/Options.html#collection_name-instance_method" title="Mongoid::Clients::Options#collection_name (method)">#collection_name</a></span>, <span class='object_link'><a href="Clients/Options.html#mongo_client-instance_method" title="Mongoid::Clients::Options#mongo_client (method)">#mongo_client</a></span>, <span class='object_link'><a href="Clients/Options.html#persistence_context-instance_method" title="Mongoid::Clients::Options#persistence_context (method)">#persistence_context</a></span>, <span class='object_link'><a href="Clients/Options.html#with-instance_method" title="Mongoid::Clients::Options#with (method)">#with</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Scopable.html" title="Mongoid::Criteria::Scopable (module)">Scopable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Scopable.html#apply_default_scope-instance_method" title="Mongoid::Criteria::Scopable#apply_default_scope (method)">#apply_default_scope</a></span>, <span class='object_link'><a href="Criteria/Scopable.html#remove_scoping-instance_method" title="Mongoid::Criteria::Scopable#remove_scoping (method)">#remove_scoping</a></span>, <span class='object_link'><a href="Criteria/Scopable.html#scoped-instance_method" title="Mongoid::Criteria::Scopable#scoped (method)">#scoped</a></span>, <span class='object_link'><a href="Criteria/Scopable.html#scoped%3F-instance_method" title="Mongoid::Criteria::Scopable#scoped? (method)">#scoped?</a></span>, <span class='object_link'><a href="Criteria/Scopable.html#scoping_options-instance_method" title="Mongoid::Criteria::Scopable#scoping_options (method)">#scoping_options</a></span>, <span class='object_link'><a href="Criteria/Scopable.html#scoping_options=-instance_method" title="Mongoid::Criteria::Scopable#scoping_options= (method)">#scoping_options=</a></span>, <span class='object_link'><a href="Criteria/Scopable.html#unscoped-instance_method" title="Mongoid::Criteria::Scopable#unscoped (method)">#unscoped</a></span>, <span class='object_link'><a href="Criteria/Scopable.html#unscoped%3F-instance_method" title="Mongoid::Criteria::Scopable#unscoped? (method)">#unscoped?</a></span>, <span class='object_link'><a href="Criteria/Scopable.html#with_default_scope-instance_method" title="Mongoid::Criteria::Scopable#with_default_scope (method)">#with_default_scope</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Modifiable.html" title="Mongoid::Criteria::Modifiable (module)">Modifiable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Modifiable.html#build-instance_method" title="Mongoid::Criteria::Modifiable#build (method)">#build</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#create-instance_method" title="Mongoid::Criteria::Modifiable#create (method)">#create</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#create!-instance_method" title="Mongoid::Criteria::Modifiable#create! (method)">#create!</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#create_with-instance_method" title="Mongoid::Criteria::Modifiable#create_with (method)">#create_with</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#find_or_create_by-instance_method" title="Mongoid::Criteria::Modifiable#find_or_create_by (method)">#find_or_create_by</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#find_or_create_by!-instance_method" title="Mongoid::Criteria::Modifiable#find_or_create_by! (method)">#find_or_create_by!</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#find_or_initialize_by-instance_method" title="Mongoid::Criteria::Modifiable#find_or_initialize_by (method)">#find_or_initialize_by</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#first_or_create-instance_method" title="Mongoid::Criteria::Modifiable#first_or_create (method)">#first_or_create</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#first_or_create!-instance_method" title="Mongoid::Criteria::Modifiable#first_or_create! (method)">#first_or_create!</a></span>, <span class='object_link'><a href="Criteria/Modifiable.html#first_or_initialize-instance_method" title="Mongoid::Criteria::Modifiable#first_or_initialize (method)">#first_or_initialize</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Marshalable.html" title="Mongoid::Criteria::Marshalable (module)">Marshalable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Marshalable.html#marshal_dump-instance_method" title="Mongoid::Criteria::Marshalable#marshal_dump (method)">#marshal_dump</a></span>, <span class='object_link'><a href="Criteria/Marshalable.html#marshal_load-instance_method" title="Mongoid::Criteria::Marshalable#marshal_load (method)">#marshal_load</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Includable.html" title="Mongoid::Criteria::Includable (module)">Includable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Includable.html#includes-instance_method" title="Mongoid::Criteria::Includable#includes (method)">#includes</a></span>, <span class='object_link'><a href="Criteria/Includable.html#inclusions-instance_method" title="Mongoid::Criteria::Includable#inclusions (method)">#inclusions</a></span>, <span class='object_link'><a href="Criteria/Includable.html#inclusions=-instance_method" title="Mongoid::Criteria::Includable#inclusions= (method)">#inclusions=</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Findable.html" title="Mongoid::Criteria::Findable (module)">Findable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Findable.html#execute_or_raise-instance_method" title="Mongoid::Criteria::Findable#execute_or_raise (method)">#execute_or_raise</a></span>, <span class='object_link'><a href="Criteria/Findable.html#find-instance_method" title="Mongoid::Criteria::Findable#find (method)">#find</a></span>, <span class='object_link'><a href="Criteria/Findable.html#for_ids-instance_method" title="Mongoid::Criteria::Findable#for_ids (method)">#for_ids</a></span>, <span class='object_link'><a href="Criteria/Findable.html#multiple_from_db-instance_method" title="Mongoid::Criteria::Findable#multiple_from_db (method)">#multiple_from_db</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Queryable/Optional.html" title="Mongoid::Criteria::Queryable::Optional (module)">Queryable::Optional</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable/Optional.html#ascending-instance_method" title="Mongoid::Criteria::Queryable::Optional#ascending (method)">#ascending</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#batch_size-instance_method" title="Mongoid::Criteria::Queryable::Optional#batch_size (method)">#batch_size</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#collation-instance_method" title="Mongoid::Criteria::Queryable::Optional#collation (method)">#collation</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#comment-instance_method" title="Mongoid::Criteria::Queryable::Optional#comment (method)">#comment</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#cursor_type-instance_method" title="Mongoid::Criteria::Queryable::Optional#cursor_type (method)">#cursor_type</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#descending-instance_method" title="Mongoid::Criteria::Queryable::Optional#descending (method)">#descending</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#forwardables-class_method" title="Mongoid::Criteria::Queryable::Optional.forwardables (method)">forwardables</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#hint-instance_method" title="Mongoid::Criteria::Queryable::Optional#hint (method)">#hint</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#limit-instance_method" title="Mongoid::Criteria::Queryable::Optional#limit (method)">#limit</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#max_scan-instance_method" title="Mongoid::Criteria::Queryable::Optional#max_scan (method)">#max_scan</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#max_time_ms-instance_method" title="Mongoid::Criteria::Queryable::Optional#max_time_ms (method)">#max_time_ms</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#no_timeout-instance_method" title="Mongoid::Criteria::Queryable::Optional#no_timeout (method)">#no_timeout</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#order_by-instance_method" title="Mongoid::Criteria::Queryable::Optional#order_by (method)">#order_by</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#reorder-instance_method" title="Mongoid::Criteria::Queryable::Optional#reorder (method)">#reorder</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#skip-instance_method" title="Mongoid::Criteria::Queryable::Optional#skip (method)">#skip</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#slice-instance_method" title="Mongoid::Criteria::Queryable::Optional#slice (method)">#slice</a></span>, <span class='object_link'><a href="Criteria/Queryable/Optional.html#snapshot-instance_method" title="Mongoid::Criteria::Queryable::Optional#snapshot (method)">#snapshot</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Queryable/Macroable.html" title="Mongoid::Criteria::Queryable::Macroable (module)">Queryable::Macroable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable/Macroable.html#key-instance_method" title="Mongoid::Criteria::Queryable::Macroable#key (method)">#key</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Selectable.html" title="Mongoid::Selectable (module)">Selectable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Selectable.html#atomic_selector-instance_method" title="Mongoid::Selectable#atomic_selector (method)">#atomic_selector</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Queryable/Aggregable.html" title="Mongoid::Criteria::Queryable::Aggregable (module)">Queryable::Aggregable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable/Aggregable.html#aggregating%3F-instance_method" title="Mongoid::Criteria::Queryable::Aggregable#aggregating? (method)">#aggregating?</a></span>, <span class='object_link'><a href="Criteria/Queryable/Aggregable.html#group-instance_method" title="Mongoid::Criteria::Queryable::Aggregable#group (method)">#group</a></span>, <span class='object_link'><a href="Criteria/Queryable/Aggregable.html#project-instance_method" title="Mongoid::Criteria::Queryable::Aggregable#project (method)">#project</a></span>, <span class='object_link'><a href="Criteria/Queryable/Aggregable.html#unwind-instance_method" title="Mongoid::Criteria::Queryable::Aggregable#unwind (method)">#unwind</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Queryable/Mergeable.html" title="Mongoid::Criteria::Queryable::Mergeable (module)">Queryable::Mergeable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable/Mergeable.html#intersect-instance_method" title="Mongoid::Criteria::Queryable::Mergeable#intersect (method)">#intersect</a></span>, <span class='object_link'><a href="Criteria/Queryable/Mergeable.html#override-instance_method" title="Mongoid::Criteria::Queryable::Mergeable#override (method)">#override</a></span>, <span class='object_link'><a href="Criteria/Queryable/Mergeable.html#reset_strategies!-instance_method" title="Mongoid::Criteria::Queryable::Mergeable#reset_strategies! (method)">#reset_strategies!</a></span>, <span class='object_link'><a href="Criteria/Queryable/Mergeable.html#union-instance_method" title="Mongoid::Criteria::Queryable::Mergeable#union (method)">#union</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Criteria/Queryable/Storable.html" title="Mongoid::Criteria::Queryable::Storable (module)">Queryable::Storable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Criteria/Queryable/Storable.html#add_field_expression-instance_method" title="Mongoid::Criteria::Queryable::Storable#add_field_expression (method)">#add_field_expression</a></span>, <span class='object_link'><a href="Criteria/Queryable/Storable.html#add_logical_operator_expression-instance_method" title="Mongoid::Criteria::Queryable::Storable#add_logical_operator_expression (method)">#add_logical_operator_expression</a></span>, <span class='object_link'><a href="Criteria/Queryable/Storable.html#add_one_expression-instance_method" title="Mongoid::Criteria::Queryable::Storable#add_one_expression (method)">#add_one_expression</a></span>, <span class='object_link'><a href="Criteria/Queryable/Storable.html#add_operator_expression-instance_method" title="Mongoid::Criteria::Queryable::Storable#add_operator_expression (method)">#add_operator_expression</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Contextual.html" title="Mongoid::Contextual (module)">Contextual</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Contextual.html#context-instance_method" title="Mongoid::Contextual#context (method)">#context</a></span></p>
+
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(klass)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Initialize the new criteria.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Init the new criteria.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Band</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>klass</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The model class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+200
+201
+202
+203
+204
+205</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 200</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
+  <span class='ivar'>@klass</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span>
+  <span class='ivar'>@embedded</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@none</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>?</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_aliased_fields'>aliased_fields</span><span class='comma'>,</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+<div id="method_missing_details" class="method_details_list">
+  <h2>Dynamic Method Handling</h2>
+  <p class="notice this">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+  </p>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="method_missing-instance_method">
+  
+    #<strong>method_missing</strong>(name, *args, &amp;block)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Used for chaining <code>Criteria</code> scopes together in the for of class methods on the <code>Document</code> the criteria is for.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Handle method missing.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The method name.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The arguments.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The result of the method call.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 502</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:with_scope</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>elsif</span> <span class='const'><span class='object_link'><a href="#CHECK-constant" title="Mongoid::Criteria::CHECK (constant)">CHECK</a></span></span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'><span class='object_link'><a href="#respond_to%3F-instance_method" title="Mongoid::Criteria#respond_to? (method)">respond_to?</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_entries'>entries</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>super</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="association=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="association-instance_method">
+  
+    #<strong>association</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute association.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_association'>association</span>
+  <span class='ivar'>@association</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="embedded=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="embedded-instance_method">
+  
+    #<strong>embedded</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute embedded.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_embedded'>embedded</span>
+  <span class='ivar'>@embedded</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="klass=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="klass-instance_method">
+  
+    #<strong>klass</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute klass.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_klass'>klass</span>
+  <span class='ivar'>@klass</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="parent_document=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="parent_document-instance_method">
+  
+    #<strong>parent_document</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute parent_document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parent_document'>parent_document</span>
+  <span class='ivar'>@parent_document</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="==-instance_method">
+  
+    #<strong>==</strong>(other)  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>This will force a database load when called if an enumerable is passed.</p>
+</div>
+  </div>
+
+
+<p>Returns true if the supplied <code>Enumerable</code> or <code>Criteria</code> is equal to the results of this <code>Criteria</code> or the criteria itself.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The other <code>Enumerable</code> or <code>Criteria</code> to compare to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If the objects are equal.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>super</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:selector</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_entries'>entries</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="as_json-instance_method">
+  
+    #<strong>as_json</strong>(options = nil)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Needed to properly get a criteria back as json</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the criteria as json.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sir</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_as_json'>as_json</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options to pass through to the serializer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The JSON string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_as_json'>as_json</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_entries'>entries</span><span class='period'>.</span><span class='id identifier rubyid_as_json'>as_json</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cache-instance_method">
+  
+    #<strong>cache</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Tells the criteria that the cursor that gets returned needs to be cached. This is so multiple iterations don&#39;t hit the database multiple times, however this is not advisable when working with large data sets as the entire results will get stored in memory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Flag the criteria as cached.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The cloned criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cache'>cache</span>
+  <span class='id identifier rubyid_crit'>crit</span> <span class='op'>=</span> <span class='id identifier rubyid_clone'>clone</span>
+  <span class='id identifier rubyid_crit'>crit</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_crit'>crit</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cached?-instance_method">
+  
+    #<strong>cached?</strong>  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Will return true if the cache option has been set.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Is the criteria cached?</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_cached?'>cached?</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If the criteria is flagged as cached.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cached?'>cached?</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:cache</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="documents-instance_method">
+  
+    #<strong>documents</strong>  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Document.html" title="Mongoid::Document (module)">Document</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the documents from the embedded criteria.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the documents.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Document.html" title="Mongoid::Document (module)">Document</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The documents.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_documents'>documents</span>
+  <span class='ivar'>@documents</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="documents=-instance_method">
+  
+    #<strong>documents=</strong>(docs)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Document.html" title="Mongoid::Document (module)">Document</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set the embedded documents on the criteria.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Set the documents.</p>
+</div></p>
+      
+      <pre class="example code"><code></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>docs</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Document.html" title="Mongoid::Document (module)">Document</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The embedded documents.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Document.html" title="Mongoid::Document (module)">Document</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The embedded documents.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_documents='>documents=</span><span class='lparen'>(</span><span class='id identifier rubyid_docs'>docs</span><span class='rparen'>)</span>
+  <span class='ivar'>@documents</span> <span class='op'>=</span> <span class='id identifier rubyid_docs'>docs</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="embedded?-instance_method">
+  
+    #<strong>embedded?</strong>  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Is the criteria for embedded documents?</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Is the criteria for embedded documents?</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_embedded?'>embedded?</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If the criteria is embedded.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 128</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_embedded?'>embedded?</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@embedded</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="empty_and_chainable?-instance_method">
+  
+    #<strong>empty_and_chainable?</strong>  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Is the criteria an empty but chainable criteria?</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Is the criteria a none criteria?</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_empty_and_chainable?'>empty_and_chainable?</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If the criteria is a none.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>4.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+274
+275
+276</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 274</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_empty_and_chainable?'>empty_and_chainable?</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@none</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_id-instance_method">
+  
+    #<strong>extract_id</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Extract a single id from the provided criteria. Could be in an $and query or a straight _id query.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Extract the id.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_extract_id'>extract_id</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The id.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+141
+142
+143</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 141</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_id'>extract_id</span>
+  <span class='id identifier rubyid_selector'>selector</span><span class='period'>.</span><span class='id identifier rubyid_extract_id'>extract_id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extras-instance_method">
+  
+    #<strong>extras</strong>(extras)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Adds a criterion to the <code>Criteria</code> that specifies additional options to be passed to the Ruby driver, in the exact format for the driver.</p>
+
+<p>criteria.extras(:limit =&gt; 20, :skip =&gt; 40)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Add extra params to the criteria.</p>
+</div></p>
+      
+      <pre class="example code"><code></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>extras</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The extra driver options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The cloned criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158
+159
+160</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extras'>extras</span><span class='lparen'>(</span><span class='id identifier rubyid_extras'>extras</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_crit'>crit</span> <span class='op'>=</span> <span class='id identifier rubyid_clone'>clone</span>
+  <span class='id identifier rubyid_crit'>crit</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_extras'>extras</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_crit'>crit</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="field_list-instance_method">
+  
+    #<strong>field_list</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the list of included fields.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the field list.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_field_list'>field_list</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The fields.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170
+171
+172
+173
+174
+175
+176</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 170</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_field_list'>field_list</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:fields</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:fields</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_type</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+  <span class='kw'>else</span>
+    <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="for_js-instance_method">
+  
+    #<strong>for_js</strong>(javascript, scope = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Find documents by the provided javascript and scope. Uses a $where but is different from <tt>Criteria#where</tt> in that it will pass a code object to the query instead of a pure string. Safe against Javascript injection attacks.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Find by javascript.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'>Band</span><span class='period'>.</span><span class='id identifier rubyid_for_js'>for_js</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>this.name = param</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>param:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Tool</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>javascript</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The javascript to execute in the $where.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>scope</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The scope for the code.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+439
+440
+441</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 439</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_for_js'>for_js</span><span class='lparen'>(</span><span class='id identifier rubyid_javascript'>javascript</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_js_query'>js_query</span><span class='lparen'>(</span><span class='const'>BSON</span><span class='op'>::</span><span class='const'>CodeWithScope</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_javascript'>javascript</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="freeze-instance_method">
+  
+    #<strong>freeze</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>When freezing a criteria we need to initialize the context first otherwise the setting of the context on attempted iteration will raise a runtime error.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Freeze the criteria.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The frozen criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 188</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_freeze'>freeze</span>
+  <span class='id identifier rubyid_context'>context</span> <span class='kw'>and</span> <span class='id identifier rubyid_inclusions'>inclusions</span> <span class='kw'>and</span> <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="merge-instance_method">
+  
+    #<strong>merge</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Merges another object with this <code>Criteria</code> and returns a new criteria. The other object may be a <code>Criteria</code> or a <code>Hash</code>. This is used to combine multiple scopes together, where a chained scope situation may be desired.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Merge the criteria with another criteria.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteri'>criteri</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_other_criteria'>other_criteria</span><span class='rparen'>)</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Merge the criteria with a hash. The hash must contain a klass</p>
+</div></p>
+      
+      <pre class="example code"><code>key and the key/value pairs correspond to method names/args.
+
+criteria.merge({
+  klass: Band,
+  where: { name: &quot;Depeche Mode&quot; },
+  order_by: { name: 1 }
+})</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The other criterion to merge with.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A cloned self.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+227
+228
+229
+230
+231</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 227</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_crit'>crit</span> <span class='op'>=</span> <span class='id identifier rubyid_clone'>clone</span>
+  <span class='id identifier rubyid_crit'>crit</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_crit'>crit</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="merge!-instance_method">
+  
+    #<strong>merge!</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Merge the other criteria into this one.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Merge another criteria into this criteria.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bob</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The criteria to merge in.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The merged criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+243
+244
+245
+246
+247
+248
+249
+250
+251</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 243</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_criteria'>criteria</span> <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_to_criteria'>to_criteria</span>
+  <span class='id identifier rubyid_selector'>selector</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_selector'>selector</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span> <span class='op'>=</span> <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span> <span class='kw'>unless</span> <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scoping_options'>scoping_options</span> <span class='op'>=</span> <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_scoping_options'>scoping_options</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_inclusions'>inclusions</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_inclusions'>inclusions</span> <span class='op'>+</span> <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_inclusions'>inclusions</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="none-instance_method">
+  
+    #<strong>none</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a criteria that will always contain zero results and never hits the database.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Return a none criteria.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_none'>none</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The none criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>4.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+262
+263
+264</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 262</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_none'>none</span>
+  <span class='ivar'>@none</span> <span class='op'>=</span> <span class='kw'>true</span> <span class='kw'>and</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="only-instance_method">
+  
+    #<strong>only</strong>(*args)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Overriden to include _type in the fields.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Limit the fields returned from the database.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'>Band</span><span class='period'>.</span><span class='id identifier rubyid_only'>only</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Symbol&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The names of the fields.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The cloned criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 288</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_only'>only</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_clone'>clone</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>&amp;</span> <span class='const'><span class='object_link'><a href="Fields.html" title="Mongoid::Fields (module)">Fields</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Fields.html#IDS-constant" title="Mongoid::Fields::IDS (constant)">IDS</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_unshift'>unshift</span><span class='lparen'>(</span><span class='symbol'>:_id</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_hereditary?'>hereditary?</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='symbol'>:_type</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read-instance_method">
+  
+    #<strong>read</strong>(value = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set the read preference for the criteria.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Set the read preference.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>mode:</span> <span class='symbol'>:primary_preferred</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The mode preference.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The cloned criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>5.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+311
+312
+313
+314
+315</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 311</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_clone'>clone</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_criteria'>criteria</span><span class='op'>|</span>
+    <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='label'>read:</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="respond_to?-instance_method">
+  
+    #<strong>respond_to?</strong>(name, include_private = false)  &#x21d2; <tt>true</tt>, <tt>false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns true if criteria responds to the given method.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Does the criteria respond to the method?</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_crtiteria'>crtiteria</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:each</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the class method on the <code>Document</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>include_private</span>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to include privates.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If the criteria responds to the method.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+341
+342
+343</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 341</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_include_private'>include_private</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='kw'>super</span> <span class='op'>||</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#CHECK-constant" title="Mongoid::Criteria::CHECK (constant)">CHECK</a></span></span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_include_private'>include_private</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_criteria-instance_method">
+  
+    #<strong>to_criteria</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convenience for objects that want to be merged into a criteria.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Convert to a criteria.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_to_criteria'>to_criteria</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>self.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+355
+356
+357</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 355</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_criteria'>to_criteria</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_proc-instance_method">
+  
+    #<strong>to_proc</strong>  &#x21d2; <tt>Proc</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert the criteria to a proc.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Convert the criteria to a proc.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_to_proc'>to_proc</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Proc</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The wrapped criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+367
+368
+369</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 367</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_proc'>to_proc</span>
+  <span class='tlambda'>-&gt;</span><span class='tlambeg'>{</span> <span class='kw'>self</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="type-instance_method">
+  
+    #<strong>type</strong>(types)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Adds a criterion to the <code>Criteria</code> that specifies a type or an Array of types that must be matched.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Match only specific models.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Browser</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Firefox</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Browser</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>types</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The types to match against.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The cloned criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+381
+382
+383</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 381</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_any_in'>any_in</span><span class='lparen'>(</span><span class='label'>_type:</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="where-instance_method">
+  
+    #<strong>where</strong>(expression)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>This is the general entry point for most MongoDB queries. This either creates a standard field: value selection, and expanded selection with the use of hash methods, or a $where selection if a string is provided.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Add a standard selection.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>syd</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Add a javascript selection.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>this.name == &#39;syd&#39;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expression</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The javascript or standard selection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The cloned selectable.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>UnsupportedJavascript</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If provided a string and the criteria is embedded.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+403
+404
+405
+406
+407
+408</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 403</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_expression'>expression</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_embedded?'>embedded?</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Errors/UnsupportedJavascript.html" title="Mongoid::Errors::UnsupportedJavascript (class)">UnsupportedJavascript</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Errors/UnsupportedJavascript.html#initialize-instance_method" title="Mongoid::Errors::UnsupportedJavascript#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="without-instance_method">
+  
+    #<strong>without</strong>(*args)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Overriden to exclude _id from the fields.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Exclude fields returned from the database.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'>Band</span><span class='period'>.</span><span class='id identifier rubyid_without'>without</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Symbol&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The names of the fields.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The cloned criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>4.0.3</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+327
+328
+329
+330</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 327</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_without'>without</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_args'>args</span> <span class='op'>-=</span> <span class='const'><span class='object_link'><a href="Fields.html" title="Mongoid::Fields (module)">Fields</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Fields.html#IDS-constant" title="Mongoid::Fields::IDS (constant)">IDS</a></span></span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="without_options-instance_method">
+  
+    #<strong>without_options</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get a version of this criteria without the options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the criteria without options.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_without_options'>without_options</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mongoid::Criteria (class)">Criteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The cloned criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>3.0.4</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+419
+420
+421
+422
+423</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 419</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_without_options'>without_options</span>
+  <span class='id identifier rubyid_crit'>crit</span> <span class='op'>=</span> <span class='id identifier rubyid_clone'>clone</span>
+  <span class='id identifier rubyid_crit'>crit</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+  <span class='id identifier rubyid_crit'>crit</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Apr  3 18:51:08 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.0).
+</div>
+
+    </div>
+  </body>
+</html>
