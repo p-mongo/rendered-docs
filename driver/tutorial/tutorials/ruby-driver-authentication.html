@@ -486,23 +486,36 @@ the server. Establishing this session requires that the host system is
 configured for Kerberos authentication; refer to the <a class="reference external" href="https://web.mit.edu/kerberos/krb5-latest/doc/admin/install_clients.html">Kerberos documentation</a>
 or your operating system documentation for details. Use the <a class="reference external" href="https://web.mit.edu/kerberos/krb5-latest/doc/user/user_commands/kinit.html">kinit utility</a>
 to establish a Kerberos session.</p>
-<p>If using Kerberos authentication with <strong>JRuby</strong>, do the following:</p>
-<ol class="arabic simple">
-<li>Specify several system properties so that the underlying GSSAPI Java
-libraries can acquire a Kerberos ticket. See the <a class="reference external" href="http://mongodb.github.io/mongo-java-driver/3.0/driver/reference/connecting/authenticating/#kerberos-gssapi">MongoDB Java
-Driver authentication documentation</a>
-for more information.</li>
-<li>Either provide a password OR set the ‘java.security.auth.login.config’
-system property to a config file that references a keytab file.</li>
-</ol>
-<p>For more information about deploying MongoDB with Kerberos
-authentication, see the <a class="reference external" href="http://docs.mongodb.com/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">manual</a>.</p>
+<p>If using Kerberos authentication with <strong>JRuby</strong>, the Kerberos session may
+be estabished externally to the driver using the process described above
+for MRI. Alternatively, the password may be provided directly to the driver
+via client configuration, or the path to a keytab file may be provided via
+configuration stored in the <code class="docutils literal notranslate"><span class="pre">java.security.auth.login.config</span></code> system property.
+Additionally, the Java runtime environment must be configured for Kerberos;
+please refer to the  <a class="reference external" href="http://mongodb.github.io/mongo-java-driver/4.0/driver/tutorials/authentication/#gssapi">MongoDB Java Driver Kerberos documentation</a>
+for more information.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As per the server Kerberos documentation, the FQDN of the host
+running MongoDB must be specified when using Kerberos authentication.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If using MongoDB URIs, be sure to percent-escape special characters like
+<code class="docutils literal notranslate"><span class="pre">/</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> when they appear in the username.</p>
+</div>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authenticate as appuser@MYREALM:</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://appuser%40MYREALM@myserver.mycompany.com/mydb?authMechanism=GSSAPI&quot;</span><span class="p">)</span>
+
+<span class="c1"># Authenticate as myapp/appuser@MYREALM:</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://myapp%2Fappuser%40MYREALM@myserver.mycompany.com/mydb?authMechanism=GSSAPI&quot;</span><span class="p">)</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:gssapi</span><span class="p">,</span>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
                            <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span> <span class="p">)</span>
