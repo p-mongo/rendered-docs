@@ -510,15 +510,15 @@ running MongoDB must be specified when using Kerberos authentication.</p>
 copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authenticate as appuser@MYREALM:</span>
-<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://appuser%40MYREALM@myserver.mycompany.com/mydb?authMechanism=GSSAPI&quot;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://appuser%40MYREALM@myserver.mycompany.com:27017/mydb?authMechanism=GSSAPI&quot;</span><span class="p">)</span>
 
 <span class="c1"># Authenticate as myapp/appuser@MYREALM:</span>
-<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://myapp%2Fappuser%40MYREALM@myserver.mycompany.com/mydb?authMechanism=GSSAPI&quot;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://myapp%2Fappuser%40MYREALM@myserver.mycompany.com:27017/mydb?authMechanism=GSSAPI&quot;</span><span class="p">)</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+<span class="c1"># Authenticate using Ruby options:</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;myserver.mycompany.com:27017&#39;</span><span class="o">]</span><span class="p">,</span>
                            <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:gssapi</span><span class="p">,</span>
-                           <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
-                           <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span> <span class="p">)</span>
+                           <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;myapp/appuser@MYREALM&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
