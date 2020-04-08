@@ -326,6 +326,58 @@ copy</a>
 </div>
 </div>
 <p>For more information, please review the <a class="reference internal" href="mongoid-queries.html#logical-operations"><span class="std std-ref">logical operations</span></a> section of the documentation.</p>
+<p>Minor change: Mongoid 7.1 will simplify the Criteria selectors where possible
+by eliding unnecessary logical operators, typically <code class="docutils literal notranslate"><span class="pre">$and</span></code>.</p>
+<p>Example Mongoid 7.1 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;2000, &quot;name&quot;=&gt;&quot;One&quot;}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Corresponding Mongoid 7.0 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;2000, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Mongoid 7.1 also takes steps to produce the same selector shapes when
+semantically the same query is constructed using different code paths. For
+example, the following two approaches result in the same generated selector:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/ne/</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/ne/</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">})</span>
+
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;/ne/, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
 <p>As of version 7.1, Mongoid supports Ruby 2.3+ and JRuby 9.2.
 Support for Ruby 2.2 and JRuby 9.1 has been dropped.</p>
 </div>
