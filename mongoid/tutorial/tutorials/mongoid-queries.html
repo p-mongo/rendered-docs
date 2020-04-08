@@ -219,31 +219,31 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id2">Queries</a><ul>
-<li><a class="reference internal" href="#queryable-dsl" id="id3">Queryable DSL</a></li>
-<li><a class="reference internal" href="#logical-operations" id="id4">Logical Operations</a></li>
-<li><a class="reference internal" href="#incremental-query-construction" id="id5">Incremental Query Construction</a></li>
-<li><a class="reference internal" href="#query-cache" id="id6">Query Cache</a></li>
-<li><a class="reference internal" href="#additional-query-methods" id="id7">Additional Query Methods</a></li>
-<li><a class="reference internal" href="#eager-loading" id="id8">Eager Loading</a></li>
-<li><a class="reference internal" href="#regular-expressions" id="id9">Regular Expressions</a></li>
+<li><a class="reference internal" href="#id1" id="id3">Queries</a><ul>
+<li><a class="reference internal" href="#queryable-dsl" id="id4">Queryable DSL</a></li>
+<li><a class="reference internal" href="#logical-operations" id="id5">Logical Operations</a></li>
+<li><a class="reference internal" href="#incremental-query-construction" id="id6">Incremental Query Construction</a></li>
+<li><a class="reference internal" href="#query-cache" id="id7">Query Cache</a></li>
+<li><a class="reference internal" href="#additional-query-methods" id="id8">Additional Query Methods</a></li>
+<li><a class="reference internal" href="#eager-loading" id="id9">Eager Loading</a></li>
+<li><a class="reference internal" href="#regular-expressions" id="id10">Regular Expressions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#queries-persistence" id="id10">Queries + Persistence</a></li>
-<li><a class="reference internal" href="#scoping" id="id11">Scoping</a><ul>
-<li><a class="reference internal" href="#named-scopes" id="id12">Named Scopes</a></li>
-<li><a class="reference internal" href="#default-scopes" id="id13">Default Scopes</a></li>
-<li><a class="reference internal" href="#class-methods" id="id14">Class Methods</a></li>
+<li><a class="reference internal" href="#queries-persistence" id="id11">Queries + Persistence</a></li>
+<li><a class="reference internal" href="#scoping" id="id12">Scoping</a><ul>
+<li><a class="reference internal" href="#named-scopes" id="id13">Named Scopes</a></li>
+<li><a class="reference internal" href="#default-scopes" id="id14">Default Scopes</a></li>
+<li><a class="reference internal" href="#class-methods" id="id15">Class Methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#map-reduce" id="id15">Map/Reduce</a><ul>
-<li><a class="reference internal" href="#execution" id="id16">Execution</a></li>
+<li><a class="reference internal" href="#map-reduce" id="id16">Map/Reduce</a><ul>
+<li><a class="reference internal" href="#execution" id="id17">Execution</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#full-text-search" id="id17">Full Text Search</a><ul>
-<li><a class="reference internal" href="#defining-full-text-search-index" id="id18">Defining Full Text Search Index</a></li>
-<li><a class="reference internal" href="#creating-full-text-search-index" id="id19">Creating Full Text Search Index</a></li>
-<li><a class="reference internal" href="#querying-using-full-text-search-index" id="id20">Querying Using Full Text Search Index</a></li>
+<li><a class="reference internal" href="#full-text-search" id="id18">Full Text Search</a><ul>
+<li><a class="reference internal" href="#defining-full-text-search-index" id="id19">Defining Full Text Search Index</a></li>
+<li><a class="reference internal" href="#creating-full-text-search-index" id="id20">Creating Full Text Search Index</a></li>
+<li><a class="reference internal" href="#querying-using-full-text-search-index" id="id21">Querying Using Full Text Search Index</a></li>
 </ul>
 </li>
 </ul>
@@ -594,7 +594,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="logical-operations">
-<h3>Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h3>
 <p>Mongoid supports <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code> logical operations on
 <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects. These methods take one or more hash of conditions
 or another <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> object as their arguments, with <code class="docutils literal notranslate"><span class="pre">not</span></code> additionally
@@ -657,8 +657,10 @@ copy</a>
 </div>
 <div class="section" id="operator-combinations">
 <h4>Operator Combinations<a class="headerlink" href="#operator-combinations" title="Permalink to this headline">¶</a></h4>
-<p>As of Mongoid 7.1, logical operators have been changed to have the
-the same semantics as <a class="reference external" href="https://guides.rubyonrails.org/active_record_querying.html">those of ActiveRecord</a>.</p>
+<p>As of Mongoid 7.1, logical operators (<code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code>)
+have been changed to have the the same semantics as <a class="reference external" href="https://guides.rubyonrails.org/active_record_querying.html">those of ActiveRecord</a>.
+To obtain the semantics of <code class="docutils literal notranslate"><span class="pre">or</span></code> as it behaved in Mongoid 7.0 and earlier,
+use <code class="docutils literal notranslate"><span class="pre">any_of</span></code> which is described below.</p>
 <p>When conditions are specified on the same field multiple times, all
 conditions are added to the criteria:</p>
 <div class="button-code-block">
@@ -674,10 +676,11 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code> behave similarly, with <code class="docutils literal notranslate"><span class="pre">not</span></code> producing different query
-shapes as described later.</p>
-<p>When a logical operator is used, it operates on the criteria built up to
-that point and its argument. <code class="docutils literal notranslate"><span class="pre">where</span></code> has the same meaning as <code class="docutils literal notranslate"><span class="pre">and</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">any_of</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code> behave similarly, with <code class="docutils literal notranslate"><span class="pre">not</span></code> producing
+different query shapes as described below.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">nor</span></code> logical operators are used, they
+operate on the criteria built up to that point and its argument.
+<code class="docutils literal notranslate"><span class="pre">where</span></code> has the same meaning as <code class="docutils literal notranslate"><span class="pre">and</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -732,10 +735,24 @@ the same field, depending on which form of <code class="docutils literal notrans
 </div>
 <div class="section" id="or-nor-behavior">
 <h4><code class="docutils literal notranslate"><span class="pre">or</span></code>/<code class="docutils literal notranslate"><span class="pre">nor</span></code> Behavior<a class="headerlink" href="#or-nor-behavior" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">nor</span></code> always combine conditions with <code class="docutils literal notranslate"><span class="pre">$or</span></code> and <code class="docutils literal notranslate"><span class="pre">$nor</span></code>
-MongoDB operators, respectively. If the only condition on the receiving
-criteria is another <code class="docutils literal notranslate"><span class="pre">or</span></code>/<code class="docutils literal notranslate"><span class="pre">nor</span></code>, new conditions are added to the
-existing list, otherwise a new top-level <code class="docutils literal notranslate"><span class="pre">$or</span></code>/<code class="docutils literal notranslate"><span class="pre">$nor</span></code> operator is created.</p>
+<p><code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">nor</span></code> produce <code class="docutils literal notranslate"><span class="pre">$or</span></code> and <code class="docutils literal notranslate"><span class="pre">$nor</span></code> MongoDB operators, respectively,
+using the receiver and all of the arguments as operands. For example:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;/Best/}, {&quot;name&quot;=&gt;&quot;Astral Projection&quot;}]}</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span>
+  <span class="ow">or</span><span class="p">(</span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Records/</span><span class="p">))</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Trust&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
+<span class="c1"># =&gt; {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;/Best/, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Astral Projection&quot;}]}, {&quot;label&quot;=&gt;/Records/}], &quot;label&quot;=&gt;&quot;Trust&quot;}</span>
+</pre></div>
+</div>
+</div>
+<p>If the only condition on the receiver is another <code class="docutils literal notranslate"><span class="pre">or</span></code>/<code class="docutils literal notranslate"><span class="pre">nor</span></code>, the new
+conditions are added to the existing list:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -744,10 +761,34 @@ copy</a>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span>
   <span class="ow">or</span><span class="p">(</span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Records/</span><span class="p">))</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;/Best/}, {&quot;name&quot;=&gt;&quot;Astral Projection&quot;}, {&quot;label&quot;=&gt;/Records/}]}</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span>
-  <span class="ow">or</span><span class="p">(</span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Records/</span><span class="p">))</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Trust&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
-<span class="c1"># =&gt; {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;/Best/, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Astral Projection&quot;}]}, {&quot;label&quot;=&gt;/Records/}], &quot;label&quot;=&gt;&quot;Trust&quot;}</span>
+</pre></div>
+</div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">any_of</span></code> to add a disjunction to a Criteria object while maintaining
+all of the conditions built up so far as they are.</p>
+</div>
+<div class="section" id="any-of-behavior">
+<h4><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Behavior<a class="headerlink" href="#any-of-behavior" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">any_of</span></code> adds a disjunction built from its arguments to the existing
+conditions in the criteria. For example:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Trust/</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">})</span>
+<span class="c1"># =&gt; {&quot;label&quot;=&gt;/Trust/, &quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Astral Projection&quot;}, {&quot;name&quot;=&gt;/Best/}]}</span>
+</pre></div>
+</div>
+</div>
+<p>The conditions are hoisted to the top level if possible:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Trust/</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">})</span>
+<span class="c1"># =&gt; {&quot;label&quot;=&gt;/Trust/, &quot;name&quot;=&gt;&quot;Astral Projection&quot;}</span>
 </pre></div>
 </div>
 </div>
