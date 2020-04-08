@@ -294,15 +294,22 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>To add the <code class="docutils literal notranslate"><span class="pre">or</span></code> parameters to the existing query without disjuncting the
-existing query, create a separate scope:</p>
-<blockquote>
-<div>Band.where(name: ‘One’).and(Band.or({name: ‘Two’}, {name: ‘Three’}))
-# =&gt; #&lt;Mongoid::Criteria
-#   selector: {“name”=&gt;”One”, “$and”=&gt;[{“$or”=&gt;[{“name”=&gt;”Two”}, {“name”=&gt;”Three”}]}]}
-#   options:  {}
-#   class:    Band
-#   embedded: false&gt;</div></blockquote>
+<p>To add <code class="docutils literal notranslate"><span class="pre">or</span></code> or <code class="docutils literal notranslate"><span class="pre">nor</span></code> parameters to the existing query without disjuncting
+the existing query, create a separate scope:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="no">Band</span><span class="o">.</span><span class="n">or</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Three&#39;</span><span class="p">}))</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;One&quot;, &quot;$and&quot;=&gt;[{&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Two&quot;}, {&quot;name&quot;=&gt;&quot;Three&quot;}]}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
 <p>Alternatively, use <code class="docutils literal notranslate"><span class="pre">any_of</span></code> which behaves as <code class="docutils literal notranslate"><span class="pre">or</span></code> did in Mongoid 7.0:</p>
 <div class="button-code-block">
 <div class="button-row">
