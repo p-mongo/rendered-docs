@@ -359,8 +359,7 @@ new <code class="docutils literal notranslate"><span class="pre">Client</span></
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Ruby client options:</span>
-<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">)</span>
 
 <span class="n">admin_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
 
@@ -372,9 +371,9 @@ copy</a>
 <p>There are other special databases in MongoDB which should be only used for
 their stated purposes:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://docs.mongodb.com/manual/reference/config-database/">config database</a>.</li>
-<li><a class="reference external" href="http://docs.mongodb.com/manual/reference/local-database/">local database</a>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">$external</span></code> database, which is used with <a class="reference internal" href="ruby-driver-authentication.html#plain"><span class="std std-ref">PLAIN</span></a>,
+<li>The <a class="reference external" href="http://docs.mongodb.com/manual/reference/config-database/">config</a> database.</li>
+<li>The <a class="reference external" href="http://docs.mongodb.com/manual/reference/local-database/">local</a> database.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">$external</span></code> database, which is used with <a class="reference internal" href="ruby-driver-authentication.html#plain"><span class="std std-ref">PLAIN</span></a>,
 <a class="reference internal" href="ruby-driver-authentication.html#kerberos"><span class="std std-ref">Kerberos</span></a> and <a class="reference internal" href="ruby-driver-authentication.html#x-509"><span class="std std-ref">X.509</span></a> authentication
 mechanisms.</li>
 </ul>
