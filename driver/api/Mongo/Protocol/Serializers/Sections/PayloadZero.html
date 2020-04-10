@@ -215,7 +215,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#deserialize-class_method" title="deserialize (class method)">.<strong>deserialize</strong>(buffer)  &#x21d2; Array&lt;BSON::Document&gt; </a>
+      <a href="#deserialize-class_method" title="deserialize (class method)">.<strong>deserialize</strong>(buffer, options = {})  &#x21d2; Array&lt;BSON::Document&gt; </a>
     
 
     
@@ -272,7 +272,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="deserialize-class_method">
   
-    .<strong>deserialize</strong>(buffer)  &#x21d2; <tt>Array&lt;BSON::Document&gt;</tt> 
+    .<strong>deserialize</strong>(buffer, options = {})  &#x21d2; <tt>Array&lt;BSON::Document&gt;</tt> 
   
 
   
@@ -310,7 +310,44 @@
       
     </li>
   
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+    </li>
+  
 </ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:deserialize_as_bson</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Whether to perform section deserialization using BSON types instead of native Ruby types wherever possible.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
 
 <p class="tag_title">Returns:</p>
 <ul class="return">
@@ -353,15 +390,17 @@
       <pre class="lines">
 
 
-267
-268
-269</pre>
+280
+281
+282
+283</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 267</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 280</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
-  <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_from_bson'>from_bson</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mode'>mode</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:deserialize_as_bson</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='symbol'>:bson</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_from_bson'>from_bson</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='op'>**</span><span class='lbrace'>{</span> <span class='label'>mode:</span> <span class='id identifier rubyid_mode'>mode</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -504,13 +543,13 @@
       <pre class="lines">
 
 
-255
-256
-257
-258</pre>
+263
+264
+265
+266</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 263</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_validating_keys'>validating_keys</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_validating_keys?'>validating_keys?</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_put_byte'>put_byte</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TYPE_BYTE-constant" title="Mongo::Protocol::Serializers::Sections::PayloadZero::TYPE_BYTE (constant)">TYPE_BYTE</a></span></span><span class='rparen'>)</span>
@@ -526,7 +565,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Apr  3 20:07:45 2020 by
+  Generated on Thu Apr  9 22:11:19 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

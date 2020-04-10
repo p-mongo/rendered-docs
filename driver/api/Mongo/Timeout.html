@@ -143,14 +143,6 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-  <div class="note notetag">
-    <strong>Note:</strong>
-    <div class='inline'>
-<p>Ruby versions older than 2.4.0 do not support specifying a custom error message, and any error message passed in as an argument will be ignored.</p>
-</div>
-  </div>
-
-
 <p>A wrapper around Ruby core&#39;s Timeout::timeout method that provides a standardized API for Ruby versions older and newer than 2.4.0, which is when the third argument was introduced.</p>
 
 
@@ -207,7 +199,7 @@
       
         &mdash;
         <div class='inline'>
-<p>The error message passed to the exception raised on timeout, optional. When no error message is provided, the default error message is “execution expired”.</p>
+<p>The error message passed to the exception raised on timeout, optional. When no error message is provided, the default error message for the exception class is used.</p>
 </div>
       
     </li>
@@ -221,6 +213,10 @@
       <pre class="lines">
 
 
+28
+29
+30
+31
 32
 33
 34
@@ -238,12 +234,16 @@
 46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/timeout.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/timeout.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_timeout'>timeout</span><span class='lparen'>(</span><span class='id identifier rubyid_sec'>sec</span><span class='comma'>,</span> <span class='id identifier rubyid_klass'>klass</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='const'>RUBY_VERSION</span> <span class='op'>&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.4.0</span><span class='tstring_end'>&#39;</span></span>
-    <span class='op'>::</span><span class='const'>Timeout</span><span class='period'>.</span><span class='id identifier rubyid_timeout'>timeout</span><span class='lparen'>(</span><span class='id identifier rubyid_sec'>sec</span><span class='comma'>,</span> <span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span> <span class='kw'>do</span>
-      <span class='kw'>yield</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_message'>message</span> <span class='op'>&amp;&amp;</span> <span class='const'>RUBY_VERSION</span> <span class='op'>&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.94.0</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>begin</span>
+      <span class='op'>::</span><span class='const'>Timeout</span><span class='period'>.</span><span class='id identifier rubyid_timeout'>timeout</span><span class='lparen'>(</span><span class='id identifier rubyid_sec'>sec</span><span class='rparen'>)</span> <span class='kw'>do</span>
+        <span class='kw'>yield</span>
+      <span class='kw'>end</span>
+    <span class='kw'>rescue</span> <span class='op'>::</span><span class='const'>Timeout</span><span class='op'>::</span><span class='const'>Error</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='comment'># Jruby Timeout::timeout method does not support passing nil arguments.
@@ -265,7 +265,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Apr  3 20:07:45 2020 by
+  Generated on Thu Apr  9 22:11:18 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

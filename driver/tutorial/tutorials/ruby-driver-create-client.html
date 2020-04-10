@@ -328,22 +328,56 @@ copy</a>
 needed.</p>
 <div class="section" id="database">
 <h3>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h3>
-<p>Usually the client will connect to a specific database. It is possible to
-change the active database by calling <code class="docutils literal notranslate"><span class="pre">Client#use</span></code> to obtain a new <code class="docutils literal notranslate"><span class="pre">Client</span></code>
-instance configured to use the new database. For example, it is common to
-perform operations on the <code class="docutils literal notranslate"><span class="pre">admin</span></code> database:</p>
+<p>By default, the client will connect to the <code class="docutils literal notranslate"><span class="pre">admin</span></code> database.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">admin</span></code> database is a special database in MongoDB often used for
+administrative tasks and storing administrative data such as users and
+roles (although users and roles may also be defined in other databases).
+In a sharded cluster, the <code class="docutils literal notranslate"><span class="pre">admin</span></code> database
+<a class="reference external" href="http://docs.mongodb.com/manual/core/sharded-cluster-config-servers/#read-and-write-operations-on-config-servers">exists on the config servers</a>
+rather than the shard servers. Although it is possible to use the <code class="docutils literal notranslate"><span class="pre">admin</span></code>
+database for ordinary operations (such as storing application data), this
+is not recommended and the application should explicitly specify the
+database it wishes to use.</p>
+<p>The database can be specified during <code class="docutils literal notranslate"><span class="pre">Client</span></code> construction:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Ruby client options:</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">)</span>
+
+<span class="c1"># Using a MongoDB URI:</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;mongodb://localhost/mydb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Given a <code class="docutils literal notranslate"><span class="pre">Client</span></code> instance, the <code class="docutils literal notranslate"><span class="pre">use</span></code> method can be invoked to obtain a
+new <code class="docutils literal notranslate"><span class="pre">Client</span></code> instance configured with the specified database:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Ruby client options:</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">)</span>
+
 <span class="n">admin_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+
 <span class="c1"># Issue an administrative command</span>
 <span class="n">admin_client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="ss">replSetGetConfig</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">documents</span><span class="o">.</span><span class="n">first</span>
 </pre></div>
 </div>
 </div>
+<p>There are other special databases in MongoDB which should be only used for
+their stated purposes:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.mongodb.com/manual/reference/config-database/">config database</a>.</li>
+<li><a class="reference external" href="http://docs.mongodb.com/manual/reference/local-database/">local database</a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">$external</span></code> database, which is used with <a class="reference internal" href="ruby-driver-authentication.html#plain"><span class="std std-ref">PLAIN</span></a>,
+<a class="reference internal" href="ruby-driver-authentication.html#kerberos"><span class="std std-ref">Kerberos</span></a> and <a class="reference internal" href="ruby-driver-authentication.html#x-509"><span class="std std-ref">X.509</span></a> authentication
+mechanisms.</li>
+</ul>
 </div>
 <div class="section" id="direct-connection">
 <h3>Direct Connection<a class="headerlink" href="#direct-connection" title="Permalink to this headline">¶</a></h3>

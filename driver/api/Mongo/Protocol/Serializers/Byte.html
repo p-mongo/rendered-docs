@@ -118,7 +118,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#deserialize-class_method" title="deserialize (class method)">.<strong>deserialize</strong>(buffer)  &#x21d2; String </a>
+      <a href="#deserialize-class_method" title="deserialize (class method)">.<strong>deserialize</strong>(buffer, options = {})  &#x21d2; String </a>
     
 
     
@@ -175,7 +175,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="deserialize-class_method">
   
-    .<strong>deserialize</strong>(buffer)  &#x21d2; <tt>String</tt> 
+    .<strong>deserialize</strong>(buffer, options = {})  &#x21d2; <tt>String</tt> 
   
 
   
@@ -209,6 +209,24 @@
         &mdash;
         <div class='inline'>
 <p>Buffer containing the value to read.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>This method currently accepts no options.</p>
 </div>
       
     </li>
@@ -256,14 +274,14 @@
       <pre class="lines">
 
 
-396
-397
-398</pre>
+417
+418
+419</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 396</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 417</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_get_byte'>get_byte</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -389,12 +407,12 @@
       <pre class="lines">
 
 
-385
-386
-387</pre>
+405
+406
+407</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 385</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 405</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_validating_keys'>validating_keys</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_validating_keys?'>validating_keys?</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_put_byte'>put_byte</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -409,7 +427,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Apr  3 20:07:46 2020 by
+  Generated on Thu Apr  9 22:11:19 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

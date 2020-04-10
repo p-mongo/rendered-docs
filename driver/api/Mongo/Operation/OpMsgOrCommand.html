@@ -126,7 +126,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#execute-instance_method" title="#execute (instance method)">#<strong>execute</strong>(server, client:)  &#x21d2; Object </a>
+      <a href="#execute-instance_method" title="#execute (instance method)">#<strong>execute</strong>(server, client:, options: {})  &#x21d2; Object </a>
     
 
     
@@ -163,7 +163,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="execute-instance_method">
   
-    #<strong>execute</strong>(server, client:)  &#x21d2; <tt>Object</tt> 
+    #<strong>execute</strong>(server, client:, options: {})  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -196,9 +196,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/op_msg_or_command.rb', line 25</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span><span class='comma'>,</span> <span class='label'>options:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_operation'>operation</span> <span class='op'>=</span> <span class='id identifier rubyid_final_operation'>final_operation</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='label'>options:</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -210,7 +210,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Apr  3 20:07:47 2020 by
+  Generated on Thu Apr  9 22:11:21 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

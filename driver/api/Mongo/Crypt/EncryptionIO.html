@@ -669,10 +669,6 @@
       <pre class="lines">
 
 
-127
-128
-129
-130
 131
 132
 133
@@ -690,10 +686,14 @@
 145
 146
 147
-148</pre>
+148
+149
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 131</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_feed_kms'>feed_kms</span><span class='lparen'>(</span><span class='id identifier rubyid_kms_context'>kms_context</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_with_ssl_socket'>with_ssl_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_kms_context'>kms_context</span><span class='period'>.</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='op'>|</span>
@@ -956,7 +956,11 @@
 115
 116
 117
-118</pre>
+118
+119
+120
+121
+122</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 103</span>
@@ -966,13 +970,17 @@
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mark_command requires mongocryptd_client to have been passed to the constructor, but it was not</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
 
+  <span class='comment'># Ensure the response from mongocryptd is deserialized with { mode: :bson }
+</span>  <span class='comment'># to prevent losing type information in commands
+</span>  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>execution_options:</span> <span class='lbrace'>{</span> <span class='label'>deserialize_as_bson:</span> <span class='kw'>true</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+
   <span class='kw'>begin</span>
-    <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='ivar'>@mongocryptd_client</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_command'>command</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='ivar'>@mongocryptd_client</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_command'>command</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/NoServerAvailable.html" title="Mongo::Error::NoServerAvailable (class)">NoServerAvailable</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_e'>e</span> <span class='kw'>if</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:mongocryptd_bypass_spawn</span><span class='rbracket'>]</span>
 
     <span class='id identifier rubyid_spawn_mongocryptd'>spawn_mongocryptd</span>
-    <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='ivar'>@mongocryptd_client</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_command'>command</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='ivar'>@mongocryptd_client</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_command'>command</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -987,7 +995,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Apr  3 20:07:55 2020 by
+  Generated on Thu Apr  9 22:11:28 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

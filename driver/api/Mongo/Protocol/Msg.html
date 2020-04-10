@@ -840,6 +840,9 @@
       <pre class="lines">
 
 
+257
+258
+259
 260
 261
 262
@@ -847,13 +850,10 @@
 264
 265
 266
-267
-268
-269
-270</pre>
+267</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/msg.rb', line 260</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/msg.rb', line 257</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bulk_write?'>bulk_write?</span>
   <span class='id identifier rubyid_inserts'>inserts</span> <span class='op'>=</span> <span class='ivar'>@main_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>documents</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1210,18 +1210,18 @@
       <pre class="lines">
 
 
+236
+237
+238
 239
 240
 241
 242
 243
-244
-245
-246
-247</pre>
+244</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/msg.rb', line 239</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/msg.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_maybe_decrypt'>maybe_decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_encrypter'>encrypter</span>
@@ -1345,10 +1345,7 @@
 219
 220
 221
-222
-223
-224
-225</pre>
+222</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/protocol/msg.rb', line 198</span>
@@ -1371,11 +1368,8 @@
     <span class='id identifier rubyid_enc_cmd'>enc_cmd</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_encrypter'>encrypter</span><span class='period'>.</span><span class='id identifier rubyid_encrypt'>encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_db_name'>db_name</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_cmd'>cmd</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_enc_cmd'>enc_cmd</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
       <span class='id identifier rubyid_enc_cmd'>enc_cmd</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$db</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_cmd'>cmd</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$db</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-    <span class='kw'>end</span>    <span class='comment'># This will be investigtated in RUBY-2119
-</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_enc_cmd'>enc_cmd</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>txnNumber</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_cmd'>cmd</span><span class='lbracket'>[</span><span class='symbol'>:txnNumber</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>BSON</span><span class='op'>::</span><span class='const'>Int64</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_enc_cmd'>enc_cmd</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>txnNumber</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Int64</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_enc_cmd'>enc_cmd</span><span class='lbracket'>[</span><span class='symbol'>:txnNumber</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
+
     <span class='const'><span class='object_link'><a href="" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Mongo::Protocol::Msg#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@flags</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='comma'>,</span> <span class='id identifier rubyid_enc_cmd'>enc_cmd</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='kw'>self</span>
@@ -1742,7 +1736,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Apr  3 20:07:52 2020 by
+  Generated on Thu Apr  9 22:11:25 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>
