@@ -218,12 +218,17 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#upgrading-to-mongoid-7-1" id="id3">Upgrading to Mongoid 7.1</a></li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-7-0" id="id4">Upgrading to Mongoid 7.0</a></li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-6" id="id5">Upgrading to Mongoid 6</a></li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-5" id="id6">Upgrading to Mongoid 5</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-7-1" id="id1">Upgrading to Mongoid 7.1</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-7-0" id="id2">Upgrading to Mongoid 7.0</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-6" id="id3">Upgrading to Mongoid 6</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-5" id="id4">Upgrading to Mongoid 5</a></li>
 </ul>
 </div>
+<p>This page describes significant changes and improvements in Mongoid releases.
+The complete list of releases is available <a class="reference external" href="https://github.com/mongodb/mongoid/releases">on GitHub</a> and <cite>in JIRA
+&lt;https://jira.mongodb.org/projects/MONGOID?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page&gt;</cite>;
+please consult GitHub releases for detailed release notes and JIRA for
+the complete list of issues fixed in each release, including bug fixes.</p>
 <div class="section" id="upgrading-to-mongoid-7-1">
 <h2>Upgrading to Mongoid 7.1<a class="headerlink" href="#upgrading-to-mongoid-7-1" title="Permalink to this headline">¶</a></h2>
 <p>The following sections describe major changes in Mongoid 7.1.</p>
@@ -487,7 +492,9 @@ Support for Ruby 2.2 and JRuby 9.1 has been dropped.</p>
 </div>
 <div class="section" id="upgrading-to-mongoid-7-0">
 <h2>Upgrading to Mongoid 7.0<a class="headerlink" href="#upgrading-to-mongoid-7-0" title="Permalink to this headline">¶</a></h2>
-<p>The following sections describe major changes in Mongoid 7.0.</p>
+<p>Significant improvements and changes in Mongoid 7.0 are listed below.
+Please note that improvements that have been backported to Mongoid 6.x are
+not included in this list.</p>
 <p>The behavior of <a class="reference internal" href="mongoid-documents.html#read-only"><span class="std std-ref">read-only attributes</span></a> now matches that of
 ActiveRecord.</p>
 <p>Referenced associations now support all <a class="reference internal" href="mongoid-relations.html#dependent-behavior"><span class="std std-ref">dependent behaviors</span></a>
@@ -495,14 +502,10 @@ that <a class="reference external" href="http://guides.rubyonrails.org/associati
 <p><a class="reference internal" href="mongoid-relations.html#unwind-dsl"><span class="std std-ref">$unwind</span></a> operator support added to the <a class="reference internal" href="mongoid-relations.html#aggregation-pipeline-builder-dsl"><span class="std std-ref">aggregation
 pipeline builder DSL</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">background_indexing</span></code> Mongoid <a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> added.</p>
-<p>This major version of Mongoid has a number of significant refactors, bug fixes
-and behavior corrections.</p>
-<p>Please see the list of behavior changes for version
-<a class="reference external" href="https://github.com/mongodb/mongoid/releases/tag/v7.0.0">7.0.0</a>
-and version
-<a class="reference external" href="https://github.com/mongodb/mongoid/releases/tag/v7.0.0.beta">7.0.0.beta</a>
-for specific changes that might be required in your code.</p>
-<p>Mongoid 7.0 requires MongoDB server 2.6 or newer.</p>
+<p>Mongoid 7.0 requires MongoDB server 2.6 or newer, Ruby 2.2.2 or higher and
+supports Rails 5.1-6.0.</p>
+<p>New in version 7.0.3: Embedded matchers now support the <code class="docutils literal notranslate"><span class="pre">$eq</span></code> operator.</p>
+<p>New in version 7.0.5: Mongoid now officially supports Rails 6.0.</p>
 </div>
 <div class="section" id="upgrading-to-mongoid-6">
 <h2>Upgrading to Mongoid 6<a class="headerlink" href="#upgrading-to-mongoid-6" title="Permalink to this headline">¶</a></h2>
