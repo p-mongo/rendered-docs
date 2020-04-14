@@ -848,10 +848,12 @@ copy</a>
 </div>
 </div>
 <p>This behavior can be changed by specifying the <code class="docutils literal notranslate"><span class="pre">join_context:</span> <span class="pre">true</span></code> option
-to <code class="docutils literal notranslate"><span class="pre">#atomically</span></code>. When using this option, nested <code class="docutils literal notranslate"><span class="pre">#atomically</span></code> blocks
-are joined with the outer blocks, and only the outermost block (or the
-first block where <code class="docutils literal notranslate"><span class="pre">join_contexts</span></code> is false) actually writes changes to
-the cluster. For example:</p>
+to <code class="docutils literal notranslate"><span class="pre">#atomically</span></code>, or globally by setting the <code class="docutils literal notranslate"><span class="pre">join_contexts</span></code>
+<a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>. When
+context joining is enabled, nested <code class="docutils literal notranslate"><span class="pre">#atomically</span></code> blocks are joined with
+the outer blocks, and only the outermost block (or the first block where
+<code class="docutils literal notranslate"><span class="pre">join_contexts</span></code> is false) actually writes changes to the cluster.
+For example:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">

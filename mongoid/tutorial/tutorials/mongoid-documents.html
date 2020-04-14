@@ -231,34 +231,35 @@
 <li><a class="reference internal" href="#aliasing-fields" id="id10">Aliasing Fields</a></li>
 <li><a class="reference internal" href="#custom-fields" id="id11">Custom Fields</a></li>
 <li><a class="reference internal" href="#reserved-names" id="id12">Reserved Names</a></li>
-<li><a class="reference internal" href="#custom-ids" id="id13">Custom Ids</a></li>
-<li><a class="reference internal" href="#a-note-about-the-bson-symbol-type" id="id14">A Note about the BSON Symbol type</a></li>
+<li><a class="reference internal" href="#field-redefinition" id="id13">Field Redefinition</a></li>
+<li><a class="reference internal" href="#custom-ids" id="id14">Custom Ids</a></li>
+<li><a class="reference internal" href="#a-note-about-the-bson-symbol-type" id="id15">A Note about the BSON Symbol type</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dynamic-fields" id="id15">Dynamic Fields</a><ul>
-<li><a class="reference internal" href="#special-characters-in-field-names" id="id16">Special Characters in Field Names</a></li>
+<li><a class="reference internal" href="#dynamic-fields" id="id16">Dynamic Fields</a><ul>
+<li><a class="reference internal" href="#special-characters-in-field-names" id="id17">Special Characters in Field Names</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#localized-fields" id="id17">Localized Fields</a><ul>
-<li><a class="reference internal" href="#fallbacks" id="id18">Fallbacks</a></li>
-<li><a class="reference internal" href="#querying" id="id19">Querying</a></li>
-<li><a class="reference internal" href="#indexing" id="id20">Indexing</a></li>
+<li><a class="reference internal" href="#localized-fields" id="id18">Localized Fields</a><ul>
+<li><a class="reference internal" href="#fallbacks" id="id19">Fallbacks</a></li>
+<li><a class="reference internal" href="#querying" id="id20">Querying</a></li>
+<li><a class="reference internal" href="#indexing" id="id21">Indexing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dirty-tracking" id="id21">Dirty Tracking</a><ul>
-<li><a class="reference internal" href="#viewing-changes" id="id22">Viewing Changes</a></li>
-<li><a class="reference internal" href="#resetting-changes" id="id23">Resetting Changes</a></li>
-<li><a class="reference internal" href="#notes-on-persistence" id="id24">Notes On Persistence</a></li>
-<li><a class="reference internal" href="#viewing-previous-changes" id="id25">Viewing Previous Changes</a></li>
+<li><a class="reference internal" href="#dirty-tracking" id="id22">Dirty Tracking</a><ul>
+<li><a class="reference internal" href="#viewing-changes" id="id23">Viewing Changes</a></li>
+<li><a class="reference internal" href="#resetting-changes" id="id24">Resetting Changes</a></li>
+<li><a class="reference internal" href="#notes-on-persistence" id="id25">Notes On Persistence</a></li>
+<li><a class="reference internal" href="#viewing-previous-changes" id="id26">Viewing Previous Changes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#read-only-attributes" id="id26">Read-Only Attributes</a></li>
-<li><a class="reference internal" href="#inheritance" id="id27">Inheritance</a><ul>
-<li><a class="reference internal" href="#querying-subclasses" id="id28">Querying Subclasses</a></li>
-<li><a class="reference internal" href="#associations" id="id29">Associations</a></li>
+<li><a class="reference internal" href="#read-only-attributes" id="id27">Read-Only Attributes</a></li>
+<li><a class="reference internal" href="#inheritance" id="id28">Inheritance</a><ul>
+<li><a class="reference internal" href="#querying-subclasses" id="id29">Querying Subclasses</a></li>
+<li><a class="reference internal" href="#associations" id="id30">Associations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#timestamping" id="id30">Timestamping</a></li>
+<li><a class="reference internal" href="#timestamping" id="id31">Timestamping</a></li>
 </ul>
 </div>
 <p>Documents are the core objects in Mongoid and any object that is to be persisted to the
@@ -959,9 +960,47 @@ in object is a <code class="docutils literal notranslate"><span class="pre">Poin
 </div>
 <div class="section" id="reserved-names">
 <h3>Reserved Names<a class="headerlink" href="#reserved-names" title="Permalink to this headline">¶</a></h3>
-<p>If you define a field on your document that conflicts with a reserved method name in Mongoid,
-the configuration will raise an error. For a list of these you may look at
-<code class="docutils literal notranslate"><span class="pre">Mongoid.destructive_fields</span></code>.</p>
+<p>Attempting to define a field on a document that conflicts with a reserved
+method name in Mongoid will raise an error. The list of reserved names can
+be obtained by invoking the <code class="docutils literal notranslate"><span class="pre">Mongoid.destructive_fields</span></code> method.</p>
+</div>
+<div class="section" id="field-redefinition">
+<h3>Field Redefinition<a class="headerlink" href="#field-redefinition" title="Permalink to this headline">¶</a></h3>
+<p>By default Mongoid allows redefining fields on a model. To raise an error
+when a field is redefined, set the <code class="docutils literal notranslate"><span class="pre">duplicate_fields_exception</span></code>
+<a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>With the option set to true, the following example will raise an error:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>To define the field anyway, use the <code class="docutils literal notranslate"><span class="pre">overwrite:</span> <span class="pre">true</span></code> option:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">overwrite</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="custom-ids">
 <h3>Custom Ids<a class="headerlink" href="#custom-ids" title="Permalink to this headline">¶</a></h3>

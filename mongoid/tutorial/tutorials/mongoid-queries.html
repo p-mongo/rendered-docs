@@ -1139,8 +1139,11 @@ copy</a>
 </td>
 </tr>
 <tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#find</span></code></p>
-<p class="last"><em>Find a document or multiple documents by their ids. Will raise
-an error by default if any of the ids do not match.</em></p>
+<p class="last"><em>Find a document or multiple documents by their ids. If the</em>
+<code class="docutils literal notranslate"><span class="pre">raise_not_found_error</span></code> <em>configuration option is set to</em> <code class="docutils literal notranslate"><span class="pre">true</span></code>
+<em>which is the default and any of the ids are not found, raise an error.
+If the</em> <code class="docutils literal notranslate"><span class="pre">raise_not_found_error</span></code> <em>configuration option is set to</em>
+<code class="docutils literal notranslate"><span class="pre">false</span></code>, return an array of documents that have the specified ids.*</p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">
@@ -1161,9 +1164,9 @@ copy</a>
 </td>
 </tr>
 <tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#find_by</span></code></p>
-<p class="last"><em>Find a document by the provided attributes, and if not found
-raise an error or return nil depending on the
-* ``raise_not_found_error`` *configuration option.</em></p>
+<p class="last"><em>Find a document by the provided attributes. If not found,
+raise an error or return nil depending on the value of the</em>
+<code class="docutils literal notranslate"><span class="pre">raise_not_found_error</span></code> <em>configuration option.</em></p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">

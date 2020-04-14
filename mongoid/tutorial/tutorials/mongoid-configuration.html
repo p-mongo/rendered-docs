@@ -462,21 +462,21 @@ copy</a>
 
   <span class="c1"># Configure Mongoid specific options. (optional)</span>
   <span class="nt">options</span><span class="p">:</span>
-    <span class="c1"># The app name to pass to the driver which will be included in the</span>
-    <span class="c1"># metadata sent to the MongoDB servers. It is also used as the database</span>
-    <span class="c1"># name if the database name is not explicitly defined. (default: nil)</span>
-    <span class="nt">app_name</span><span class="p">:</span>
+    <span class="c1"># Application name that is printed to the mongodb logs upon establishing</span>
+    <span class="c1"># a connection in server versions &gt;= 3.4. Note that the name cannot</span>
+    <span class="c1"># exceed 128 bytes. It is also used as the database name if the</span>
+    <span class="c1"># database name is not explicitly defined. (default: nil)</span>
+    <span class="nt">app_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyApplicationName</span>
 
     <span class="c1"># Create indexes in background by default. (default: false)</span>
     <span class="nt">background_indexing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 
-    <span class="c1"># Mark belongs_to associations as required by default. (default: true)</span>
+    <span class="c1"># Mark belongs_to associations as required by default, so that saving a</span>
+    <span class="c1"># model with a missing belongs_to association will trigger a validation</span>
+    <span class="c1"># error. (default: true)</span>
     <span class="nt">belongs_to_required_by_default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
-    <span class="c1"># Raise an exception when a field is defined in a model and it has a</span>
-    <span class="c1"># method of the same name already defined. Also prevents a field from</span>
-    <span class="c1"># being redefined. Use :overwrite option when defining a field to</span>
-    <span class="c1"># overwrite existing method/field definition. (default: false)</span>
+    <span class="c1"># Raise an exception when a field is redefined. (default: false)</span>
     <span class="nt">duplicate_fields_exception</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 
     <span class="c1"># Include the root model name in json serialization. (default: false)</span>

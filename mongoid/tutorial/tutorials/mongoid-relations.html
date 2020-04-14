@@ -394,8 +394,10 @@ copy</a>
 <p>A <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> macro is used when a document is the child in a <code class="docutils literal notranslate"><span class="pre">has_one</span></code>
 or <code class="docutils literal notranslate"><span class="pre">has_many</span></code> association. By default, in order for a document to
 be saved, each of its <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> associations must be provided a value.
-To override this requirement, you can use the option <code class="docutils literal notranslate"><span class="pre">optional:</span> <span class="pre">false</span></code>
-on the <code class="docutils literal notranslate"><span class="pre">belong_to</span></code> association.</p>
+To override this requirement for a particular association, use the option
+<code class="docutils literal notranslate"><span class="pre">optional:</span> <span class="pre">false</span></code> on the <code class="docutils literal notranslate"><span class="pre">belong_to</span></code> association. To override this
+requirement globally, set the <code class="docutils literal notranslate"><span class="pre">belongs_to_required_by_default</span></code>
+<a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <div class="section" id="id3">
 <h4>Defining<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>The child document of the association uses the <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> macro to indicate
