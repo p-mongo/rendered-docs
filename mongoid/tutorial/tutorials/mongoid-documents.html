@@ -252,7 +252,7 @@
 <li><a class="reference internal" href="#viewing-previous-changes" id="id25">Viewing Previous Changes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#readonly-attributes" id="id26">Readonly Attributes</a></li>
+<li><a class="reference internal" href="#read-only-attributes" id="id26">Read-Only Attributes</a></li>
 <li><a class="reference internal" href="#inheritance" id="id27">Inheritance</a><ul>
 <li><a class="reference internal" href="#querying-subclasses" id="id28">Querying Subclasses</a></li>
 <li><a class="reference internal" href="#associations" id="id29">Associations</a></li>
@@ -1401,10 +1401,11 @@ copy</a>
 </div>
 </div>
 </div>
-<div class="section" id="readonly-attributes">
-<h2>Readonly Attributes<a class="headerlink" href="#readonly-attributes" title="Permalink to this headline">¶</a></h2>
-<p>You can tell Mongoid that certain attributes are readonly. This will allow documents to be
-created with these attributes, but changes to them will be filtered out.</p>
+<div class="section" id="read-only-attributes">
+<span id="read-only"></span><h2>Read-Only Attributes<a class="headerlink" href="#read-only-attributes" title="Permalink to this headline">¶</a></h2>
+<p>You can tell Mongoid that certain attributes are read-only. This will allow
+documents to be created with these attributes, but changes to them will be
+ignored when using mass update methods such as <code class="docutils literal notranslate"><span class="pre">update_attributes</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -1423,8 +1424,8 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>If you explicitly try to update or remove the attribute by itself, then a <code class="docutils literal notranslate"><span class="pre">ReadonlyAttribute</span></code>
-error will be raised.</p>
+<p>If you explicitly try to update or remove a read-only attribute by itself,
+a <code class="docutils literal notranslate"><span class="pre">ReadonlyAttribute</span></code> exception will be raised:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">

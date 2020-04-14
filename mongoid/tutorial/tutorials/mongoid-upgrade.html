@@ -335,25 +335,11 @@ copy</a>
 </div>
 <div class="section" id="merge-strategies">
 <h3>Merge Strategies<a class="headerlink" href="#merge-strategies" title="Permalink to this headline">¶</a></h3>
-<p><strong>Breaking change:</strong> <a class="reference internal" href="mongoid-queries.html#merge-strategies"><span class="std std-ref">Merge strategies</span></a> now must be
-explicitly requested. Previously, <code class="docutils literal notranslate"><span class="pre">all</span></code> defaulted to the union strategy
-and <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">nin</span></code> defaulted to the intersect strategy, leading to
-the following example behavior in Mongoid 7.0:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
-<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
-<span class="c1">#   selector: {&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[1, 2]}}</span>
-<span class="c1">#   options:  {}</span>
-<span class="c1">#   class:    Band</span>
-<span class="c1">#   embedded: false&gt;</span>
-</pre></div>
-</div>
-</div>
-<p>In Mongoid 7.1, there is no merge strategy applied by default:</p>
+<p><strong>Breaking change:</strong> In Mongoid 7.1, <a class="reference internal" href="mongoid-queries.html#merge-strategies"><span class="std std-ref">Merge strategies</span></a>
+must be explicitly requested. Previously, <code class="docutils literal notranslate"><span class="pre">all</span></code> defaulted to the
+union strategy and <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">nin</span></code> defauled to the intersect strategy.
+In Mongoid 7.1, there is no merge strategy applied by default.</p>
+<p>Example Mongoid 7.1 behavior:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -368,7 +354,23 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>The desired merge strategy must be explicitly requested:</p>
+<p>Default Mongoid 7.0 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[1, 2]}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>To achieve the same behavior in Mongoid 7.1, the desired merge strategy must be
+explicitly requested:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -485,6 +487,13 @@ Support for Ruby 2.2 and JRuby 9.1 has been dropped.</p>
 </div>
 <div class="section" id="upgrading-to-mongoid-7-0">
 <h2>Upgrading to Mongoid 7.0<a class="headerlink" href="#upgrading-to-mongoid-7-0" title="Permalink to this headline">¶</a></h2>
+<p>The following sections describe major changes in Mongoid 7.0.</p>
+<p>The behavior of <a class="reference internal" href="mongoid-documents.html#read-only"><span class="std std-ref">read-only attributes</span></a> now matches that of
+ActiveRecord.</p>
+<p>Referenced associations now support all <a class="reference internal" href="mongoid-relations.html#dependent-behavior"><span class="std std-ref">dependent behaviors</span></a>
+that <a class="reference external" href="http://guides.rubyonrails.org/association_basics.html">ActiveRecord supports</a>.</p>
+<p><a class="reference internal" href="mongoid-relations.html#unwind-dsl"><span class="std std-ref">$unwind</span></a> operator support added to the <a class="reference internal" href="mongoid-relations.html#aggregation-pipeline-builder-dsl"><span class="std std-ref">aggregation
+pipeline builder DSL</span></a>.</p>
 <p>This major version of Mongoid has a number of significant refactors, bug fixes
 and behavior corrections.</p>
 <p>Please see the list of behavior changes for version
