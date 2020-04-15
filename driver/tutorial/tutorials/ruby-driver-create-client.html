@@ -288,7 +288,7 @@
 <div class="section" id="using-mongo-client">
 <h2>Using <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code><a class="headerlink" href="#using-mongo-client" title="Permalink to this headline">¶</a></h2>
 <p>To connect to a MongoDB deployment, create a <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> object.
-Provide a list of hosts and options or a <a class="reference external" href="http://docs.mongodb.com/manual/reference/connection-string/">connection string URI</a> to the``Mongo::Client`` constructor.
+Provide a list of hosts and options or a <a class="reference external" href="https://docs.mongodb.com/manual/reference/connection-string/">connection string URI</a> to the``Mongo::Client`` constructor.
 The client’s selected database defaults to <code class="docutils literal notranslate"><span class="pre">admin</span></code>.</p>
 <p>By default, the driver will automatically detect the topology used by the
 deployment and connect appropriately.</p>
@@ -333,7 +333,7 @@ needed.</p>
 administrative tasks and storing administrative data such as users and
 roles (although users and roles may also be defined in other databases).
 In a sharded cluster, the <code class="docutils literal notranslate"><span class="pre">admin</span></code> database
-<a class="reference external" href="http://docs.mongodb.com/manual/core/sharded-cluster-config-servers/#read-and-write-operations-on-config-servers">exists on the config servers</a>
+<a class="reference external" href="https://docs.mongodb.com/manual/core/sharded-cluster-config-servers/#read-and-write-operations-on-config-servers">exists on the config servers</a>
 rather than the shard servers. Although it is possible to use the <code class="docutils literal notranslate"><span class="pre">admin</span></code>
 database for ordinary operations (such as storing application data), this
 is not recommended and the application should explicitly specify the
@@ -371,8 +371,8 @@ copy</a>
 <p>There are other special databases in MongoDB which should be only used for
 their stated purposes:</p>
 <ul class="simple">
-<li>The <a class="reference external" href="http://docs.mongodb.com/manual/reference/config-database/">config</a> database.</li>
-<li>The <a class="reference external" href="http://docs.mongodb.com/manual/reference/local-database/">local</a> database.</li>
+<li>The <a class="reference external" href="https://docs.mongodb.com/manual/reference/config-database/">config</a> database.</li>
+<li>The <a class="reference external" href="https://docs.mongodb.com/manual/reference/local-database/">local</a> database.</li>
 <li>The <code class="docutils literal notranslate"><span class="pre">$external</span></code> database, which is used with <a class="reference internal" href="ruby-driver-authentication.html#plain"><span class="std std-ref">PLAIN</span></a>,
 <a class="reference internal" href="ruby-driver-authentication.html#kerberos"><span class="std std-ref">Kerberos</span></a> and <a class="reference internal" href="ruby-driver-authentication.html#x-509"><span class="std std-ref">X.509</span></a> authentication
 mechanisms.</li>
@@ -401,7 +401,7 @@ copy</a>
 </div>
 <div class="section" id="replica-set-connection">
 <span id="ruby-driver-connect-replica-set"></span><h3>Replica Set Connection<a class="headerlink" href="#replica-set-connection" title="Permalink to this headline">¶</a></h3>
-<p>To connect to a <a class="reference external" href="http://docs.mongodb.com/manual/replication/">replica set</a> deployment managed by a
+<p>To connect to a <a class="reference external" href="https://docs.mongodb.com/manual/replication/">replica set</a> deployment managed by a
 service providing SRV URIs (such as MongoDB Atlas), connect to the URI:</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -434,7 +434,7 @@ copy</a>
 </div>
 <div class="section" id="sharded-cluster-connection">
 <span id="ruby-driver-connect-sharded-cluster"></span><h3>Sharded Cluster Connection<a class="headerlink" href="#sharded-cluster-connection" title="Permalink to this headline">¶</a></h3>
-<p>To connect to a <a class="reference external" href="http://docs.mongodb.com/manual/sharding/">sharded cluster</a> deployment managed by a
+<p>To connect to a <a class="reference external" href="https://docs.mongodb.com/manual/sharding/">sharded cluster</a> deployment managed by a
 service providing SRV URIs (such as MongoDB Atlas), connect to the URI:</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -450,7 +450,7 @@ the SRV records of the address specified in the URI for changes and will
 automatically add and remove <code class="docutils literal notranslate"><span class="pre">mongos</span></code> hosts to/from its list of servers as
 they are added and removed to/from the sharded cluster.</p>
 <p>If not using SRV URIs, pass the addresses of one or more
-<a class="reference external" href="http://docs.mongodb.com/manual/reference/program/mongos/">mongos</a> hosts. Unlike with
+<a class="reference external" href="https://docs.mongodb.com/manual/reference/program/mongos/">mongos</a> hosts. Unlike with
 replica set deployments, the driver is not able to discover all <code class="docutils literal notranslate"><span class="pre">mongos</span></code>
 nodes in a sharded cluster when not using SRV URIs. It is not required that all
 <code class="docutils literal notranslate"><span class="pre">mongos</span></code> node addresses are given to the driver - the driver will balance
@@ -471,7 +471,7 @@ copy</a>
 <div class="section" id="srv-uris">
 <h3>SRV URIs<a class="headerlink" href="#srv-uris" title="Permalink to this headline">¶</a></h3>
 <p>When the driver connects to a
-<a class="reference external" href="http://docs.mongodb.com/manualreference/connection-string/#dns-seedlist-connection-format">mongodb+srv protocol</a>
+<a class="reference external" href="https://docs.mongodb.com/manualreference/connection-string/#dns-seedlist-connection-format">mongodb+srv protocol</a>
 URI, keep in mind the following:</p>
 <ol class="arabic simple">
 <li>SRV URI lookup is performed synchronously when the client is constructed.</li>
@@ -928,7 +928,7 @@ copy</a>
 <p>Since the URI options are required to be in camel case, which is not the Ruby
 standard, the following table shows URI options and their corresponding Ruby
 options.</p>
-<p>URI options are explained in detail in the <a class="reference external" href="http://docs.mongodb.com/manual/reference/connection-string/">Connection URI reference</a>.</p>
+<p>URI options are explained in detail in the <a class="reference external" href="https://docs.mongodb.com/manual/reference/connection-string/">Connection URI reference</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Options that are set in <strong>milliseconds</strong> in the URI are
@@ -1116,7 +1116,7 @@ is inverted before being used to set <code class="docutils literal notranslate">
 <p>When executing an operation, the number of seconds to wait for the driver
 to find an appropriate server to send an operation to. Defaults to 30.</p>
 <p>In replica set deployments, this timeout should be set to exceed the typical
-<a class="reference external" href="http://docs.mongodb.com/manual/core/replica-set-elections/">replica set election times</a>
+<a class="reference external" href="https://docs.mongodb.com/manual/core/replica-set-elections/">replica set election times</a>
 in order for the driver to transparently handle primary changes. This timeout
 also allows the application and the database to be started simultaneously;
 the application will wait up to this much time for the database to become

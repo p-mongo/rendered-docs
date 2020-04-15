@@ -233,23 +233,24 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#providing-credentials" id="id3">Providing credentials</a></li>
-<li><a class="reference internal" href="#auth-source" id="id4">Auth Source</a></li>
-<li><a class="reference internal" href="#authentication-mechanisms" id="id5">Authentication Mechanisms</a><ul>
-<li><a class="reference internal" href="#scram" id="id6">SCRAM</a></li>
-<li><a class="reference internal" href="#client-certificate-x-509" id="id7">Client Certificate (X.509)</a></li>
-<li><a class="reference internal" href="#ldap-sasl-plain" id="id8">LDAP (SASL PLAIN)</a></li>
-<li><a class="reference internal" href="#kerberos-gssapi" id="id9">Kerberos (GSSAPI)</a></li>
-<li><a class="reference internal" href="#mongodb-cr" id="id10">MONGODB-CR</a></li>
+<li><a class="reference internal" href="#providing-credentials" id="id7">Providing credentials</a></li>
+<li><a class="reference internal" href="#auth-source" id="id8">Auth Source</a></li>
+<li><a class="reference internal" href="#authentication-mechanisms" id="id9">Authentication Mechanisms</a><ul>
+<li><a class="reference internal" href="#scram" id="id10">SCRAM</a></li>
+<li><a class="reference internal" href="#client-certificate-x-509" id="id11">Client Certificate (X.509)</a></li>
+<li><a class="reference internal" href="#aws" id="id12">AWS</a></li>
+<li><a class="reference internal" href="#ldap-sasl-plain" id="id13">LDAP (SASL PLAIN)</a></li>
+<li><a class="reference internal" href="#kerberos-gssapi" id="id14">Kerberos (GSSAPI)</a></li>
+<li><a class="reference internal" href="#mongodb-cr" id="id15">MONGODB-CR</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <p>MongoDB supports a variety of
-<a class="reference external" href="http://docs.mongodb.com/manual/core/authentication/">authentication mechanisms</a>.</p>
+<a class="reference external" href="https://docs.mongodb.com/manual/core/authentication/">authentication mechanisms</a>.</p>
 <p>For more information about configuring your MongoDB server for each of
 these authentication mechanisms see MongoDB’s
-<a class="reference external" href="http://docs.mongodb.com/manual/tutorial/enable-authentication">online documentation</a>.</p>
+<a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication">online documentation</a>.</p>
 <p>For more information about users and the Ruby driver’s helpers for
 user management, see the <a class="reference internal" href="user-management.html#user-management"><span class="std std-ref">User Management tutorial</span></a>.</p>
 <div class="section" id="providing-credentials">
@@ -343,7 +344,7 @@ to the rules of the authentication mechanism used.</p>
 <h2>Authentication Mechanisms<a class="headerlink" href="#authentication-mechanisms" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="scram">
 <span id="id2"></span><h3>SCRAM<a class="headerlink" href="#scram" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://docs.mongodb.com/manual/core/security-scram/">SCRAM authentication</a> is the default
+<p><a class="reference external" href="https://docs.mongodb.com/manual/core/security-scram/">SCRAM authentication</a> is the default
 authentication mechanism for MongoDB. There are two SCRAM mechanisms in
 MongoDB: SCRAM-SHA-1 (available as of MongoDB 3.0) and SCRAM-SHA-256
 (available as of MongoDB 4.0). If an authentication mechanism is not
@@ -403,7 +404,7 @@ and private key are stored in the same file, you must specify the path to
 that file by passing both the <code class="docutils literal notranslate"><span class="pre">ssl_cert</span></code> and <code class="docutils literal notranslate"><span class="pre">ssl_key</span></code> options
 to the client.</p>
 <p>For more information about configuring X.509 authentication in MongoDB,
-see the <a class="reference external" href="http://docs.mongodb.com/manual/tutorial/configure-x509/">X.509 tutorial in the MongoDB Manual</a>.</p>
+see the <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/configure-x509/">X.509 tutorial in the MongoDB Manual</a>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -419,6 +420,72 @@ copy</a>
 </div>
 </div>
 </div>
+<div class="section" id="aws">
+<h3>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h3>
+<p><em>Requires MongoDB Enterprise Edition and server version 4.4 or later.</em></p>
+<p>The AWS authentication mechanism uses AWS <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html">Identity and Access Management (IAM)</a>
+and AWS <a class="reference external" href="https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html">Security Token Service (STS)</a>
+to prove the client’s identity to MongoDB server. Briefly, AWS authentication
+works as follows:</p>
+<p>1. The client uses AWS IAM credentials to create a signature that is sent to
+MongoDB server.
+2. The server sends a request to AWS STS using the client’s signature.
+3. A successful STS request returns the username (technically, the ARN of
+the IAM user or role) corresponding to the credentials that the client used.
+The IAM user ARN is used by the server to look up a defined user, and the
+client is considered to have authenticated as this user.</p>
+<p>AWS credentials are comprised of:</p>
+<ul class="simple">
+<li>The access key ID.</li>
+<li>The secret access key.</li>
+<li>The optional session token.</li>
+</ul>
+<p>Authentication with <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">AWS IAM credentials</a>,
+uses the access key ID and the secret access key. Authentication with
+<a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html">temporary AWS IAM credentials</a>
+uses all three components.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The driver never sends the secret access key or the session token over
+the network.</p>
+</div>
+<p>AWS uses temporary credentials in:</p>
+<ul class="simple">
+<li>STS <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Assume Role</a></li>
+</ul>
+<p>requests.
+- <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html">EC2 instance roles</a>.
+- <a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task roles</a>.
+- <a class="reference external" href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">AWS Lambda environment</a>.</p>
+<p>The Ruby driver allows providing both regular and temporary credentials
+explicitly as Ruby options or URI options. If credentials are not explicitly
+provided, the driver will attempt to retrieve them from environment variables
+described below and from EC2 instance and ECS task metadata endpoints.</p>
+<p>Note that:</p>
+<p>1. The username that the application specifies when creating a client is
+different from the username that must exist on the server.</p>
+<p>authenticates using <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">AWS IAM credentials</a>
+<a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html">temporary AWS IAM credentials</a>
+which can be obtained from a variety of sources.</p>
+<p>The credentials can be provided explicitly when a <code class="docutils literal notranslate"><span class="pre">Client</span></code> is instantiated;
+if AWS authentication mechanism is requested but credentials are not
+explicitly provided, the driver will attempt to obtain credentials from</p>
+<p>obtained from the AWS <a class="reference external" href="https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html">Security Token Service (STS)</a>
+<a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Assume Role</a>
+request, AWS Lambda <a href="#id16"><span class="problematic" id="id17">`environment variables`_</span></a>, or temporary AWS IAM credentials assigned
+to an <a href="#id18"><span class="problematic" id="id19">`EC2 instance`_</span></a> or ECS task. The use of temporary credentials, in
+addition to an access key ID and a secret access key, also requires a
+security (or session) token.</p>
+<p>Credentials can be configured through the MongoDB URI, environment variables,
+or the local EC2 or ECS endpoint. The order in which the client searches for
+credentials is:</p>
+<ol class="arabic simple">
+<li>Credentials passed through the URI</li>
+<li>Environment variables</li>
+<li>ECS endpoint if and only if <code class="docutils literal notranslate"><span class="pre">AWS_CONTAINER_CREDENTIALS_RELATIVE_URI</span></code> is set.</li>
+<li>EC2 endpoint</li>
+</ol>
+</div>
 <div class="section" id="ldap-sasl-plain">
 <span id="plain"></span><h3>LDAP (SASL PLAIN)<a class="headerlink" href="#ldap-sasl-plain" title="Permalink to this headline">¶</a></h3>
 <p><em>Requires MongoDB Enterprise Edition.</em></p>
@@ -432,7 +499,7 @@ reason, we strongly recommend enabling SSL when using LDAP as your
 authentication mechanism.</p>
 </div>
 <p>For more information about configuring LDAP authentication in
-MongoDB, see the <a class="reference external" href="http://docs.mongodb.com/manual/tutorial/configure-ldap-sasl-authentication/">SASL/LDAP tutorial in the MongoDB Manual</a>.</p>
+MongoDB, see the <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/configure-ldap-sasl-authentication/">SASL/LDAP tutorial in the MongoDB Manual</a>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -452,7 +519,7 @@ copy</a>
 <span id="kerberos"></span><h3>Kerberos (GSSAPI)<a class="headerlink" href="#kerberos-gssapi" title="Permalink to this headline">¶</a></h3>
 <p><em>Requires MongoDB Enterprise Edition.</em></p>
 <p>To configure the MongoDB server to use Kerberos, please refer to the
-<a class="reference external" href="http://docs.mongodb.com/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">server Kerberos documentation</a>.</p>
+<a class="reference external" href="https://docs.mongodb.com/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">server Kerberos documentation</a>.</p>
 <p>To use the Kerberos authentication mechanism with the Ruby MongoDB driver,
 an additional library implementing the Kerberos authenticator -
 <a class="reference external" href="https://rubygems.org/gems/mongo_kerberos">mongo_kerberos</a> - must be
