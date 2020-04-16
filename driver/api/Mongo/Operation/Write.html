@@ -446,7 +446,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/write.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_validate!'>validate!</span>
+  <span class='id identifier rubyid_validate!'>validate!</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_op'>op</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
       <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='op'>::</span><span class='const'>OpMsg</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
     <span class='kw'>elsif</span> <span class='op'>!</span><span class='id identifier rubyid_acknowledged_write?'>acknowledged_write?</span>
@@ -467,7 +467,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 16 01:26:39 2020 by
+  Generated on Thu Apr 16 17:38:26 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

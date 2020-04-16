@@ -1028,7 +1028,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#array_filters-instance_method" title="#array_filters (instance method)">#<strong>array_filters</strong>  &#x21d2; Hash </a>
+      <a href="#array_filters-instance_method" title="#array_filters (instance method)">#<strong>array_filters</strong>(server)  &#x21d2; Hash | nil </a>
     
 
     
@@ -1484,7 +1484,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#options-instance_method" title="#options (instance method)">#<strong>options</strong>(server = nil)  &#x21d2; Hash </a>
+      <a href="#options-instance_method" title="#options (instance method)">#<strong>options</strong>(server)  &#x21d2; Hash </a>
     
 
     
@@ -1499,7 +1499,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Get the options for the operation.</p>
+<p>Get the options for executing the operation on a particular server.</p>
 </div></span>
   
 </li>
@@ -1580,7 +1580,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#selector-instance_method" title="#selector (instance method)">#<strong>selector</strong>(server = nil)  &#x21d2; Hash </a>
+      <a href="#selector-instance_method" title="#selector (instance method)">#<strong>selector</strong>(server)  &#x21d2; Hash </a>
     
 
     
@@ -1595,7 +1595,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>The selector for from the specification.</p>
+<p>The selector from the specification for execution on a particular server.</p>
 </div></span>
   
 </li>
@@ -2069,12 +2069,12 @@
       <pre class="lines">
 
 
-564
 565
-566</pre>
+566
+567</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 564</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 565</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_acknowledged_write?'>acknowledged_write?</span>
   <span class='id identifier rubyid_write_concern'>write_concern</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='period'>.</span><span class='id identifier rubyid_acknowledged?'>acknowledged?</span>
@@ -2087,7 +2087,7 @@
       <div class="method_details ">
   <h3 class="signature " id="array_filters-instance_method">
   
-    #<strong>array_filters</strong>  &#x21d2; <tt>Hash</tt> 
+    #<strong>array_filters</strong>(server)  &#x21d2; <tt>Hash | nil</tt> 
   
 
   
@@ -2102,18 +2102,26 @@
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
+    <li>
       
-        <p class="example_title"><div class='inline'>
-<p>Get the array filters.</p>
-</div></p>
+        <span class='name'>server</span>
       
-      <pre class="example code"><code><span class='id identifier rubyid_specifiable'>specifiable</span><span class='period'>.</span><span class='id identifier rubyid_array_filters'>array_filters</span></code></pre>
-    
-  </div>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Server.html" title="Mongo::Server (class)">Server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The server that the operation will be executed on.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 <p class="tag_title">Returns:</p>
 <ul class="return">
@@ -2121,7 +2129,7 @@
     <li>
       
       
-        <span class='type'>(<tt>Hash</tt>)</span>
+        <span class='type'>(<tt>Hash | nil</tt>)</span>
       
       
       
@@ -2158,13 +2166,15 @@
 
 552
 553
-554</pre>
+554
+555</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 552</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_array_filters'>array_filters</span>
-  <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation.html#ARRAY_FILTERS-constant" title="Mongo::Operation::ARRAY_FILTERS (constant)">ARRAY_FILTERS</a></span></span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_selector'>selector</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_array_filters'>array_filters</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sel'>sel</span> <span class='op'>=</span> <span class='id identifier rubyid_selector'>selector</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sel'>sel</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation.html#ARRAY_FILTERS-constant" title="Mongo::Operation::ARRAY_FILTERS (constant)">ARRAY_FILTERS</a></span></span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_sel'>sel</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3750,7 +3760,7 @@ specs.</li>
       <div class="method_details ">
   <h3 class="signature " id="options-instance_method">
   
-    #<strong>options</strong>(server = nil)  &#x21d2; <tt>Hash</tt> 
+    #<strong>options</strong>(server)  &#x21d2; <tt>Hash</tt> 
   
 
   
@@ -3759,24 +3769,32 @@ specs.</li>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Get the options for the operation.</p>
+<p>Get the options for executing the operation on a particular server.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
+    <li>
       
-        <p class="example_title"><div class='inline'>
-<p>Get the options.</p>
-</div></p>
+        <span class='name'>server</span>
       
-      <pre class="example code"><code><span class='id identifier rubyid_specifiable'>specifiable</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span></code></pre>
-    
-  </div>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Server.html" title="Mongo::Server (class)">Server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The server that the operation will be executed on.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 <p class="tag_title">Returns:</p>
 <ul class="return">
@@ -3826,7 +3844,7 @@ specs.</li>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 336</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#OPTIONS-constant" title="Mongo::Operation::Specifiable::OPTIONS (constant)">OPTIONS</a></span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -4106,7 +4124,7 @@ specs.</li>
       <div class="method_details ">
   <h3 class="signature " id="selector-instance_method">
   
-    #<strong>selector</strong>(server = nil)  &#x21d2; <tt>Hash</tt> 
+    #<strong>selector</strong>(server)  &#x21d2; <tt>Hash</tt> 
   
 
   
@@ -4115,24 +4133,32 @@ specs.</li>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>The selector for from the specification.</p>
+<p>The selector from the specification for execution on a particular server.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
+    <li>
       
-        <p class="example_title"><div class='inline'>
-<p>Get a selector specification.</p>
-</div></p>
+        <span class='name'>server</span>
       
-      <pre class="example code"><code>specifiable.selector.</code></pre>
-    
-  </div>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Server.html" title="Mongo::Server (class)">Server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The server that the operation will be executed on.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 <p class="tag_title">Returns:</p>
 <ul class="return">
@@ -4182,7 +4208,7 @@ specs.</li>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 398</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_selector'>selector</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_selector'>selector</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#SELECTOR-constant" title="Mongo::Operation::Specifiable::SELECTOR (constant)">SELECTOR</a></span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -4891,7 +4917,7 @@ specs.</li>
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 16 01:26:40 2020 by
+  Generated on Thu Apr 16 17:38:28 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

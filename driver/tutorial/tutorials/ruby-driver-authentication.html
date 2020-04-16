@@ -264,10 +264,11 @@ copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
-                           <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span> <span class="p">)</span>
+                           <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+                           <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span> <span class="p">)</span>
 
 <span class="c1"># If using a URI:</span>
-<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://test:123@127.0.0.1:27017&quot;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://test:123@127.0.0.1:27017/mydb&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -327,7 +328,7 @@ connecting; if no database is specified, <code class="docutils literal notransla
 database and hence the default auth source. For the <code class="docutils literal notranslate"><span class="pre">PLAIN</span></code> mechanism (LDAP),
 the default auth source is the database to which the client is connecting;
 if no database is specified, the <code class="docutils literal notranslate"><span class="pre">$external</span></code> database is used as the
-auth source. For the <code class="docutils literal notranslate"><span class="pre">GSSAPI</span></code> and <code class="docutils literal notranslate"><span class="pre">MONGODB_X509</span></code> mechanisms, the
+auth source. For the <code class="docutils literal notranslate"><span class="pre">AWS</span></code>, <code class="docutils literal notranslate"><span class="pre">GSSAPI</span></code> and <code class="docutils literal notranslate"><span class="pre">MONGODB_X509</span></code> mechanisms, the
 auth source is always <code class="docutils literal notranslate"><span class="pre">$external</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -484,7 +485,7 @@ copy</a>
   <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
   <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-ACCESS-KEY-ID&gt;&#39;</span><span class="p">,</span>
   <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SECRET-ACCESS-KEY&gt;&#39;</span><span class="p">,</span>
-  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -496,7 +497,7 @@ copy</a>
 copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-  <span class="s1">&#39;mongodb://&lt;AWS-ACCESS-KEY-ID&gt;:&lt;AWS-SECRET-ACCESS-KEY&gt;@mongodb.example.com/test?authMechanism=MONGODB-AWS&#39;</span><span class="p">)</span>
+  <span class="s1">&#39;mongodb://&lt;AWS-ACCESS-KEY-ID&gt;:&lt;AWS-SECRET-ACCESS-KEY&gt;@mongodb.example.com/mydb?authMechanism=MONGODB-AWS&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -516,9 +517,9 @@ copy</a>
   <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-ACCESS-KEY-ID&gt;&#39;</span><span class="p">,</span>
   <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SECRET-ACCESS-KEY&gt;&#39;</span><span class="p">,</span>
   <span class="ss">auth_mech_properties</span><span class="p">:</span> <span class="p">{</span>
-    <span class="ss">session_token</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SESSION-TOKEN&gt;&#39;</span><span class="p">,</span>
+    <span class="ss">aws_session_token</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SESSION-TOKEN&gt;&#39;</span><span class="p">,</span>
   <span class="p">},</span>
-  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -530,7 +531,7 @@ copy</a>
 copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-  <span class="s1">&#39;mongodb://&lt;AWS-ACCESS-KEY-ID&gt;:&lt;AWS-SECRET-ACCESS-KEY&gt;@mongodb.example.com/test?authMechanism=MONGODB-AWS&amp;authMechanismProperties=AWS_SESSION_TOKEN:&lt;AWS-SESSION-TOKEN&gt;&#39;</span><span class="p">)</span>
+  <span class="s1">&#39;mongodb://&lt;AWS-ACCESS-KEY-ID&gt;:&lt;AWS-SECRET-ACCESS-KEY&gt;@mongodb.example.com/mydb?authMechanism=MONGODB-AWS&amp;authMechanismProperties=AWS_SESSION_TOKEN:&lt;AWS-SESSION-TOKEN&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -547,12 +548,12 @@ copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
   <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
-  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Using a URI:</span>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-  <span class="s1">&#39;mongodb://mongodb.example.com/test?authMechanism=MONGODB-AWS&#39;</span><span class="p">)</span>
+  <span class="s1">&#39;mongodb://mongodb.example.com/mydb?authMechanism=MONGODB-AWS&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -706,7 +707,7 @@ version 2.6.</p>
 copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
-                           <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+                           <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
                            <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
                            <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:mongodb_cr</span> <span class="p">)</span>
