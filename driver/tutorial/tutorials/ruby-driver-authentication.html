@@ -425,15 +425,21 @@ copy</a>
 <p><em>Requires MongoDB Enterprise Edition and server version 4.4 or later.</em></p>
 <p>The AWS authentication mechanism uses AWS <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html">Identity and Access Management (IAM)</a>
 and AWS <a class="reference external" href="https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html">Security Token Service (STS)</a>
-to prove the client’s identity to MongoDB server. Briefly, AWS authentication
+to prove the client’s identity to a MongoDB server. Briefly, AWS authentication
 works as follows:</p>
-<p>1. The client uses AWS IAM credentials to create a signature that is sent to
-MongoDB server.
-2. The server sends a request to AWS STS using the client’s signature.
-3. A successful STS request returns the username (technically, the ARN of
-the IAM user or role) corresponding to the credentials that the client used.
+<ol class="arabic simple">
+<li>The client uses AWS IAM credentials to create a signature that is sent to</li>
+</ol>
+<blockquote>
+<div>MongoDB server.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>The server sends a request to AWS STS using the client’s signature.</li>
+<li>A successful STS request returns the username (technically, the ARN of</li>
+</ol>
+<blockquote>
+<div>the IAM user or role) corresponding to the credentials that the client used.
 The IAM user ARN is used by the server to look up a defined user, and the
-client is considered to have authenticated as this user.</p>
+client is considered to have authenticated as this user.</div></blockquote>
 <p>AWS credentials are comprised of:</p>
 <ul class="simple">
 <li>The access key ID.</li>
@@ -451,12 +457,12 @@ the network.</p>
 </div>
 <p>AWS uses temporary credentials in:</p>
 <ul class="simple">
-<li>STS <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Assume Role</a></li>
+<li>STS <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Assume Role</a>
+requests.</li>
+<li><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html">EC2 instance roles</a>.</li>
+<li><a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task roles</a>.</li>
+<li><a class="reference external" href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">AWS Lambda environment</a>.</li>
 </ul>
-<p>requests.
-- <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html">EC2 instance roles</a>.
-- <a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task roles</a>.
-- <a class="reference external" href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">AWS Lambda environment</a>.</p>
 <p>The Ruby driver allows providing both regular and temporary credentials
 explicitly as Ruby options or URI options. If credentials are not explicitly
 provided, the driver will attempt to retrieve them from environment variables
