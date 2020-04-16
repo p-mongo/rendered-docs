@@ -467,6 +467,39 @@ requests.</li>
 explicitly as Ruby options or URI options. If credentials are not explicitly
 provided, the driver will attempt to retrieve them from environment variables
 described below and from EC2 instance and ECS task metadata endpoints.</p>
+<div class="section" id="providing-credentials-explicitly">
+<h4>Providing Credentials Explicitly<a class="headerlink" href="#providing-credentials-explicitly" title="Permalink to this headline">¶</a></h4>
+<p>Regular (non-temporary) IAM credentials can be provided as Ruby options,
+as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
+  <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;AWS-ACCESS-KEY-ID&#39;</span><span class="p">,</span>
+  <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;AWS-SECRET-ACCESS-KEY&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To provide the session token which is part of the temporary credentials,
+use authentication mechanism properties as follows:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>client = Mongo::Client.new([‘mongodb.example.com’],</dt>
+<dd><p class="first">auth_mech: :aws,
+user: ‘AWS-ACCESS-KEY-ID’,
+password: ‘AWS-SECRET-ACCESS-KEY’,
+auth_mech_properties: {</p>
+<blockquote>
+<div>session_token: ‘AWS-SESSION-TOKEN’,</div></blockquote>
+<p class="last">},</p>
+</dd>
+</dl>
+<p>)</p>
+</div></blockquote>
 <p>Note that:</p>
 <p>1. The username that the application specifies when creating a client is
 different from the username that must exist on the server.</p>
@@ -491,6 +524,7 @@ credentials is:</p>
 <li>ECS endpoint if and only if <code class="docutils literal notranslate"><span class="pre">AWS_CONTAINER_CREDENTIALS_RELATIVE_URI</span></code> is set.</li>
 <li>EC2 endpoint</li>
 </ol>
+</div>
 </div>
 <div class="section" id="ldap-sasl-plain">
 <span id="plain"></span><h3>LDAP (SASL PLAIN)<a class="headerlink" href="#ldap-sasl-plain" title="Permalink to this headline">¶</a></h3>
