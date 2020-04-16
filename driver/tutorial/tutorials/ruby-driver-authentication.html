@@ -564,8 +564,12 @@ environment variables. These environment variables are recognized by
 a variety of AWS-related libraries and tools such as the official
 AWS Ruby SDK and the AWS CLI. They are also defined when running in an
 AWS Lambda environment.</li>
-<li>The AWS <a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task metadata endpoint</a>.</li>
-<li>The AWS <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">EC2 instance metadata endpoint</a>.</li>
+<li>The AWS <a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task metadata endpoint</a>.
+This returns credentials associated with the ECS task role assigned to
+the container.</li>
+<li>The AWS <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">EC2 instance metadata endpoint</a>.
+This returns credentials associated with the EC2 instance role assigned to
+the instance.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
