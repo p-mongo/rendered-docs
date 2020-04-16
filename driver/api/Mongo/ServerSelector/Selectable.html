@@ -860,22 +860,22 @@
       <pre class="lines">
 
 
+300
+301
+302
+303
+304
+305
+306
+307
 308
 309
 310
 311
-312
-313
-314
-315
-316
-317
-318
-319
-320</pre>
+312</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 308</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 300</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_candidates'>candidates</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_single?'>single?</span>
@@ -1222,12 +1222,12 @@
       <pre class="lines">
 
 
-294
-295
-296</pre>
+286
+287
+288</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 294</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 286</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_local_threshold'>local_threshold</span>
   <span class='ivar'>@local_threshold</span> <span class='op'>||=</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:local_threshold</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../ServerSelector.html#LOCAL_THRESHOLD-constant" title="Mongo::ServerSelector::LOCAL_THRESHOLD (constant)">LOCAL_THRESHOLD</a></span></span><span class='rparen'>)</span>
@@ -1277,12 +1277,12 @@
       <pre class="lines">
 
 
-279
-280
-281</pre>
+271
+272
+273</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 279</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 271</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_local_threshold_with_cluster'>local_threshold_with_cluster</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:local_threshold</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:local_threshold</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../ServerSelector.html#LOCAL_THRESHOLD-constant" title="Mongo::ServerSelector::LOCAL_THRESHOLD (constant)">LOCAL_THRESHOLD</a></span></span>
@@ -1570,15 +1570,7 @@
 250
 251
 252
-253
-254
-255
-256
-257
-258
-259
-260
-261</pre>
+253</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 129</span>
@@ -1671,14 +1663,6 @@
 </span>      <span class='comment'># server may be a secondary and the second server may be primary)
 </span>      <span class='comment'># and we should take the first server here respecting the order
 </span>      <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_servers'>servers</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-
-      <span class='kw'>if</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_single?'>single?</span> <span class='op'>&amp;&amp;</span>
-        <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_replica_set_name'>replica_set_name</span> <span class='op'>&amp;&amp;</span>
-        <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_replica_set_name'>replica_set_name</span> <span class='op'>!=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span><span class='period'>.</span><span class='id identifier rubyid_replica_set_name'>replica_set_name</span>
-      <span class='kw'>then</span>
-        <span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cluster topology specifies replica set name </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_replica_set_name'>replica_set_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>, but the server has replica set name </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span><span class='period'>.</span><span class='id identifier rubyid_replica_set_name'>replica_set_name</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;nil&gt;</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-        <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/NoServerAvailable.html" title="Mongo::Error::NoServerAvailable (class)">NoServerAvailable</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Error/NoServerAvailable.html#initialize-instance_method" title="Mongo::Error::NoServerAvailable#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
 
       <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_starting_transaction?'>starting_transaction?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_sharded?'>sharded?</span>
         <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_pin'>pin</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
@@ -1796,13 +1780,13 @@
       <pre class="lines">
 
 
-274
-275
-276
-277</pre>
+266
+267
+268
+269</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 274</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/selectable.rb', line 266</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span>
   <span class='ivar'>@server_selection_timeout</span> <span class='op'>||=</span>
@@ -1818,7 +1802,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 15 12:27:04 2020 by
+  Generated on Thu Apr 16 00:12:51 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>
