@@ -436,6 +436,14 @@ the IAM user or role) corresponding to the credentials that the client used.
 The IAM user ARN is used by the server to look up a defined user, and the
 client is considered to have authenticated as this user.</li>
 </ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Unlike other authentication mechanisms, the username that the application
+provides when creating a client and the username of the server user are
+different: the username on the client is the AWS access key ID, but the
+username on the server is the ARN of the IAM user or role corresponding
+to the access key ID.</p>
+</div>
 <p>AWS credentials are comprised of:</p>
 <ul class="simple">
 <li>The access key ID.</li>
