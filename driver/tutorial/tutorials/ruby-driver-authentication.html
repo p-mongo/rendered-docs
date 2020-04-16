@@ -478,28 +478,56 @@ copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
   <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
-  <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;AWS-ACCESS-KEY-ID&#39;</span><span class="p">,</span>
-  <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;AWS-SECRET-ACCESS-KEY&#39;</span><span class="p">,</span>
+  <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-ACCESS-KEY-ID&gt;&#39;</span><span class="p">,</span>
+  <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SECRET-ACCESS-KEY&gt;&#39;</span><span class="p">,</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>To provide the session token which is part of the temporary credentials,
-use authentication mechanism properties as follows:</p>
+<p>They can also be provided via a URI:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="s1">&#39;mongodb://&lt;AWS-ACCESS-KEY-ID&gt;:&lt;AWS-SECRET-ACCESS-KEY&gt;@mongodb.example.com/test?authMechanism=MONGODB-AWS&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When credentials are provided via a URI, they must be percent-escaped.</p>
+</div>
+<p>To provide temporary credentials, specify the session token in the
+authentication mechanism properties as follows:</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>client = Mongo::Client.new([‘mongodb.example.com’],</dt>
 <dd><p class="first">auth_mech: :aws,
-user: ‘AWS-ACCESS-KEY-ID’,
-password: ‘AWS-SECRET-ACCESS-KEY’,
+user: ‘&lt;AWS-ACCESS-KEY-ID&gt;’,
+password: ‘&lt;AWS-SECRET-ACCESS-KEY&gt;’,
 auth_mech_properties: {</p>
 <blockquote>
-<div>session_token: ‘AWS-SESSION-TOKEN’,</div></blockquote>
-<p class="last">},</p>
+<div>session_token: ‘&lt;AWS-SESSION-TOKEN&gt;’,</div></blockquote>
+<p class="last">},
+database: ‘test’,</p>
 </dd>
 </dl>
 <p>)</p>
 </div></blockquote>
+<p>The temporary credentials can also be provided via a URI:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="s1">&#39;mongodb://&lt;AWS-ACCESS-KEY-ID&gt;:&lt;AWS-SECRET-ACCESS-KEY&gt;@mongodb.example.com/test?authMechanism=MONGODB-AWS&amp;authMechanismProperties=AWS_SESSION_TOKEN:&lt;AWS-SESSION-TOKEN&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <p>Note that:</p>
 <p>1. The username that the application specifies when creating a client is
 different from the username that must exist on the server.</p>
