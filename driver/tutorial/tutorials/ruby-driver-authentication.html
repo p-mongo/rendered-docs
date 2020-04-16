@@ -502,21 +502,23 @@ copy</a>
 </div>
 <p>To provide temporary credentials, specify the session token in the
 authentication mechanism properties as follows:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>client = Mongo::Client.new([‘mongodb.example.com’],</dt>
-<dd><p class="first">auth_mech: :aws,
-user: ‘&lt;AWS-ACCESS-KEY-ID&gt;’,
-password: ‘&lt;AWS-SECRET-ACCESS-KEY&gt;’,
-auth_mech_properties: {</p>
-<blockquote>
-<div>session_token: ‘&lt;AWS-SESSION-TOKEN&gt;’,</div></blockquote>
-<p class="last">},
-database: ‘test’,</p>
-</dd>
-</dl>
-<p>)</p>
-</div></blockquote>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
+  <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-ACCESS-KEY-ID&gt;&#39;</span><span class="p">,</span>
+  <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SECRET-ACCESS-KEY&gt;&#39;</span><span class="p">,</span>
+  <span class="ss">auth_mech_properties</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">session_token</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SESSION-TOKEN&gt;&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <p>The temporary credentials can also be provided via a URI:</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -528,6 +530,29 @@ copy</a>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="automatically-retrieving-credentials">
+<h4>Automatically Retrieving Credentials<a class="headerlink" href="#automatically-retrieving-credentials" title="Permalink to this headline">¶</a></h4>
+<p>The client can retrieve credentials from the environment or from EC2 or ECS
+metadata endpoints. To retrieve credentials automatically, specify the
+AWS authentication mechanism but do not specify username nor password:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Using a URI:</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="s1">&#39;mongodb://mongodb.example.com/test?authMechanism=MONGODB-AWS&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The driver will</p>
 <p>Note that:</p>
 <p>1. The username that the application specifies when creating a client is
 different from the username that must exist on the server.</p>
