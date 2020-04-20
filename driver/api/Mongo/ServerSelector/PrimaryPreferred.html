@@ -69,10 +69,12 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName">Object</span>
+      <span class="inheritName"><span class='object_link'><a href="Base.html" title="Mongo::ServerSelector::Base (class)">Base</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Base.html" title="Mongo::ServerSelector::Base (class)">Base</a></span></li>
           
             <li class="next">Mongo::ServerSelector::PrimaryPreferred</li>
           
@@ -272,11 +274,11 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#to_mongos-instance_method" title="#to_mongos (instance method)">#<strong>to_mongos</strong>  &#x21d2; Hash </a>
+      <a href="#to_doc-instance_method" title="#to_doc (instance method)">#<strong>to_doc</strong>  &#x21d2; Hash </a>
     
 
     
-      (also: #to_doc)
+      (also: #to_mongos)
     
   </span>
   
@@ -289,7 +291,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Convert this server preference definition into a format appropriate   for a mongos server.</p>
+<p>Convert this server preference definition into a format appropriate   for sending to a MongoDB server (i.e., as a command field).</p>
 </div></span>
   
 </li>
@@ -310,6 +312,12 @@
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Selectable</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Selectable.html#==-instance_method" title="Mongo::ServerSelector::Selectable#== (method)">#==</a></span>, <span class='object_link'><a href="Selectable.html#candidates-instance_method" title="Mongo::ServerSelector::Selectable#candidates (method)">#candidates</a></span>, <span class='object_link'><a href="Selectable.html#initialize-instance_method" title="Mongo::ServerSelector::Selectable#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Selectable.html#inspect-instance_method" title="Mongo::ServerSelector::Selectable#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Selectable.html#local_threshold-instance_method" title="Mongo::ServerSelector::Selectable#local_threshold (method)">#local_threshold</a></span>, <span class='object_link'><a href="Selectable.html#local_threshold_with_cluster-instance_method" title="Mongo::ServerSelector::Selectable#local_threshold_with_cluster (method)">#local_threshold_with_cluster</a></span>, <span class='object_link'><a href="Selectable.html#select_server-instance_method" title="Mongo::ServerSelector::Selectable#select_server (method)">#select_server</a></span>, <span class='object_link'><a href="Selectable.html#server_selection_timeout-instance_method" title="Mongo::ServerSelector::Selectable#server_selection_timeout (method)">#server_selection_timeout</a></span></p>
 
+  
+  
+  
+  
+  
+  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -556,14 +564,14 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="to_mongos-instance_method">
+  <h3 class="signature " id="to_doc-instance_method">
   
-    #<strong>to_mongos</strong>  &#x21d2; <tt>Hash</tt> 
+    #<strong>to_doc</strong>  &#x21d2; <tt>Hash</tt> 
   
 
   
     <span class="aliases">Also known as:
-    <span class="names"><span id='to_doc-instance_method'>to_doc</span></span>
+    <span class="names"><span id='to_mongos-instance_method'>to_mongos</span></span>
     </span>
   
 
@@ -573,7 +581,7 @@
     
 <p>Convert this server preference definition into a format appropriate</p>
 
-<pre class="code ruby"><code class="ruby">for a mongos server.
+<pre class="code ruby"><code class="ruby">for sending to a MongoDB server (i.e., as a command field).
 </code></pre>
 
 
@@ -581,20 +589,6 @@
 </div>
 <div class="tags">
   
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-        <p class="example_title"><div class='inline'>
-<p>Convert this server preference definition into a format</p>
-</div></p>
-      
-      <pre class="example code"><code>for mongos.
-preference = Mongo::ServerSelector::PrimaryPreferred.new
-preference.to_mongos</code></pre>
-    
-  </div>
-
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -607,7 +601,7 @@ preference.to_mongos</code></pre>
       
         &mdash;
         <div class='inline'>
-<p>The server preference formatted for a mongos server.</p>
+<p>The server preference formatted as a command field value.</p>
 </div>
       
     </li>
@@ -636,21 +630,15 @@ preference.to_mongos</code></pre>
       <pre class="lines">
 
 
-73
-74
-75
-76
-77
-78</pre>
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/primary_preferred.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/primary_preferred.rb', line 68</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_to_mongos'>to_mongos</span>
-  <span class='ivar'>@doc</span> <span class='op'>||=</span> <span class='lparen'>(</span><span class='id identifier rubyid_preference'>preference</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:mode</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="#SERVER_FORMATTED_NAME-constant" title="Mongo::ServerSelector::PrimaryPreferred::SERVER_FORMATTED_NAME (constant)">SERVER_FORMATTED_NAME</a></span></span> <span class='rbrace'>}</span>
-    <span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='symbol'>:tags</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_tag_sets'>tag_sets</span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_tag_sets'>tag_sets</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>maxStalenessSeconds:</span> <span class='id identifier rubyid_max_staleness'>max_staleness</span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_max_staleness'>max_staleness</span>
-    <span class='id identifier rubyid_preference'>preference</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_to_doc'>to_doc</span>
+  <span class='id identifier rubyid_full_doc'>full_doc</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -662,7 +650,7 @@ preference.to_mongos</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 16 17:38:40 2020 by
+  Generated on Sun Apr 19 20:31:43 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

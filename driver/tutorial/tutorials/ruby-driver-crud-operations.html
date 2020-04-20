@@ -604,9 +604,9 @@ copy</a>
 <div class="section" id="read-preference">
 <span id="ruby-driver-read-preference"></span><h3>Read Preference<a class="headerlink" href="#read-preference" title="Permalink to this headline">¶</a></h3>
 <p>Read preference determines the candidate <a class="reference external" href="https://docs.mongodb.com/manual/replication/">replica set</a>
-members to which a query or command can be sent. They consist of a <strong>mode</strong> specified as
-a symbol, an array of hashes known as <strong>tag_sets</strong>, and two timing options:
-<strong>local_threshold</strong> and <strong>server_selection_timeout</strong>.</p>
+members to which a query or command can be sent. They consist of a <strong>mode</strong>
+specified as a symbol, an array of hashes known as <strong>tag_sets</strong>, and two
+timing options: <strong>local_threshold</strong> and <strong>server_selection_timeout</strong>.</p>
 <dl class="docutils">
 <dt><code class="docutils literal notranslate"><span class="pre">local_threshold</span></code></dt>
 <dd>Defines the upper limit in seconds of the latency window
@@ -616,6 +616,12 @@ The default is 15 milliseconds, or 0.015 seconds.</dd>
 <dd>Defines how long to block for server selection
 before throwing an exception. The default is 30,000 milliseconds, or 30 seconds.</dd>
 </dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read preference does not apply to Standalone deployments. When a client
+is connected to a Standalone deployment, any application-specified read
+preference is ignored.</p>
+</div>
 <p>For more information on the algorithm used to select a server, please
 refer to the <a class="reference external" href="https://github.com/mongodb/specifications/blob/master/source/server-selection/server-selection.rst">Server Selection documentation, available on GitHub</a>.</p>
 <p>Read preference can be set as an option on the client or passed an
@@ -653,15 +659,26 @@ copy</a>
 </div>
 <div class="section" id="mode">
 <h3>Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
-<p>There are five possible read preference modes. They are <code class="docutils literal notranslate"><span class="pre">:primary</span></code>,
-<code class="docutils literal notranslate"><span class="pre">:secondary</span></code>, <code class="docutils literal notranslate"><span class="pre">:primary_preferred</span></code>, <code class="docutils literal notranslate"><span class="pre">:secondary_preferred</span></code>,
-<code class="docutils literal notranslate"><span class="pre">:nearest</span></code>. Please see the <a class="reference external" href="https://docs.mongodb.com/manual/core/read-preference/">read preference documentation in the MongoDB Manual</a> for an explanation of the modes and tag sets.</p>
+<p>There are five possible read preference modes: <code class="docutils literal notranslate"><span class="pre">:primary</span></code>, <code class="docutils literal notranslate"><span class="pre">:secondary</span></code>,
+<code class="docutils literal notranslate"><span class="pre">:primary_preferred</span></code>, <code class="docutils literal notranslate"><span class="pre">:secondary_preferred</span></code> and``:nearest``.
+Please see the <a class="reference external" href="https://docs.mongodb.com/manual/core/read-preference/">read preference documentation in the MongoDB Manual</a> for an explanation of the modes.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When a client is directly connected to a server using the <code class="docutils literal notranslate"><span class="pre">:direct_connection</span></code>
+Ruby option or the <code class="docutils literal notranslate"><span class="pre">directConnection</span></code> URI option, read preference mode
+is automatically set to <code class="docutils literal notranslate"><span class="pre">:primary_preferred</span></code> to permit read operations
+against secondaries. If the application specified a <code class="docutils literal notranslate"><span class="pre">:primary</span></code> read
+preference mode, the mode is automatically converted to <code class="docutils literal notranslate"><span class="pre">:primary_preferred</span></code>.
+If another read preference mode is specified, it is passed to the server
+unchanged.</p>
+</div>
 </div>
 <div class="section" id="tag-sets">
 <h3>Tag sets<a class="headerlink" href="#tag-sets" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">tag_sets</span></code> parameter is an ordered list of tag sets used to
 restrict the eligibility of servers for selection, such as for data
-center awareness.</p>
+center awareness. Please see the <a class="reference external" href="https://docs.mongodb.com/manual/core/read-preference/">read preference documentation in
+the MongoDB Manual</a> for an explanation of tag sets.</p>
 <p>A read preference tag set (T) matches a server tag set (S) – or
 equivalently a server tag set (S) matches a read preference tag set
 (T) — if T is a subset of S.</p>

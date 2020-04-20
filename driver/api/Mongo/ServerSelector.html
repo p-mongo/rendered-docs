@@ -89,7 +89,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/mongo/server_selector.rb<span class="defines">,<br />
-  lib/mongo/server_selector/nearest.rb,<br /> lib/mongo/server_selector/primary.rb,<br /> lib/mongo/server_selector/secondary.rb,<br /> lib/mongo/server_selector/selectable.rb,<br /> lib/mongo/server_selector/primary_preferred.rb,<br /> lib/mongo/server_selector/secondary_preferred.rb</span>
+  lib/mongo/server_selector/base.rb,<br /> lib/mongo/server_selector/nearest.rb,<br /> lib/mongo/server_selector/primary.rb,<br /> lib/mongo/server_selector/secondary.rb,<br /> lib/mongo/server_selector/selectable.rb,<br /> lib/mongo/server_selector/primary_preferred.rb,<br /> lib/mongo/server_selector/secondary_preferred.rb</span>
 </dd>
   </dl>
   
@@ -130,7 +130,7 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="ServerSelector/Nearest.html" title="Mongo::ServerSelector::Nearest (class)">Nearest</a></span>, <span class='object_link'><a href="ServerSelector/Primary.html" title="Mongo::ServerSelector::Primary (class)">Primary</a></span>, <span class='object_link'><a href="ServerSelector/PrimaryPreferred.html" title="Mongo::ServerSelector::PrimaryPreferred (class)">PrimaryPreferred</a></span>, <span class='object_link'><a href="ServerSelector/Secondary.html" title="Mongo::ServerSelector::Secondary (class)">Secondary</a></span>, <span class='object_link'><a href="ServerSelector/SecondaryPreferred.html" title="Mongo::ServerSelector::SecondaryPreferred (class)">SecondaryPreferred</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="ServerSelector/Base.html" title="Mongo::ServerSelector::Base (class)">Base</a></span>, <span class='object_link'><a href="ServerSelector/Nearest.html" title="Mongo::ServerSelector::Nearest (class)">Nearest</a></span>, <span class='object_link'><a href="ServerSelector/Primary.html" title="Mongo::ServerSelector::Primary (class)">Primary</a></span>, <span class='object_link'><a href="ServerSelector/PrimaryPreferred.html" title="Mongo::ServerSelector::PrimaryPreferred (class)">PrimaryPreferred</a></span>, <span class='object_link'><a href="ServerSelector/Secondary.html" title="Mongo::ServerSelector::Secondary (class)">Secondary</a></span>, <span class='object_link'><a href="ServerSelector/SecondaryPreferred.html" title="Mongo::ServerSelector::SecondaryPreferred (class)">SecondaryPreferred</a></span>
     
   
 </p>
@@ -463,14 +463,14 @@
       <pre class="lines">
 
 
-72
 73
 74
 75
-76</pre>
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_preference'>preference</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_preference'>preference</span> <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="#PREFERENCES-constant" title="Mongo::ServerSelector::PREFERENCES (constant)">PREFERENCES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span>
@@ -530,12 +530,12 @@
       <pre class="lines">
 
 
-84
 85
-86</pre>
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_primary'>primary</span>
   <span class='ivar'>@primary</span> <span class='op'>||=</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='label'>mode:</span> <span class='symbol'>:primary</span><span class='rparen'>)</span>
@@ -550,7 +550,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 16 17:38:26 2020 by
+  Generated on Sun Apr 19 20:31:29 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

@@ -62,7 +62,7 @@
       <div id="content"><h1>Module: Mongo::Operation::ReadPreferenceSupported
   
   
-  
+  <span class="private note title">Private</span>
 </h1>
 <div class="box_info">
   
@@ -90,8 +90,14 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
-<p>Shared behavior of operations that support read preference.</p>
+    <p class="note private">
+  <strong>This module is part of a private API.</strong>
+  You should avoid using this module if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Read preference handling for pre-OP_MSG operation implementations.</p>
+
+<p>This module is not used by OP_MSG operation classes (those deriving from OpMsgBase). Instead, read preference for those classes is handled in SessionsSupported module.</p>
 
 
   </div>
@@ -127,7 +133,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 16 17:38:28 2020 by
+  Generated on Sun Apr 19 20:31:32 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>
