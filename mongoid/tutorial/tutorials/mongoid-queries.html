@@ -892,15 +892,15 @@ specified <em>merge strategy</em>.</p>
 <span id="id3"></span><h4>Merge Strategies<a class="headerlink" href="#merge-strategies" title="Permalink to this headline">¶</a></h4>
 <p>Mongoid provides three merge strategies:</p>
 <ul class="simple">
-<li><strong>Override</strong>: the new operator instance replaces any existing conditions on
-the same field using the same operator.</li>
-<li><strong>Intersect</strong>: if there already is a condition using the same operator on the
-same field, the values of the existing condition are intersected with the
-values of the new condition and the result is stored as the operator value.</li>
-<li><strong>Union</strong>: if there already is a condition using the same operator on the
-same field, the values of the new condition are aded to the values of the
-exsting condition and the result is stored as the operator value.</li>
+<li><strong>Override</strong>: the new operator instance replaces any existing conditions on</li>
 </ul>
+<p>the same field using the same operator.
+- <strong>Intersect</strong>: if there already is a condition using the same operator on the
+same field, the values of the existing condition are intersected with the
+values of the new condition and the result is stored as the operator value.
+- <strong>Union</strong>: if there already is a condition using the same operator on the
+same field, the values of the new condition are aded to the values of the
+exsting condition and the result is stored as the operator value.</p>
 <p>The following snippet demonstrates all of the strategies, using <code class="docutils literal notranslate"><span class="pre">in</span></code> as the
 example operator:</p>
 <div class="button-code-block">

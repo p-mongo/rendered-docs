@@ -519,6 +519,35 @@ copy</a>
 </div>
 <p>The Ruby driver options may be found in
 <a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/tutorials/ruby-driver-create-client/">the driver documentation</a>.</p>
+<div class="section" id="erb-preprocessing">
+<h3>ERb Preprocessing<a class="headerlink" href="#erb-preprocessing" title="Permalink to this headline">¶</a></h3>
+<p>When loading a configuration file, Mongoid processes it with ERb before
+parsing it as YAML. This allows, for example, constructing the contents of
+the configuration file at runtime based on environment variables:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
+  <span class="nt">clients</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span>
+      <span class="nt">uri</span><span class="p">:</span> <span class="s">&quot;&lt;%=</span><span class="nv"> </span><span class="s">ENV[&#39;MONGODB_URI&#39;]</span><span class="nv"> </span><span class="s">%&gt;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When outputting values from ERb, ensure the values are valid YAML and
+escape them as needed.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since ERb rendering is performed prior to YAML parsing, all ERb directives
+in the configuration file are evaluated, including those occurring in YAML
+comments.</p>
+</div>
+</div>
 </div>
 <div class="section" id="logging">
 <h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
