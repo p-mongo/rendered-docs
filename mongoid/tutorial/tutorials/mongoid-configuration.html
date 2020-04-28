@@ -221,11 +221,10 @@
 <ul class="simple">
 <li><a class="reference internal" href="#generating-default-configuration" id="id4">Generating Default Configuration</a></li>
 <li><a class="reference internal" href="#loading-mongoid-configuration" id="id5">Loading Mongoid Configuration</a></li>
-<li><a class="reference internal" href="#configuration-options" id="id6">Mongoid Configuration</a></li>
-<li><a class="reference internal" href="#logging" id="id7">Logging</a></li>
-<li><a class="reference internal" href="#time-zones" id="id8">Time Zones</a></li>
-<li><a class="reference internal" href="#usage-with-forking-servers" id="id9">Usage with Forking Servers</a></li>
-<li><a class="reference internal" href="#development-configuration" id="id10">Development Configuration</a></li>
+<li><a class="reference internal" href="#logging" id="id6">Logging</a></li>
+<li><a class="reference internal" href="#time-zones" id="id7">Time Zones</a></li>
+<li><a class="reference internal" href="#usage-with-forking-servers" id="id8">Usage with Forking Servers</a></li>
+<li><a class="reference internal" href="#development-configuration" id="id9">Development Configuration</a></li>
 </ul>
 </div>
 <p>Mongoid is customarily configured through a <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> file that specifies
@@ -336,9 +335,8 @@ copy</a>
 Once a component is used or referenced, changing configuration may not apply
 changes to already instantiated components.</p>
 </div>
-</div>
 <div class="section" id="configuration-options">
-<span id="id1"></span><h2>Mongoid Configuration<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h3>Mongoid Configuration<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h3>
 <p>The following annotated example <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> demonstrates how Mongoid
 can be configured.</p>
 <div class="button-code-block">
@@ -520,7 +518,7 @@ copy</a>
 <p>The Ruby driver options may be found in
 <a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/tutorials/ruby-driver-create-client/">the driver documentation</a>.</p>
 <div class="section" id="erb-preprocessing">
-<h3>ERb Preprocessing<a class="headerlink" href="#erb-preprocessing" title="Permalink to this headline">¶</a></h3>
+<h4>ERb Preprocessing<a class="headerlink" href="#erb-preprocessing" title="Permalink to this headline">¶</a></h4>
 <p>When loading a configuration file, Mongoid processes it with ERb before
 parsing it as YAML. This allows, for example, constructing the contents of
 the configuration file at runtime based on environment variables:</p>
@@ -546,6 +544,7 @@ escape them as needed.</p>
 <p class="last">Since ERb rendering is performed prior to YAML parsing, all ERb directives
 in the configuration file are evaluated, including those occurring in YAML
 comments.</p>
+</div>
 </div>
 </div>
 </div>
