@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Socket
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -1208,12 +1208,12 @@
       <pre class="lines">
 
 
-205
-206
-207</pre>
+186
+187
+188</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 186</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connectable?'>connectable?</span>
   <span class='kw'>true</span>
@@ -1278,14 +1278,14 @@
       <pre class="lines">
 
 
-194
-195
-196
-197
-198</pre>
+175
+176
+177
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 194</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_eof?'>eof?</span>
   <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_eof?'>eof?</span>
@@ -1391,13 +1391,17 @@
 
 109
 110
-111</pre>
+111
+112
+113</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gets'>gets</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_handle_errors'>handle_errors</span> <span class='lbrace'>{</span> <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
+    <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1514,8 +1518,6 @@
       <pre class="lines">
 
 
-126
-127
 128
 129
 130
@@ -1529,13 +1531,15 @@
 138
 139
 140
-141</pre>
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_handle_errors'>handle_errors</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_read_from_socket'>read_from_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
     <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>||</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>0</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Expected to read &gt; 0 bytes but read 0 bytes</span><span class='tstring_end'>&quot;</span></span>
@@ -1627,15 +1631,19 @@
       <pre class="lines">
 
 
-151
-152
-153</pre>
+153
+154
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_readbyte'>readbyte</span>
-  <span class='id identifier rubyid_handle_errors'>handle_errors</span> <span class='lbrace'>{</span> <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_readbyte'>readbyte</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
+    <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_readbyte'>readbyte</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1660,19 +1668,7 @@
   </div>
 </div>
 <div class="tags">
-  
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-        <p class="example_title"><div class='inline'>
-<p>Write to the socket.</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span></code></pre>
-    
-  </div>
-<p class="tag_title">Parameters:</p>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1734,58 +1730,18 @@
       <pre class="lines">
 
 
-165
 166
 167
 168
 169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189</pre>
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 166</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_handle_errors'>handle_errors</span> <span class='kw'>do</span>
-    <span class='comment'># This method used to forward arguments to @socket.write in a
-</span>    <span class='comment'># single call like so:
-</span>    <span class='comment'>#
-</span>    <span class='comment'># @socket.write(*args)
-</span>    <span class='comment'>#
-</span>    <span class='comment'># Turns out, when each buffer to be written is large (e.g. 32 MiB),
-</span>    <span class='comment'># this write call would take an extremely long time (20+ seconds)
-</span>    <span class='comment'># while using 100% CPU. Splitting the writes into chunks produced
-</span>    <span class='comment'># massively better performance (0.05 seconds to write the 32 MiB of
-</span>    <span class='comment'># data on the same hardware). Unfortunately splitting the data,
-</span>    <span class='comment'># one would assume, results in it being copied, but this seems to be
-</span>    <span class='comment'># a much more minor issue compared to CPU cost of writing large buffers.
-</span>    <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_buf'>buf</span><span class='op'>|</span>
-      <span class='id identifier rubyid_buf'>buf</span> <span class='op'>=</span> <span class='id identifier rubyid_buf'>buf</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-      <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
-      <span class='kw'>while</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_buf'>buf</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
-        <span class='id identifier rubyid_chunk'>chunk</span> <span class='op'>=</span> <span class='id identifier rubyid_buf'>buf</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='op'>...</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='const'>WRITE_CHUNK_SIZE</span><span class='rbracket'>]</span>
-        <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_chunk'>chunk</span><span class='rparen'>)</span>
-        <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='const'><span class='object_link'><a href="#WRITE_CHUNK_SIZE-constant" title="Mongo::Socket::WRITE_CHUNK_SIZE (constant)">WRITE_CHUNK_SIZE</a></span></span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
+  <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_do_write'>do_write</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1798,7 +1754,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:33 2020 by
+  Generated on Wed Apr 29 01:14:05 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

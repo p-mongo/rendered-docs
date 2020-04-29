@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Socket::SSL
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -961,7 +961,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongo/socket/ssl.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_readbyte'>readbyte</span>
-  <span class='id identifier rubyid_handle_errors'>handle_errors</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_byte'>byte</span> <span class='op'>=</span> <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_byte'>byte</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>EOFError</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_byte'>byte</span>
   <span class='kw'>end</span>
@@ -976,7 +976,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:34 2020 by
+  Generated on Wed Apr 29 01:14:07 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

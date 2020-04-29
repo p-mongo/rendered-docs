@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Database::View
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -1057,7 +1057,7 @@
     <span class='id identifier rubyid_send_initial_query'>send_initial_query</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='label'>name_only:</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_cursor'>cursor</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_info'>info</span><span class='op'>|</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_cursor'>cursor</span><span class='period'>.</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_list_collections_enabled?'>list_collections_enabled?</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_cursor'>cursor</span><span class='period'>.</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_list_collections_enabled?'>list_collections_enabled?</span>
       <span class='id identifier rubyid_info'>info</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
     <span class='kw'>else</span>
       <span class='lparen'>(</span><span class='id identifier rubyid_info'>info</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span>
@@ -1211,7 +1211,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:36 2020 by
+  Generated on Wed Apr 29 01:14:08 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

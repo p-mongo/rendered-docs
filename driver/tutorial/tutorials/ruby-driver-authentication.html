@@ -343,6 +343,28 @@ to the rules of the authentication mechanism used.</p>
 </div>
 <div class="section" id="authentication-mechanisms">
 <h2>Authentication Mechanisms<a class="headerlink" href="#authentication-mechanisms" title="Permalink to this headline">¶</a></h2>
+<p>MongoDB supports several authentication mechanisms, as detailed in this section.
+Authentication mechanism to use can be explicitly specified when a Client is
+created; if authentication mechanism is not provided by the application, it is
+selected as follows:</p>
+<ul class="simple">
+<li>For MongoDB 4.0 and higher, the client performs SCRAM mechanism negotiation
+with the server. If the user specified in client configuration permits
+authentication with SCRAM-SHA-256, then SCRAM-SHA-256 is used for
+authentication. Otherwise SCRAM-SHA-1 is used.</li>
+<li>For MongoDB 3.0 through 3.6, SCRAM-SHA-1 is used.</li>
+<li>For MongoDB 2.6, MONGODB-CR is used.</li>
+</ul>
+<p>Note that:</p>
+<ul class="simple">
+<li>X.509, AWS, LDAP and Kerberos authentication mechanisms must always be
+explicitly requested.</li>
+<li>If the MongoDB server that the client is connecting to supports SCRAM,
+the client will attempt to authenticate using SCRAM if no authentication
+mechanism is explicitly specified. To authenticate to MongoDB 3.0 and
+higher servers using MONGODB-CR, the MONGODB-CR mechanism must be
+explicitly requested.</li>
+</ul>
 <div class="section" id="scram">
 <span id="id2"></span><h3>SCRAM<a class="headerlink" href="#scram" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://docs.mongodb.com/manual/core/security-scram/">SCRAM authentication</a> is the default
@@ -698,7 +720,7 @@ copy</a>
 <h3>MONGODB-CR<a class="headerlink" href="#mongodb-cr" title="Permalink to this headline">¶</a></h3>
 <p><em>Deprecated:</em> MONGODB-CR mechanism is deprecated as of MongoDB 3.6 and
 removed as of MongoDB 4.0. Please use <a class="reference external" href="scram">SCRAM authentication</a> instead.</p>
-<p>MONGODB-CR was the default authentication mechanism for MongoDB up through
+<p>MONGODB-CR was the default authentication mechanism for MongoDB through
 version 2.6.</p>
 <p>The mechanism can be explicitly set with the credentials:</p>
 <div class="button-code-block">
@@ -713,6 +735,14 @@ copy</a>
                            <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:mongodb_cr</span> <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the MongoDB server that the client is connecting to supports SCRAM,
+the client will attempt to authenticate using SCRAM if no authentication
+mechanism is explicitly specified. To authenticate to MongoDB 3.0 and
+higher servers using MONGODB-CR, the MONGODB-CR mechanism must be
+explicitly requested.</p>
 </div>
 </div>
 </div>

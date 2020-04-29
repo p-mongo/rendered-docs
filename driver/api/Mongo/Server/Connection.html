@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Server::Connection
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -1601,8 +1601,6 @@
       <pre class="lines">
 
 
-228
-229
 230
 231
 232
@@ -1630,10 +1628,12 @@
 254
 255
 256
-257</pre>
+257
+258
+259</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 228</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 230</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect!'>disconnect!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='comment'># Note: @closed may be true here but we also may have a socket.
@@ -1814,23 +1814,27 @@
       <pre class="lines">
 
 
-272
-273
 274
 275
 276
 277
 278
-279</pre>
+279
+280
+281
+282
+283</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 272</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 274</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ping'>ping</span>
   <span class='id identifier rubyid_bytes'>bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span> <span class='op'>?</span> <span class='const'><span class='object_link'><a href="#PING_OP_MSG_BYTES-constant" title="Mongo::Server::Connection::PING_OP_MSG_BYTES (constant)">PING_OP_MSG_BYTES</a></span></span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="#PING_BYTES-constant" title="Mongo::Server::Connection::PING_BYTES (constant)">PING_BYTES</a></span></span>
   <span class='id identifier rubyid_ensure_connected'>ensure_connected</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
-    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_reply'>reply</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deserialize'><span class='object_link'><a href="../Protocol/Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_max_message_size'>max_message_size</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_reply'>reply</span> <span class='op'>=</span> <span class='id identifier rubyid_add_server_diagnostics'>add_server_diagnostics</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
+      <span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deserialize'><span class='object_link'><a href="../Protocol/Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_max_message_size'>max_message_size</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
     <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/Result.html" title="Mongo::Operation::Result (class)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/Result.html#OK-constant" title="Mongo::Operation::Result::OK (constant)">OK</a></span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='int'>1</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -1906,13 +1910,13 @@
       <pre class="lines">
 
 
-303
-304
-305
-306</pre>
+307
+308
+309
+310</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 303</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 307</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_record_checkin!'>record_checkin!</span>
   <span class='ivar'>@last_checkin</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
@@ -1999,12 +2003,12 @@
       <pre class="lines">
 
 
-289
-290
-291</pre>
+293
+294
+295</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 289</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 293</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_socket_timeout'>socket_timeout</span>
   <span class='ivar'>@timeout</span> <span class='op'>||=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:socket_timeout</span><span class='rbracket'>]</span>
@@ -2019,7 +2023,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:38 2020 by
+  Generated on Wed Apr 29 01:14:10 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

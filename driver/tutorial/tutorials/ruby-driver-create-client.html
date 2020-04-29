@@ -901,7 +901,8 @@ and <code class="docutils literal notranslate"><span class="pre">:write_concern<
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:write_concern</span></code></td>
 <td><p class="first">Specifies write concern options as a <code class="docutils literal notranslate"><span class="pre">Hash</span></code>.
-Keys in the hash can be <code class="docutils literal notranslate"><span class="pre">:w</span></code>, <code class="docutils literal notranslate"><span class="pre">:wtimeout</span></code>, <code class="docutils literal notranslate"><span class="pre">:j</span></code>, <code class="docutils literal notranslate"><span class="pre">:fsync</span></code>.</p>
+Keys in the hash can be <code class="docutils literal notranslate"><span class="pre">:w</span></code>, <code class="docutils literal notranslate"><span class="pre">:wtimeout</span></code>, <code class="docutils literal notranslate"><span class="pre">:j</span></code>, <code class="docutils literal notranslate"><span class="pre">:fsync</span></code>.
+Note that <code class="docutils literal notranslate"><span class="pre">:wtimeout</span></code> is specified in milliseconds, not seconds.</p>
 <div class="last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -1178,10 +1179,11 @@ on the client or passed to individual operations under <code class="docutils lit
 </div>
 <div class="section" id="tls-connections">
 <h2>TLS Connections<a class="headerlink" href="#tls-connections" title="Permalink to this headline">¶</a></h2>
-<p>To connect to the MongoDB cluster using TLS, pass <code class="docutils literal notranslate"><span class="pre">tls</span></code> Ruby or URI option
-to the <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> constructor. TLS must be explicitly configured on the
-client side when the cluster requires TLS connections - there is currently no
-automatic detection of whether TLS is required.</p>
+<p>To connect to the MongoDB cluster using TLS, pass the <code class="docutils literal notranslate"><span class="pre">ssl</span></code> Ruby option or
+the <code class="docutils literal notranslate"><span class="pre">tls</span></code> URI option to the <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> constructor. TLS must be
+explicitly requested on the client side when the deployment requires TLS
+connections - there is currently no automatic detection of whether the
+deployment requires TLS.</p>
 <p>The driver will attempt to verify the server’s TLS certificate by default, and
 will abort the connection if this verification fails. In order for this
 verification to succeed, you may need to specify the certificate authority

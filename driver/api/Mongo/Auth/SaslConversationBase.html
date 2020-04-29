@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Auth::SaslConversationBase
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -397,7 +397,12 @@
 57
 58
 59
-60</pre>
+60
+61
+62
+63
+64
+65</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/auth/sasl_conversation_base.rb', line 36</span>
@@ -413,6 +418,11 @@
     <span class='label'>mechanism:</span> <span class='id identifier rubyid_full_mechanism'>full_mechanism</span><span class='comma'>,</span>
     <span class='label'>payload:</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Binary</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span><span class='comma'>,</span>
   <span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_client_first_message_options'>client_first_message_options</span>    <span class='comment'># Short SCRAM conversation,
+</span>    <span class='comment'># https://jira.mongodb.org/browse/DRIVERS-707
+</span>
+    <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='kw'>end</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
     <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Msg.html" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Msg.html#DATABASE_IDENTIFIER-constant" title="Mongo::Protocol::Msg::DATABASE_IDENTIFIER (constant)">DATABASE_IDENTIFIER</a></span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_auth_source'>auth_source</span>
     <span class='id identifier rubyid_cluster_time'>cluster_time</span> <span class='op'>=</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_mongos?'>mongos?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_cluster_time'>cluster_time</span>
@@ -437,7 +447,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:42 2020 by
+  Generated on Wed Apr 29 01:14:14 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

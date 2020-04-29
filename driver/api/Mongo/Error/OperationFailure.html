@@ -6,7 +6,7 @@
 <title>
   Exception: Mongo::Error::OperationFailure
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -513,6 +513,35 @@
 </li>
 
     
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_concern_error_document-instance_method" title="#write_concern_error_document (instance method)">#<strong>write_concern_error_document</strong>  &#x21d2; Hash | nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the write concern error document as it was reported by the server, if any.</p>
+</div></span>
+  
+</li>
+
+    
   </ul>
 
 
@@ -892,14 +921,14 @@
         </li>
       
         <li>
-          <span class="name">:write_concern_error</span>
-          <span class="type">(<tt>true | false</tt>)</span>
+          <span class="name">:write_concern_error_document</span>
+          <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
             
           </span>
           
             &mdash; <div class='inline'>
-<p>Whether the write concern error is present.</p>
+<p>The server-supplied write concern error document, if any.</p>
 </div>
           
         </li>
@@ -982,9 +1011,6 @@
       <pre class="lines">
 
 
-233
-234
-235
 236
 237
 238
@@ -992,17 +1018,20 @@
 240
 241
 242
-243</pre>
+243
+244
+245
+246</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 233</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='ivar'>@result</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span>
   <span class='ivar'>@code</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:code</span><span class='rbracket'>]</span>
   <span class='ivar'>@code_name</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:code_name</span><span class='rbracket'>]</span>
-  <span class='ivar'>@write_concern_error</span> <span class='op'>=</span> <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write_concern_error</span><span class='rbracket'>]</span>
+  <span class='ivar'>@write_concern_error_document</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write_concern_error_document</span><span class='rbracket'>]</span>
   <span class='ivar'>@write_concern_error_code</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write_concern_error_code</span><span class='rbracket'>]</span>
   <span class='ivar'>@write_concern_error_code_name</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write_concern_error_code_name</span><span class='rbracket'>]</span>
   <span class='ivar'>@labels</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:labels</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1234,12 +1263,12 @@
       <pre class="lines">
 
 
-199
-200
-201</pre>
+203
+204
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 203</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code'>write_concern_error_code</span>
   <span class='ivar'>@write_concern_error_code</span>
@@ -1311,15 +1340,92 @@
       <pre class="lines">
 
 
-206
-207
-208</pre>
+209
+210
+211</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 206</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 209</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code_name'>write_concern_error_code_name</span>
   <span class='ivar'>@write_concern_error_code_name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="write_concern_error_document-instance_method">
+  
+    #<strong>write_concern_error_document</strong>  &#x21d2; <tt>Hash | nil</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the write concern error document as it was reported by the server, if any.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash | nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Write concern error as reported to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+197
+198
+199</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 197</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span>
+  <span class='ivar'>@write_concern_error_document</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1498,12 +1604,12 @@
       <pre class="lines">
 
 
-259
-260
-261</pre>
+262
+263
+264</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 259</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 262</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_time_ms_expired?'>max_time_ms_expired?</span>
   <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>50</span> <span class='comment'># MaxTimeMSExpired
@@ -1646,13 +1752,13 @@
       <pre class="lines">
 
 
-270
-271
-272
-273</pre>
+273
+274
+275
+276</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 270</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 273</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unsupported_retryable_write?'>unsupported_retryable_write?</span>  <span class='comment'># code 20 is IllegalOperation
 </span>
@@ -1723,15 +1829,15 @@
       <pre class="lines">
 
 
+189
 190
-191
-192</pre>
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 190</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 189</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error?'>write_concern_error?</span>
-  <span class='ivar'>@write_concern_error</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@write_concern_error_document</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1872,12 +1978,12 @@
       <pre class="lines">
 
 
-250
-251
-252</pre>
+253
+254
+255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 250</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 253</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wtimeout?'>wtimeout?</span>
   <span class='ivar'>@wtimeout</span>
@@ -1892,7 +1998,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:40 2020 by
+  Generated on Wed Apr 29 01:14:12 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

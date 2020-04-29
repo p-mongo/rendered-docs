@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Error::Parser
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -451,6 +451,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>The code name for the write concern error, if a write concern error is present and has a code name.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_concern_error_document-instance_method" title="#write_concern_error_document (instance method)">#<strong>write_concern_error_document</strong>  &#x21d2; Hash | nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the write concern error document as it was reported by the server, if any.</p>
 </div></span>
   
 </li>
@@ -1310,12 +1334,12 @@
       <pre class="lines">
 
 
-120
-121
-122</pre>
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 129</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code'>write_concern_error_code</span>
   <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>code</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1385,15 +1409,90 @@
       <pre class="lines">
 
 
-129
-130
-131</pre>
+138
+139
+140</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 138</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code_name'>write_concern_error_code_name</span>
   <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>codeName</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_concern_error_document-instance_method">
+  
+    #<strong>write_concern_error_document</strong>  &#x21d2; <tt>Hash | nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the write concern error document as it was reported by the server, if any.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash | nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Write concern error as reported to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span>
+  <span class='id identifier rubyid_document'>document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>writeConcernError</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1405,7 +1504,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:35 2020 by
+  Generated on Wed Apr 29 01:14:07 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

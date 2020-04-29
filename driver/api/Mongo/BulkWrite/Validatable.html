@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::BulkWrite::Validatable
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -307,7 +307,11 @@
 47
 48
 49
-50</pre>
+50
+51
+52
+53
+54</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/validatable.rb', line 40</span>
@@ -322,6 +326,10 @@
   <span class='kw'>if</span> <span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:keys</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_document'>document</span><span class='lbracket'>[</span><span class='symbol'>:array_filters</span><span class='rbracket'>]</span>
     <span class='ivar'>@has_array_filters</span> <span class='op'>=</span> <span class='kw'>true</span>
   <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:keys</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_document'>document</span><span class='lbracket'>[</span><span class='symbol'>:hint</span><span class='rbracket'>]</span>
+    <span class='ivar'>@has_hint</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -333,7 +341,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:30 2020 by
+  Generated on Wed Apr 29 01:14:02 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

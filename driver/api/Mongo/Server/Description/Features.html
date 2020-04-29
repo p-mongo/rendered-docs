@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Server::Description::Features
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -185,6 +185,10 @@
 </div>
         </dt>
         <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='comment'># Server versions older than 4.2 do not reliably validate options
+</span>  <span class='comment'># provided by the client during findAndModify operations, requiring the
+</span>  <span class='comment'># driver to raise client-side errors when those options are provided.
+</span>  <span class='symbol'>:find_and_modify_option_validation</span> <span class='op'>=&gt;</span> <span class='int'>8</span><span class='comma'>,</span>
   <span class='symbol'>:transactions</span> <span class='op'>=&gt;</span> <span class='int'>7</span><span class='comma'>,</span>
   <span class='symbol'>:scram_sha_256</span> <span class='op'>=&gt;</span> <span class='int'>7</span><span class='comma'>,</span>
   <span class='symbol'>:array_filters</span> <span class='op'>=&gt;</span> <span class='int'>6</span><span class='comma'>,</span>
@@ -192,6 +196,10 @@
   <span class='symbol'>:sessions</span> <span class='op'>=&gt;</span> <span class='int'>6</span><span class='comma'>,</span>
   <span class='symbol'>:collation</span> <span class='op'>=&gt;</span> <span class='int'>5</span><span class='comma'>,</span>
   <span class='symbol'>:max_staleness</span> <span class='op'>=&gt;</span> <span class='int'>5</span><span class='comma'>,</span>
+  <span class='comment'># Server versions older than 3.4 do not reliably validate options
+</span>  <span class='comment'># provided by the client during update/delete operations, requiring the
+</span>  <span class='comment'># driver to raise client-side errors when those options are provided.
+</span>  <span class='symbol'>:update_delete_option_validation</span> <span class='op'>=&gt;</span> <span class='int'>5</span><span class='comma'>,</span>
   <span class='symbol'>:find_command</span> <span class='op'>=&gt;</span> <span class='int'>4</span><span class='comma'>,</span>
   <span class='symbol'>:list_collections</span> <span class='op'>=&gt;</span> <span class='int'>3</span><span class='comma'>,</span>
   <span class='symbol'>:list_indexes</span> <span class='op'>=&gt;</span> <span class='int'>3</span><span class='comma'>,</span>
@@ -479,23 +487,23 @@
       <pre class="lines">
 
 
-100
-101
-102
-103
-104
-105
-106
 107
 108
 109
 110
 111
 112
-113</pre>
+113
+114
+115
+116
+117
+118
+119
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/description/features.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/description/features.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_server_wire_versions'>server_wire_versions</span><span class='comma'>,</span> <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_server_wire_versions'>server_wire_versions</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -583,12 +591,12 @@
       <pre class="lines">
 
 
-89
-90
-91</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/description/features.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/description/features.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_wire_versions'>server_wire_versions</span>
   <span class='ivar'>@server_wire_versions</span>
@@ -680,20 +688,20 @@
       <pre class="lines">
 
 
-125
-126
-127
-128
-129
-130
-131
 132
 133
 134
-135</pre>
+135
+136
+137
+138
+139
+140
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/description/features.rb', line 125</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/description/features.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_driver_support!'>check_driver_support!</span>
   <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="#DRIVER_WIRE_VERSIONS-constant" title="Mongo::Server::Description::Features::DRIVER_WIRE_VERSIONS (constant)">DRIVER_WIRE_VERSIONS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span> <span class='op'>&gt;</span> <span class='ivar'>@server_wire_versions</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
@@ -716,7 +724,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:42 2020 by
+  Generated on Wed Apr 29 01:14:14 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

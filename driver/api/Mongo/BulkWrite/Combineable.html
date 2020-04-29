@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::BulkWrite::Combineable
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -129,64 +129,6 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#has_array_filters-instance_method" title="#has_array_filters (instance method)">#<strong>has_array_filters</strong>  &#x21d2; true, false </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>filters option.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#has_collation-instance_method" title="#has_collation (instance method)">#<strong>has_collation</strong>  &#x21d2; true, false </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Has_collation Whether one or more operations has a collation defined.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#requests-instance_method" title="#requests (instance method)">#<strong>requests</strong>  &#x21d2; Array&lt;Hash, BSON::Document&gt; </a>
     
 
@@ -229,6 +171,78 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#has_array_filters%3F-instance_method" title="#has_array_filters? (instance method)">#<strong>has_array_filters?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether one or more operation specifies the array_filters option.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_collation%3F-instance_method" title="#has_collation? (instance method)">#<strong>has_collation?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether one or more operation specifies the collation option.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_hint%3F-instance_method" title="#has_hint? (instance method)">#<strong>has_hint?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether one or more operation specifies the hint option.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(requests)  &#x21d2; Object </a>
     
 
@@ -260,169 +274,7 @@
       
       <span id=""></span>
       <div class="method_details first">
-  <h3 class="signature first" id="has_array_filters-instance_method">
-  
-    #<strong>has_array_filters</strong>  &#x21d2; <tt>true</tt>, <tt>false</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
-<p>filters option.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>has_array_filters Whether one or more operations specifies an array</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'>
-<p>2.1.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-33
-34
-35</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/combineable.rb', line 33</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_has_array_filters'>has_array_filters</span>
-  <span class='ivar'>@has_array_filters</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="has_collation-instance_method">
-  
-    #<strong>has_collation</strong>  &#x21d2; <tt>true</tt>, <tt>false</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
-<p>Returns has_collation Whether one or more operations has a collation defined.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>has_collation Whether one or more operations has a collation defined.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'>
-<p>2.1.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-29
-30
-31</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/combineable.rb', line 29</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_has_collation'>has_collation</span>
-  <span class='ivar'>@has_collation</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="requests-instance_method">
+  <h3 class="signature first" id="requests-instance_method">
   
     #<strong>requests</strong>  &#x21d2; <tt>Array&lt;Hash, BSON::Document&gt;</tt>  <span class="extras">(readonly)</span>
   
@@ -508,7 +360,244 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="has_array_filters?-instance_method">
+  
+    #<strong>has_array_filters?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Whether one or more operation specifies the array_filters option.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether one or more operation specifies the array_filters option.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/combineable.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_has_array_filters?'>has_array_filters?</span>
+  <span class='ivar'>@has_array_filters</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_collation?-instance_method">
+  
+    #<strong>has_collation?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Whether one or more operation specifies the collation option.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether one or more operation specifies the collation option.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/combineable.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_has_collation?'>has_collation?</span>
+  <span class='ivar'>@has_collation</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_hint?-instance_method">
+  
+    #<strong>has_hint?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Whether one or more operation specifies the hint option.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether one or more operation specifies the hint option.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/combineable.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_has_hint?'>has_hint?</span>
+  <span class='ivar'>@has_hint</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="initialize-instance_method">
   
     #<strong>initialize</strong>(requests)  &#x21d2; <tt>Object</tt> 
   
@@ -585,19 +674,21 @@
       <pre class="lines">
 
 
-45
-46
-47
-48
-49</pre>
+38
+39
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/combineable.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/combineable.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_requests'>requests</span><span class='rparen'>)</span>
   <span class='ivar'>@requests</span> <span class='op'>=</span> <span class='id identifier rubyid_requests'>requests</span>
   <span class='ivar'>@has_collation</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='ivar'>@has_array_filters</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='ivar'>@has_hint</span> <span class='op'>=</span> <span class='kw'>false</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -609,7 +700,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:30 2020 by
+  Generated on Wed Apr 29 01:14:02 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>

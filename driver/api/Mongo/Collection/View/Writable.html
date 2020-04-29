@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Collection::View::Writable
   
-    &mdash; mongo-2.12.0.rc0
+    &mdash; mongo-2.12.1
   
 </title>
 
@@ -503,6 +503,8 @@
       <pre class="lines">
 
 
+164
+165
 166
 167
 168
@@ -521,7 +523,7 @@
 181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_many'>delete_many</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_delete_doc'>delete_doc</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation.html#Q-constant" title="Mongo::Operation::Q (constant)">Q</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation.html#LIMIT-constant" title="Mongo::Operation::LIMIT (constant)">LIMIT</a></span></span> <span class='op'>=&gt;</span> <span class='int'>0</span> <span class='rbrace'>}</span>
@@ -529,6 +531,8 @@
     <span class='id identifier rubyid_write_concern'>write_concern</span> <span class='op'>=</span> <span class='id identifier rubyid_write_concern_with_session'>write_concern_with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_nro_write_with_retry'>nro_write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
       <span class='id identifier rubyid_apply_collation!'>apply_collation!</span><span class='lparen'>(</span><span class='id identifier rubyid_delete_doc'>delete_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_apply_hint!'>apply_hint!</span><span class='lparen'>(</span><span class='id identifier rubyid_delete_doc'>delete_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>write_concern:</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
       <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation/Delete.html" title="Mongo::Operation::Delete (class)">Delete</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span>
           <span class='symbol'>:deletes</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_delete_doc'>delete_doc</span> <span class='rbracket'>]</span><span class='comma'>,</span>
           <span class='symbol'>:db_name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
@@ -689,7 +693,9 @@
 209
 210
 211
-212</pre>
+212
+213
+214</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 196</span>
@@ -700,6 +706,8 @@
     <span class='id identifier rubyid_write_concern'>write_concern</span> <span class='op'>=</span> <span class='id identifier rubyid_write_concern_with_session'>write_concern_with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_write_with_retry'>write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_txn_num'>txn_num</span><span class='op'>|</span>
       <span class='id identifier rubyid_apply_collation!'>apply_collation!</span><span class='lparen'>(</span><span class='id identifier rubyid_delete_doc'>delete_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_apply_hint!'>apply_hint!</span><span class='lparen'>(</span><span class='id identifier rubyid_delete_doc'>delete_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>write_concern:</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
       <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation/Delete.html" title="Mongo::Operation::Delete (class)">Delete</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span>
           <span class='symbol'>:deletes</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_delete_doc'>delete_doc</span> <span class='rbracket'>]</span><span class='comma'>,</span>
           <span class='symbol'>:db_name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
@@ -815,19 +823,6 @@
         </li>
       
         <li>
-          <span class="name">:write_concern</span>
-          <span class="type">(<tt>Hash</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'>
-<p>The write concern options. Defaults to the collection&#39;s write concern.</p>
-</div>
-          
-        </li>
-      
-        <li>
           <span class="name">:collation</span>
           <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
@@ -897,6 +892,8 @@
       <pre class="lines">
 
 
+48
+49
 50
 51
 52
@@ -919,7 +916,7 @@
 69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_one_and_delete'>find_one_and_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cmd'>cmd</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:findAndModify</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbol'>:query</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='symbol'>:remove</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='rbrace'>}</span>
@@ -932,6 +929,8 @@
     <span class='id identifier rubyid_cmd'>cmd</span><span class='lbracket'>[</span><span class='symbol'>:writeConcern</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_applied_write_concern'>applied_write_concern</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span> <span class='kw'>if</span> <span class='id identifier rubyid_applied_write_concern'>applied_write_concern</span>
     <span class='id identifier rubyid_write_with_retry'>write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_applied_write_concern'>applied_write_concern</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_txn_num'>txn_num</span><span class='op'>|</span>
       <span class='id identifier rubyid_apply_collation!'>apply_collation!</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_apply_hint!'>apply_hint!</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>write_concern:</span> <span class='id identifier rubyid_applied_write_concern'>applied_write_concern</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
       <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation/Command.html" title="Mongo::Operation::Command (class)">Command</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span>
           <span class='symbol'>:selector</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span>
           <span class='symbol'>:db_name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
@@ -1070,19 +1069,6 @@
         </li>
       
         <li>
-          <span class="name">:write_concern</span>
-          <span class="type">(<tt>Hash</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'>
-<p>The write concern options. Defaults to the collection&#39;s write concern.</p>
-</div>
-          
-        </li>
-      
-        <li>
           <span class="name">:collation</span>
           <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
@@ -1139,12 +1125,12 @@
       <pre class="lines">
 
 
-93
-94
-95</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_one_and_replace'>find_one_and_replace</span><span class='lparen'>(</span><span class='id identifier rubyid_replacement'>replacement</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find_one_and_update'>find_one_and_update</span><span class='lparen'>(</span><span class='id identifier rubyid_replacement'>replacement</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1315,19 +1301,6 @@
         </li>
       
         <li>
-          <span class="name">:write_concern</span>
-          <span class="type">(<tt>Hash</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'>
-<p>The write concern options. Defaults to the collection&#39;s write concern.</p>
-</div>
-          
-        </li>
-      
-        <li>
           <span class="name">:collation</span>
           <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
@@ -1410,6 +1383,10 @@
       <pre class="lines">
 
 
+120
+121
+122
+123
 124
 125
 126
@@ -1435,12 +1412,10 @@
 146
 147
 148
-149
-150
-151</pre>
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_one_and_update'>find_one_and_update</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cmd'>cmd</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:findAndModify</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbol'>:query</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_filter'>filter</span> <span class='rbrace'>}</span>
@@ -1460,6 +1435,8 @@
     <span class='id identifier rubyid_write_with_retry'>write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_applied_write_concern'>applied_write_concern</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_txn_num'>txn_num</span><span class='op'>|</span>
       <span class='id identifier rubyid_apply_collation!'>apply_collation!</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_apply_array_filters!'>apply_array_filters!</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_apply_hint!'>apply_hint!</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>write_concern:</span> <span class='id identifier rubyid_applied_write_concern'>applied_write_concern</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
       <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation/Command.html" title="Mongo::Operation::Command (class)">Command</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span>
           <span class='symbol'>:selector</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span>
           <span class='symbol'>:db_name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
@@ -1648,8 +1625,6 @@
       <pre class="lines">
 
 
-232
-233
 234
 235
 236
@@ -1672,10 +1647,13 @@
 253
 254
 255
-256</pre>
+256
+257
+258
+259</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 232</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 234</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_replace_one'>replace_one</span><span class='lparen'>(</span><span class='id identifier rubyid_replacement'>replacement</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_doc'>update_doc</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation.html#Q-constant" title="Mongo::Operation::Q (constant)">Q</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span>
@@ -1689,6 +1667,7 @@
     <span class='id identifier rubyid_write_with_retry'>write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_txn_num'>txn_num</span><span class='op'>|</span>
       <span class='id identifier rubyid_apply_collation!'>apply_collation!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_apply_array_filters!'>apply_array_filters!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_apply_hint!'>apply_hint!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>write_concern:</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span><span class='rparen'>)</span>
 
       <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation/Update.html" title="Mongo::Operation::Update (class)">Update</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span>
           <span class='symbol'>:updates</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_update_doc'>update_doc</span> <span class='rbracket'>]</span><span class='comma'>,</span>
@@ -1893,9 +1872,6 @@
       <pre class="lines">
 
 
-278
-279
-280
 281
 282
 283
@@ -1916,10 +1892,15 @@
 298
 299
 300
-301</pre>
+301
+302
+303
+304
+305
+306</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 278</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 281</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_many'>update_many</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_doc'>update_doc</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation.html#Q-constant" title="Mongo::Operation::Q (constant)">Q</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span>
@@ -1934,6 +1915,8 @@
     <span class='id identifier rubyid_nro_write_with_retry'>nro_write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
       <span class='id identifier rubyid_apply_collation!'>apply_collation!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_apply_array_filters!'>apply_array_filters!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_apply_hint!'>apply_hint!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>write_concern:</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
       <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation/Update.html" title="Mongo::Operation::Update (class)">Update</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span>
           <span class='symbol'>:updates</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_update_doc'>update_doc</span> <span class='rbracket'>]</span><span class='comma'>,</span>
           <span class='symbol'>:db_name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
@@ -2136,11 +2119,6 @@
       <pre class="lines">
 
 
-323
-324
-325
-326
-327
 328
 329
 330
@@ -2160,10 +2138,16 @@
 344
 345
 346
-347</pre>
+347
+348
+349
+350
+351
+352
+353</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 323</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/writable.rb', line 328</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_one'>update_one</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_doc'>update_doc</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation.html#Q-constant" title="Mongo::Operation::Q (constant)">Q</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span>
@@ -2177,6 +2161,7 @@
     <span class='id identifier rubyid_write_with_retry'>write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_txn_num'>txn_num</span><span class='op'>|</span>
       <span class='id identifier rubyid_apply_collation!'>apply_collation!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_apply_array_filters!'>apply_array_filters!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_apply_hint!'>apply_hint!</span><span class='lparen'>(</span><span class='id identifier rubyid_update_doc'>update_doc</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>write_concern:</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span><span class='rparen'>)</span>
 
       <span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation/Update.html" title="Mongo::Operation::Update (class)">Update</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span>
           <span class='symbol'>:updates</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_update_doc'>update_doc</span> <span class='rbracket'>]</span><span class='comma'>,</span>
@@ -2200,7 +2185,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 19 20:31:31 2020 by
+  Generated on Wed Apr 29 01:14:03 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>
