@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Persistable::Pushable
   
-    &mdash; mongoid-7.1.0
+    &mdash; mongoid-7.1.1
   
 </title>
 
@@ -297,7 +297,13 @@
 33
 34
 35
-36</pre>
+36
+37
+38
+39
+40
+41
+42</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/persistable/pushable.rb', line 24</span>
@@ -305,7 +311,13 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_add_to_set'>add_to_set</span><span class='lparen'>(</span><span class='id identifier rubyid_adds'>adds</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_prepare_atomic_operation'>prepare_atomic_operation</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ops'>ops</span><span class='op'>|</span>
     <span class='id identifier rubyid_process_atomic_operations'>process_atomic_operations</span><span class='lparen'>(</span><span class='id identifier rubyid_adds'>adds</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
-      <span class='id identifier rubyid_existing'>existing</span> <span class='op'>=</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_existing'>existing</span> <span class='op'>=</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_existing'>existing</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+        <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>        <span class='comment'># Read the value out of attributes:
+</span>        <span class='comment'># https://jira.mongodb.org/browse/MONGOID-4874
+</span>
+        <span class='id identifier rubyid_existing'>existing</span> <span class='op'>=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span>
+      <span class='kw'>end</span>
       <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_value'>value</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_val'>val</span><span class='op'>|</span>
         <span class='id identifier rubyid_existing'>existing</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_existing'>existing</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
@@ -419,20 +431,20 @@
       <pre class="lines">
 
 
-51
-52
-53
-54
-55
-56
 57
 58
 59
 60
-61</pre>
+61
+62
+63
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/persistable/pushable.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/persistable/pushable.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_pushes'>pushes</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_prepare_atomic_operation'>prepare_atomic_operation</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ops'>ops</span><span class='op'>|</span>
@@ -455,7 +467,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 27 21:01:02 2020 by
+  Generated on Wed Apr 29 16:31:10 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.0).
 </div>
