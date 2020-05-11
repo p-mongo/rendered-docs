@@ -474,31 +474,24 @@ copy</a>
 <a class="reference external" href="https://docs.mongodb.com/manualreference/connection-string/#dns-seedlist-connection-format">mongodb+srv protocol</a>
 URI, keep in mind the following:</p>
 <ol class="arabic simple">
-<li>SRV URI lookup is performed synchronously when the client is constructed.</li>
-</ol>
-<blockquote>
-<div>If this lookup fails for any reason, client construction will fail with an
+<li>SRV URI lookup is performed synchronously when the client is constructed.
+If this lookup fails for any reason, client construction will fail with an
 exception. When a client is constructed with a list of hosts, the driver
 will attempt to contact and monitor those hosts for as long as the client
 object exists. If one of these hosts does not resolve initially but becomes
 resolvable later, the driver will be able to establish a connection to such
 a host when it becomes available. The initial SRV URI lookup must succeed
 on the first attempt; subsequent host lookups will be retried by the driver
-as needed.</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>The driver looks up URI options in the DNS TXT records corresponding to the</li>
-</ol>
-<blockquote>
-<div>SRV records. These options can be overridden by URI options specified in the
-URI and by Ruby options, in this order.</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>If the topology of the constructed <code class="docutils literal notranslate"><span class="pre">Client</span></code> object is unknown or a</li>
-</ol>
-<blockquote>
-<div>sharded cluster, the driver will begin monitoring the specified SRV DNS
+as needed.</li>
+<li>The driver looks up URI options in the DNS TXT records corresponding to the
+SRV records. These options can be overridden by URI options specified in the
+URI and by Ruby options, in this order.</li>
+<li>If the topology of the constructed <code class="docutils literal notranslate"><span class="pre">Client</span></code> object is unknown or a
+sharded cluster, the driver will begin monitoring the specified SRV DNS
 records for changes and will automatically update the list of servers in the
 cluster. The updates will stop if the topology becomes a single or a replica
-set.</div></blockquote>
+set.</li>
+</ol>
 </div>
 </div>
 <div class="section" id="client-options">

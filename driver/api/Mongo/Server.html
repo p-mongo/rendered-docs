@@ -105,7 +105,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/mongo/server.rb<span class="defines">,<br />
-  lib/mongo/server/context.rb,<br /> lib/mongo/server/monitor.rb,<br /> lib/mongo/server/connection.rb,<br /> lib/mongo/server/connectable.rb,<br /> lib/mongo/server/description.rb,<br /> lib/mongo/server/app_metadata.rb,<br /> lib/mongo/server/connection_base.rb,<br /> lib/mongo/server/connection_pool.rb,<br /> lib/mongo/server/connection_common.rb,<br /> lib/mongo/server/monitor/connection.rb,<br /> lib/mongo/server/pending_connection.rb,<br /> lib/mongo/server/description/features.rb,<br /> lib/mongo/server/monitor/app_metadata.rb,<br /> lib/mongo/server/round_trip_time_averager.rb,<br /> lib/mongo/server/connection_pool/populator.rb</span>
+  lib/mongo/server/context.rb,<br /> lib/mongo/server/monitor.rb,<br /> lib/mongo/server/connection.rb,<br /> lib/mongo/server/description.rb,<br /> lib/mongo/server/app_metadata.rb,<br /> lib/mongo/server/connection_base.rb,<br /> lib/mongo/server/connection_pool.rb,<br /> lib/mongo/server/connection_common.rb,<br /> lib/mongo/server/monitor/connection.rb,<br /> lib/mongo/server/pending_connection.rb,<br /> lib/mongo/server/description/features.rb,<br /> lib/mongo/server/monitor/app_metadata.rb,<br /> lib/mongo/server/round_trip_time_averager.rb,<br /> lib/mongo/server/connection_pool/populator.rb</span>
 </dd>
   </dl>
   
@@ -141,8 +141,6 @@
 </div><h2>Defined Under Namespace</h2>
 <p class="children">
   
-    
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Server/Connectable.html" title="Mongo::Server::Connectable (module)">Connectable</a></span>
     
   
     
@@ -2800,7 +2798,7 @@
 </div></p>
       
       <pre class="example code"><code><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_handle_auth_failure!'>handle_auth_failure!</span> <span class='kw'>do</span>
-  <span class='const'><span class='object_link'><a href="Auth.html" title="Mongo::Auth (module)">Auth</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="Auth.html#get-instance_method" title="Mongo::Auth#get (method)">get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_login'><span class='object_link'><a href="Auth/CR.html#login-instance_method" title="Mongo::Auth::CR#login (method)">login</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="Auth.html" title="Mongo::Auth (module)">Auth</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="Auth.html#get-instance_method" title="Mongo::Auth#get (method)">get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_login'>login</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
 <span class='kw'>end</span></code></pre>
     
   </div>
@@ -4329,9 +4327,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 29 01:14:05 2020 by
+  Generated on Mon May 11 16:40:25 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.0).
+  0.9.24 (ruby-2.7.1).
 </div>
 
     </div>

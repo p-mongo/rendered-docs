@@ -98,7 +98,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd><span class='object_link'><a href="../Monitoring/Publishable.html" title="Mongo::Monitoring::Publishable (module)">Monitoring::Publishable</a></span>, <span class='object_link'><a href="../Retryable.html" title="Mongo::Retryable (module)">Retryable</a></span>, <span class='object_link'><a href="Connectable.html" title="Mongo::Server::Connectable (module)">Connectable</a></span></dd>
+      <dd><span class='object_link'><a href="../Monitoring/Publishable.html" title="Mongo::Monitoring::Publishable (module)">Monitoring::Publishable</a></span>, <span class='object_link'><a href="../Retryable.html" title="Mongo::Retryable (module)">Retryable</a></span></dd>
   </dl>
   
   
@@ -372,12 +372,6 @@
 
   
   
-  <h3 class="inherited">Constants included
-     from <span class='object_link'><a href="Connectable.html" title="Mongo::Server::Connectable (module)">Connectable</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Connectable.html#SSL-constant" title="Mongo::Server::Connectable::SSL (constant)">Mongo::Server::Connectable::SSL</a></span>, <span class='object_link'><a href="Connectable.html#TIMEOUT-constant" title="Mongo::Server::Connectable::TIMEOUT (constant)">Mongo::Server::Connectable::TIMEOUT</a></span></p>
-
-  
-  
   <h3 class="inherited">Constants inherited
      from <span class='object_link'><a href="ConnectionBase.html" title="Mongo::Server::ConnectionBase (class)">ConnectionBase</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="ConnectionBase.html#DEFAULT_MAX_BSON_OBJECT_SIZE-constant" title="Mongo::Server::ConnectionBase::DEFAULT_MAX_BSON_OBJECT_SIZE (constant)">Mongo::Server::ConnectionBase::DEFAULT_MAX_BSON_OBJECT_SIZE</a></span>, <span class='object_link'><a href="ConnectionBase.html#MAX_BSON_COMMAND_OVERHEAD-constant" title="Mongo::Server::ConnectionBase::MAX_BSON_COMMAND_OVERHEAD (constant)">Mongo::Server::ConnectionBase::MAX_BSON_COMMAND_OVERHEAD</a></span>, <span class='object_link'><a href="ConnectionBase.html#REDUCED_MAX_BSON_SIZE-constant" title="Mongo::Server::ConnectionBase::REDUCED_MAX_BSON_SIZE (constant)">Mongo::Server::ConnectionBase::REDUCED_MAX_BSON_SIZE</a></span></p>
@@ -385,35 +379,6 @@
 
   <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
   <ul class="summary">
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#description-instance_method" title="#description (instance method)">#<strong>description</strong>  &#x21d2; Server::Description </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>The server description obtained from the handshake on this connection.</p>
-</div></span>
-  
-</li>
-
     
       <li class="public ">
   <span class="summary_signature">
@@ -484,13 +449,8 @@
 
   
   
-  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Connectable.html" title="Mongo::Server::Connectable (module)">Connectable</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Connectable.html#pid-instance_method" title="Mongo::Server::Connectable#pid (method)">#pid</a></span></p>
-
-  
-  
   <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="ConnectionBase.html" title="Mongo::Server::ConnectionBase (class)">ConnectionBase</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="ConnectionBase.html#options-instance_method" title="Mongo::Server::ConnectionBase#options (method)">#options</a></span>, <span class='object_link'><a href="ConnectionBase.html#server-instance_method" title="Mongo::Server::ConnectionBase#server (method)">#server</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="ConnectionBase.html#description-instance_method" title="Mongo::Server::ConnectionBase#description (method)">#description</a></span>, <span class='object_link'><a href="ConnectionBase.html#options-instance_method" title="Mongo::Server::ConnectionBase#options (method)">#options</a></span>, <span class='object_link'><a href="ConnectionBase.html#server-instance_method" title="Mongo::Server::ConnectionBase#server (method)">#server</a></span></p>
 
   
   
@@ -772,17 +732,6 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Connectable.html" title="Mongo::Server::Connectable (module)">Connectable</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Connectable.html#connectable%3F-instance_method" title="Mongo::Server::Connectable#connectable? (method)">#connectable?</a></span>, <span class='object_link'><a href="Connectable.html#connected%3F-instance_method" title="Mongo::Server::Connectable#connected? (method)">#connected?</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ConnectionBase.html" title="Mongo::Server::ConnectionBase (class)">ConnectionBase</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="ConnectionBase.html#app_metadata-instance_method" title="Mongo::Server::ConnectionBase#app_metadata (method)">#app_metadata</a></span>, <span class='object_link'><a href="ConnectionBase.html#dispatch-instance_method" title="Mongo::Server::ConnectionBase#dispatch (method)">#dispatch</a></span></p>
 
@@ -792,7 +741,12 @@
   
   
   
-  <div id="constructor_details" class="method_details_list">
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ConnectionCommon.html" title="Mongo::Server::ConnectionCommon (class)">ConnectionCommon</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ConnectionCommon.html#connected%3F-instance_method" title="Mongo::Server::ConnectionCommon#connected? (method)">#connected?</a></span></p>
+<div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
@@ -925,6 +879,7 @@
       <pre class="lines">
 
 
+90
 91
 92
 93
@@ -937,11 +892,10 @@
 100
 101
 102
-103
-104</pre>
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_next_connection_id'>next_connection_id</span>
@@ -970,88 +924,7 @@
       
       <span id=""></span>
       <div class="method_details first">
-  <h3 class="signature first" id="description-instance_method">
-  
-    #<strong>description</strong>  &#x21d2; <tt><span class='object_link'><a href="Description.html" title="Mongo::Server::Description (class)">Server::Description</a></span></tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
-<p>Returns The server description obtained from the handshake on this connection.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Description.html" title="Mongo::Server::Description (class)">Server::Description</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>The server description obtained from the handshake on this connection.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'>
-<p>2.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-110
-111
-112</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 110</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_description'>description</span>
-  <span class='ivar'>@description</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="id-instance_method">
+  <h3 class="signature first" id="id-instance_method">
   
     #<strong>id</strong>  &#x21d2; <tt>Integer</tt>  <span class="extras">(readonly)</span>
   
@@ -1110,12 +983,12 @@
       <pre class="lines">
 
 
-121
-122
-123</pre>
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 121</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@id</span>
@@ -1187,12 +1060,12 @@
       <pre class="lines">
 
 
-115
-116
-117</pre>
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_last_checkin'>last_checkin</span>
   <span class='ivar'>@last_checkin</span>
@@ -1271,12 +1144,12 @@
       <pre class="lines">
 
 
-148
-149
-150</pre>
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_closed?'>closed?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@closed</span>
@@ -1368,6 +1241,13 @@
       <pre class="lines">
 
 
+158
+159
+160
+161
+162
+163
+164
 165
 166
 167
@@ -1382,17 +1262,10 @@
 176
 177
 178
-179
-180
-181
-182
-183
-184
-185
-186</pre>
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 158</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect!'>connect!</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_closed?'>closed?</span>
@@ -1467,12 +1340,12 @@
       <pre class="lines">
 
 
-136
-137
-138</pre>
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 136</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 129</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection_pool'>connection_pool</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connection_pool</span><span class='rbracket'>]</span>
@@ -1601,6 +1474,16 @@
       <pre class="lines">
 
 
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
 230
 231
 232
@@ -1620,20 +1503,10 @@
 246
 247
 248
-249
-250
-251
-252
-253
-254
-255
-256
-257
-258
-259</pre>
+249</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 230</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 220</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect!'>disconnect!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='comment'># Note: @closed may be true here but we also may have a socket.
@@ -1716,12 +1589,12 @@
       <pre class="lines">
 
 
-128
-129
-130</pre>
+121
+122
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generation'>generation</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:generation</span><span class='rbracket'>]</span>
@@ -1814,19 +1687,19 @@
       <pre class="lines">
 
 
-274
-275
-276
-277
-278
-279
-280
-281
-282
-283</pre>
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 274</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 264</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ping'>ping</span>
   <span class='id identifier rubyid_bytes'>bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span> <span class='op'>?</span> <span class='const'><span class='object_link'><a href="#PING_OP_MSG_BYTES-constant" title="Mongo::Server::Connection::PING_OP_MSG_BYTES (constant)">PING_OP_MSG_BYTES</a></span></span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="#PING_BYTES-constant" title="Mongo::Server::Connection::PING_BYTES (constant)">PING_BYTES</a></span></span>
@@ -1910,13 +1783,13 @@
       <pre class="lines">
 
 
-307
-308
-309
-310</pre>
+297
+298
+299
+300</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 307</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 297</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_record_checkin!'>record_checkin!</span>
   <span class='ivar'>@last_checkin</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
@@ -2003,12 +1876,12 @@
       <pre class="lines">
 
 
-293
-294
-295</pre>
+283
+284
+285</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 293</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 283</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_socket_timeout'>socket_timeout</span>
   <span class='ivar'>@timeout</span> <span class='op'>||=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:socket_timeout</span><span class='rbracket'>]</span>
@@ -2023,9 +1896,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 29 01:14:10 2020 by
+  Generated on Mon May 11 16:40:30 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.0).
+  0.9.24 (ruby-2.7.1).
 </div>
 
     </div>

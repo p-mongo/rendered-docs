@@ -175,7 +175,7 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='lbrace'>{</span> <span class='label'>authenticate:</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='label'>authenticate:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>mechanism:</span> <span class='const'><span class='object_link'><a href="../X509.html" title="Mongo::Auth::X509 (class)">X509</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../X509.html#MECHANISM-constant" title="Mongo::Auth::X509::MECHANISM (constant)">MECHANISM</a></span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
     </dl>
   
@@ -188,7 +188,7 @@
   <h2>Instance Attribute Summary</h2>
   
   <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../ConversationBase.html" title="Mongo::Auth::ConversationBase (class)">ConversationBase</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../ConversationBase.html#user-instance_method" title="Mongo::Auth::ConversationBase#user (method)">#user</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../ConversationBase.html#connection-instance_method" title="Mongo::Auth::ConversationBase#connection (method)">#connection</a></span>, <span class='object_link'><a href="../ConversationBase.html#user-instance_method" title="Mongo::Auth::ConversationBase#user (method)">#user</a></span></p>
 
 
   
@@ -198,6 +198,30 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#speculative_auth_document-instance_method" title="#speculative_auth_document (instance method)">#<strong>speculative_auth_document</strong>  &#x21d2; Hash | nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the hash to provide to the server in the handshake as value of the speculativeAuthenticate key.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -250,7 +274,88 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="start-instance_method">
+  <h3 class="signature first" id="speculative_auth_document-instance_method">
+  
+    #<strong>speculative_auth_document</strong>  &#x21d2; <tt>Hash | nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns the hash to provide to the server in the handshake as value of the speculativeAuthenticate key.</p>
+
+<p>If the auth mechanism does not support speculative authentication, this method returns nil.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash | nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Speculative authentication document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/x509/conversation.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_speculative_auth_document'>speculative_auth_document</span>
+  <span class='id identifier rubyid_client_first_document'>client_first_document</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="start-instance_method">
   
     #<strong>start</strong>(connection)  &#x21d2; <tt><span class='object_link'><a href="../../Protocol/Query.html" title="Mongo::Protocol::Query (class)">Protocol::Query</a></span></tt> 
   
@@ -358,15 +463,13 @@
 62
 63
 64
-65
-66</pre>
+65</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/auth/x509/conversation.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_login'>login</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#LOGIN-constant" title="Mongo::Auth::X509::Conversation::LOGIN (constant)">LOGIN</a></span></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>mechanism:</span> <span class='const'><span class='object_link'><a href="../X509.html" title="Mongo::Auth::X509 (class)">X509</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../X509.html#MECHANISM-constant" title="Mongo::Auth::X509::MECHANISM (constant)">MECHANISM</a></span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_login'>login</span><span class='lbracket'>[</span><span class='symbol'>:user</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_login'>login</span> <span class='op'>=</span> <span class='id identifier rubyid_client_first_document'>client_first_document</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
     <span class='id identifier rubyid_selector'>selector</span> <span class='op'>=</span> <span class='id identifier rubyid_login'>login</span>    <span class='comment'># The only valid database for X.509 authentication is $external.
 </span>
@@ -401,9 +504,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 29 01:14:11 2020 by
+  Generated on Mon May 11 16:40:31 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.0).
+  0.9.24 (ruby-2.7.1).
 </div>
 
     </div>

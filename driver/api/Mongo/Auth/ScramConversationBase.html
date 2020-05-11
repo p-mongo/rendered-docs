@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Mongo::Auth::ScramConversationBase
+  
+    &mdash; mongo-2.12.1
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Mongo::Auth::ScramConversationBase";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Auth.html" title="Mongo::Auth (module)">Auth</a></span></span>
+     &raquo; 
+    <span class="title">ScramConversationBase</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Mongo::Auth::ScramConversationBase
+  
+  
+  <span class="private note title">Private</span>
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="SaslConversationBase.html" title="Mongo::Auth::SaslConversationBase (class)">SaslConversationBase</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="ConversationBase.html" title="Mongo::Auth::ConversationBase (class)">ConversationBase</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="SaslConversationBase.html" title="Mongo::Auth::SaslConversationBase (class)">SaslConversationBase</a></span></li>
+          
+            <li class="next">Mongo::Auth::ScramConversationBase</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/mongo/auth/scram_conversation_base.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Defines common behavior around authentication conversations between the client and the server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Scram256/Conversation.html" title="Mongo::Auth::Scram256::Conversation (class)">Mongo::Auth::Scram256::Conversation</a></span>, <span class='object_link'><a href="Scram/Conversation.html" title="Mongo::Auth::Scram::Conversation (class)">Mongo::Auth::Scram::Conversation</a></span></p>
+</div>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="MIN_ITER_COUNT-constant" class="">MIN_ITER_COUNT =
+          <div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>The minimum iteration count for SCRAM-SHA-1 and SCRAM-SHA-256.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='int'>4096</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="SaslConversationBase.html" title="Mongo::Auth::SaslConversationBase (class)">SaslConversationBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SaslConversationBase.html#CLIENT_CONTINUE_MESSAGE-constant" title="Mongo::Auth::SaslConversationBase::CLIENT_CONTINUE_MESSAGE (constant)">Mongo::Auth::SaslConversationBase::CLIENT_CONTINUE_MESSAGE</a></span>, <span class='object_link'><a href="SaslConversationBase.html#CLIENT_FIRST_MESSAGE-constant" title="Mongo::Auth::SaslConversationBase::CLIENT_FIRST_MESSAGE (constant)">Mongo::Auth::SaslConversationBase::CLIENT_FIRST_MESSAGE</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#client_nonce-instance_method" title="#client_nonce (instance method)">#<strong>client_nonce</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Client_nonce The client nonce.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id-instance_method" title="#id (instance method)">#<strong>id</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the id of the conversation.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="ConversationBase.html" title="Mongo::Auth::ConversationBase (class)">ConversationBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ConversationBase.html#connection-instance_method" title="Mongo::Auth::ConversationBase#connection (method)">#connection</a></span>, <span class='object_link'><a href="ConversationBase.html#user-instance_method" title="Mongo::Auth::ConversationBase#user (method)">#user</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#continue-instance_method" title="#continue (instance method)">#<strong>continue</strong>(reply_document, connection)  &#x21d2; Protocol::Message </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Continue the SCRAM conversation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#finalize-instance_method" title="#finalize (instance method)">#<strong>finalize</strong>(connection)  &#x21d2; Protocol::Query </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Finalize the SCRAM conversation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(user, connection, client_nonce: nil)  &#x21d2; ScramConversationBase </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create the new conversation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_continue_response-instance_method" title="#process_continue_response (instance method)">#<strong>process_continue_response</strong>(reply_document)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Processes the second response from the server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server_verified%3F-instance_method" title="#server_verified? (instance method)">#<strong>server_verified?</strong>  &#x21d2; true | fase </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether the client verified the ServerSignature from the server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#speculative_auth_document-instance_method" title="#speculative_auth_document (instance method)">#<strong>speculative_auth_document</strong>  &#x21d2; Hash | nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the hash to provide to the server in the handshake as value of the speculativeAuthenticate key.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="SaslConversationBase.html" title="Mongo::Auth::SaslConversationBase (class)">SaslConversationBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SaslConversationBase.html#start-instance_method" title="Mongo::Auth::SaslConversationBase#start (method)">#start</a></span></p>
+
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(user, connection, client_nonce: nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Auth::ScramConversationBase (class)">ScramConversationBase</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Create the new conversation.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="User.html" title="Mongo::Auth::User (class)">Auth::User</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The user to converse about.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>client_nonce</span>
+      
+      
+        <span class='type'>(<tt>String | nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The client nonce to use. If this conversation is created for a connection that performed speculative authentication, this client nonce must be equal to the client nonce used for speculative authentication; otherwise, the client nonce must not be specified.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/scram_conversation_base.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client_nonce:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
+  <span class='ivar'>@client_nonce</span> <span class='op'>=</span> <span class='id identifier rubyid_client_nonce'>client_nonce</span> <span class='op'>||</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_base64'>base64</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="client_nonce-instance_method">
+  
+    #<strong>client_nonce</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns client_nonce The client nonce.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>client_nonce The client nonce.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/scram_conversation_base.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_client_nonce'>client_nonce</span>
+  <span class='ivar'>@client_nonce</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="id-instance_method">
+  
+    #<strong>id</strong>  &#x21d2; <tt>Integer</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Get the id of the conversation.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Get the id of the conversation.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_conversation'>conversation</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The conversation id.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/scram_conversation_base.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='ivar'>@id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="continue-instance_method">
+  
+    #<strong>continue</strong>(reply_document, connection)  &#x21d2; <tt><span class='object_link'><a href="../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Protocol::Message</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Continue the SCRAM conversation. This sends the client final message to the server after setting the reply from the previous server communication.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>reply_document</span>
+      
+      
+        <span class='type'>(<tt>BSON::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The reply document of the previous message.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>connection</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Server/Connection.html" title="Mongo::Server::Connection (class)">Server::Connection</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The connection being authenticated.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Protocol::Message</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The next message to send.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/scram_conversation_base.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_continue'>continue</span><span class='lparen'>(</span><span class='id identifier rubyid_reply_document'>reply_document</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
+  <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_reply_document'>reply_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>conversationId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_payload_data'>payload_data</span> <span class='op'>=</span> <span class='id identifier rubyid_reply_document'>reply_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>payload</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span>
+  <span class='id identifier rubyid_parsed_data'>parsed_data</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_payload'>parse_payload</span><span class='lparen'>(</span><span class='id identifier rubyid_payload_data'>payload_data</span><span class='rparen'>)</span>
+  <span class='ivar'>@server_nonce</span> <span class='op'>=</span> <span class='id identifier rubyid_parsed_data'>parsed_data</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>r</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@salt</span> <span class='op'>=</span> <span class='const'>Base64</span><span class='period'>.</span><span class='id identifier rubyid_strict_decode64'>strict_decode64</span><span class='lparen'>(</span><span class='id identifier rubyid_parsed_data'>parsed_data</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>s</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='ivar'>@iterations</span> <span class='op'>=</span> <span class='id identifier rubyid_parsed_data'>parsed_data</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>i</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="#MIN_ITER_COUNT-constant" title="Mongo::Auth::ScramConversationBase::MIN_ITER_COUNT (constant)">MIN_ITER_COUNT</a></span></span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/InsufficientIterationCount.html" title="Mongo::Error::InsufficientIterationCount (class)">InsufficientIterationCount</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Error/InsufficientIterationCount.html#initialize-instance_method" title="Mongo::Error::InsufficientIterationCount#initialize (method)">new</a></span></span><span class='lparen'>(</span>
+        <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/InsufficientIterationCount.html" title="Mongo::Error::InsufficientIterationCount (class)">InsufficientIterationCount</a></span></span><span class='period'>.</span><span class='id identifier rubyid_message'><span class='object_link'><a href="../Error/InsufficientIterationCount.html#message-class_method" title="Mongo::Error::InsufficientIterationCount.message (method)">message</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#MIN_ITER_COUNT-constant" title="Mongo::Auth::ScramConversationBase::MIN_ITER_COUNT (constant)">MIN_ITER_COUNT</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@auth_message</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_first_bare'>first_bare</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_payload_data'>payload_data</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_proof'>without_proof</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_validate_server_nonce!'>validate_server_nonce!</span>
+
+  <span class='id identifier rubyid_selector'>selector</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="SaslConversationBase.html#CLIENT_CONTINUE_MESSAGE-constant" title="Mongo::Auth::SaslConversationBase::CLIENT_CONTINUE_MESSAGE (constant)">CLIENT_CONTINUE_MESSAGE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span>
+    <span class='label'>payload:</span> <span class='id identifier rubyid_client_final_message'>client_final_message</span><span class='comma'>,</span>
+    <span class='label'>conversationId:</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>
+  <span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
+    <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Msg.html" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Msg.html#DATABASE_IDENTIFIER-constant" title="Mongo::Protocol::Msg::DATABASE_IDENTIFIER (constant)">DATABASE_IDENTIFIER</a></span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_auth_source'>auth_source</span>
+    <span class='id identifier rubyid_cluster_time'>cluster_time</span> <span class='op'>=</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_mongos?'>mongos?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_cluster_time'>cluster_time</span>
+    <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation.html#CLUSTER_TIME-constant" title="Mongo::Operation::CLUSTER_TIME (constant)">CLUSTER_TIME</a></span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster_time'>cluster_time</span> <span class='kw'>if</span> <span class='id identifier rubyid_cluster_time'>cluster_time</span>
+    <span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Msg.html" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Protocol/Msg.html#initialize-instance_method" title="Mongo::Protocol::Msg#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_selector'>selector</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Query.html" title="Mongo::Protocol::Query (class)">Query</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Protocol/Query.html#initialize-instance_method" title="Mongo::Protocol::Query#initialize (method)">new</a></span></span><span class='lparen'>(</span>
+      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_auth_source'>auth_source</span><span class='comma'>,</span>
+      <span class='const'><span class='object_link'><a href="../Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Database.html#COMMAND-constant" title="Mongo::Database::COMMAND (constant)">COMMAND</a></span></span><span class='comma'>,</span>
+      <span class='id identifier rubyid_selector'>selector</span><span class='comma'>,</span>
+      <span class='label'>limit:</span> <span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="finalize-instance_method">
+  
+    #<strong>finalize</strong>(connection)  &#x21d2; <tt><span class='object_link'><a href="../Protocol/Query.html" title="Mongo::Protocol::Query (class)">Protocol::Query</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Finalize the SCRAM conversation. This is meant to be iterated until the provided reply indicates the conversation is finished.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>connection</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Server/Connection.html" title="Mongo::Server::Connection (class)">Server::Connection</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The connection being authenticated.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Protocol/Query.html" title="Mongo::Protocol::Query (class)">Protocol::Query</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The next message to send.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/scram_conversation_base.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
+    <span class='id identifier rubyid_selector'>selector</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="SaslConversationBase.html#CLIENT_CONTINUE_MESSAGE-constant" title="Mongo::Auth::SaslConversationBase::CLIENT_CONTINUE_MESSAGE (constant)">CLIENT_CONTINUE_MESSAGE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span>
+      <span class='label'>payload:</span> <span class='id identifier rubyid_client_empty_message'>client_empty_message</span><span class='comma'>,</span>
+      <span class='label'>conversationId:</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>
+    <span class='rparen'>)</span>
+    <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Msg.html" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Msg.html#DATABASE_IDENTIFIER-constant" title="Mongo::Protocol::Msg::DATABASE_IDENTIFIER (constant)">DATABASE_IDENTIFIER</a></span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_auth_source'>auth_source</span>
+    <span class='id identifier rubyid_cluster_time'>cluster_time</span> <span class='op'>=</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_mongos?'>mongos?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_cluster_time'>cluster_time</span>
+    <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation.html#CLUSTER_TIME-constant" title="Mongo::Operation::CLUSTER_TIME (constant)">CLUSTER_TIME</a></span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster_time'>cluster_time</span> <span class='kw'>if</span> <span class='id identifier rubyid_cluster_time'>cluster_time</span>
+    <span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Msg.html" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Protocol/Msg.html#initialize-instance_method" title="Mongo::Protocol::Msg#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_selector'>selector</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'><span class='object_link'><a href="../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Protocol/Query.html" title="Mongo::Protocol::Query (class)">Query</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Protocol/Query.html#initialize-instance_method" title="Mongo::Protocol::Query#initialize (method)">new</a></span></span><span class='lparen'>(</span>
+      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_auth_source'>auth_source</span><span class='comma'>,</span>
+      <span class='const'><span class='object_link'><a href="../Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Database.html#COMMAND-constant" title="Mongo::Database::COMMAND (constant)">COMMAND</a></span></span><span class='comma'>,</span>
+      <span class='const'><span class='object_link'><a href="SaslConversationBase.html#CLIENT_CONTINUE_MESSAGE-constant" title="Mongo::Auth::SaslConversationBase::CLIENT_CONTINUE_MESSAGE (constant)">CLIENT_CONTINUE_MESSAGE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span>
+        <span class='label'>payload:</span> <span class='id identifier rubyid_client_empty_message'>client_empty_message</span><span class='comma'>,</span>
+        <span class='label'>conversationId:</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>
+      <span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>limit:</span> <span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process_continue_response-instance_method">
+  
+    #<strong>process_continue_response</strong>(reply_document)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Processes the second response from the server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>reply_document</span>
+      
+      
+        <span class='type'>(<tt>BSON::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The reply document of the continue response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/scram_conversation_base.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process_continue_response'>process_continue_response</span><span class='lparen'>(</span><span class='id identifier rubyid_reply_document'>reply_document</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_payload_data'>payload_data</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_payload'>parse_payload</span><span class='lparen'>(</span><span class='id identifier rubyid_reply_document'>reply_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>payload</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_check_server_signature'>check_server_signature</span><span class='lparen'>(</span><span class='id identifier rubyid_payload_data'>payload_data</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="server_verified?-instance_method">
+  
+    #<strong>server_verified?</strong>  &#x21d2; <tt>true | fase</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Whether the client verified the ServerSignature from the server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true | fase</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the server&#39;s signature was verified.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://jira.mongodb.org/browse/SECURITY-621" target="_parent" title="https://jira.mongodb.org/browse/SECURITY-621">https://jira.mongodb.org/browse/SECURITY-621</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/scram_conversation_base.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_server_verified?'>server_verified?</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@server_verified</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="speculative_auth_document-instance_method">
+  
+    #<strong>speculative_auth_document</strong>  &#x21d2; <tt>Hash | nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns the hash to provide to the server in the handshake as value of the speculativeAuthenticate key.</p>
+
+<p>If the auth mechanism does not support speculative authentication, this method returns nil.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash | nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Speculative authentication document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/scram_conversation_base.rb', line 150</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_speculative_auth_document'>speculative_auth_document</span>
+  <span class='id identifier rubyid_client_first_document'>client_first_document</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>db:</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_auth_source'>auth_source</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon May 11 16:40:34 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.7.1).
+</div>
+
+    </div>
+  </body>
+</html>

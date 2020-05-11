@@ -338,10 +338,32 @@
 </li>
 
       
-        <li class="public ">
+        <li class="public deprecated">
   <span class="summary_signature">
     
       <a href="#ismaster_bytes-instance_method" title="#ismaster_bytes (instance method)">#<strong>ismaster_bytes</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validated_document-instance_method" title="#validated_document (instance method)">#<strong>validated_document</strong>  &#x21d2; Object </a>
     
 
     
@@ -355,9 +377,7 @@
   <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Get the bytes of the ismaster message including this metadata.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -585,6 +605,7 @@
   <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
+<div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
 
 <p>Get the bytes of the ismaster message including this metadata.</p>
 
@@ -646,15 +667,76 @@
       <pre class="lines">
 
 
-91
 92
-93</pre>
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/app_metadata.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/app_metadata.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ismaster_bytes'>ismaster_bytes</span>
   <span class='ivar'>@ismaster_bytes</span> <span class='op'>||=</span> <span class='id identifier rubyid_validate!'>validate!</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_serialize'>serialize</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="validated_document-instance_method">
+  
+    #<strong>validated_document</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/app_metadata.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_validated_document'>validated_document</span>
+  <span class='id identifier rubyid_validate!'>validate!</span>
+  <span class='id identifier rubyid_document'>document</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -666,9 +748,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 29 01:14:11 2020 by
+  Generated on Mon May 11 16:40:31 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.0).
+  0.9.24 (ruby-2.7.1).
 </div>
 
     </div>
