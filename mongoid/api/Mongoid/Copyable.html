@@ -240,11 +240,11 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/copyable.rb', line 20</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_clone'>clone</span>  <span class='comment'># @note This next line is here to address #2704, even though having an
+<span class='kw'>def</span> <span class='id identifier rubyid_clone'>clone</span>
+  <span class='comment'># @note This next line is here to address #2704, even though having an
 </span>  <span class='comment'># _id and id field in the document would cause problems with Mongoid
 </span>  <span class='comment'># elsewhere.
-</span>
-  <span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='id identifier rubyid_clone_document'>clone_document</span><span class='period'>.</span><span class='id identifier rubyid_except'>except</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='id identifier rubyid_clone_document'>clone_document</span><span class='period'>.</span><span class='id identifier rubyid_except'>except</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dynamic_attrs'>dynamic_attrs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_attrs'>attrs</span><span class='period'>.</span><span class='id identifier rubyid_reject!'>reject!</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_attr_name'>attr_name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
     <span class='id identifier rubyid_dynamic_attrs'>dynamic_attrs</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_attr_name'>attr_name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attribute_names'>attribute_names</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_attr_name'>attr_name</span><span class='rparen'>)</span>
@@ -269,9 +269,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 29 19:38:47 2020 by
+  Generated on Thu May 14 21:31:47 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

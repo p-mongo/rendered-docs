@@ -19,7 +19,7 @@
   
    <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
     
     <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -84,12 +84,7 @@
    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
    })(window,document,'script','dataLayer','GTM-JQHP');</script>
-  <!-- End Google Tag Manager -->
-<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
-    <script src="../_static/navbar.min.js"></script>
-  
-
-  <div class="content" >
+  <!-- End Google Tag Manager --><div class="content" >
 
    <div id="left-column">
          <aside id="sidebar" class="sidebar">
@@ -220,30 +215,32 @@
 <p class="topic-title">On this page</p>
 <ul class="simple">
 <li><a class="reference internal" href="#id1" id="id4">Queries</a><ul>
-<li><a class="reference internal" href="#queryable-dsl" id="id5">Queryable DSL</a></li>
-<li><a class="reference internal" href="#logical-operations" id="id6">Logical Operations</a></li>
-<li><a class="reference internal" href="#incremental-query-construction" id="id7">Incremental Query Construction</a></li>
-<li><a class="reference internal" href="#query-cache" id="id8">Query Cache</a></li>
-<li><a class="reference internal" href="#additional-query-methods" id="id9">Additional Query Methods</a></li>
-<li><a class="reference internal" href="#eager-loading" id="id10">Eager Loading</a></li>
-<li><a class="reference internal" href="#regular-expressions" id="id11">Regular Expressions</a></li>
+<li><a class="reference internal" href="#logical-operations" id="id5">Logical Operations</a></li>
+<li><a class="reference internal" href="#incremental-query-construction" id="id6">Incremental Query Construction</a></li>
+<li><a class="reference internal" href="#query-methods" id="id7">Query Methods</a></li>
+<li><a class="reference internal" href="#projection" id="id8">Projection</a></li>
+<li><a class="reference internal" href="#ordering" id="id9">Ordering</a></li>
+<li><a class="reference internal" href="#query-cache" id="id10">Query Cache</a></li>
+<li><a class="reference internal" href="#additional-query-methods" id="id11">Additional Query Methods</a></li>
+<li><a class="reference internal" href="#eager-loading" id="id12">Eager Loading</a></li>
+<li><a class="reference internal" href="#regular-expressions" id="id13">Regular Expressions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#queries-persistence" id="id12">Queries + Persistence</a></li>
-<li><a class="reference internal" href="#scoping" id="id13">Scoping</a><ul>
-<li><a class="reference internal" href="#named-scopes" id="id14">Named Scopes</a></li>
-<li><a class="reference internal" href="#default-scopes" id="id15">Default Scopes</a></li>
-<li><a class="reference internal" href="#class-methods" id="id16">Class Methods</a></li>
+<li><a class="reference internal" href="#queries-persistence" id="id14">Queries + Persistence</a></li>
+<li><a class="reference internal" href="#scoping" id="id15">Scoping</a><ul>
+<li><a class="reference internal" href="#named-scopes" id="id16">Named Scopes</a></li>
+<li><a class="reference internal" href="#default-scopes" id="id17">Default Scopes</a></li>
+<li><a class="reference internal" href="#class-methods" id="id18">Class Methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#map-reduce" id="id17">Map/Reduce</a><ul>
-<li><a class="reference internal" href="#execution" id="id18">Execution</a></li>
+<li><a class="reference internal" href="#map-reduce" id="id19">Map/Reduce</a><ul>
+<li><a class="reference internal" href="#execution" id="id20">Execution</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#full-text-search" id="id19">Full Text Search</a><ul>
-<li><a class="reference internal" href="#defining-full-text-search-index" id="id20">Defining Full Text Search Index</a></li>
-<li><a class="reference internal" href="#creating-full-text-search-index" id="id21">Creating Full Text Search Index</a></li>
-<li><a class="reference internal" href="#querying-using-full-text-search-index" id="id22">Querying Using Full Text Search Index</a></li>
+<li><a class="reference internal" href="#full-text-search" id="id21">Full Text Search</a><ul>
+<li><a class="reference internal" href="#defining-full-text-search-index" id="id22">Defining Full Text Search Index</a></li>
+<li><a class="reference internal" href="#creating-full-text-search-index" id="id23">Creating Full Text Search Index</a></li>
+<li><a class="reference internal" href="#querying-using-full-text-search-index" id="id24">Querying Using Full Text Search Index</a></li>
 </ul>
 </li>
 </ul>
@@ -252,346 +249,88 @@
 queries, provided through a familiar Arel-style DSL.</p>
 <div class="section" id="id1">
 <h2>Queries<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>All queries in Mongoid are <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code>, which is a chainable and
-lazily evaluated wrapper to a MongoDB dynamic query. Criteria only
-touch the database when they need to, for example on iteration of the
-results, and when executed wrap a cursor in order to keep memory
-management and performance predictable.</p>
-<div class="section" id="queryable-dsl">
-<h3>Queryable DSL<a class="headerlink" href="#queryable-dsl" title="Permalink to this headline">¶</a></h3>
-<p>Query methods are available off a <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> object
-<em>as well as</em> off the model’s class.</p>
+<p>Mongoid provides a rich query DSL inspired by ActiveRecord. A trivial query
+is as follows:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
-<span class="no">Band</span><span class="o">.</span>
-  <span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gte</span> <span class="o">=&gt;</span> <span class="s2">&quot;1980-1-1&quot;</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<p>A more complex query utilizing various Mongoid features is as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span>
+  <span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gte</span> <span class="o">=&gt;</span> <span class="s2">&quot;1980-01-01&quot;</span><span class="p">)</span><span class="o">.</span>
   <span class="k">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span> <span class="s2">&quot;Tool&quot;</span><span class="p">,</span> <span class="s2">&quot;Deftones&quot;</span> <span class="o">]</span><span class="p">)</span><span class="o">.</span>
   <span class="n">union</span><span class="o">.</span>
   <span class="k">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span> <span class="s2">&quot;Melvins&quot;</span> <span class="o">]</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>With each chained method on a criteria, a newly cloned criteria
-is returned with the new query added. This is so that with scoping
-or exposures, for example, the original queries are unmodified
-and remain reusable.</p>
-<div class="section" id="elem-match">
-<h4>elem_match<a class="headerlink" href="#elem-match" title="Permalink to this headline">¶</a></h4>
-<p>This matcher finds documents with array fields where one of the array values
-matches all of the conditions. For example:</p>
+<p>The query methods return <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> objects, which is a chainable
+and lazily evaluated wrappers for MongoDB query language (MQL).
+The queries are executed when their result sets are iterated. For example:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:tours</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Array</span>
-<span class="k">end</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct a Criteria object:</span>
 
-<span class="n">aerosmith</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Aerosmith&#39;</span><span class="p">,</span> <span class="ss">tours</span><span class="p">:</span> <span class="o">[</span>
-  <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">1995</span><span class="p">},</span>
-  <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">1999</span><span class="p">},</span>
-<span class="o">]</span><span class="p">)</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">elem_match</span><span class="p">(</span><span class="ss">tours</span><span class="p">:</span> <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span> <span class="c1"># =&gt; [aerosmith]</span>
-</pre></div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> also works with embedded associations:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">embeds_many</span> <span class="ss">:tours</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">Tour</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-  <span class="n">field</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:year</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
-  <span class="n">embedded_in</span> <span class="ss">:band</span>
-<span class="k">end</span>
-
-<span class="n">dm</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Depeche Mode&#39;</span><span class="p">)</span>
-<span class="n">aerosmith</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Aerosmith&#39;</span><span class="p">)</span>
-<span class="no">Tour</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">band</span><span class="p">:</span> <span class="n">aerosmith</span><span class="p">,</span> <span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">1995</span><span class="p">)</span>
-<span class="no">Tour</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">band</span><span class="p">:</span> <span class="n">aerosmith</span><span class="p">,</span> <span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">1999</span><span class="p">)</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">elem_match</span><span class="p">(</span><span class="ss">tours</span><span class="p">:</span> <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span> <span class="c1"># =&gt; [aerosmith]</span>
-</pre></div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> does not work with non-embedded associations because MongoDB
-does not have joins - the conditions would be added to the collection
-that is the source of a non-embedded association rather than the collection
-of the association’s target.</p>
-<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> can also be used with recursively embedded associations,
-as the following example shows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tag</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">recursively_embeds_many</span>
-<span class="k">end</span>
-
-<span class="n">root</span> <span class="o">=</span> <span class="no">Tag</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">)</span>
-<span class="n">sub1</span> <span class="o">=</span> <span class="no">Tag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;sub1&#39;</span><span class="p">,</span> <span class="ss">child_tags</span><span class="p">:</span> <span class="o">[</span><span class="no">Tag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;subsub1&#39;</span><span class="p">)</span><span class="o">]</span><span class="p">)</span>
-<span class="n">root</span><span class="o">.</span><span class="n">child_tags</span> <span class="o">&lt;&lt;</span> <span class="n">sub1</span>
-<span class="n">root</span><span class="o">.</span><span class="n">child_tags</span> <span class="o">&lt;&lt;</span> <span class="no">Tag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;sub2&#39;</span><span class="p">)</span>
-<span class="n">root</span><span class="o">.</span><span class="n">save!</span>
-
-<span class="no">Tag</span><span class="o">.</span><span class="n">elem_match</span><span class="p">(</span><span class="ss">child_tags</span><span class="p">:</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;sub1&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span> <span class="c1"># =&gt; [root]</span>
-
-<span class="n">root</span><span class="o">.</span><span class="n">child_tags</span><span class="o">.</span><span class="n">elem_match</span><span class="p">(</span><span class="ss">child_tags</span><span class="p">:</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;subsub1&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span> <span class="c1"># =&gt; [sub1]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="only">
-<h4>only<a class="headerlink" href="#only" title="Permalink to this headline">¶</a></h4>
-<p>This method retrieves only the specified fields from the database. This
-operation is sometimes called “projection”.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:label</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-
-  <span class="n">embeds_many</span> <span class="ss">:tours</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">Tour</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-
-  <span class="n">field</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:year</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
-
-  <span class="n">embedded_in</span> <span class="ss">:band</span>
-<span class="k">end</span>
-
-<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
-</pre></div>
-</div>
-</div>
-<p>Attempting to reference attributes which have not been loaded results in
-<code class="docutils literal notranslate"><span class="pre">ActiveModel::MissingAttributeError</span></code>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">label</span>
-<span class="c1"># ActiveModel::MissingAttributeError (Missing attribute: &#39;label&#39;.)</span>
-</pre></div>
-</div>
-</div>
-<p>Even though Mongoid currently allows writing to attributes that have not
-been loaded, such writes will not be persisted
-(<a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4701">MONGOID-4701</a>) and
-should therefore be avoided.</p>
-<p><code class="docutils literal notranslate"><span class="pre">only</span></code> can also be used with embedded associations:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s1">&#39;tours.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
-<span class="c1"># =&gt; #&lt;Band _id: 5c59afb1026d7c034dba46ac, name: &quot;Aerosmith&quot;&gt;</span>
-
-<span class="n">band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">first</span>
-<span class="c1"># =&gt; #&lt;Tour _id: 5c59afdf026d7c034dba46af, city: nil, year: 1995&gt;</span>
-</pre></div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">only</span></code> can be specified with referenced associations (has_one, has_many,
-has_and_belongs_to_many) but is currently ignored for referenced associations -
-all fields of referenced associations will be loaded
-(<a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4704">MONGOID-4704</a>).</p>
-<p>Note that if a document has <code class="docutils literal notranslate"><span class="pre">has_one</span></code> or <code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code> associations,
-the fields with foreign keys must be included in the list of attributes
-loaded with <code class="docutils literal notranslate"><span class="pre">only</span></code> for those associations to be loaded. For example:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-
-  <span class="n">has_and_belongs_to_many</span> <span class="ss">:managers</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">Manager</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-
-  <span class="n">has_and_belongs_to_many</span> <span class="ss">:bands</span>
-<span class="k">end</span>
-
-<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
-<span class="n">band</span><span class="o">.</span><span class="n">managers</span> <span class="o">&lt;&lt;</span> <span class="no">Manager</span><span class="o">.</span><span class="n">new</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">managers</span>
-<span class="c1"># =&gt; []</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:manager_ids</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">managers</span>
-<span class="c1"># =&gt; [#&lt;Manager _id: 5c5dc2f0026d7c1730969843, band_ids: [BSON::ObjectId(&#39;5c5dc2f0026d7c1730969842&#39;)]&gt;]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="ordering">
-<h4>Ordering<a class="headerlink" href="#ordering" title="Permalink to this headline">¶</a></h4>
-<p>Mongoid provides the <code class="docutils literal notranslate"><span class="pre">order</span></code> method on <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects and its alias,
-<code class="docutils literal notranslate"><span class="pre">order_by</span></code>, to specify the ordering of documents. These methods take a
-hash indicating which fields to order the documents by, and whether to use
-ascending or descending order for each field.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Deftones&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
-<span class="c1">#   selector: {}</span>
-<span class="c1">#   options:  {:sort=&gt;{&quot;name&quot;=&gt;1}}</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;Deftones&quot;}</span>
+<span class="c1">#   options:  {}</span>
 <span class="c1">#   class:    Band</span>
 <span class="c1">#   embedded: false&gt;</span>
 
-<span class="no">Band</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="ss">description</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Evaluate the query and get matching documents:</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Deftones&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; [#&lt;Band _id: 5ebdeddfe1b83265a376a760, name: &quot;Deftones&quot;, description: nil&gt;]</span>
+</pre></div>
+</div>
+</div>
+<p>Methods like <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> return the individual documents immediately.
+Otherwise, iterating a Criteria object with methods like <code class="docutils literal notranslate"><span class="pre">each</span></code> or <code class="docutils literal notranslate"><span class="pre">map</span></code>
+retrieves the documents from the server. <code class="docutils literal notranslate"><span class="pre">to_a</span></code> can be used to force
+execution of a query that returns an array of documents, literally converting
+a Criteria object to an Array.</p>
+<p>When a query method is called on a Criteria instance, the method returns a new
+Criteria instance with the new conditions added to the existing conditions:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">scope</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gte</span> <span class="o">=&gt;</span> <span class="s2">&quot;1980-01-01&quot;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
-<span class="c1">#   selector: {}</span>
-<span class="c1">#   options:  {:sort=&gt;{&quot;name&quot;=&gt;-1, &quot;description&quot;=&gt;1}}</span>
+<span class="c1">#   selector: {&quot;founded&quot;=&gt;{&quot;$gte&quot;=&gt;&quot;1980-01-01&quot;}}</span>
+<span class="c1">#   options:  {}</span>
 <span class="c1">#   class:    Band</span>
 <span class="c1">#   embedded: false&gt;</span>
 
-<span class="no">Band</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="ss">:desc</span><span class="p">,</span> <span class="ss">description</span><span class="p">:</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+<span class="n">scope</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">lte</span> <span class="o">=&gt;</span> <span class="s2">&quot;2020-01-01&quot;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
-<span class="c1">#   selector: {}</span>
-<span class="c1">#   options:  {:sort=&gt;{&quot;name&quot;=&gt;-1, &quot;description&quot;=&gt;1}}</span>
+<span class="c1">#   selector: {&quot;founded&quot;=&gt;{&quot;$gte&quot;=&gt;&quot;1980-01-01&quot;, &quot;$lte&quot;=&gt;&quot;2020-01-01&quot;}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="n">scope</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;founded&quot;=&gt;{&quot;$gte&quot;=&gt;&quot;1980-01-01&quot;}}</span>
+<span class="c1">#   options:  {}</span>
 <span class="c1">#   class:    Band</span>
 <span class="c1">#   embedded: false&gt;</span>
 </pre></div>
-</div>
-</div>
-<p>The direction may be specified as integers <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">-1</span></code> for ascending
-and descending, respectively, or as symbols <code class="docutils literal notranslate"><span class="pre">:asc</span></code> and <code class="docutils literal notranslate"><span class="pre">:desc</span></code>, or as
-strings <code class="docutils literal notranslate"><span class="pre">&quot;asc&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;desc&quot;</span></code>.</p>
-<p>Alternatively, <code class="docutils literal notranslate"><span class="pre">order</span></code> accepts an array of two-element arrays specifying
-the ordering. Field names and directions may be strings or symbols.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="o">[[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="o">]]</span><span class="p">)</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="o">[[</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:desc</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="ss">:description</span><span class="p">,</span> <span class="ss">:asc</span><span class="o">]]</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Another way of providing the order is to use <code class="docutils literal notranslate"><span class="pre">#asc</span></code> and <code class="docutils literal notranslate"><span class="pre">#desc</span></code> methods
-on symbols, as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="ss">:name</span><span class="o">.</span><span class="n">desc</span><span class="p">,</span> <span class="ss">:description</span><span class="o">.</span><span class="n">asc</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>The arguments can be provided as a string using SQL syntax:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;name desc, description asc&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Finally, there are <code class="docutils literal notranslate"><span class="pre">asc</span></code> and <code class="docutils literal notranslate"><span class="pre">desc</span></code> methods that can be used instead of
-<code class="docutils literal notranslate"><span class="pre">order</span></code>/<code class="docutils literal notranslate"><span class="pre">order_by</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">asc</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
-<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
-  <span class="ss">selector</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="ss">options</span><span class="p">:</span>  <span class="p">{</span><span class="ss">:sort</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">=&gt;-</span><span class="mi">1</span><span class="p">}}</span>
-  <span class="ss">class</span><span class="p">:</span>    <span class="no">Band</span>
-  <span class="ss">embedded</span><span class="p">:</span> <span class="kp">false</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">order</span></code> calls can be chained, in which case the oldest calls define the
-most significant criteria and the newest calls define the least significant
-ones (since in Ruby hashes maintain the order of their keys):</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;name desc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;description asc&#39;</span><span class="p">)</span>
-<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
-  <span class="ss">selector</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="ss">options</span><span class="p">:</span>  <span class="p">{</span><span class="ss">:sort</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">}}</span>
-  <span class="ss">class</span><span class="p">:</span>    <span class="no">Band</span>
-  <span class="ss">embedded</span><span class="p">:</span> <span class="kp">false</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<p>This can sometimes lead to surprising results if there are scopes, including
-the default scope, that use <code class="docutils literal notranslate"><span class="pre">order</span></code>/<code class="docutils literal notranslate"><span class="pre">order_by</span></code>. For example, in the
-following snippet bands are ordered by name first because the order in the
-default scope takes precedence over the order given in the query, due to
-the default scope being evaluated first:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:year</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
-
-  <span class="n">default_scope</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">order</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="ss">:asc</span><span class="p">)</span> <span class="p">}</span>
-<span class="k">end</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="ss">:desc</span><span class="p">)</span>
-<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
-  <span class="ss">selector</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="ss">options</span><span class="p">:</span>  <span class="p">{</span><span class="ss">:sort</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="o">=&gt;-</span><span class="mi">1</span><span class="p">}}</span>
-  <span class="ss">class</span><span class="p">:</span>    <span class="no">Band</span>
-  <span class="ss">embedded</span><span class="p">:</span> <span class="kp">false</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="logical-operations">
@@ -1041,6 +780,323 @@ copy</a>
 </div>
 <p>This wrapping behavior is deprecated and should not be relied on. It may be
 removed in a future release of Mongoid.</p>
+</div>
+</div>
+<div class="section" id="query-methods">
+<h3>Query Methods<a class="headerlink" href="#query-methods" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="elem-match">
+<h4>elem_match<a class="headerlink" href="#elem-match" title="Permalink to this headline">¶</a></h4>
+<p>This matcher finds documents with array fields where one of the array values
+matches all of the conditions. For example:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:tours</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Array</span>
+<span class="k">end</span>
+
+<span class="n">aerosmith</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Aerosmith&#39;</span><span class="p">,</span> <span class="ss">tours</span><span class="p">:</span> <span class="o">[</span>
+  <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">1995</span><span class="p">},</span>
+  <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">1999</span><span class="p">},</span>
+<span class="o">]</span><span class="p">)</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">elem_match</span><span class="p">(</span><span class="ss">tours</span><span class="p">:</span> <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span> <span class="c1"># =&gt; [aerosmith]</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> also works with embedded associations:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">embeds_many</span> <span class="ss">:tours</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Tour</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">field</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:year</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+  <span class="n">embedded_in</span> <span class="ss">:band</span>
+<span class="k">end</span>
+
+<span class="n">dm</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Depeche Mode&#39;</span><span class="p">)</span>
+<span class="n">aerosmith</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Aerosmith&#39;</span><span class="p">)</span>
+<span class="no">Tour</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">band</span><span class="p">:</span> <span class="n">aerosmith</span><span class="p">,</span> <span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">1995</span><span class="p">)</span>
+<span class="no">Tour</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">band</span><span class="p">:</span> <span class="n">aerosmith</span><span class="p">,</span> <span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">1999</span><span class="p">)</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">elem_match</span><span class="p">(</span><span class="ss">tours</span><span class="p">:</span> <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span> <span class="c1"># =&gt; [aerosmith]</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> does not work with non-embedded associations because MongoDB
+does not have joins - the conditions would be added to the collection
+that is the source of a non-embedded association rather than the collection
+of the association’s target.</p>
+<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> can also be used with recursively embedded associations,
+as the following example shows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tag</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">recursively_embeds_many</span>
+<span class="k">end</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="no">Tag</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">)</span>
+<span class="n">sub1</span> <span class="o">=</span> <span class="no">Tag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;sub1&#39;</span><span class="p">,</span> <span class="ss">child_tags</span><span class="p">:</span> <span class="o">[</span><span class="no">Tag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;subsub1&#39;</span><span class="p">)</span><span class="o">]</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">child_tags</span> <span class="o">&lt;&lt;</span> <span class="n">sub1</span>
+<span class="n">root</span><span class="o">.</span><span class="n">child_tags</span> <span class="o">&lt;&lt;</span> <span class="no">Tag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;sub2&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">save!</span>
+
+<span class="no">Tag</span><span class="o">.</span><span class="n">elem_match</span><span class="p">(</span><span class="ss">child_tags</span><span class="p">:</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;sub1&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span> <span class="c1"># =&gt; [root]</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">child_tags</span><span class="o">.</span><span class="n">elem_match</span><span class="p">(</span><span class="ss">child_tags</span><span class="p">:</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;subsub1&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span> <span class="c1"># =&gt; [sub1]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="projection">
+<h3>Projection<a class="headerlink" href="#projection" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">only</span></code> method retrieves only the specified fields from the database. This
+operation is sometimes called “projection”.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:label</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+
+  <span class="n">embeds_many</span> <span class="ss">:tours</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Tour</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:year</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+
+  <span class="n">embedded_in</span> <span class="ss">:band</span>
+<span class="k">end</span>
+
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+</pre></div>
+</div>
+</div>
+<p>Attempting to reference attributes which have not been loaded results in
+<code class="docutils literal notranslate"><span class="pre">ActiveModel::MissingAttributeError</span></code>.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">label</span>
+<span class="c1"># ActiveModel::MissingAttributeError (Missing attribute: &#39;label&#39;.)</span>
+</pre></div>
+</div>
+</div>
+<p>Even though Mongoid currently allows writing to attributes that have not
+been loaded, such writes will not be persisted
+(<a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4701">MONGOID-4701</a>) and
+should therefore be avoided.</p>
+<p><code class="docutils literal notranslate"><span class="pre">only</span></code> can also be used with embedded associations:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s1">&#39;tours.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
+<span class="c1"># =&gt; #&lt;Band _id: 5c59afb1026d7c034dba46ac, name: &quot;Aerosmith&quot;&gt;</span>
+
+<span class="n">band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; #&lt;Tour _id: 5c59afdf026d7c034dba46af, city: nil, year: 1995&gt;</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">only</span></code> can be specified with referenced associations (has_one, has_many,
+has_and_belongs_to_many) but is currently ignored for referenced associations -
+all fields of referenced associations will be loaded
+(<a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4704">MONGOID-4704</a>).</p>
+<p>Note that if a document has <code class="docutils literal notranslate"><span class="pre">has_one</span></code> or <code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code> associations,
+the fields with foreign keys must be included in the list of attributes
+loaded with <code class="docutils literal notranslate"><span class="pre">only</span></code> for those associations to be loaded. For example:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+
+  <span class="n">has_and_belongs_to_many</span> <span class="ss">:managers</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Manager</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">has_and_belongs_to_many</span> <span class="ss">:bands</span>
+<span class="k">end</span>
+
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
+<span class="n">band</span><span class="o">.</span><span class="n">managers</span> <span class="o">&lt;&lt;</span> <span class="no">Manager</span><span class="o">.</span><span class="n">new</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">managers</span>
+<span class="c1"># =&gt; []</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:manager_ids</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">managers</span>
+<span class="c1"># =&gt; [#&lt;Manager _id: 5c5dc2f0026d7c1730969843, band_ids: [BSON::ObjectId(&#39;5c5dc2f0026d7c1730969842&#39;)]&gt;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ordering">
+<h3>Ordering<a class="headerlink" href="#ordering" title="Permalink to this headline">¶</a></h3>
+<p>Mongoid provides the <code class="docutils literal notranslate"><span class="pre">order</span></code> method on <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects and its alias,
+<code class="docutils literal notranslate"><span class="pre">order_by</span></code>, to specify the ordering of documents. These methods take a
+hash indicating which fields to order the documents by, and whether to use
+ascending or descending order for each field.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {}</span>
+<span class="c1">#   options:  {:sort=&gt;{&quot;name&quot;=&gt;1}}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="ss">description</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {}</span>
+<span class="c1">#   options:  {:sort=&gt;{&quot;name&quot;=&gt;-1, &quot;description&quot;=&gt;1}}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="ss">:desc</span><span class="p">,</span> <span class="ss">description</span><span class="p">:</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {}</span>
+<span class="c1">#   options:  {:sort=&gt;{&quot;name&quot;=&gt;-1, &quot;description&quot;=&gt;1}}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>The direction may be specified as integers <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">-1</span></code> for ascending
+and descending, respectively, or as symbols <code class="docutils literal notranslate"><span class="pre">:asc</span></code> and <code class="docutils literal notranslate"><span class="pre">:desc</span></code>, or as
+strings <code class="docutils literal notranslate"><span class="pre">&quot;asc&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;desc&quot;</span></code>.</p>
+<p>Alternatively, <code class="docutils literal notranslate"><span class="pre">order</span></code> accepts an array of two-element arrays specifying
+the ordering. Field names and directions may be strings or symbols.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="o">[[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="o">]]</span><span class="p">)</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="o">[[</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:desc</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="ss">:description</span><span class="p">,</span> <span class="ss">:asc</span><span class="o">]]</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Another way of providing the order is to use <code class="docutils literal notranslate"><span class="pre">#asc</span></code> and <code class="docutils literal notranslate"><span class="pre">#desc</span></code> methods
+on symbols, as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="ss">:name</span><span class="o">.</span><span class="n">desc</span><span class="p">,</span> <span class="ss">:description</span><span class="o">.</span><span class="n">asc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The arguments can be provided as a string using SQL syntax:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;name desc, description asc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, there are <code class="docutils literal notranslate"><span class="pre">asc</span></code> and <code class="docutils literal notranslate"><span class="pre">desc</span></code> methods that can be used instead of
+<code class="docutils literal notranslate"><span class="pre">order</span></code>/<code class="docutils literal notranslate"><span class="pre">order_by</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">asc</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+  <span class="ss">selector</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="ss">options</span><span class="p">:</span>  <span class="p">{</span><span class="ss">:sort</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">=&gt;-</span><span class="mi">1</span><span class="p">}}</span>
+  <span class="ss">class</span><span class="p">:</span>    <span class="no">Band</span>
+  <span class="ss">embedded</span><span class="p">:</span> <span class="kp">false</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">order</span></code> calls can be chained, in which case the oldest calls define the
+most significant criteria and the newest calls define the least significant
+ones (since in Ruby hashes maintain the order of their keys):</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;name desc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;description asc&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+  <span class="ss">selector</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="ss">options</span><span class="p">:</span>  <span class="p">{</span><span class="ss">:sort</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">}}</span>
+  <span class="ss">class</span><span class="p">:</span>    <span class="no">Band</span>
+  <span class="ss">embedded</span><span class="p">:</span> <span class="kp">false</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>This can sometimes lead to surprising results if there are scopes, including
+the default scope, that use <code class="docutils literal notranslate"><span class="pre">order</span></code>/<code class="docutils literal notranslate"><span class="pre">order_by</span></code>. For example, in the
+following snippet bands are ordered by name first because the order in the
+default scope takes precedence over the order given in the query, due to
+the default scope being evaluated first:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:year</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+
+  <span class="n">default_scope</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">order</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="ss">:asc</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">end</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="ss">:desc</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+  <span class="ss">selector</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="ss">options</span><span class="p">:</span>  <span class="p">{</span><span class="ss">:sort</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="o">=&gt;-</span><span class="mi">1</span><span class="p">}}</span>
+  <span class="ss">class</span><span class="p">:</span>    <span class="no">Band</span>
+  <span class="ss">embedded</span><span class="p">:</span> <span class="kp">false</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="query-cache">
@@ -2130,6 +2186,12 @@ full text search indexes.</p>
     
     <div class="clearfix"></div>
   </div>
+<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
+
+  
+    <script src="../_static/navbar.min.js"></script>
+  
+
   
 
   <script type="text/javascript">

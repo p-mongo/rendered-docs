@@ -723,8 +723,8 @@
 <p>Mongoize the string.</p>
 </div></p>
       
-      <pre class="example code"><code><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>2012-01-01</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid___mongoize_time__'>__mongoize_time__</span><span class='comment'># =&gt; 2012-01-01 00:00:00 -0500</span>
-</code></pre>
+      <pre class="example code"><code><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>2012-01-01</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid___mongoize_time__'>__mongoize_time__</span>
+<span class='comment'># =&gt; 2012-01-01 00:00:00 -0500</span></code></pre>
     
   </div>
 
@@ -785,12 +785,12 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/extensions/string.rb', line 47</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid___mongoize_time__'>__mongoize_time__</span>  <span class='comment'># This extra parse from Time is because ActiveSupport::TimeZone
+<span class='kw'>def</span> <span class='id identifier rubyid___mongoize_time__'>__mongoize_time__</span>
+  <span class='comment'># This extra parse from Time is because ActiveSupport::TimeZone
 </span>  <span class='comment'># either returns nil or Time.now if the string is empty or invalid,
 </span>  <span class='comment'># which is a regression from pre-3.0 and also does not agree with
 </span>  <span class='comment'># the core Time API.
-</span>
-  <span class='id identifier rubyid_parsed'>parsed</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_parsed'>parsed</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='op'>::</span><span class='const'>Time</span> <span class='op'>==</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_configured'>configured</span>
     <span class='id identifier rubyid_parsed'>parsed</span>
   <span class='kw'>else</span>
@@ -1507,9 +1507,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 29 19:38:52 2020 by
+  Generated on Thu May 14 21:31:52 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

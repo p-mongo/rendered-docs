@@ -313,10 +313,10 @@
     <span class='id identifier rubyid_process_atomic_operations'>process_atomic_operations</span><span class='lparen'>(</span><span class='id identifier rubyid_adds'>adds</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
       <span class='id identifier rubyid_existing'>existing</span> <span class='op'>=</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_existing'>existing</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-        <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>        <span class='comment'># Read the value out of attributes:
+        <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+        <span class='comment'># Read the value out of attributes:
 </span>        <span class='comment'># https://jira.mongodb.org/browse/MONGOID-4874
-</span>
-        <span class='id identifier rubyid_existing'>existing</span> <span class='op'>=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span>
+</span>        <span class='id identifier rubyid_existing'>existing</span> <span class='op'>=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='rbracket'>]</span>
       <span class='kw'>end</span>
       <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_value'>value</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_val'>val</span><span class='op'>|</span>
@@ -467,9 +467,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 29 19:38:53 2020 by
+  Generated on Thu May 14 21:31:53 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>
