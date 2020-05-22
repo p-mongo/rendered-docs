@@ -138,7 +138,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#bulk_execute-instance_method" title="#bulk_execute (instance method)">#<strong>bulk_execute</strong>(server, client:)  &#x21d2; Mongo::Operation::Delete::BulkResult, ... </a>
+      <a href="#bulk_execute-instance_method" title="#bulk_execute (instance method)">#<strong>bulk_execute</strong>(connection, client:)  &#x21d2; Mongo::Operation::Delete::BulkResult, ... </a>
     
 
     
@@ -201,7 +201,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="bulk_execute-instance_method">
   
-    #<strong>bulk_execute</strong>(server, client:)  &#x21d2; <tt><span class='object_link'><a href="Delete/BulkResult.html" title="Mongo::Operation::Delete::BulkResult (class)">Mongo::Operation::Delete::BulkResult</a></span></tt>, ... 
+    #<strong>bulk_execute</strong>(connection, client:)  &#x21d2; <tt><span class='object_link'><a href="Delete/BulkResult.html" title="Mongo::Operation::Delete::BulkResult (class)">Mongo::Operation::Delete::BulkResult</a></span></tt>, ... 
   
 
   
@@ -302,6 +302,7 @@
       <pre class="lines">
 
 
+70
 71
 72
 73
@@ -309,19 +310,18 @@
 75
 76
 77
-78
-79</pre>
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/write.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/write.rb', line 70</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_bulk_execute'>bulk_execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='op'>::</span><span class='const'>OpMsg</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bulk_result'>bulk_result</span>
-    <span class='kw'>else</span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='op'>::</span><span class='const'>Command</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bulk_result'>bulk_result</span>
-    <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_bulk_execute'>bulk_execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../Lint.html" title="Mongo::Lint (module)">Lint</a></span></span><span class='period'>.</span><span class='id identifier rubyid_assert_type'>assert_type</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Server/Connection.html" title="Mongo::Server::Connection (class)">Connection</a></span></span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='op'>::</span><span class='const'>OpMsg</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bulk_result'>bulk_result</span>
+  <span class='kw'>else</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='op'>::</span><span class='const'>Command</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bulk_result'>bulk_result</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -447,14 +447,13 @@
 49
 50
 51
-52
-53</pre>
+52</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/write.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span>
+  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span>
     <span class='id identifier rubyid_validate!'>validate!</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_op'>op</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
         <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='op'>::</span><span class='const'>OpMsg</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
@@ -464,10 +463,9 @@
         <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='op'>::</span><span class='const'>Command</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
 
-    <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_result'>validate_result</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_validate_result'>validate_result</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -479,7 +477,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon May 11 16:40:22 2020 by
+  Generated on Thu May 21 20:02:13 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>

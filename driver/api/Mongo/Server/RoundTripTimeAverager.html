@@ -514,7 +514,16 @@
 47
 48
 49
-50</pre>
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 33</span>
@@ -523,7 +532,12 @@
   <span class='id identifier rubyid_start'>start</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
   <span class='kw'>begin</span>
     <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>yield</span>
-  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_exc'>exc</span>
+  <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/SocketError.html" title="Mongo::Error::SocketError (class)">SocketError</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">SocketTimeoutError</a></span></span>    <span class='comment'># If we encountered a network error, the round-trip is not
+</span>    <span class='comment'># complete and thus RTT for it does not make sense.
+</span>
+    <span class='id identifier rubyid_raise'>raise</span>
+  <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/AuthError.html" title="Mongo::Error::AuthError (class)">AuthError</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_exc'>exc</span>    <span class='comment'># For other errors, RTT is valid.
+</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_last_round_trip_time'>last_round_trip_time</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_start'>start</span>
 
@@ -535,7 +549,11 @@
     <span class='id identifier rubyid_update_average_round_trip_time'>update_average_round_trip_time</span>
   <span class='kw'>end</span>
 
-  <span class='lbracket'>[</span><span class='id identifier rubyid_rv'>rv</span><span class='comma'>,</span> <span class='id identifier rubyid_exc'>exc</span><span class='comma'>,</span> <span class='id identifier rubyid_last_round_trip_time'>last_round_trip_time</span><span class='comma'>,</span> <span class='id identifier rubyid_average_round_trip_time'>average_round_trip_time</span><span class='rbracket'>]</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_exc'>exc</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_exc'>exc</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_rv'>rv</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -547,7 +565,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon May 11 16:40:36 2020 by
+  Generated on Thu May 21 20:02:27 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>

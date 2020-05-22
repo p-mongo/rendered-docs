@@ -58,83 +58,72 @@
       </div>
 
       <div id="content"><div id='filecontents'>
-<h2 id="label-MongoDB+Ruby+Driver+rdoc-image-3Ahttps-3A-2F-2Fcodeclimate.com-2Fgithub-2Fmongodb-2Fmongo-ruby-driver.svg-3Fbranch-3Dmaster+rdoc-image-3Ahttps-3A-2F-2Fbadge.fury.io-2Frb-2Fmongo.svg">MongoDB Ruby Driver <a href="https://codeclimate.com/github/mongodb/mongo-ruby-driver?branch=master"><img src="https://codeclimate.com/github/mongodb/mongo-ruby-driver.svg?branch=master"></a> <a href="http://badge.fury.io/rb/mongo"><img src="https://badge.fury.io/rb/mongo.svg"></a></h2>
+<h1 id="label-MongoDB+Ruby+Driver+rdoc-image-3Ahttps-3A-2F-2Fbadge.fury.io-2Frb-2Fmongo.svg">MongoDB Ruby Driver <a href="http://badge.fury.io/rb/mongo"><img src="https://badge.fury.io/rb/mongo.svg"></a></h1>
 
-<p>The officially supported Ruby driver for <a href="http://www.mongodb.org">MongoDB</a>.</p>
+<p>The officially supported Ruby driver for <a href="https://www.mongodb.org/">MongoDB</a>.</p>
+
+<p>The Ruby driver supports Ruby 2.3-2.7 and JRuby 9.2.</p>
 
 <h2 id="label-Documentation">Documentation</h2>
 
 <p>High level documentation and usage examples are located <a href="http://docs.mongodb.org/ecosystem/drivers/ruby/">here</a>.</p>
 
-<p>API docs can be found <a href="http://api.mongodb.org/ruby/">here</a>.</p>
+<p>API documentation can be found <a href="https://api.mongodb.org/ruby/">here</a>.</p>
 
-<h2 id="label-Support+-26+Feedback">Support &amp; Feedback</h2>
+<h2 id="label-Support">Support</h2>
 
-<p>For issues, questions or feedback related to the Ruby driver, please look into our <a href="https://docs.mongodb.com/manual/support">support channels</a>. Please do not email any of the Ruby developers directly with issues or questions - you&#39;re more likely to get an answer quickly on the <a href="https://developer.mongodb.com/community/forums/tags/c/drivers-odms-connectors/7/ruby-driver">MongoDB Community Forum</a>.</p>
+<p>Commercial support for the driver is available through the <a href="https://support.mongodb.com/">MongoDB Support Portal</a>.</p>
+
+<p>For questions, discussions or general technical support, please visit the <a href="https://developer.mongodb.com/community/forums/tags/c/drivers-odms-connectors/7/ruby-driver">MongoDB Community Forum</a>.</p>
+
+<p>Please see <a href="https://docs.mongodb.com/manual/support/">Technical Support</a> page in the documentation for other support resources.</p>
 
 <h2 id="label-Bugs+-26+Feature+Requests">Bugs &amp; Feature Requests</h2>
 
-<p>Do you have a bug to report or a feature request to make?</p>
+<p>To report a bug in the driver or request a feature specific to the Ruby driver:</p>
 <ol><li>
-<p>Visit <a href="https://jira.mongodb.org">our issue tracker</a> and login (or create an account if necessary).</p>
+<p>Visit <a href="https://jira.mongodb.org/">our issue tracker</a> and login (or create an account if you do not have one already).</p>
 </li><li>
-<p>Navigate to the <a href="https://jira.mongodb.org/browse/RUBY">RUBY</a> project.</p>
+<p>Navigate to the <a href="https://jira.mongodb.org/browse/RUBY">RUBY project</a>.</p>
 </li><li>
-<p>Click &#39;Create Issue&#39; and fill out all the applicable form fields.</p>
+<p>Click &#39;Create Issue&#39; and fill out all of the applicable form fields.</p>
 </li></ol>
 
-<p>When reporting an issue, please keep in mind that all information in JIRA for all driver projects (ex. RUBY, CSHARP, JAVA) and the Core Server (ex. SERVER) project is <strong>PUBLICLY</strong> visible.</p>
+<p>When creating an issue, please keep in mind that all information in JIRA for the RUBY project, as well as the core server (the SERVER project), is publicly visible.</p>
 
-<p><strong>PLEASE DO</strong></p>
+<p><strong>PLEASE DO:</strong></p>
 <ul><li>
 <p>Provide as much information as possible about the issue.</p>
 </li><li>
 <p>Provide detailed steps for reproducing the issue.</p>
 </li><li>
-<p>Provide any applicable code snippets, stack traces and log data.</p>
+<p>Provide any applicable code snippets, stack traces and log data.  Do not include any sensitive data or server logs.</p>
 </li><li>
-<p>Specify version information for the driver and MongoDB.</p>
+<p>Specify version numbers of the driver and MongoDB server.</p>
 </li></ul>
 
-<p><strong>PLEASE DO NOT</strong></p>
+<p><strong>PLEASE DO NOT:</strong></p>
 <ul><li>
 <p>Provide any sensitive data or server logs.</p>
 </li><li>
-<p>Report potential security issues publicly (see &#39;Security Issues&#39;).</p>
+<p>Report potential security issues publicly (see &#39;Security Issues&#39; below).</p>
 </li></ul>
 
 <h2 id="label-Security+Issues">Security Issues</h2>
 
-<p>If you’ve identified a potential security related issue in a driver or any other MongoDB project, please report it by following the <a href="http://docs.mongodb.org/manual/tutorial/create-a-vulnerability-report">instructions here</a>.</p>
+<p>If you have identified a potential security-related issue in the Ruby driver (or any other MongoDB product), please report it by following the <a href="http://docs.mongodb.org/manual/tutorial/create-a-vulnerability-report">instructions here</a>.</p>
+
+<h2 id="label-Product+Feature+Requests">Product Feature Requests</h2>
+
+<p>To request a feature which is not specific to the Ruby driver, or which affects more than the driver alone (for example, a feature which requires MongoDB server support), please submit your idea through the <a href="https://feedback.mongodb.com/forums/924286-drivers">MongoDB Feedback Forum</a>.</p>
 
 <h2 id="label-Running+Tests">Running Tests</h2>
 
-<p>The driver uses RSpec as its primary testing tool. Most tests require a running MongoDB server. To test the driver against a single-node (standalone) deployment, first launch a server:</p>
-
-<pre class="code ruby"><code class="ruby">mkdir /tmp/mrb
-mongod --dbpath /tmp/mrb --bind_ip 127.0.0.1 --setParameter enableTestCommands=1
-</code></pre>
-
-<p>… then run the tests:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_rake'>rake</span>
-</code></pre>
-
-<p>It is possible to run tests in a specific file, as well as use other test invocations supported by RSpec:</p>
-
-<pre class="code ruby"><code class="ruby">bundle exec rspec path/to/spec.rb:42
-</code></pre>
-
-<p>Note that certain user accounts have to be created for individual tests to succeed, and they are not created when the individual tests are run. The user accounts are created if you run <code>rake</code> as mentioned above, and you can also create them by running:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_rake'>rake</span> <span class='label'>spec:</span><span class='id identifier rubyid_prepare'>prepare</span>
-</code></pre>
-
-<p>For further information about supported cluster configurations and how to configure the test suite, please see the README in the spec directory.</p>
+<p>Please refer to <a href="spec/README.md">spec/README.md</a> for instructions on how to run the driver&#39;s test suite.</p>
 
 <h2 id="label-Release+History">Release History</h2>
 
-<p>Full release notes and release history are available <a href="https://github.com/mongodb/mongo-ruby-driver/releases">here</a>.</p>
+<p>Full release notes and release history are available <a href="https://github.com/mongodb/mongo-ruby-driver/releases">on the GitHub releases page</a>.</p>
 
 <h2 id="label-License">License</h2>
 
@@ -148,7 +137,7 @@ mongod --dbpath /tmp/mrb --bind_ip 127.0.0.1 --setParameter enableTestCommands=1
 </div></div>
 
       <div id="footer">
-  Generated on Mon May 11 16:40:21 2020 by
+  Generated on Thu May 21 20:02:12 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>

@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Server::Monitor
   
   
-  
+  <span class="private note title">Private</span>
 </h1>
 <div class="box_info">
   
@@ -113,7 +113,11 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Responsible for periodically polling a server via ismaster commands to keep the server&#39;s status up to date.</p>
 
 <p>Does all work in a background thread so as to not interfere with other operations performed by the driver.</p>
@@ -159,11 +163,15 @@
 
     <dl class="constants">
       
-        <dt id="HEARTBEAT_FREQUENCY-constant" class="">HEARTBEAT_FREQUENCY =
+        <dt id="DEFAULT_HEARTBEAT_INTERVAL-constant" class="">DEFAULT_HEARTBEAT_INTERVAL =
           <div class="docstring">
   <div class="discussion">
-    
-<p>The default time for a server to refresh its status is 10 seconds.</p>
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>The default interval between server status refreshes is 10 seconds.</p>
 
 
   </div>
@@ -191,10 +199,14 @@
         </dt>
         <dd><pre class="code"><span class='int'>10</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
-        <dt id="MIN_SCAN_FREQUENCY-constant" class="">MIN_SCAN_FREQUENCY =
+        <dt id="MIN_SCAN_INTERVAL-constant" class="">MIN_SCAN_INTERVAL =
           <div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>The minimum time between forced server scans. Is minHeartbeatFrequencyMS in the SDAM spec.</p>
 
 
@@ -226,7 +238,11 @@
         <dt id="RTT_WEIGHT_FACTOR-constant" class="deprecated">RTT_WEIGHT_FACTOR =
           <div class="docstring">
   <div class="discussion">
-    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+<div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
 <p>Will be removed in version 3.0.</p>
 </div></div>
 
@@ -292,7 +308,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -321,7 +337,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -350,7 +366,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -421,7 +437,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -431,10 +447,10 @@
 </li>
 
       
-        <li class="public deprecated">
+        <li class="public ">
   <span class="summary_signature">
     
-      <a href="#heartbeat_frequency-instance_method" title="#heartbeat_frequency (instance method)">#<strong>heartbeat_frequency</strong>  &#x21d2; Float </a>
+      <a href="#heartbeat_interval-instance_method" title="#heartbeat_interval (instance method)">#<strong>heartbeat_interval</strong>  &#x21d2; Float </a>
     
 
     
@@ -444,11 +460,13 @@
   
   
   
-  <span class="deprecated note title">deprecated</span>
   
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>The interval between regular server checks.</p>
+</div></span>
   
 </li>
 
@@ -493,7 +511,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -517,7 +535,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -730,6 +748,19 @@
         </li>
       
         <li>
+          <span class="name">:heartbeat_interval</span>
+          <span class="type">(<tt>Float</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The interval between regular server checks.</p>
+</div>
+          
+        </li>
+      
+        <li>
           <span class="name">:logger</span>
           <span class="type">(<tt><span class='object_link'><a href="../Logger.html" title="Mongo::Logger (class)">Logger</a></span></tt>)</span>
           <span class="default">
@@ -781,9 +812,6 @@
       <pre class="lines">
 
 
-68
-69
-70
 71
 72
 73
@@ -793,10 +821,13 @@
 77
 78
 79
-80</pre>
+80
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_event_listeners'>event_listeners</span><span class='comma'>,</span> <span class='id identifier rubyid_monitoring'>monitoring</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_monitoring'>monitoring</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Monitoring.html" title="Mongo::Monitoring (class)">Monitoring</a></span></span><span class='rparen'>)</span>
@@ -834,7 +865,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns connection The connection to use.</p>
 
 
@@ -883,12 +918,12 @@
       <pre class="lines">
 
 
-87
-88
-89</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection'>connection</span>
   <span class='ivar'>@connection</span>
@@ -911,7 +946,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns monitoring The monitoring.</p>
 
 
@@ -960,12 +999,12 @@
       <pre class="lines">
 
 
-102
-103
-104</pre>
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_monitoring'>monitoring</span>
   <span class='ivar'>@monitoring</span>
@@ -988,7 +1027,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns options The server options.</p>
 
 
@@ -1037,12 +1080,12 @@
       <pre class="lines">
 
 
-90
-91
-92</pre>
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -1118,12 +1161,12 @@
       <pre class="lines">
 
 
-84
-85
-86</pre>
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server'>server</span>
   <span class='ivar'>@server</span>
@@ -1151,7 +1194,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Runs the server monitor. Refreshing happens on a separate thread per server.</p>
 
 
@@ -1212,17 +1259,17 @@
       <pre class="lines">
 
 
+123
 124
 125
-126
-127</pre>
+126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 123</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_do_work'>do_work</span>
   <span class='id identifier rubyid_scan!'>scan!</span>
-  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_scan_semaphore'>scan_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_heartbeat_interval'>heartbeat_interval</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_scan_semaphore'>scan_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='id identifier rubyid_heartbeat_interval'>heartbeat_interval</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1230,9 +1277,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="heartbeat_frequency-instance_method">
+  <h3 class="signature " id="heartbeat_interval-instance_method">
   
-    #<strong>heartbeat_frequency</strong>  &#x21d2; <tt>Float</tt> 
+    #<strong>heartbeat_interval</strong>  &#x21d2; <tt>Float</tt> 
   
 
   
@@ -1240,9 +1287,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
 
-<p>Get the refresh interval for the server. This will be defined via an option or will default to 10.</p>
+<p>The interval between regular server checks.</p>
 
 
   </div>
@@ -1290,15 +1340,15 @@
       <pre class="lines">
 
 
-111
-112
-113</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 98</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_heartbeat_frequency'>heartbeat_frequency</span>
-  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_heartbeat_interval'>heartbeat_interval</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_heartbeat_interval'>heartbeat_interval</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:heartbeat_interval</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#DEFAULT_HEARTBEAT_INTERVAL-constant" title="Mongo::Server::Monitor::DEFAULT_HEARTBEAT_INTERVAL (constant)">DEFAULT_HEARTBEAT_INTERVAL</a></span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1316,7 +1366,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Restarts the server monitor unless the current thread is alive.</p>
 
 
@@ -1377,16 +1431,16 @@
       <pre class="lines">
 
 
+187
 188
 189
 190
 191
 192
-193
-194</pre>
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_restart!'>restart!</span>
   <span class='kw'>if</span> <span class='ivar'>@thread</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@thread</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span>
@@ -1411,7 +1465,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
@@ -1429,7 +1487,7 @@
 
 <p>Perform a check of the server with throttling, and update the server&#39;s description and average round trip time.</p>
 
-<p>If the server was checked less than MIN_SCAN_FREQUENCY seconds ago, sleep until MIN_SCAN_FREQUENCY seconds have passed since the last check. Then perform the check which involves running isMaster on the server being monitored and updating the server description as a result.</p>
+<p>If the server was checked less than MIN_SCAN_INTERVAL seconds ago, sleep until MIN_SCAN_INTERVAL seconds have passed since the last check. Then perform the check which involves running isMaster on the server being monitored and updating the server description as a result.</p>
 
 <p>If the server check fails for any reason (such as a network error), the check is retried by this method.</p>
 
@@ -1493,17 +1551,17 @@
       <pre class="lines">
 
 
+170
 171
 172
 173
 174
 175
 176
-177
-178</pre>
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 171</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 170</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_scan!'>scan!</span>
   <span class='id identifier rubyid_throttle_scan_frequency!'>throttle_scan_frequency!</span>
@@ -1578,17 +1636,17 @@
       <pre class="lines">
 
 
+134
 135
 136
 137
 138
 139
 140
-141
-142</pre>
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stop!'>stop!</span>  <span class='comment'># Forward super&#39;s return value
 </span>
@@ -1608,7 +1666,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon May 11 16:40:28 2020 by
+  Generated on Thu May 21 20:02:20 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>

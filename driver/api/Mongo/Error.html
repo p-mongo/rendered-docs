@@ -557,6 +557,11 @@
 
 
 
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Error/Notable.html" title="Mongo::Error::Notable (module)">Notable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Error/Notable.html#generation-instance_method" title="Mongo::Error::Notable#generation (method)">#generation</a></span></p>
+
 
   
     <h2>
@@ -688,6 +693,54 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_concern_error_label%3F-instance_method" title="#write_concern_error_label? (instance method)">#<strong>write_concern_error_label?</strong>(label)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Does the write concern error have the given label?.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_concern_error_labels-instance_method" title="#write_concern_error_labels (instance method)">#<strong>write_concern_error_labels</strong>  &#x21d2; Array&lt;String&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The set of error labels associated with the write concern error.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -751,7 +804,8 @@
 104
 105
 106
-107</pre>
+107
+108</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 104</span>
@@ -759,6 +813,7 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
   <span class='ivar'>@labels</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@write_concern_error_labels</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -838,12 +893,12 @@
       <pre class="lines">
 
 
-141
-142
-143</pre>
+158
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 158</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_label'>add_label</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='rparen'>)</span>
   <span class='ivar'>@labels</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_label'>label</span> <span class='kw'>unless</span> <span class='id identifier rubyid_label?'>label?</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='rparen'>)</span>
@@ -1028,12 +1083,12 @@
       <pre class="lines">
 
 
-119
 120
-121</pre>
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_label?'>label?</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='rparen'>)</span>
   <span class='ivar'>@labels</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='rparen'>)</span>
@@ -1111,15 +1166,185 @@
       <pre class="lines">
 
 
-131
-132
-133</pre>
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_labels'>labels</span>
   <span class='ivar'>@labels</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_concern_error_label?-instance_method">
+  
+    #<strong>write_concern_error_label?</strong>(label)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Does the write concern error have the given label?</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>label</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The label to check for the presence of.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the write concern error has the given label.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 129</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_label?'>write_concern_error_label?</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='rparen'>)</span>
+  <span class='ivar'>@write_concern_error_labels</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_label'>label</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_concern_error_labels-instance_method">
+  
+    #<strong>write_concern_error_labels</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The set of error labels associated with the write concern error.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The list of error labels.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148
+149
+150</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error.rb', line 148</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_labels'>write_concern_error_labels</span>
+  <span class='ivar'>@write_concern_error_labels</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1131,7 +1356,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon May 11 16:40:24 2020 by
+  Generated on Thu May 21 20:02:16 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>
