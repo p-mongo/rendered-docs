@@ -259,7 +259,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/queryable/extensions/numeric.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid___numeric__'>__numeric__</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(^[-+]?[0-9]+$)|(\.0+$)|(\.$)</span><span class='regexp_end'>/</span></span> <span class='op'>?</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>:</span> <span class='const'>Float</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(\A[-+]?[0-9]+\z)|(\.0+\z)|(\.\z)</span><span class='regexp_end'>/</span></span> <span class='op'>?</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>:</span> <span class='const'>Float</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -382,7 +382,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu May 14 21:31:57 2020 by
+  Generated on Sun May 24 22:36:35 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

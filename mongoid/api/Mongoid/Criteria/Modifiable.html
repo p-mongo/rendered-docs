@@ -886,14 +886,16 @@
 76
 77
 78
-79</pre>
+79
+80</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_with'>create_with</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span>
-    <span class='lparen'>(</span><span class='ivar'>@create_attrs</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span><span class='rparen'>)</span>
+    <span class='ivar'>@create_attrs</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='ivar'>@create_attrs</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -979,12 +981,12 @@
       <pre class="lines">
 
 
-90
 91
-92</pre>
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_or_create_by'>find_or_create_by</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find_or'>find_or</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='id identifier rubyid_attrs'>attrs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1090,12 +1092,12 @@
       <pre class="lines">
 
 
-106
 107
-108</pre>
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_or_create_by!'>find_or_create_by!</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find_or'>find_or</span><span class='lparen'>(</span><span class='symbol'>:create!</span><span class='comma'>,</span> <span class='id identifier rubyid_attrs'>attrs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1183,12 +1185,12 @@
       <pre class="lines">
 
 
-119
 120
-121</pre>
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_or_initialize_by'>find_or_initialize_by</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find_or'>find_or</span><span class='lparen'>(</span><span class='symbol'>:new</span><span class='comma'>,</span> <span class='id identifier rubyid_attrs'>attrs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1292,12 +1294,12 @@
       <pre class="lines">
 
 
-134
 135
-136</pre>
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_first_or_create'>first_or_create</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_first_or'>first_or</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='id identifier rubyid_attrs'>attrs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1401,12 +1403,12 @@
       <pre class="lines">
 
 
-150
 151
-152</pre>
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_first_or_create!'>first_or_create!</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_first_or'>first_or</span><span class='lparen'>(</span><span class='symbol'>:create!</span><span class='comma'>,</span> <span class='id identifier rubyid_attrs'>attrs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1510,12 +1512,12 @@
       <pre class="lines">
 
 
-165
 166
-167</pre>
+167
+168</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria/modifiable.rb', line 166</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_first_or_initialize'>first_or_initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_first_or'>first_or</span><span class='lparen'>(</span><span class='symbol'>:new</span><span class='comma'>,</span> <span class='id identifier rubyid_attrs'>attrs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1530,7 +1532,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu May 14 21:31:53 2020 by
+  Generated on Sun May 24 22:36:31 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

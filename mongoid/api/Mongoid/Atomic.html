@@ -774,14 +774,18 @@
 39
 40
 41
-42</pre>
+42
+43
+44</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_atomic_pull'>add_atomic_pull</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_flagged_for_destroy'>flagged_for_destroy</span> <span class='op'>=</span> <span class='kw'>true</span>
-  <span class='lparen'>(</span><span class='id identifier rubyid_delayed_atomic_pulls'>delayed_atomic_pulls</span><span class='lbracket'>[</span><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_association_name'>association_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_association_name'>association_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_delayed_atomic_pulls'>delayed_atomic_pulls</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_delayed_atomic_pulls'>delayed_atomic_pulls</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_document'>document</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -880,17 +884,21 @@
       <pre class="lines">
 
 
-54
-55
 56
-57</pre>
+57
+58
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_atomic_unset'>add_atomic_unset</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_flagged_for_destroy'>flagged_for_destroy</span> <span class='op'>=</span> <span class='kw'>true</span>
-  <span class='lparen'>(</span><span class='id identifier rubyid_delayed_atomic_unsets'>delayed_atomic_unsets</span><span class='lbracket'>[</span><span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_association_name'>association_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_document'>document</span><span class='period'>.</span><span class='id identifier rubyid_association_name'>association_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_delayed_atomic_unsets'>delayed_atomic_unsets</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_delayed_atomic_unsets'>delayed_atomic_unsets</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_document'>document</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -969,12 +977,12 @@
       <pre class="lines">
 
 
-103
-104
-105</pre>
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_array_add_to_sets'>atomic_array_add_to_sets</span>
   <span class='ivar'>@atomic_array_add_to_sets</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1056,12 +1064,12 @@
       <pre class="lines">
 
 
-91
-92
-93</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_array_pulls'>atomic_array_pulls</span>
   <span class='ivar'>@atomic_array_pulls</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1143,12 +1151,12 @@
       <pre class="lines">
 
 
-79
-80
-81</pre>
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_array_pushes'>atomic_array_pushes</span>
   <span class='ivar'>@atomic_array_pushes</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1230,12 +1238,12 @@
       <pre class="lines">
 
 
-67
-68
-69</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_attribute_name'>atomic_attribute_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_embedded?'>embedded?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_atomic_position'>atomic_position</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='id identifier rubyid_name'>name</span>
@@ -1301,12 +1309,12 @@
       <pre class="lines">
 
 
-149
-150
-151</pre>
+153
+154
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_delete_modifier'>atomic_delete_modifier</span>
   <span class='id identifier rubyid_atomic_paths'>atomic_paths</span><span class='period'>.</span><span class='id identifier rubyid_delete_modifier'>delete_modifier</span>
@@ -1372,12 +1380,12 @@
       <pre class="lines">
 
 
-160
-161
-162</pre>
+164
+165
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_insert_modifier'>atomic_insert_modifier</span>
   <span class='id identifier rubyid_atomic_paths'>atomic_paths</span><span class='period'>.</span><span class='id identifier rubyid_insert_modifier'>insert_modifier</span>
@@ -1443,12 +1451,12 @@
       <pre class="lines">
 
 
-171
-172
-173</pre>
+175
+176
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 171</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_path'>atomic_path</span>
   <span class='id identifier rubyid_atomic_paths'>atomic_paths</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span>
@@ -1530,15 +1538,27 @@
       <pre class="lines">
 
 
-193
-194
-195</pre>
+197
+198
+199
+200
+201
+202
+203
+204
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 197</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_paths'>atomic_paths</span>
-  <span class='ivar'>@atomic_paths</span> <span class='op'>||=</span> <span class='id identifier rubyid__association'>_association</span> <span class='op'>?</span> <span class='id identifier rubyid__association'>_association</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="" title="Mongoid::Atomic (module)">Atomic</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Atomic/Paths.html" title="Mongoid::Atomic::Paths (module)">Paths</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Atomic/Paths/Root.html" title="Mongoid::Atomic::Paths::Root (class)">Root</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Atomic/Paths/Root.html#initialize-instance_method" title="Mongoid::Atomic::Paths::Root#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='ivar'>@atomic_paths</span> <span class='op'>||=</span> <span class='kw'>begin</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid__association'>_association</span>
+      <span class='id identifier rubyid__association'>_association</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='const'><span class='object_link'><a href="" title="Mongoid::Atomic (module)">Atomic</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Atomic/Paths.html" title="Mongoid::Atomic::Paths (module)">Paths</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Atomic/Paths/Root.html" title="Mongoid::Atomic::Paths::Root (class)">Root</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Atomic/Paths/Root.html#initialize-instance_method" title="Mongoid::Atomic::Paths::Root#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1601,12 +1621,12 @@
       <pre class="lines">
 
 
-181
-182
-183</pre>
+185
+186
+187</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 185</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_position'>atomic_position</span>
   <span class='id identifier rubyid_atomic_paths'>atomic_paths</span><span class='period'>.</span><span class='id identifier rubyid_position'>position</span>
@@ -1688,21 +1708,21 @@
       <pre class="lines">
 
 
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
 215
-216</pre>
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 215</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_pulls'>atomic_pulls</span>
   <span class='id identifier rubyid_pulls'>pulls</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1793,12 +1813,12 @@
       <pre class="lines">
 
 
-226
-227
-228</pre>
+236
+237
+238</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 226</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_pushes'>atomic_pushes</span>
   <span class='id identifier rubyid_pushable?'>pushable?</span> <span class='op'>?</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_atomic_position'>atomic_position</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_as_attributes'>as_attributes</span> <span class='rbrace'>}</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1880,12 +1900,12 @@
       <pre class="lines">
 
 
-238
-239
-240</pre>
+248
+249
+250</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 238</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 248</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_sets'>atomic_sets</span>
   <span class='id identifier rubyid_updateable?'>updateable?</span> <span class='op'>?</span> <span class='id identifier rubyid_setters'>setters</span> <span class='op'>:</span> <span class='id identifier rubyid_settable?'>settable?</span> <span class='op'>?</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_atomic_path'>atomic_path</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_as_attributes'>as_attributes</span> <span class='rbrace'>}</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1967,20 +1987,20 @@
       <pre class="lines">
 
 
-250
-251
-252
-253
-254
-255
-256
-257
-258
-259
-260</pre>
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 250</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 260</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_unsets'>atomic_unsets</span>
   <span class='id identifier rubyid_unsets'>unsets</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -2088,19 +2108,19 @@
       <pre class="lines">
 
 
-130
-131
-132
-133
 134
 135
 136
 137
 138
-139</pre>
+139
+140
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_atomic_updates'>atomic_updates</span><span class='lparen'>(</span><span class='id identifier rubyid__use_indexes'>_use_indexes</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_process_flagged_destroys'>process_flagged_destroys</span>
@@ -2189,12 +2209,12 @@
       <pre class="lines">
 
 
-282
-283
-284</pre>
+292
+293
+294</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 282</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 292</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delayed_atomic_pulls'>delayed_atomic_pulls</span>
   <span class='ivar'>@delayed_atomic_pulls</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -2276,12 +2296,12 @@
       <pre class="lines">
 
 
-270
-271
-272</pre>
+280
+281
+282</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 270</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 280</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delayed_atomic_sets'>delayed_atomic_sets</span>
   <span class='ivar'>@delayed_atomic_sets</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -2363,12 +2383,12 @@
       <pre class="lines">
 
 
-294
-295
-296</pre>
+304
+305
+306</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 294</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 304</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delayed_atomic_unsets'>delayed_atomic_unsets</span>
   <span class='ivar'>@delayed_atomic_unsets</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -2450,14 +2470,14 @@
       <pre class="lines">
 
 
-306
-307
-308
-309
-310</pre>
+316
+317
+318
+319
+320</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 306</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 316</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_flag_as_destroyed'>flag_as_destroyed</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_destroyed'>destroyed</span> <span class='op'>=</span> <span class='kw'>true</span>
@@ -2541,12 +2561,12 @@
       <pre class="lines">
 
 
-320
-321
-322</pre>
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 330</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_flagged_destroys'>flagged_destroys</span>
   <span class='ivar'>@flagged_destroys</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -2628,15 +2648,15 @@
       <pre class="lines">
 
 
-332
-333
-334
-335
-336
-337</pre>
+342
+343
+344
+345
+346
+347</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 332</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/atomic.rb', line 342</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_process_flagged_destroys'>process_flagged_destroys</span>
   <span class='id identifier rubyid__assigning'>_assigning</span> <span class='kw'>do</span>
@@ -2654,7 +2674,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu May 14 21:31:46 2020 by
+  Generated on Sun May 24 22:36:25 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

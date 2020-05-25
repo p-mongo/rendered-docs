@@ -1343,20 +1343,20 @@
       <pre class="lines">
 
 
-515
-516
-517
-518
-519
-520
 521
 522
 523
 524
-525</pre>
+525
+526
+527
+528
+529
+530
+531</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 515</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 521</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -2677,13 +2677,25 @@
 
 452
 453
-454</pre>
+454
+455
+456
+457
+458
+459
+460</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 452</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_for_js'>for_js</span><span class='lparen'>(</span><span class='id identifier rubyid_javascript'>javascript</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_js_query'>js_query</span><span class='lparen'>(</span><span class='const'>BSON</span><span class='op'>::</span><span class='const'>CodeWithScope</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_javascript'>javascript</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='comment'># CodeWithScope is not supported for $where as of MongoDB 4.4
+</span>    <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Code</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_javascript'>javascript</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'>BSON</span><span class='op'>::</span><span class='const'>CodeWithScope</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_javascript'>javascript</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_js_query'>js_query</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4073,7 +4085,7 @@ criteria.merge({
 </div>
 
       <div id="footer">
-  Generated on Thu May 14 21:31:58 2020 by
+  Generated on Sun May 24 22:36:36 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

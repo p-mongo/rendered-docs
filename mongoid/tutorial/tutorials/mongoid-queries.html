@@ -215,42 +215,43 @@
 <p class="topic-title">On this page</p>
 <ul class="simple">
 <li><a class="reference internal" href="#id1" id="id4">Queries</a><ul>
-<li><a class="reference internal" href="#logical-operations" id="id5">Logical Operations</a></li>
-<li><a class="reference internal" href="#incremental-query-construction" id="id6">Incremental Query Construction</a></li>
-<li><a class="reference internal" href="#query-methods" id="id7">Query Methods</a></li>
-<li><a class="reference internal" href="#projection" id="id8">Projection</a></li>
-<li><a class="reference internal" href="#ordering" id="id9">Ordering</a></li>
-<li><a class="reference internal" href="#query-cache" id="id10">Query Cache</a></li>
-<li><a class="reference internal" href="#additional-query-methods" id="id11">Additional Query Methods</a></li>
-<li><a class="reference internal" href="#eager-loading" id="id12">Eager Loading</a></li>
-<li><a class="reference internal" href="#regular-expressions" id="id13">Regular Expressions</a></li>
+<li><a class="reference internal" href="#condition-syntax" id="id5">Condition Syntax</a></li>
+<li><a class="reference internal" href="#logical-operations" id="id6">Logical Operations</a></li>
+<li><a class="reference internal" href="#incremental-query-construction" id="id7">Incremental Query Construction</a></li>
+<li><a class="reference internal" href="#query-methods" id="id8">Query Methods</a></li>
+<li><a class="reference internal" href="#projection" id="id9">Projection</a></li>
+<li><a class="reference internal" href="#ordering" id="id10">Ordering</a></li>
+<li><a class="reference internal" href="#query-cache" id="id11">Query Cache</a></li>
+<li><a class="reference internal" href="#additional-query-methods" id="id12">Additional Query Methods</a></li>
+<li><a class="reference internal" href="#eager-loading" id="id13">Eager Loading</a></li>
+<li><a class="reference internal" href="#regular-expressions" id="id14">Regular Expressions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#queries-persistence" id="id14">Queries + Persistence</a></li>
-<li><a class="reference internal" href="#scoping" id="id15">Scoping</a><ul>
-<li><a class="reference internal" href="#named-scopes" id="id16">Named Scopes</a></li>
-<li><a class="reference internal" href="#default-scopes" id="id17">Default Scopes</a></li>
-<li><a class="reference internal" href="#class-methods" id="id18">Class Methods</a></li>
+<li><a class="reference internal" href="#queries-persistence" id="id15">Queries + Persistence</a></li>
+<li><a class="reference internal" href="#scoping" id="id16">Scoping</a><ul>
+<li><a class="reference internal" href="#named-scopes" id="id17">Named Scopes</a></li>
+<li><a class="reference internal" href="#default-scopes" id="id18">Default Scopes</a></li>
+<li><a class="reference internal" href="#class-methods" id="id19">Class Methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#map-reduce" id="id19">Map/Reduce</a><ul>
-<li><a class="reference internal" href="#execution" id="id20">Execution</a></li>
+<li><a class="reference internal" href="#map-reduce" id="id20">Map/Reduce</a><ul>
+<li><a class="reference internal" href="#execution" id="id21">Execution</a></li>
+<li><a class="reference internal" href="#raw-results" id="id22">Raw Results</a></li>
+<li><a class="reference internal" href="#statistics" id="id23">Statistics</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#full-text-search" id="id21">Full Text Search</a><ul>
-<li><a class="reference internal" href="#defining-full-text-search-index" id="id22">Defining Full Text Search Index</a></li>
-<li><a class="reference internal" href="#creating-full-text-search-index" id="id23">Creating Full Text Search Index</a></li>
-<li><a class="reference internal" href="#querying-using-full-text-search-index" id="id24">Querying Using Full Text Search Index</a></li>
+<li><a class="reference internal" href="#full-text-search" id="id24">Full Text Search</a><ul>
+<li><a class="reference internal" href="#defining-full-text-search-index" id="id25">Defining Full Text Search Index</a></li>
+<li><a class="reference internal" href="#creating-full-text-search-index" id="id26">Creating Full Text Search Index</a></li>
+<li><a class="reference internal" href="#querying-using-full-text-search-index" id="id27">Querying Using Full Text Search Index</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<p>One of MongoDB’s greatest features is its ability to execute dynamic
-queries, provided through a familiar Arel-style DSL.</p>
 <div class="section" id="id1">
 <h2>Queries<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid provides a rich query DSL inspired by ActiveRecord. A trivial query
-is as follows:</p>
+looks as follows:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -260,7 +261,7 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>A more complex query utilizing various Mongoid features is as follows:</p>
+<p>A more complex query utilizing various Mongoid features could be as follows:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -274,7 +275,7 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>The query methods return <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> objects, which is a chainable
+<p>The query methods return <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> objects, which are chainable
 and lazily evaluated wrappers for MongoDB query language (MQL).
 The queries are executed when their result sets are iterated. For example:</p>
 <div class="button-code-block">
@@ -331,6 +332,199 @@ copy</a>
 <span class="c1">#   class:    Band</span>
 <span class="c1">#   embedded: false&gt;</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="condition-syntax">
+<h3>Condition Syntax<a class="headerlink" href="#condition-syntax" title="Permalink to this headline">¶</a></h3>
+<p>Mongoid supports three ways of specifying individual conditions:</p>
+<ol class="arabic simple">
+<li>Field syntax.</li>
+<li>MQL syntax.</li>
+<li>Symbol operator syntax.</li>
+</ol>
+<p>All syntaxes support querying embedded documents using the dot notation.
+All syntaxes respect field types, if the field being queried is defined in the
+model class, and field aliases.</p>
+<p>The examples in this section use the following model definition:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:founded</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+  <span class="n">field</span> <span class="ss">:m</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:member_count</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+
+  <span class="n">embeds_one</span> <span class="ss">:manager</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Manager</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">embedded_in</span> <span class="ss">:band</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="field-syntax">
+<h4>Field Syntax<a class="headerlink" href="#field-syntax" title="Permalink to this headline">¶</a></h4>
+<p>The simplest querying syntax utilizes the basic Ruby hashes. Keys can be
+symbols or strings, and correspond to field names in MongoDB documents:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
+<span class="c1">#   =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;Depeche Mode&quot;}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="c1"># Equivalent to:</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mql-syntax">
+<h4>MQL Syntax<a class="headerlink" href="#mql-syntax" title="Permalink to this headline">¶</a></h4>
+<p>An MQL operator may be specified on any field using the hash syntax:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">founded</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gt&#39;</span> <span class="o">=&gt;</span> <span class="mi">1980</span><span class="p">})</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;founded&quot;=&gt;{&quot;$gt&quot;=&gt;1980}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="c1"># Equivalent to:</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;founded&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$gt&#39;</span> <span class="o">=&gt;</span> <span class="mi">1980</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="symbol-operator-syntax">
+<h4>Symbol Operator Syntax<a class="headerlink" href="#symbol-operator-syntax" title="Permalink to this headline">¶</a></h4>
+<p>MQL operators may be specified as methods on symbols for the respective field
+name, as follows:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">1980</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;founded&quot;=&gt;{&quot;$gt&quot;=&gt;1980}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="embedded-documents">
+<h4>Embedded Documents<a class="headerlink" href="#embedded-documents" title="Permalink to this headline">¶</a></h4>
+<p>To match values of fields of embedded documents, use the dot notation:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;manager.name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Smith&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;manager.name&quot;=&gt;&quot;Smith&quot;}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:&#39;manager.name&#39;</span><span class="o">.</span><span class="n">ne</span> <span class="o">=&gt;</span> <span class="s1">&#39;Smith&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;manager.name&quot;=&gt;{&quot;$ne&quot;=&gt;&quot;Smith&quot;}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Queries always return top-level model instances, even if all of the
+conditions are referencing embedded documents.</p>
+</div>
+</div>
+<div class="section" id="field-types">
+<h4>Field Types<a class="headerlink" href="#field-types" title="Permalink to this headline">¶</a></h4>
+<p>In order to query on a field, it is not necessary to add the field to
+<a class="reference internal" href="mongoid-documents.html#fields"><span class="std std-ref">the model class definition</span></a>. However, if a field is defined in
+the model class, the type of the field is taken into account when constructing
+the query:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">2020</span><span class="p">)</span>
+<span class="c1">#   =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;2020&quot;}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">2020</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;founded&quot;=&gt;2020}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="aliases">
+<h4>Aliases<a class="headerlink" href="#aliases" title="Permalink to this headline">¶</a></h4>
+<p>Queries take into account <a class="reference internal" href="mongoid-documents.html#field-aliases"><span class="std std-ref">field aliases</span></a>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
+<span class="c1">#   =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;n&quot;=&gt;&quot;Astral Projection&quot;}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Since <cite>id</cite> and <cite>_id</cite> fields are aliases, either one can be used for queries:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;5ebdeddfe1b83265a376a760&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;5ebdeddfe1b83265a376a760&#39;)}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="logical-operations">
@@ -595,6 +789,14 @@ copy</a>
 <span class="c1"># Complex conditions</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">not</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;name&quot;=&gt;/Best/, &quot;$and&quot;=&gt;[{&quot;$nor&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Astral Projection&quot;}]}]}</span>
+
+<span class="c1"># Symbol operator syntax</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">not</span><span class="p">(</span><span class="ss">:name</span><span class="o">.</span><span class="n">ne</span> <span class="o">=&gt;</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$and&quot;=&gt;[{&quot;$nor&quot;=&gt;[{&quot;name&quot;=&gt;{&quot;$ne&quot;=&gt;&quot;Astral Projection&quot;}}]}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -1352,16 +1554,22 @@ copy</a>
 </td>
 </tr>
 <tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#for_js</span></code></p>
-<p class="last"><em>Find documents for a provided javascript expression. This will
-wrap the javascript in a `BSON::Code` object which is the
-safe way to avoid javascript injection attacks.*</em></p>
+<p class="last"><em>Find documents for a provided JavaScript expression, optionally with
+the specified variables added to the evaluation scope. The scope
+argument is supported in MongoDB 4.2 and lower.</em>
+<em>In MongoDB 3.6 and higher, prefer :manual:`$expr
+&lt;reference/operator/query/expr/&gt;` over ``for_js``.</em></p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">for_js</span><span class="p">(</span><span class="s2">&quot;this.name = param&quot;</span><span class="p">,</span> <span class="ss">param</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># All MongoDB versions</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">for_js</span><span class="p">(</span><span class="s2">&quot;this.name = &#39;Tool&#39;&quot;</span><span class="p">)</span>
+
+<span class="c1"># MongoDB 4.2 and lower</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">for_js</span><span class="p">(</span><span class="s2">&quot;this.name = param&quot;</span><span class="p">,</span> <span class="ss">param</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1467,7 +1675,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="sr">/^Project/</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="sr">/\AProject/</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
 <span class="c1"># =&gt; #&lt;Band _id: 5dc9f7d5ce4ef34893354323, name: &quot;Sun Project&quot;, description: &quot;Sun\nProject&quot;&gt;</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;^Project&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">first</span>
@@ -2078,6 +2286,78 @@ provided name, and merge the results with the existing documents.</li>
 <li><code class="docutils literal notranslate"><span class="pre">reduce:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
 provided name, and reduce all existing results in that collection.</li>
 </ul>
+</div>
+<div class="section" id="raw-results">
+<h3>Raw Results<a class="headerlink" href="#raw-results" title="Permalink to this headline">¶</a></h3>
+<p>Results of Map/Reduce execution can be retrieved via the <code class="docutils literal notranslate"><span class="pre">execute</span></code> method
+or its aliases <code class="docutils literal notranslate"><span class="pre">raw</span></code> and <code class="docutils literal notranslate"><span class="pre">results</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">mr</span><span class="o">.</span><span class="n">execute</span>
+<span class="c1"># =&gt; {&quot;results&quot;=&gt;[{&quot;_id&quot;=&gt;&quot;Tool&quot;, &quot;value&quot;=&gt;{&quot;likes&quot;=&gt;200.0}}],</span>
+      <span class="s2">&quot;timeMillis&quot;</span><span class="o">=&gt;</span><span class="mi">14</span><span class="p">,</span>
+      <span class="s2">&quot;counts&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;input&quot;</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;emit&quot;</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;reduce&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">},</span>
+      <span class="s2">&quot;ok&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;$clusterTime&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;clusterTime&quot;</span><span class="o">=&gt;</span><span class="c1">#&lt;BSON::Timestamp:0x00005633c2c2ad20 @seconds=1590105400, @increment=1&gt;, &quot;signature&quot;=&gt;{&quot;hash&quot;=&gt;&lt;BSON::Binary:0x12240 type=generic data=0x0000000000000000...&gt;, &quot;keyId&quot;=&gt;0}},</span>
+      <span class="s2">&quot;operationTime&quot;</span><span class="o">=&gt;</span><span class="c1">#&lt;BSON::Timestamp:0x00005633c2c2aaf0 @seconds=1590105400, @increment=1&gt;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="statistics">
+<h3>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h3>
+<p>MongoDB servers 4.2 and lower provide Map/Reduce execution statistics. As of
+MongoDB 4.4, Map/Reduce is implemented via the aggregation pipeline and
+statistics described in this section are not available.</p>
+<p>The following methods are provided on the <code class="docutils literal notranslate"><span class="pre">MapReduce</span></code> object:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">counts</span></code>: Number of documents read, emitted, reduced and output through
+the pipeline.</li>
+<li><code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">emitted</span></code>, <code class="docutils literal notranslate"><span class="pre">reduced</span></code>, <code class="docutils literal notranslate"><span class="pre">output</span></code>: individual count methods.
+Note that <code class="docutils literal notranslate"><span class="pre">emitted</span></code> and <code class="docutils literal notranslate"><span class="pre">reduced</span></code> methods are named differently from
+hash keys in <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">time</span></code>: The time, in milliseconds, that Map/Reduce pipeline took to execute.</li>
+</ul>
+<p>The following code illustrates retrieving the statistics:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">mr</span><span class="o">.</span><span class="n">counts</span>
+<span class="c1"># =&gt; {&quot;input&quot;=&gt;4, &quot;emit&quot;=&gt;4, &quot;reduce&quot;=&gt;1, &quot;output&quot;=&gt;1}</span>
+
+<span class="n">mr</span><span class="o">.</span><span class="n">input</span>
+<span class="c1"># =&gt; 4</span>
+
+<span class="n">mr</span><span class="o">.</span><span class="n">emitted</span>
+<span class="c1"># =&gt; 4</span>
+
+<span class="n">mr</span><span class="o">.</span><span class="n">reduced</span>
+<span class="c1"># =&gt; 1</span>
+
+<span class="n">mr</span><span class="o">.</span><span class="n">output</span>
+<span class="c1"># =&gt; 1</span>
+
+<span class="n">mr</span><span class="o">.</span><span class="n">time</span>
+<span class="c1"># =&gt; 14</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Each statistics method invocation re-executes the Map/Reduce pipeline.
+The results of execution are not stored by Mongoid. Consider using the
+<code class="docutils literal notranslate"><span class="pre">execute</span></code> method to retrieve the raw results and obtaining the statistics
+from the raw results if multiple statistics are desired.</p>
+</div>
 </div>
 </div>
 <div class="section" id="full-text-search">
