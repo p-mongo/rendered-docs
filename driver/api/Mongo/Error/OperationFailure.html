@@ -586,6 +586,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#connection_description-instance_method" title="#connection_description (instance method)">#<strong>connection_description</strong>  &#x21d2; Server::Description </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Server description of the server that the operation that this exception refers to was performed on.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(message = nil, result = nil, options = {})  &#x21d2; OperationFailure </a>
     
 
@@ -1028,8 +1052,6 @@
       <pre class="lines">
 
 
-237
-238
 239
 240
 241
@@ -1039,10 +1061,12 @@
 245
 246
 247
-248</pre>
+248
+249
+250</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 237</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 239</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
@@ -1128,12 +1152,12 @@
       <pre class="lines">
 
 
-83
-84
-85</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_code'>code</span>
   <span class='ivar'>@code</span>
@@ -1205,12 +1229,12 @@
       <pre class="lines">
 
 
-88
-89
-90</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_code_name'>code_name</span>
   <span class='ivar'>@code_name</span>
@@ -1282,12 +1306,12 @@
       <pre class="lines">
 
 
-202
-203
-204</pre>
+204
+205
+206</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 202</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 204</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code'>write_concern_error_code</span>
   <span class='ivar'>@write_concern_error_code</span>
@@ -1359,12 +1383,12 @@
       <pre class="lines">
 
 
-208
-209
-210</pre>
+210
+211
+212</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 208</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 210</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code_name'>write_concern_error_code_name</span>
   <span class='ivar'>@write_concern_error_code_name</span>
@@ -1436,12 +1460,12 @@
       <pre class="lines">
 
 
-196
-197
-198</pre>
+198
+199
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 196</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 198</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span>
   <span class='ivar'>@write_concern_error_document</span>
@@ -1530,8 +1554,6 @@
       <pre class="lines">
 
 
-165
-166
 167
 168
 169
@@ -1541,10 +1563,12 @@
 173
 174
 175
-176</pre>
+176
+177
+178</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 167</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_stream_resumable?'>change_stream_resumable?</span>
   <span class='kw'>if</span> <span class='ivar'>@result</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@result</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/GetMore.html" title="Mongo::Operation::GetMore (class)">GetMore</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/GetMore/Result.html" title="Mongo::Operation::GetMore::Result (class)">Result</a></span></span><span class='rparen'>)</span>    <span class='comment'># Connection description is not populated for unacknowledged writes.
@@ -1558,6 +1582,65 @@
     <span class='kw'>false</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connection_description-instance_method">
+  
+    #<strong>connection_description</strong>  &#x21d2; <tt><span class='object_link'><a href="../Server/Description.html" title="Mongo::Server::Description (class)">Server::Description</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Server description of the server that the operation that this exception refers to was performed on.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Server/Description.html" title="Mongo::Server::Description (class)">Server::Description</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Server description of the server that the operation that this exception refers to was performed on.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 80</span>
+
+<span class='id identifier rubyid_def_delegator'>def_delegator</span> <span class='symbol'>:@result</span><span class='comma'>,</span> <span class='symbol'>:connection_description</span></pre>
     </td>
   </tr>
 </table>
@@ -1623,12 +1706,12 @@
       <pre class="lines">
 
 
-264
-265
-266</pre>
+266
+267
+268</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 264</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 266</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_time_ms_expired?'>max_time_ms_expired?</span>
   <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>50</span> <span class='comment'># MaxTimeMSExpired
@@ -1694,12 +1777,12 @@
       <pre class="lines">
 
 
-97
-98
-99</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_retryable?'>retryable?</span>
   <span class='id identifier rubyid_write_retryable?'>write_retryable?</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#RETRY_MESSAGES-constant" title="Mongo::Error::OperationFailure::RETRY_MESSAGES (constant)">RETRY_MESSAGES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1771,13 +1854,13 @@
       <pre class="lines">
 
 
-275
-276
 277
-278</pre>
+278
+279
+280</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 275</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 277</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unsupported_retryable_write?'>unsupported_retryable_write?</span>  <span class='comment'># code 20 is IllegalOperation
 </span>
@@ -1848,12 +1931,12 @@
       <pre class="lines">
 
 
-188
-189
-190</pre>
+190
+191
+192</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 190</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error?'>write_concern_error?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@write_concern_error_document</span>
@@ -1920,13 +2003,13 @@
       <pre class="lines">
 
 
-110
-111
 112
-113</pre>
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_retryable?'>write_retryable?</span>
   <span class='const'><span class='object_link'><a href="#WRITE_RETRY_MESSAGES-constant" title="Mongo::Error::OperationFailure::WRITE_RETRY_MESSAGES (constant)">WRITE_RETRY_MESSAGES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='op'>||</span>
@@ -1997,12 +2080,12 @@
       <pre class="lines">
 
 
-255
-256
-257</pre>
+257
+258
+259</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 257</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wtimeout?'>wtimeout?</span>
   <span class='ivar'>@wtimeout</span>
@@ -2017,7 +2100,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue May 26 19:53:19 2020 by
+  Generated on Tue May 26 19:55:24 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>
