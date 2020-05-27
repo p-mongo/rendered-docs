@@ -228,25 +228,47 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#creating-a-gridfs-object-grid-fsbucket" id="id3">Creating a GridFS object (“Grid::FSBucket”)</a></li>
-<li><a class="reference internal" href="#working-with-write-streams" id="id4">Working with write streams</a></li>
-<li><a class="reference internal" href="#working-with-read-streams" id="id5">Working with read streams</a></li>
-<li><a class="reference internal" href="#finding-file-metadata" id="id6">Finding file metadata</a></li>
-<li><a class="reference internal" href="#deleting-files" id="id7">Deleting files</a></li>
-<li><a class="reference internal" href="#working-with-grid-file-objects" id="id8">Working with Grid::File objects</a></li>
-<li><a class="reference internal" href="#inserting-files" id="id9">Inserting Files</a></li>
+<li><a class="reference internal" href="#the-fsbucket-object" id="id3">The FSBucket Object</a></li>
+<li><a class="reference internal" href="#writing-to-gridfs" id="id4">Writing to GridFS</a></li>
+<li><a class="reference internal" href="#working-with-write-streams" id="id5">Working with write streams</a></li>
+<li><a class="reference internal" href="#working-with-read-streams" id="id6">Working with read streams</a></li>
+<li><a class="reference internal" href="#finding-file-metadata" id="id7">Finding file metadata</a></li>
+<li><a class="reference internal" href="#deleting-files" id="id8">Deleting files</a></li>
+<li><a class="reference internal" href="#working-with-grid-file-objects" id="id9">Working with Grid::File objects</a></li>
 <li><a class="reference internal" href="#finding-files" id="id10">Finding Files</a></li>
 <li><a class="reference internal" href="#id2" id="id11">Deleting Files</a></li>
 </ul>
 </div>
-<p>The driver provides a clean and simple interface to work with storage of
-chunked files in the database, also known as the pattern “GridFS”. The API allows you to either
-work with Grid::File objects or with read and write streams.</p>
-<div class="section" id="creating-a-gridfs-object-grid-fsbucket">
-<h2>Creating a GridFS object (“Grid::FSBucket”)<a class="headerlink" href="#creating-a-gridfs-object-grid-fsbucket" title="Permalink to this headline">¶</a></h2>
-<p>You can create a GridFS object by calling <code class="docutils literal notranslate"><span class="pre">fs</span></code> on a database, with optional
-arguments. <code class="docutils literal notranslate"><span class="pre">fs</span></code> returns a <code class="docutils literal notranslate"><span class="pre">Grid::FSBucket</span></code> object.</p>
-<p>The options that <code class="docutils literal notranslate"><span class="pre">Grid::FSBucket</span></code> supports are:</p>
+<p>GridFS is a MongoDB driver feature that allows storing arbitrarily large
+files or blobs in the database. This is implemented by the driver
+transparently chunking the blobs on writes and reassembling them on reads.
+Both read and write operations support streaming of data.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On this page, “file” generally refers to a GridFS file rather than a file
+on the local filesystem. GridFS files consist of file metadata which
+includes the file name and type, and file contents split into chunks.
+When this page refers to files on a local filesystem, it uses the term
+“physical file”.</p>
+</div>
+<div class="section" id="the-fsbucket-object">
+<h2>The FSBucket Object<a class="headerlink" href="#the-fsbucket-object" title="Permalink to this headline">¶</a></h2>
+<p>To use GridFS, call the <code class="docutils literal notranslate"><span class="pre">fs</span></code> method on a database to obtain a
+<code class="docutils literal notranslate"><span class="pre">Mongo::Grid::FSBucket</span></code> object:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<span class="n">fs_bucket</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span>
+
+<span class="c1"># With options:</span>
+<span class="n">fs_bucket</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="p">(</span><span class="ss">read</span><span class="p">:</span> <span class="p">{</span><span class="ss">mode</span><span class="p">:</span> <span class="ss">:secondary</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">fs</span></code> method supports the following optional keyword arguments:</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="33%" />
@@ -258,18 +280,18 @@ arguments. <code class="docutils literal notranslate"><span class="pre">fs</span
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:bucket_name</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:fs_name</span></code></td>
 <td>The name of the GridFS Bucket. Default is <code class="docutils literal notranslate"><span class="pre">fs</span></code>.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:fs_name</span></code></td>
-<td>The name of the GridFS Bucket. Takes precedence over <code class="docutils literal notranslate"><span class="pre">bucket_name</span></code>.
-Default is <code class="docutils literal notranslate"><span class="pre">fs</span></code>.</td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:bucket_name</span></code></td>
+<td>Legacy alias for <code class="docutils literal notranslate"><span class="pre">:fs_name</span></code>. If both <code class="docutils literal notranslate"><span class="pre">:fs_name</span></code> and <code class="docutils literal notranslate"><span class="pre">:bucket_name</span></code>
+are provided, <code class="docutils literal notranslate"><span class="pre">:fs_name</span></code> takes precedence. Default is <code class="docutils literal notranslate"><span class="pre">fs</span></code>.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:chunk_size</span></code></td>
 <td>Specifies the size of each file chunk in the database.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:write_concern</span></code></td>
-<td>The write concern to use when uploading files. Please see the
+<td>The write concern to use when writing files. Please see the
 <a class="reference internal" href="ruby-driver-crud-operations.html#write-concern"><span class="std std-ref">Write Concern</span></a> section under CRUD operations
 for how to work with write concerns.</td>
 </tr>
@@ -277,18 +299,124 @@ for how to work with write concerns.</td>
 <td>Deprecated. Same as <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:read</span></code></td>
-<td>The read preference to use when downloading files.</td>
+<td>The read preference to use when reading files.</td>
 </tr>
 </tbody>
 </table>
-<p>For example, you can create a GridFS bucket object with a particular read preference:</p>
+</div>
+<div class="section" id="writing-to-gridfs">
+<h2>Writing to GridFS<a class="headerlink" href="#writing-to-gridfs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stream-api">
+<h3>Stream API<a class="headerlink" href="#stream-api" title="Permalink to this headline">¶</a></h3>
+<p>To store data in GridFS, use the <code class="docutils literal notranslate"><span class="pre">open_upload_stream</span></code> method on a
+<code class="docutils literal notranslate"><span class="pre">FSBucket</span></code> to obtain a writable stream, and write the file contents and
+the metadata to the stream.</p>
+<p>For example, to store a physical file whose path is in the variable <code class="docutils literal notranslate"><span class="pre">path</span></code>
+to GridFS, one might do:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="p">(</span> <span class="ss">read</span><span class="p">:</span> <span class="p">{</span> <span class="ss">mode</span><span class="p">:</span> <span class="ss">:secondary</span> <span class="p">}</span> <span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+  <span class="n">fs_bucket</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">))</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
+    <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 </pre></div>
+</div>
+</div>
+<p>Alternatively, to control the buffer size manually, one might do:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+  <span class="n">fs_bucket</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">))</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
+    <span class="k">while</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">65536</span><span class="p">)</span>
+      <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>Similar code can be used to write an IO-like object to GridFS.</p>
+</div>
+<div class="section" id="file-api">
+<h3>File API<a class="headerlink" href="#file-api" title="Permalink to this headline">¶</a></h3>
+<p>GridFS provides an alternative API using <code class="docutils literal notranslate"><span class="pre">Mongo::Grid::File</span></code> objects.
+To store data in GridFS, create a GridFS file object and call <code class="docutils literal notranslate"><span class="pre">insert_one</span></code>
+on the bucket to store the file:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;file contents&#39;</span><span class="p">,</span> <span class="ss">filename</span><span class="p">:</span> <span class="s1">&#39;file-name.txt&#39;</span><span class="p">)</span>
+<span class="n">fs_bucket</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The GridFS file API may be more convenient when the data to be stored is
+already present in memory. With that said, most applications should use the
+stream API to avoid loading the contents of each GridFS file into memory at
+once.</p>
+<p>When a file is inserted, the <code class="docutils literal notranslate"><span class="pre">file_id</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">Mongo::Grid::File</span></code>
+object is populated with the id of the inserted file. This id is of type
+<code class="docutils literal notranslate"><span class="pre">BSON::ObjectId</span></code>. Each file stored in GridFS has an id. The file name is
+optional; a file that was created without specifying a file name can still
+be retrieved using its ID.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="o">.</span><span class="n">id</span>
+<span class="c1"># =&gt; BSON::ObjectId(&#39;5e9ccf35e1b8321195bad757&#39;)</span>
+</pre></div>
+</div>
+</div>
+<p>path to the file Files can be stored in the database one at a time. File chunks are inserted
+by default into the <code class="docutils literal notranslate"><span class="pre">fs.chunks</span></code> collection and file metadata is inserted
+into the <code class="docutils literal notranslate"><span class="pre">fs.files</span></code> collection.</p>
+<p>To insert into collections with a name prefix other than <cite>fs</cite>, access the
+filesystem with a <code class="docutils literal notranslate"><span class="pre">:fs_name</span></code> option.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;I am a file&#39;</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="p">(</span><span class="ss">:fs_name</span> <span class="o">=&gt;</span> <span class="s1">&#39;grid&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Note that the first time a file is inserted, it will create the required index
+for you on the <code class="docutils literal notranslate"><span class="pre">chunks</span></code> collection. This index is a compound index:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:files_id</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:n</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Files can also be streamed as an alternative to a direct insert.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
+  <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -539,61 +667,6 @@ copy</a>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inserting-files">
-<h2>Inserting Files<a class="headerlink" href="#inserting-files" title="Permalink to this headline">¶</a></h2>
-<p>Files can be inserted into the database one at a time. File chunks are inserted
-by default into the <code class="docutils literal notranslate"><span class="pre">fs.chunks</span></code> collection and file metadata is inserted into the
-<code class="docutils literal notranslate"><span class="pre">fs.files</span></code> collection.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
-<span class="n">file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;I am a file&#39;</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span>
-
-<span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>To insert into collections with a name prefix other than <cite>fs</cite>, access the
-filesystem with a <code class="docutils literal notranslate"><span class="pre">:fs_name</span></code> option.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
-<span class="n">file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;I am a file&#39;</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span>
-
-<span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="p">(</span><span class="ss">:fs_name</span> <span class="o">=&gt;</span> <span class="s1">&#39;grid&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Note that the first time a file is inserted, it will create the required index
-for you on the <code class="docutils literal notranslate"><span class="pre">chunks</span></code> collection. This index is a compound index:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:files_id</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:n</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<p>Files can also be streamed as an alternative to a direct insert.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
-  <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="finding-files">
 <h2>Finding Files<a class="headerlink" href="#finding-files" title="Permalink to this headline">¶</a></h2>

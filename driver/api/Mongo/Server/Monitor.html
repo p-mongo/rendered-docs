@@ -822,9 +822,7 @@
 78
 79
 80
-81
-82
-83</pre>
+81</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 71</span>
@@ -836,11 +834,9 @@
   <span class='ivar'>@server</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span>
   <span class='ivar'>@event_listeners</span> <span class='op'>=</span> <span class='id identifier rubyid_event_listeners'>event_listeners</span>
   <span class='ivar'>@monitoring</span> <span class='op'>=</span> <span class='id identifier rubyid_monitoring'>monitoring</span>
-  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>  <span class='comment'># This is a Mongo::Server::Monitor::Connection
-</span>
-  <span class='ivar'>@connection</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Monitor/Connection.html" title="Mongo::Server::Monitor::Connection (class)">Connection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Monitor/Connection.html#initialize-instance_method" title="Mongo::Server::Monitor::Connection#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
   <span class='ivar'>@mutex</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-  <span class='ivar'>@scan_started_at</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@next_earliest_scan</span> <span class='op'>=</span> <span class='ivar'>@next_wanted_scan</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -918,12 +914,12 @@
       <pre class="lines">
 
 
-90
-91
-92</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection'>connection</span>
   <span class='ivar'>@connection</span>
@@ -999,12 +995,12 @@
       <pre class="lines">
 
 
-112
-113
-114</pre>
+110
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_monitoring'>monitoring</span>
   <span class='ivar'>@monitoring</span>
@@ -1080,12 +1076,12 @@
       <pre class="lines">
 
 
-93
-94
-95</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -1161,12 +1157,12 @@
       <pre class="lines">
 
 
-87
-88
-89</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server'>server</span>
   <span class='ivar'>@server</span>
@@ -1259,17 +1255,23 @@
       <pre class="lines">
 
 
+121
+122
 123
 124
 125
-126</pre>
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_do_work'>do_work</span>
   <span class='id identifier rubyid_scan!'>scan!</span>
-  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_scan_semaphore'>scan_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='id identifier rubyid_heartbeat_interval'>heartbeat_interval</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_delta'>delta</span> <span class='op'>=</span> <span class='ivar'>@next_wanted_scan</span> <span class='op'>-</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_delta'>delta</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_scan_semaphore'>scan_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='id identifier rubyid_delta'>delta</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1340,12 +1342,12 @@
       <pre class="lines">
 
 
-98
-99
-100</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_heartbeat_interval'>heartbeat_interval</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:heartbeat_interval</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#DEFAULT_HEARTBEAT_INTERVAL-constant" title="Mongo::Server::Monitor::DEFAULT_HEARTBEAT_INTERVAL (constant)">DEFAULT_HEARTBEAT_INTERVAL</a></span></span>
@@ -1431,16 +1433,16 @@
       <pre class="lines">
 
 
-187
-188
-189
-190
-191
-192
-193</pre>
+197
+198
+199
+200
+201
+202
+203</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 187</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 197</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_restart!'>restart!</span>
   <span class='kw'>if</span> <span class='ivar'>@thread</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@thread</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span>
@@ -1489,27 +1491,11 @@
 
 <p>If the server was checked less than MIN_SCAN_INTERVAL seconds ago, sleep until MIN_SCAN_INTERVAL seconds have passed since the last check. Then perform the check which involves running isMaster on the server being monitored and updating the server description as a result.</p>
 
-<p>If the server check fails for any reason (such as a network error), the check is retried by this method.</p>
-
-<p>If the server check fails twice, this method updates the server description accordingly but does not raise an exception.</p>
-
 
   </div>
 </div>
 <div class="tags">
   
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-        <p class="example_title"><div class='inline'>
-<p>Run a scan.</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='id identifier rubyid_monitor'>monitor</span><span class='period'>.</span><span class='id identifier rubyid_scan!'>scan!</span></code></pre>
-    
-  </div>
-
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -1551,6 +1537,14 @@
       <pre class="lines">
 
 
+162
+163
+164
+165
+166
+167
+168
+169
 170
 171
 172
@@ -1558,18 +1552,46 @@
 174
 175
 176
-177</pre>
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 162</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_scan!'>scan!</span>
-  <span class='id identifier rubyid_throttle_scan_frequency!'>throttle_scan_frequency!</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_ismaster'>ismaster</span>
-  <span class='id identifier rubyid_new_description'>new_description</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Description.html" title="Mongo::Server::Description (class)">Description</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Description.html#initialize-instance_method" title="Mongo::Server::Description#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='comma'>,</span>
-    <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_round_trip_time_averager'>round_trip_time_averager</span><span class='period'>.</span><span class='id identifier rubyid_average_round_trip_time'>average_round_trip_time</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_run_sdam_flow'>run_sdam_flow</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span><span class='comma'>,</span> <span class='id identifier rubyid_new_description'>new_description</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_scan!'>scan!</span>  <span class='comment'># Ordinarily the background thread would invoke this method.
+</span>  <span class='comment'># But it is also possible to invoke scan! directly on a monitor.
+</span>  <span class='comment'># Allow only one scan to be performed at a time.
+</span>
+  <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_throttle_scan_frequency!'>throttle_scan_frequency!</span>
+
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_do_scan'>do_scan</span>
+
+    <span class='id identifier rubyid_old_description'>old_description</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span>
+
+    <span class='id identifier rubyid_new_description'>new_description</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Description.html" title="Mongo::Server::Description (class)">Description</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Description.html#initialize-instance_method" title="Mongo::Server::Description#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='comma'>,</span>
+      <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_round_trip_time_averager'>round_trip_time_averager</span><span class='period'>.</span><span class='id identifier rubyid_average_round_trip_time'>average_round_trip_time</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_run_sdam_flow'>run_sdam_flow</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span><span class='comma'>,</span> <span class='id identifier rubyid_new_description'>new_description</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_new_description'>new_description</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_new_description'>new_description</span><span class='period'>.</span><span class='id identifier rubyid_unknown?'>unknown?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_old_description'>old_description</span><span class='period'>.</span><span class='id identifier rubyid_unknown?'>unknown?</span>
+        <span class='ivar'>@next_earliest_scan</span> <span class='op'>=</span> <span class='ivar'>@next_wanted_scan</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+      <span class='kw'>else</span>
+        <span class='ivar'>@next_earliest_scan</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='const'><span class='object_link'><a href="#MIN_SCAN_INTERVAL-constant" title="Mongo::Server::Monitor::MIN_SCAN_INTERVAL (constant)">MIN_SCAN_INTERVAL</a></span></span>
+        <span class='ivar'>@next_wanted_scan</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='id identifier rubyid_heartbeat_interval'>heartbeat_interval</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1636,24 +1658,24 @@
       <pre class="lines">
 
 
-134
 135
 136
 137
 138
 139
 140
-141</pre>
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stop!'>stop!</span>  <span class='comment'># Forward super&#39;s return value
 </span>
   <span class='kw'>super</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span>
     <span class='comment'># Important: disconnect should happen after the background thread
 </span>    <span class='comment'># terminates.
-</span>    <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_disconnect!'>disconnect!</span>
+</span>    <span class='id identifier rubyid_connection'>connection</span><span class='op'>&amp;.</span><span class='id identifier rubyid_disconnect!'>disconnect!</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1666,7 +1688,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 14:32:18 2020 by
+  Generated on Wed May 27 15:05:36 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>
