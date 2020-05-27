@@ -505,16 +505,16 @@
   
     <li>
       
-        <span class='name'>host</span>
+        <span class='name'>connection</span>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Mongo::Connection</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>The host to talk to.</p>
+<p>The connection to authenticate over.</p>
 </div>
       
     </li>
@@ -544,7 +544,6 @@
       <pre class="lines">
 
 
-40
 41
 42
 43
@@ -556,10 +555,11 @@
 49
 50
 51
-52</pre>
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -650,12 +650,12 @@
       <pre class="lines">
 
 
-55
 56
-57</pre>
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authenticator'>authenticator</span>
   <span class='ivar'>@authenticator</span>
@@ -731,12 +731,12 @@
       <pre class="lines">
 
 
-60
 61
-62</pre>
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@id</span>
@@ -797,13 +797,13 @@
       <pre class="lines">
 
 
-62
 63
 64
-65</pre>
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_client_first_document'>client_first_document</span>
   <span class='id identifier rubyid_start_token'>start_token</span> <span class='op'>=</span> <span class='id identifier rubyid_authenticator'>authenticator</span><span class='period'>.</span><span class='id identifier rubyid_initialize_challenge'>initialize_challenge</span>
@@ -898,7 +898,6 @@
       <pre class="lines">
 
 
-73
 74
 75
 76
@@ -911,10 +910,11 @@
 83
 84
 85
-86</pre>
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_continue'>continue</span><span class='lparen'>(</span><span class='id identifier rubyid_reply_document'>reply_document</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_reply_document'>reply_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>conversationId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -979,7 +979,6 @@
       <pre class="lines">
 
 
-94
 95
 96
 97
@@ -988,10 +987,11 @@
 100
 101
 102
-103</pre>
+103
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_selector'>selector</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#CONTINUE_MESSAGE-constant" title="Mongo::Auth::Gssapi::Conversation::CONTINUE_MESSAGE (constant)">CONTINUE_MESSAGE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>payload:</span> <span class='ivar'>@continue_token</span><span class='comma'>,</span> <span class='label'>conversationId:</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
@@ -1052,14 +1052,14 @@
       <pre class="lines">
 
 
-88
 89
 90
 91
-92</pre>
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/gssapi/conversation.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_process_continue_response'>process_continue_response</span><span class='lparen'>(</span><span class='id identifier rubyid_reply_document'>reply_document</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='id identifier rubyid_reply_document'>reply_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>payload</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1076,7 +1076,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue May 26 20:00:52 2020 by
+  Generated on Tue May 26 20:02:29 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>
