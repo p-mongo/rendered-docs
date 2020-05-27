@@ -485,7 +485,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#find-instance_method" title="#find (instance method)">#<strong>find</strong>(selector = nil, **options)  &#x21d2; CollectionView </a>
+      <a href="#find-instance_method" title="#find (instance method)">#<strong>find</strong>(selector = nil, options = {})  &#x21d2; CollectionView </a>
     
 
     
@@ -583,7 +583,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#open_download_stream-instance_method" title="#open_download_stream (instance method)">#<strong>open_download_stream</strong>(id, **options) {|The| ... } &#x21d2; Stream::Read </a>
+      <a href="#open_download_stream-instance_method" title="#open_download_stream (instance method)">#<strong>open_download_stream</strong>(id, options = nil) {|The| ... } &#x21d2; Stream::Read </a>
     
 
     
@@ -631,7 +631,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#open_upload_stream-instance_method" title="#open_upload_stream (instance method)">#<strong>open_upload_stream</strong>(filename, **opts) {|The| ... } &#x21d2; Stream::Write </a>
+      <a href="#open_upload_stream-instance_method" title="#open_upload_stream (instance method)">#<strong>open_upload_stream</strong>(filename, opts = {}) {|The| ... } &#x21d2; Stream::Write </a>
     
 
     
@@ -1855,7 +1855,7 @@
       <div class="method_details ">
   <h3 class="signature " id="find-instance_method">
   
-    #<strong>find</strong>(selector = nil, **options)  &#x21d2; <tt>CollectionView</tt> 
+    #<strong>find</strong>(selector = nil, options = {})  &#x21d2; <tt>CollectionView</tt> 
   
 
   
@@ -1911,6 +1911,8 @@
         <span class='type'>(<tt>Hash</tt>)</span>
       
       
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
       
         &mdash;
         <div class='inline'>
@@ -1926,7 +1928,7 @@
     
     
     
-    <p class="tag_title">Options Hash (<tt>**options</tt>):</p>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -2059,7 +2061,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 88</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_selector'>selector</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_selector'>selector</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>read:</span> <span class='id identifier rubyid_read_preference'>read_preference</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_read_preference'>read_preference</span>
   <span class='id identifier rubyid_files_collection'>files_collection</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_selector'>selector</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>||</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -2312,7 +2314,7 @@
       <div class="method_details ">
   <h3 class="signature " id="open_download_stream-instance_method">
   
-    #<strong>open_download_stream</strong>(id, **options) {|The| ... } &#x21d2; <tt><span class='object_link'><a href="FSBucket/Stream/Read.html" title="Mongo::Grid::FSBucket::Stream::Read (class)">Stream::Read</a></span></tt> 
+    #<strong>open_download_stream</strong>(id, options = nil) {|The| ... } &#x21d2; <tt><span class='object_link'><a href="FSBucket/Stream/Read.html" title="Mongo::Grid::FSBucket::Stream::Read (class)">Stream::Read</a></span></tt> 
   
 
   
@@ -2366,6 +2368,8 @@
         <span class='type'>(<tt>Hash</tt>)</span>
       
       
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
       
         &mdash;
         <div class='inline'>
@@ -2381,7 +2385,7 @@
     
     
     
-    <p class="tag_title">Options Hash (<tt>**options</tt>):</p>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -2476,8 +2480,8 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 234</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_open_download_stream'>open_download_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_read_stream'>read_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_open_download_stream'>open_download_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_read_stream'>read_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
       <span class='kw'>begin</span>
         <span class='kw'>yield</span> <span class='id identifier rubyid_stream'>stream</span>
@@ -2742,7 +2746,7 @@
       <div class="method_details ">
   <h3 class="signature " id="open_upload_stream-instance_method">
   
-    #<strong>open_upload_stream</strong>(filename, **opts) {|The| ... } &#x21d2; <tt><span class='object_link'><a href="FSBucket/Stream/Write.html" title="Mongo::Grid::FSBucket::Stream::Write (class)">Stream::Write</a></span></tt> 
+    #<strong>open_upload_stream</strong>(filename, opts = {}) {|The| ... } &#x21d2; <tt><span class='object_link'><a href="FSBucket/Stream/Write.html" title="Mongo::Grid::FSBucket::Stream::Write (class)">Stream::Write</a></span></tt> 
   
 
   
@@ -2784,6 +2788,8 @@
         <span class='type'>(<tt>Hash</tt>)</span>
       
       
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
       
         &mdash;
         <div class='inline'>
@@ -2815,7 +2821,7 @@
     
     
     
-    <p class="tag_title">Options Hash (<tt>**opts</tt>):</p>
+    <p class="tag_title">Options Hash (<tt>opts</tt>):</p>
     <ul class="option">
       
         <li>
@@ -2962,7 +2968,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 378</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_open_upload_stream'>open_upload_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_open_upload_stream'>open_upload_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_write_stream'>write_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
       <span class='kw'>begin</span>
@@ -3513,7 +3519,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 15:05:35 2020 by
+  Generated on Wed May 27 16:26:00 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>
