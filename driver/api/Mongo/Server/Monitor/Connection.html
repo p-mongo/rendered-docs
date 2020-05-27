@@ -446,7 +446,7 @@
   
   
   <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../ConnectionCommon.html" title="Mongo::Server::ConnectionCommon (class)">ConnectionCommon</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../ConnectionCommon.html#compressor-instance_method" title="Mongo::Server::ConnectionCommon#compressor (method)">#compressor</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../ConnectionCommon.html#compressor-instance_method" title="Mongo::Server::ConnectionCommon#compressor (method)">#compressor</a></span>, <span class='object_link'><a href="../ConnectionCommon.html#pid-instance_method" title="Mongo::Server::ConnectionCommon#pid (method)">#pid</a></span></p>
 
 
   
@@ -1302,8 +1302,8 @@
       <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 138</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ismaster'>ismaster</span>
-  <span class='id identifier rubyid_ensure_connected'>ensure_connected</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
-    <span class='id identifier rubyid_read_with_one_retry'>read_with_one_retry</span><span class='lparen'>(</span><span class='label'>retry_message:</span> <span class='id identifier rubyid_retry_message'>retry_message</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_read_with_one_retry'>read_with_one_retry</span><span class='lparen'>(</span><span class='label'>retry_message:</span> <span class='id identifier rubyid_retry_message'>retry_message</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_ensure_connected'>ensure_connected</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
       <span class='id identifier rubyid_add_server_diagnostics'>add_server_diagnostics</span> <span class='kw'>do</span>
         <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#ISMASTER_BYTES-constant" title="Mongo::Server::Monitor::Connection::ISMASTER_BYTES (constant)">ISMASTER_BYTES</a></span></span><span class='rparen'>)</span>
         <span class='const'><span class='object_link'><a href="../../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deserialize'><span class='object_link'><a href="../../Protocol/Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
@@ -1402,7 +1402,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue May 26 19:55:25 2020 by
+  Generated on Tue May 26 20:00:53 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>
