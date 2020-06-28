@@ -872,8 +872,8 @@ is not implemented for <a class="reference internal" href="mongoid-queries.html#
 operators</a>,
 operators that execute JavaScript code (<a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/where/">$where</a>)
 and operators that are implemented via other server functionality such as
-<a class="reference external" href="https://docs.mongodb.com/manualhttps://docs.mongodb.com/manual/reference/operator/query/jsonSchema/">$jsonSchema</a>
-and <a class="reference external" href="https://docs.mongodb.com/manualhttps://docs.mongodb.com/manual/reference/operator/query/expr/">$expr</a>.
+<a class="reference external" href="https://docs.mongodb.com/manualhttps://docs.mongodb.com/manual/reference/operator/query/expr/">$expr</a>
+and <a class="reference external" href="https://docs.mongodb.com/manualhttps://docs.mongodb.com/manual/reference/operator/query/jsonSchema/">$jsonSchema</a>.
 The following operators are supported:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query-comparison/">Comparison operators</a>.</li>
@@ -885,10 +885,24 @@ is not currently supported, the options must be given as part of the
 regular expression object).</li>
 <li><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query-array/">Array query operators</a>.</li>
 </ul>
-<p>in this manner
-can query documents that are already loaded in the application using
-many of the MQL operators that MongoDB server implements. Such querying is
-supported for embedded associations as well as arbitrary fields.</p>
+<p>For example, using the model definitions just given, we could query
+tours on a loaded band:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="n">tours</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Mongoid aims to provide the same semantics when performing embedded matching
+as those of MongoDB server. This means, for example, that embedded matchers
+generally support arguments of the same types as <code class="docutils literal"><span class="pre">Criteria</span></code> methods do.</p>
+</div>
 </div>
 </div>
 </div>
