@@ -214,36 +214,36 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id4">Queries</a><ul>
-<li><a class="reference internal" href="#condition-syntax" id="id5">Condition Syntax</a></li>
-<li><a class="reference internal" href="#logical-operations" id="id6">Logical Operations</a></li>
-<li><a class="reference internal" href="#incremental-query-construction" id="id7">Incremental Query Construction</a></li>
-<li><a class="reference internal" href="#query-methods" id="id8">Query Methods</a></li>
-<li><a class="reference internal" href="#projection" id="id9">Projection</a></li>
-<li><a class="reference internal" href="#ordering" id="id10">Ordering</a></li>
-<li><a class="reference internal" href="#query-cache" id="id11">Query Cache</a></li>
-<li><a class="reference internal" href="#additional-query-methods" id="id12">Additional Query Methods</a></li>
-<li><a class="reference internal" href="#eager-loading" id="id13">Eager Loading</a></li>
-<li><a class="reference internal" href="#regular-expressions" id="id14">Regular Expressions</a></li>
+<li><a class="reference internal" href="#id1" id="id5">Queries</a><ul>
+<li><a class="reference internal" href="#condition-syntax" id="id6">Condition Syntax</a></li>
+<li><a class="reference internal" href="#logical-operations" id="id7">Logical Operations</a></li>
+<li><a class="reference internal" href="#incremental-query-construction" id="id8">Incremental Query Construction</a></li>
+<li><a class="reference internal" href="#query-methods" id="id9">Query Methods</a></li>
+<li><a class="reference internal" href="#projection" id="id10">Projection</a></li>
+<li><a class="reference internal" href="#ordering" id="id11">Ordering</a></li>
+<li><a class="reference internal" href="#query-cache" id="id12">Query Cache</a></li>
+<li><a class="reference internal" href="#additional-query-methods" id="id13">Additional Query Methods</a></li>
+<li><a class="reference internal" href="#eager-loading" id="id14">Eager Loading</a></li>
+<li><a class="reference internal" href="#regular-expressions" id="id15">Regular Expressions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#queries-persistence" id="id15">Queries + Persistence</a></li>
-<li><a class="reference internal" href="#scoping" id="id16">Scoping</a><ul>
-<li><a class="reference internal" href="#named-scopes" id="id17">Named Scopes</a></li>
-<li><a class="reference internal" href="#default-scopes" id="id18">Default Scopes</a></li>
-<li><a class="reference internal" href="#class-methods" id="id19">Class Methods</a></li>
+<li><a class="reference internal" href="#queries-persistence" id="id16">Queries + Persistence</a></li>
+<li><a class="reference internal" href="#scoping" id="id17">Scoping</a><ul>
+<li><a class="reference internal" href="#named-scopes" id="id18">Named Scopes</a></li>
+<li><a class="reference internal" href="#default-scopes" id="id19">Default Scopes</a></li>
+<li><a class="reference internal" href="#class-methods" id="id20">Class Methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#map-reduce" id="id20">Map/Reduce</a><ul>
-<li><a class="reference internal" href="#execution" id="id21">Execution</a></li>
-<li><a class="reference internal" href="#raw-results" id="id22">Raw Results</a></li>
-<li><a class="reference internal" href="#statistics" id="id23">Statistics</a></li>
+<li><a class="reference internal" href="#map-reduce" id="id21">Map/Reduce</a><ul>
+<li><a class="reference internal" href="#execution" id="id22">Execution</a></li>
+<li><a class="reference internal" href="#raw-results" id="id23">Raw Results</a></li>
+<li><a class="reference internal" href="#statistics" id="id24">Statistics</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#full-text-search" id="id24">Full Text Search</a><ul>
-<li><a class="reference internal" href="#defining-full-text-search-index" id="id25">Defining Full Text Search Index</a></li>
-<li><a class="reference internal" href="#creating-full-text-search-index" id="id26">Creating Full Text Search Index</a></li>
-<li><a class="reference internal" href="#querying-using-full-text-search-index" id="id27">Querying Using Full Text Search Index</a></li>
+<li><a class="reference internal" href="#text-search" id="id25">Text Search</a><ul>
+<li><a class="reference internal" href="#defining-text-search-index" id="id26">Defining Text Search Index</a></li>
+<li><a class="reference internal" href="#creating-text-index" id="id27">Creating Text Index</a></li>
+<li><a class="reference internal" href="#querying-using-text-index" id="id28">Querying Using Text Index</a></li>
 </ul>
 </li>
 </ul>
@@ -2359,20 +2359,20 @@ from the raw results if multiple statistics are desired.</p>
 </div>
 </div>
 </div>
-<div class="section" id="full-text-search">
-<h2>Full Text Search<a class="headerlink" href="#full-text-search" title="Permalink to this headline">¶</a></h2>
-<p>To perform full text search with Mongoid, follow these steps:</p>
+<div class="section" id="text-search">
+<span id="id4"></span><h2>Text Search<a class="headerlink" href="#text-search" title="Permalink to this headline">¶</a></h2>
+<p>To perform text search with Mongoid, follow these steps:</p>
 <ol class="arabic simple">
-<li>Define a full text search index on a model.</li>
-<li>Create the full text search index on the server.</li>
-<li>Build a full text search query.</li>
+<li>Define a text index on a model.</li>
+<li>Create the text index on the server.</li>
+<li>Build a text search query.</li>
 </ol>
-<div class="section" id="defining-full-text-search-index">
-<h3>Defining Full Text Search Index<a class="headerlink" href="#defining-full-text-search-index" title="Permalink to this headline">¶</a></h3>
-<p>Index definition through Mongoid is described in detail on the <a class="reference external" href="mongoid-indexes">indexes</a> page. Full text search indexes are described in detail on
+<div class="section" id="defining-text-search-index">
+<h3>Defining Text Search Index<a class="headerlink" href="#defining-text-search-index" title="Permalink to this headline">¶</a></h3>
+<p>Index definition through Mongoid is described in detail on the <a class="reference external" href="mongoid-indexes">indexes</a> page. Text search indexes are described in detail
 under <a class="reference external" href="https://docs.mongodb.com/manual/core/index-text/">text indexes</a>
 in the MongoDB manual. Below is an example definition of a Band model with
-a full text search index specified on the description field:</p>
+a text index utilizing the description field:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -2391,8 +2391,8 @@ copy</a>
 </div>
 <p>Note that the index type (<code class="docutils literal"><span class="pre">text</span></code>) must be given as a string, not as a symbol.</p>
 </div>
-<div class="section" id="creating-full-text-search-index">
-<h3>Creating Full Text Search Index<a class="headerlink" href="#creating-full-text-search-index" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="creating-text-index">
+<h3>Creating Text Index<a class="headerlink" href="#creating-text-index" title="Permalink to this headline">¶</a></h3>
 <p>To create the index, invoke the <code class="docutils literal"><span class="pre">db:mongoid:create_indexes</span></code> Rake task:</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -2404,8 +2404,8 @@ copy</a>
 </div>
 </div>
 </div>
-<div class="section" id="querying-using-full-text-search-index">
-<h3>Querying Using Full Text Search Index<a class="headerlink" href="#querying-using-full-text-search-index" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="querying-using-text-index">
+<h3>Querying Using Text Index<a class="headerlink" href="#querying-using-text-index" title="Permalink to this headline">¶</a></h3>
 <p>To find bands whose description contains “ounces” or its variations, use the
 <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/text/#op._S_text">$text operator</a>:</p>
 <div class="button-code-block">
@@ -2420,9 +2420,9 @@ copy</a>
 </div>
 <p>Note that the description contains the word “ounce” even though the search
 query was “ounces”.</p>
-<p>Note also that when performing a full text search, the name of the field is
-not explicitly specified - <code class="docutils literal"><span class="pre">$text</span></code> operator searches all fields indexed with
-full text search indexes.</p>
+<p>Note also that when performing text search, the name of the field is not
+explicitly specified - <code class="docutils literal"><span class="pre">$text</span></code> operator searches all fields indexed with
+the text index.</p>
 </div>
 </div>
 </div>
