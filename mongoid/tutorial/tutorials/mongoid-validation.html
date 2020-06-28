@@ -211,14 +211,14 @@
                 
                   <div class="section" id="validation">
 <h1>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h1>
-<p>Mongoid includes <code class="docutils literal notranslate"><span class="pre">ActiveModel::Validations</span></code> to supply the basic
+<p>Mongoid includes <code class="docutils literal"><span class="pre">ActiveModel::Validations</span></code> to supply the basic
 validation plus an additional associated and uniqueness validator.</p>
 <p>See the <a class="reference external" href="https://guides.rubyonrails.org/active_record_validations.html">Active Record Validations</a>
 Rails guide and <a class="reference external" href="https://api.rubyonrails.org/classes/ActiveModel/Validations.html">ActiveModel::Validations</a>
 documentation for more information.</p>
-<p>Mongoid behaves slightly different to Active Record when using <code class="docutils literal notranslate"><span class="pre">#valid?</span></code>
-on already persisted data. Active Record’s <code class="docutils literal notranslate"><span class="pre">#valid?</span></code> will run all
-validations whereas Mongoid’s <code class="docutils literal notranslate"><span class="pre">#valid?</span></code> will only run validations on
+<p>Mongoid behaves slightly different to Active Record when using <code class="docutils literal"><span class="pre">#valid?</span></code>
+on already persisted data. Active Record’s <code class="docutils literal"><span class="pre">#valid?</span></code> will run all
+validations whereas Mongoid’s <code class="docutils literal"><span class="pre">#valid?</span></code> will only run validations on
 documents that are in memory as an optimization.</p>
 </div>
 

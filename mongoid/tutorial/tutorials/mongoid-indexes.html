@@ -231,7 +231,7 @@ second options hash parameter:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:ssn</span>
 
@@ -246,7 +246,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:addresses</span>
   <span class="n">index</span> <span class="s2">&quot;addresses.street&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
@@ -260,7 +260,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:first_name</span>
   <span class="n">field</span> <span class="ss">:last_name</span>
@@ -276,7 +276,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:ssn</span>
 
@@ -292,7 +292,7 @@ the collection is large and index creation may take a long time:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:ssn</span>
   <span class="n">index</span><span class="p">({</span> <span class="ss">ssn</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">background</span><span class="p">:</span> <span class="kp">true</span> <span class="p">})</span>
@@ -300,17 +300,17 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>If the <code class="docutils literal notranslate"><span class="pre">background_indexing</span></code> <a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> is true, the indexes are created in the background
-unless the <code class="docutils literal notranslate"><span class="pre">background:</span> <span class="pre">false</span></code> option is provided.</p>
+<p>If the <code class="docutils literal"><span class="pre">background_indexing</span></code> <a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> is true, the indexes are created in the background
+unless the <code class="docutils literal"><span class="pre">background:</span> <span class="pre">false</span></code> option is provided.</p>
 <p><em>Deprecated:</em> When using MongoDB 2.6, you can drop the duplicate entries
 for unique indexes that are defined for a column that might
-already have duplicate values by specifying the <code class="docutils literal notranslate"><span class="pre">drop_dups</span></code> option:</p>
+already have duplicate values by specifying the <code class="docutils literal"><span class="pre">drop_dups</span></code> option:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:ssn</span>
   <span class="n">index</span><span class="p">({</span> <span class="ss">ssn</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">drop_dups</span><span class="p">:</span> <span class="kp">true</span> <span class="p">})</span>
@@ -318,14 +318,14 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">drop_dups</span></code> option has been <a class="reference external" href="https://docs.mongodb.com/manual/release-notes/3.0-compatibility/#remove-dropdups-option">removed as of MongoDB 3.0</a>.</p>
+<p>The <code class="docutils literal"><span class="pre">drop_dups</span></code> option has been <a class="reference external" href="https://docs.mongodb.com/manual/release-notes/3.0-compatibility/#remove-dropdups-option">removed as of MongoDB 3.0</a>.</p>
 <p>For geospatial indexes, make sure the field being indexed is of type Array:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:location</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Array</span>
 
@@ -340,7 +340,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:ssn</span>
   <span class="n">index</span><span class="p">({</span> <span class="ss">ssn</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">database</span><span class="p">:</span> <span class="s2">&quot;users&quot;</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">background</span><span class="p">:</span> <span class="kp">true</span> <span class="p">})</span>
@@ -355,7 +355,7 @@ This only works on the association macro that the foreign key is stored on:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Comment</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Comment</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">belongs_to</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">index</span><span class="p">:</span> <span class="kp">true</span>
   <span class="n">has_and_belongs_to_many</span> <span class="ss">:preferences</span><span class="p">,</span> <span class="ss">index</span><span class="p">:</span> <span class="kp">true</span>
@@ -367,13 +367,13 @@ copy</a>
 <div class="section" id="index-management-rake-tasks">
 <h2>Index Management Rake Tasks<a class="headerlink" href="#index-management-rake-tasks" title="Permalink to this headline">¶</a></h2>
 <p>When you want to create the indexes in the database, use the provided
-<code class="docutils literal notranslate"><span class="pre">db:mongoid::create_indexes</span></code> Rake task:</p>
+<code class="docutils literal"><span class="pre">db:mongoid::create_indexes</span></code> Rake task:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rake db:mongoid:create_indexes
+<div class="copyable-code-block highlight-bash"><div class="highlight"><pre><span></span>$ rake db:mongoid:create_indexes
 </pre></div>
 </div>
 </div>
@@ -383,12 +383,12 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rake db:mongoid:remove_indexes
+<div class="copyable-code-block highlight-bash"><div class="highlight"><pre><span></span>$ rake db:mongoid:remove_indexes
 </pre></div>
 </div>
 </div>
 <p>Note: the output of these Rake tasks goes to the default logger configured
-by Rails. This is usually a file like <code class="docutils literal notranslate"><span class="pre">log/development.log</span></code> and not standard
+by Rails. This is usually a file like <code class="docutils literal"><span class="pre">log/development.log</span></code> and not standard
 output.</p>
 <p>These create/remove indexes commands also works for just one model by running
 in Rails console:</p>
@@ -397,7 +397,7 @@ in Rails console:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create indexes for Model</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Create indexes for Model</span>
 <span class="no">Model</span><span class="o">.</span><span class="n">create_indexes</span>
 
 <span class="c1"># Remove indexes for Model</span>
@@ -410,13 +410,13 @@ copy</a>
 <p>Mongoid’s Rake tasks are automatically loaded in Rails applications using
 Mongoid. When using Mongoid with a non-Rails application, these tasks must
 be loaded manually. This can be achieved by loading them in the Rakefile and
-providing an <code class="docutils literal notranslate"><span class="pre">:environment</span></code> task to load your application’s models:</p>
+providing an <code class="docutils literal"><span class="pre">:environment</span></code> task to load your application’s models:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rakefile</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Rakefile</span>
 
 <span class="nb">require</span> <span class="s1">&#39;mongoid&#39;</span>
 <span class="nb">load</span> <span class="s1">&#39;mongoid/tasks/database.rake&#39;</span>
@@ -427,14 +427,14 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>If your application uses Bundler, you can require <code class="docutils literal notranslate"><span class="pre">bundler/setup</span></code> instead of
-explicitly requiring <code class="docutils literal notranslate"><span class="pre">mongoid</span></code>:</p>
+<p>If your application uses Bundler, you can require <code class="docutils literal"><span class="pre">bundler/setup</span></code> instead of
+explicitly requiring <code class="docutils literal"><span class="pre">mongoid</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rakefile</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Rakefile</span>
 
 <span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
 <span class="nb">load</span> <span class="s1">&#39;mongoid/tasks/database.rake&#39;</span>

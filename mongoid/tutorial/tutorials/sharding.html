@@ -221,13 +221,13 @@
 <p>Mongoid can assist with setting up collection sharding in sharded environments.</p>
 <div class="section" id="declaring-shard-keys">
 <span id="shard-keys"></span><h2>Declaring Shard Keys<a class="headerlink" href="#declaring-shard-keys" title="Permalink to this headline">¶</a></h2>
-<p>Shard keys can be declared on models using the <code class="docutils literal notranslate"><span class="pre">shard_key</span></code> macro:</p>
+<p>Shard keys can be declared on models using the <code class="docutils literal"><span class="pre">shard_key</span></code> macro:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:ssn</span>
@@ -252,7 +252,7 @@ collection sharding options:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">shard_key</span> <span class="ss">ssn</span><span class="p">:</span> <span class="mi">1</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">shard_key</span> <span class="ss">ssn</span><span class="p">:</span> <span class="mi">1</span>
 
 <span class="n">shard_key</span> <span class="ss">ssn</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">country</span><span class="p">:</span> <span class="mi">1</span>
 
@@ -270,13 +270,13 @@ be specified:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">shard_key</span> <span class="ss">:ssn</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">shard_key</span> <span class="ss">:ssn</span>
 
 <span class="n">shard_key</span> <span class="ss">:ssn</span><span class="p">,</span> <span class="ss">:country</span>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">shard_key</span></code> macro can take the name of a <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> association in
+<p><code class="docutils literal"><span class="pre">shard_key</span></code> macro can take the name of a <code class="docutils literal"><span class="pre">belongs_to</span></code> association in
 place of a field name, in which case Mongoid will use the foreign key
 configured in the association as the field name:</p>
 <blockquote>
@@ -296,15 +296,15 @@ index country: 1</p>
 <div class="section" id="sharding-management-rake-tasks">
 <span id="sharding-management"></span><h2>Sharding Management Rake Tasks<a class="headerlink" href="#sharding-management-rake-tasks" title="Permalink to this headline">¶</a></h2>
 <p>To shard collections in the database according to the shard keys defined in
-the models, run the <code class="docutils literal notranslate"><span class="pre">db:mongoid:shard_collections</span></code> Rake task.
-If necessary, run the <code class="docutils literal notranslate"><span class="pre">db:mongoid:create_indexes</span></code> Rake task prior to
+the models, run the <code class="docutils literal"><span class="pre">db:mongoid:shard_collections</span></code> Rake task.
+If necessary, run the <code class="docutils literal"><span class="pre">db:mongoid:create_indexes</span></code> Rake task prior to
 sharding collections:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span>rake db:mongoid:create_indexes
+<div class="copyable-code-block highlight-bash"><div class="highlight"><pre><span></span>rake db:mongoid:create_indexes
 rake db:mongoid:shard_collections
 </pre></div>
 </div>
@@ -317,7 +317,7 @@ particular model class. Instead they log the problem (to the configured
 Mongoid logger) at an appropriate level and continue with the next model.
 When Mongoid is used in a Rails application, this means the results of
 the rake task execution will generally be found in the per-environment
-log file like <code class="docutils literal notranslate"><span class="pre">log/development.log</span></code>.</p>
+log file like <code class="docutils literal"><span class="pre">log/development.log</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -325,7 +325,7 @@ log file like <code class="docutils literal notranslate"><span class="pre">log/d
 sharding collections as described in this document, or creating or dropping
 collections or databases, cluster nodes may end up with out of date local
 configuration-related cache data. Execute the <a class="reference external" href="https://docs.mongodb.com/manual/reference/command/flushRouterConfig/">flushRouterConfig</a>
-command on each <code class="docutils literal notranslate"><span class="pre">mongos</span></code> node to clear these caches.</p>
+command on each <code class="docutils literal"><span class="pre">mongos</span></code> node to clear these caches.</p>
 </div>
 </div>
 </div>

@@ -213,26 +213,51 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#upgrading-to-mongoid-7-1" id="id1">Upgrading to Mongoid 7.1</a><ul>
-<li><a class="reference internal" href="#condition-combination" id="id2">Condition Combination</a></li>
-<li><a class="reference internal" href="#logical-operations" id="id3">Logical Operations</a></li>
-<li><a class="reference internal" href="#merge-strategies" id="id4">Merge Strategies</a></li>
-<li><a class="reference internal" href="#required-condition-arguments" id="id5">Required Condition Arguments</a></li>
-<li><a class="reference internal" href="#generated-queries" id="id6">Generated Queries</a></li>
-<li><a class="reference internal" href="#ruby-version-support" id="id7">Ruby Version Support</a></li>
-<li><a class="reference internal" href="#changes-in-mongoid-7-1-0" id="id8">Changes in Mongoid 7.1.0</a></li>
-<li><a class="reference internal" href="#changes-in-mongoid-7-1-1" id="id9">Changes in Mongoid 7.1.1</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-7-2" id="id1">Upgrading to Mongoid 7.2</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-7-1" id="id2">Upgrading to Mongoid 7.1</a><ul>
+<li><a class="reference internal" href="#condition-combination" id="id3">Condition Combination</a></li>
+<li><a class="reference internal" href="#logical-operations" id="id4">Logical Operations</a></li>
+<li><a class="reference internal" href="#merge-strategies" id="id5">Merge Strategies</a></li>
+<li><a class="reference internal" href="#required-condition-arguments" id="id6">Required Condition Arguments</a></li>
+<li><a class="reference internal" href="#generated-queries" id="id7">Generated Queries</a></li>
+<li><a class="reference internal" href="#ruby-version-support" id="id8">Ruby Version Support</a></li>
+<li><a class="reference internal" href="#changes-in-mongoid-7-1-0" id="id9">Changes in Mongoid 7.1.0</a></li>
+<li><a class="reference internal" href="#changes-in-mongoid-7-1-1" id="id10">Changes in Mongoid 7.1.1</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-7-0" id="id10">Upgrading to Mongoid 7.0</a></li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-6" id="id11">Upgrading to Mongoid 6</a></li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-5" id="id12">Upgrading to Mongoid 5</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-7-0" id="id11">Upgrading to Mongoid 7.0</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-6" id="id12">Upgrading to Mongoid 6</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-5" id="id13">Upgrading to Mongoid 5</a></li>
 </ul>
 </div>
 <p>This page describes significant changes and improvements in Mongoid releases.
 The complete list of releases is available <a class="reference external" href="https://github.com/mongodb/mongoid/releases">on GitHub</a> and <a class="reference external" href="https://jira.mongodb.org/projects/MONGOID?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page">in JIRA</a>;
 please consult GitHub releases for detailed release notes and JIRA for
 the complete list of issues fixed in each release, including bug fixes.</p>
+<div class="section" id="upgrading-to-mongoid-7-2">
+<h2>Upgrading to Mongoid 7.2<a class="headerlink" href="#upgrading-to-mongoid-7-2" title="Permalink to this headline">¶</a></h2>
+<p>The principal change in Mongoid 7.2 is the rewrite of <span class="xref std std-ref">embedded matchers</span>.</p>
+<p>Most queries should produce the same results as in previous versions of
+Mongoid. In cases when Mongoid’s behavior was different from that of MongoDB
+server, the behavior in Mongoid 7.2 was changed to match MongoDB server.
+Notably this applies to the following cases:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">$and</span></code>, <code class="docutils literal"><span class="pre">$nor</span></code> and <code class="docutils literal"><span class="pre">$or</span></code> operators now raise an exception when given
+empty arrays as arguments. This only applies to raw MQL query expressions;
+the corresponding Mongoid <a class="reference internal" href="mongoid-queries.html#logical-operations"><span class="std std-ref">query methods</span></a>
+continue to permit being called without arguments. In previous versions
+of Mongoid, <code class="docutils literal"><span class="pre">$and</span></code> would match when given an empty array of conditions
+and <code class="docutils literal"><span class="pre">$nor</span></code> and <code class="docutils literal"><span class="pre">$or</span></code> would not match when given empty arrays of
+conditions.</li>
+<li><code class="docutils literal"><span class="pre">$elemMatch</span></code> operator now raises an exception when examining a document
+where the respective field is of a type other than <code class="docutils literal"><span class="pre">Array</span></code>. Previously
+<code class="docutils literal"><span class="pre">$elemMatch</span></code> would not match in such cases.</li>
+<li><code class="docutils literal"><span class="pre">$in</span></code> operator now does not perform regular expression matches.</li>
+<li><code class="docutils literal"><span class="pre">$ne</span></code> operator now raises an exception when given a regular expression
+argument. Previous versions of Mongoid performed a regular expression match
+on the document field being considered.</li>
+</ul>
+</div>
 <div class="section" id="upgrading-to-mongoid-7-1">
 <h2>Upgrading to Mongoid 7.1<a class="headerlink" href="#upgrading-to-mongoid-7-1" title="Permalink to this headline">¶</a></h2>
 <p>The following sections describe major changes in Mongoid 7.1.</p>
@@ -248,7 +273,7 @@ conditions in some circumstances.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;_id&quot;=&gt;1, &quot;$and&quot;=&gt;[{&quot;_id&quot;=&gt;2}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -263,7 +288,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;_id&quot;=&gt;2}</span>
 <span class="c1">#   options:  {}</span>
@@ -275,9 +300,9 @@ copy</a>
 </div>
 <div class="section" id="logical-operations">
 <h3>Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h3>
-<p><strong>Breaking change:</strong> In Mongoid 7.1 logical operator methods <code class="docutils literal notranslate"><span class="pre">or</span></code> and
-<code class="docutils literal notranslate"><span class="pre">nor</span></code> treat the receiver as one of the operands. This behavior matches that
-of ActiveRecord. Previously, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">nor</span></code> added their parameters as
+<p><strong>Breaking change:</strong> In Mongoid 7.1 logical operator methods <code class="docutils literal"><span class="pre">or</span></code> and
+<code class="docutils literal"><span class="pre">nor</span></code> treat the receiver as one of the operands. This behavior matches that
+of ActiveRecord. Previously, <code class="docutils literal"><span class="pre">or</span></code> and <code class="docutils literal"><span class="pre">nor</span></code> added their parameters as
 additional conditions to the receiver.</p>
 <p>Example Mongoid 7.1 behavior:</p>
 <div class="button-code-block">
@@ -285,7 +310,7 @@ additional conditions to the receiver.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}, {&quot;name&quot;=&gt;&quot;Two&quot;}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -300,7 +325,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;One&quot;, &quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Two&quot;}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -309,14 +334,14 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>To add <code class="docutils literal notranslate"><span class="pre">or</span></code> or <code class="docutils literal notranslate"><span class="pre">nor</span></code> parameters to the existing query without disjuncting
+<p>To add <code class="docutils literal"><span class="pre">or</span></code> or <code class="docutils literal"><span class="pre">nor</span></code> parameters to the existing query without disjuncting
 the existing query, create a separate scope:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="no">Band</span><span class="o">.</span><span class="n">or</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Three&#39;</span><span class="p">}))</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="no">Band</span><span class="o">.</span><span class="n">or</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Three&#39;</span><span class="p">}))</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;One&quot;, &quot;$and&quot;=&gt;[{&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Two&quot;}, {&quot;name&quot;=&gt;&quot;Three&quot;}]}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -325,13 +350,13 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Alternatively, use <code class="docutils literal notranslate"><span class="pre">any_of</span></code> which behaves as <code class="docutils literal notranslate"><span class="pre">or</span></code> did in Mongoid 7.0:</p>
+<p>Alternatively, use <code class="docutils literal"><span class="pre">any_of</span></code> which behaves as <code class="docutils literal"><span class="pre">or</span></code> did in Mongoid 7.0:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Three&#39;</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Three&#39;</span><span class="p">})</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;One&quot;, &quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Two&quot;}, {&quot;name&quot;=&gt;&quot;Three&quot;}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -345,8 +370,8 @@ copy</a>
 <div class="section" id="merge-strategies">
 <h3>Merge Strategies<a class="headerlink" href="#merge-strategies" title="Permalink to this headline">¶</a></h3>
 <p><strong>Breaking change:</strong> In Mongoid 7.1, <a class="reference internal" href="mongoid-queries.html#merge-strategies"><span class="std std-ref">Merge strategies</span></a>
-must be explicitly requested. Previously, <code class="docutils literal notranslate"><span class="pre">all</span></code> defaulted to the
-union strategy and <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">nin</span></code> defaulted to the intersect strategy.
+must be explicitly requested. Previously, <code class="docutils literal"><span class="pre">all</span></code> defaulted to the
+union strategy and <code class="docutils literal"><span class="pre">in</span></code> and <code class="docutils literal"><span class="pre">nin</span></code> defaulted to the intersect strategy.
 In Mongoid 7.1, there is no merge strategy applied by default.</p>
 <p>Example Mongoid 7.1 behavior:</p>
 <div class="button-code-block">
@@ -354,7 +379,7 @@ In Mongoid 7.1, there is no merge strategy applied by default.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[1]}, &quot;$and&quot;=&gt;[{&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[2]}}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -369,7 +394,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[1, 2]}}</span>
 <span class="c1">#   options:  {}</span>
@@ -385,7 +410,7 @@ explicitly requested:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[1, 2]}}</span>
 <span class="c1">#   options:  {}</span>
@@ -397,14 +422,14 @@ copy</a>
 </div>
 <div class="section" id="required-condition-arguments">
 <h3>Required Condition Arguments<a class="headerlink" href="#required-condition-arguments" title="Permalink to this headline">¶</a></h3>
-<p><strong>Breaking change:</strong> <code class="docutils literal notranslate"><span class="pre">nil</span></code> arguments to Criteria methods are no longer
+<p><strong>Breaking change:</strong> <code class="docutils literal"><span class="pre">nil</span></code> arguments to Criteria methods are no longer
 accepted. For example, the following invocation is now an error:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -416,24 +441,24 @@ invocation is now an error:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">any_of</span></code> and <code class="docutils literal notranslate"><span class="pre">where</span></code> can be called
+<p><code class="docutils literal"><span class="pre">and</span></code>, <code class="docutils literal"><span class="pre">or</span></code>, <code class="docutils literal"><span class="pre">nor</span></code>, <code class="docutils literal"><span class="pre">not</span></code>, <code class="docutils literal"><span class="pre">any_of</span></code> and <code class="docutils literal"><span class="pre">where</span></code> can be called
 without arguments.</p>
 </div>
 <div class="section" id="generated-queries">
 <h3>Generated Queries<a class="headerlink" href="#generated-queries" title="Permalink to this headline">¶</a></h3>
 <p>Minor change: Mongoid 7.1 will simplify the Criteria selectors where possible
-by eliding unnecessary logical operators, typically <code class="docutils literal notranslate"><span class="pre">$and</span></code>.</p>
+by eliding unnecessary logical operators, typically <code class="docutils literal"><span class="pre">$and</span></code>.</p>
 <p>Example Mongoid 7.1 behavior:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;year&quot;=&gt;2000, &quot;name&quot;=&gt;&quot;One&quot;}</span>
 <span class="c1">#   options:  {}</span>
@@ -448,7 +473,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;year&quot;=&gt;2000, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -465,7 +490,7 @@ example, the following two approaches result in the same generated selector:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/ne/</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/ne/</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/ne/</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">})</span>
 
@@ -493,14 +518,14 @@ shard keys, and a Rake task to shard collection has been added to the
 <div class="section" id="changes-in-mongoid-7-1-1">
 <h3>Changes in Mongoid 7.1.1<a class="headerlink" href="#changes-in-mongoid-7-1-1" title="Permalink to this headline">¶</a></h3>
 <p><strong>Breaking change:</strong> The behavior of <a class="reference internal" href="mongoid-queries.html#any-of"><span class="std std-ref">any_of</span></a> was reverted to
-its Mongoid 7.0 behavior. As was the case in Mongoid 7.0, <code class="docutils literal notranslate"><span class="pre">any_of</span></code> now
+its Mongoid 7.0 behavior. As was the case in Mongoid 7.0, <code class="docutils literal"><span class="pre">any_of</span></code> now
 does not treat the receiver as one of its operands:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1990</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1990</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">})</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;year&quot;=&gt;1990, &quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}, {&quot;name&quot;=&gt;&quot;Two&quot;}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -509,13 +534,13 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">or</span></code> behaves the same way in Mongoid 7.1.1 and 7.1.0:</p>
+<p><code class="docutils literal"><span class="pre">or</span></code> behaves the same way in Mongoid 7.1.1 and 7.1.0:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1990</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1990</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">})</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;year&quot;=&gt;1990}, {&quot;name&quot;=&gt;&quot;One&quot;}, {&quot;name&quot;=&gt;&quot;Two&quot;}]}</span>
 <span class="c1">#   options:  {}</span>
@@ -524,11 +549,11 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Minor change: The value of <code class="docutils literal notranslate"><span class="pre">include_root_in_json</span></code> is now properly respected
+<p>Minor change: The value of <code class="docutils literal"><span class="pre">include_root_in_json</span></code> is now properly respected
 throughout the model hierarchy. Previously the values set on model classes
 were ignored.</p>
-<p>Improvement: <code class="docutils literal notranslate"><span class="pre">Model.where</span></code> can now be called with no arguments.</p>
-<p>Improvement: Polymorphic <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> associations can now be eagerly loaded.</p>
+<p>Improvement: <code class="docutils literal"><span class="pre">Model.where</span></code> can now be called with no arguments.</p>
+<p>Improvement: Polymorphic <code class="docutils literal"><span class="pre">belongs_to</span></code> associations can now be eagerly loaded.</p>
 </div>
 </div>
 <div class="section" id="upgrading-to-mongoid-7-0">
@@ -542,10 +567,10 @@ ActiveRecord.</p>
 that <a class="reference external" href="http://guides.rubyonrails.org/association_basics.html">ActiveRecord supports</a>.</p>
 <p><a class="reference internal" href="mongoid-relations.html#unwind-dsl"><span class="std std-ref">$unwind</span></a> operator support added to the <a class="reference internal" href="mongoid-relations.html#aggregation-pipeline-builder-dsl"><span class="std std-ref">aggregation
 pipeline builder DSL</span></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">background_indexing</span></code> Mongoid <a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> added.</p>
+<p><code class="docutils literal"><span class="pre">background_indexing</span></code> Mongoid <a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> added.</p>
 <p>Mongoid 7.0 requires MongoDB server 2.6 or newer, Ruby 2.2.2 or higher and
 supports Rails 5.1-6.0.</p>
-<p>New in version 7.0.3: Embedded matchers now support the <code class="docutils literal notranslate"><span class="pre">$eq</span></code> operator.</p>
+<p>New in version 7.0.3: Embedded matchers now support the <code class="docutils literal"><span class="pre">$eq</span></code> operator.</p>
 <p>New in version 7.0.5: Mongoid now officially supports Rails 6.0.</p>
 </div>
 <div class="section" id="upgrading-to-mongoid-6">
@@ -566,13 +591,13 @@ documentation for help with that API.</p>
 from Moped to the official MongoDB Ruby driver. Please see the
 <a class="reference internal" href="mongoid-configuration.html#mongoid-configuration"><span class="std std-ref">configuration section</span></a> for a detailed description
 of all the new options.</p>
-<p>All references to session are now replaced with client. This includes the <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code>
-configuration, <code class="docutils literal notranslate"><span class="pre">store_in</span></code> options, and all exceptions and modules with Session in the name.</p>
-<p><code class="docutils literal notranslate"><span class="pre">find_and_modify</span></code> has been removed and replaced with 3 options: <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code>,
-<code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code> and <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">text_search</span></code> has been removed as it is now a $text option in a query from
+<p>All references to session are now replaced with client. This includes the <code class="docutils literal"><span class="pre">mongoid.yml</span></code>
+configuration, <code class="docutils literal"><span class="pre">store_in</span></code> options, and all exceptions and modules with Session in the name.</p>
+<p><code class="docutils literal"><span class="pre">find_and_modify</span></code> has been removed and replaced with 3 options: <code class="docutils literal"><span class="pre">find_one_and_update</span></code>,
+<code class="docutils literal"><span class="pre">find_one_and_delete</span></code> and <code class="docutils literal"><span class="pre">find_one_and_replace</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">text_search</span></code> has been removed as it is now a $text option in a query from
 MongoDB 2.6 onward.</p>
-<p><code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> no longer add an <code class="docutils literal notranslate"><span class="pre">_id</span></code> sort when no sorting options have been
+<p><code class="docutils literal"><span class="pre">first</span></code> and <code class="docutils literal"><span class="pre">last</span></code> no longer add an <code class="docutils literal"><span class="pre">_id</span></code> sort when no sorting options have been
 provided. In order to guarantee that a document is the first or last, it needs to now
 contain an explicit sort.</p>
 <p>Mongoid 5 supports MongoDB 2.4 and higher only - MongoDB 2.2 is no longer

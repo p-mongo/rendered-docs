@@ -219,27 +219,27 @@
 </ul>
 </div>
 <p>Versions 3.6 and higher of the MongoDB server support sessions. You can use sessions with Mongoid in a similar way
-that you would execute a transaction in ActiveRecord. Namely, you can call a method, <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> on a model class
+that you would execute a transaction in ActiveRecord. Namely, you can call a method, <code class="docutils literal"><span class="pre">#with_session</span></code> on a model class
 or on an instance of a model and execute some operations in a block. All operations in the block will be
 executed in the context of single session. Please see the MongoDB Ruby driver documentation for what session options
 are available.</p>
 <p>Please note the following limitations of sessions:</p>
 <ul class="simple">
 <li>Sessions cannot be shared across threads; sessions are not thread-safe. This is consistent with the Ruby driver’s support for sessions.</li>
-<li>Sessions cannot be nested. You cannot called <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> on a model class or a model instance within the block passed to the <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> method on another model class or model instance.</li>
-<li>All model classes and instances used within the session block must use the same driver client. For example, if you have specified different <code class="docutils literal notranslate"><span class="pre">storage_options</span></code> for another model used in the block than that of the model class or instance on which <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> is called, you will get an error.</li>
+<li>Sessions cannot be nested. You cannot called <code class="docutils literal"><span class="pre">#with_session</span></code> on a model class or a model instance within the block passed to the <code class="docutils literal"><span class="pre">#with_session</span></code> method on another model class or model instance.</li>
+<li>All model classes and instances used within the session block must use the same driver client. For example, if you have specified different <code class="docutils literal"><span class="pre">storage_options</span></code> for another model used in the block than that of the model class or instance on which <code class="docutils literal"><span class="pre">#with_session</span></code> is called, you will get an error.</li>
 <li>All connected MongoDB servers must be version 3.6 or higher.</li>
 </ul>
 <div class="section" id="using-a-session-via-model-with-session">
 <h2>Using a Session via Model#with_session<a class="headerlink" href="#using-a-session-via-model-with-session" title="Permalink to this headline">¶</a></h2>
-<p>Call <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> on a model class and pass it session options to execute a block in the context
+<p>Call <code class="docutils literal"><span class="pre">#with_session</span></code> on a model class and pass it session options to execute a block in the context
 of a session.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">with_session</span><span class="p">(</span><span class="ss">causal_consistency</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">with_session</span><span class="p">(</span><span class="ss">causal_consistency</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
   <span class="no">Person</span><span class="o">.</span><span class="n">create!</span>
   <span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">first</span>
   <span class="n">person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Emily&quot;</span>
@@ -251,14 +251,14 @@ copy</a>
 </div>
 <div class="section" id="id2">
 <h2>Using a Session via model#with_session<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Call <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> on a model instance and pass it session options to execute a block in the context
+<p>Call <code class="docutils literal"><span class="pre">#with_session</span></code> on a model instance and pass it session options to execute a block in the context
 of a session.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">with_session</span><span class="p">(</span><span class="ss">causal_consistency</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">with_session</span><span class="p">(</span><span class="ss">causal_consistency</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
   <span class="n">person</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;Emily&#39;</span>
   <span class="n">person</span><span class="o">.</span><span class="n">save</span>
   <span class="n">person</span><span class="o">.</span><span class="n">posts</span> <span class="o">&lt;&lt;</span> <span class="no">Post</span><span class="o">.</span><span class="n">create!</span>
