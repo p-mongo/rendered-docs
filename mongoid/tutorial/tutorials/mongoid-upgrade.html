@@ -269,14 +269,14 @@ copy</a>
 <span class="k">end</span>
 
 <span class="n">job</span> <span class="o">=</span> <span class="no">Job</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">tasks</span><span class="p">:</span> <span class="o">[</span>
-  <span class="no">Task</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Clean house&#39;</span><span class="p">,</span> <span class="ss">pattern</span><span class="p">:</span> <span class="sr">/test/</span><span class="p">),</span>
+  <span class="no">Task</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Clean house&#39;</span><span class="p">,</span> <span class="ss">pattern</span><span class="p">:</span> <span class="sr">/test/</span><span class="p">,</span> <span class="ss">hours</span><span class="p">:</span> <span class="mi">12</span><span class="p">),</span>
 <span class="o">]</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>The changes in behavior are as follows:</p>
-<div class="section" id="eq-and-regular-expressions">
-<h4><code class="docutils literal"><span class="pre">$eq</span></code> and Regular Expressions<a class="headerlink" href="#eq-and-regular-expressions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="eq-and-regular-expression-values">
+<h4><code class="docutils literal"><span class="pre">$eq</span></code> and Regular Expression Values<a class="headerlink" href="#eq-and-regular-expression-values" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal"><span class="pre">$eq</span></code> now performs exact matching when given regular a expression argument.
 Previously, both operators used regular expression matching, which caused
 Mongoid to not find documents where the field being matched was a regular
@@ -294,7 +294,7 @@ copy</a>
 
 <span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">pattern</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$eq&#39;</span><span class="p">:</span> <span class="sr">/test/</span><span class="p">})</span><span class="o">.</span><span class="n">first</span>
 <span class="c1"># Mongoid 7.2:</span>
-<span class="c1"># =&gt; #&lt;Task _id: 5ef802902c97a62dce4d5b9e, name: &quot;Clean house&quot;, pattern: /test/&gt;</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8dc3e2c97a645ec86bb33, name: &quot;Clean house&quot;, pattern: /test/, hours: 12&gt;</span>
 <span class="c1"># Mongoid 7.1:</span>
 <span class="c1"># =&gt; nil</span>
 </pre></div>
@@ -314,8 +314,8 @@ copy</a>
 </div>
 </div>
 </div>
-<div class="section" id="ne-and-regular-expressions">
-<h4><code class="docutils literal"><span class="pre">$ne</span></code> and Regular Expressions<a class="headerlink" href="#ne-and-regular-expressions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="ne-and-regular-expression-values">
+<h4><code class="docutils literal"><span class="pre">$ne</span></code> and Regular Expression Values<a class="headerlink" href="#ne-and-regular-expression-values" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal"><span class="pre">$ne</span></code> no longer accepts regular expression arguments, which is the behavior
 of MongoDB server:</p>
 <div class="button-code-block">
@@ -346,23 +346,132 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Notably this applies to the following cases:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">$and</span></code>, <code class="docutils literal"><span class="pre">$nor</span></code> and <code class="docutils literal"><span class="pre">$or</span></code> operators now raise an exception when given
+</div>
+<div class="section" id="eq-ne-and-range-values">
+<h4><code class="docutils literal"><span class="pre">$eq</span></code>, <code class="docutils literal"><span class="pre">$ne</span></code> and Range Values<a class="headerlink" href="#eq-ne-and-range-values" title="Permalink to this headline">¶</a></h4>
+<p>Range values are no longer accepted by <code class="docutils literal"><span class="pre">$eq</span></code> and <code class="docutils literal"><span class="pre">$ne</span></code> operators.
+This change should not be visible to applications since Mongoid generally
+expands Range values to a <code class="docutils literal"><span class="pre">$gte</span></code>/<code class="docutils literal"><span class="pre">$lte</span></code> pair before they get to the
+embedded matchers.</p>
+<p>To query using a range, use the following syntax which works in Mongoid 7.2
+as well as previous versions:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">hours</span><span class="p">:</span> <span class="mi">10</span><span class="o">..</span><span class="mi">15</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;hours&quot;=&gt;{&quot;$gte&quot;=&gt;10, &quot;$lte&quot;=&gt;15}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Task</span>
+<span class="c1">#   embedded: true&gt;</span>
+
+<span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">hours</span><span class="p">:</span> <span class="mi">10</span><span class="o">..</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8dd4c2c97a6465e8a4ffa, name: &quot;Clean house&quot;, pattern: /test/, hours: 12&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="elemmatch">
+<h4><code class="docutils literal"><span class="pre">$elemMatch</span></code><a class="headerlink" href="#elemmatch" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">$elemMatch</span></code> now supports specifying operators as top-level fields:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">mixed_tasks_job</span> <span class="o">=</span> <span class="no">Job</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">tasks</span><span class="p">:</span> <span class="o">[</span>
+  <span class="no">Task</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Clean house&#39;</span><span class="p">,</span> <span class="ss">hours</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="ss">supplies</span><span class="p">:</span> <span class="o">[</span><span class="p">{</span><span class="ss">broom</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span><span class="o">]</span><span class="p">),</span>
+  <span class="no">Task</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Clean office&#39;</span><span class="p">,</span> <span class="ss">hours</span><span class="p">:</span> <span class="o">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="o">]</span><span class="p">),</span>
+<span class="o">]</span><span class="p">)</span>
+
+<span class="n">mixed_tasks_job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">hours</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$elemMatch&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$lt&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}})</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2:</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8c7202c97a6465e8a4ff3, name: &quot;Clean office&quot;, hours: [8, 16]&gt;</span>
+<span class="c1"># Mongoid 7.1: error</span>
+</pre></div>
+</div>
+</div>
+<p>Implicit matching under <code class="docutils literal"><span class="pre">$elemMatch</span></code> has been fixed and now works:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">mixed_tasks_job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">supplies</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$elemMatch&#39;</span><span class="p">:</span> <span class="p">{</span><span class="ss">broom</span><span class="p">:</span> <span class="mi">1</span><span class="p">}})</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2:</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8c9162c97a6465e8a4ff6, name: &quot;Clean house&quot;, hours: 12, supplies: [{:broom=&gt;1}]&gt;</span>
+<span class="c1"># Mongoid 7.1:</span>
+<span class="c1"># =&gt; nil</span>
+</pre></div>
+</div>
+</div>
+<p>For compatibility with MongoDB server, <code class="docutils literal"><span class="pre">$elemMatch</span></code> requires a <code class="docutils literal"><span class="pre">Hash</span></code>
+argument. Use <code class="docutils literal"><span class="pre">$eq</span></code> or <code class="docutils literal"><span class="pre">$regex</span></code> to perform equality comparisons or
+regular expression matches, respectively:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">mixed_tasks_job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">hours</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$elemMatch&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">})</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2: raises Mongoid::Errors::InvalidQuery</span>
+<span class="c1"># Mongoid 7.1:</span>
+<span class="c1"># =&gt; nil</span>
+
+<span class="n">mixed_tasks_job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">hours</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$elemMatch&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$eq&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}})</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2:</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8ca0b2c97a6465e8a4ff9, name: &quot;Clean office&quot;, hours: [8, 16]&gt;</span>
+<span class="c1"># Mongoid 7.1: error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="and-nor-or-and-empty-argument-arrays">
+<h4><code class="docutils literal"><span class="pre">$and</span></code>, <code class="docutils literal"><span class="pre">$nor</span></code>, <code class="docutils literal"><span class="pre">$or</span></code> and Empty Argument Arrays<a class="headerlink" href="#and-nor-or-and-empty-argument-arrays" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">$and</span></code>, <code class="docutils literal"><span class="pre">$nor</span></code> and <code class="docutils literal"><span class="pre">$or</span></code> operators now raise an exception when given
 empty arrays as arguments. This only applies to raw MQL query expressions;
 the corresponding Mongoid <a class="reference internal" href="mongoid-queries.html#logical-operations"><span class="std std-ref">query methods</span></a>
 continue to permit being called without arguments. In previous versions
 of Mongoid, <code class="docutils literal"><span class="pre">$and</span></code> would match when given an empty array of conditions
 and <code class="docutils literal"><span class="pre">$nor</span></code> and <code class="docutils literal"><span class="pre">$or</span></code> would not match when given empty arrays of
-conditions.</li>
-<li><code class="docutils literal"><span class="pre">$elemMatch</span></code> operator now raises an exception when examining a document
-where the respective field is of a type other than <code class="docutils literal"><span class="pre">Array</span></code>. Previously
-<code class="docutils literal"><span class="pre">$elemMatch</span></code> would not match in such cases.</li>
-<li><code class="docutils literal"><span class="pre">$in</span></code> operator now does not perform regular expression matches.</li>
-<li><code class="docutils literal"><span class="pre">$ne</span></code> operator now raises an exception when given a regular expression
-argument. Previous versions of Mongoid performed a regular expression match
-on the document field being considered.</li>
-</ul>
+conditions.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;$and&#39;</span><span class="p">:</span> <span class="o">[]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2: raises Mongoid::Errors::InvalidQuery</span>
+<span class="c1"># Mongoid 7.1:</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8dc3e2c97a645ec86bb33, name: &quot;Clean house&quot;, pattern: /test/, hours: 12&gt;</span>
+
+<span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;$nor&#39;</span><span class="p">:</span> <span class="o">[]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2: raises Mongoid::Errors::InvalidQuery</span>
+<span class="c1"># Mongoid 7.1:</span>
+<span class="c1"># =&gt; nil</span>
+
+<span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;$or&#39;</span><span class="p">:</span> <span class="o">[]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2: raises Mongoid::Errors::InvalidQuery</span>
+<span class="c1"># Mongoid 7.1:</span>
+<span class="c1"># =&gt; nil</span>
+
+<span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">and</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2 and 7.1:</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8dc3e2c97a645ec86bb33, name: &quot;Clean house&quot;, pattern: /test/, hours: 12&gt;</span>
+
+<span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">nor</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2 and 7.1:</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8dc3e2c97a645ec86bb33, name: &quot;Clean house&quot;, pattern: /test/, hours: 12&gt;</span>
+
+<span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">or</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Mongoid 7.2 and 7.1:</span>
+<span class="c1"># =&gt; #&lt;Task _id: 5ef8dc3e2c97a645ec86bb33, name: &quot;Clean house&quot;, pattern: /test/, hours: 12&gt;</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
