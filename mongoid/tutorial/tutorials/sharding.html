@@ -292,6 +292,16 @@ index country: 1</p>
 </dl>
 <p>end</p>
 </div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If a model declares a shard key, Mongoid expects the respective collection
+to be sharded with the specified shard key. When reloading models, Mongoid
+will provide the shard key in addition to the <code class="docutils literal"><span class="pre">id</span></code> field value to the
+<code class="docutils literal"><span class="pre">find</span></code> command to improve query performance, especially on <a class="reference external" href="https://docs.atlas.mongodb.com/global-clusters/">geographically
+distributed sharded clusters</a>.
+If the collection is not sharded with the specified shard key, queries
+may produce incorrect results.</p>
+</div>
 </div>
 <div class="section" id="sharding-management-rake-tasks">
 <span id="sharding-management"></span><h2>Sharding Management Rake Tasks<a class="headerlink" href="#sharding-management-rake-tasks" title="Permalink to this headline">¶</a></h2>
