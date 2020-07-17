@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::ServerSelector::SecondaryPreferred
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -88,11 +88,6 @@
   
   
   
-  
-  <dl>
-      <dt>Includes:</dt>
-      <dd><span class='object_link'><a href="Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Selectable</a></span></dd>
-  </dl>
   
   
 
@@ -187,8 +182,8 @@
 
   <h2>Instance Attribute Summary</h2>
   
-  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Selectable</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Selectable.html#max_staleness-instance_method" title="Mongo::ServerSelector::Selectable#max_staleness (method)">#max_staleness</a></span>, <span class='object_link'><a href="Selectable.html#options-instance_method" title="Mongo::ServerSelector::Selectable#options (method)">#options</a></span>, <span class='object_link'><a href="Selectable.html#tag_sets-instance_method" title="Mongo::ServerSelector::Selectable#tag_sets (method)">#tag_sets</a></span></p>
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Base.html" title="Mongo::ServerSelector::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#hedge-instance_method" title="Mongo::ServerSelector::Base#hedge (method)">#hedge</a></span>, <span class='object_link'><a href="Base.html#max_staleness-instance_method" title="Mongo::ServerSelector::Base#max_staleness (method)">#max_staleness</a></span>, <span class='object_link'><a href="Base.html#options-instance_method" title="Mongo::ServerSelector::Base#options (method)">#options</a></span>, <span class='object_link'><a href="Base.html#tag_sets-instance_method" title="Mongo::ServerSelector::Base#tag_sets (method)">#tag_sets</a></span></p>
 
 
   
@@ -198,6 +193,30 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hedge_allowed%3F-instance_method" title="#hedge_allowed? (instance method)">#<strong>hedge_allowed?</strong>  &#x21d2; true </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether the hedge option is allowed to be defined for this server preference.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -331,22 +350,97 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Selectable</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Selectable.html#==-instance_method" title="Mongo::ServerSelector::Selectable#== (method)">#==</a></span>, <span class='object_link'><a href="Selectable.html#candidates-instance_method" title="Mongo::ServerSelector::Selectable#candidates (method)">#candidates</a></span>, <span class='object_link'><a href="Selectable.html#initialize-instance_method" title="Mongo::ServerSelector::Selectable#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Selectable.html#inspect-instance_method" title="Mongo::ServerSelector::Selectable#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Selectable.html#local_threshold-instance_method" title="Mongo::ServerSelector::Selectable#local_threshold (method)">#local_threshold</a></span>, <span class='object_link'><a href="Selectable.html#local_threshold_with_cluster-instance_method" title="Mongo::ServerSelector::Selectable#local_threshold_with_cluster (method)">#local_threshold_with_cluster</a></span>, <span class='object_link'><a href="Selectable.html#select_server-instance_method" title="Mongo::ServerSelector::Selectable#select_server (method)">#select_server</a></span>, <span class='object_link'><a href="Selectable.html#server_selection_timeout-instance_method" title="Mongo::ServerSelector::Selectable#server_selection_timeout (method)">#server_selection_timeout</a></span></p>
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="Mongo::ServerSelector::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#==-instance_method" title="Mongo::ServerSelector::Base#== (method)">#==</a></span>, <span class='object_link'><a href="Base.html#candidates-instance_method" title="Mongo::ServerSelector::Base#candidates (method)">#candidates</a></span>, <span class='object_link'><a href="Base.html#initialize-instance_method" title="Mongo::ServerSelector::Base#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Base.html#inspect-instance_method" title="Mongo::ServerSelector::Base#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Base.html#local_threshold-instance_method" title="Mongo::ServerSelector::Base#local_threshold (method)">#local_threshold</a></span>, <span class='object_link'><a href="Base.html#local_threshold_with_cluster-instance_method" title="Mongo::ServerSelector::Base#local_threshold_with_cluster (method)">#local_threshold_with_cluster</a></span>, <span class='object_link'><a href="Base.html#select_server-instance_method" title="Mongo::ServerSelector::Base#select_server (method)">#select_server</a></span>, <span class='object_link'><a href="Base.html#server_selection_timeout-instance_method" title="Mongo::ServerSelector::Base#server_selection_timeout (method)">#server_selection_timeout</a></span>, <span class='object_link'><a href="Base.html#suitable_servers-instance_method" title="Mongo::ServerSelector::Base#suitable_servers (method)">#suitable_servers</a></span>, <span class='object_link'><a href="Base.html#try_select_server-instance_method" title="Mongo::ServerSelector::Base#try_select_server (method)">#try_select_server</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="Base.html#initialize-instance_method" title="Mongo::ServerSelector::Base#initialize (method)">Mongo::ServerSelector::Base</a></span></p>
+  
+</div>
 
-  
-  
-  
-  
-  
-  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="name-instance_method">
+  <h3 class="signature first" id="hedge_allowed?-instance_method">
+  
+    #<strong>hedge_allowed?</strong>  &#x21d2; <tt>true</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Whether the hedge option is allowed to be defined for this server preference.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>true</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hedge_allowed?'>hedge_allowed?</span>
+  <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="name-instance_method">
   
     #<strong>name</strong>  &#x21d2; <tt><span class='object_link'><a href="../../Symbol.html" title="Symbol (class)">Symbol</a></span></tt> 
   
@@ -417,12 +511,12 @@
       <pre class="lines">
 
 
+38
 39
-40
-41</pre>
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='symbol'>:secondary_preferred</span>
@@ -495,12 +589,12 @@
       <pre class="lines">
 
 
+48
 49
-50
-51</pre>
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_slave_ok?'>slave_ok?</span>
   <span class='kw'>true</span>
@@ -570,12 +664,12 @@
       <pre class="lines">
 
 
+57
 58
-59
-60</pre>
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags_allowed?'>tags_allowed?</span>
   <span class='kw'>true</span>
@@ -648,12 +742,12 @@
       <pre class="lines">
 
 
-68
-69
-70</pre>
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_doc'>to_doc</span>
   <span class='id identifier rubyid_full_doc'>full_doc</span>
@@ -728,24 +822,24 @@
       <pre class="lines">
 
 
-82
-83
-84
-85
-86
-87
 88
 89
-90</pre>
+90
+91
+92
+93
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/secondary_preferred.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_mongos'>to_mongos</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_tag_sets'>tag_sets</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_max_staleness'>max_staleness</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>    <span class='comment'># The server preference is not sent to mongos as part of the query
+  <span class='kw'>if</span> <span class='id identifier rubyid_tag_sets'>tag_sets</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_max_staleness'>max_staleness</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_hedge'>hedge</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='comment'># The server preference is not sent to mongos as part of the query
 </span>    <span class='comment'># selector if there are no tag sets, for maximum backwards compatibility.
-</span>
-    <span class='kw'>nil</span>
+</span>    <span class='kw'>nil</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_to_doc'>to_doc</span>
   <span class='kw'>end</span>
@@ -760,9 +854,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:56 2020 by
+  Generated on Fri Jul 17 03:41:11 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

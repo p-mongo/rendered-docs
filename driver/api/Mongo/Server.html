@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Server
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -105,7 +105,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/mongo/server.rb<span class="defines">,<br />
-  lib/mongo/server/context.rb,<br /> lib/mongo/server/monitor.rb,<br /> lib/mongo/server/connection.rb,<br /> lib/mongo/server/description.rb,<br /> lib/mongo/server/app_metadata.rb,<br /> lib/mongo/server/connection_base.rb,<br /> lib/mongo/server/connection_pool.rb,<br /> lib/mongo/server/connection_common.rb,<br /> lib/mongo/server/monitor/connection.rb,<br /> lib/mongo/server/pending_connection.rb,<br /> lib/mongo/server/description/features.rb,<br /> lib/mongo/server/monitor/app_metadata.rb,<br /> lib/mongo/server/round_trip_time_averager.rb,<br /> lib/mongo/server/connection_pool/populator.rb</span>
+  lib/mongo/server/context.rb,<br /> lib/mongo/server/monitor.rb,<br /> lib/mongo/server/connection.rb,<br /> lib/mongo/server/description.rb,<br /> lib/mongo/server/app_metadata.rb,<br /> lib/mongo/server/push_monitor.rb,<br /> lib/mongo/server/connection_base.rb,<br /> lib/mongo/server/connection_pool.rb,<br /> lib/mongo/server/connection_common.rb,<br /> lib/mongo/server/monitor/connection.rb,<br /> lib/mongo/server/pending_connection.rb,<br /> lib/mongo/server/description/features.rb,<br /> lib/mongo/server/monitor/app_metadata.rb,<br /> lib/mongo/server/push_monitor/connection.rb,<br /> lib/mongo/server/round_trip_time_averager.rb,<br /> lib/mongo/server/connection_pool/populator.rb</span>
 </dd>
   </dl>
   
@@ -144,7 +144,7 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Server/AppMetadata.html" title="Mongo::Server::AppMetadata (class)">AppMetadata</a></span>, <span class='object_link'><a href="Server/Connection.html" title="Mongo::Server::Connection (class)">Connection</a></span>, <span class='object_link'><a href="Server/ConnectionBase.html" title="Mongo::Server::ConnectionBase (class)">ConnectionBase</a></span>, <span class='object_link'><a href="Server/ConnectionCommon.html" title="Mongo::Server::ConnectionCommon (class)">ConnectionCommon</a></span>, <span class='object_link'><a href="Server/ConnectionPool.html" title="Mongo::Server::ConnectionPool (class)">ConnectionPool</a></span>, <span class='object_link'><a href="Server/Context.html" title="Mongo::Server::Context (class)">Context</a></span>, <span class='object_link'><a href="Server/Description.html" title="Mongo::Server::Description (class)">Description</a></span>, <span class='object_link'><a href="Server/Monitor.html" title="Mongo::Server::Monitor (class)">Monitor</a></span>, <span class='object_link'><a href="Server/PendingConnection.html" title="Mongo::Server::PendingConnection (class)">PendingConnection</a></span>, <span class='object_link'><a href="Server/Populator.html" title="Mongo::Server::Populator (class)">Populator</a></span>, <span class='object_link'><a href="Server/RoundTripTimeAverager.html" title="Mongo::Server::RoundTripTimeAverager (class)">RoundTripTimeAverager</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Server/AppMetadata.html" title="Mongo::Server::AppMetadata (class)">AppMetadata</a></span>, <span class='object_link'><a href="Server/Connection.html" title="Mongo::Server::Connection (class)">Connection</a></span>, <span class='object_link'><a href="Server/ConnectionBase.html" title="Mongo::Server::ConnectionBase (class)">ConnectionBase</a></span>, <span class='object_link'><a href="Server/ConnectionCommon.html" title="Mongo::Server::ConnectionCommon (class)">ConnectionCommon</a></span>, <span class='object_link'><a href="Server/ConnectionPool.html" title="Mongo::Server::ConnectionPool (class)">ConnectionPool</a></span>, <span class='object_link'><a href="Server/Context.html" title="Mongo::Server::Context (class)">Context</a></span>, <span class='object_link'><a href="Server/Description.html" title="Mongo::Server::Description (class)">Description</a></span>, <span class='object_link'><a href="Server/Monitor.html" title="Mongo::Server::Monitor (class)">Monitor</a></span>, <span class='object_link'><a href="Server/PendingConnection.html" title="Mongo::Server::PendingConnection (class)">PendingConnection</a></span>, <span class='object_link'><a href="Server/Populator.html" title="Mongo::Server::Populator (class)">Populator</a></span>, <span class='object_link'><a href="Server/PushMonitor.html" title="Mongo::Server::PushMonitor (class)">PushMonitor</a></span>, <span class='object_link'><a href="Server/RoundTripTimeAverager.html" title="Mongo::Server::RoundTripTimeAverager (class)">RoundTripTimeAverager</a></span>
     
   
 </p>
@@ -1379,7 +1379,7 @@
   <span class='ivar'>@connection_id_gen</span> <span class='op'>=</span> <span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Id.html" title="Mongo::Id (module)">Id</a></span></span>
   <span class='kw'>end</span>
-  <span class='ivar'>@scan_semaphore</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Semaphore.html" title="Mongo::Semaphore (class)">Semaphore</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Semaphore.html#initialize-instance_method" title="Mongo::Semaphore#initialize (method)">new</a></span></span>
+  <span class='ivar'>@scan_semaphore</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="DistinguishingSemaphore.html" title="Mongo::DistinguishingSemaphore (class)">DistinguishingSemaphore</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="DistinguishingSemaphore.html#initialize-instance_method" title="Mongo::DistinguishingSemaphore#initialize (method)">new</a></span></span>
   <span class='ivar'>@round_trip_time_averager</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server/RoundTripTimeAverager.html" title="Mongo::Server::RoundTripTimeAverager (class)">RoundTripTimeAverager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server/RoundTripTimeAverager.html#initialize-instance_method" title="Mongo::Server::RoundTripTimeAverager#initialize (method)">new</a></span></span>
   <span class='ivar'>@description</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server/Description.html" title="Mongo::Server::Description (class)">Description</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server/Description.html#initialize-instance_method" title="Mongo::Server::Description#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@last_scan</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -2285,16 +2285,16 @@
       <pre class="lines">
 
 
-535
-536
-537
-538
-539
-540
-541</pre>
+541
+542
+543
+544
+545
+546
+547</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 535</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 541</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_connection_pool'>clear_connection_pool</span>
   <span class='ivar'>@pool_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -2752,17 +2752,17 @@
   <span class='id identifier rubyid__pool'>_pool</span> <span class='op'>=</span> <span class='ivar'>@pool_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
     <span class='ivar'>@pool</span>
   <span class='kw'>end</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid__pool'>_pool</span>    <span class='comment'># For backwards compatibility we disconnect/clear the pool rather
+  <span class='kw'>if</span> <span class='id identifier rubyid__pool'>_pool</span>
+    <span class='comment'># For backwards compatibility we disconnect/clear the pool rather
 </span>    <span class='comment'># than close it here. We also stop the populator which allows the
 </span>    <span class='comment'># the pool to continue providing connections but stops it from
 </span>    <span class='comment'># connecting in background on clients/servers that are in fact
 </span>    <span class='comment'># intended to be closed and no longer used.
-</span>
-    <span class='kw'>begin</span>
+</span>    <span class='kw'>begin</span>
       <span class='id identifier rubyid__pool'>_pool</span><span class='period'>.</span><span class='id identifier rubyid_disconnect!'>disconnect!</span><span class='lparen'>(</span><span class='label'>stop_populator:</span> <span class='kw'>true</span><span class='rparen'>)</span>
-    <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/PoolClosedError.html" title="Mongo::Error::PoolClosedError (class)">PoolClosedError</a></span></span>      <span class='comment'># If the pool was already closed, we don&#39;t need to do anything here.
-</span>
-    <span class='kw'>end</span>
+    <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/PoolClosedError.html" title="Mongo::Error::PoolClosedError (class)">PoolClosedError</a></span></span>
+      <span class='comment'># If the pool was already closed, we don&#39;t need to do anything here.
+</span>    <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='ivar'>@connected</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='kw'>true</span>
@@ -2884,16 +2884,16 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_handle_auth_failure!'>handle_auth_failure!</span>
   <span class='kw'>yield</span>
-<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">SocketTimeoutError</a></span></span>  <span class='comment'># possibly cluster is slow, do not give up on it
-</span>
+<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">SocketTimeoutError</a></span></span>
+  <span class='comment'># possibly cluster is slow, do not give up on it
+</span>  <span class='id identifier rubyid_raise'>raise</span>
+<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/SocketError.html" title="Mongo::Error::SocketError (class)">SocketError</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='comment'># non-timeout network error
+</span>  <span class='id identifier rubyid_unknown!'>unknown!</span><span class='lparen'>(</span><span class='label'>generation:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_generation'>generation</span><span class='comma'>,</span> <span class='label'>stop_push_monitor:</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span>
-<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/SocketError.html" title="Mongo::Error::SocketError (class)">SocketError</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>  <span class='comment'># non-timeout network error
-</span>
-  <span class='id identifier rubyid_unknown!'>unknown!</span><span class='lparen'>(</span><span class='label'>generation:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_generation'>generation</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span>
-<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="Auth.html" title="Mongo::Auth (module)">Auth</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Auth/Unauthorized.html" title="Mongo::Auth::Unauthorized (class)">Unauthorized</a></span></span>  <span class='comment'># auth error, keep server description and topology as they are
-</span>
-  <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_disconnect!'>disconnect!</span>
+<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="Auth.html" title="Mongo::Auth (module)">Auth</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Auth/Unauthorized.html" title="Mongo::Auth::Unauthorized (class)">Unauthorized</a></span></span>
+  <span class='comment'># auth error, keep server description and topology as they are
+</span>  <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_disconnect!'>disconnect!</span>
   <span class='id identifier rubyid_raise'>raise</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2960,7 +2960,7 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_handle_handshake_failure!'>handle_handshake_failure!</span>
   <span class='kw'>yield</span>
 <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/SocketError.html" title="Mongo::Error::SocketError (class)">SocketError</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">SocketTimeoutError</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
-  <span class='id identifier rubyid_unknown!'>unknown!</span><span class='lparen'>(</span><span class='label'>generation:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_generation'>generation</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_unknown!'>unknown!</span><span class='lparen'>(</span><span class='label'>generation:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_generation'>generation</span><span class='comma'>,</span> <span class='label'>stop_push_monitor:</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -3353,12 +3353,12 @@
       <pre class="lines">
 
 
-544
-545
-546</pre>
+550
+551
+552</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 544</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 550</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_next_connection_id'>next_connection_id</span>
   <span class='ivar'>@connection_id_gen</span><span class='period'>.</span><span class='id identifier rubyid_next_id'>next_id</span>
@@ -4100,6 +4100,19 @@
           
         </li>
       
+        <li>
+          <span class="name">:stop_push_monitor</span>
+          <span class="type">(<tt>true | false</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Whether to stop the PushMonitor associated with the server, if any.</p>
+</div>
+          
+        </li>
+      
     </ul>
   
 
@@ -4126,8 +4139,6 @@
       <pre class="lines">
 
 
-508
-509
 510
 511
 512
@@ -4145,10 +4156,16 @@
 524
 525
 526
-527</pre>
+527
+528
+529
+530
+531
+532
+533</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 508</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 510</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unknown!'>unknown!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:generation</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:generation</span><span class='rbracket'>]</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_generation'>generation</span>
@@ -4159,6 +4176,10 @@
     <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:topology_version</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_gt?'>gt?</span><span class='lparen'>(</span><span class='id identifier rubyid_description'>description</span><span class='period'>.</span><span class='id identifier rubyid_topology_version'>topology_version</span><span class='rparen'>)</span>
   <span class='kw'>then</span>
     <span class='kw'>return</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:stop_push_monitor</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_monitor'>monitor</span><span class='op'>&amp;.</span><span class='id identifier rubyid_stop_push_monitor!'>stop_push_monitor!</span>
   <span class='kw'>end</span>
 
   <span class='comment'># SDAM flow will update description on the server without in-place
@@ -4219,12 +4240,12 @@
       <pre class="lines">
 
 
-530
-531
-532</pre>
+536
+537
+538</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 530</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 536</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_description'>update_description</span><span class='lparen'>(</span><span class='id identifier rubyid_description'>description</span><span class='rparen'>)</span>
   <span class='ivar'>@description</span> <span class='op'>=</span> <span class='id identifier rubyid_description'>description</span>
@@ -4278,12 +4299,12 @@
       <pre class="lines">
 
 
-549
-550
-551</pre>
+555
+556
+557</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 549</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server.rb', line 555</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_last_scan'>update_last_scan</span>
   <span class='ivar'>@last_scan</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
@@ -4387,9 +4408,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:42 2020 by
+  Generated on Fri Jul 17 03:40:57 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

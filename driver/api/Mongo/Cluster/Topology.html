@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Cluster::Topology
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -459,15 +459,15 @@
     <span class='const'><span class='object_link'><a href="Topology/ReplicaSetNoPrimary.html" title="Mongo::Cluster::Topology::ReplicaSetNoPrimary (class)">ReplicaSetNoPrimary</a></span></span>
   <span class='kw'>else</span>
     <span class='const'><span class='object_link'><a href="Topology/Unknown.html" title="Mongo::Cluster::Topology::Unknown (class)">Unknown</a></span></span>
-  <span class='kw'>end</span>  <span class='comment'># Options here are client/cluster/server options.
+  <span class='kw'>end</span>
+  <span class='comment'># Options here are client/cluster/server options.
 </span>  <span class='comment'># In particular the replica set name key is different for
 </span>  <span class='comment'># topology.
 </span>  <span class='comment'># If replica_set_name is given (as might be internally by driver),
 </span>  <span class='comment'># use that key.
 </span>  <span class='comment'># Otherwise (e.g. options passed down from client),
 </span>  <span class='comment'># move replica_set to replica_set_name.
-</span>
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_cls'>cls</span> <span class='op'>&lt;=</span> <span class='const'><span class='object_link'><a href="Topology/ReplicaSetNoPrimary.html" title="Mongo::Cluster::Topology::ReplicaSetNoPrimary (class)">ReplicaSetNoPrimary</a></span></span> <span class='op'>||</span> <span class='id identifier rubyid_cls'>cls</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="Topology/Single.html" title="Mongo::Cluster::Topology::Single (class)">Single</a></span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:replica_set_name</span><span class='rbracket'>]</span>
+</span>  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_cls'>cls</span> <span class='op'>&lt;=</span> <span class='const'><span class='object_link'><a href="Topology/ReplicaSetNoPrimary.html" title="Mongo::Cluster::Topology::ReplicaSetNoPrimary (class)">ReplicaSetNoPrimary</a></span></span> <span class='op'>||</span> <span class='id identifier rubyid_cls'>cls</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="Topology/Single.html" title="Mongo::Cluster::Topology::Single (class)">Single</a></span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:replica_set_name</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
     <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:replica_set_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:replica_set</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -483,9 +483,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:38 2020 by
+  Generated on Fri Jul 17 03:40:52 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

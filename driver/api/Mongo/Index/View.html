@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Index::View
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -647,14 +647,14 @@
       <pre class="lines">
 
 
-227
-228
-229
-230
-231</pre>
+268
+269
+270
+271
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 227</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 268</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@collection</span> <span class='op'>=</span> <span class='id identifier rubyid_collection'>collection</span>
@@ -872,6 +872,17 @@
   <span class='lbrace'>{</span> <span class='label'>key:</span> <span class='lbrace'>{</span> <span class='label'>age:</span> <span class='op'>-</span><span class='int'>1</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>background:</span> <span class='kw'>true</span> <span class='rbrace'>}</span>
 <span class='rbracket'>]</span><span class='rparen'>)</span></code></pre>
     
+      
+        <p class="example_title"><div class='inline'>
+<p>Create multiple indexes with options.</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_view'>view</span><span class='period'>.</span><span class='id identifier rubyid_create_many'>create_many</span><span class='lparen'>(</span>
+  <span class='lbrace'>{</span> <span class='label'>key:</span> <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>unique:</span> <span class='kw'>true</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='lbrace'>{</span> <span class='label'>key:</span> <span class='lbrace'>{</span> <span class='label'>age:</span> <span class='op'>-</span><span class='int'>1</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>background:</span> <span class='kw'>true</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='lbrace'>{</span> <span class='label'>commit_quorum:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>majority</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+<span class='rparen'>)</span></code></pre>
+    
   </div>
 <p class="tag_title">Parameters:</p>
 <ul class="param">
@@ -887,7 +898,10 @@
       
         &mdash;
         <div class='inline'>
-<p>The index specifications. Each model MUST include a :key option.</p>
+<p>The index specifications. Each model MUST include a :key option, except for the last item in the Array, which may be a Hash specifying options relevant to the createIndexes operation. The following options are accepted:</p>
+<ul><li>
+<p>commit_quorum: Specify how many data-bearing members of a replica set, including the primary, must complete the index builds successfully before the primary marks the indexes as ready.</p>
+</li></ul>
 </div>
       
     </li>
@@ -935,45 +949,89 @@
       <pre class="lines">
 
 
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169</pre>
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 170</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_many'>create_many</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_models'>models</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:with_session</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_session'>session</span><span class='op'>|</span>
     <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_next_primary'>next_primary</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_indexes'>indexes</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_models'>normalize_models</span><span class='lparen'>(</span><span class='id identifier rubyid_models'>models</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_models'>models</span> <span class='op'>=</span> <span class='id identifier rubyid_models'>models</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_models'>models</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_models'>models</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:key</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_models'>models</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># While server versions 3.4 and newer generally perform option
+</span>    <span class='comment'># validation, there was a bug on server versions 4.2.0 - 4.2.5 where
+</span>    <span class='comment'># the server would accept the commitQuorum option and use it internally
+</span>    <span class='comment'># (see SERVER-47193). As a result, the drivers specifications require
+</span>    <span class='comment'># drivers to perform validation and raise an error when the commitQuorum
+</span>    <span class='comment'># option is passed to servers that don&#39;t support it.
+</span>    <span class='id identifier rubyid_description'>description</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span> <span class='rbrace'>}</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_description'>description</span><span class='period'>.</span><span class='id identifier rubyid_max_wire_version'>max_wire_version</span> <span class='op'>&lt;</span> <span class='int'>9</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:commit_quorum</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/UnsupportedOption.html" title="Mongo::Error::UnsupportedOption (class)">UnsupportedOption</a></span></span><span class='period'>.</span><span class='id identifier rubyid_commit_quorum_error'><span class='object_link'><a href="../Error/UnsupportedOption.html#commit_quorum_error-class_method" title="Mongo::Error::UnsupportedOption.commit_quorum_error (method)">commit_quorum_error</a></span></span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_indexes'>indexes</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_models'>normalize_models</span><span class='lparen'>(</span><span class='id identifier rubyid_models'>models</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_indexes'>indexes</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_index'>index</span><span class='op'>|</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_index'>index</span><span class='lbracket'>[</span><span class='symbol'>:bucketSize</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_index'>index</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bucketSize</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
         <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_log_warn'>log_warn</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Haystack indexes (bucketSize index option) are deprecated as of MongoDB 4.4</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
+
     <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-            <span class='label'>indexes:</span> <span class='id identifier rubyid_indexes'>indexes</span><span class='comma'>,</span>
-            <span class='label'>db_name:</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
-            <span class='label'>coll_name:</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
-            <span class='label'>session:</span> <span class='id identifier rubyid_session'>session</span>
-           <span class='rbrace'>}</span>
-    <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_write_concern'>write_concern</span> <span class='kw'>if</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_collation_enabled?'>collation_enabled?</span>
+      <span class='label'>indexes:</span> <span class='id identifier rubyid_indexes'>indexes</span><span class='comma'>,</span>
+      <span class='label'>db_name:</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+      <span class='label'>coll_name:</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+      <span class='label'>session:</span> <span class='id identifier rubyid_session'>session</span><span class='comma'>,</span>
+      <span class='label'>commit_quorum:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:commit_quorum</span><span class='rbracket'>]</span>
+     <span class='rbrace'>}</span>
+
+    <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_write_concern'>write_concern</span> <span class='kw'>if</span> <span class='id identifier rubyid_description'>description</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_collation_enabled?'>collation_enabled?</span>
+
     <span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/CreateIndex.html" title="Mongo::Operation::CreateIndex (class)">CreateIndex</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -1178,6 +1236,19 @@
           
         </li>
       
+        <li>
+          <span class="name">:commit_quorum</span>
+          <span class="type">(<tt>String | Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Specify how many data-bearing members of a replica set, including the primary, must complete the index builds successfully before the primary marks the indexes as ready.</p>
+</div>
+          
+        </li>
+      
     </ul>
   
 
@@ -1222,15 +1293,21 @@
       <pre class="lines">
 
 
-130
-131
-132</pre>
+134
+135
+136
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_one'>create_one</span><span class='lparen'>(</span><span class='id identifier rubyid_keys'>keys</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_create_many'>create_many</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>key:</span> <span class='id identifier rubyid_keys'>keys</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+
+  <span class='id identifier rubyid_create_options'>create_options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>commit_quorum:</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:commit_quorum</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_create_many'>create_many</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>key:</span> <span class='id identifier rubyid_keys'>keys</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_create_options'>create_options</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1502,22 +1579,22 @@ end</code></pre>
       <pre class="lines">
 
 
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211</pre>
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 240</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:get_session</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span>
@@ -1636,14 +1713,14 @@ end</code></pre>
       <pre class="lines">
 
 
-185
-186
-187
-188
-189</pre>
+226
+227
+228
+229
+230</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 185</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 226</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_keys_or_name'>keys_or_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_index'>index</span><span class='op'>|</span>
@@ -1660,9 +1737,9 @@ end</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:44 2020 by
+  Generated on Fri Jul 17 03:40:59 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

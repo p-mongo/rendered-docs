@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cluster::Topology::Base
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -756,11 +756,11 @@
 
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@monitoring</span> <span class='op'>=</span> <span class='id identifier rubyid_monitoring'>monitoring</span>
-  <span class='ivar'>@cluster</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster'>cluster</span>  <span class='comment'># The list of server descriptions is simply fixed at the time of
+  <span class='ivar'>@cluster</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster'>cluster</span>
+  <span class='comment'># The list of server descriptions is simply fixed at the time of
 </span>  <span class='comment'># topology creation. If server description change later, a
 </span>  <span class='comment'># new topology instance should be created.
-</span>
-  <span class='ivar'>@server_descriptions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+</span>  <span class='ivar'>@server_descriptions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='lparen'>(</span><span class='id identifier rubyid_servers'>servers</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_servers_list'>servers_list</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
     <span class='ivar'>@server_descriptions</span><span class='lbracket'>[</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span>
   <span class='kw'>end</span>
@@ -1817,9 +1817,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:50 2020 by
+  Generated on Fri Jul 17 03:41:04 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

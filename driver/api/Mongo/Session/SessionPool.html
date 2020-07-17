@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Session::SessionPool
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -803,9 +803,9 @@
         <span class='label'>endSessions:</span> <span class='ivar'>@queue</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span><span class='lparen'>(</span><span class='int'>10_000</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:session_id</span><span class='rparen'>)</span><span class='comma'>,</span>
       <span class='rbrace'>}</span><span class='comma'>,</span>
       <span class='label'>db_name:</span> <span class='const'><span class='object_link'><a href="../Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Database.html#ADMIN-constant" title="Mongo::Database::ADMIN (constant)">ADMIN</a></span></span><span class='comma'>,</span>
-    <span class='rparen'>)</span>    <span class='comment'># end_sessions does not take a client as an argument
-</span>
-    <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='rparen'>)</span>
+    <span class='comment'># end_sessions does not take a client as an argument
+</span>    <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/AuthError.html" title="Mongo::Error::AuthError (class)">AuthError</a></span></span>
 <span class='kw'>end</span></pre>
@@ -910,9 +910,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:49 2020 by
+  Generated on Fri Jul 17 03:41:04 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

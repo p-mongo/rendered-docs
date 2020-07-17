@@ -6,7 +6,7 @@
 <title>
   Exception: Mongo::Error::BulkWriteError
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -330,10 +330,10 @@
       <pre class="code"><span class="info file"># File 'lib/mongo/error/bulk_write_error.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span>
-  <span class='ivar'>@result</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span>  <span class='comment'># Exception constructor behaves differently for a nil argument and
+  <span class='ivar'>@result</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='comment'># Exception constructor behaves differently for a nil argument and
 </span>  <span class='comment'># for no argument. Avoid passing nil explicitly.
-</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='lbracket'>[</span><span class='id identifier rubyid_build_message'>build_message</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+</span>  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='lbracket'>[</span><span class='id identifier rubyid_build_message'>build_message</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -428,9 +428,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:50 2020 by
+  Generated on Fri Jul 17 03:41:05 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

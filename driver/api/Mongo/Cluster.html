@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cluster
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -1155,30 +1155,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#sessions_supported%3F-instance_method" title="#sessions_supported? (instance method)">#<strong>sessions_supported?</strong>  &#x21d2; true | false </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Returns whether the deployment that the driver is connected to supports sessions.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#set_server_list-instance_method" title="#set_server_list (instance method)">#<strong>set_server_list</strong>(server_address_strs)  &#x21d2; Object </a>
     
 
@@ -1264,6 +1240,30 @@
 
   
     <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate_session_support!-instance_method" title="#validate_session_support! (instance method)">#<strong>validate_session_support!</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Raises Error::SessionsNotAvailable if the deployment that the driver is connected to does not support sessions.</p>
+</div></span>
   
 </li>
 
@@ -1734,18 +1734,18 @@
   <span class='ivar'>@srv_monitor_lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@srv_monitor</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@server_selection_semaphore</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Semaphore.html" title="Mongo::Semaphore (class)">Semaphore</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Semaphore.html#initialize-instance_method" title="Mongo::Semaphore#initialize (method)">new</a></span></span>
-  <span class='ivar'>@topology</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Cluster/Topology.html" title="Mongo::Cluster::Topology (module)">Topology</a></span></span><span class='period'>.</span><span class='id identifier rubyid_initial'><span class='object_link'><a href="Cluster/Topology.html#initial-instance_method" title="Mongo::Cluster::Topology#initial (method)">initial</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_monitoring'>monitoring</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>  <span class='comment'># State change lock is similar to the sdam flow lock, but is designed
+  <span class='ivar'>@topology</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Cluster/Topology.html" title="Mongo::Cluster::Topology (module)">Topology</a></span></span><span class='period'>.</span><span class='id identifier rubyid_initial'><span class='object_link'><a href="Cluster/Topology.html#initial-instance_method" title="Mongo::Cluster::Topology#initial (method)">initial</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_monitoring'>monitoring</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='comment'># State change lock is similar to the sdam flow lock, but is designed
 </span>  <span class='comment'># to serialize state changes initated by consumers of Cluster
 </span>  <span class='comment'># (e.g. application connecting or disconnecting the cluster), so that
 </span>  <span class='comment'># e.g. an application calling disconnect-connect-disconnect rapidly
 </span>  <span class='comment'># does not put the cluster into an inconsistent state.
 </span>  <span class='comment'># Monitoring updates performed internally by the driver do not take
 </span>  <span class='comment'># the state change lock.
-</span>
-  <span class='ivar'>@state_change_lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>  <span class='comment'># @sdam_flow_lock covers just the sdam flow. Note it does not apply
+</span>  <span class='ivar'>@state_change_lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='comment'># @sdam_flow_lock covers just the sdam flow. Note it does not apply
 </span>  <span class='comment'># to @topology replacements which are done under @update_lock.
-</span>
-  <span class='ivar'>@sdam_flow_lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+</span>  <span class='ivar'>@sdam_flow_lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='const'><span class='object_link'><a href="Session.html" title="Mongo::Session (class)">Session</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Session/SessionPool.html" title="Mongo::Session::SessionPool (class)">SessionPool</a></span></span><span class='period'>.</span><span class='id identifier rubyid_create'><span class='object_link'><a href="Session/SessionPool.html#create-class_method" title="Mongo::Session::SessionPool.create (method)">create</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
 
   <span class='comment'># The opening topology is always unknown with no servers.
@@ -1766,24 +1766,24 @@
 </span>    <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_seed'>seed</span><span class='comma'>,</span> <span class='label'>monitor:</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_seeds'>seeds</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;=</span> <span class='int'>1</span>    <span class='comment'># Recreate the topology to get the current server list into it
-</span>
-    <span class='ivar'>@topology</span> <span class='op'>=</span> <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_monitoring'>monitoring</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_seeds'>seeds</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;=</span> <span class='int'>1</span>
+    <span class='comment'># Recreate the topology to get the current server list into it
+</span>    <span class='ivar'>@topology</span> <span class='op'>=</span> <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_monitoring'>monitoring</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_publish_sdam_event'>publish_sdam_event</span><span class='lparen'>(</span>
       <span class='const'><span class='object_link'><a href="Monitoring.html" title="Mongo::Monitoring (class)">Monitoring</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitoring.html#TOPOLOGY_CHANGED-constant" title="Mongo::Monitoring::TOPOLOGY_CHANGED (constant)">TOPOLOGY_CHANGED</a></span></span><span class='comma'>,</span>
       <span class='const'><span class='object_link'><a href="Monitoring.html" title="Mongo::Monitoring (class)">Monitoring</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitoring/Event.html" title="Mongo::Monitoring::Event (module)">Event</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitoring/Event/TopologyChanged.html" title="Mongo::Monitoring::Event::TopologyChanged (class)">TopologyChanged</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Monitoring/Event/TopologyChanged.html#initialize-instance_method" title="Mongo::Monitoring::Event::TopologyChanged#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opening_topology'>opening_topology</span><span class='comma'>,</span> <span class='ivar'>@topology</span><span class='rparen'>)</span>
     <span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:monitoring_io</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span>    <span class='comment'># Omit periodic executor construction, because without servers
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:monitoring_io</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span>
+    <span class='comment'># Omit periodic executor construction, because without servers
 </span>    <span class='comment'># no commands can be sent to the cluster and there shouldn&#39;t ever
 </span>    <span class='comment'># be anything that needs to be cleaned up.
 </span>    <span class='comment'>#
 </span>    <span class='comment'># Omit monitoring individual servers and the legacy single round of
 </span>    <span class='comment'># of SDAM on the main thread, as it would race with tests that mock
 </span>    <span class='comment'># SDAM responses.
-</span>
-    <span class='ivar'>@connecting</span> <span class='op'>=</span> <span class='ivar'>@connected</span> <span class='op'>=</span> <span class='kw'>false</span>
+</span>    <span class='ivar'>@connecting</span> <span class='op'>=</span> <span class='ivar'>@connected</span> <span class='op'>=</span> <span class='kw'>false</span>
     <span class='kw'>return</span>
   <span class='kw'>end</span>
 
@@ -1812,22 +1812,22 @@
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:scan</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>false</span>
-    <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:server_selection_timeout</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="ServerSelector.html#SERVER_SELECTION_TIMEOUT-constant" title="Mongo::ServerSelector::SERVER_SELECTION_TIMEOUT (constant)">SERVER_SELECTION_TIMEOUT</a></span></span>    <span class='comment'># The server selection timeout can be very short especially in
+    <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:server_selection_timeout</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="ServerSelector.html#SERVER_SELECTION_TIMEOUT-constant" title="Mongo::ServerSelector::SERVER_SELECTION_TIMEOUT (constant)">SERVER_SELECTION_TIMEOUT</a></span></span>
+    <span class='comment'># The server selection timeout can be very short especially in
 </span>    <span class='comment'># tests, when the client waits for a synchronous scan before
 </span>    <span class='comment'># starting server selection. Limiting the scan to server selection time
 </span>    <span class='comment'># then aborts the scan before it can process even local servers.
 </span>    <span class='comment'># Therefore, allow at least 3 seconds for the scan here.
-</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span> <span class='op'>&lt;</span> <span class='int'>3</span>
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span> <span class='op'>&lt;</span> <span class='int'>3</span>
       <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span> <span class='op'>=</span> <span class='int'>3</span>
     <span class='kw'>end</span>
-    <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>=</span> <span class='id identifier rubyid_start_time'>start_time</span> <span class='op'>+</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span>    <span class='comment'># Wait for the first scan of each server to complete, for
+    <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>=</span> <span class='id identifier rubyid_start_time'>start_time</span> <span class='op'>+</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span>
+    <span class='comment'># Wait for the first scan of each server to complete, for
 </span>    <span class='comment'># backwards compatibility.
 </span>    <span class='comment'># If any servers are discovered during this SDAM round we are going to
 </span>    <span class='comment'># wait for these servers to also be queried, and so on, up to the
 </span>    <span class='comment'># server selection timeout or the 3 second minimum.
-</span>
-    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+</span>    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
       <span class='comment'># Ensure we do not try to read the servers list while SDAM is running
 </span>      <span class='id identifier rubyid_servers'>servers</span> <span class='op'>=</span> <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
         <span class='id identifier rubyid_servers_list'>servers_list</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
@@ -1838,12 +1838,12 @@
       <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_time_remaining'>time_remaining</span> <span class='op'>=</span> <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>-</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
         <span class='kw'>break</span>
       <span class='kw'>end</span>
-      <span class='id identifier rubyid_log_debug'>log_debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Waiting for up to </span><span class='embexpr_beg'>#{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%.2f</span><span class='tstring_end'>&#39;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='embexpr_end'>}</span><span class='tstring_content'> seconds for servers to be scanned: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_summary'>summary</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>      <span class='comment'># Since the semaphore may have been signaled between us checking
+      <span class='id identifier rubyid_log_debug'>log_debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Waiting for up to </span><span class='embexpr_beg'>#{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%.2f</span><span class='tstring_end'>&#39;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='embexpr_end'>}</span><span class='tstring_content'> seconds for servers to be scanned: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_summary'>summary</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='comment'># Since the semaphore may have been signaled between us checking
 </span>      <span class='comment'># the servers list above and the wait call below, we should not
 </span>      <span class='comment'># wait for the full remaining time - wait for up to 1 second, then
 </span>      <span class='comment'># recheck the state.
-</span>
-      <span class='id identifier rubyid_server_selection_semaphore'>server_selection_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span>
+</span>      <span class='id identifier rubyid_server_selection_semaphore'>server_selection_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
@@ -2810,13 +2810,13 @@
       <pre class="lines">
 
 
-683
-684
-685
-686</pre>
+686
+687
+688
+689</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 683</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 686</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Mongo::Cluster (class)">Cluster</a></span></span><span class='rparen'>)</span>
@@ -2941,9 +2941,6 @@
       <pre class="lines">
 
 
-781
-782
-783
 784
 785
 786
@@ -2959,10 +2956,13 @@
 796
 797
 798
-799</pre>
+799
+800
+801
+802</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 781</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 784</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_add_options'>add_options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Address.html" title="Mongo::Address (class)">Address</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Address.html#initialize-instance_method" title="Mongo::Address#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -3432,18 +3432,18 @@
       <pre class="lines">
 
 
-879
-880
-881
 882
 883
 884
 885
 886
-887</pre>
+887
+888
+889
+890</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 879</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 882</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect_server_if_connected'>disconnect_server_if_connected</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_connected?'>connected?</span>
@@ -3553,12 +3553,12 @@
       <pre class="lines">
 
 
-700
-701
-702</pre>
+703
+704
+705</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 700</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 703</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_readable_server?'>has_readable_server?</span><span class='lparen'>(</span><span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_has_readable_server?'>has_readable_server?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='rparen'>)</span>
@@ -3640,12 +3640,12 @@
       <pre class="lines">
 
 
-712
-713
-714</pre>
+715
+716
+717</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 712</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 715</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_writable_server?'>has_writable_server?</span>
   <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_has_writable_server?'>has_writable_server?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -4029,12 +4029,12 @@
       <pre class="lines">
 
 
-729
-730
-731</pre>
+732
+733
+734</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 729</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 732</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_next_primary'>next_primary</span><span class='lparen'>(</span><span class='id identifier rubyid_ping'>ping</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_primary'><span class='object_link'><a href="ServerSelector.html#primary-instance_method" title="Mongo::ServerSelector#primary (method)">primary</a></span></span><span class='period'>.</span><span class='id identifier rubyid_select_server'>select_server</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
@@ -4137,12 +4137,12 @@
       <pre class="lines">
 
 
-744
-745
-746</pre>
+747
+748
+749</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 744</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 747</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pool'>pool</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_pool'>pool</span>
@@ -4492,9 +4492,6 @@
       <pre class="lines">
 
 
-820
-821
-822
 823
 824
 825
@@ -4514,10 +4511,13 @@
 839
 840
 841
-842</pre>
+842
+843
+844
+845</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 820</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 823</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove'>remove</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='label'>disconnect:</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Address.html" title="Mongo::Address (class)">Address</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Address.html#initialize-instance_method" title="Mongo::Address#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
@@ -4624,6 +4624,22 @@
       
     </li>
   
+    <li>
+      
+        <span class='name'>aptions</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
 </ul>
 
   
@@ -4675,8 +4691,6 @@
       <pre class="lines">
 
 
-604
-605
 606
 607
 608
@@ -4711,14 +4725,18 @@
 637
 638
 639
-640</pre>
+640
+641
+642
+643</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 604</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 606</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run_sdam_flow'>run_sdam_flow</span><span class='lparen'>(</span><span class='id identifier rubyid_previous_desc'>previous_desc</span><span class='comma'>,</span> <span class='id identifier rubyid_updated_desc'>updated_desc</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_flow'>flow</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Cluster/SdamFlow.html" title="Mongo::Cluster::SdamFlow (class)">SdamFlow</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Cluster/SdamFlow.html#initialize-instance_method" title="Mongo::Cluster::SdamFlow#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_previous_desc'>previous_desc</span><span class='comma'>,</span> <span class='id identifier rubyid_updated_desc'>updated_desc</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_flow'>flow</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Cluster/SdamFlow.html" title="Mongo::Cluster::SdamFlow (class)">SdamFlow</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Cluster/SdamFlow.html#initialize-instance_method" title="Mongo::Cluster::SdamFlow#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_previous_desc'>previous_desc</span><span class='comma'>,</span> <span class='id identifier rubyid_updated_desc'>updated_desc</span><span class='comma'>,</span>
+      <span class='label'>awaited:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:awaited</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_flow'>flow</span><span class='period'>.</span><span class='id identifier rubyid_server_description_changed'>server_description_changed</span>
 
     <span class='comment'># SDAM flow may alter the updated description - grab the final
@@ -4963,7 +4981,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 397</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_servers'>servers</span>
-  <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_servers'>servers</span><span class='lparen'>(</span><span class='id identifier rubyid_servers_list'>servers_list</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span>
+  <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_servers'>servers</span><span class='lparen'>(</span><span class='id identifier rubyid_servers_list'>servers_list</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -5014,131 +5032,18 @@
       <pre class="lines">
 
 
-872
-873
-874
 875
-876</pre>
+876
+877
+878
+879</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 872</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 875</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_servers_list'>servers_list</span>
   <span class='ivar'>@update_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
     <span class='ivar'>@servers</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="sessions_supported?-instance_method">
-  
-    #<strong>sessions_supported?</strong>  &#x21d2; <tt>true | false</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
-<p>Returns whether the deployment that the driver is connected to supports sessions.</p>
-
-<p>Session support may change over time, for example due to servers in the deployment being upgraded or downgraded. This method returns the current information if the client is connected to at least one data bearing server. If the client is currently not connected to any data bearing servers, this method returns the last known value for whether the deployment supports sessions.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>true | false</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Whether deployment supports sessions.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'>
-<p>2.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-901
-902
-903
-904
-905
-906
-907
-908
-909
-910
-911
-912
-913
-914
-915
-916
-917
-918
-919</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 901</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_sessions_supported?'>sessions_supported?</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_data_bearing_servers?'>data_bearing_servers?</span>
-    <span class='kw'>return</span> <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_logical_session_timeout'>logical_session_timeout</span>
-  <span class='kw'>end</span>
-
-  <span class='comment'># No data bearing servers known - perform server selection to try to
-</span>  <span class='comment'># get a response from at least one of them, to return an accurate
-</span>  <span class='comment'># assessment of whether sessions are currently supported.
-</span>  <span class='kw'>begin</span>
-    <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="ServerSelector.html#get-instance_method" title="Mongo::ServerSelector#get (method)">get</a></span></span><span class='lparen'>(</span><span class='label'>mode:</span> <span class='symbol'>:primary_preferred</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_select_server'>select_server</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
-    <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_logical_session_timeout'>logical_session_timeout</span>
-  <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/NoServerAvailable.html" title="Mongo::Error::NoServerAvailable (class)">NoServerAvailable</a></span></span>    <span class='comment'># We haven&#39;t been able to contact any servers - use last known
-</span>    <span class='comment'># value for esssion support.
-</span>
-    <span class='ivar'>@update_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
-      <span class='ivar'>@sessions_supported</span> <span class='op'>||</span> <span class='kw'>false</span>
-    <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -5216,9 +5121,6 @@
       <pre class="lines">
 
 
-656
-657
-658
 659
 660
 661
@@ -5230,10 +5132,13 @@
 667
 668
 669
-670</pre>
+670
+671
+672
+673</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 656</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 659</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_server_list'>set_server_list</span><span class='lparen'>(</span><span class='id identifier rubyid_server_address_strs'>server_address_strs</span><span class='rparen'>)</span>
   <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -5414,16 +5319,16 @@
       <pre class="lines">
 
 
-758
-759
-760
 761
 762
 763
-764</pre>
+764
+765
+766
+767</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 758</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 761</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_cluster_time'>update_cluster_time</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_cluster_time_doc'>cluster_time_doc</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_cluster_time'>cluster_time</span>
@@ -5481,9 +5386,6 @@
       <pre class="lines">
 
 
-845
-846
-847
 848
 849
 850
@@ -5505,10 +5407,13 @@
 866
 867
 868
-869</pre>
+869
+870
+871
+872</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 845</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 848</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_topology'>update_topology</span><span class='lparen'>(</span><span class='id identifier rubyid_new_topology'>new_topology</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_old_topology'>old_topology</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -5540,14 +5445,145 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="validate_session_support!-instance_method">
+  
+    #<strong>validate_session_support!</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Raises Error::SessionsNotAvailable if the deployment that the driver is connected to does not support sessions.</p>
+
+<p>Session support may change over time, for example due to servers in the deployment being upgraded or downgraded. If the client is currently not connected to any data bearing servers, this method considers the state of session support as of when the client was last connected to at least one server. If the client has never connected to any servers, the deployment is considered to not support sessions.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 903</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_validate_session_support!'>validate_session_support!</span>
+  <span class='ivar'>@state_change_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+    <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_data_bearing_servers?'>data_bearing_servers?</span>
+        <span class='kw'>unless</span> <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_logical_session_timeout'>logical_session_timeout</span>
+          <span class='id identifier rubyid_raise_sessions_not_supported'>raise_sessions_not_supported</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># No data bearing servers known - perform server selection to try to
+</span>  <span class='comment'># get a response from at least one of them, to return an accurate
+</span>  <span class='comment'># assessment of whether sessions are currently supported.
+</span>  <span class='kw'>begin</span>
+    <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="ServerSelector.html#get-instance_method" title="Mongo::ServerSelector#get (method)">get</a></span></span><span class='lparen'>(</span><span class='label'>mode:</span> <span class='symbol'>:primary_preferred</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_select_server'>select_server</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+    <span class='ivar'>@state_change_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+      <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+        <span class='kw'>unless</span> <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_logical_session_timeout'>logical_session_timeout</span>
+          <span class='id identifier rubyid_raise_sessions_not_supported'>raise_sessions_not_supported</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/NoServerAvailable.html" title="Mongo::Error::NoServerAvailable (class)">NoServerAvailable</a></span></span>
+    <span class='comment'># We haven&#39;t been able to contact any servers - use last known
+</span>    <span class='comment'># value for session support.
+</span>    <span class='ivar'>@state_change_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+      <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+        <span class='ivar'>@update_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+          <span class='kw'>unless</span> <span class='ivar'>@sessions_supported</span>
+            <span class='id identifier rubyid_raise_sessions_not_supported'>raise_sessions_not_supported</span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:43 2020 by
+  Generated on Fri Jul 17 03:40:57 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

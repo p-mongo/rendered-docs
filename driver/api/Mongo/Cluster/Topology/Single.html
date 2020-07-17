@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cluster::Topology::Single
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -959,7 +959,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/single.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_servers'>servers</span><span class='lparen'>(</span><span class='id identifier rubyid_servers'>servers</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='lbracket'>[</span> <span class='id identifier rubyid_servers'>servers</span><span class='period'>.</span><span class='id identifier rubyid_detect'>detect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_unknown?'>unknown?</span> <span class='rbrace'>}</span> <span class='rbracket'>]</span>
+  <span class='id identifier rubyid_servers'>servers</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_unknown?'>unknown?</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1285,9 +1285,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:51 2020 by
+  Generated on Fri Jul 17 03:41:06 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

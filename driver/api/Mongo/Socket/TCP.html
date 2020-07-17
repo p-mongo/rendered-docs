@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Socket::TCP
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Socket::TCP
   
   
-  
+  <span class="private note title">Private</span>
 </h1>
 <div class="box_info">
   
@@ -103,7 +103,11 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Wrapper for TCP sockets.</p>
 
 
@@ -160,7 +164,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -189,7 +193,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -233,7 +237,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -256,7 +260,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Socket.html" title="Mongo::Socket (class)">Mongo::Socket</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Socket.html#alive%3F-instance_method" title="Mongo::Socket#alive? (method)">#alive?</a></span>, <span class='object_link'><a href="../Socket.html#close-instance_method" title="Mongo::Socket#close (method)">#close</a></span>, <span class='object_link'><a href="../Socket.html#connectable%3F-instance_method" title="Mongo::Socket#connectable? (method)">#connectable?</a></span>, <span class='object_link'><a href="../Socket.html#eof%3F-instance_method" title="Mongo::Socket#eof? (method)">#eof?</a></span>, <span class='object_link'><a href="../Socket.html#gets-instance_method" title="Mongo::Socket#gets (method)">#gets</a></span>, <span class='object_link'><a href="../Socket.html#read-instance_method" title="Mongo::Socket#read (method)">#read</a></span>, <span class='object_link'><a href="../Socket.html#readbyte-instance_method" title="Mongo::Socket#readbyte (method)">#readbyte</a></span>, <span class='object_link'><a href="../Socket.html#write-instance_method" title="Mongo::Socket#write (method)">#write</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Socket.html#alive%3F-instance_method" title="Mongo::Socket#alive? (method)">#alive?</a></span>, <span class='object_link'><a href="../Socket.html#close-instance_method" title="Mongo::Socket#close (method)">#close</a></span>, <span class='object_link'><a href="../Socket.html#connectable%3F-instance_method" title="Mongo::Socket#connectable? (method)">#connectable?</a></span>, <span class='object_link'><a href="../Socket.html#connection_address-instance_method" title="Mongo::Socket#connection_address (method)">#connection_address</a></span>, <span class='object_link'><a href="../Socket.html#connection_generation-instance_method" title="Mongo::Socket#connection_generation (method)">#connection_generation</a></span>, <span class='object_link'><a href="../Socket.html#eof%3F-instance_method" title="Mongo::Socket#eof? (method)">#eof?</a></span>, <span class='object_link'><a href="../Socket.html#gets-instance_method" title="Mongo::Socket#gets (method)">#gets</a></span>, <span class='object_link'><a href="../Socket.html#monitor%3F-instance_method" title="Mongo::Socket#monitor? (method)">#monitor?</a></span>, <span class='object_link'><a href="../Socket.html#read-instance_method" title="Mongo::Socket#read (method)">#read</a></span>, <span class='object_link'><a href="../Socket.html#readbyte-instance_method" title="Mongo::Socket#readbyte (method)">#readbyte</a></span>, <span class='object_link'><a href="../Socket.html#summary-instance_method" title="Mongo::Socket#summary (method)">#summary</a></span>, <span class='object_link'><a href="../Socket.html#write-instance_method" title="Mongo::Socket#write (method)">#write</a></span></p>
 
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
@@ -272,7 +276,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Initializes a new TCP socket.</p>
 
 
@@ -406,6 +414,45 @@
           
         </li>
       
+        <li>
+          <span class="name">:connection_address</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Address.html" title="Mongo::Address (class)">Address</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Address of the connection that created this socket.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:connection_generation</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Generation of the connection (for non-monitoring connections) that created this socket.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:monitor</span>
+          <span class="type">(<tt>true | false</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Whether this socket was created by a monitoring connection.</p>
+</div>
+          
+        </li>
+      
     </ul>
   
 
@@ -432,24 +479,26 @@
       <pre class="lines">
 
 
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77</pre>
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/tcp.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/tcp.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_family'>family</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='ivar'>@host</span><span class='comma'>,</span> <span class='ivar'>@port</span><span class='comma'>,</span> <span class='ivar'>@timeout</span><span class='comma'>,</span> <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='ivar'>@host</span><span class='comma'>,</span> <span class='ivar'>@port</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_port'>port</span>
   <span class='ivar'>@family</span> <span class='op'>=</span> <span class='id identifier rubyid_family'>family</span>
   <span class='ivar'>@socket</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_family'>family</span><span class='comma'>,</span> <span class='const'>SOCK_STREAM</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -483,7 +532,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns host The host to connect to.</p>
 
 
@@ -532,12 +585,12 @@
       <pre class="lines">
 
 
-24
-25
-26</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/tcp.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/tcp.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_host'>host</span>
   <span class='ivar'>@host</span>
@@ -560,7 +613,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns port The port to connect to.</p>
 
 
@@ -609,12 +666,12 @@
       <pre class="lines">
 
 
-27
-28
-29</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/tcp.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/tcp.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_port'>port</span>
   <span class='ivar'>@port</span>
@@ -630,9 +687,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:45 2020 by
+  Generated on Fri Jul 17 03:40:59 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

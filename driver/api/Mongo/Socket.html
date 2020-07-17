@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Socket
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Socket
   
   
-  
+  <span class="private note title">Private</span>
 </h1>
 <div class="box_info">
   
@@ -108,7 +108,11 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Provides additional data around sockets for the driver&#39;s use.</p>
 
 
@@ -159,7 +163,11 @@
         <dt id="SSL_ERROR-constant" class="">SSL_ERROR =
           <div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Error message for SSL related exceptions.</p>
 
 
@@ -191,7 +199,11 @@
         <dt id="TIMEOUT_ERROR-constant" class="deprecated">TIMEOUT_ERROR =
           <div class="docstring">
   <div class="discussion">
-    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+<div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
 
 <p>Error message for timeouts on socket calls.</p>
 
@@ -224,7 +236,11 @@
         <dt id="TIMEOUT_PACK-constant" class="">TIMEOUT_PACK =
           <div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>The pack directive for timeouts.</p>
 
 
@@ -317,7 +333,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -346,7 +362,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -375,7 +391,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -404,7 +420,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -441,7 +457,7 @@
   
   
   <span class="deprecated note title">deprecated</span>
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'>
@@ -465,7 +481,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -489,10 +505,58 @@
   
   
   <span class="deprecated note title">deprecated</span>
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connection_address-instance_method" title="#connection_address (instance method)">#<strong>connection_address</strong>  &#x21d2; Address </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Address of the connection that created this socket.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connection_generation-instance_method" title="#connection_generation (instance method)">#<strong>connection_generation</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generation of the connection (for non-monitoring connections) that created this socket.</p>
+</div></span>
   
 </li>
 
@@ -511,7 +575,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -535,7 +599,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -548,7 +612,33 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#read-instance_method" title="#read (instance method)">#<strong>read</strong>(length)  &#x21d2; Object </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(timeout, options)  &#x21d2; Socket </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Initializes common socket attributes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#monitor%3F-instance_method" title="#monitor? (instance method)">#<strong>monitor?</strong>  &#x21d2; true | false </a>
     
 
     
@@ -559,7 +649,31 @@
   
   
   
+  <span class="private note title">private</span>
+
   
+    <span class="summary_desc"><div class='inline'>
+<p>Whether this socket was created by a monitoring connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-instance_method" title="#read (instance method)">#<strong>read</strong>(length, timeout: nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -583,11 +697,35 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
 <p>Read a single byte from the socket.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#summary-instance_method" title="#summary (instance method)">#<strong>summary</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Human-readable summary of the socket for debugging.</p>
 </div></span>
   
 </li>
@@ -607,7 +745,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -621,7 +759,173 @@
   
 
 
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
   
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(timeout, options)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Socket (class)">Socket</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Initializes common socket attributes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>timeout</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The socket timeout value.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:connect_timeout</span>
+          <span class="type">(<tt>Float</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Connect timeout.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:connection_address</span>
+          <span class="type">(<tt><span class='object_link'><a href="Address.html" title="Mongo::Address (class)">Address</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Address of the connection that created this socket.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:connection_generation</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Generation of the connection (for non-monitoring connections) that created this socket.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:monitor</span>
+          <span class="type">(<tt>true | false</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Whether this socket was created by a monitoring connection.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='ivar'>@timeout</span> <span class='op'>=</span> <span class='id identifier rubyid_timeout'>timeout</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
   <div id="instance_attr_details" class="attr_details">
     <h2>Instance Attribute Details</h2>
     
@@ -638,7 +942,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns family The type of host family.</p>
 
 
@@ -687,12 +995,12 @@
       <pre class="lines">
 
 
-49
-50
-51</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_family'>family</span>
   <span class='ivar'>@family</span>
@@ -715,7 +1023,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns The options.</p>
 
 
@@ -764,12 +1076,12 @@
       <pre class="lines">
 
 
-55
-56
-57</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -792,7 +1104,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns socket The wrapped socket.</p>
 
 
@@ -841,12 +1157,12 @@
       <pre class="lines">
 
 
-52
-53
-54</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_socket'>socket</span>
   <span class='ivar'>@socket</span>
@@ -869,7 +1185,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Returns timeout The socket timeout.</p>
 
 
@@ -918,12 +1238,12 @@
       <pre class="lines">
 
 
-58
-59
-60</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_timeout'>timeout</span>
   <span class='ivar'>@timeout</span>
@@ -951,7 +1271,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
 <p>Use #connectable? on the connection instead.</p>
 </div></div>
 
@@ -1015,34 +1339,34 @@
       <pre class="lines">
 
 
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84</pre>
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alive?'>alive?</span>
   <span class='id identifier rubyid_sock_arr'>sock_arr</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='ivar'>@socket</span> <span class='rbracket'>]</span>
-  <span class='kw'>if</span> <span class='const'>Kernel</span><span class='op'>::</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='id identifier rubyid_sock_arr'>sock_arr</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_sock_arr'>sock_arr</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>    <span class='comment'># The eof? call is supposed to return immediately since select
+  <span class='kw'>if</span> <span class='const'>Kernel</span><span class='op'>::</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='id identifier rubyid_sock_arr'>sock_arr</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_sock_arr'>sock_arr</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
+    <span class='comment'># The eof? call is supposed to return immediately since select
 </span>    <span class='comment'># indicated the socket is readable. However, if @socket is an SSL
 </span>    <span class='comment'># socket, eof? can block anyway - see RUBY-2140.
-</span>
-    <span class='kw'>begin</span>
+</span>    <span class='kw'>begin</span>
       <span class='const'><span class='object_link'><a href="Timeout.html" title="Mongo::Timeout (module)">Timeout</a></span></span><span class='period'>.</span><span class='id identifier rubyid_timeout'><span class='object_link'><a href="Timeout.html#timeout-class_method" title="Mongo::Timeout.timeout (method)">timeout</a></span></span><span class='lparen'>(</span><span class='float'>0.1</span><span class='rparen'>)</span> <span class='kw'>do</span>
         <span class='id identifier rubyid_eof?'>eof?</span>
       <span class='kw'>end</span>
@@ -1069,7 +1393,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Close the socket.</p>
 
 
@@ -1130,13 +1458,13 @@
       <pre class="lines">
 
 
-94
-95
-96
-97</pre>
+154
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span> <span class='kw'>rescue</span> <span class='kw'>nil</span>
@@ -1158,7 +1486,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
 
 <p>For backwards compatibilty only, do not use.</p>
 
@@ -1208,15 +1540,173 @@
       <pre class="lines">
 
 
-186
-187
-188</pre>
+247
+248
+249</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 186</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 247</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connectable?'>connectable?</span>
   <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connection_address-instance_method">
+  
+    #<strong>connection_address</strong>  &#x21d2; <tt><span class='object_link'><a href="Address.html" title="Mongo::Address (class)">Address</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Address of the connection that created this socket.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Address.html" title="Mongo::Address (class)">Address</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Address of the connection that created this socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_connection_address'>connection_address</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connection_address</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connection_generation-instance_method">
+  
+    #<strong>connection_generation</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Generation of the connection (for non-monitoring connections) that created this socket.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Generation of the connection (for non-monitoring connections) that created this socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_connection_generation'>connection_generation</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connection_generation</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1234,7 +1724,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Tests if this socket has reached EOF. Primarily used for liveness checks.</p>
 
 
@@ -1278,14 +1772,14 @@
       <pre class="lines">
 
 
-175
-176
-177
-178
-179</pre>
+236
+237
+238
+239
+240</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 175</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_eof?'>eof?</span>
   <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_eof?'>eof?</span>
@@ -1308,7 +1802,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Delegates gets to the underlying socket.</p>
 
 
@@ -1389,14 +1887,14 @@
       <pre class="lines">
 
 
-109
-110
-111
-112
-113</pre>
+169
+170
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 169</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gets'>gets</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
@@ -1409,9 +1907,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="read-instance_method">
+  <h3 class="signature " id="monitor?-instance_method">
   
-    #<strong>read</strong>(length)  &#x21d2; <tt>Object</tt> 
+    #<strong>monitor?</strong>  &#x21d2; <tt>true | false</tt> 
   
 
   
@@ -1419,7 +1917,90 @@
   
 </h3><div class="docstring">
   <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Whether this socket was created by a monitoring connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true | false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether this socket was created by a monitoring connection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 99</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_monitor?'>monitor?</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:monitor</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="read-instance_method">
+  
+    #<strong>read</strong>(length, timeout: nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Will read all data from the socket for the provided number of bytes. If no data is returned, an exception will be raised.</p>
 
 
@@ -1453,6 +2034,24 @@
         &mdash;
         <div class='inline'>
 <p>The number of bytes to read.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>timeout</span>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The timeout to use for each chunk read.</p>
 </div>
       
     </li>
@@ -1518,34 +2117,34 @@
       <pre class="lines">
 
 
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143</pre>
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 189</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span> <span class='label'>timeout:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_read_from_socket'>read_from_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_read_from_socket'>read_from_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span> <span class='label'>timeout:</span> <span class='id identifier rubyid_timeout'>timeout</span><span class='rparen'>)</span>
     <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>||</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>0</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Expected to read &gt; 0 bytes but read 0 bytes</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
     <span class='kw'>while</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_length'>length</span>
-      <span class='id identifier rubyid_chunk'>chunk</span> <span class='op'>=</span> <span class='id identifier rubyid_read_from_socket'>read_from_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span> <span class='op'>-</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_chunk'>chunk</span> <span class='op'>=</span> <span class='id identifier rubyid_read_from_socket'>read_from_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span> <span class='op'>-</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span> <span class='label'>timeout:</span> <span class='id identifier rubyid_timeout'>timeout</span><span class='rparen'>)</span>
       <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_chunk'>chunk</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>||</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>0</span><span class='rparen'>)</span>
         <span class='id identifier rubyid_raise'>raise</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Expected to read &gt; 0 bytes but read 0 bytes</span><span class='tstring_end'>&quot;</span></span>
       <span class='kw'>end</span>
@@ -1570,7 +2169,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Read a single byte from the socket.</p>
 
 
@@ -1631,18 +2234,117 @@
       <pre class="lines">
 
 
-153
-154
-155
-156
-157</pre>
+214
+215
+216
+217
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 214</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_readbyte'>readbyte</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
     <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_readbyte'>readbyte</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="summary-instance_method">
+  
+    #<strong>summary</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Human-readable summary of the socket for debugging.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Human-readable summary of the socket for debugging.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_summary'>summary</span>
+  <span class='id identifier rubyid_fileno'>fileno</span> <span class='op'>=</span> <span class='ivar'>@socket</span><span class='op'>&amp;.</span><span class='id identifier rubyid_fileno'>fileno</span> <span class='kw'>rescue</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;no socket&gt;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;no socket&gt;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_monitor?'>monitor?</span>
+    <span class='id identifier rubyid_indicator'>indicator</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:push</span><span class='rbracket'>]</span>
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pm</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>else</span>
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>m</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>end</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_connection_address'>connection_address</span><span class='embexpr_end'>}</span><span class='tstring_content'>;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_indicator'>indicator</span><span class='embexpr_end'>}</span><span class='tstring_content'>;fd=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_fileno'>fileno</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_connection_address'>connection_address</span><span class='embexpr_end'>}</span><span class='tstring_content'>;c:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_connection_generation'>connection_generation</span><span class='embexpr_end'>}</span><span class='tstring_content'>;fd=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_fileno'>fileno</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1661,7 +2363,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Writes data to the socket instance.</p>
 
 
@@ -1730,14 +2436,14 @@
       <pre class="lines">
 
 
-166
-167
-168
-169
-170</pre>
+227
+228
+229
+230
+231</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 227</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
@@ -1754,9 +2460,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:43 2020 by
+  Generated on Fri Jul 17 03:40:57 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

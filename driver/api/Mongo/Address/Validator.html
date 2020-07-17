@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Address::Validator
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -259,12 +259,13 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate_address_str!'>validate_address_str!</span><span class='lparen'>(</span><span class='id identifier rubyid_address_str'>address_str</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_address_str'>address_str</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A\[[\d:]+\](?::(\d+))?\z</span><span class='regexp_end'>/</span></span>    <span class='comment'># ipv6 with optional port
-</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_port_str'>port_str</span> <span class='op'>=</span> <span class='backref'>$1</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A\[[\d:]+\](?::(\d+))?\z</span><span class='regexp_end'>/</span></span>
+    <span class='comment'># ipv6 with optional port
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_port_str'>port_str</span> <span class='op'>=</span> <span class='backref'>$1</span>
       <span class='id identifier rubyid_validate_port_str!'>validate_port_str!</span><span class='lparen'>(</span><span class='id identifier rubyid_port_str'>port_str</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A\/</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.sock\z</span><span class='regexp_end'>/</span></span>    <span class='comment'># Unix socket path.
+  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A\/</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.sock\z</span><span class='regexp_end'>/</span></span>
+    <span class='comment'># Unix socket path.
 </span>    <span class='comment'># Spec requires us to validate that the path has no unescaped
 </span>    <span class='comment'># slashes, but if this were to be the case, parsing would have
 </span>    <span class='comment'># already failed elsewhere because the URI would&#39;ve been split in
@@ -273,12 +274,11 @@
 </span>    <span class='comment'># socket paths end in &quot;.sock&quot;. We accept all paths but special case
 </span>    <span class='comment'># the .sock extension to avoid relative paths falling into the
 </span>    <span class='comment'># host:port case below.
-</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[\/\[\]]</span><span class='regexp_end'>/</span></span>    <span class='comment'># Not a host:port nor an ipv4 address with optional port.
+</span>  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[\/\[\]]</span><span class='regexp_end'>/</span></span>
+    <span class='comment'># Not a host:port nor an ipv4 address with optional port.
 </span>    <span class='comment'># Possibly botched ipv6 address with e.g. port delimiter present and
 </span>    <span class='comment'># port missing, or extra junk before or after.
-</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/InvalidAddress.html" title="Mongo::Error::InvalidAddress (class)">InvalidAddress</a></span></span><span class='comma'>,</span>
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/InvalidAddress.html" title="Mongo::Error::InvalidAddress (class)">InvalidAddress</a></span></span><span class='comma'>,</span>
       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid hostname: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address_str'>address_str</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>:.*:</span><span class='regexp_end'>/m</span></span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/InvalidAddress.html" title="Mongo::Error::InvalidAddress (class)">InvalidAddress</a></span></span><span class='comma'>,</span>
@@ -309,9 +309,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:38 2020 by
+  Generated on Fri Jul 17 03:40:52 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

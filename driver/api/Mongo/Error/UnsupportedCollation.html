@@ -6,7 +6,7 @@
 <title>
   Exception: Mongo::Error::UnsupportedCollation
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -61,7 +61,7 @@
 
       <div id="content"><h1>Exception: Mongo::Error::UnsupportedCollation
   
-  
+  <span class="deprecated note title">Deprecated</span>
   
 </h1>
 <div class="box_info">
@@ -69,7 +69,7 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName"><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Mongo::Error</a></span></span>
+      <span class="inheritName"><span class='object_link'><a href="UnsupportedOption.html" title="Mongo::Error::UnsupportedOption (class)">UnsupportedOption</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
@@ -77,6 +77,8 @@
             <li class="next">StandardError</li>
           
             <li class="next"><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Mongo::Error</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="UnsupportedOption.html" title="Mongo::Error::UnsupportedOption (class)">UnsupportedOption</a></span></li>
           
             <li class="next">Mongo::Error::UnsupportedCollation</li>
           
@@ -105,7 +107,10 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>RUBY-2260 In driver version 3.0, this error class will be  replaced with UnsupportedOption. To handle this error, catch Mongo::Error::UnsupportedOption, which will prevent any breaking changes in your application when upgrading to version 3.0 of the driver.</p>
+</div></div>
+
 <p>Raised if a collation is specified for an operation but the server selected does not support collations.</p>
 
 
@@ -249,6 +254,12 @@
   
   
   <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="UnsupportedOption.html" title="Mongo::Error::UnsupportedOption (class)">UnsupportedOption</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="UnsupportedOption.html#ALLOW_DISK_USE_MESSAGE-constant" title="Mongo::Error::UnsupportedOption::ALLOW_DISK_USE_MESSAGE (constant)">Mongo::Error::UnsupportedOption::ALLOW_DISK_USE_MESSAGE</a></span>, <span class='object_link'><a href="UnsupportedOption.html#COMMIT_QUORUM_MESSAGE-constant" title="Mongo::Error::UnsupportedOption::COMMIT_QUORUM_MESSAGE (constant)">Mongo::Error::UnsupportedOption::COMMIT_QUORUM_MESSAGE</a></span>, <span class='object_link'><a href="UnsupportedOption.html#HINT_MESSAGE-constant" title="Mongo::Error::UnsupportedOption::HINT_MESSAGE (constant)">Mongo::Error::UnsupportedOption::HINT_MESSAGE</a></span>, <span class='object_link'><a href="UnsupportedOption.html#UNACKNOWLEDGED_HINT_MESSAGE-constant" title="Mongo::Error::UnsupportedOption::UNACKNOWLEDGED_HINT_MESSAGE (constant)">Mongo::Error::UnsupportedOption::UNACKNOWLEDGED_HINT_MESSAGE</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants inherited
      from <span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Mongo::Error</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="../Error.html#BAD_VALUE-constant" title="Mongo::Error::BAD_VALUE (constant)">BAD_VALUE</a></span>, <span class='object_link'><a href="../Error.html#CODE-constant" title="Mongo::Error::CODE (constant)">CODE</a></span>, <span class='object_link'><a href="../Error.html#CURSOR_NOT_FOUND-constant" title="Mongo::Error::CURSOR_NOT_FOUND (constant)">CURSOR_NOT_FOUND</a></span>, <span class='object_link'><a href="../Error.html#ERR-constant" title="Mongo::Error::ERR (constant)">ERR</a></span>, <span class='object_link'><a href="../Error.html#ERRMSG-constant" title="Mongo::Error::ERRMSG (constant)">ERRMSG</a></span>, <span class='object_link'><a href="../Error.html#ERROR-constant" title="Mongo::Error::ERROR (constant)">ERROR</a></span>, <span class='object_link'><a href="../Error.html#TRANSIENT_TRANSACTION_ERROR_LABEL-constant" title="Mongo::Error::TRANSIENT_TRANSACTION_ERROR_LABEL (constant)">TRANSIENT_TRANSACTION_ERROR_LABEL</a></span>, <span class='object_link'><a href="../Error.html#UNKNOWN_ERROR-constant" title="Mongo::Error::UNKNOWN_ERROR (constant)">UNKNOWN_ERROR</a></span>, <span class='object_link'><a href="../Error.html#UNKNOWN_TRANSACTION_COMMIT_RESULT_LABEL-constant" title="Mongo::Error::UNKNOWN_TRANSACTION_COMMIT_RESULT_LABEL (constant)">UNKNOWN_TRANSACTION_COMMIT_RESULT_LABEL</a></span>, <span class='object_link'><a href="../Error.html#WRITE_CONCERN_ERROR-constant" title="Mongo::Error::WRITE_CONCERN_ERROR (constant)">WRITE_CONCERN_ERROR</a></span>, <span class='object_link'><a href="../Error.html#WRITE_CONCERN_ERRORS-constant" title="Mongo::Error::WRITE_CONCERN_ERRORS (constant)">WRITE_CONCERN_ERRORS</a></span>, <span class='object_link'><a href="../Error.html#WRITE_ERRORS-constant" title="Mongo::Error::WRITE_ERRORS (constant)">WRITE_ERRORS</a></span></p>
 
@@ -298,6 +309,17 @@
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="UnsupportedOption.html" title="Mongo::Error::UnsupportedOption (class)">UnsupportedOption</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="UnsupportedOption.html#allow_disk_use_error-class_method" title="Mongo::Error::UnsupportedOption.allow_disk_use_error (method)">allow_disk_use_error</a></span>, <span class='object_link'><a href="UnsupportedOption.html#commit_quorum_error-class_method" title="Mongo::Error::UnsupportedOption.commit_quorum_error (method)">commit_quorum_error</a></span>, <span class='object_link'><a href="UnsupportedOption.html#hint_error-class_method" title="Mongo::Error::UnsupportedOption.hint_error (method)">hint_error</a></span></p>
 
   
   
@@ -378,12 +400,12 @@
       <pre class="lines">
 
 
-46
-47
-48</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/unsupported_collation.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/unsupported_collation.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#DEFAULT_MESSAGE-constant" title="Mongo::Error::UnsupportedCollation::DEFAULT_MESSAGE (constant)">DEFAULT_MESSAGE</a></span></span><span class='rparen'>)</span>
@@ -399,9 +421,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:53 2020 by
+  Generated on Fri Jul 17 03:41:08 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

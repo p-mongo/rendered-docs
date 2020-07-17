@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Operation::Result
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -2172,13 +2172,13 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/operation/result.rb', line 265</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_ok?'>ok?</span>  <span class='comment'># first_document[OK] is a float, and the server can return
+<span class='kw'>def</span> <span class='id identifier rubyid_ok?'>ok?</span>
+  <span class='comment'># first_document[OK] is a float, and the server can return
 </span>  <span class='comment'># ok as a BSON int32, BSON int64 or a BSON double.
 </span>  <span class='comment'># The number 1 is exactly representable in a float, hence
 </span>  <span class='comment'># 1.0 == 1 is going to perform correctly all of the time
 </span>  <span class='comment'># (until the server returns something other than 1 for success, that is)
-</span>
-  <span class='id identifier rubyid_first_document'>first_document</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#OK-constant" title="Mongo::Operation::Result::OK (constant)">OK</a></span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='int'>1</span>
+</span>  <span class='id identifier rubyid_first_document'>first_document</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#OK-constant" title="Mongo::Operation::Result::OK (constant)">OK</a></span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='int'>1</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2931,9 +2931,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:47 2020 by
+  Generated on Fri Jul 17 03:41:02 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Grid::FSBucket
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -646,7 +646,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Opens an upload stream to GridFS to which the contents of a file or blob came be written.</p>
+<p>Opens an upload stream to GridFS to which the contents of a file or blob can be written.</p>
 </div></span>
   
 </li>
@@ -1634,16 +1634,16 @@
       <pre class="lines">
 
 
-256
 257
 258
 259
 260
 261
-262</pre>
+262
+263</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 256</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 257</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_download_to_stream'>download_to_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_io'>io</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_open_download_stream'>open_download_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
@@ -1837,12 +1837,12 @@
       <pre class="lines">
 
 
-349
 350
-351</pre>
+351
+352</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 349</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 350</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_download_to_stream_by_name'>download_to_stream_by_name</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_io'>io</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_download_to_stream'>download_to_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_open_download_stream_by_name'>open_download_stream_by_name</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_file_id'>file_id</span><span class='comma'>,</span> <span class='id identifier rubyid_io'>io</span><span class='rparen'>)</span>
@@ -2475,13 +2475,15 @@
 241
 242
 243
-244</pre>
+244
+245</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 234</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_open_download_stream'>open_download_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_read_stream'>read_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_shallow_symbolize_keys'>shallow_symbolize_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_read_stream'>read_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
       <span class='kw'>begin</span>
         <span class='kw'>yield</span> <span class='id identifier rubyid_stream'>stream</span>
@@ -2696,7 +2698,6 @@
       <pre class="lines">
 
 
-298
 299
 300
 301
@@ -2714,10 +2715,11 @@
 313
 314
 315
-316</pre>
+316
+317</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 298</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 299</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_open_download_stream_by_name'>open_download_stream_by_name</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_revision'>revision</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:revision</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
@@ -2755,7 +2757,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Opens an upload stream to GridFS to which the contents of a file or blob came be written.</p>
+<p>Opens an upload stream to GridFS to which the contents of a file or blob can be written.</p>
 
 
   </div>
@@ -2832,7 +2834,7 @@
           </span>
           
             &mdash; <div class='inline'>
-<p>An optional unique file id. An ObjectId is automatically generated if a file id is not provided.</p>
+<p>An optional unique file id. A BSON::ObjectId is automatically generated if a file id is not provided.</p>
 </div>
           
         </li>
@@ -2953,8 +2955,6 @@
       <pre class="lines">
 
 
-378
-379
 380
 381
 382
@@ -2963,13 +2963,17 @@
 385
 386
 387
-388</pre>
+388
+389
+390
+391</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 378</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 380</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_open_upload_stream'>open_upload_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_write_stream'>write_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
+  <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_shallow_symbolize_keys'>shallow_symbolize_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_write_stream'>write_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
       <span class='kw'>begin</span>
         <span class='kw'>yield</span> <span class='id identifier rubyid_stream'>stream</span>
@@ -3064,7 +3068,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 181</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prefix'>prefix</span>
-  <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:fs_name</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:bucket_name</span><span class='rbracket'>]</span><span class='op'>||</span> <span class='const'><span class='object_link'><a href="#DEFAULT_ROOT-constant" title="Mongo::Grid::FSBucket::DEFAULT_ROOT (constant)">DEFAULT_ROOT</a></span></span>
+  <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:fs_name</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:bucket_name</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#DEFAULT_ROOT-constant" title="Mongo::Grid::FSBucket::DEFAULT_ROOT (constant)">DEFAULT_ROOT</a></span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3143,12 +3147,12 @@
       <pre class="lines">
 
 
-443
-444
-445</pre>
+446
+447
+448</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 443</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 446</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_preference'>read_preference</span>
   <span class='ivar'>@read_preference</span> <span class='op'>||=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:read</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_read_preference'>read_preference</span>
@@ -3378,9 +3382,6 @@
       <pre class="lines">
 
 
-418
-419
-420
 421
 422
 423
@@ -3393,19 +3394,22 @@
 430
 431
 432
-433</pre>
+433
+434
+435
+436</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 418</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 421</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_upload_from_stream'>upload_from_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_io'>io</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_open_upload_stream'>open_upload_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>|</span>
     <span class='kw'>begin</span>
-      <span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_io'>io</span><span class='rparen'>)</span>    <span class='comment'># IOError and SystemCallError are for errors reading the io.
+      <span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_io'>io</span><span class='rparen'>)</span>
+    <span class='comment'># IOError and SystemCallError are for errors reading the io.
 </span>    <span class='comment'># Error::SocketError and Error::SocketTimeoutError are for
 </span>    <span class='comment'># writing to MongoDB.
-</span>
-    <span class='kw'>rescue</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='const'>SystemCallError</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/SocketError.html" title="Mongo::Error::SocketError (class)">SocketError</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">SocketTimeoutError</a></span></span>
+</span>    <span class='kw'>rescue</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='const'>SystemCallError</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/SocketError.html" title="Mongo::Error::SocketError (class)">SocketError</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">SocketTimeoutError</a></span></span>
       <span class='kw'>begin</span>
         <span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_abort'>abort</span>
       <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/OperationFailure.html" title="Mongo::Error::OperationFailure (class)">OperationFailure</a></span></span>
@@ -3491,16 +3495,16 @@
       <pre class="lines">
 
 
-455
-456
-457
 458
 459
 460
-461</pre>
+461
+462
+463
+464</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 455</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/grid/fs_bucket.rb', line 458</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern'>write_concern</span>
   <span class='ivar'>@write_concern</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_wco'>wco</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:write</span><span class='rbracket'>]</span>
@@ -3519,9 +3523,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:45 2020 by
+  Generated on Fri Jul 17 03:40:59 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::TopologyVersion
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -248,6 +248,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>The process id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_doc-instance_method" title="#to_doc (instance method)">#<strong>to_doc</strong>  &#x21d2; BSON::Document </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Converts the object to a document suitable for being sent to the server.</p>
 </div></span>
   
 </li>
@@ -642,14 +666,77 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="to_doc-instance_method">
+  
+    #<strong>to_doc</strong>  &#x21d2; <tt>BSON::Document</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Converts the object to a document suitable for being sent to the server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>BSON::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/topology_version.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_doc'>to_doc</span>
+  <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>counter:</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Int64</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_counter'>counter</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:48 2020 by
+  Generated on Fri Jul 17 03:41:02 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

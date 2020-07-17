@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cursor
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -1434,9 +1434,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 256</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_closed?'>closed?</span>  <span class='comment'># @cursor_id should in principle never be nil
-</span>
-  <span class='ivar'>@cursor_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='ivar'>@cursor_id</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_closed?'>closed?</span>
+  <span class='comment'># @cursor_id should in principle never be nil
+</span>  <span class='ivar'>@cursor_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='ivar'>@cursor_id</span> <span class='op'>==</span> <span class='int'>0</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1654,7 +1654,8 @@ end</code></pre>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 140</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>  <span class='comment'># If we already iterated past the first batch (i.e., called get_more
+<span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
+  <span class='comment'># If we already iterated past the first batch (i.e., called get_more
 </span>  <span class='comment'># at least once), the cursor on the server side has advanced past
 </span>  <span class='comment'># the first batch and restarting iteration from the beginning by
 </span>  <span class='comment'># returning initial result would miss documents in the second batch
@@ -1664,8 +1665,7 @@ end</code></pre>
 </span>  <span class='comment'># In a future driver version, each would either continue from the
 </span>  <span class='comment'># end of previous iteration or would always restart from the
 </span>  <span class='comment'># beginning.
-</span>
-  <span class='kw'>if</span> <span class='ivar'>@get_more_called</span>
+</span>  <span class='kw'>if</span> <span class='ivar'>@get_more_called</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/InvalidCursorOperation.html" title="Mongo::Error::InvalidCursorOperation (class)">InvalidCursorOperation</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Cannot restart iteration of a cursor which issued a getMore</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
 
@@ -1673,17 +1673,17 @@ end</code></pre>
 </span>  <span class='comment'># the documents array each time a new iteration is started.
 </span>  <span class='ivar'>@documents</span> <span class='op'>=</span> <span class='kw'>nil</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>    <span class='comment'># StopIteration raised by try_next ends this loop.
-</span>
-    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='comment'># StopIteration raised by try_next ends this loop.
+</span>    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
       <span class='id identifier rubyid_document'>document</span> <span class='op'>=</span> <span class='id identifier rubyid_try_next'>try_next</span>
       <span class='kw'>yield</span> <span class='id identifier rubyid_document'>document</span> <span class='kw'>if</span> <span class='id identifier rubyid_document'>document</span>
     <span class='kw'>end</span>
     <span class='kw'>self</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_documents'>documents</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>    <span class='comment'># StopIteration raised by try_next ends this loop.
-</span>
-    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_documents'>documents</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='comment'># StopIteration raised by try_next ends this loop.
+</span>    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
       <span class='id identifier rubyid_document'>document</span> <span class='op'>=</span> <span class='id identifier rubyid_try_next'>try_next</span>
       <span class='id identifier rubyid_documents'>documents</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_document'>document</span> <span class='kw'>if</span> <span class='id identifier rubyid_document'>document</span>
     <span class='kw'>end</span>
@@ -2176,19 +2176,19 @@ end</code></pre>
       <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 193</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_try_next'>try_next</span>
-  <span class='kw'>if</span> <span class='ivar'>@documents</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>    <span class='comment'># Since published versions of Mongoid have a copy of old driver cursor
+  <span class='kw'>if</span> <span class='ivar'>@documents</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='comment'># Since published versions of Mongoid have a copy of old driver cursor
 </span>    <span class='comment'># code, our dup call in #process isn&#39;t invoked when Mongoid query
 </span>    <span class='comment'># cache is active. Work around that by also calling dup here on
 </span>    <span class='comment'># the result of #process which might come out of Mongoid&#39;s code.
-</span>
-    <span class='ivar'>@documents</span> <span class='op'>=</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='ivar'>@initial_result</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>    <span class='comment'># the documents here can be an empty array, hence
+</span>    <span class='ivar'>@documents</span> <span class='op'>=</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='ivar'>@initial_result</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+    <span class='comment'># the documents here can be an empty array, hence
 </span>    <span class='comment'># we may end up issuing a getMore in the first try_next call
-</span>
-  <span class='kw'>end</span>
+</span>  <span class='kw'>end</span>
 
-  <span class='kw'>if</span> <span class='ivar'>@documents</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>    <span class='comment'># On empty batches, we cache the batch resume token
-</span>
-    <span class='id identifier rubyid_cache_batch_resume_token'>cache_batch_resume_token</span>
+  <span class='kw'>if</span> <span class='ivar'>@documents</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='comment'># On empty batches, we cache the batch resume token
+</span>    <span class='id identifier rubyid_cache_batch_resume_token'>cache_batch_resume_token</span>
 
     <span class='kw'>unless</span> <span class='id identifier rubyid_closed?'>closed?</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_exhausted?'>exhausted?</span>
@@ -2227,9 +2227,9 @@ end</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:42 2020 by
+  Generated on Fri Jul 17 03:40:56 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

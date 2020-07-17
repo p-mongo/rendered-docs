@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Operation::Specifiable
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -1148,6 +1148,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#commit_quorum-instance_method" title="#commit_quorum (instance method)">#<strong>commit_quorum</strong>  &#x21d2; nil | Integer | String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>For createIndexes operations, the number of votes that a primary must wait for before commiting an index.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#cursor_count-instance_method" title="#cursor_count (instance method)">#<strong>cursor_count</strong>  &#x21d2; Integer </a>
     
 
@@ -2069,12 +2093,12 @@
       <pre class="lines">
 
 
-565
-566
-567</pre>
+576
+577
+578</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 565</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 576</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_acknowledged_write?'>acknowledged_write?</span>
   <span class='id identifier rubyid_write_concern'>write_concern</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='period'>.</span><span class='id identifier rubyid_acknowledged?'>acknowledged?</span>
@@ -2164,13 +2188,13 @@
       <pre class="lines">
 
 
-552
-553
-554
-555</pre>
+563
+564
+565
+566</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 552</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 563</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_array_filters'>array_filters</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sel'>sel</span> <span class='op'>=</span> <span class='id identifier rubyid_selector'>selector</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
@@ -2502,15 +2526,97 @@
       <pre class="lines">
 
 
-540
-541
-542</pre>
+551
+552
+553</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 540</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 551</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_command'>command</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_selector'>selector</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="commit_quorum-instance_method">
+  
+    #<strong>commit_quorum</strong>  &#x21d2; <tt>nil | Integer | String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>For createIndexes operations, the number of votes that a primary must wait for before commiting an index. Potential values are:</p>
+<ul><li>
+<p>an integer from 0 to the number of members of the replica set</p>
+</li><li>
+<p>“majority” indicating that a majority of data bearing nodes must vote</p>
+</li><li>
+<p>“votingMembers” which means that all voting data bearing nodes must vote</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil | Integer | String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The commitQuorum value of the operation.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+542
+543
+544</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/specifiable.rb', line 542</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_commit_quorum'>commit_quorum</span>
+  <span class='ivar'>@spec</span><span class='lbracket'>[</span><span class='symbol'>:commit_quorum</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4909,9 +5015,9 @@ specs.</li>
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:41 2020 by
+  Generated on Fri Jul 17 03:40:54 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

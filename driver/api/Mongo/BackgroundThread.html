@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::BackgroundThread
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -81,7 +81,7 @@
   
   <dl>
     <dt>Included in:</dt>
-    <dd><span class='object_link'><a href="Cluster/PeriodicExecutor.html" title="Mongo::Cluster::PeriodicExecutor (class)">Cluster::PeriodicExecutor</a></span>, <span class='object_link'><a href="Server/Monitor.html" title="Mongo::Server::Monitor (class)">Server::Monitor</a></span>, <span class='object_link'><a href="Server/Populator.html" title="Mongo::Server::Populator (class)">Server::Populator</a></span>, <span class='object_link'><a href="Srv/Monitor.html" title="Mongo::Srv::Monitor (class)">Srv::Monitor</a></span></dd>
+    <dd><span class='object_link'><a href="Cluster/PeriodicExecutor.html" title="Mongo::Cluster::PeriodicExecutor (class)">Cluster::PeriodicExecutor</a></span>, <span class='object_link'><a href="Server/Monitor.html" title="Mongo::Server::Monitor (class)">Server::Monitor</a></span>, <span class='object_link'><a href="Server/Populator.html" title="Mongo::Server::Populator (class)">Server::Populator</a></span>, <span class='object_link'><a href="Server/PushMonitor.html" title="Mongo::Server::PushMonitor (class)">Server::PushMonitor</a></span>, <span class='object_link'><a href="Srv/Monitor.html" title="Mongo::Srv::Monitor (class)">Srv::Monitor</a></span></dd>
   </dl>
   
 
@@ -425,12 +425,12 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/background_thread.rb', line 63</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_stop!'>stop!</span>  <span class='comment'># If the thread was not started, there is nothing to stop.
+<span class='kw'>def</span> <span class='id identifier rubyid_stop!'>stop!</span>
+  <span class='comment'># If the thread was not started, there is nothing to stop.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># Classes including this module may want to perform additional
 </span>  <span class='comment'># cleanup, which they can do by overriding this method.
-</span>
-  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>unless</span> <span class='ivar'>@thread</span>
+</span>  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>unless</span> <span class='ivar'>@thread</span>
 
   <span class='comment'># Background threads generally perform operations in a loop.
 </span>  <span class='comment'># This flag is meant to be checked on each iteration of the
@@ -466,9 +466,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:38 2020 by
+  Generated on Fri Jul 17 03:40:52 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

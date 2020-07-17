@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Monitoring::Event::ServerHeartbeatSucceeded
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -211,7 +211,31 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(address, round_trip_time)  &#x21d2; ServerHeartbeatSucceeded </a>
+      <a href="#awaited%3F-instance_method" title="#awaited? (instance method)">#<strong>awaited?</strong>  &#x21d2; true | false </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether the heartbeat was awaited.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(address, round_trip_time, awaited: false)  &#x21d2; ServerHeartbeatSucceeded </a>
     
 
     
@@ -273,7 +297,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(address, round_trip_time)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Monitoring::Event::ServerHeartbeatSucceeded (class)">ServerHeartbeatSucceeded</a></span></tt> 
+    #<strong>initialize</strong>(address, round_trip_time, awaited: false)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Monitoring::Event::ServerHeartbeatSucceeded (class)">ServerHeartbeatSucceeded</a></span></tt> 
   
 
   
@@ -339,6 +363,24 @@
       
     </li>
   
+    <li>
+      
+        <span class='name'>awaited</span>
+      
+      
+        <span class='type'>(<tt>true | false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the heartbeat was awaited.</p>
+</div>
+      
+    </li>
+  
 </ul>
 
 <p class="tag_title">Since:</p>
@@ -364,17 +406,19 @@
       <pre class="lines">
 
 
-43
-44
-45
-46</pre>
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/server_heartbeat_succeeded.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/server_heartbeat_succeeded.rb', line 49</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_round_trip_time'>round_trip_time</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_round_trip_time'>round_trip_time</span><span class='comma'>,</span> <span class='label'>awaited:</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='ivar'>@address</span> <span class='op'>=</span> <span class='id identifier rubyid_address'>address</span>
   <span class='ivar'>@round_trip_time</span> <span class='op'>=</span> <span class='id identifier rubyid_round_trip_time'>round_trip_time</span>
+  <span class='ivar'>@awaited</span> <span class='op'>=</span> <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_awaited'>awaited</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -552,7 +596,82 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="summary-instance_method">
+  <h3 class="signature first" id="awaited?-instance_method">
+  
+    #<strong>awaited?</strong>  &#x21d2; <tt>true | false</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns Whether the heartbeat was awaited.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true | false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the heartbeat was awaited.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.7.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/server_heartbeat_succeeded.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_awaited?'>awaited?</span>
+  <span class='ivar'>@awaited</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="summary-instance_method">
   
     #<strong>summary</strong>  &#x21d2; <tt>String</tt> 
   
@@ -619,16 +738,16 @@
       <pre class="lines">
 
 
-56
-57
-58
-59</pre>
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/server_heartbeat_succeeded.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/server_heartbeat_succeeded.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_summary'>summary</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^Mongo::Monitoring::Event::</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_short_class_name'>short_class_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> address=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
@@ -641,9 +760,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:56 2020 by
+  Generated on Fri Jul 17 03:41:11 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

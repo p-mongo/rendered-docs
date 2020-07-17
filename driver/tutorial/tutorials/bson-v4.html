@@ -34,14 +34,13 @@
 <link rel="prev" title="BSON" href="../bson-tutorials.html" /></head>
 <body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
   <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-     {'gtm.start': new Date().getTime(),event:'gtm.js'}
-   );var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
   <!-- End Google Tag Manager -->
    <script>
      window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
@@ -831,56 +830,52 @@ strings to be used instead.</p>
 <p class="first admonition-title">Note</p>
 <p>In BSON, hash <em>keys</em> are always strings. Non-string values will be
 stringified when used as hash keys:</p>
+<div class="last button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Hash</span><span class="o">.</span><span class="n">from_bson</span><span class="p">({</span><span class="ss">foo</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">}</span><span class="o">.</span><span class="n">to_bson</span><span class="p">)</span>
+<span class="c1"># =&gt; {&quot;foo&quot;=&gt;&quot;bar&quot;}</span>
+
+<span class="no">Hash</span><span class="o">.</span><span class="n">from_bson</span><span class="p">({</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">}</span><span class="o">.</span><span class="n">to_bson</span><span class="p">)</span>
+<span class="c1"># =&gt; {&quot;1&quot;=&gt;2}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the BSON library encodes <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> hash values as strings and
+decodes BSON symbols into Ruby <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> values:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="ss">foo</span><span class="p">:</span> <span class="ss">:bar</span><span class="p">}</span><span class="o">.</span><span class="n">to_bson</span><span class="o">.</span><span class="n">to_s</span>
+<span class="c1"># =&gt; &quot;\x12\x00\x00\x00\x02foo\x00\x04\x00\x00\x00bar\x00\x00&quot;</span>
+
+<span class="c1"># 0x02 is the string type</span>
+<span class="no">Hash</span><span class="o">.</span><span class="n">from_bson</span><span class="p">(</span><span class="no">BSON</span><span class="o">::</span><span class="no">ByteBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x12\x00\x00\x00\x02</span><span class="s2">foo</span><span class="se">\x00\x04\x00\x00\x00</span><span class="s2">bar</span><span class="se">\x00\x00</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s1">&#39;BINARY&#39;</span><span class="p">)))</span>
+<span class="c1"># =&gt; {&quot;foo&quot;=&gt;&quot;bar&quot;}</span>
+
+<span class="c1"># 0x0E is the symbol type</span>
+<span class="no">Hash</span><span class="o">.</span><span class="n">from_bson</span><span class="p">(</span><span class="no">BSON</span><span class="o">::</span><span class="no">ByteBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x12\x00\x00\x00\x0E</span><span class="s2">foo</span><span class="se">\x00\x04\x00\x00\x00</span><span class="s2">bar</span><span class="se">\x00\x00</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s1">&#39;BINARY&#39;</span><span class="p">)))</span>
+<span class="c1"># =&gt; {&quot;foo&quot;=&gt;:bar}</span>
 </pre></div>
 </div>
 </div>
-<p>Hash.from_bson({foo: ‘bar’}.to_bson)
-# =&gt; {“foo”=&gt;”bar”}</p>
-<p class="last">Hash.from_bson({1 =&gt; 2}.to_bson)
-# =&gt; {“1”=&gt;2}</p>
-</div>
-<p>By default, the BSON library encodes <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> hash values as strings and
-decodes BSON symbols into Ruby <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> values:</p>
-<blockquote>
-<div><div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
-<p>{foo: :bar}.to_bson.to_s
-# =&gt; “x12x00x00x00x02foox00x04x00x00x00barx00x00”</p>
-<p># 0x02 is the string type
-Hash.from_bson(BSON::ByteBuffer.new(“x12x00x00x00x02foox00x04x00x00x00barx00x00”.force_encoding(‘BINARY’)))
-# =&gt; {“foo”=&gt;”bar”}</p>
-<p># 0x0E is the symbol type
-Hash.from_bson(BSON::ByteBuffer.new(“x12x00x00x00x0Efoox00x04x00x00x00barx00x00”.force_encoding(‘BINARY’)))
-# =&gt; {“foo”=&gt;:bar}</p>
-</div></blockquote>
 <p>To force encoding of Ruby symbols to BSON symbols, wrap the Ruby symbols in
 <code class="docutils literal notranslate"><span class="pre">BSON::Symbol::Raw</span></code>:</p>
-<blockquote>
-<div><div class="button-code-block">
+<div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="ss">foo</span><span class="p">:</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Symbol</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:bar</span><span class="p">)}</span><span class="o">.</span><span class="n">to_bson</span><span class="o">.</span><span class="n">to_s</span>
+<span class="c1"># =&gt; &quot;\x12\x00\x00\x00\x0Efoo\x00\x04\x00\x00\x00bar\x00\x00&quot;</span>
 </pre></div>
 </div>
 </div>
-<p>{foo: BSON::Symbol::Raw.new(:bar)}.to_bson.to_s
-# =&gt; “x12x00x00x00x0Efoox00x04x00x00x00barx00x00”</p>
-</div></blockquote>
 </div>
 </div>
 <div class="section" id="json-serialization">
@@ -937,20 +932,19 @@ millisecond.</p>
 <p>The time as always rounded down. If the time precedes the Unix epoch
 (January 1, 1970 00:00:00 UTC), the absolute value of the time would
 increase:</p>
-<div class="button-code-block">
+<div class="last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">utc</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">999_999</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">to_f</span>
+<span class="c1"># =&gt; -315619199.000001</span>
+<span class="n">time</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+<span class="c1"># =&gt; -315619199.001</span>
 </pre></div>
 </div>
 </div>
-<p class="last">time = Time.utc(1960, 1, 1, 0, 0, 0, 999_999)
-time.to_f
-# =&gt; -315619199.000001
-time.floor(3).to_f
-# =&gt; -315619199.001</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

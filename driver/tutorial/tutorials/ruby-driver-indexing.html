@@ -33,14 +33,13 @@
 <link rel="prev" title="Monitoring" href="ruby-driver-monitoring.html" /></head>
 <body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
   <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-     {'gtm.start': new Date().getTime(),event:'gtm.js'}
-   );var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
   <!-- End Google Tag Manager -->
    <script>
      window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
@@ -347,6 +346,48 @@ when creating indexes. These options mirror the options supported by the
 </tr>
 </tbody>
 </table>
+<div class="section" id="the-commit-quorum-option">
+<h3>The :commit_quorum option<a class="headerlink" href="#the-commit-quorum-option" title="Permalink to this headline">¶</a></h3>
+<p>On MongoDB server versions 4.4 and newer, the <code class="docutils literal notranslate"><span class="pre">:commit_quorum</span></code> option may be
+specified on index creation. This option differs from other index options in that
+it determines server behavior during index creation, rather than determining
+the behavior of an individual index.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">:commit_quorum</span></code> option specifies how many voting, data-bearing members
+of a replica set must complete the index build before the index is ready.
+Possible values are integers (0 to the number of voting, data-bearing members
+of the replica set), “majority”, or “votingMembers”.</p>
+<p>To specify <code class="docutils literal notranslate"><span class="pre">:commit_quorum</span></code> when creating one index, add another option
+to the second argument of the <code class="docutils literal notranslate"><span class="pre">indexes#create_one</span></code> method:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:bands</span><span class="o">].</span><span class="n">indexes</span><span class="o">.</span><span class="n">create_one</span><span class="p">(</span>
+  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">expire_after</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="ss">commit_quorum</span><span class="p">:</span> <span class="s1">&#39;majority&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To specify create options when creating multiple indexes, add a Hash specifying
+<code class="docutils literal notranslate"><span class="pre">:commit_quorum</span></code> as a final element to the Array of indexes passed to
+<code class="docutils literal notranslate"><span class="pre">indexes#create_many</span></code>. Note that this Hash MUST be the final element in the
+Array.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:bands</span><span class="o">].</span><span class="n">indexes</span><span class="o">.</span><span class="n">create_many</span><span class="p">(</span><span class="o">[</span>
+  <span class="p">{</span> <span class="ss">key</span><span class="p">:</span> <span class="p">{</span> <span class="ss">genre</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">key</span><span class="p">:</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">expire_after</span><span class="p">:</span> <span class="mi">120</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">commit_quorum</span><span class="p">:</span> <span class="s1">&#39;majority&#39;</span> <span class="p">},</span>
+<span class="o">]</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="dropping-indexes">
 <h2>Dropping Indexes<a class="headerlink" href="#dropping-indexes" title="Permalink to this headline">¶</a></h2>

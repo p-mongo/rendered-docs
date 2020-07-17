@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cluster::Topology::ReplicaSetNoPrimary
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -231,7 +231,7 @@
 </li>
 
       
-        <li class="public ">
+        <li class="public deprecated">
   <span class="summary_signature">
     
       <a href="#has_readable_server%3F-instance_method" title="#has_readable_server? (instance method)">#<strong>has_readable_server?</strong>(cluster, server_selector = nil)  &#x21d2; true, false </a>
@@ -244,13 +244,11 @@
   
   
   
-  
+  <span class="deprecated note title">deprecated</span>
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Determine if the topology would select a readable server for the provided candidates and read preference.</p>
-</div></span>
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'></div></span>
   
 </li>
 
@@ -568,7 +566,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
+
 <p>Determine if the topology would select a readable server for the provided candidates and read preference.</p>
 
 
@@ -667,15 +666,15 @@
       <pre class="lines">
 
 
-76
 77
-78</pre>
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_readable_server?'>has_readable_server?</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='lparen'>(</span><span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../../ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_primary'><span class='object_link'><a href="../../ServerSelector.html#primary-instance_method" title="Mongo::ServerSelector#primary (method)">primary</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_candidates'>candidates</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+  <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../../ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_primary'><span class='object_link'><a href="../../ServerSelector.html#primary-instance_method" title="Mongo::ServerSelector#primary (method)">primary</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_try_select_server'>try_select_server</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -774,15 +773,15 @@
       <pre class="lines">
 
 
-91
 92
-93</pre>
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_writable_server?'>has_writable_server?</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_servers'>servers</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_primary?'>primary?</span> <span class='rbrace'>}</span>
+  <span class='op'>!</span><span class='const'><span class='object_link'><a href="../../ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_primary'><span class='object_link'><a href="../../ServerSelector.html#primary-instance_method" title="Mongo::ServerSelector#primary (method)">primary</a></span></span><span class='period'>.</span><span class='id identifier rubyid_try_select_server'>try_select_server</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -861,10 +860,10 @@
       <pre class="lines">
 
 
-103</pre>
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_replica_set?'>replica_set?</span><span class='semicolon'>;</span> <span class='kw'>true</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -964,15 +963,15 @@
       <pre class="lines">
 
 
-115
 116
 117
 118
 119
-120</pre>
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_servers'>servers</span><span class='lparen'>(</span><span class='id identifier rubyid_servers'>servers</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_servers'>servers</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -1057,10 +1056,10 @@
       <pre class="lines">
 
 
-130</pre>
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 131</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sharded?'>sharded?</span><span class='semicolon'>;</span> <span class='kw'>false</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1140,10 +1139,10 @@
       <pre class="lines">
 
 
-140</pre>
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_single?'>single?</span><span class='semicolon'>;</span> <span class='kw'>false</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1308,10 +1307,10 @@
       <pre class="lines">
 
 
-150</pre>
+151</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/topology/replica_set_no_primary.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unknown?'>unknown?</span><span class='semicolon'>;</span> <span class='kw'>false</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1324,9 +1323,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:56 2020 by
+  Generated on Fri Jul 17 03:41:11 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

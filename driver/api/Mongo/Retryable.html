@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Retryable
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -830,7 +830,7 @@ end</code></pre>
         <span class='name'>server_selector</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="ServerSelector/Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Mongo::ServerSelector::Selectable</a></span></tt>)</span>
+        <span class='type'>(<tt>Mongo::ServerSelector::Selectable</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>nil</tt>)</em>
@@ -938,21 +938,21 @@ end</code></pre>
       <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_with_retry'>read_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>    <span class='comment'># Older versions of Mongoid call read_with_retry without arguments.
+  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='comment'># Older versions of Mongoid call read_with_retry without arguments.
 </span>    <span class='comment'># This is already not correct in a MongoDB 3.6+ environment with
 </span>    <span class='comment'># sessions. For compatibility we emulate the legacy driver behavior
 </span>    <span class='comment'># here but upgrading Mongoid is strongly recommended.
-</span>
-    <span class='kw'>unless</span> <span class='gvar'>$_mongo_read_with_retry_warned</span>
+</span>    <span class='kw'>unless</span> <span class='gvar'>$_mongo_read_with_retry_warned</span>
       <span class='gvar'>$_mongo_read_with_retry_warned</span> <span class='op'>=</span> <span class='kw'>true</span>
       <span class='const'><span class='object_link'><a href="Logger.html" title="Mongo::Logger (class)">Logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger'><span class='object_link'><a href="Logger.html#logger-class_method" title="Mongo::Logger.logger (method)">logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Legacy read_with_retry invocation - please update the application and/or its dependencies</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='kw'>end</span>    <span class='comment'># Since we don&#39;t have a session, we cannot use the modern read retries.
+    <span class='kw'>end</span>
+    <span class='comment'># Since we don&#39;t have a session, we cannot use the modern read retries.
 </span>    <span class='comment'># And we need to select a server but we don&#39;t have a server selector.
 </span>    <span class='comment'># Use PrimaryPreferred which will work as long as there is a data
 </span>    <span class='comment'># bearing node in the cluster; the block may select a different server
 </span>    <span class='comment'># which is fine.
-</span>
-    <span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="ServerSelector.html#get-instance_method" title="Mongo::ServerSelector#get (method)">get</a></span></span><span class='lparen'>(</span><span class='label'>mode:</span> <span class='symbol'>:primary_preferred</span><span class='rparen'>)</span>
+</span>    <span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="ServerSelector.html#get-instance_method" title="Mongo::ServerSelector#get (method)">get</a></span></span><span class='lparen'>(</span><span class='label'>mode:</span> <span class='symbol'>:primary_preferred</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_legacy_read_with_retry'>legacy_read_with_retry</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_retry_reads?'>retry_reads?</span>
     <span class='id identifier rubyid_modern_read_with_retry'>modern_read_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1038,7 +1038,7 @@ end</code></pre>
         <span class='name'>server_selector</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="ServerSelector/Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Mongo::ServerSelector::Selectable</a></span></tt>)</span>
+        <span class='type'>(<tt>Mongo::ServerSelector::Selectable</tt>)</span>
       
       
       
@@ -1443,9 +1443,9 @@ end</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:38 2020 by
+  Generated on Fri Jul 17 03:40:52 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

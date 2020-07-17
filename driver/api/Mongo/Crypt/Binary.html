@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Crypt::Binary
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -428,9 +428,9 @@
       <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>data:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>pointer:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_data'>data</span>    <span class='comment'># Represent data string as array of uint-8 bytes
-</span>
-    <span class='id identifier rubyid_bytes'>bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C*</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_data'>data</span>
+    <span class='comment'># Represent data string as array of uint-8 bytes
+</span>    <span class='id identifier rubyid_bytes'>bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C*</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
     <span class='comment'># FFI::MemoryPointer automatically frees memory when it goes out of scope
 </span>    <span class='ivar'>@data_p</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
@@ -442,11 +442,11 @@
       <span class='const'><span class='object_link'><a href="Binding.html" title="Mongo::Crypt::Binding (class)">Binding</a></span></span><span class='period'>.</span><span class='id identifier rubyid_mongocrypt_binary_new_from_data'><span class='object_link'><a href="Binding.html#mongocrypt_binary_new_from_data-class_method" title="Mongo::Crypt::Binding.mongocrypt_binary_new_from_data (method)">mongocrypt_binary_new_from_data</a></span></span><span class='lparen'>(</span><span class='ivar'>@data_p</span><span class='comma'>,</span> <span class='id identifier rubyid_bytes'>bytes</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span><span class='comma'>,</span>
       <span class='const'><span class='object_link'><a href="Binding.html" title="Mongo::Crypt::Binding (class)">Binding</a></span></span><span class='period'>.</span><span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:mongocrypt_binary_destroy</span><span class='rparen'>)</span>
     <span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_pointer'>pointer</span>    <span class='comment'># If the Binary class is used this way, it means that the pointer
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_pointer'>pointer</span>
+    <span class='comment'># If the Binary class is used this way, it means that the pointer
 </span>    <span class='comment'># for the underlying mongocrypt_binary_t object is allocated somewhere
 </span>    <span class='comment'># else. It is not the responsibility of this class to de-allocate data.
-</span>
-    <span class='ivar'>@bin</span> <span class='op'>=</span> <span class='id identifier rubyid_pointer'>pointer</span>
+</span>    <span class='ivar'>@bin</span> <span class='op'>=</span> <span class='id identifier rubyid_pointer'>pointer</span>
   <span class='kw'>else</span>
     <span class='comment'># FFI::AutoPointer uses a custom release strategy to automatically free
 </span>    <span class='comment'># the pointer once this object goes out of scope
@@ -985,9 +985,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:45 2020 by
+  Generated on Fri Jul 17 03:41:00 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

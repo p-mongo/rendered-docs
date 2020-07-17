@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::ServerSelector
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -89,7 +89,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/mongo/server_selector.rb<span class="defines">,<br />
-  lib/mongo/server_selector/base.rb,<br /> lib/mongo/server_selector/nearest.rb,<br /> lib/mongo/server_selector/primary.rb,<br /> lib/mongo/server_selector/secondary.rb,<br /> lib/mongo/server_selector/selectable.rb,<br /> lib/mongo/server_selector/primary_preferred.rb,<br /> lib/mongo/server_selector/secondary_preferred.rb</span>
+  lib/mongo/server_selector/base.rb,<br /> lib/mongo/server_selector/nearest.rb,<br /> lib/mongo/server_selector/primary.rb,<br /> lib/mongo/server_selector/secondary.rb,<br /> lib/mongo/server_selector/primary_preferred.rb,<br /> lib/mongo/server_selector/secondary_preferred.rb</span>
 </dd>
   </dl>
   
@@ -125,8 +125,6 @@
 </div><h2>Defined Under Namespace</h2>
 <p class="children">
   
-    
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="ServerSelector/Selectable.html" title="Mongo::ServerSelector::Selectable (module)">Selectable</a></span>
     
   
     
@@ -463,14 +461,14 @@
       <pre class="lines">
 
 
+72
 73
 74
 75
-76
-77</pre>
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_preference'>preference</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_preference'>preference</span> <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="#PREFERENCES-constant" title="Mongo::ServerSelector::PREFERENCES (constant)">PREFERENCES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span>
@@ -530,12 +528,12 @@
       <pre class="lines">
 
 
+84
 85
-86
-87</pre>
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_primary'>primary</span>
   <span class='ivar'>@primary</span> <span class='op'>||=</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='label'>mode:</span> <span class='symbol'>:primary</span><span class='rparen'>)</span>
@@ -550,9 +548,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:38 2020 by
+  Generated on Fri Jul 17 03:40:52 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

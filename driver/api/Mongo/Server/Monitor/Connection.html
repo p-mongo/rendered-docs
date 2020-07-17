@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Server::Monitor::Connection
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -137,7 +137,11 @@
   
 </ul>
 
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="../PushMonitor/Connection.html" title="Mongo::Server::PushMonitor::Connection (class)">PushMonitor::Connection</a></span></p>
 </div>
+
   
     <h2>
       Constant Summary
@@ -220,7 +224,10 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='lbrace'>{</span> <span class='label'>isMaster:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$db</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../../Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Database.html#ADMIN-constant" title="Mongo::Database::ADMIN (constant)">ADMIN</a></span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='label'>isMaster:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$db</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../../Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Database.html#ADMIN-constant" title="Mongo::Database::ADMIN (constant)">ADMIN</a></span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
         <dt id="ISMASTER_MESSAGE-constant" class="">ISMASTER_MESSAGE =
           <div class="docstring">
@@ -439,6 +446,33 @@
 </li>
 
     
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server_connection_id-instance_method" title="#server_connection_id (instance method)">#<strong>server_connection_id</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
   </ul>
 
 
@@ -532,7 +566,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#dispatch_bytes-instance_method" title="#dispatch_bytes (instance method)">#<strong>dispatch_bytes</strong>(bytes)  &#x21d2; Protocol::Message </a>
+      <a href="#dispatch_bytes-instance_method" title="#dispatch_bytes (instance method)">#<strong>dispatch_bytes</strong>(bytes, **opts)  &#x21d2; Protocol::Message </a>
     
 
     
@@ -604,6 +638,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#read_response-instance_method" title="#read_response (instance method)">#<strong>read_response</strong>(**opts)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#socket_timeout-instance_method" title="#socket_timeout (instance method)">#<strong>socket_timeout</strong>  &#x21d2; Float </a>
     
 
@@ -621,6 +677,28 @@
     <span class="summary_desc"><div class='inline'>
 <p>Returns the monitoring socket timeout.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_bytes-instance_method" title="#write_bytes (instance method)">#<strong>write_bytes</strong>(bytes)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -797,17 +875,17 @@
       <pre class="lines">
 
 
-90
-91
-92
 93
 94
 95
 96
-97</pre>
+97
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@address</span> <span class='op'>=</span> <span class='id identifier rubyid_address'>address</span>
@@ -893,12 +971,12 @@
       <pre class="lines">
 
 
-103
-104
-105</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_address'>address</span>
   <span class='ivar'>@address</span>
@@ -974,15 +1052,76 @@
       <pre class="lines">
 
 
-100
-101
-102</pre>
+103
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="server_connection_id-instance_method">
+  
+    #<strong>server_connection_id</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_server_connection_id'>server_connection_id</span>
+  <span class='ivar'>@server_connection_id</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1082,19 +1221,20 @@
       <pre class="lines">
 
 
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165</pre>
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 189</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect!'>connect!</span>
   <span class='kw'>if</span> <span class='ivar'>@socket</span>
@@ -1102,7 +1242,8 @@
   <span class='kw'>end</span>
 
   <span class='ivar'>@socket</span> <span class='op'>=</span> <span class='id identifier rubyid_add_server_diagnostics'>add_server_diagnostics</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_socket'>socket</span><span class='lparen'>(</span><span class='id identifier rubyid_socket_timeout'>socket_timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_socket'>socket</span><span class='lparen'>(</span><span class='id identifier rubyid_socket_timeout'>socket_timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span>
+      <span class='label'>connection_address:</span> <span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='label'>monitor:</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
@@ -1202,20 +1343,20 @@
       <pre class="lines">
 
 
-181
-182
-183
-184
-185
-186
-187</pre>
+215
+216
+217
+218
+219
+220
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 215</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect!'>disconnect!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_socket'>socket</span>
-    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span> <span class='kw'>rescue</span> <span class='kw'>nil</span>
     <span class='ivar'>@socket</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='kw'>end</span>
   <span class='kw'>true</span>
@@ -1309,12 +1450,12 @@
       <pre class="lines">
 
 
-123
-124
-125</pre>
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dispatch'>dispatch</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dispatch_bytes'>dispatch_bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_serialize'>serialize</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
@@ -1327,7 +1468,7 @@
       <div class="method_details ">
   <h3 class="signature " id="dispatch_bytes-instance_method">
   
-    #<strong>dispatch_bytes</strong>(bytes)  &#x21d2; <tt><span class='object_link'><a href="../../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Protocol::Message</a></span></tt> 
+    #<strong>dispatch_bytes</strong>(bytes, **opts)  &#x21d2; <tt><span class='object_link'><a href="../../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Protocol::Message</a></span></tt> 
   
 
   
@@ -1365,7 +1506,47 @@
       
     </li>
   
+    <li>
+      
+        <span class='name'>opts</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
 </ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**opts</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:read_socket_timeout</span>
+          <span class="type">(<tt>Numeric</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The timeout to use for each read operation.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
 
 <p class="tag_title">Returns:</p>
 <ul class="return">
@@ -1408,29 +1589,21 @@
       <pre class="lines">
 
 
-132
-133
-134
-135
-136
-137
-138
-139
 140
-141</pre>
+141
+142
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 140</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_dispatch_bytes'>dispatch_bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
-  <span class='kw'>unless</span> <span class='id identifier rubyid_connected?'>connected?</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Trying to dispatch on an unconnected connection </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_add_server_diagnostics'>add_server_diagnostics</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deserialize'><span class='object_link'><a href="../../Protocol/Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_dispatch_bytes'>dispatch_bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_write_bytes'>write_bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_read_response'>read_response</span><span class='lparen'>(</span>
+    <span class='label'>socket_timeout:</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:read_socket_timeout</span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1481,24 +1654,30 @@
       <pre class="lines">
 
 
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203</pre>
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 223</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_handshake!'>handshake!</span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ivar'>@app_metadata</span>
@@ -1510,10 +1689,139 @@
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_dispatch_bytes'>dispatch_bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_reply'>reply</span> <span class='op'>=</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
   <span class='id identifier rubyid_set_compressor!'>set_compressor!</span><span class='lparen'>(</span><span class='id identifier rubyid_reply'>reply</span><span class='rparen'>)</span>
+  <span class='ivar'>@server_connection_id</span> <span class='op'>=</span> <span class='id identifier rubyid_reply'>reply</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>connectionId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_reply'>reply</span>
-<span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
-  <span class='id identifier rubyid_log_warn'>log_warn</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Failed to handshake with </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='embexpr_end'>}</span><span class='tstring_content'>:\n</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='int'>5</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_exc'>exc</span>
+  <span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Failed to handshake with </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'><span class='object_link'><a href="../../Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_warn_monitor_exception'>warn_monitor_exception</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='comma'>,</span> <span class='id identifier rubyid_exc'>exc</span><span class='comma'>,</span>
+    <span class='label'>logger:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>log_prefix:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:log_prefix</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>bg_error_backtrace:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:bg_error_backtrace</span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_response-instance_method">
+  
+    #<strong>read_response</strong>(**opts)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>opts</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>**opts</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:socket_timeout</span>
+          <span class="type">(<tt>Numeric</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The timeout to use for each read operation.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 161</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_response'>read_response</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_connected?'>connected?</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Trying to read on an unconnected connection </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_add_server_connection_id'>add_server_connection_id</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_add_server_diagnostics'>add_server_diagnostics</span> <span class='kw'>do</span>
+      <span class='const'><span class='object_link'><a href="../../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deserialize'><span class='object_link'><a href="../../Protocol/Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span>
+        <span class='const'><span class='object_link'><a href="../../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Protocol/Message.html" title="Mongo::Protocol::Message (class)">Message</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Protocol/Message.html#MAX_MESSAGE_SIZE-constant" title="Mongo::Protocol::Message::MAX_MESSAGE_SIZE (constant)">MAX_MESSAGE_SIZE</a></span></span><span class='comma'>,</span>
+        <span class='kw'>nil</span><span class='comma'>,</span>
+        <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1586,15 +1894,90 @@
       <pre class="lines">
 
 
-114
-115
-116</pre>
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 117</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_socket_timeout'>socket_timeout</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connect_timeout</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../../Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Server.html#CONNECT_TIMEOUT-constant" title="Mongo::Server::CONNECT_TIMEOUT (constant)">CONNECT_TIMEOUT</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_bytes-instance_method">
+  
+    #<strong>write_bytes</strong>(bytes)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/connection.rb', line 147</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_bytes'>write_bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_connected?'>connected?</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Trying to dispatch on an unconnected connection </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_add_server_connection_id'>add_server_connection_id</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_add_server_diagnostics'>add_server_diagnostics</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1606,9 +1989,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:52 2020 by
+  Generated on Fri Jul 17 03:41:07 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Error::Notable
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -396,11 +396,11 @@
     <span class='ivar'>@notes</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
   <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../Lint.html" title="Mongo::Lint (module)">Lint</a></span></span><span class='period'>.</span><span class='id identifier rubyid_enabled?'><span class='object_link'><a href="../Lint.html#enabled%3F-class_method" title="Mongo::Lint.enabled? (method)">enabled?</a></span></span>
-    <span class='kw'>if</span> <span class='ivar'>@notes</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_note'>note</span><span class='rparen'>)</span>      <span class='comment'># The driver makes an effort to not add duplicated notes, by
+    <span class='kw'>if</span> <span class='ivar'>@notes</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_note'>note</span><span class='rparen'>)</span>
+      <span class='comment'># The driver makes an effort to not add duplicated notes, by
 </span>      <span class='comment'># keeping track of *when* a particular exception should have the
 </span>      <span class='comment'># particular notes attached to it throughout the call stack.
-</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LintError.html" title="Mongo::Error::LintError (class)">LintError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Adding a note which already exists in exception </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_note'>note</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+</span>      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LintError.html" title="Mongo::Error::LintError (class)">LintError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Adding a note which already exists in exception </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_note'>note</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='ivar'>@notes</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_note'>note</span>
@@ -553,9 +553,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:38 2020 by
+  Generated on Fri Jul 17 03:40:52 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

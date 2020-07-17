@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Crypt::Context
   
-    &mdash; mongo-2.12.1
+    &mdash; mongo-2.13.0.beta1
   
 </title>
 
@@ -530,9 +530,9 @@
     <span class='kw'>case</span> <span class='id identifier rubyid_state'>state</span>
     <span class='kw'>when</span> <span class='symbol'>:error</span>
       <span class='const'><span class='object_link'><a href="Binding.html" title="Mongo::Crypt::Binding (class)">Binding</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_ctx_status'><span class='object_link'><a href="Binding.html#check_ctx_status-class_method" title="Mongo::Crypt::Binding.check_ctx_status (method)">check_ctx_status</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
-    <span class='kw'>when</span> <span class='symbol'>:ready</span>      <span class='comment'># Finalize the state machine and return the result as a BSON::Document
-</span>
-      <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Binding.html" title="Mongo::Crypt::Binding (class)">Binding</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ctx_finalize'><span class='object_link'><a href="Binding.html#ctx_finalize-class_method" title="Mongo::Crypt::Binding.ctx_finalize (method)">ctx_finalize</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='symbol'>:ready</span>
+      <span class='comment'># Finalize the state machine and return the result as a BSON::Document
+</span>      <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Binding.html" title="Mongo::Crypt::Binding (class)">Binding</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ctx_finalize'><span class='object_link'><a href="Binding.html#ctx_finalize-class_method" title="Mongo::Crypt::Binding.ctx_finalize (method)">ctx_finalize</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
     <span class='kw'>when</span> <span class='symbol'>:done</span>
       <span class='kw'>return</span> <span class='kw'>nil</span>
     <span class='kw'>when</span> <span class='symbol'>:need_mongo_keys</span>
@@ -646,9 +646,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 27 16:27:46 2020 by
+  Generated on Fri Jul 17 03:41:00 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.24 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>
