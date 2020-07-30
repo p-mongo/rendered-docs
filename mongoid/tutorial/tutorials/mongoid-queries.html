@@ -76,14 +76,13 @@
 </script></head>
 <body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1>
   <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-     {'gtm.start': new Date().getTime(),event:'gtm.js'}
-   );var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
   <!-- End Google Tag Manager --><div class="content" >
 
    <div id="left-column">
@@ -257,7 +256,7 @@ looks as follows:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -267,7 +266,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span>
   <span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gte</span> <span class="o">=&gt;</span> <span class="s2">&quot;1980-01-01&quot;</span><span class="p">)</span><span class="o">.</span>
   <span class="k">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span> <span class="s2">&quot;Tool&quot;</span><span class="p">,</span> <span class="s2">&quot;Deftones&quot;</span> <span class="o">]</span><span class="p">)</span><span class="o">.</span>
   <span class="n">union</span><span class="o">.</span>
@@ -275,7 +274,7 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>The query methods return <code class="docutils literal"><span class="pre">Mongoid::Criteria</span></code> objects, which are chainable
+<p>The query methods return <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> objects, which are chainable
 and lazily evaluated wrappers for MongoDB query language (MQL).
 The queries are executed when their result sets are iterated. For example:</p>
 <div class="button-code-block">
@@ -283,7 +282,7 @@ The queries are executed when their result sets are iterated. For example:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Construct a Criteria object:</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct a Criteria object:</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Deftones&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
@@ -299,9 +298,9 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Methods like <code class="docutils literal"><span class="pre">first</span></code> and <code class="docutils literal"><span class="pre">last</span></code> return the individual documents immediately.
-Otherwise, iterating a Criteria object with methods like <code class="docutils literal"><span class="pre">each</span></code> or <code class="docutils literal"><span class="pre">map</span></code>
-retrieves the documents from the server. <code class="docutils literal"><span class="pre">to_a</span></code> can be used to force
+<p>Methods like <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> return the individual documents immediately.
+Otherwise, iterating a Criteria object with methods like <code class="docutils literal notranslate"><span class="pre">each</span></code> or <code class="docutils literal notranslate"><span class="pre">map</span></code>
+retrieves the documents from the server. <code class="docutils literal notranslate"><span class="pre">to_a</span></code> can be used to force
 execution of a query that returns an array of documents, literally converting
 a Criteria object to an Array.</p>
 <p>When a query method is called on a Criteria instance, the method returns a new
@@ -311,7 +310,7 @@ Criteria instance with the new conditions added to the existing conditions:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">scope</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gte</span> <span class="o">=&gt;</span> <span class="s2">&quot;1980-01-01&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">scope</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gte</span> <span class="o">=&gt;</span> <span class="s2">&quot;1980-01-01&quot;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;founded&quot;=&gt;{&quot;$gte&quot;=&gt;&quot;1980-01-01&quot;}}</span>
 <span class="c1">#   options:  {}</span>
@@ -351,7 +350,7 @@ model class, and field aliases.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -380,7 +379,7 @@ symbols or strings, and correspond to field names in MongoDB documents:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
 <span class="c1">#   =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;Depeche Mode&quot;}</span>
 <span class="c1">#   options:  {}</span>
@@ -402,7 +401,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">founded</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gt&#39;</span> <span class="o">=&gt;</span> <span class="mi">1980</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">founded</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gt&#39;</span> <span class="o">=&gt;</span> <span class="mi">1980</span><span class="p">})</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;founded&quot;=&gt;{&quot;$gt&quot;=&gt;1980}}</span>
 <span class="c1">#   options:  {}</span>
@@ -425,7 +424,7 @@ name, as follows:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">1980</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:founded</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">1980</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;founded&quot;=&gt;{&quot;$gt&quot;=&gt;1980}}</span>
 <span class="c1">#   options:  {}</span>
@@ -443,7 +442,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;manager.name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Smith&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;manager.name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Smith&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;manager.name&quot;=&gt;&quot;Smith&quot;}</span>
 <span class="c1">#   options:  {}</span>
@@ -476,7 +475,7 @@ the query:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">2020</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">2020</span><span class="p">)</span>
 <span class="c1">#   =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;2020&quot;}</span>
 <span class="c1">#   options:  {}</span>
@@ -501,7 +500,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
 <span class="c1">#   =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;n&quot;=&gt;&quot;Astral Projection&quot;}</span>
 <span class="c1">#   options:  {}</span>
@@ -516,7 +515,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;5ebdeddfe1b83265a376a760&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;5ebdeddfe1b83265a376a760&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;5ebdeddfe1b83265a376a760&#39;)}</span>
 <span class="c1">#   options:  {}</span>
@@ -529,16 +528,16 @@ copy</a>
 </div>
 <div class="section" id="logical-operations">
 <span id="id2"></span><h3>Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h3>
-<p>Mongoid supports <code class="docutils literal"><span class="pre">and</span></code>, <code class="docutils literal"><span class="pre">or</span></code>, <code class="docutils literal"><span class="pre">nor</span></code> and <code class="docutils literal"><span class="pre">not</span></code> logical operations on
-<code class="docutils literal"><span class="pre">Criteria</span></code> objects. These methods take one or more hash of conditions
-or another <code class="docutils literal"><span class="pre">Criteria</span></code> object as their arguments, with <code class="docutils literal"><span class="pre">not</span></code> additionally
+<p>Mongoid supports <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code> logical operations on
+<code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects. These methods take one or more hash of conditions
+or another <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> object as their arguments, with <code class="docutils literal notranslate"><span class="pre">not</span></code> additionally
 having an argument-free version.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># and with conditions</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># and with conditions</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Trust in Trance&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
 
 <span class="c1"># or with scope</span>
@@ -562,7 +561,7 @@ may be removed in a future version of Mongoid.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Condition hashes passed to separate and invocations</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Condition hashes passed to separate and invocations</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;SUN Project&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">member_count</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Multiple condition hashes in the same and invocation</span>
@@ -591,10 +590,10 @@ copy</a>
 </div>
 <div class="section" id="operator-combinations">
 <h4>Operator Combinations<a class="headerlink" href="#operator-combinations" title="Permalink to this headline">¶</a></h4>
-<p>As of Mongoid 7.1, logical operators (<code class="docutils literal"><span class="pre">and</span></code>, <code class="docutils literal"><span class="pre">or</span></code>, <code class="docutils literal"><span class="pre">nor</span></code> and <code class="docutils literal"><span class="pre">not</span></code>)
+<p>As of Mongoid 7.1, logical operators (<code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code>)
 have been changed to have the the same semantics as <a class="reference external" href="https://guides.rubyonrails.org/active_record_querying.html">those of ActiveRecord</a>.
-To obtain the semantics of <code class="docutils literal"><span class="pre">or</span></code> as it behaved in Mongoid 7.0 and earlier,
-use <code class="docutils literal"><span class="pre">any_of</span></code> which is described below.</p>
+To obtain the semantics of <code class="docutils literal notranslate"><span class="pre">or</span></code> as it behaved in Mongoid 7.0 and earlier,
+use <code class="docutils literal notranslate"><span class="pre">any_of</span></code> which is described below.</p>
 <p>When conditions are specified on the same field multiple times, all
 conditions are added to the criteria:</p>
 <div class="button-code-block">
@@ -602,7 +601,7 @@ conditions are added to the criteria:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;name&quot;=&gt;&quot;1&quot;, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;&quot;2&quot;}]}</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
@@ -610,17 +609,17 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">any_of</span></code>, <code class="docutils literal"><span class="pre">nor</span></code> and <code class="docutils literal"><span class="pre">not</span></code> behave similarly, with <code class="docutils literal"><span class="pre">not</span></code> producing
+<p><code class="docutils literal notranslate"><span class="pre">any_of</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code> behave similarly, with <code class="docutils literal notranslate"><span class="pre">not</span></code> producing
 different query shapes as described below.</p>
-<p>When <code class="docutils literal"><span class="pre">and</span></code>, <code class="docutils literal"><span class="pre">or</span></code> and <code class="docutils literal"><span class="pre">nor</span></code> logical operators are used, they
+<p>When <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">nor</span></code> logical operators are used, they
 operate on the criteria built up to that point and its argument.
-<code class="docutils literal"><span class="pre">where</span></code> has the same meaning as <code class="docutils literal"><span class="pre">and</span></code>:</p>
+<code class="docutils literal notranslate"><span class="pre">where</span></code> has the same meaning as <code class="docutils literal notranslate"><span class="pre">and</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># or joins the two conditions</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># or joins the two conditions</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Sun&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Trust&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Sun&quot;}, {&quot;label&quot;=&gt;&quot;Trust&quot;}]}</span>
 
@@ -645,16 +644,16 @@ copy</a>
 </div>
 </div>
 <div class="section" id="and-behavior">
-<h4><code class="docutils literal"><span class="pre">and</span></code> Behavior<a class="headerlink" href="#and-behavior" title="Permalink to this headline">¶</a></h4>
-<p>The <code class="docutils literal"><span class="pre">and</span></code> method will add new simple conditions to the top level of the
+<h4><code class="docutils literal notranslate"><span class="pre">and</span></code> Behavior<a class="headerlink" href="#and-behavior" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">and</span></code> method will add new simple conditions to the top level of the
 criteria, unless the receiving criteria already has a condition on the
-respective fields, in which case the conditions will be combined with <code class="docutils literal"><span class="pre">$and</span></code>.</p>
+respective fields, in which case the conditions will be combined with <code class="docutils literal notranslate"><span class="pre">$and</span></code>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Trust in Trance&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Trust in Trance&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;label&quot;=&gt;&quot;Trust in Trance Records&quot;, &quot;name&quot;=&gt;&quot;Astral Projection&quot;}</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
@@ -662,21 +661,21 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>As of Mongoid 7.1, specifying multiple criteria on the same field with <code class="docutils literal"><span class="pre">and</span></code>
+<p>As of Mongoid 7.1, specifying multiple criteria on the same field with <code class="docutils literal notranslate"><span class="pre">and</span></code>
 combines all criteria so specified, whereas in previous versions of Mongoid
 conditions on a field sometimes replaced previously specified conditions on
-the same field, depending on which form of <code class="docutils literal"><span class="pre">and</span></code> was used.</p>
+the same field, depending on which form of <code class="docutils literal notranslate"><span class="pre">and</span></code> was used.</p>
 </div>
 <div class="section" id="or-nor-behavior">
-<h4><code class="docutils literal"><span class="pre">or</span></code>/<code class="docutils literal"><span class="pre">nor</span></code> Behavior<a class="headerlink" href="#or-nor-behavior" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">or</span></code> and <code class="docutils literal"><span class="pre">nor</span></code> produce <code class="docutils literal"><span class="pre">$or</span></code> and <code class="docutils literal"><span class="pre">$nor</span></code> MongoDB operators, respectively,
+<h4><code class="docutils literal notranslate"><span class="pre">or</span></code>/<code class="docutils literal notranslate"><span class="pre">nor</span></code> Behavior<a class="headerlink" href="#or-nor-behavior" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">nor</span></code> produce <code class="docutils literal notranslate"><span class="pre">$or</span></code> and <code class="docutils literal notranslate"><span class="pre">$nor</span></code> MongoDB operators, respectively,
 using the receiver and all of the arguments as operands. For example:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;/Best/}, {&quot;name&quot;=&gt;&quot;Astral Projection&quot;}]}</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span>
@@ -685,32 +684,32 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>If the only condition on the receiver is another <code class="docutils literal"><span class="pre">or</span></code>/<code class="docutils literal"><span class="pre">nor</span></code>, the new
+<p>If the only condition on the receiver is another <code class="docutils literal notranslate"><span class="pre">or</span></code>/<code class="docutils literal notranslate"><span class="pre">nor</span></code>, the new
 conditions are added to the existing list:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span>
   <span class="ow">or</span><span class="p">(</span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Records/</span><span class="p">))</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;/Best/}, {&quot;name&quot;=&gt;&quot;Astral Projection&quot;}, {&quot;label&quot;=&gt;/Records/}]}</span>
 </pre></div>
 </div>
 </div>
-<p>Use <code class="docutils literal"><span class="pre">any_of</span></code> to add a disjunction to a Criteria object while maintaining
+<p>Use <code class="docutils literal notranslate"><span class="pre">any_of</span></code> to add a disjunction to a Criteria object while maintaining
 all of the conditions built up so far as they are.</p>
 </div>
 <div class="section" id="any-of-behavior">
-<span id="any-of"></span><h4><code class="docutils literal"><span class="pre">any_of</span></code> Behavior<a class="headerlink" href="#any-of-behavior" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">any_of</span></code> adds a disjunction built from its arguments to the existing
+<span id="any-of"></span><h4><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Behavior<a class="headerlink" href="#any-of-behavior" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">any_of</span></code> adds a disjunction built from its arguments to the existing
 conditions in the criteria. For example:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Trust/</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Trust/</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">})</span>
 <span class="c1"># =&gt; {&quot;label&quot;=&gt;/Trust/, &quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Astral Projection&quot;}, {&quot;name&quot;=&gt;/Best/}]}</span>
 </pre></div>
 </div>
@@ -721,24 +720,24 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Trust/</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="sr">/Trust/</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">})</span>
 <span class="c1"># =&gt; {&quot;label&quot;=&gt;/Trust/, &quot;name&quot;=&gt;&quot;Astral Projection&quot;}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="not-behavior">
-<h4><code class="docutils literal"><span class="pre">not</span></code> Behavior<a class="headerlink" href="#not-behavior" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">not</span></code> method can be called without arguments, in which case it will negate
-the next condition that is specified. <code class="docutils literal"><span class="pre">not</span></code> can also be called with one
-or more hash conditions or <code class="docutils literal"><span class="pre">Criteria</span></code> objects, which will all be negated and
+<h4><code class="docutils literal notranslate"><span class="pre">not</span></code> Behavior<a class="headerlink" href="#not-behavior" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">not</span></code> method can be called without arguments, in which case it will negate
+the next condition that is specified. <code class="docutils literal notranslate"><span class="pre">not</span></code> can also be called with one
+or more hash conditions or <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects, which will all be negated and
 added to the criteria.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># not negates subsequent where</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># not negates subsequent where</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">not</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Best&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;name&quot;=&gt;{&quot;$ne&quot;=&gt;&quot;Best&quot;}}</span>
 
@@ -754,14 +753,14 @@ copy</a>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p><code class="docutils literal"><span class="pre">$not</span></code> in MongoDB server cannot be used with a string argument.
-Mongoid uses <code class="docutils literal"><span class="pre">$ne</span></code> operator to achieve such a negation:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$not</span></code> in MongoDB server cannot be used with a string argument.
+Mongoid uses <code class="docutils literal notranslate"><span class="pre">$ne</span></code> operator to achieve such a negation:</p>
 <div class="last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># String negation - uses $ne</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># String negation - uses $ne</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">not</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Best&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;name&quot;=&gt;{&quot;$ne&quot;=&gt;&quot;Best&quot;}}</span>
 
@@ -772,17 +771,17 @@ copy</a>
 </div>
 </div>
 </div>
-<p>Similarly to <code class="docutils literal"><span class="pre">and</span></code>, <code class="docutils literal"><span class="pre">not</span></code> will negate individual conditions for simple
+<p>Similarly to <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code> will negate individual conditions for simple
 field criteria. For complex conditions and when a field already has a condition
-defined on it, since MongoDB server only supports the <code class="docutils literal"><span class="pre">$not</span></code> operator on
-a per-field basis rather than globally, Mongoid emulates <code class="docutils literal"><span class="pre">$not</span></code> by using
-an <code class="docutils literal"><span class="pre">{'$and'</span> <span class="pre">=&gt;</span> <span class="pre">[{'$nor'</span> <span class="pre">=&gt;</span> <span class="pre">...}]}</span></code> construct:</p>
+defined on it, since MongoDB server only supports the <code class="docutils literal notranslate"><span class="pre">$not</span></code> operator on
+a per-field basis rather than globally, Mongoid emulates <code class="docutils literal notranslate"><span class="pre">$not</span></code> by using
+an <code class="docutils literal notranslate"><span class="pre">{'$and'</span> <span class="pre">=&gt;</span> <span class="pre">[{'$nor'</span> <span class="pre">=&gt;</span> <span class="pre">...}]}</span></code> construct:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Simple condition</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple condition</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">not</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/Best/</span><span class="p">)</span><span class="o">.</span><span class="n">selector</span>
 <span class="c1"># =&gt; {&quot;name&quot;=&gt;{&quot;$not&quot;=&gt;/Best/}}</span>
 
@@ -800,22 +799,22 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>If using <code class="docutils literal"><span class="pre">not</span></code> with arrays or regular expressions, please note the
-caveats/limitations of <code class="docutils literal"><span class="pre">$not</span></code> <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/not/">stated in the MongoDB server documentation</a>.</p>
+<p>If using <code class="docutils literal notranslate"><span class="pre">not</span></code> with arrays or regular expressions, please note the
+caveats/limitations of <code class="docutils literal notranslate"><span class="pre">$not</span></code> <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/not/">stated in the MongoDB server documentation</a>.</p>
 </div>
 </div>
 <div class="section" id="incremental-query-construction">
 <h3>Incremental Query Construction<a class="headerlink" href="#incremental-query-construction" title="Permalink to this headline">¶</a></h3>
 <p>By default, when conditions are added to a query, Mongoid considers each
 condition complete and independent from any other conditions potentially
-present in the query. For example, calling <code class="docutils literal"><span class="pre">in</span></code> twice adds two separate
-<code class="docutils literal"><span class="pre">$in</span></code> conditions:</p>
+present in the query. For example, calling <code class="docutils literal notranslate"><span class="pre">in</span></code> twice adds two separate
+<code class="docutils literal notranslate"><span class="pre">$in</span></code> conditions:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;b&#39;</span><span class="o">]</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;b&#39;</span><span class="o">]</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="c1">#&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="s2">&quot;a&quot;</span><span class="o">]</span><span class="p">},</span> <span class="s2">&quot;$and&quot;</span><span class="o">=&gt;[</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="s2">&quot;b&quot;</span><span class="o">]</span><span class="p">}}</span><span class="o">]</span><span class="p">}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{}</span>
@@ -842,14 +841,14 @@ values of the new condition and the result is stored as the operator value.</li>
 same field, the values of the new condition are aded to the values of the
 exsting condition and the result is stored as the operator value.</li>
 </ul>
-<p>The following snippet demonstrates all of the strategies, using <code class="docutils literal"><span class="pre">in</span></code> as the
+<p>The following snippet demonstrates all of the strategies, using <code class="docutils literal notranslate"><span class="pre">in</span></code> as the
 example operator:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">override</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;b&#39;</span><span class="o">]</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">override</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;b&#39;</span><span class="o">]</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="c1">#&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="s2">&quot;b&quot;</span><span class="o">]</span><span class="p">}}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{}</span>
@@ -872,8 +871,8 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>The strategy is requested by calling <code class="docutils literal"><span class="pre">override</span></code>, <code class="docutils literal"><span class="pre">intersect</span></code> or <code class="docutils literal"><span class="pre">union</span></code>
-on a <code class="docutils literal"><span class="pre">Criteria</span></code> instance. The requested strategy applies to the next
+<p>The strategy is requested by calling <code class="docutils literal notranslate"><span class="pre">override</span></code>, <code class="docutils literal notranslate"><span class="pre">intersect</span></code> or <code class="docutils literal notranslate"><span class="pre">union</span></code>
+on a <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> instance. The requested strategy applies to the next
 condition method called on the query. If the next condition method called does
 not support merge strategies, the strategy is reset, as shown in the following
 example:</p>
@@ -882,7 +881,7 @@ example:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">ne</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;b&#39;</span><span class="o">]</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">ne</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;b&#39;</span><span class="o">]</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="c1">#&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="s2">&quot;a&quot;</span><span class="o">]</span><span class="p">,</span> <span class="s2">&quot;$ne&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;c&quot;</span><span class="p">},</span> <span class="s2">&quot;$and&quot;</span><span class="o">=&gt;[</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="s2">&quot;b&quot;</span><span class="o">]</span><span class="p">}}</span><span class="o">]</span><span class="p">}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{}</span>
@@ -891,31 +890,31 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Since <code class="docutils literal"><span class="pre">ne</span></code> does not support merge strategies, the <code class="docutils literal"><span class="pre">union</span></code> strategy was
-ignored and reset and when <code class="docutils literal"><span class="pre">in</span></code> was invoked the second time there was no
+<p>Since <code class="docutils literal notranslate"><span class="pre">ne</span></code> does not support merge strategies, the <code class="docutils literal notranslate"><span class="pre">union</span></code> strategy was
+ignored and reset and when <code class="docutils literal notranslate"><span class="pre">in</span></code> was invoked the second time there was no
 strategy active.</p>
 </div>
 <div class="section" id="supported-operator-methods">
 <h4>Supported Operator Methods<a class="headerlink" href="#supported-operator-methods" title="Permalink to this headline">¶</a></h4>
 <p>The following operator methods support merge strategies:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">all</span></code></li>
-<li><code class="docutils literal"><span class="pre">in</span></code></li>
-<li><code class="docutils literal"><span class="pre">nin</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">all</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">in</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">nin</span></code></li>
 </ul>
 <p>The set of methods may be expanded in future releases of Mongoid. For
 future compatibility, only invoke a strategy method when the next method call
 is an operator that supports merge strategies.</p>
 <p>Note that the merge strategies are currently only applied when conditions are
 added through the designated methods. In the following example merge strategy
-is not applied because the second condition is added via <code class="docutils literal"><span class="pre">where</span></code>, not via
-<code class="docutils literal"><span class="pre">in</span></code>:</p>
+is not applied because the second condition is added via <code class="docutils literal notranslate"><span class="pre">where</span></code>, not via
+<code class="docutils literal notranslate"><span class="pre">in</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">foo</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">foo</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;b&#39;</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">foo</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">foo</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;b&#39;</span><span class="p">})</span>
 <span class="o">=&gt;</span> <span class="c1">#&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;foo&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="s2">&quot;a&quot;</span><span class="o">]</span><span class="p">},</span> <span class="s2">&quot;$and&quot;</span><span class="o">=&gt;[</span><span class="p">{</span><span class="s2">&quot;foo&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;b&quot;</span><span class="p">}}</span><span class="o">]</span><span class="p">}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{}</span>
@@ -928,14 +927,14 @@ copy</a>
 relied upon.</p>
 <p>In contrast, it does not matter how the existing query was built when a
 merge strategy-supporting operator method is invoked. In the following
-example, the first condition was added through <code class="docutils literal"><span class="pre">where</span></code> but the strategy
+example, the first condition was added through <code class="docutils literal notranslate"><span class="pre">where</span></code> but the strategy
 mechanism still applies:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">foo</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">})</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">foo</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;b&#39;</span><span class="o">]</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">foo</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="o">]</span><span class="p">})</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">foo</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;b&#39;</span><span class="o">]</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="c1">#&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;foo&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="o">]</span><span class="p">}}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{}</span>
@@ -947,15 +946,15 @@ copy</a>
 </div>
 <div class="section" id="operator-value-expansion">
 <h4>Operator Value Expansion<a class="headerlink" href="#operator-value-expansion" title="Permalink to this headline">¶</a></h4>
-<p>Operator methods that support merge strategies all take <code class="docutils literal"><span class="pre">Array</span></code> as their value
-type. Mongoid expands <code class="docutils literal"><span class="pre">Array</span></code>-compatible types, such as a <code class="docutils literal"><span class="pre">Range</span></code>,
+<p>Operator methods that support merge strategies all take <code class="docutils literal notranslate"><span class="pre">Array</span></code> as their value
+type. Mongoid expands <code class="docutils literal notranslate"><span class="pre">Array</span></code>-compatible types, such as a <code class="docutils literal notranslate"><span class="pre">Range</span></code>,
 when they are used with these operator methods:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1950</span><span class="o">..</span><span class="mi">1960</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1950</span><span class="o">..</span><span class="mi">1960</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="c1">#&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;year&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="mi">1950</span><span class="p">,</span> <span class="mi">1951</span><span class="p">,</span> <span class="mi">1952</span><span class="p">,</span> <span class="mi">1953</span><span class="p">,</span> <span class="mi">1954</span><span class="p">,</span> <span class="mi">1955</span><span class="p">,</span> <span class="mi">1956</span><span class="p">,</span> <span class="mi">1957</span><span class="p">,</span> <span class="mi">1958</span><span class="p">,</span> <span class="mi">1959</span><span class="p">,</span> <span class="mi">1960</span><span class="o">]</span><span class="p">}}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{}</span>
@@ -964,14 +963,14 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Additionally, Mongoid has historically wrapped non-<code class="docutils literal"><span class="pre">Array</span></code> values in arrays,
+<p>Additionally, Mongoid has historically wrapped non-<code class="docutils literal notranslate"><span class="pre">Array</span></code> values in arrays,
 as the following example demonstrates:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1950</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1950</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="c1">#&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;year&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="o">=&gt;[</span><span class="mi">1950</span><span class="o">]</span><span class="p">}}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{}</span>
@@ -995,7 +994,7 @@ matches all of the conditions. For example:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:tours</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Array</span>
@@ -1010,13 +1009,13 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">elem_match</span></code> also works with embedded associations:</p>
+<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> also works with embedded associations:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">embeds_many</span> <span class="ss">:tours</span>
@@ -1038,18 +1037,18 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">elem_match</span></code> does not work with non-embedded associations because MongoDB
+<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> does not work with non-embedded associations because MongoDB
 does not have joins - the conditions would be added to the collection
 that is the source of a non-embedded association rather than the collection
 of the association’s target.</p>
-<p><code class="docutils literal"><span class="pre">elem_match</span></code> can also be used with recursively embedded associations,
+<p><code class="docutils literal notranslate"><span class="pre">elem_match</span></code> can also be used with recursively embedded associations,
 as the following example shows:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tag</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tag</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">recursively_embeds_many</span>
@@ -1071,14 +1070,14 @@ copy</a>
 </div>
 <div class="section" id="projection">
 <h3>Projection<a class="headerlink" href="#projection" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">only</span></code> method retrieves only the specified fields from the database. This
+<p>The <code class="docutils literal notranslate"><span class="pre">only</span></code> method retrieves only the specified fields from the database. This
 operation is sometimes called “projection”.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -1101,13 +1100,13 @@ copy</a>
 </div>
 </div>
 <p>Attempting to reference attributes which have not been loaded results in
-<code class="docutils literal"><span class="pre">ActiveModel::MissingAttributeError</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">ActiveModel::MissingAttributeError</span></code>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">label</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">label</span>
 <span class="c1"># ActiveModel::MissingAttributeError (Missing attribute: &#39;label&#39;.)</span>
 </pre></div>
 </div>
@@ -1116,13 +1115,13 @@ copy</a>
 been loaded, such writes will not be persisted
 (<a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4701">MONGOID-4701</a>) and
 should therefore be avoided.</p>
-<p><code class="docutils literal"><span class="pre">only</span></code> can also be used with embedded associations:</p>
+<p><code class="docutils literal notranslate"><span class="pre">only</span></code> can also be used with embedded associations:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s1">&#39;tours.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s1">&#39;tours.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
 <span class="c1"># =&gt; #&lt;Band _id: 5c59afb1026d7c034dba46ac, name: &quot;Aerosmith&quot;&gt;</span>
 
 <span class="n">band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">first</span>
@@ -1130,19 +1129,19 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">only</span></code> can be specified with referenced associations (has_one, has_many,
+<p><code class="docutils literal notranslate"><span class="pre">only</span></code> can be specified with referenced associations (has_one, has_many,
 has_and_belongs_to_many) but is currently ignored for referenced associations -
 all fields of referenced associations will be loaded
 (<a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4704">MONGOID-4704</a>).</p>
-<p>Note that if a document has <code class="docutils literal"><span class="pre">has_one</span></code> or <code class="docutils literal"><span class="pre">has_and_belongs_to_many</span></code> associations,
+<p>Note that if a document has <code class="docutils literal notranslate"><span class="pre">has_one</span></code> or <code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code> associations,
 the fields with foreign keys must be included in the list of attributes
-loaded with <code class="docutils literal"><span class="pre">only</span></code> for those associations to be loaded. For example:</p>
+loaded with <code class="docutils literal notranslate"><span class="pre">only</span></code> for those associations to be loaded. For example:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -1170,8 +1169,8 @@ copy</a>
 </div>
 <div class="section" id="ordering">
 <h3>Ordering<a class="headerlink" href="#ordering" title="Permalink to this headline">¶</a></h3>
-<p>Mongoid provides the <code class="docutils literal"><span class="pre">order</span></code> method on <code class="docutils literal"><span class="pre">Criteria</span></code> objects and its alias,
-<code class="docutils literal"><span class="pre">order_by</span></code>, to specify the ordering of documents. These methods take a
+<p>Mongoid provides the <code class="docutils literal notranslate"><span class="pre">order</span></code> method on <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects and its alias,
+<code class="docutils literal notranslate"><span class="pre">order_by</span></code>, to specify the ordering of documents. These methods take a
 hash indicating which fields to order the documents by, and whether to use
 ascending or descending order for each field.</p>
 <div class="button-code-block">
@@ -1179,7 +1178,7 @@ ascending or descending order for each field.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {}</span>
 <span class="c1">#   options:  {:sort=&gt;{&quot;name&quot;=&gt;1}}</span>
@@ -1202,30 +1201,30 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>The direction may be specified as integers <code class="docutils literal"><span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">-1</span></code> for ascending
-and descending, respectively, or as symbols <code class="docutils literal"><span class="pre">:asc</span></code> and <code class="docutils literal"><span class="pre">:desc</span></code>, or as
-strings <code class="docutils literal"><span class="pre">&quot;asc&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;desc&quot;</span></code>.</p>
-<p>Alternatively, <code class="docutils literal"><span class="pre">order</span></code> accepts an array of two-element arrays specifying
+<p>The direction may be specified as integers <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">-1</span></code> for ascending
+and descending, respectively, or as symbols <code class="docutils literal notranslate"><span class="pre">:asc</span></code> and <code class="docutils literal notranslate"><span class="pre">:desc</span></code>, or as
+strings <code class="docutils literal notranslate"><span class="pre">&quot;asc&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;desc&quot;</span></code>.</p>
+<p>Alternatively, <code class="docutils literal notranslate"><span class="pre">order</span></code> accepts an array of two-element arrays specifying
 the ordering. Field names and directions may be strings or symbols.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="o">[[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="o">]]</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="o">[[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="o">]]</span><span class="p">)</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="o">[[</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:desc</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="ss">:description</span><span class="p">,</span> <span class="ss">:asc</span><span class="o">]]</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Another way of providing the order is to use <code class="docutils literal"><span class="pre">#asc</span></code> and <code class="docutils literal"><span class="pre">#desc</span></code> methods
+<p>Another way of providing the order is to use <code class="docutils literal notranslate"><span class="pre">#asc</span></code> and <code class="docutils literal notranslate"><span class="pre">#desc</span></code> methods
 on symbols, as follows:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="ss">:name</span><span class="o">.</span><span class="n">desc</span><span class="p">,</span> <span class="ss">:description</span><span class="o">.</span><span class="n">asc</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="ss">:name</span><span class="o">.</span><span class="n">desc</span><span class="p">,</span> <span class="ss">:description</span><span class="o">.</span><span class="n">asc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1235,18 +1234,18 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;name desc, description asc&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;name desc, description asc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Finally, there are <code class="docutils literal"><span class="pre">asc</span></code> and <code class="docutils literal"><span class="pre">desc</span></code> methods that can be used instead of
-<code class="docutils literal"><span class="pre">order</span></code>/<code class="docutils literal"><span class="pre">order_by</span></code>:</p>
+<p>Finally, there are <code class="docutils literal notranslate"><span class="pre">asc</span></code> and <code class="docutils literal notranslate"><span class="pre">desc</span></code> methods that can be used instead of
+<code class="docutils literal notranslate"><span class="pre">order</span></code>/<code class="docutils literal notranslate"><span class="pre">order_by</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">asc</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">asc</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{</span><span class="ss">:sort</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">=&gt;-</span><span class="mi">1</span><span class="p">}}</span>
@@ -1255,7 +1254,7 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">order</span></code> calls can be chained, in which case the oldest calls define the
+<p><code class="docutils literal notranslate"><span class="pre">order</span></code> calls can be chained, in which case the oldest calls define the
 most significant criteria and the newest calls define the least significant
 ones (since in Ruby hashes maintain the order of their keys):</p>
 <div class="button-code-block">
@@ -1263,7 +1262,7 @@ ones (since in Ruby hashes maintain the order of their keys):</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;name desc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;description asc&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;name desc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;description asc&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
   <span class="ss">selector</span><span class="p">:</span> <span class="p">{}</span>
   <span class="ss">options</span><span class="p">:</span>  <span class="p">{</span><span class="ss">:sort</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">}}</span>
@@ -1273,7 +1272,7 @@ copy</a>
 </div>
 </div>
 <p>This can sometimes lead to surprising results if there are scopes, including
-the default scope, that use <code class="docutils literal"><span class="pre">order</span></code>/<code class="docutils literal"><span class="pre">order_by</span></code>. For example, in the
+the default scope, that use <code class="docutils literal notranslate"><span class="pre">order</span></code>/<code class="docutils literal notranslate"><span class="pre">order_by</span></code>. For example, in the
 following snippet bands are ordered by name first because the order in the
 default scope takes precedence over the order given in the query, due to
 the default scope being evaluated first:</p>
@@ -1282,7 +1281,7 @@ the default scope being evaluated first:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -1313,7 +1312,7 @@ Mongoid::QueryCache.enabled is true.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kp">true</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kp">true</span>
 </pre></div>
 </div>
 </div>
@@ -1332,7 +1331,7 @@ copy</a>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#count</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#count</span></code></p>
 <p class="last"><em>Get a count of persisted documents. Note this will always hit
 the database for the count.</em></p>
 </td>
@@ -1341,14 +1340,14 @@ the database for the count.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">count</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">count</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#distinct</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#distinct</span></code></p>
 <p class="last"><em>Get a list of distinct values for a single field. Note this will always hit
 the database for the distinct values.</em></p>
 </td>
@@ -1357,7 +1356,7 @@ the database for the distinct values.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:fans</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100000</span><span class="p">)</span><span class="o">.</span>
   <span class="n">distinct</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
 </pre></div>
@@ -1365,7 +1364,7 @@ copy</a>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#each</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#each</span></code></p>
 <p class="last"><em>Iterate over all matching documents in the criteria.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1373,7 +1372,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">band</span><span class="o">|</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">band</span><span class="o">|</span>
   <span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">name</span>
 <span class="k">end</span>
 </pre></div>
@@ -1381,7 +1380,7 @@ copy</a>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#exists?</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#exists?</span></code></p>
 <p class="last"><em>Determine if any matching documents exist. Will return true if there
 are 1 or more.</em></p>
 </td>
@@ -1390,26 +1389,26 @@ are 1 or more.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">exists?</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">exists?</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exists?</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#find</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#find</span></code></p>
 <p class="last"><em>Find a document or multiple documents by their ids. If the</em>
-<code class="docutils literal"><span class="pre">raise_not_found_error</span></code> <em>configuration option is set to</em> <code class="docutils literal"><span class="pre">true</span></code>
+<code class="docutils literal notranslate"><span class="pre">raise_not_found_error</span></code> <em>configuration option is set to</em> <code class="docutils literal notranslate"><span class="pre">true</span></code>
 <em>which is the default and any of the ids are not found, raise an error.
-If the</em> <code class="docutils literal"><span class="pre">raise_not_found_error</span></code> <em>configuration option is set to</em>
-<code class="docutils literal"><span class="pre">false</span></code>, return an array of documents that have the specified ids.*</p>
+If the</em> <code class="docutils literal notranslate"><span class="pre">raise_not_found_error</span></code> <em>configuration option is set to</em>
+<code class="docutils literal notranslate"><span class="pre">false</span></code>, return an array of documents that have the specified ids.*</p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;4baa56f1230048567300485c&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;4baa56f1230048567300485c&quot;</span><span class="p">)</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
   <span class="s2">&quot;4baa56f1230048567300485c&quot;</span><span class="p">,</span>
   <span class="s2">&quot;4baa56f1230048567300485d&quot;</span>
@@ -1422,17 +1421,17 @@ copy</a>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#find_by</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#find_by</span></code></p>
 <p class="last"><em>Find a document by the provided attributes. If not found,
 raise an error or return nil depending on the value of the</em>
-<code class="docutils literal"><span class="pre">raise_not_found_error</span></code> <em>configuration option.</em></p>
+<code class="docutils literal notranslate"><span class="pre">raise_not_found_error</span></code> <em>configuration option.</em></p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">band</span><span class="o">|</span>
   <span class="n">band</span><span class="o">.</span><span class="n">impressions</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -1442,7 +1441,7 @@ copy</a>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#find_or_create_by</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#find_or_create_by</span></code></p>
 <p class="last"><em>Find a document by the provided attributes, and if not found
 create and return a newly persisted one. Note that attributes provided in the arguments to
 this method will override any set in ``create_with``</em>.</p>
@@ -1452,20 +1451,20 @@ this method will override any set in ``create_with``</em>.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find_or_create_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find_or_create_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">find_or_create_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">find_or_create_by</span></code> can be used on any scope, but in this case
-the criteria given by the scope and by <code class="docutils literal"><span class="pre">find_or_create_by</span></code> are
+<p><code class="docutils literal notranslate"><span class="pre">find_or_create_by</span></code> can be used on any scope, but in this case
+the criteria given by the scope and by <code class="docutils literal notranslate"><span class="pre">find_or_create_by</span></code> are
 combined. The following creates three bands:</p>
 <div class="last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find_or_create_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find_or_create_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_or_create_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Aerosmith&quot;</span><span class="p">)</span>
 <span class="c1"># creates Aerosmith again because there is no band whose name</span>
 <span class="c1"># is Photek and Aerosmith at the same time</span>
@@ -1475,7 +1474,7 @@ copy</a>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#find_or_initialize_by</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#find_or_initialize_by</span></code></p>
 <p class="last"><em>Find a document by the provided attributes, and if not found
 return a new one.</em></p>
 </td>
@@ -1484,14 +1483,14 @@ return a new one.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find_or_initialize_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">find_or_initialize_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">find_or_initialize_by</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#first|last</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#first|last</span></code></p>
 <p class="last"><em>Finds a single document given the provided criteria. This automatically adds a sort on id.
 Opt out of adding the id sort with the {id_sort: :none} option.</em></p>
 </td>
@@ -1500,7 +1499,7 @@ Opt out of adding the id sort with the {id_sort: :none} option.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">first</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:members</span><span class="o">.</span><span class="n">with_size</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:members</span><span class="o">.</span><span class="n">with_size</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
 </pre></div>
@@ -1508,7 +1507,7 @@ copy</a>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#first_or_create</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_create</span></code></p>
 <p class="last"><em>Find the first document by the provided attributes, and if not found
 create and return a newly persisted one.</em></p>
 </td>
@@ -1517,28 +1516,28 @@ create and return a newly persisted one.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_create</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_create</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#first_or_create!</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_create!</span></code></p>
 <p class="last"><em>Find the first document by the provided attributes, and if not found
-create and return a newly persisted one using</em> <code class="docutils literal"><span class="pre">create!</span></code>.</p>
+create and return a newly persisted one using</em> <code class="docutils literal notranslate"><span class="pre">create!</span></code>.</p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_create!</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_create!</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#first_or_initialize</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_initialize</span></code></p>
 <p class="last"><em>Find the first document by the provided attributes, and if not found
 return a new one.</em></p>
 </td>
@@ -1547,24 +1546,24 @@ return a new one.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_initialize</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_initialize</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#for_js</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#for_js</span></code></p>
 <p class="last"><em>Find documents for a provided JavaScript expression, optionally with
 the specified variables added to the evaluation scope. The scope
 argument is supported in MongoDB 4.2 and lower.</em>
-<em>In MongoDB 3.6 and higher, prefer</em> <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/expr/">$expr</a> <em>over</em> <code class="docutils literal"><span class="pre">for_js</span></code>.</p>
+<em>In MongoDB 3.6 and higher, prefer</em> <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/expr/">$expr</a> <em>over</em> <code class="docutils literal notranslate"><span class="pre">for_js</span></code>.</p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># All MongoDB versions</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># All MongoDB versions</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">for_js</span><span class="p">(</span><span class="s2">&quot;this.name = &#39;Tool&#39;&quot;</span><span class="p">)</span>
 
 <span class="c1"># MongoDB 4.2 and lower</span>
@@ -1574,7 +1573,7 @@ copy</a>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#length|size</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#length|size</span></code></p>
 <p class="last"><em>Same as count but caches subsequent calls to the database</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1582,14 +1581,14 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">length</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">length</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;FKA Twigs&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#pluck</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#pluck</span></code></p>
 <p class="last"><em>Get all the values for the provided field.
 Returns nil for unset fields and for non-existent fields.</em></p>
 </td>
@@ -1598,7 +1597,7 @@ Returns nil for unset fields and for non-existent fields.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1612,14 +1611,14 @@ copy</a>
 <p>Mongoid provides a facility to eager load documents
 from associations to prevent the n+1 issue when
 iterating over documents with association access. Eager loading is supported on
-all associations with the exception of polymorphic <code class="docutils literal"><span class="pre">belongs_to</span></code>
+all associations with the exception of polymorphic <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>
 associations.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_many</span> <span class="ss">:albums</span>
 <span class="k">end</span>
@@ -1645,7 +1644,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -1662,19 +1661,19 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/project/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/project/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
 <span class="c1"># =&gt; #&lt;Band _id: 5dc9f7d5ce4ef34893354323, name: &quot;Sun Project&quot;, description: &quot;Sun\nProject&quot;&gt;</span>
 </pre></div>
 </div>
 </div>
 <p>It is also possible to query using PCRE syntax by constructing
-<code class="docutils literal"><span class="pre">BSON::Regexp::Raw</span></code> objects explicitly:</p>
+<code class="docutils literal notranslate"><span class="pre">BSON::Regexp::Raw</span></code> objects explicitly:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="sr">/\AProject/</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="sr">/\AProject/</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
 <span class="c1"># =&gt; #&lt;Band _id: 5dc9f7d5ce4ef34893354323, name: &quot;Sun Project&quot;, description: &quot;Sun\nProject&quot;&gt;</span>
 
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;^Project&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">first</span>
@@ -1703,7 +1702,7 @@ document inserts, updates, and deletion.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#create</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#create</span></code></p>
 <p class="last"><em>Create a newly persisted document.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1711,13 +1710,13 @@ document inserts, updates, and deletion.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#create!</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#create!</span></code></p>
 <p class="last"><em>Create a newly persisted document and raise an exception on validation failure.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1725,13 +1724,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">create!</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">create!</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#build|new</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#build|new</span></code></p>
 <p class="last"><em>Create a new (unsaved) document.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1739,14 +1738,14 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">new</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#update</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#update</span></code></p>
 <p class="last"><em>Update attributes of the first matching document.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1754,13 +1753,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#update_all</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#update_all</span></code></p>
 <p class="last"><em>Update attributes of all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1768,13 +1767,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">update_all</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">update_all</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#add_to_set</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#add_to_set</span></code></p>
 <p class="last"><em>Perform an $addToSet on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1782,13 +1781,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to_set</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to_set</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#bit</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#bit</span></code></p>
 <p class="last"><em>Perform a $bit on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1796,13 +1795,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">bit</span><span class="p">(</span><span class="ss">likes</span><span class="p">:</span> <span class="p">{</span> <span class="ow">and</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="ow">or</span><span class="p">:</span> <span class="mi">4</span> <span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">bit</span><span class="p">(</span><span class="ss">likes</span><span class="p">:</span> <span class="p">{</span> <span class="ow">and</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="ow">or</span><span class="p">:</span> <span class="mi">4</span> <span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#inc</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#inc</span></code></p>
 <p class="last"><em>Perform an $inc on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1810,13 +1809,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">inc</span><span class="p">(</span><span class="ss">likes</span><span class="p">:</span> <span class="mi">123</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">inc</span><span class="p">(</span><span class="ss">likes</span><span class="p">:</span> <span class="mi">123</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#pop</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#pop</span></code></p>
 <p class="last"><em>Perform a $pop on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1824,14 +1823,14 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Photek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#pull</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#pull</span></code></p>
 <p class="last"><em>Perform a $pull on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1839,13 +1838,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="s2">&quot;Maynard&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="s2">&quot;Maynard&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#pull_all</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#pull_all</span></code></p>
 <p class="last"><em>Perform a $pullAll on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1853,14 +1852,14 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span>
   <span class="n">pull_all</span><span class="p">(</span><span class="ss">:members</span><span class="p">,</span> <span class="o">[</span> <span class="s2">&quot;Maynard&quot;</span><span class="p">,</span> <span class="s2">&quot;Danny&quot;</span> <span class="o">]</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#push</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#push</span></code></p>
 <p class="last"><em>Perform a $push on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1868,13 +1867,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="s2">&quot;Maynard&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="s2">&quot;Maynard&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#push_all</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#push_all</span></code></p>
 <p class="last"><em>Perform a $push with $each on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1882,14 +1881,14 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span>
   <span class="n">push_all</span><span class="p">(</span><span class="ss">members</span><span class="p">:</span> <span class="o">[</span> <span class="s2">&quot;Maynard&quot;</span><span class="p">,</span> <span class="s2">&quot;Danny&quot;</span> <span class="o">]</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#rename</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#rename</span></code></p>
 <p class="last"><em>Perform a $rename on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1897,13 +1896,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="ss">:title</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="ss">:title</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#set</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#set</span></code></p>
 <p class="last"><em>Perform a $set on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1911,13 +1910,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="ss">likes</span><span class="p">:</span> <span class="mi">10000</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="ss">likes</span><span class="p">:</span> <span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#unset</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#unset</span></code></p>
 <p class="last"><em>Perform a $unset on all matching documents.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1925,13 +1924,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="ss">:likes</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="ss">:likes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#delete</span></code></p>
+<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#delete</span></code></p>
 <p class="last"><em>Deletes all matching documents in the database.</em></p>
 </td>
 <td><div class="first last button-code-block">
@@ -1939,13 +1938,13 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">Criteria#destroy</span></code></p>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Criteria#destroy</span></code></p>
 <p class="last"><em>Deletes all matching documents in the database while running callbacks for all.
 This loads all documents into memory and can be an expensive operation.</em></p>
 </td>
@@ -1954,7 +1953,7 @@ This loads all documents into memory and can be an expensive operation.</em></p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">destroy</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;Mute&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">destroy</span>
 </pre></div>
 </div>
 </div>
@@ -1976,7 +1975,7 @@ by a provided name. Just like normal criteria, they are lazy and chainable.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:country</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:genres</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Array</span>
@@ -1996,7 +1995,7 @@ extending functionality.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:country</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -2026,7 +2025,7 @@ class method, as the following example shows:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Product</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Product</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">fresh</span>
@@ -2039,7 +2038,7 @@ copy</a>
 </div>
 </div>
 <p>To have Mongoid raise an error when a scope would overwrite an existing class
-method, set the <code class="docutils literal"><span class="pre">scope_overwrite_exception</span></code> <a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal"><span class="pre">true</span></code>.</p>
+method, set the <code class="docutils literal notranslate"><span class="pre">scope_overwrite_exception</span></code> <a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </div>
 <div class="section" id="default-scopes">
 <h3>Default Scopes<a class="headerlink" href="#default-scopes" title="Permalink to this headline">¶</a></h3>
@@ -2051,7 +2050,7 @@ Default scopes are procs that return criteria objects.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:active</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Boolean</span>
@@ -2072,7 +2071,7 @@ the values given in the default scope, if the values are simple literals:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:active</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Boolean</span>
@@ -2093,7 +2092,7 @@ in the default scope, the value in the default scope takes precedence:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:active</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Boolean</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="kp">true</span>
@@ -2113,7 +2112,7 @@ not possible:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:tags</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Hash</span>
@@ -2131,7 +2130,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:tags</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Hash</span>
@@ -2146,13 +2145,13 @@ copy</a>
 </div>
 </div>
 <p>You can tell Mongoid not to apply the default scope by using
-<code class="docutils literal"><span class="pre">unscoped</span></code>, which can be inline or take a block.</p>
+<code class="docutils literal notranslate"><span class="pre">unscoped</span></code>, which can be inline or take a block.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">unscoped</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">unscoped</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">unscoped</span> <span class="k">do</span>
   <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span>
 <span class="k">end</span>
@@ -2166,7 +2165,7 @@ again later to always ensure it’s there.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">unscoped</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">scoped</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">unscoped</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Depeche Mode&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">scoped</span>
 </pre></div>
 </div>
 </div>
@@ -2179,7 +2178,7 @@ that would affect its visibility within the scoped association.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Label</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Label</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:bands</span>
 <span class="k">end</span>
@@ -2209,7 +2208,7 @@ treated like scopes, and can be chained as well.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:active</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Boolean</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="kp">true</span>
@@ -2232,14 +2231,14 @@ custom map/reduce jobs or simple aggregations.</p>
 <div class="section" id="execution">
 <h3>Execution<a class="headerlink" href="#execution" title="Permalink to this headline">¶</a></h3>
 <p>You can tell Mongoid off the class or a criteria to perform a map/reduce
-by calling <code class="docutils literal"><span class="pre">map_reduce</span></code> and providing map and reduce javascript
+by calling <code class="docutils literal notranslate"><span class="pre">map_reduce</span></code> and providing map and reduce javascript
 functions.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="sx">%Q{</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="sx">%Q{</span>
 <span class="sx">  function() {</span>
 <span class="sx">    emit(this.name, { likes: this.likes });</span>
 <span class="sx">  }</span>
@@ -2267,7 +2266,7 @@ wrapper that would need to force a database hit.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">replace</span><span class="p">:</span> <span class="s2">&quot;mr-results&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">document</span><span class="o">|</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">replace</span><span class="p">:</span> <span class="s2">&quot;mr-results&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">document</span><span class="o">|</span>
   <span class="nb">p</span> <span class="n">document</span> <span class="c1"># { &quot;_id&quot; =&gt; &quot;Tool&quot;, &quot;value&quot; =&gt; { &quot;likes&quot; =&gt; 200 }}</span>
 <span class="k">end</span>
 </pre></div>
@@ -2275,27 +2274,27 @@ copy</a>
 </div>
 <p>The only required thing you provide along with a map/reduce is where to
 output the results. If you do not provide this an error will be raised.
-Valid options to <code class="docutils literal"><span class="pre">#out</span></code> are:</p>
+Valid options to <code class="docutils literal notranslate"><span class="pre">#out</span></code> are:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">inline:</span> <span class="pre">1</span></code>: Don’t store the output in a collection.</li>
-<li><code class="docutils literal"><span class="pre">replace:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
+<li><code class="docutils literal notranslate"><span class="pre">inline:</span> <span class="pre">1</span></code>: Don’t store the output in a collection.</li>
+<li><code class="docutils literal notranslate"><span class="pre">replace:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
 provided name, and overwrite any documents that exist in it.</li>
-<li><code class="docutils literal"><span class="pre">merge:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
+<li><code class="docutils literal notranslate"><span class="pre">merge:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
 provided name, and merge the results with the existing documents.</li>
-<li><code class="docutils literal"><span class="pre">reduce:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
+<li><code class="docutils literal notranslate"><span class="pre">reduce:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
 provided name, and reduce all existing results in that collection.</li>
 </ul>
 </div>
 <div class="section" id="raw-results">
 <h3>Raw Results<a class="headerlink" href="#raw-results" title="Permalink to this headline">¶</a></h3>
-<p>Results of Map/Reduce execution can be retrieved via the <code class="docutils literal"><span class="pre">execute</span></code> method
-or its aliases <code class="docutils literal"><span class="pre">raw</span></code> and <code class="docutils literal"><span class="pre">results</span></code>:</p>
+<p>Results of Map/Reduce execution can be retrieved via the <code class="docutils literal notranslate"><span class="pre">execute</span></code> method
+or its aliases <code class="docutils literal notranslate"><span class="pre">raw</span></code> and <code class="docutils literal notranslate"><span class="pre">results</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">mr</span><span class="o">.</span><span class="n">execute</span>
 <span class="c1"># =&gt; {&quot;results&quot;=&gt;[{&quot;_id&quot;=&gt;&quot;Tool&quot;, &quot;value&quot;=&gt;{&quot;likes&quot;=&gt;200.0}}],</span>
@@ -2313,14 +2312,14 @@ copy</a>
 <p>MongoDB servers 4.2 and lower provide Map/Reduce execution statistics. As of
 MongoDB 4.4, Map/Reduce is implemented via the aggregation pipeline and
 statistics described in this section are not available.</p>
-<p>The following methods are provided on the <code class="docutils literal"><span class="pre">MapReduce</span></code> object:</p>
+<p>The following methods are provided on the <code class="docutils literal notranslate"><span class="pre">MapReduce</span></code> object:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">counts</span></code>: Number of documents read, emitted, reduced and output through
+<li><code class="docutils literal notranslate"><span class="pre">counts</span></code>: Number of documents read, emitted, reduced and output through
 the pipeline.</li>
-<li><code class="docutils literal"><span class="pre">input</span></code>, <code class="docutils literal"><span class="pre">emitted</span></code>, <code class="docutils literal"><span class="pre">reduced</span></code>, <code class="docutils literal"><span class="pre">output</span></code>: individual count methods.
-Note that <code class="docutils literal"><span class="pre">emitted</span></code> and <code class="docutils literal"><span class="pre">reduced</span></code> methods are named differently from
-hash keys in <code class="docutils literal"><span class="pre">counts</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">time</span></code>: The time, in milliseconds, that Map/Reduce pipeline took to execute.</li>
+<li><code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">emitted</span></code>, <code class="docutils literal notranslate"><span class="pre">reduced</span></code>, <code class="docutils literal notranslate"><span class="pre">output</span></code>: individual count methods.
+Note that <code class="docutils literal notranslate"><span class="pre">emitted</span></code> and <code class="docutils literal notranslate"><span class="pre">reduced</span></code> methods are named differently from
+hash keys in <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">time</span></code>: The time, in milliseconds, that Map/Reduce pipeline took to execute.</li>
 </ul>
 <p>The following code illustrates retrieving the statistics:</p>
 <div class="button-code-block">
@@ -2328,7 +2327,7 @@ hash keys in <code class="docutils literal"><span class="pre">counts</span></cod
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">mr</span><span class="o">.</span><span class="n">counts</span>
 <span class="c1"># =&gt; {&quot;input&quot;=&gt;4, &quot;emit&quot;=&gt;4, &quot;reduce&quot;=&gt;1, &quot;output&quot;=&gt;1}</span>
@@ -2354,13 +2353,24 @@ copy</a>
 <p class="first admonition-title">Note</p>
 <p class="last">Each statistics method invocation re-executes the Map/Reduce pipeline.
 The results of execution are not stored by Mongoid. Consider using the
-<code class="docutils literal"><span class="pre">execute</span></code> method to retrieve the raw results and obtaining the statistics
+<code class="docutils literal notranslate"><span class="pre">execute</span></code> method to retrieve the raw results and obtaining the statistics
 from the raw results if multiple statistics are desired.</p>
 </div>
 </div>
 </div>
 <div class="section" id="text-search">
 <span id="id4"></span><h2>Text Search<a class="headerlink" href="#text-search" title="Permalink to this headline">¶</a></h2>
+<p>MongoDB provides <a class="reference external" href="https://docs.mongodb.com/manual/core/index-text/">text indexes</a>
+to support text search queries on string content. Text indexes
+can include any field whose value is a string or an array of
+string elements.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">MongoDB Atlas also provides
+<a class="reference external" href="https://docs.atlas.mongodb.com/atlas-search/">Atlas Search</a>
+which is a more powerful and flexible text search solution.
+The rest of this section discusses text indexes and not Atlas Search.</p>
+</div>
 <p>To perform text search with Mongoid, follow these steps:</p>
 <ol class="arabic simple">
 <li>Define a text index on a model.</li>
@@ -2378,7 +2388,7 @@ a text index utilizing the description field:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -2389,17 +2399,17 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Note that the index type (<code class="docutils literal"><span class="pre">text</span></code>) must be given as a string, not as a symbol.</p>
+<p>Note that the index type (<code class="docutils literal notranslate"><span class="pre">text</span></code>) must be given as a string, not as a symbol.</p>
 </div>
 <div class="section" id="creating-text-index">
 <h3>Creating Text Index<a class="headerlink" href="#creating-text-index" title="Permalink to this headline">¶</a></h3>
-<p>To create the index, invoke the <code class="docutils literal"><span class="pre">db:mongoid:create_indexes</span></code> Rake task:</p>
+<p>To create the index, invoke the <code class="docutils literal notranslate"><span class="pre">db:mongoid:create_indexes</span></code> Rake task:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="ss">mongoid</span><span class="p">:</span><span class="n">create_indexes</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="ss">mongoid</span><span class="p">:</span><span class="n">create_indexes</span>
 </pre></div>
 </div>
 </div>
@@ -2413,7 +2423,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;$text&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$search&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ounces&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;$text&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$search&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ounces&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span>
 <span class="c1"># =&gt; [#&lt;Band _id: 5d5341b3ce4ef35d5016746d, name: &quot;foo&quot;, description: &quot;ounce&quot;&gt;]</span>
 </pre></div>
 </div>
@@ -2421,7 +2431,7 @@ copy</a>
 <p>Note that the description contains the word “ounce” even though the search
 query was “ounces”.</p>
 <p>Note also that when performing text search, the name of the field is not
-explicitly specified - <code class="docutils literal"><span class="pre">$text</span></code> operator searches all fields indexed with
+explicitly specified - <code class="docutils literal notranslate"><span class="pre">$text</span></code> operator searches all fields indexed with
 the text index.</p>
 </div>
 </div>

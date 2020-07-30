@@ -76,14 +76,13 @@
 </script></head>
 <body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1>
   <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-     {'gtm.start': new Date().getTime(),event:'gtm.js'}
-   );var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
   <!-- End Google Tag Manager --><div class="content" >
 
    <div id="left-column">
@@ -222,26 +221,26 @@
 <h2>Document Callbacks<a class="headerlink" href="#document-callbacks" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid supports the following callbacks for <a class="reference internal" href="mongoid-documents.html"><span class="doc">documents</span></a>:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">after_initialize</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_build</span></code></li>
-<li><code class="docutils literal"><span class="pre">before_validation</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_validation</span></code></li>
-<li><code class="docutils literal"><span class="pre">before_create</span></code></li>
-<li><code class="docutils literal"><span class="pre">around_create</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_create</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_find</span></code></li>
-<li><code class="docutils literal"><span class="pre">before_update</span></code></li>
-<li><code class="docutils literal"><span class="pre">around_update</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_update</span></code></li>
-<li><code class="docutils literal"><span class="pre">before_upsert</span></code></li>
-<li><code class="docutils literal"><span class="pre">around_upsert</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_upsert</span></code></li>
-<li><code class="docutils literal"><span class="pre">before_save</span></code></li>
-<li><code class="docutils literal"><span class="pre">around_save</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_save</span></code></li>
-<li><code class="docutils literal"><span class="pre">before_destroy</span></code></li>
-<li><code class="docutils literal"><span class="pre">around_destroy</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_destroy</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_initialize</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_build</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">before_validation</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_validation</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">before_create</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">around_create</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_create</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_find</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">before_update</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">around_update</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_update</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">before_upsert</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">around_upsert</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_upsert</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">before_save</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">around_save</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_save</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">before_destroy</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">around_destroy</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_destroy</span></code></li>
 </ul>
 <p>Callbacks are available on any document, whether it is embedded within
 another document or not. Note that to be efficient, Mongoid only fires
@@ -258,7 +257,7 @@ for cross-cutting concerns, like queueing up background jobs.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Article</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Article</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:body</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -285,7 +284,7 @@ syntax as well:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Article</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Article</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
 
@@ -302,14 +301,14 @@ copy</a>
 <p>Mongoid has a set of callbacks that are specific to collection based
 associations - these are:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">after_add</span></code></li>
-<li><code class="docutils literal"><span class="pre">after_remove</span></code></li>
-<li><code class="docutils literal"><span class="pre">before_add</span></code></li>
-<li><code class="docutils literal"><span class="pre">before_remove</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_add</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">after_remove</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">before_add</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">before_remove</span></code></li>
 </ul>
 <p>Each time a document is added or removed from any of the following associations,
-the respective callbacks are invoked: <code class="docutils literal"><span class="pre">embeds_many</span></code>,
-<code class="docutils literal"><span class="pre">has_many</span></code>, and <code class="docutils literal"><span class="pre">has_and_belongs_to_many</span></code>.</p>
+the respective callbacks are invoked: <code class="docutils literal notranslate"><span class="pre">embeds_many</span></code>,
+<code class="docutils literal notranslate"><span class="pre">has_many</span></code>, and <code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code>.</p>
 <p>Association callbacks are specified as options on the respective association.
 The document added/removed will be passed as the parameter to the specified
 callback. Example:</p>
@@ -318,7 +317,7 @@ callback. Example:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">has_many</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">after_add</span><span class="p">:</span> <span class="ss">:send_email_to_subscribers</span>

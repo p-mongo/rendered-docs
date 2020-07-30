@@ -76,14 +76,13 @@
 </script></head>
 <body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1>
   <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-     {'gtm.start': new Date().getTime(),event:'gtm.js'}
-   );var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
   <!-- End Google Tag Manager --><div class="content" >
 
    <div id="left-column">
@@ -227,15 +226,15 @@ of a Rails application and Rails-related functionality which can be
 manually enabled.</p>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p>You can set Mongoid configuration options in your <code class="docutils literal"><span class="pre">application.rb</span></code> along with other Rails
+<p>You can set Mongoid configuration options in your <code class="docutils literal notranslate"><span class="pre">application.rb</span></code> along with other Rails
 environment specific options by accessing config.mongoid. Options set here will override
-those set in your <code class="docutils literal"><span class="pre">config/mongoid.yml</span></code>.</p>
+those set in your <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nn">MyApplication</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nn">MyApplication</span>
   <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
     <span class="n">config</span><span class="o">.</span><span class="n">mongoid</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">,</span> <span class="ss">:warn</span><span class="p">)</span>
   <span class="k">end</span>
@@ -254,7 +253,7 @@ using any inheritance it is recommended you turn this feature off.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">mongoid</span><span class="o">.</span><span class="n">preload_models</span> <span class="o">=</span> <span class="kp">false</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">mongoid</span><span class="o">.</span><span class="n">preload_models</span> <span class="o">=</span> <span class="kp">false</span>
 </pre></div>
 </div>
 </div>
@@ -268,7 +267,7 @@ certain exceptions to well-known HTTP status codes, as follows:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">::</span><span class="no">Errors</span><span class="o">::</span><span class="no">DocumentNotFound</span> <span class="p">:</span> <span class="mi">404</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">::</span><span class="no">Errors</span><span class="o">::</span><span class="no">DocumentNotFound</span> <span class="p">:</span> <span class="mi">404</span>
 <span class="no">Mongoid</span><span class="o">::</span><span class="no">Errors</span><span class="o">::</span><span class="no">Validations</span> <span class="p">:</span> <span class="mi">422</span>
 </pre></div>
 </div>
@@ -285,7 +284,7 @@ time like so:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-none"><div class="highlight"><pre><span></span>Completed 200 OK in 2739ms (Views: 12.6ms | MongoDB: 0.2ms)
+<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>Completed 200 OK in 2739ms (Views: 12.6ms | MongoDB: 0.2ms)
 </pre></div>
 </div>
 </div>
@@ -300,16 +299,16 @@ process the results.</p>
 <h2>Rake Tasks<a class="headerlink" href="#rake-tasks" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid provides the following rake tasks when used in a Rails environment:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">db:create</span></code>: Exists only for dependency purposes, does not actually do anything.</li>
-<li><code class="docutils literal"><span class="pre">db:create_indexes</span></code>: Reads all index definitions from the models and attempts to create them in the database.</li>
-<li><code class="docutils literal"><span class="pre">db:remove_indexes</span></code>: Reads all secondary index definitions from the models.</li>
-<li><code class="docutils literal"><span class="pre">db:drop</span></code>: Drops all collections in the database with the exception of the system collections.</li>
-<li><code class="docutils literal"><span class="pre">db:migrate</span></code>: Exists only for dependency purposes, does not actually do anything.</li>
-<li><code class="docutils literal"><span class="pre">db:purge</span></code>: Deletes all data, including indexes, from the database. Since 3.1.0</li>
-<li><code class="docutils literal"><span class="pre">db:schema:load</span></code>: Exists only for framework dependency purposes, does not actually do anything.</li>
-<li><code class="docutils literal"><span class="pre">db:seed</span></code>: Seeds the database from db/seeds.rb</li>
-<li><code class="docutils literal"><span class="pre">db:setup</span></code>: Creates indexes and seeds the database.</li>
-<li><code class="docutils literal"><span class="pre">db:test:prepare</span></code>: Exists only for framework dependency purposes, does not actually do anything.</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:create</span></code>: Exists only for dependency purposes, does not actually do anything.</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:create_indexes</span></code>: Reads all index definitions from the models and attempts to create them in the database.</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:remove_indexes</span></code>: Reads all secondary index definitions from the models.</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:drop</span></code>: Drops all collections in the database with the exception of the system collections.</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:migrate</span></code>: Exists only for dependency purposes, does not actually do anything.</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:purge</span></code>: Deletes all data, including indexes, from the database. Since 3.1.0</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:schema:load</span></code>: Exists only for framework dependency purposes, does not actually do anything.</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:seed</span></code>: Seeds the database from db/seeds.rb</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:setup</span></code>: Creates indexes and seeds the database.</li>
+<li><code class="docutils literal notranslate"><span class="pre">db:test:prepare</span></code>: Exists only for framework dependency purposes, does not actually do anything.</li>
 </ul>
 </div>
 </div>

@@ -76,14 +76,13 @@
 </script></head>
 <body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1>
   <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-     {'gtm.start': new Date().getTime(),event:'gtm.js'}
-   );var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
   <!-- End Google Tag Manager --><div class="content" >
 
    <div id="left-column">
@@ -233,17 +232,17 @@ It can be installed manually or with bundler.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-sh"><div class="highlight"><pre><span></span>gem install mongoid
+<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>gem install mongoid
 </pre></div>
 </div>
 </div>
-<p>To install the gem with bundler, include the following in your <code class="docutils literal"><span class="pre">Gemfile</span></code>:</p>
+<p>To install the gem with bundler, include the following in your <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s1">&#39;mongoid&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 7.1.0&#39;</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s1">&#39;mongoid&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 7.1.0&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -251,23 +250,23 @@ copy</a>
 <div class="section" id="using-mongoid-with-a-new-rails-application">
 <h2>Using Mongoid with a New Rails Application<a class="headerlink" href="#using-mongoid-with-a-new-rails-application" title="Permalink to this headline">¶</a></h2>
 <p>When creating a new Rails application and wish to use Mongoid for
-data access, give the <code class="docutils literal"><span class="pre">--skip-active-record</span></code> flag to the <code class="docutils literal"><span class="pre">rails</span> <span class="pre">new</span></code>
+data access, give the <code class="docutils literal notranslate"><span class="pre">--skip-active-record</span></code> flag to the <code class="docutils literal notranslate"><span class="pre">rails</span> <span class="pre">new</span></code>
 command to avoid depending on and configuring ActiveRecord..</p>
 </div>
 <div class="section" id="using-mongoid-with-an-existing-rails-application">
 <h2>Using Mongoid with an Existing Rails Application<a class="headerlink" href="#using-mongoid-with-an-existing-rails-application" title="Permalink to this headline">¶</a></h2>
 <p>When converting an existing Rails application to use Mongoid for data access,
-the <code class="docutils literal"><span class="pre">config/application.rb</span></code> file needs to be updated to remove the
-<code class="docutils literal"><span class="pre">require</span> <span class="pre">'rails/all'</span></code> line and explicitly include the required frameworks
+the <code class="docutils literal notranslate"><span class="pre">config/application.rb</span></code> file needs to be updated to remove the
+<code class="docutils literal notranslate"><span class="pre">require</span> <span class="pre">'rails/all'</span></code> line and explicitly include the required frameworks
 (which could be all of the frameworks provided by Rails with the exception of
-ActiveRecord). Any references to ActiveRecord in files in the <code class="docutils literal"><span class="pre">config</span></code>
+ActiveRecord). Any references to ActiveRecord in files in the <code class="docutils literal notranslate"><span class="pre">config</span></code>
 directory and in the models also need to be removed.</p>
 </div>
 <div class="section" id="ruby-mongodb-driver-compatibility">
 <h2>Ruby MongoDB Driver Compatibility<a class="headerlink" href="#ruby-mongodb-driver-compatibility" title="Permalink to this headline">¶</a></h2>
 <p>The following compatibility table specifies the versions of <a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/">Ruby driver for
 MongoDB</a>
-(the <code class="docutils literal"><span class="pre">mongo</span></code> gem) supported by the most recent patch releases of the
+(the <code class="docutils literal notranslate"><span class="pre">mongo</span></code> gem) supported by the most recent patch releases of the
 specified Mongoid versions.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

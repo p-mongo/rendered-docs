@@ -76,14 +76,13 @@
 </script></head>
 <body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1>
   <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-JQHP"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-     {'gtm.start': new Date().getTime(),event:'gtm.js'}
-   );var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-JQHP');</script>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
   <!-- End Google Tag Manager --><div class="content" >
 
    <div id="left-column">
@@ -225,13 +224,13 @@ within a single web form.</p>
 <h2>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">¶</a></h2>
 <p>Nested attributes can be enabled for any association, embedded or referenced.
 To enable this for an association, simply provide the association name to the
-<code class="docutils literal"><span class="pre">accepts_nested_attributes_for</span></code> macro.</p>
+<code class="docutils literal notranslate"><span class="pre">accepts_nested_attributes_for</span></code> macro.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:albums</span>
   <span class="n">belongs_to</span> <span class="ss">:producer</span>
@@ -244,7 +243,7 @@ copy</a>
 association, Mongoid will automatically enable autosave for that association.</p>
 <p>When an association gains nested attributes behavior, an additional method is
 added to the base model, which should be used to update the attributes with
-the new functionality. This method is the association name plus <code class="docutils literal"><span class="pre">_attributes=</span></code>.
+the new functionality. This method is the association name plus <code class="docutils literal notranslate"><span class="pre">_attributes=</span></code>.
 You can use this method directly, or more commonly the name of the method can
 be an attribute in the updates for the base class, in which case
 Mongoid will call the appropriate setter under the covers.</p>
@@ -253,14 +252,14 @@ Mongoid will call the appropriate setter under the covers.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
 <span class="n">band</span><span class="o">.</span><span class="n">producer_attributes</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Flood&quot;</span> <span class="p">}</span>
 <span class="n">band</span><span class="o">.</span><span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">producer_attributes</span><span class="p">:</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Flood&quot;</span> <span class="p">}}</span>
 </pre></div>
 </div>
 </div>
 <p>Note that this will work with any attribute based setter method in Mongoid. This includes:
-<code class="docutils literal"><span class="pre">update_attributes</span></code>, <code class="docutils literal"><span class="pre">update_attributes!</span></code> and <code class="docutils literal"><span class="pre">attributes=</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">update_attributes</span></code>, <code class="docutils literal notranslate"><span class="pre">update_attributes!</span></code> and <code class="docutils literal notranslate"><span class="pre">attributes=</span></code>.</p>
 </div>
 </div>
 
