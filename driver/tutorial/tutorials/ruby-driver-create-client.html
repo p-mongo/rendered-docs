@@ -828,24 +828,24 @@ is passed (such as a negative value or a non-numeric value).</td>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">:ssl_ca_cert</span></code></td>
 <td>The file path containing concatenated certificate authority certificates
 used to validate certs passed from the other end of the connection.
-One of :ssl_ca_cert, :ssl_ca_cert_string or :ssl_ca_cert_object
-(in order of priority) is required for :ssl_verify.</td>
+One of <code class="docutils literal"><span class="pre">:ssl_ca_cert</span></code>, <code class="docutils literal"><span class="pre">:ssl_ca_cert_string</span></code> or <code class="docutils literal"><span class="pre">:ssl_ca_cert_object</span></code>
+(in order of priority) is required for <code class="docutils literal"><span class="pre">:ssl_verify</span></code>.</td>
 <td><code class="docutils literal"><span class="pre">String</span></code></td>
 <td>none</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">:ssl_ca_cert_object</span></code></td>
 <td>An array of OpenSSL::X509::Certificate representing the certificate
 authority certificates used to validate certs passed from the other end
-of the connection. One of :ssl_ca_cert, :ssl_ca_cert_string or
-:ssl_ca_cert_object (in order of priority) is required for :ssl_verify.</td>
+of the connection. One of <code class="docutils literal"><span class="pre">:ssl_ca_cert</span></code>, <code class="docutils literal"><span class="pre">:ssl_ca_cert_string</span></code> or
+<code class="docutils literal"><span class="pre">:ssl_ca_cert_object</span></code> (in order of priority) is required for <code class="docutils literal"><span class="pre">:ssl_verify</span></code>.</td>
 <td><code class="docutils literal"><span class="pre">Array&lt;</span> <span class="pre">OpenSSL::X509::Certificate</span> <span class="pre">&gt;</span></code></td>
 <td>none</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">:ssl_ca_cert_string</span></code></td>
 <td>A string containing concatenated certificate authority certificates
 used to validate certs passed from the other end of the connection.
-One of :ssl_ca_cert, :ssl_ca_cert_string or :ssl_ca_cert_object
-(in order of priority) is required for :ssl_verify.</td>
+One of <code class="docutils literal"><span class="pre">:ssl_ca_cert</span></code>, <code class="docutils literal"><span class="pre">:ssl_ca_cert_string</span></code> or <code class="docutils literal"><span class="pre">:ssl_ca_cert_object</span></code>
+(in order of priority) is required for <code class="docutils literal"><span class="pre">:ssl_verify</span></code>.</td>
 <td><code class="docutils literal"><span class="pre">String</span></code></td>
 <td>none</td>
 </tr>
@@ -1337,8 +1337,8 @@ constructing a <code class="docutils literal"><span class="pre">Mongo::Client</s
 TLS certificates, which requires the clients to specify their TLS certificates
 when connecting. This can be accomplished via:</p>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">:ssl_cert</span></code>/<code class="docutils literal"><span class="pre">:ssl_cert_object</span></code>/<code class="docutils literal"><span class="pre">:ssl_cert_string`</span> <span class="pre">and</span>
-<span class="pre">``:ssl_key</span></code>/<code class="docutils literal"><span class="pre">:ssl_key_object</span></code>/<code class="docutils literal"><span class="pre">:ssl_key_string</span></code>/<code class="docutils literal"><span class="pre">:ssl_key_pass_phrase</span></code>
+<li>The <code class="docutils literal"><span class="pre">:ssl_cert</span></code>/<code class="docutils literal"><span class="pre">:ssl_cert_object</span></code>/<code class="docutils literal"><span class="pre">:ssl_cert_string</span></code> and
+<code class="docutils literal"><span class="pre">:ssl_key</span></code>/<code class="docutils literal"><span class="pre">:ssl_key_object</span></code>/<code class="docutils literal"><span class="pre">:ssl_key_string</span></code>/<code class="docutils literal"><span class="pre">:ssl_key_pass_phrase</span></code>
 Ruby options.</li>
 <li>The``tlsCertificateKeyFile`` URI option.</li>
 </ul>
