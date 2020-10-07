@@ -29,7 +29,7 @@
 <!-- <link rel="index" title="Index" href="../genindex.html" /> -->
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Ruby Driver Manual" href="../index.html" />
-<link rel="next" title="BSON" href="../bson-tutorials.html" />
+<link rel="next" title="Query Cache" href="query-cache.html" />
 <link rel="prev" title="GridFS" href="ruby-driver-gridfs.html" /></head>
 <body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
   <!-- Google Tag Manager -->
@@ -79,9 +79,18 @@
           
           <li>
           
+            <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
+              
+              Version 2.13 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
             <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
               
-              Version 2.12 (current)
+              Version 2.12
             </a>
           </li>
         
@@ -197,7 +206,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-crud-operations.html">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-bulk-operations.html">Bulk Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="http://api.mongodb.com/ruby/current/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-crud-operations.html">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-bulk-operations.html">Bulk Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
     </div>
   </div>
            
@@ -279,7 +288,7 @@ you add this variable to your rc files. For example:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LIBMONGOCRYPT_PATH</span><span class="o">=</span>/path/to/your/libmongocrypt.so
+<div class="copyable-code-block highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LIBMONGOCRYPT_PATH</span><span class="o">=</span>/path/to/your/libmongocrypt.so
 </pre></div>
 </div>
 </div>
@@ -295,15 +304,15 @@ skip this step.</p>
 <a class="reference external" href="https://docs.mongodb.com/manual/reference/security-client-side-encryption-appendix/#installation">the MongoDB manual</a>.</p>
 <p>In order to configure mongocryptd (for example, which port it listens on or the
 path used to spawn the daemon), it is necessary to pass different options to the
-<code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> performing automatic encryption. See the <a class="reference internal" href="#extra-options">:extra_options</a>
+<code class="docutils literal"><span class="pre">Mongo::Client</span></code> performing automatic encryption. See the <a class="reference internal" href="#extra-options">:extra_options</a>
 section of this tutorial for more information.</p>
 </div>
 </div>
 <div class="section" id="automatic-encryption">
 <h2>Automatic Encryption<a class="headerlink" href="#automatic-encryption" title="Permalink to this headline">¶</a></h2>
 <p>Automatic encryption is a feature that allows users to configure a
-<code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> instance to always encrypt specific document fields when
-performing database operations. Once the <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> is configured, it
+<code class="docutils literal"><span class="pre">Mongo::Client</span></code> instance to always encrypt specific document fields when
+performing database operations. Once the <code class="docutils literal"><span class="pre">Mongo::Client</span></code> is configured, it
 will automatically encrypt any field that requires encryption before writing
 it to the database, and it will automatically decrypt those fields when reading
 them.</p>
@@ -323,8 +332,8 @@ in order to perform automatic encryption.</p>
 operations on a collection. Automatic encryption is not supported for operations
 on a database or view, and operations that are not bypassed will result in
 error (see <a class="reference external" href="https://github.com/mongodb/specifications/blob/master/source/client-side-encryption/client-side-encryption.rst#libmongocrypt-auto-encryption-whitelist">Auto Encryption Whitelist</a>
-). To bypass automatic encryption for all operations, set <code class="docutils literal notranslate"><span class="pre">bypass_auto_encryption</span></code>
-to true in <code class="docutils literal notranslate"><span class="pre">auto_encryption_options</span></code>.</p>
+). To bypass automatic encryption for all operations, set <code class="docutils literal"><span class="pre">bypass_auto_encryption</span></code>
+to true in <code class="docutils literal"><span class="pre">auto_encryption_options</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -335,7 +344,7 @@ to true in <code class="docutils literal notranslate"><span class="pre">auto_enc
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
 
 <span class="c1">#####################################</span>
 <span class="c1"># Step 1: Create a local master key #</span>
@@ -447,7 +456,7 @@ in order to perform explicit encryption.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
 
 <span class="c1">#####################################</span>
 <span class="c1"># Step 1: Create a local master key #</span>
@@ -545,7 +554,7 @@ to use client-side encryption in production.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">local_master_key</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">random_bytes</span><span class="p">(</span><span class="mi">96</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">local_master_key</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">random_bytes</span><span class="p">(</span><span class="mi">96</span><span class="p">)</span>
 <span class="c1"># =&gt; &quot;\xB2\xBE\x8EN\xD4\x14\xC2\x13\xC3...&quot; (a binary blob)</span>
 </pre></div>
 </div>
@@ -565,10 +574,10 @@ section of the MongoDB manual.</p>
 <div class="section" id="creating-a-data-key">
 <h2>Creating a Data Key<a class="headerlink" href="#creating-a-data-key" title="Permalink to this headline">¶</a></h2>
 <p>Once you have created a master key, create a data key by calling the
-<code class="docutils literal notranslate"><span class="pre">#create_data_key</span></code> method on an instance of the <code class="docutils literal notranslate"><span class="pre">Mongo::ClientEncryption</span></code>
+<code class="docutils literal"><span class="pre">#create_data_key</span></code> method on an instance of the <code class="docutils literal"><span class="pre">Mongo::ClientEncryption</span></code>
 class. This method generates a new data key and inserts it into the key vault
 collection, which is the MongoDB collection in which you choose to store your
-data keys. The <code class="docutils literal notranslate"><span class="pre">#create_data_key</span></code> method returns id of the newly-created
+data keys. The <code class="docutils literal"><span class="pre">#create_data_key</span></code> method returns id of the newly-created
 data key in the form of a BSON::Binary object.</p>
 <div class="section" id="create-a-data-key-using-a-local-master-key">
 <h3>Create a Data Key Using a Local Master Key<a class="headerlink" href="#create-a-data-key-using-a-local-master-key" title="Permalink to this headline">¶</a></h3>
@@ -584,7 +593,7 @@ to use client-side encryption in production.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># A Mongo::Client instance that will be used to connect to the key vault</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># A Mongo::Client instance that will be used to connect to the key vault</span>
 <span class="c1"># collection. Replace the server address with the address of the MongoDB</span>
 <span class="c1"># server where you would like to store your key vault collection.</span>
 <span class="n">key_vault_client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">)</span>
@@ -619,7 +628,7 @@ use that information to generate a data key.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># A Mongo::Client instance that will be used to connect to the key vault</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># A Mongo::Client instance that will be used to connect to the key vault</span>
 <span class="c1"># collection. Replace the server address with the address of the MongoDB</span>
 <span class="c1"># server where you would like to store your key vault collection.</span>
 <span class="n">key_vault_client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">)</span>
@@ -660,28 +669,28 @@ section of the MongoDB manual.</p>
 </div>
 <div class="section" id="auto-encryption-options">
 <h2>Auto-Encryption Options<a class="headerlink" href="#auto-encryption-options" title="Permalink to this headline">¶</a></h2>
-<p>Automatic encryption can be configured on a <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> using the
-<code class="docutils literal notranslate"><span class="pre">auto_encryption_options</span></code> option <code class="docutils literal notranslate"><span class="pre">Hash</span></code>. This section provides an overview
-of the fields inside <code class="docutils literal notranslate"><span class="pre">auto_encryption_options</span></code> and explains how to choose their
+<p>Automatic encryption can be configured on a <code class="docutils literal"><span class="pre">Mongo::Client</span></code> using the
+<code class="docutils literal"><span class="pre">auto_encryption_options</span></code> option <code class="docutils literal"><span class="pre">Hash</span></code>. This section provides an overview
+of the fields inside <code class="docutils literal"><span class="pre">auto_encryption_options</span></code> and explains how to choose their
 values.</p>
 <div class="section" id="key-vault-client">
-<h3><code class="docutils literal notranslate"><span class="pre">:key_vault_client</span></code><a class="headerlink" href="#key-vault-client" title="Permalink to this headline">¶</a></h3>
-<p>The key vault client is a <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> instance that will be used to connect
+<h3><code class="docutils literal"><span class="pre">:key_vault_client</span></code><a class="headerlink" href="#key-vault-client" title="Permalink to this headline">¶</a></h3>
+<p>The key vault client is a <code class="docutils literal"><span class="pre">Mongo::Client</span></code> instance that will be used to connect
 to the MongoDB collection containing your encryption data keys. For example, if
-your key vault was hosted on a MongoDB instance at <code class="docutils literal notranslate"><span class="pre">localhost:30000</span></code>:</p>
+your key vault was hosted on a MongoDB instance at <code class="docutils literal"><span class="pre">localhost:30000</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>key_vault_client = Mongo::Client.new([&#39;localhost:30000&#39;])
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">key_vault_client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:30000&#39;</span><span class="o">]</span><span class="p">)</span>
 
-Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    key_vault_client: key_vault_client,
-    # ... (Fill in other options here)
-  }
-)
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    key_vault_client: key_vault_client,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
 </div>
@@ -690,33 +699,33 @@ data, you may leave this option blank, and the top-level client will be used
 to insert and fetch data keys.</p>
 </div>
 <div class="section" id="key-vault-namespace">
-<h3><code class="docutils literal notranslate"><span class="pre">:key_vault_namespace</span></code><a class="headerlink" href="#key-vault-namespace" title="Permalink to this headline">¶</a></h3>
-<p>The key vault namespace is a <code class="docutils literal notranslate"><span class="pre">String</span></code> in the format <code class="docutils literal notranslate"><span class="pre">&quot;database_name.collection_name&quot;</span></code>,
-where <code class="docutils literal notranslate"><span class="pre">database_name</span></code> and <code class="docutils literal notranslate"><span class="pre">collection_name</span></code> are the name of the database and
+<h3><code class="docutils literal"><span class="pre">:key_vault_namespace</span></code><a class="headerlink" href="#key-vault-namespace" title="Permalink to this headline">¶</a></h3>
+<p>The key vault namespace is a <code class="docutils literal"><span class="pre">String</span></code> in the format <code class="docutils literal"><span class="pre">&quot;database_name.collection_name&quot;</span></code>,
+where <code class="docutils literal"><span class="pre">database_name</span></code> and <code class="docutils literal"><span class="pre">collection_name</span></code> are the name of the database and
 collection in which you would like to store your data keys. For example, if your data
-keys are stored in the <code class="docutils literal notranslate"><span class="pre">admin</span></code> database in the <code class="docutils literal notranslate"><span class="pre">datakeys</span></code> collection:</p>
+keys are stored in the <code class="docutils literal"><span class="pre">admin</span></code> database in the <code class="docutils literal"><span class="pre">datakeys</span></code> collection:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    key_vault_namespace: &#39;admin.datakeys&#39;,
-    # ... (Fill in other options here)
-  }
-)
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    key_vault_namespace: &#39;</span><span class="n">admin</span><span class="o">.</span><span class="n">datakeys</span><span class="s1">&#39;,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
 </div>
 <p>There is no default key vault namespace, and this option must be provided.</p>
 </div>
 <div class="section" id="schema-map">
-<h3><code class="docutils literal notranslate"><span class="pre">:schema_map</span></code><a class="headerlink" href="#schema-map" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">:schema_map</span></code><a class="headerlink" href="#schema-map" title="Permalink to this headline">¶</a></h3>
 <p>A schema map is a Hash with information about which fields to automatically
 encrypt and decrypt.</p>
 <p>The code snippet at the top of this tutorial demonstrates creating a schema
-map using a Ruby <code class="docutils literal notranslate"><span class="pre">Hash</span></code>. While this will work, schema maps can grow quite
+map using a Ruby <code class="docutils literal"><span class="pre">Hash</span></code>. While this will work, schema maps can grow quite
 large and it could be unweildy to include them in your Ruby code. Instead, it is
 recommended that you store them in a separate JSON (JavaScript Object Notation)
 file.</p>
@@ -726,7 +735,7 @@ file.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="n">data_key_id</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="n">data_key_id</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="c1"># =&gt; &quot;sr6OTtQUwhPD...&quot; (a base64-encoded string)</span>
 </pre></div>
 </div>
@@ -740,7 +749,7 @@ section of the MongoDB manual.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="copyable-code-block highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;encryption_db.encryption_coll&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;encrypted_field&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -762,22 +771,22 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>When you intend to use your schema map, convert it to a Ruby <code class="docutils literal notranslate"><span class="pre">Hash</span></code> using the
-<code class="docutils literal notranslate"><span class="pre">BSON::ExtJSON</span></code> module in the <code class="docutils literal notranslate"><span class="pre">bson</span></code> Ruby gem.</p>
+<p>When you intend to use your schema map, convert it to a Ruby <code class="docutils literal"><span class="pre">Hash</span></code> using the
+<code class="docutils literal"><span class="pre">BSON::ExtJSON</span></code> module in the <code class="docutils literal"><span class="pre">bson</span></code> Ruby gem.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>schema_map = BSON::ExtJSON.parse(File.read(&#39;/path/to/your/file.json&#39;))
-# =&gt; { &#39;encryption_db.encryption_coll&#39; =&gt; { ... } }
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">schema_map</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">ExtJSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/path/to/your/file.json&#39;</span><span class="p">))</span>
+<span class="c1"># =&gt; { &#39;encryption_db.encryption_coll&#39; =&gt; { ... } }</span>
 
-Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    schema_map: schema_map,
-    # ... (Fill in other options here)
-  }
-)
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    schema_map: schema_map,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
 </div>
@@ -785,7 +794,7 @@ Mongo::Client.new([&#39;localhost:27017],
 <p class="first admonition-title">Note</p>
 <p>It is also possible to supply a schema map as a validator on a MongoDB collection.
 This is referred to as a “remote schema map,” while providing the schema map as
-an option on the <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> is called a “local schema map.”</p>
+an option on the <code class="docutils literal"><span class="pre">Mongo::Client</span></code> is called a “local schema map.”</p>
 <p>Supplying a local schema map provides more security than relying on JSON schemas
 obtained from the server. It protects against a malicious server advertising
 a false JSON schema, which could trick the client into sending unencrypted
@@ -801,70 +810,70 @@ create a JSON schema validator on your collection.</p>
 </div>
 </div>
 <div class="section" id="bypass-auto-encryption">
-<h3><code class="docutils literal notranslate"><span class="pre">:bypass_auto_encryption</span></code><a class="headerlink" href="#bypass-auto-encryption" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">:bypass_auto_encryption</span></code> option is a <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> that specifies whether the
-<code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> should skip encryption when writing to the database. If
-<code class="docutils literal notranslate"><span class="pre">:bypass_auto_encryption</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the client will still perform automatic
+<h3><code class="docutils literal"><span class="pre">:bypass_auto_encryption</span></code><a class="headerlink" href="#bypass-auto-encryption" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">:bypass_auto_encryption</span></code> option is a <code class="docutils literal"><span class="pre">Boolean</span></code> that specifies whether the
+<code class="docutils literal"><span class="pre">Mongo::Client</span></code> should skip encryption when writing to the database. If
+<code class="docutils literal"><span class="pre">:bypass_auto_encryption</span></code> is <code class="docutils literal"><span class="pre">true</span></code>, the client will still perform automatic
 decryption of any previously-encrypted data.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    bypass_auto_encryption: true,
-    # ... (Fill in other options here)
-  }
-)
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    bypass_auto_encryption: true,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="extra-options">
-<h3><code class="docutils literal notranslate"><span class="pre">:extra_options</span></code><a class="headerlink" href="#extra-options" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">:extra_options</span></code> is a <code class="docutils literal notranslate"><span class="pre">Hash</span></code> of options related to spawning mongocryptd.
-Every option in this <code class="docutils literal notranslate"><span class="pre">Hash</span></code> has a default value, so it is only necessary to
+<h3><code class="docutils literal"><span class="pre">:extra_options</span></code><a class="headerlink" href="#extra-options" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">:extra_options</span></code> is a <code class="docutils literal"><span class="pre">Hash</span></code> of options related to spawning mongocryptd.
+Every option in this <code class="docutils literal"><span class="pre">Hash</span></code> has a default value, so it is only necessary to
 provide the options whose defaults you want to override.</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">:mongocryptd_spawn_args</span></code> - This is an <code class="docutils literal notranslate"><span class="pre">Array&lt;String&gt;</span></code> containing arguments
+<li><code class="docutils literal"><span class="pre">:mongocryptd_spawn_args</span></code> - This is an <code class="docutils literal"><span class="pre">Array&lt;String&gt;</span></code> containing arguments
 for spawning mongocryptd. The Ruby driver will pass these arguments to
 mongocryptd on spawning the daemon. Possible arguments are:<ul>
-<li><code class="docutils literal notranslate"><span class="pre">&quot;--idleShutdownTimeoutSecs&quot;</span></code> - The number of seconds mongocryptd must remain
+<li><code class="docutils literal"><span class="pre">&quot;--idleShutdownTimeoutSecs&quot;</span></code> - The number of seconds mongocryptd must remain
 idle before it shuts itself down. The default value is 60.</li>
-<li><code class="docutils literal notranslate"><span class="pre">&quot;--port&quot;</span></code> - The port at which mongocryptd will listen for connections. The
+<li><code class="docutils literal"><span class="pre">&quot;--port&quot;</span></code> - The port at which mongocryptd will listen for connections. The
 default is 27020.</li>
 </ul>
 </li>
-<li><code class="docutils literal notranslate"><span class="pre">:mongocryptd_uri</span></code> - The URI that the driver will use to connect to mongocryptd.
-By default, this is <code class="docutils literal notranslate"><span class="pre">&quot;mongodb://localhost:27020&quot;</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">:mongocryptd_spawn_path</span></code> - The path to the mongocryptd executable. The default
-is <code class="docutils literal notranslate"><span class="pre">&quot;mongocryptd&quot;</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">:mongocryptd_bypass_spawn</span></code> - A <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> indicating whether the driver should
+<li><code class="docutils literal"><span class="pre">:mongocryptd_uri</span></code> - The URI that the driver will use to connect to mongocryptd.
+By default, this is <code class="docutils literal"><span class="pre">&quot;mongodb://localhost:27020&quot;</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">:mongocryptd_spawn_path</span></code> - The path to the mongocryptd executable. The default
+is <code class="docutils literal"><span class="pre">&quot;mongocryptd&quot;</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">:mongocryptd_bypass_spawn</span></code> - A <code class="docutils literal"><span class="pre">Boolean</span></code> indicating whether the driver should
 skip spawning mongocryptd.</li>
 </ul>
 <p>For example, if you would like to run mongocryptd on port 30000, provide
-<code class="docutils literal notranslate"><span class="pre">extra_options</span></code> as follows:</p>
+<code class="docutils literal"><span class="pre">extra_options</span></code> as follows:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>  Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    extra_options: {
-      mongocryptd_spawn_args: [&#39;--port=30000&#39;],
-      mongocryptd_uri: &#39;mongodb://localhost:30000&#39;,
-    }
-    # ... (Fill in other options here)
-  }
-)
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span>  <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    extra_options: {</span>
+<span class="s1">      mongocryptd_spawn_args: [&#39;</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">30000</span><span class="s1">&#39;],</span>
+<span class="s1">      mongocryptd_uri: &#39;</span><span class="ss">mongodb</span><span class="p">:</span><span class="sr">//</span><span class="ss">localhost</span><span class="p">:</span><span class="mi">30000</span><span class="s1">&#39;,</span>
+<span class="s1">    }</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">The contents of <code class="docutils literal notranslate"><span class="pre">:extra_options</span></code> is subject to change in future versions
+<p class="last">The contents of <code class="docutils literal"><span class="pre">:extra_options</span></code> is subject to change in future versions
 of the client-side encryption API.</p>
 </div>
 </div>
@@ -875,7 +884,7 @@ of the client-side encryption API.</p>
     <div id="btnv">
       <span class="btn-arrow-left">&larr; &nbsp;</span>
       <a class="btn-prev-text" href="ruby-driver-gridfs.html" title="Previous Section: GridFS"><span>GridFS</span></a>
-      <a class="btn-next-text" href="../bson-tutorials.html" title="Next Section: BSON"><span>BSON</span></a>
+      <a class="btn-next-text" href="query-cache.html" title="Next Section: Query Cache"><span>Query Cache</span></a>
       <span class="btn-arrow-right">&nbsp;&rarr;</span>
     </div>
                   <div class="footer">

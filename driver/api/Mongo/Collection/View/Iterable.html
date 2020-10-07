@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Collection::View::Iterable
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -281,14 +281,14 @@
       <pre class="lines">
 
 
-71
-72
-73
-74
-75</pre>
+86
+87
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/iterable.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/iterable.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close_query'>close_query</span>
   <span class='kw'>if</span> <span class='ivar'>@cursor</span>
@@ -413,25 +413,55 @@
 53
 54
 55
-56</pre>
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/iterable.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
-  <span class='ivar'>@cursor</span> <span class='op'>=</span> <span class='kw'>nil</span>
-  <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:get_session</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span>
-  <span class='ivar'>@cursor</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:write?</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_write?'>write?</span>
-    <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='period'>.</span><span class='id identifier rubyid_select_server'>select_server</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_send_initial_query'>send_initial_query</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../../Cursor.html" title="Mongo::Cursor (class)">Cursor</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Cursor.html#initialize-instance_method" title="Mongo::Cursor#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+  <span class='ivar'>@cursor</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_use_query_cache?'>use_query_cache?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_cached_cursor'>cached_cursor</span>
+    <span class='id identifier rubyid_cached_cursor'>cached_cursor</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_read_with_retry_cursor'>read_with_retry_cursor</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
-      <span class='id identifier rubyid_send_initial_query'>send_initial_query</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
+    <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:get_session</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_select_cursor'>select_cursor</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_use_query_cache?'>use_query_cache?</span>
+    <span class='comment'># No need to store the cursor in the query cache if there is
+</span>    <span class='comment'># already a cached cursor stored at this key.
+</span>    <span class='const'><span class='object_link'><a href="../../QueryCache.html" title="Mongo::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_set'><span class='object_link'><a href="../../QueryCache.html#set-class_method" title="Mongo::QueryCache.set (method)">set</a></span></span><span class='lparen'>(</span><span class='ivar'>@cursor</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_cache_options'>cache_options</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_cached_cursor'>cached_cursor</span>
+
+    <span class='comment'># If a query with a limit is performed, the query cache will
+</span>    <span class='comment'># re-use results from an earlier query with the same or larger
+</span>    <span class='comment'># limit, and then impose the lower limit during iteration.
+</span>    <span class='id identifier rubyid_limit_for_cached_query'>limit_for_cached_query</span> <span class='op'>=</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:limit</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_limit'>limit</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='ivar'>@cursor</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>|</span>
+    <span class='comment'># Ruby versions 2.5 and older do not support arr[0..nil] syntax, so
+</span>    <span class='comment'># this must be a separate conditional.
+</span>    <span class='id identifier rubyid_cursor_to_iterate'>cursor_to_iterate</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_limit_for_cached_query'>limit_for_cached_query</span>
+      <span class='ivar'>@cursor</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='id identifier rubyid_limit_for_cached_query'>limit_for_cached_query</span><span class='rbracket'>]</span>
+    <span class='kw'>else</span>
+      <span class='ivar'>@cursor</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_cursor_to_iterate'>cursor_to_iterate</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>|</span>
       <span class='kw'>yield</span> <span class='id identifier rubyid_doc'>doc</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
@@ -448,7 +478,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:40:53 2020 by
+  Generated on Wed Oct  7 18:11:04 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Operation::Write
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Module: Mongo::Operation::Write
   
   
-  
+  <span class="private note title">Private</span>
 </h1>
 <div class="box_info">
   
@@ -95,7 +95,11 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This module is part of a private API.</strong>
+  You should avoid using this module if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Shared behavior of operations that write (update, insert, delete).</p>
 
 
@@ -149,7 +153,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -173,7 +177,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -209,7 +213,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Execute the bulk write operation.</p>
 
 
@@ -302,7 +310,6 @@
       <pre class="lines">
 
 
-70
 71
 72
 73
@@ -310,13 +317,14 @@
 75
 76
 77
-78</pre>
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/write.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/write.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bulk_execute'>bulk_execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span><span class='rparen'>)</span>
-  <span class='const'><span class='object_link'><a href="../Lint.html" title="Mongo::Lint (module)">Lint</a></span></span><span class='period'>.</span><span class='id identifier rubyid_assert_type'>assert_type</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Server/Connection.html" title="Mongo::Server::Connection (class)">Connection</a></span></span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../Lint.html" title="Mongo::Lint (module)">Lint</a></span></span><span class='period'>.</span><span class='id identifier rubyid_assert_type'><span class='object_link'><a href="../Lint.html#assert_type-class_method" title="Mongo::Lint.assert_type (method)">assert_type</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Server/Connection.html" title="Mongo::Server::Connection (class)">Connection</a></span></span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span>
     <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='op'>::</span><span class='const'>OpMsg</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bulk_result'>bulk_result</span>
@@ -340,7 +348,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Execute the operation.</p>
 
 
@@ -433,7 +445,6 @@
       <pre class="lines">
 
 
-38
 39
 40
 41
@@ -447,10 +458,11 @@
 49
 50
 51
-52</pre>
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/write.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/write.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span>
@@ -477,7 +489,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:40:53 2020 by
+  Generated on Wed Oct  7 18:11:04 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

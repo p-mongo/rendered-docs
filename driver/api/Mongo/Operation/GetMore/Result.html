@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Operation::GetMore::Result
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Operation::GetMore::Result
   
   
-  <span class="private note title">Private</span>
+  
 </h1>
 <div class="box_info">
   
@@ -103,11 +103,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This class is part of a private API.</strong>
-  You should avoid using this class if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Defines custom behavior of results for the get more command.</p>
 
 
@@ -196,7 +192,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -334,12 +330,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/get_more/result.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/get_more/result.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cursor_id'>cursor_id</span>
   <span class='id identifier rubyid_cursor_document'>cursor_document</span> <span class='op'>?</span> <span class='id identifier rubyid_cursor_document'>cursor_document</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Result.html#CURSOR_ID-constant" title="Mongo::Operation::Result::CURSOR_ID (constant)">CURSOR_ID</a></span></span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>super</span>
@@ -360,11 +356,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Get the documents in the result.</p>
 
 
@@ -425,12 +417,12 @@
       <pre class="lines">
 
 
-53
-54
-55</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/get_more/result.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/get_more/result.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_documents'>documents</span>
   <span class='id identifier rubyid_cursor_document'>cursor_document</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Result.html#NEXT_BATCH-constant" title="Mongo::Operation::Result::NEXT_BATCH (constant)">NEXT_BATCH</a></span></span><span class='rbracket'>]</span>
@@ -504,12 +496,12 @@
       <pre class="lines">
 
 
-41
-42
-43</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/get_more/result.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/get_more/result.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_batch_resume_token'>post_batch_resume_token</span>
   <span class='id identifier rubyid_cursor_document'>cursor_document</span> <span class='op'>?</span> <span class='id identifier rubyid_cursor_document'>cursor_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>postBatchResumeToken</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>nil</span>
@@ -524,7 +516,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:07 2020 by
+  Generated on Wed Oct  7 18:11:17 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

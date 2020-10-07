@@ -6,7 +6,7 @@
 <title>
   Exception: Mongo::Error::OperationFailure
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -1791,13 +1791,15 @@
 
 99
 100
-101</pre>
+101
+102</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_retryable?'>retryable?</span>
-  <span class='id identifier rubyid_write_retryable?'>write_retryable?</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#RETRY_MESSAGES-constant" title="Mongo::Error::OperationFailure::RETRY_MESSAGES (constant)">RETRY_MESSAGES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_write_retryable?'>write_retryable?</span> <span class='op'>||</span>
+  <span class='id identifier rubyid_code'>code</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='const'><span class='object_link'><a href="#RETRY_MESSAGES-constant" title="Mongo::Error::OperationFailure::RETRY_MESSAGES (constant)">RETRY_MESSAGES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2015,17 +2017,17 @@
       <pre class="lines">
 
 
-112
 113
 114
-115</pre>
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/operation_failure.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_retryable?'>write_retryable?</span>
-  <span class='const'><span class='object_link'><a href="#WRITE_RETRY_MESSAGES-constant" title="Mongo::Error::OperationFailure::WRITE_RETRY_MESSAGES (constant)">WRITE_RETRY_MESSAGES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='op'>||</span>
-  <span class='id identifier rubyid_write_retryable_code?'>write_retryable_code?</span>
+  <span class='id identifier rubyid_write_retryable_code?'>write_retryable_code?</span> <span class='op'>||</span>
+  <span class='id identifier rubyid_code'>code</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='const'><span class='object_link'><a href="#WRITE_RETRY_MESSAGES-constant" title="Mongo::Error::OperationFailure::WRITE_RETRY_MESSAGES (constant)">WRITE_RETRY_MESSAGES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2112,7 +2114,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:06 2020 by
+  Generated on Wed Oct  7 18:11:16 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

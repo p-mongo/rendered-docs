@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Srv::Resolver
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -178,6 +178,40 @@
   <p class="inherited"><span class='object_link'><a href="../Loggable.html#PREFIX-constant" title="Mongo::Loggable::PREFIX (constant)">Loggable::PREFIX</a></span></p>
 
 
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#options-instance_method" title="#options (instance method)">#<strong>options</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Resolver options.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
 
 
 
@@ -240,7 +274,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(options = nil)  &#x21d2; Resolver </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(**opts)  &#x21d2; Resolver </a>
     
 
     
@@ -259,6 +293,28 @@
     <span class="summary_desc"><div class='inline'>
 <p>Creates a new Resolver.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#timeout-instance_method" title="#timeout (instance method)">#<strong>timeout</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -283,7 +339,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(options = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Srv::Resolver (class)">Resolver</a></span></tt> 
+    #<strong>initialize</strong>(**opts)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Srv::Resolver (class)">Resolver</a></span></tt> 
   
 
   
@@ -307,18 +363,16 @@
   
     <li>
       
-        <span class='name'>options</span>
+        <span class='name'>opts</span>
       
       
         <span class='type'>(<tt>Hash</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
       
         &mdash;
         <div class='inline'>
-<p>The options for the resolver.</p>
+<p>a customizable set of options</p>
 </div>
       
     </li>
@@ -328,8 +382,21 @@
   
     
     
-    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <p class="tag_title">Options Hash (<tt>**opts</tt>):</p>
     <ul class="option">
+      
+        <li>
+          <span class="name">:timeout</span>
+          <span class="type">(<tt>Float</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The timeout, in seconds, to use for each DNS record resolution.</p>
+</div>
+          
+        </li>
       
         <li>
           <span class="name">:raise_on_invalid</span>
@@ -371,21 +438,15 @@
 39
 40
 41
-42
-43
-44
-45</pre>
+42</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 38</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span>
-    <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
-  <span class='kw'>else</span>
-    <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
   <span class='ivar'>@resolver</span> <span class='op'>=</span> <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:resolv_options</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@resolver</span><span class='period'>.</span><span class='id identifier rubyid_timeouts'>timeouts</span> <span class='op'>=</span> <span class='id identifier rubyid_timeout'>timeout</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -393,6 +454,76 @@
 </div>
   
 </div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="options-instance_method">
+  
+    #<strong>options</strong>  &#x21d2; <tt>Hash</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns Resolver options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Resolver options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='ivar'>@options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 
   <div id="instance_method_details" class="method_details_list">
@@ -501,10 +632,6 @@
       <pre class="lines">
 
 
-62
-63
-64
-65
 66
 67
 68
@@ -533,10 +660,14 @@
 91
 92
 93
-94</pre>
+94
+95
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_records'>get_records</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_name'>query_name</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#RECORD_PREFIX-constant" title="Mongo::Srv::Resolver::RECORD_PREFIX (constant)">RECORD_PREFIX</a></span></span> <span class='op'>+</span> <span class='id identifier rubyid_hostname'>hostname</span>
@@ -662,10 +793,6 @@
       <pre class="lines">
 
 
-104
-105
-106
-107
 108
 109
 110
@@ -675,10 +802,14 @@
 114
 115
 116
-117</pre>
+117
+118
+119
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_txt_options_string'>get_txt_options_string</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_records'>records</span> <span class='op'>=</span> <span class='ivar'>@resolver</span><span class='period'>.</span><span class='id identifier rubyid_getresources'>getresources</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='comma'>,</span> <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>TXT</span><span class='rparen'>)</span>
@@ -699,12 +830,55 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="timeout-instance_method">
+  
+    #<strong>timeout</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_timeout'>timeout</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:timeout</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Monitor.html" title="Mongo::Srv::Monitor (class)">Monitor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitor.html#DEFAULT_TIMEOUT-constant" title="Mongo::Srv::Monitor::DEFAULT_TIMEOUT (constant)">DEFAULT_TIMEOUT</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:00 2020 by
+  Generated on Wed Oct  7 18:11:10 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

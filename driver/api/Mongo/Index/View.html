@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Index::View
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -647,14 +647,14 @@
       <pre class="lines">
 
 
-268
-269
-270
 271
-272</pre>
+272
+273
+274
+275</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 268</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 271</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@collection</span> <span class='op'>=</span> <span class='id identifier rubyid_collection'>collection</span>
@@ -949,9 +949,6 @@
       <pre class="lines">
 
 
-170
-171
-172
 173
 174
 175
@@ -989,10 +986,13 @@
 207
 208
 209
-210</pre>
+210
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 173</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_many'>create_many</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_models'>models</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:with_session</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_session'>session</span><span class='op'>|</span>
@@ -1237,6 +1237,19 @@
         </li>
       
         <li>
+          <span class="name">:hidden</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>When :hidden is true, this index will exist on the collection but not be used by the query planner when executing operations.</p>
+</div>
+          
+        </li>
+      
+        <li>
           <span class="name">:commit_quorum</span>
           <span class="type">(<tt>String | Integer</tt>)</span>
           <span class="default">
@@ -1293,15 +1306,15 @@
       <pre class="lines">
 
 
-134
-135
-136
 137
 138
-139</pre>
+139
+140
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 137</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_one'>create_one</span><span class='lparen'>(</span><span class='id identifier rubyid_keys'>keys</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
@@ -1579,9 +1592,6 @@ end</code></pre>
       <pre class="lines">
 
 
-240
-241
-242
 243
 244
 245
@@ -1591,10 +1601,13 @@ end</code></pre>
 249
 250
 251
-252</pre>
+252
+253
+254
+255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 240</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 243</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:get_session</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span>
@@ -1713,14 +1726,14 @@ end</code></pre>
       <pre class="lines">
 
 
-226
-227
-228
 229
-230</pre>
+230
+231
+232
+233</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 226</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/index/view.rb', line 229</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_keys_or_name'>keys_or_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_index'>index</span><span class='op'>|</span>
@@ -1737,7 +1750,7 @@ end</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:40:59 2020 by
+  Generated on Wed Oct  7 18:11:09 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

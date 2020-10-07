@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Collection
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -505,7 +505,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Gets the number of matching documents in the collection.</p>
+<p>Gets the number of documents matching the query.</p>
 </div></span>
   
 </li>
@@ -649,7 +649,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Gets an estimate of the count of documents in a collection using collection metadata.</p>
+<p>Gets an estimate of the number of documents in the collection using the collection metadata.</p>
 </div></span>
   
 </li>
@@ -1012,6 +1012,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Get the server selector on this collection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#system_collection%3F-instance_method" title="#system_collection? (instance method)">#<strong>system_collection?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether the collection is a system collection.</p>
 </div></span>
   
 </li>
@@ -1972,12 +1996,12 @@
       <pre class="lines">
 
 
-359
-360
-361</pre>
+376
+377
+378</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 359</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 376</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_aggregate'>aggregate</span><span class='lparen'>(</span><span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Collection/View.html" title="Mongo::Collection::View (class)">View</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_aggregate'>aggregate</span><span class='lparen'>(</span><span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -2160,12 +2184,12 @@
       <pre class="lines">
 
 
-598
-599
-600</pre>
+622
+623
+624</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 598</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 622</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bulk_write'>bulk_write</span><span class='lparen'>(</span><span class='id identifier rubyid_requests'>requests</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="BulkWrite.html" title="Mongo::BulkWrite (class)">BulkWrite</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="BulkWrite.html#initialize-instance_method" title="Mongo::BulkWrite#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_requests'>requests</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'><span class='object_link'><a href="BulkWrite.html#execute-instance_method" title="Mongo::BulkWrite#execute (method)">execute</a></span></span>
@@ -2282,7 +2306,7 @@
 </code></pre>
 </div></div>
 
-<p>Gets the number of matching documents in the collection.</p>
+<p>Gets an estimated number of matching documents in the collection.</p>
 
 
   </div>
@@ -2484,12 +2508,12 @@
       <pre class="lines">
 
 
-428
-429
-430</pre>
+445
+446
+447</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 428</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 445</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_count'>count</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Collection/View.html" title="Mongo::Collection::View (class)">View</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -2511,25 +2535,15 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Gets the number of matching documents in the collection. Unlike the deprecated #count method, this will return the exact number of documents matching the filter rather than the estimate.</p>
+<p>Gets the number of documents matching the query. Unlike the deprecated #count method, this will return the exact number of documents matching the filter (or exact number of documents in the collection, if no filter is provided) rather than an estimate.</p>
+
+<p>Use #estimated_document_count to retrieve an estimate of the number of documents in the collection using the collection metadata.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-        <p class="example_title"><div class='inline'>
-<p>Get the number of documents in the collection.</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='id identifier rubyid_collection_view'>collection_view</span><span class='period'>.</span><span class='id identifier rubyid_count_documents'>count_documents</span></code></pre>
-    
-  </div>
-<p class="tag_title">Parameters:</p>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2633,12 +2647,12 @@
       <pre class="lines">
 
 
-453
-454
-455</pre>
+472
+473
+474</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 453</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 472</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_count_documents'>count_documents</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Collection/View.html" title="Mongo::Collection::View (class)">View</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_count_documents'>count_documents</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -2720,6 +2734,24 @@
   
     
     
+    <p class="tag_title">Options Hash (<tt>opts</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:write_concern</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The write concern options.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
 
 <p class="tag_title">Returns:</p>
 <ul class="return">
@@ -2762,7 +2794,6 @@
       <pre class="lines">
 
 
-230
 231
 232
 233
@@ -2786,10 +2817,16 @@
 251
 252
 253
-254</pre>
+254
+255
+256
+257
+258
+259
+260</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 230</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 231</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='comment'># Passing read options to create command causes it to break.
@@ -2803,6 +2840,11 @@
   <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:write</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:write_concern</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:with_session</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_session'>session</span><span class='op'>|</span>
+    <span class='id identifier rubyid_write_concern'>write_concern</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span>
+      <span class='const'><span class='object_link'><a href="WriteConcern.html" title="Mongo::WriteConcern (module)">WriteConcern</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="WriteConcern.html#get-instance_method" title="Mongo::WriteConcern#get (method)">get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_write_concern'>write_concern</span>
+    <span class='kw'>end</span>
     <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_next_primary'>next_primary</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:collation</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Operation.html#COLLATION-constant" title="Mongo::Operation::COLLATION (constant)">COLLATION</a></span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_collation_enabled?'>collation_enabled?</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/UnsupportedCollation.html" title="Mongo::Error::UnsupportedCollation (class)">UnsupportedCollation</a></span></span>
@@ -2983,12 +3025,12 @@
       <pre class="lines">
 
 
-638
-639
-640</pre>
+662
+663
+664</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 638</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 662</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_many'>delete_many</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete_many'>delete_many</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -3160,12 +3202,12 @@
       <pre class="lines">
 
 
-618
-619
-620</pre>
+642
+643
+644</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 618</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 642</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_one'>delete_one</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete_one'>delete_one</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -3368,12 +3410,12 @@
       <pre class="lines">
 
 
-492
-493
-494</pre>
+512
+513
+514</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 492</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 512</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_distinct'>distinct</span><span class='lparen'>(</span><span class='id identifier rubyid_field_name'>field_name</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Collection/View.html" title="Mongo::Collection::View (class)">View</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_distinct'>distinct</span><span class='lparen'>(</span><span class='id identifier rubyid_field_name'>field_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -3463,6 +3505,24 @@
   
     
     
+    <p class="tag_title">Options Hash (<tt>opts</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:write_concern</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The write concern options.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
 
 <p class="tag_title">Returns:</p>
 <ul class="return">
@@ -3505,25 +3565,41 @@
       <pre class="lines">
 
 
-271
-272
-273
-274
-275
-276
-277
 278
 279
 280
 281
 282
-283</pre>
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 271</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 278</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop'>drop</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:with_session</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_session'>session</span><span class='op'>|</span>
+    <span class='id identifier rubyid_temp_write_concern'>temp_write_concern</span> <span class='op'>=</span> <span class='id identifier rubyid_write_concern'>write_concern</span>
+    <span class='id identifier rubyid_write_concern'>write_concern</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span>
+      <span class='const'><span class='object_link'><a href="WriteConcern.html" title="Mongo::WriteConcern (module)">WriteConcern</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="WriteConcern.html#get-instance_method" title="Mongo::WriteConcern#get (method)">get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_temp_write_concern'>temp_write_concern</span>
+    <span class='kw'>end</span>
     <span class='const'><span class='object_link'><a href="Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Operation/Drop.html" title="Mongo::Operation::Drop (class)">Drop</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='lbrace'>{</span>
                           <span class='label'>selector:</span> <span class='lbrace'>{</span> <span class='symbol'>:drop</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span><span class='comma'>,</span>
                           <span class='label'>db_name:</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
@@ -3532,8 +3608,12 @@
                           <span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_next_primary'>next_primary</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Error/OperationFailure.html" title="Mongo::Error::OperationFailure (class)">OperationFailure</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ex'>ex</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_ex'>ex</span> <span class='kw'>unless</span> <span class='id identifier rubyid_ex'>ex</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>ns not found</span><span class='regexp_end'>/</span></span>
-  <span class='kw'>false</span>
+  <span class='comment'># NamespaceNotFound
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_ex'>ex</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='int'>26</span> <span class='op'>||</span> <span class='id identifier rubyid_ex'>ex</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ex'>ex</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>ns not found</span><span class='regexp_end'>/</span></span>
+    <span class='kw'>false</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3552,25 +3632,15 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Gets an estimate of the count of documents in a collection using collection metadata.</p>
+<p>Gets an estimate of the number of documents in the collection using the collection metadata.</p>
+
+<p>Use #count_documents to retrieve the exact number of documents in the collection, or to count documents matching a filter.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-        <p class="example_title"><div class='inline'>
-<p>Get the number of documents in the collection.</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='id identifier rubyid_collection_view'>collection_view</span><span class='period'>.</span><span class='id identifier rubyid_estimated_document_count'>estimated_document_count</span></code></pre>
-    
-  </div>
-<p class="tag_title">Parameters:</p>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3654,12 +3724,12 @@
       <pre class="lines">
 
 
-471
-472
-473</pre>
+491
+492
+493</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 471</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 491</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_estimated_document_count'>estimated_document_count</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Collection/View.html" title="Mongo::Collection::View (class)">View</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_estimated_document_count'>estimated_document_count</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -3994,12 +4064,12 @@
       <pre class="lines">
 
 
-327
-328
-329</pre>
+344
+345
+346</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 327</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 344</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Collection/View.html" title="Mongo::Collection::View (class)">View</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -4221,12 +4291,12 @@
       <pre class="lines">
 
 
-768
-769
-770</pre>
+792
+793
+794</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 768</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 792</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_one_and_delete'>find_one_and_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_find_one_and_delete'>find_one_and_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -4512,12 +4582,12 @@
       <pre class="lines">
 
 
-842
-843
-844</pre>
+866
+867
+868</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 842</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 866</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_one_and_replace'>find_one_and_replace</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_replacement'>replacement</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_find_one_and_update'>find_one_and_update</span><span class='lparen'>(</span><span class='id identifier rubyid_replacement'>replacement</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -4816,12 +4886,12 @@
       <pre class="lines">
 
 
-806
-807
-808</pre>
+830
+831
+832</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 806</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 830</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_one_and_update'>find_one_and_update</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_find_one_and_update'>find_one_and_update</span><span class='lparen'>(</span><span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -4947,12 +5017,12 @@
       <pre class="lines">
 
 
-509
-510
-511</pre>
+529
+530
+531</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 509</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 529</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_indexes'>indexes</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Index.html" title="Mongo::Index (module)">Index</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Index/View.html" title="Mongo::Index::View (class)">View</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Index/View.html#initialize-instance_method" title="Mongo::Index::View#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -5096,15 +5166,19 @@
       <pre class="lines">
 
 
-574
-575
-576
-577</pre>
+596
+597
+598
+599
+600
+601</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 574</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 596</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_insert_many'>insert_many</span><span class='lparen'>(</span><span class='id identifier rubyid_documents'>documents</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="QueryCache.html" title="Mongo::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clear_namespace'><span class='object_link'><a href="QueryCache.html#clear_namespace-class_method" title="Mongo::QueryCache.clear_namespace (method)">clear_namespace</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_namespace'>namespace</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_inserts'>inserts</span> <span class='op'>=</span> <span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>|</span> <span class='lbrace'>{</span> <span class='symbol'>:insert_one</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_doc'>doc</span> <span class='rbrace'>}</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_bulk_write'>bulk_write</span><span class='lparen'>(</span><span class='id identifier rubyid_inserts'>inserts</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -5247,33 +5321,37 @@
       <pre class="lines">
 
 
-538
-539
-540
-541
-542
-543
-544
-545
-546
-547
-548
-549
-550
-551
-552
-553
-554
-555
-556
-557
 558
-559</pre>
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 538</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 558</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_insert_one'>insert_one</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="QueryCache.html" title="Mongo::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clear_namespace'><span class='object_link'><a href="QueryCache.html#clear_namespace-class_method" title="Mongo::QueryCache.clear_namespace (method)">clear_namespace</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_namespace'>namespace</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:with_session</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_session'>session</span><span class='op'>|</span>
     <span class='id identifier rubyid_write_concern'>write_concern</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span>
       <span class='const'><span class='object_link'><a href="WriteConcern.html" title="Mongo::WriteConcern (module)">WriteConcern</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="WriteConcern.html#get-instance_method" title="Mongo::WriteConcern#get (method)">get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -5372,12 +5450,12 @@
       <pre class="lines">
 
 
-521
-522
-523</pre>
+541
+542
+543</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 521</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 541</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Mongo::Collection:0x</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> namespace=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_namespace'>namespace</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -5459,12 +5537,12 @@
       <pre class="lines">
 
 
-854
-855
-856</pre>
+878
+879
+880</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 854</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 878</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_namespace'>namespace</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -5623,12 +5701,12 @@
       <pre class="lines">
 
 
-661
-662
-663</pre>
+685
+686
+687</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 661</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 685</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parallel_scan'>parallel_scan</span><span class='lparen'>(</span><span class='id identifier rubyid_cursor_count'>cursor_count</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:parallel_scan</span><span class='comma'>,</span> <span class='id identifier rubyid_cursor_count'>cursor_count</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -6016,12 +6094,12 @@
       <pre class="lines">
 
 
-686
-687
-688</pre>
+710
+711
+712</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 686</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 710</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_replace_one'>replace_one</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_replacement'>replacement</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_replace_one'>replace_one</span><span class='lparen'>(</span><span class='id identifier rubyid_replacement'>replacement</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -6112,6 +6190,85 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_selector'>server_selector</span>
   <span class='ivar'>@server_selector</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="ServerSelector.html#get-instance_method" title="Mongo::ServerSelector#get (method)">get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_read_preference'>read_preference</span> <span class='op'>||</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_server_selector'>server_selector</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="system_collection?-instance_method">
+  
+    #<strong>system_collection?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Whether the collection is a system collection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the system is a system collection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+887
+888
+889</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 887</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_system_collection?'>system_collection?</span>
+  <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>system.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -6335,12 +6492,12 @@
       <pre class="lines">
 
 
-713
-714
-715</pre>
+737
+738
+739</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 713</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 737</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_many'>update_many</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update_many'>update_many</span><span class='lparen'>(</span><span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -6567,12 +6724,12 @@
       <pre class="lines">
 
 
-740
-741
-742</pre>
+764
+765
+766</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 740</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 764</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_one'>update_one</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update_one'>update_one</span><span class='lparen'>(</span><span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -6811,12 +6968,12 @@
       <pre class="lines">
 
 
-399
-400
-401</pre>
+416
+417
+418</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 399</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection.rb', line 416</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_watch'>watch</span><span class='lparen'>(</span><span class='id identifier rubyid_pipeline'>pipeline</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Collection/View.html" title="Mongo::Collection::View (class)">View</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Collection/View/ChangeStream.html" title="Mongo::Collection::View::ChangeStream (class)">ChangeStream</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Collection/View.html" title="Mongo::Collection::View (class)">View</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -7132,7 +7289,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:40:59 2020 by
+  Generated on Wed Oct  7 18:11:09 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

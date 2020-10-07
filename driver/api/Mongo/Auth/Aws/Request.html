@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Auth::Aws::Request
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -881,7 +881,11 @@
 64
 65
 66
-67</pre>
+67
+68
+69
+70
+71</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 51</span>
@@ -899,8 +903,12 @@
   <span class='qsymbols_beg'>%i(</span><span class='tstring_content'>access_key_id</span><span class='words_sep'> </span><span class='tstring_content'>secret_access_key</span><span class='words_sep'> </span><span class='tstring_content'>host</span><span class='words_sep'> </span><span class='tstring_content'>server_nonce</span><span class='tstring_end'>)</span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
     <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arg'>arg</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Value for </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arg'>arg</span><span class='embexpr_end'>}</span><span class='tstring_content'> is required</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Error/InvalidServerAuthResponse.html" title="Mongo::Error::InvalidServerAuthResponse (class)">InvalidServerAuthResponse</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Value for &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arg'>arg</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39; is required</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>255</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Error/InvalidServerAuthHost.html" title="Mongo::Error::InvalidServerAuthHost (class)">InvalidServerAuthHost</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Value for &#39;host&#39; is too long: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -979,12 +987,12 @@
       <pre class="lines">
 
 
-70
-71
-72</pre>
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_access_key_id'>access_key_id</span>
   <span class='ivar'>@access_key_id</span>
@@ -1060,12 +1068,12 @@
       <pre class="lines">
 
 
-80
-81
-82</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_host'>host</span>
   <span class='ivar'>@host</span>
@@ -1141,12 +1149,12 @@
       <pre class="lines">
 
 
-73
-74
-75</pre>
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_secret_access_key'>secret_access_key</span>
   <span class='ivar'>@secret_access_key</span>
@@ -1222,12 +1230,12 @@
       <pre class="lines">
 
 
-83
-84
-85</pre>
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_nonce'>server_nonce</span>
   <span class='ivar'>@server_nonce</span>
@@ -1303,12 +1311,12 @@
       <pre class="lines">
 
 
-77
-78
-79</pre>
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_session_token'>session_token</span>
   <span class='ivar'>@session_token</span>
@@ -1384,12 +1392,12 @@
       <pre class="lines">
 
 
-86
-87
-88</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_time'>time</span>
   <span class='ivar'>@time</span>
@@ -1470,12 +1478,12 @@
       <pre class="lines">
 
 
-210
-211
-212</pre>
+234
+235
+236</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 210</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 234</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authorization'>authorization</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AWS4-HMAC-SHA256 Credential=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_access_key_id'>access_key_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='embexpr_end'>}</span><span class='tstring_content'>, SignedHeaders=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_signed_headers_string'>signed_headers_string</span><span class='embexpr_end'>}</span><span class='tstring_content'>, Signature=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_signature'>signature</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -1549,24 +1557,24 @@
       <pre class="lines">
 
 
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184</pre>
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 194</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_canonical_request'>canonical_request</span>
   <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='id identifier rubyid_headers_to_sign'>headers_to_sign</span>
@@ -1652,12 +1660,12 @@
       <pre class="lines">
 
 
-95
-96
-97</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_formatted_date'>formatted_date</span>
   <span class='id identifier rubyid_formatted_time'>formatted_time</span><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>8</span><span class='rbracket'>]</span>
@@ -1731,12 +1739,12 @@
       <pre class="lines">
 
 
-90
-91
-92</pre>
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_formatted_time'>formatted_time</span>
   <span class='ivar'>@formatted_time</span> <span class='op'>||=</span> <span class='ivar'>@time</span><span class='period'>.</span><span class='id identifier rubyid_getutc'>getutc</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y%m%dT%H%M%SZ</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -1818,24 +1826,24 @@
       <pre class="lines">
 
 
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134</pre>
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_headers'>headers</span>
   <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span>
@@ -1930,17 +1938,17 @@
       <pre class="lines">
 
 
-149
-150
-151
-152
-153
-154
-155
-156</pre>
+173
+174
+175
+176
+177
+178
+179
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 173</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_headers_to_sign'>headers_to_sign</span>
   <span class='id identifier rubyid_headers_to_sign'>headers_to_sign</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -2019,17 +2027,57 @@
       <pre class="lines">
 
 
-100
-101
-102
-103</pre>
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_region'>region</span>
-  <span class='comment'># TODO implement region derivation when SPEC-1646 is done.
-</span>  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>us-east-1</span><span class='tstring_end'>&#39;</span></span>
+  <span class='comment'># Common case
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sts.amazonaws.com</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>us-east-1</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Error/InvalidServerAuthHost.html" title="Mongo::Error::InvalidServerAuthHost (class)">InvalidServerAuthHost</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Host begins with a period: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_end_with?'>end_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Error/InvalidServerAuthHost.html" title="Mongo::Error::InvalidServerAuthHost (class)">InvalidServerAuthHost</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Host ends with a period: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_parts'>parts</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_parts'>parts</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_part'>part</span><span class='op'>|</span> <span class='id identifier rubyid_part'>part</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Error/InvalidServerAuthHost.html" title="Mongo::Error::InvalidServerAuthHost (class)">InvalidServerAuthHost</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Host has an empty component: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_parts'>parts</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>us-east-1</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_parts'>parts</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2100,12 +2148,12 @@
       <pre class="lines">
 
 
-108
-109
-110</pre>
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_scope'>scope</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_formatted_date'>formatted_date</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_region'>region</span><span class='embexpr_end'>}</span><span class='tstring_content'>/sts/aws4_request</span><span class='tstring_end'>&quot;</span></span>
@@ -2179,24 +2227,24 @@
       <pre class="lines">
 
 
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204</pre>
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 190</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 214</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_signature'>signature</span>
   <span class='id identifier rubyid_hashed_canonical_request'>hashed_canonical_request</span> <span class='op'>=</span> <span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA256</span><span class='period'>.</span><span class='id identifier rubyid_hexdigest'>hexdigest</span><span class='lparen'>(</span><span class='id identifier rubyid_canonical_request'>canonical_request</span><span class='rparen'>)</span>
@@ -2282,12 +2330,12 @@
       <pre class="lines">
 
 
-162
-163
-164</pre>
+186
+187
+188</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 162</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 186</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_signed_headers_string'>signed_headers_string</span>
   <span class='id identifier rubyid_headers_to_sign'>headers_to_sign</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -2361,36 +2409,36 @@
       <pre class="lines">
 
 
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241
 242
 243
-244</pre>
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 218</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/request.rb', line 242</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate!'>validate!</span>
   <span class='id identifier rubyid_sts_request'>sts_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Net.html" title="Net (module)">Net</a></span></span><span class='op'>::</span><span class='const'>HTTP</span><span class='op'>::</span><span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https://</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_req'>req</span><span class='op'>|</span>
@@ -2429,7 +2477,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:02 2020 by
+  Generated on Wed Oct  7 18:11:12 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Operation::MapReduce::Result
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Operation::MapReduce::Result
   
   
-  <span class="private note title">Private</span>
+  
 </h1>
 <div class="box_info">
   
@@ -103,11 +103,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This class is part of a private API.</strong>
-  You should avoid using this class if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Defines custom behavior of results for a map reduce operation.</p>
 
 
@@ -291,7 +287,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -339,7 +335,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -363,7 +359,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -387,7 +383,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -460,11 +456,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Gets the map/reduce counts from the reply.</p>
 
 
@@ -525,12 +517,12 @@
       <pre class="lines">
 
 
-47
-48
-49</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_counts'>counts</span>
   <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#COUNTS-constant" title="Mongo::Operation::MapReduce::Result::COUNTS (constant)">COUNTS</a></span></span><span class='rbracket'>]</span>
@@ -616,12 +608,12 @@
       <pre class="lines">
 
 
-117
-118
-119</pre>
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 117</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cursor_id'>cursor_id</span>
   <span class='int'>0</span>
@@ -642,11 +634,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Get the documents from the map/reduce.</p>
 
 
@@ -707,12 +695,12 @@
       <pre class="lines">
 
 
-59
-60
-61</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_documents'>documents</span>
   <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#RESULTS-constant" title="Mongo::Operation::MapReduce::Result::RESULTS (constant)">RESULTS</a></span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Result.html#RESULT-constant" title="Mongo::Operation::Result::RESULT (constant)">RESULT</a></span></span><span class='rbracket'>]</span>
@@ -733,11 +721,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
@@ -806,12 +790,12 @@
       <pre class="lines">
 
 
-75
-76
-77</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_successful?'>successful?</span>
   <span class='op'>!</span><span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -832,11 +816,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Get the execution time of the map/reduce.</p>
 
 
@@ -897,12 +877,12 @@
       <pre class="lines">
 
 
-87
-88
-89</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_time'>time</span>
   <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#TIME-constant" title="Mongo::Operation::MapReduce::Result::TIME (constant)">TIME</a></span></span><span class='rbracket'>]</span>
@@ -1014,12 +994,12 @@
       <pre class="lines">
 
 
-105
-106
-107</pre>
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate!'>validate!</span>
   <span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='id identifier rubyid_raise_operation_failure'>raise_operation_failure</span> <span class='op'>:</span> <span class='kw'>self</span>
@@ -1034,7 +1014,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:08 2020 by
+  Generated on Wed Oct  7 18:11:18 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

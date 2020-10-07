@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Operation::Insert::Result
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Operation::Insert::Result
   
   
-  <span class="private note title">Private</span>
+  
 </h1>
 <div class="box_info">
   
@@ -103,11 +103,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This class is part of a private API.</strong>
-  You should avoid using this class if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Defines custom behavior of results for an insert.</p>
 
 <p>According to the CRUD spec, reporting the inserted ids is optional. It can be added to this class later, if needed.</p>
@@ -166,7 +162,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -208,7 +204,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'></div></span>
@@ -256,7 +252,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -395,13 +391,13 @@
       <pre class="lines">
 
 
-44
-45
-46
-47</pre>
+47
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_replies'>replies</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_description'>connection_description</span><span class='comma'>,</span> <span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_replies'>replies</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_description'>connection_description</span><span class='rparen'>)</span>
@@ -430,11 +426,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Get the ids of the inserted documents.</p>
 
 
@@ -465,12 +457,12 @@
       <pre class="lines">
 
 
-30
-31
-32</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inserted_ids'>inserted_ids</span>
   <span class='ivar'>@inserted_ids</span>
@@ -498,11 +490,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 
   </div>
 </div>
@@ -531,12 +519,12 @@
       <pre class="lines">
 
 
-61
-62
-63</pre>
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bulk_result'>bulk_result</span>
   <span class='const'><span class='object_link'><a href="BulkResult.html" title="Mongo::Operation::Insert::BulkResult (class)">BulkResult</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="BulkResult.html#initialize-instance_method" title="Mongo::Operation::Insert::BulkResult#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@replies</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_description'>connection_description</span><span class='comma'>,</span> <span class='ivar'>@inserted_ids</span><span class='rparen'>)</span>
@@ -557,11 +545,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Gets the id of the document inserted.</p>
 
 
@@ -622,12 +606,12 @@
       <pre class="lines">
 
 
-57
-58
-59</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inserted_id'>inserted_id</span>
   <span class='id identifier rubyid_inserted_ids'>inserted_ids</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -642,7 +626,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:06 2020 by
+  Generated on Wed Oct  7 18:11:16 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

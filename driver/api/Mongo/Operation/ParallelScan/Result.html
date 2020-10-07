@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Operation::ParallelScan::Result
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Operation::ParallelScan::Result
   
   
-  <span class="private note title">Private</span>
+  
 </h1>
 <div class="box_info">
   
@@ -103,11 +103,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This class is part of a private API.</strong>
-  You should avoid using this class if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Defines custom behavior of results in a parallel scan.</p>
 
 
@@ -243,7 +239,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -357,12 +353,12 @@
       <pre class="lines">
 
 
-37
-38
-39</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/parallel_scan/result.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/parallel_scan/result.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cursor_ids'>cursor_ids</span>
   <span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>|</span> <span class='id identifier rubyid_doc'>doc</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Result.html#CURSOR-constant" title="Mongo::Operation::Result::CURSOR (constant)">CURSOR</a></span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Result.html#CURSOR_ID-constant" title="Mongo::Operation::Result::CURSOR_ID (constant)">CURSOR_ID</a></span></span><span class='rbracket'>]</span><span class='rbrace'>}</span>
@@ -383,11 +379,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Get the documents from parallel scan.</p>
 
 
@@ -448,12 +440,12 @@
       <pre class="lines">
 
 
-49
-50
-51</pre>
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/parallel_scan/result.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/parallel_scan/result.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_documents'>documents</span>
   <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#CURSORS-constant" title="Mongo::Operation::ParallelScan::Result::CURSORS (constant)">CURSORS</a></span></span><span class='rbracket'>]</span>
@@ -468,7 +460,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:09 2020 by
+  Generated on Wed Oct  7 18:11:19 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

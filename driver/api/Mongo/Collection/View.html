@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Collection::View
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -574,6 +574,32 @@
         </li>
       
         <li>
+          <span class="name">:batch_size</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The number of documents to return in each response from MongoDB.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:collation</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The collation to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
           <span class="name">:comment</span>
           <span class="type">(<tt>String</tt>)</span>
           <span class="default">
@@ -587,27 +613,14 @@
         </li>
       
         <li>
-          <span class="name">:batch_size</span>
-          <span class="type">(<tt>Integer</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'>
-<p>The number of docs to return in each response from MongoDB.</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:projection</span>
+          <span class="name">:explain</span>
           <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
             
           </span>
           
             &mdash; <div class='inline'>
-<p>The fields to include or exclude in returned docs.</p>
+<p>Execute an explain with the provided explain options (known options are :verbose and :verbosity) rather than a find.</p>
 </div>
           
         </li>
@@ -620,7 +633,7 @@
           </span>
           
             &mdash; <div class='inline'>
-<p>Override default index selection and force MongoDB to use a specific index for the query.</p>
+<p>Override the default index selection and force MongoDB to use a specific index for the query.</p>
 </div>
           
         </li>
@@ -633,7 +646,7 @@
           </span>
           
             &mdash; <div class='inline'>
-<p>Max number of docs to return.</p>
+<p>Max number of documents to return.</p>
 </div>
           
         </li>
@@ -646,14 +659,27 @@
           </span>
           
             &mdash; <div class='inline'>
-<p>Constrain the query to only scan the specified number of docs. Use to prevent queries from running too long. Deprecated as of MongoDB server version 4.0.</p>
+<p>Constrain the query to only scan the specified number of documents. Use to prevent queries from running for too long. Deprecated as of MongoDB server version 4.0.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:projection</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The fields to include or exclude in the returned documents.</p>
 </div>
           
         </li>
       
         <li>
           <span class="name">:read</span>
-          <span class="type">(<tt><span class='object_link'><a href="../../Symbol.html" title="Symbol (class)">Symbol</a></span></tt>)</span>
+          <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
             
           </span>
@@ -666,7 +692,7 @@
       
         <li>
           <span class="name">:show_disk_loc</span>
-          <span class="type">(<tt>true</tt>, <tt>false</tt>)</span>
+          <span class="type">(<tt>true | false</tt>)</span>
           <span class="default">
             
           </span>
@@ -692,13 +718,13 @@
       
         <li>
           <span class="name">:snapshot</span>
-          <span class="type">(<tt>true</tt>, <tt>false</tt>)</span>
+          <span class="type">(<tt>true | false</tt>)</span>
           <span class="default">
             
           </span>
           
             &mdash; <div class='inline'>
-<p>Prevents returning a doc more than once. Deprecated as of MongoDB server version 4.0.</p>
+<p>Prevents returning a document more than once. Deprecated as of MongoDB server version 4.0.</p>
 </div>
           
         </li>
@@ -712,19 +738,6 @@
           
             &mdash; <div class='inline'>
 <p>The key and direction pairs used to sort the results.</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:collation</span>
-          <span class="type">(<tt>Hash</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'>
-<p>The collation to use.</p>
 </div>
           
         </li>
@@ -755,14 +768,14 @@
       <pre class="lines">
 
 
-146
-147
-148
-149
-150</pre>
+150
+151
+152
+153
+154</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view.rb', line 150</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_doc!'>validate_doc!</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='rparen'>)</span>
@@ -1200,13 +1213,13 @@
       <pre class="lines">
 
 
-160
-161
-162
-163</pre>
+164
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Mongo::Collection::View:0x</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> namespace=&#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_namespace'>namespace</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
@@ -1289,12 +1302,12 @@
       <pre class="lines">
 
 
-173
-174
-175</pre>
+177
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view.rb', line 177</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern'>write_concern</span>
   <span class='const'><span class='object_link'><a href="../WriteConcern.html" title="Mongo::WriteConcern (module)">WriteConcern</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="../WriteConcern.html#get-instance_method" title="Mongo::WriteConcern#get (method)">get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_write_concern'>write_concern</span><span class='rparen'>)</span>
@@ -1309,7 +1322,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:01 2020 by
+  Generated on Wed Oct  7 18:11:11 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

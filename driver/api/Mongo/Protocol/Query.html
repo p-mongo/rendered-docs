@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Protocol::Query
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -263,6 +263,30 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#serialize-instance_method" title="#serialize (instance method)">#<strong>serialize</strong>(buffer = BSON::ByteBuffer.new, max_bson_size = nil, bson_overhead = nil)  &#x21d2; BSON::ByteBuffer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Serializes message into bytes that can be sent on the wire.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -287,7 +311,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Message.html" title="Mongo::Protocol::Message (class)">Message</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Message.html#==-instance_method" title="Mongo::Protocol::Message#== (method)">#==</a></span>, <span class='object_link'><a href="Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span>, <span class='object_link'><a href="Message.html#hash-instance_method" title="Mongo::Protocol::Message#hash (method)">#hash</a></span>, <span class='object_link'><a href="Message.html#maybe_decrypt-instance_method" title="Mongo::Protocol::Message#maybe_decrypt (method)">#maybe_decrypt</a></span>, <span class='object_link'><a href="Message.html#maybe_encrypt-instance_method" title="Mongo::Protocol::Message#maybe_encrypt (method)">#maybe_encrypt</a></span>, <span class='object_link'><a href="Message.html#maybe_inflate-instance_method" title="Mongo::Protocol::Message#maybe_inflate (method)">#maybe_inflate</a></span>, <span class='object_link'><a href="Message.html#number_returned-instance_method" title="Mongo::Protocol::Message#number_returned (method)">#number_returned</a></span>, <span class='object_link'><a href="Message.html#serialize-instance_method" title="Mongo::Protocol::Message#serialize (method)">#serialize</a></span>, <span class='object_link'><a href="Message.html#set_request_id-instance_method" title="Mongo::Protocol::Message#set_request_id (method)">#set_request_id</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Message.html#==-instance_method" title="Mongo::Protocol::Message#== (method)">#==</a></span>, <span class='object_link'><a href="Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span>, <span class='object_link'><a href="Message.html#hash-instance_method" title="Mongo::Protocol::Message#hash (method)">#hash</a></span>, <span class='object_link'><a href="Message.html#maybe_decrypt-instance_method" title="Mongo::Protocol::Message#maybe_decrypt (method)">#maybe_decrypt</a></span>, <span class='object_link'><a href="Message.html#maybe_encrypt-instance_method" title="Mongo::Protocol::Message#maybe_encrypt (method)">#maybe_encrypt</a></span>, <span class='object_link'><a href="Message.html#maybe_inflate-instance_method" title="Mongo::Protocol::Message#maybe_inflate (method)">#maybe_inflate</a></span>, <span class='object_link'><a href="Message.html#number_returned-instance_method" title="Mongo::Protocol::Message#number_returned (method)">#number_returned</a></span>, <span class='object_link'><a href="Message.html#set_request_id-instance_method" title="Mongo::Protocol::Message#set_request_id (method)">#set_request_id</a></span></p>
 
   
   
@@ -848,12 +872,115 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="serialize-instance_method">
+  
+    #<strong>serialize</strong>(buffer = BSON::ByteBuffer.new, max_bson_size = nil, bson_overhead = nil)  &#x21d2; <tt>BSON::ByteBuffer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Serializes message into bytes that can be sent on the wire.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>buffer</span>
+      
+      
+        <span class='type'>(<tt>BSON::ByteBuffer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>BSON::ByteBuffer.new</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>where the message should be inserted.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_bson_size</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The maximum bson object size.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>BSON::ByteBuffer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>buffer containing the serialized message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126
+127
+128</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 124</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>ByteBuffer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='comma'>,</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_bson_overhead'>bson_overhead</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_validate_document_size!'>validate_document_size!</span><span class='lparen'>(</span><span class='id identifier rubyid_max_bson_size'>max_bson_size</span><span class='rparen'>)</span>
+
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:01 2020 by
+  Generated on Wed Oct  7 18:11:11 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

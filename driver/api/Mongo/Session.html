@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Session
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -2203,7 +2203,6 @@
       <pre class="lines">
 
 
-604
 605
 606
 607
@@ -2246,12 +2245,17 @@
 644
 645
 646
-647</pre>
+647
+648
+649
+650</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 604</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 605</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_abort_transaction'>abort_transaction</span>
+  <span class='const'><span class='object_link'><a href="QueryCache.html" title="Mongo::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clear'><span class='object_link'><a href="QueryCache.html#clear-class_method" title="Mongo::QueryCache.clear (method)">clear</a></span></span>
+
   <span class='id identifier rubyid_check_if_ended!'>check_if_ended!</span>
   <span class='id identifier rubyid_check_if_no_transaction!'>check_if_no_transaction!</span>
 
@@ -2364,12 +2368,12 @@
       <pre class="lines">
 
 
-678
-679
-680</pre>
+681
+682
+683</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 678</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 681</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_aborting_transaction?'>aborting_transaction?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@aborting_transaction</span>
@@ -2451,14 +2455,14 @@
       <pre class="lines">
 
 
-739
-740
-741
 742
-743</pre>
+743
+744
+745
+746</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 739</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 742</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_autocommit!'>add_autocommit!</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
@@ -2542,16 +2546,16 @@
       <pre class="lines">
 
 
-754
-755
-756
 757
 758
 759
-760</pre>
+760
+761
+762
+763</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 754</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 757</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_start_transaction!'>add_start_transaction!</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
@@ -2637,14 +2641,14 @@
       <pre class="lines">
 
 
-771
-772
-773
 774
-775</pre>
+775
+776
+777
+778</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 771</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 774</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_txn_num!'>add_txn_num!</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
@@ -2728,9 +2732,6 @@
       <pre class="lines">
 
 
-786
-787
-788
 789
 790
 791
@@ -2783,10 +2784,13 @@
 838
 839
 840
-841</pre>
+841
+842
+843
+844</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 786</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 789</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_txn_opts!'>add_txn_opts!</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='comma'>,</span> <span class='id identifier rubyid_read'>read</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
@@ -2941,16 +2945,16 @@
       <pre class="lines">
 
 
-955
-956
-957
 958
 959
 960
-961</pre>
+961
+962
+963
+964</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 955</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 958</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_advance_operation_time'>advance_operation_time</span><span class='lparen'>(</span><span class='id identifier rubyid_new_operation_time'>new_operation_time</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@operation_time</span>
@@ -3193,12 +3197,14 @@
 591
 592
 593
-594</pre>
+594
+595</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 536</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_commit_transaction'>commit_transaction</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="QueryCache.html" title="Mongo::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clear'><span class='object_link'><a href="QueryCache.html#clear-class_method" title="Mongo::QueryCache.clear (method)">clear</a></span></span>
   <span class='id identifier rubyid_check_if_ended!'>check_if_ended!</span>
   <span class='id identifier rubyid_check_if_no_transaction!'>check_if_no_transaction!</span>
 
@@ -3326,12 +3332,12 @@
       <pre class="lines">
 
 
-670
-671
-672</pre>
+673
+674
+675</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 670</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 673</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_committing_transaction?'>committing_transaction?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@committing_transaction</span>
@@ -3779,12 +3785,12 @@
       <pre class="lines">
 
 
-662
-663
-664</pre>
+665
+666
+667</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 662</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 665</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_in_transaction?'>in_transaction?</span>
   <span class='id identifier rubyid_within_states?'>within_states?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#STARTING_TRANSACTION_STATE-constant" title="Mongo::Session::STARTING_TRANSACTION_STATE (constant)">STARTING_TRANSACTION_STATE</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#TRANSACTION_IN_PROGRESS_STATE-constant" title="Mongo::Session::TRANSACTION_IN_PROGRESS_STATE (constant)">TRANSACTION_IN_PROGRESS_STATE</a></span></span><span class='rparen'>)</span>
@@ -3957,16 +3963,16 @@
       <pre class="lines">
 
 
-972
-973
-974
 975
 976
 977
-978</pre>
+978
+979
+980
+981</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 972</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 975</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_next_txn_num'>next_txn_num</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_ended?'>ended?</span>
@@ -4046,9 +4052,6 @@
       <pre class="lines">
 
 
-687
-688
-689
 690
 691
 692
@@ -4056,10 +4059,13 @@
 694
 695
 696
-697</pre>
+697
+698
+699
+700</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 687</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 690</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pin'>pin</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -4173,9 +4179,6 @@
       <pre class="lines">
 
 
-927
-928
-929
 930
 931
 932
@@ -4189,10 +4192,13 @@
 940
 941
 942
-943</pre>
+943
+944
+945
+946</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 927</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 930</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_implicit?'>implicit?</span>
@@ -4802,12 +4808,12 @@
       <pre class="lines">
 
 
-650
-651
-652</pre>
+653
+654
+655</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 650</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 653</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_starting_transaction?'>starting_transaction?</span>
   <span class='id identifier rubyid_within_states?'>within_states?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#STARTING_TRANSACTION_STATE-constant" title="Mongo::Session::STARTING_TRANSACTION_STATE (constant)">STARTING_TRANSACTION_STATE</a></span></span><span class='rparen'>)</span>
@@ -4889,17 +4895,17 @@
       <pre class="lines">
 
 
-852
-853
-854
 855
 856
 857
 858
-859</pre>
+859
+860
+861
+862</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 852</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 855</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_suppress_read_write_concern!'>suppress_read_write_concern!</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
@@ -4986,16 +4992,16 @@
       <pre class="lines">
 
 
-988
-989
-990
 991
 992
 993
-994</pre>
+994
+995
+996
+997</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 988</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 991</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_txn_num'>txn_num</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_ended?'>ended?</span>
@@ -5225,12 +5231,12 @@
       <pre class="lines">
 
 
-702
-703
-704</pre>
+705
+706
+707</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 702</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 705</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unpin'>unpin</span>
   <span class='ivar'>@pinned_server</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -5308,9 +5314,6 @@
       <pre class="lines">
 
 
-716
-717
-718
 719
 720
 721
@@ -5320,10 +5323,13 @@
 725
 726
 727
-728</pre>
+728
+729
+730
+731</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 716</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 719</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unpin_maybe'>unpin_maybe</span><span class='lparen'>(</span><span class='id identifier rubyid_error'>error</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_within_states?'>within_states?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Mongo::Session (class)">Session</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="#NO_TRANSACTION_STATE-constant" title="Mongo::Session::NO_TRANSACTION_STATE (constant)">NO_TRANSACTION_STATE</a></span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
@@ -5389,17 +5395,17 @@
       <pre class="lines">
 
 
-888
-889
-890
 891
 892
 893
 894
-895</pre>
+895
+896
+897
+898</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 888</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 891</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_state!'>update_state!</span>
   <span class='kw'>case</span> <span class='ivar'>@state</span>
@@ -5518,14 +5524,14 @@
       <pre class="lines">
 
 
-910
-911
-912
 913
-914</pre>
+914
+915
+916
+917</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 910</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 913</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate!'>validate!</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_check_matching_cluster!'>check_matching_cluster!</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
@@ -5609,9 +5615,6 @@
       <pre class="lines">
 
 
-871
-872
-873
 874
 875
 876
@@ -5620,10 +5623,13 @@
 879
 880
 881
-882</pre>
+882
+883
+884
+885</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 871</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/session.rb', line 874</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate_read_preference!'>validate_read_preference!</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_in_transaction?'>in_transaction?</span>
@@ -5957,7 +5963,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:40:58 2020 by
+  Generated on Wed Oct  7 18:11:08 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Collection::View::Builder::FindCommand
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -384,13 +384,13 @@
       <pre class="lines">
 
 
-79
-80
-81
-82</pre>
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/builder/find_command.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/builder/find_command.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
   <span class='ivar'>@view</span> <span class='op'>=</span> <span class='id identifier rubyid_view'>view</span>
@@ -480,15 +480,37 @@
       <pre class="lines">
 
 
-66
-67
-68</pre>
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/builder/find_command.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/builder/find_command.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_explain_specification'>explain_specification</span>
-  <span class='lbrace'>{</span> <span class='label'>selector:</span> <span class='lbrace'>{</span> <span class='label'>explain:</span> <span class='id identifier rubyid_find_command'>find_command</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>db_name:</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>read:</span> <span class='id identifier rubyid_read'>read</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='ivar'>@session</span> <span class='rbrace'>}</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>selector:</span> <span class='lbrace'>{</span>
+      <span class='label'>explain:</span> <span class='id identifier rubyid_find_command'>find_command</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>db_name:</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='label'>read:</span> <span class='id identifier rubyid_read'>read</span><span class='comma'>,</span>
+    <span class='label'>session:</span> <span class='ivar'>@session</span><span class='comma'>,</span>
+    <span class='comment'># We should always have options{:explain] set if we are explaining.
+</span>    <span class='comment'># The explain field is not sent to the server, it will be
+</span>    <span class='comment'># processed in the operation layer.
+</span>    <span class='label'>explain:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:explain</span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -567,15 +589,25 @@
       <pre class="lines">
 
 
-92
-93
-94</pre>
+79
+80
+81
+82
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/builder/find_command.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/builder/find_command.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_specification'>specification</span>
-  <span class='lbrace'>{</span> <span class='label'>selector:</span> <span class='id identifier rubyid_find_command'>find_command</span><span class='comma'>,</span> <span class='label'>db_name:</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>read:</span> <span class='id identifier rubyid_read'>read</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='ivar'>@session</span> <span class='rbrace'>}</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>selector:</span> <span class='id identifier rubyid_find_command'>find_command</span><span class='comma'>,</span>
+    <span class='label'>db_name:</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='label'>read:</span> <span class='id identifier rubyid_read'>read</span><span class='comma'>,</span>
+    <span class='label'>session:</span> <span class='ivar'>@session</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -587,7 +619,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:11 2020 by
+  Generated on Wed Oct  7 18:11:20 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Socket::SSL
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -113,7 +113,7 @@
   You should avoid using this class if possible, as it may be removed or be changed in the future.
 </p>
 
-<p>Wrapper for SSL sockets.</p>
+<p>Wrapper for TLS sockets.</p>
 
 
   </div>
@@ -173,7 +173,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Context The ssl context.</p>
+<p>Context The TLS context.</p>
 </div></span>
   
 </li>
@@ -304,7 +304,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Initializes a new SSL socket.</p>
+<p>Initializes a new TLS socket.</p>
 </div></span>
   
 </li>
@@ -369,7 +369,7 @@
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 
-<p>Initializes a new SSL socket.</p>
+<p>Initializes a new TLS socket.</p>
 
 
   </div>
@@ -381,7 +381,7 @@
     
       
         <p class="example_title"><div class='inline'>
-<p>Create the SSL socket.</p>
+<p>Create the TLS socket.</p>
 </div></p>
       
       <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Mongo::Socket::SSL (class)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>::1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>27017</span><span class='comma'>,</span> <span class='int'>30</span><span class='rparen'>)</span></code></pre>
@@ -799,7 +799,7 @@
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 
-<p>Returns context The ssl context.</p>
+<p>Returns context The TLS context.</p>
 
 
   </div>
@@ -818,7 +818,7 @@
       
         &mdash;
         <div class='inline'>
-<p>context The ssl context.</p>
+<p>context The TLS context.</p>
 </div>
       
     </li>
@@ -1188,15 +1188,15 @@
       <pre class="lines">
 
 
-170
 171
 172
 173
 174
-175</pre>
+175
+176</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ssl.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ssl.rb', line 171</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_readbyte'>readbyte</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
@@ -1214,7 +1214,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:40:59 2020 by
+  Generated on Wed Oct  7 18:11:09 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

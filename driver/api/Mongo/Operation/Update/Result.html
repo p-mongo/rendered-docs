@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Operation::Update::Result
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Operation::Update::Result
   
   
-  <span class="private note title">Private</span>
+  
 </h1>
 <div class="box_info">
   
@@ -103,11 +103,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This class is part of a private API.</strong>
-  You should avoid using this class if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Defines custom behavior of results for an update.</p>
 
 
@@ -255,7 +251,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'></div></span>
@@ -277,7 +273,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -301,7 +297,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -325,7 +321,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -349,7 +345,7 @@
   
   
   
-  <span class="private note title">private</span>
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -398,11 +394,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 
   </div>
 </div>
@@ -431,12 +423,12 @@
       <pre class="lines">
 
 
-90
-91
-92</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bulk_result'>bulk_result</span>
   <span class='const'><span class='object_link'><a href="BulkResult.html" title="Mongo::Operation::Update::BulkResult (class)">BulkResult</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Result.html#initialize-instance_method" title="Mongo::Operation::Result#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@replies</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_description'>connection_description</span><span class='rparen'>)</span>
@@ -457,11 +449,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Get the number of documents matched.</p>
 
 
@@ -522,17 +510,17 @@
       <pre class="lines">
 
 
-42
-43
-44
-45
 46
 47
 48
-49</pre>
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_matched_count'>matched_count</span>
   <span class='kw'>return</span> <span class='int'>0</span> <span class='kw'>unless</span> <span class='id identifier rubyid_acknowledged?'>acknowledged?</span>
@@ -558,11 +546,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Get the number of documents modified.</p>
 
 
@@ -623,13 +607,13 @@
       <pre class="lines">
 
 
-59
-60
-61
-62</pre>
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modified_count'>modified_count</span>
   <span class='kw'>return</span> <span class='int'>0</span> <span class='kw'>unless</span> <span class='id identifier rubyid_acknowledged?'>acknowledged?</span>
@@ -651,11 +635,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>Returns the number of documents upserted.</p>
 
 
@@ -716,12 +696,12 @@
       <pre class="lines">
 
 
-86
-87
-88</pre>
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_upserted_count'>upserted_count</span>
   <span class='id identifier rubyid_upsert?'>upsert?</span> <span class='op'>?</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>:</span> <span class='int'>0</span>
@@ -742,11 +722,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
+    
 <p>The identifier of the inserted document if an upsert</p>
 
 <pre class="code ruby"><code class="ruby">took place.
@@ -810,13 +786,13 @@
       <pre class="lines">
 
 
-73
-74
-75
-76</pre>
+79
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/update/result.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_upserted_id'>upserted_id</span>
   <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_upsert?'>upsert?</span>
@@ -832,7 +808,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:06 2020 by
+  Generated on Wed Oct  7 18:11:16 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

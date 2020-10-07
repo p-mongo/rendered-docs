@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Retryable
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -391,13 +391,6 @@
       <pre class="lines">
 
 
-285
-286
-287
-288
-289
-290
-291
 292
 293
 294
@@ -415,10 +408,17 @@
 306
 307
 308
-309</pre>
+309
+310
+311
+312
+313
+314
+315
+316</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 285</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 292</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_legacy_write_with_retry'>legacy_write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='comment'># This is the pre-session retry logic, and is not subject to
@@ -556,22 +556,22 @@
       <pre class="lines">
 
 
-257
-258
-259
-260
-261
-262
-263
 264
 265
 266
 267
 268
-269</pre>
+269
+270
+271
+272
+273
+274
+275
+276</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 257</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 264</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_nro_write_with_retry'>nro_write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:retry_writes</span><span class='rbracket'>]</span>
@@ -741,16 +741,16 @@ end</code></pre>
       <pre class="lines">
 
 
-154
-155
-156
-157
-158
-159
-160</pre>
+161
+162
+163
+164
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 154</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_with_one_retry'>read_with_one_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>yield</span>
@@ -902,13 +902,6 @@ end</code></pre>
       <pre class="lines">
 
 
-99
-100
-101
-102
-103
-104
-105
 106
 107
 108
@@ -932,10 +925,17 @@ end</code></pre>
 126
 127
 128
-129</pre>
+129
+130
+131
+132
+133
+134
+135
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_with_retry'>read_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1129,7 +1129,14 @@ end</code></pre>
 61
 62
 63
-64</pre>
+64
+65
+66
+67
+68
+69
+70
+71</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 59</span>
@@ -1137,7 +1144,14 @@ end</code></pre>
 <span class='kw'>def</span> <span class='id identifier rubyid_read_with_retry_cursor'>read_with_retry_cursor</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_read_with_retry'>read_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
     <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>yield</span> <span class='id identifier rubyid_server'>server</span>
-    <span class='const'><span class='object_link'><a href="Cursor.html" title="Mongo::Cursor (class)">Cursor</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Cursor.html#initialize-instance_method" title="Mongo::Cursor#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+
+    <span class='comment'># RUBY-2367: This will be updated to allow the query cache to
+</span>    <span class='comment'># cache cursors with multi-batch results.
+</span>    <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="QueryCache.html" title="Mongo::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_enabled?'><span class='object_link'><a href="QueryCache.html#enabled%3F-class_method" title="Mongo::QueryCache.enabled? (method)">enabled?</a></span></span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_view'>view</span><span class='period'>.</span><span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_system_collection?'>system_collection?</span>
+      <span class='const'><span class='object_link'><a href="CachingCursor.html" title="Mongo::CachingCursor (class)">CachingCursor</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Cursor.html#initialize-instance_method" title="Mongo::Cursor#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='const'><span class='object_link'><a href="Cursor.html" title="Mongo::Cursor (class)">Cursor</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Cursor.html#initialize-instance_method" title="Mongo::Cursor#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1341,13 +1355,6 @@ end</code></pre>
       <pre class="lines">
 
 
-196
-197
-198
-199
-200
-201
-202
 203
 204
 205
@@ -1384,10 +1391,17 @@ end</code></pre>
 236
 237
 238
-239</pre>
+239
+240
+241
+242
+243
+244
+245
+246</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 196</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 203</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_with_retry'>write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='comma'>,</span> <span class='id identifier rubyid_ending_transaction'>ending_transaction</span> <span class='op'>=</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_ending_transaction'>ending_transaction</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_session'>session</span>
@@ -1443,7 +1457,7 @@ end</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:40:52 2020 by
+  Generated on Wed Oct  7 18:11:03 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

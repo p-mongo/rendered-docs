@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Protocol::Message
   
-    &mdash; mongo-2.13.0.beta1
+    &mdash; mongo-2.14.0.beta
   
 </title>
 
@@ -650,7 +650,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#serialize-instance_method" title="#serialize (instance method)">#<strong>serialize</strong>(buffer = BSON::ByteBuffer.new, max_bson_size = nil)  &#x21d2; String </a>
+      <a href="#serialize-instance_method" title="#serialize (instance method)">#<strong>serialize</strong>(buffer = BSON::ByteBuffer.new, max_bson_size = nil, bson_overhead = nil)  &#x21d2; String </a>
     
 
     
@@ -976,15 +976,6 @@
       <pre class="lines">
 
 
-208
-209
-210
-211
-212
-213
-214
-215
-216
 217
 218
 219
@@ -1029,10 +1020,19 @@
 258
 259
 260
-261</pre>
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 208</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 217</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_io'>io</span><span class='comma'>,</span>
   <span class='id identifier rubyid_max_message_size'>max_message_size</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#MAX_MESSAGE_SIZE-constant" title="Mongo::Protocol::Message::MAX_MESSAGE_SIZE (constant)">MAX_MESSAGE_SIZE</a></span></span><span class='comma'>,</span>
@@ -1167,17 +1167,17 @@
       <pre class="lines">
 
 
-268
-269
-270
-271
-272
-273
-274
-275</pre>
+277
+278
+279
+280
+281
+282
+283
+284</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 268</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 277</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>!=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>
@@ -1236,12 +1236,12 @@
       <pre class="lines">
 
 
-281
-282
-283</pre>
+290
+291
+292</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 281</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 290</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hash'>hash</span>
   <span class='id identifier rubyid_fields'>fields</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='op'>|</span> <span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span>
@@ -1595,10 +1595,10 @@
       <pre class="lines">
 
 
-299</pre>
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 299</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 308</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_number_returned'>number_returned</span><span class='semicolon'>;</span> <span class='int'>0</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1696,7 +1696,7 @@
       <div class="method_details ">
   <h3 class="signature " id="serialize-instance_method">
   
-    #<strong>serialize</strong>(buffer = BSON::ByteBuffer.new, max_bson_size = nil)  &#x21d2; <tt>String</tt> 
+    #<strong>serialize</strong>(buffer = BSON::ByteBuffer.new, max_bson_size = nil, bson_overhead = nil)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1768,15 +1768,33 @@
 182
 183
 184
-185</pre>
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 180</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>ByteBuffer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='comma'>,</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>ByteBuffer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='comma'>,</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_bson_overhead'>bson_overhead</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_max_size'>max_size</span> <span class='op'>=</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_bson_overhead'>bson_overhead</span>
+      <span class='id identifier rubyid_max_bson_size'>max_bson_size</span> <span class='op'>+</span> <span class='id identifier rubyid_bson_overhead'>bson_overhead</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span>
+      <span class='id identifier rubyid_max_bson_size'>max_bson_size</span>
+    <span class='kw'>else</span>
+      <span class='kw'>nil</span>
+    <span class='kw'>end</span>
+
   <span class='id identifier rubyid_start'>start</span> <span class='op'>=</span> <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
   <span class='id identifier rubyid_serialize_header'>serialize_header</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_serialize_fields'>serialize_fields</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_serialize_fields'>serialize_fields</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_max_size'>max_size</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_replace_int32'>replace_int32</span><span class='lparen'>(</span><span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>-</span> <span class='id identifier rubyid_start'>start</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1828,12 +1846,12 @@
       <pre class="lines">
 
 
-290
-291
-292</pre>
+299
+300
+301</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 290</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/message.rb', line 299</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_request_id'>set_request_id</span>
   <span class='ivar'>@request_id</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_next_id'>next_id</span>
@@ -1848,7 +1866,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jul 17 03:41:02 2020 by
+  Generated on Wed Oct  7 18:11:12 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>
