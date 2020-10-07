@@ -61,7 +61,7 @@
 
       <div id="content"><h1>Class: Mongoid::QueryCache::CachedCursor
   
-  
+  <span class="deprecated note title">Deprecated</span>
   
 </h1>
 <div class="box_info">
@@ -103,7 +103,10 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>This class is only used with driver versions 2.13 and lower.</p>
+</div></div>
+
 <p>A Cursor that attempts to load documents from memory first before hitting the database if the same query has already been executed.</p>
 
 
@@ -257,18 +260,18 @@
       <pre class="lines">
 
 
-141
-142
-143
-144
-145
-146
-147
-148
-149</pre>
+171
+172
+173
+174
+175
+176
+177
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 171</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
   <span class='kw'>if</span> <span class='ivar'>@cached_documents</span>
@@ -356,12 +359,12 @@
       <pre class="lines">
 
 
-159
-160
-161</pre>
+189
+190
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 189</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Mongoid::QueryCache::CachedCursor:0x</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> @view=</span><span class='embexpr_beg'>#{</span><span class='ivar'>@view</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -376,7 +379,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 29 18:50:12 2020 by
+  Generated on Wed Oct  7 19:39:12 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

@@ -600,12 +600,12 @@
       <pre class="lines">
 
 
-264
-265
-266</pre>
+267
+268
+269</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 264</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 267</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clients'>clients</span>
   <span class='ivar'>@clients</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -687,12 +687,12 @@
       <pre class="lines">
 
 
-84
-85
-86</pre>
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_configured?'>configured?</span>
   <span class='id identifier rubyid_clients'>clients</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:default</span><span class='rparen'>)</span>
@@ -784,18 +784,18 @@
       <pre class="lines">
 
 
-98
-99
-100
 101
 102
 103
 104
 105
-106</pre>
+106
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect_to'>connect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>read:</span> <span class='lbrace'>{</span> <span class='label'>mode:</span> <span class='symbol'>:primary</span> <span class='rbrace'>}</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_clients'>clients</span> <span class='op'>=</span> <span class='lbrace'>{</span>
@@ -867,12 +867,12 @@
       <pre class="lines">
 
 
-115
-116
-117</pre>
+118
+119
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destructive_fields'>destructive_fields</span>
   <span class='const'><span class='object_link'><a href="Composable.html" title="Mongoid::Composable (module)">Composable</a></span></span><span class='period'>.</span><span class='id identifier rubyid_prohibited_methods'><span class='object_link'><a href="Composable.html#prohibited_methods-class_method" title="Mongoid::Composable.prohibited_methods (method)">prohibited_methods</a></span></span>
@@ -974,18 +974,18 @@
       <pre class="lines">
 
 
-129
-130
-131
 132
 133
 134
 135
 136
-137</pre>
+137
+138
+139
+140</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load!'>load!</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_settings'>settings</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Config/Environment.html" title="Mongoid::Config::Environment (module)">Environment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_yaml'><span class='object_link'><a href="Config/Environment.html#load_yaml-instance_method" title="Mongoid::Config::Environment#load_yaml (method)">load_yaml</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span>
@@ -1075,15 +1075,15 @@
       <pre class="lines">
 
 
-174
-175
-176
 177
 178
-179</pre>
+179
+180
+181
+182</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 174</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 177</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load_configuration'>load_configuration</span><span class='lparen'>(</span><span class='id identifier rubyid_settings'>settings</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_with_indifferent_access'>with_indifferent_access</span>
@@ -1168,12 +1168,12 @@
       <pre class="lines">
 
 
-148
-149
-150</pre>
+151
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_models'>models</span>
   <span class='ivar'>@models</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1257,17 +1257,17 @@
       <pre class="lines">
 
 
-247
-248
-249
 250
 251
 252
 253
-254</pre>
+254
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 247</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 250</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options='>options=</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span>
@@ -1374,12 +1374,12 @@
       <pre class="lines">
 
 
-205
-206
-207</pre>
+208
+209
+210</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 208</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_override_client'>override_client</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Threaded.html" title="Mongoid::Threaded (module)">Threaded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_client_override'><span class='object_link'><a href="Threaded.html#client_override-instance_method" title="Mongoid::Threaded#client_override (method)">client_override</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>?</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>:</span> <span class='kw'>nil</span>
@@ -1481,12 +1481,12 @@
       <pre class="lines">
 
 
-191
-192
-193</pre>
+194
+195
+196</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 191</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 194</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_override_database'>override_database</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Threaded.html" title="Mongoid::Threaded (module)">Threaded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_database_override'><span class='object_link'><a href="Threaded.html#database_override-instance_method" title="Mongoid::Threaded#database_override (method)">database_override</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
@@ -1576,12 +1576,12 @@
       <pre class="lines">
 
 
-219
-220
-221</pre>
+222
+223
+224</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 219</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 222</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_purge!'>purge!</span>
   <span class='const'><span class='object_link'><a href="Clients.html" title="Mongoid::Clients (module)">Clients</a></span></span><span class='period'>.</span><span class='id identifier rubyid_default'><span class='object_link'><a href="Clients.html#default-class_method" title="Mongoid::Clients.default (method)">default</a></span></span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_collections'>collections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:drop</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>true</span>
@@ -1665,14 +1665,14 @@
       <pre class="lines">
 
 
-160
-161
-162
 163
-164</pre>
+164
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_model'>register_model</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="#LOCK-constant" title="Mongoid::Config::LOCK (constant)">LOCK</a></span></span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -1756,12 +1756,12 @@
       <pre class="lines">
 
 
-288
-289
-290</pre>
+291
+292
+293</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 288</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 291</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_running_with_passenger?'>running_with_passenger?</span>
   <span class='ivar'>@running_with_passenger</span> <span class='op'>||=</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'>PhusionPassenger</span><span class='rparen'>)</span>
@@ -1843,12 +1843,12 @@
       <pre class="lines">
 
 
-276
-277
-278</pre>
+279
+280
+281</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 276</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 279</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_time_zone'>time_zone</span>
   <span class='id identifier rubyid_use_utc?'>use_utc?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UTC</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span>
@@ -1938,14 +1938,14 @@
       <pre class="lines">
 
 
-233
-234
-235
 236
-237</pre>
+237
+238
+239
+240</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 233</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_truncate!'>truncate!</span>
   <span class='const'><span class='object_link'><a href="Clients.html" title="Mongoid::Clients (module)">Clients</a></span></span><span class='period'>.</span><span class='id identifier rubyid_default'><span class='object_link'><a href="Clients.html#default-class_method" title="Mongoid::Clients.default (method)">default</a></span></span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_collections'>collections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_collection'>collection</span><span class='op'>|</span>
@@ -1962,7 +1962,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 29 18:50:01 2020 by
+  Generated on Wed Oct  7 19:39:00 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

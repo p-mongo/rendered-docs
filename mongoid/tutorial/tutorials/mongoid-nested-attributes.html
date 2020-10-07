@@ -171,9 +171,9 @@
           
           <li>
           
-            <a class="version-selector" href="#" data-path="mongoid/5.2">
+            <a class="version-selector" href="#" data-path="mongoid/5.4">
               
-              Version 5.2
+              Version 5.4
             </a>
           </li>
         
@@ -181,7 +181,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/7.0/api/">API</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li></ul>
 
 
     </div>
@@ -224,13 +224,13 @@ within a single web form.</p>
 <h2>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">¶</a></h2>
 <p>Nested attributes can be enabled for any association, embedded or referenced.
 To enable this for an association, simply provide the association name to the
-<code class="docutils literal notranslate"><span class="pre">accepts_nested_attributes_for</span></code> macro.</p>
+<code class="docutils literal"><span class="pre">accepts_nested_attributes_for</span></code> macro.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:albums</span>
   <span class="n">belongs_to</span> <span class="ss">:producer</span>
@@ -243,7 +243,7 @@ copy</a>
 association, Mongoid will automatically enable autosave for that association.</p>
 <p>When an association gains nested attributes behavior, an additional method is
 added to the base model, which should be used to update the attributes with
-the new functionality. This method is the association name plus <code class="docutils literal notranslate"><span class="pre">_attributes=</span></code>.
+the new functionality. This method is the association name plus <code class="docutils literal"><span class="pre">_attributes=</span></code>.
 You can use this method directly, or more commonly the name of the method can
 be an attribute in the updates for the base class, in which case
 Mongoid will call the appropriate setter under the covers.</p>
@@ -252,14 +252,14 @@ Mongoid will call the appropriate setter under the covers.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
 <span class="n">band</span><span class="o">.</span><span class="n">producer_attributes</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Flood&quot;</span> <span class="p">}</span>
 <span class="n">band</span><span class="o">.</span><span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">producer_attributes</span><span class="p">:</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Flood&quot;</span> <span class="p">}}</span>
 </pre></div>
 </div>
 </div>
 <p>Note that this will work with any attribute based setter method in Mongoid. This includes:
-<code class="docutils literal notranslate"><span class="pre">update_attributes</span></code>, <code class="docutils literal notranslate"><span class="pre">update_attributes!</span></code> and <code class="docutils literal notranslate"><span class="pre">attributes=</span></code>.</p>
+<code class="docutils literal"><span class="pre">update_attributes</span></code>, <code class="docutils literal"><span class="pre">update_attributes!</span></code> and <code class="docutils literal"><span class="pre">attributes=</span></code>.</p>
 </div>
 </div>
 

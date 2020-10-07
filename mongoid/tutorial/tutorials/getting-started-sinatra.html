@@ -171,9 +171,9 @@
           
           <li>
           
-            <a class="version-selector" href="#" data-path="mongoid/5.2">
+            <a class="version-selector" href="#" data-path="mongoid/5.4">
               
-              Version 5.2
+              Version 5.4
             </a>
           </li>
         
@@ -181,7 +181,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1 current"><a class="reference internal current" href="">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/7.0/api/">API</a></li></ul>
+<ul class="current"><li class="toctree-l1 current"><a class="reference internal current" href="">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li></ul>
 
 
     </div>
@@ -239,7 +239,7 @@ using Ruby on Rails.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>git init blog
+<div class="copyable-code-block highlight-sh"><div class="highlight"><pre><span></span>git init blog
 <span class="nb">cd</span> blog
 </pre></div>
 </div>
@@ -248,13 +248,13 @@ copy</a>
 </div>
 <div class="section" id="create-gemfile">
 <h3>Create Gemfile<a class="headerlink" href="#create-gemfile" title="Permalink to this headline">¶</a></h3>
-<p>Create a file named <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code> with the following contents:</p>
+<p>Create a file named <code class="docutils literal"><span class="pre">Gemfile</span></code> with the following contents:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
 
 <span class="n">gem</span> <span class="s1">&#39;sinatra&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
 <span class="n">gem</span> <span class="s1">&#39;mongoid&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 7.0&#39;</span>
@@ -270,26 +270,26 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>gem install bundler
+<div class="copyable-code-block highlight-sh"><div class="highlight"><pre><span></span>gem install bundler
 bundle install
 </pre></div>
 </div>
 </div>
-<p>This command will generate a file named <code class="docutils literal notranslate"><span class="pre">Gemfile.lock</span></code> which we recommend
+<p>This command will generate a file named <code class="docutils literal"><span class="pre">Gemfile.lock</span></code> which we recommend
 committing to your Git repository.</p>
 </div>
 <div class="section" id="run-mongodb-locally">
 <h3>Run MongoDB Locally<a class="headerlink" href="#run-mongodb-locally" title="Permalink to this headline">¶</a></h3>
 <p>To develop locally with MongoDB, <a class="reference external" href="https://docs.mongodb.com/manual/installation/">download and install MongoDB</a>.</p>
-<p>Once MongoDB is installed and running, create a file named <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code>
+<p>Once MongoDB is installed and running, create a file named <code class="docutils literal"><span class="pre">config/mongoid.yml</span></code>
 pointing to your deployment. For example, if you launched a standalone
-<code class="docutils literal notranslate"><span class="pre">mongod</span></code> on the default port, the following contents would be appropriate:</p>
+<code class="docutils literal"><span class="pre">mongod</span></code> on the default port, the following contents would be appropriate:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>development:
+<div class="copyable-code-block highlight-none"><div class="highlight"><pre><span></span>development:
   clients:
     default:
       database: blog_development
@@ -308,14 +308,14 @@ a free MongoDB Atlas account and create a <a class="reference external" href="ht
 Once the cluster is created, follow the instructions in <a class="reference external" href="https://docs.atlas.mongodb.com/connect-to-cluster/#connect-to-a-cluster">connect to the cluster
 page</a>
 to obtain the URI. Use the <em>Ruby driver 2.5 or later</em> format.</p>
-<p>Create a file named <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code> with the following
+<p>Create a file named <code class="docutils literal"><span class="pre">config/mongoid.yml</span></code> with the following
 contents, replacing the URI with the actual URI for your cluster:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
+<div class="copyable-code-block highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
   <span class="nt">clients</span><span class="p">:</span>
     <span class="nt">default</span><span class="p">:</span>
       <span class="nt">uri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongodb+srv://user:pass@yourcluster.mongodb.net/blog_development?retryWrites=true&amp;w=majority</span>
@@ -327,14 +327,14 @@ copy</a>
 </div>
 <div class="section" id="basic-application">
 <h3>Basic Application<a class="headerlink" href="#basic-application" title="Permalink to this headline">¶</a></h3>
-<p>Create a file named <code class="docutils literal notranslate"><span class="pre">app.rb</span></code> with the following contents. First, some
+<p>Create a file named <code class="docutils literal"><span class="pre">app.rb</span></code> with the following contents. First, some
 requires:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;mongoid&#39;</span>
 </pre></div>
 </div>
@@ -347,7 +347,7 @@ with Sinatra, we need to do this ourselves:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">load!</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;mongoid.yml&#39;</span><span class="p">))</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">load!</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;mongoid.yml&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -357,7 +357,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -383,7 +383,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">get</span> <span class="s1">&#39;/posts&#39;</span> <span class="k">do</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">get</span> <span class="s1">&#39;/posts&#39;</span> <span class="k">do</span>
   <span class="no">Post</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">to_json</span>
 <span class="k">end</span>
 
@@ -417,7 +417,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>bundle <span class="nb">exec</span> ruby app.rb
+<div class="copyable-code-block highlight-sh"><div class="highlight"><pre><span></span>bundle <span class="nb">exec</span> ruby app.rb
 </pre></div>
 </div>
 </div>
@@ -427,7 +427,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>curl http://localhost:4567/posts
+<div class="copyable-code-block highlight-sh"><div class="highlight"><pre><span></span>curl http://localhost:4567/posts
 <span class="c1"># =&gt; []</span>
 
 curl -d <span class="s1">&#39;post[title]=hello&amp;post[body]=hello+world&#39;</span> http://localhost:4567/posts
@@ -450,8 +450,8 @@ curl http://localhost:4567/posts/5d8151ec96fb4f0ed5a7a03f
 <p>To start using Mongoid in an existing Sinatra applications, the steps are
 essentially the same as the one given above for a new application:</p>
 <ol class="arabic simple">
-<li>Add the <code class="docutils literal notranslate"><span class="pre">mongoid</span></code> dependency to the <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>.</li>
-<li>Create a <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> configuration file.</li>
+<li>Add the <code class="docutils literal"><span class="pre">mongoid</span></code> dependency to the <code class="docutils literal"><span class="pre">Gemfile</span></code>.</li>
+<li>Create a <code class="docutils literal"><span class="pre">mongoid.yml</span></code> configuration file.</li>
 <li>Load the configuration file and configure Mongoid in the application.</li>
 <li>Define Mongoid models.</li>
 </ol>

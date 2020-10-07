@@ -113,8 +113,18 @@
 
     <dl class="constants">
       
-        <dt id="TYPE-constant" class="">TYPE =
-          
+        <dt id="TYPE-constant" class="deprecated">TYPE =
+          <div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_type</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
@@ -206,6 +216,10 @@
     
 <p>Builds a new <code>Document</code> from the supplied attributes.</p>
 
+<p>This method either instantiats klass or a descendant of klass if the attributes include klass&#39; discriminator key.</p>
+
+<p>If the attributes contain the discriminator key (which is _type by default) and the discriminator value does not correspond to a descendant of klass then this method would create an instance of klass.</p>
+
 
   </div>
 </div>
@@ -286,24 +300,26 @@
       <pre class="lines">
 
 
-21
-22
-23
-24
-25
-26
-27
-28
-29</pre>
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/factory.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/factory.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#TYPE-constant" title="Mongoid::Factory::TYPE (constant)">TYPE</a></span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#TYPE-constant" title="Mongoid::Factory::TYPE (constant)">TYPE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid__types'>_types</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_constantize'>constantize</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dvalue'>dvalue</span> <span class='op'>=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_get_discriminator_mapping'>get_discriminator_mapping</span><span class='lparen'>(</span><span class='id identifier rubyid_dvalue'>dvalue</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span>
+    <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -326,6 +342,8 @@
   <div class="discussion">
     
 <p>Builds a new <code>Document</code> from the supplied attributes loaded from the database.</p>
+
+<p>If the attributes contain the discriminator key (which is _type by default) and the discriminator value does not correspond to a descendant of klass then this method raises an UnknownModel error.</p>
 
 <p>If a criteria object is given, it is used in two ways:</p>
 <ol><li>
@@ -450,19 +468,6 @@
       <pre class="lines">
 
 
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
 66
 67
 68
@@ -478,16 +483,33 @@
 78
 79
 80
-81</pre>
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/factory.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/factory.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_from_db'>from_db</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_criteria'>criteria</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_selected_fields'>selected_fields</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_criteria'>criteria</span>
     <span class='id identifier rubyid_selected_fields'>selected_fields</span> <span class='op'>||=</span> <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:fields</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#TYPE-constant" title="Mongoid::Factory::TYPE (constant)">TYPE</a></span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='rbracket'>]</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
     <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_instantiate'>instantiate</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='comma'>,</span> <span class='id identifier rubyid_selected_fields'>selected_fields</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_criteria'>criteria</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_association'>association</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_parent_document'>parent_document</span>
@@ -495,13 +517,17 @@
     <span class='kw'>end</span>
     <span class='id identifier rubyid_obj'>obj</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_camelized'>camelized</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span>
+    <span class='id identifier rubyid_constantized'>constantized</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_get_discriminator_mapping'>get_discriminator_mapping</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
 
-    <span class='comment'># Check if the class exists
-</span>    <span class='kw'>begin</span>
-      <span class='id identifier rubyid_constantized'>constantized</span> <span class='op'>=</span> <span class='id identifier rubyid_camelized'>camelized</span><span class='period'>.</span><span class='id identifier rubyid_constantize'>constantize</span>
-    <span class='kw'>rescue</span> <span class='const'>NameError</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Errors/UnknownModel.html" title="Mongoid::Errors::UnknownModel (class)">UnknownModel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Errors/UnknownModel.html#initialize-instance_method" title="Mongoid::Errors::UnknownModel#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_camelized'>camelized</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_constantized'>constantized</span>
+      <span class='id identifier rubyid_camelized'>camelized</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span>
+
+      <span class='comment'># Check if the class exists
+</span>      <span class='kw'>begin</span>
+        <span class='id identifier rubyid_constantized'>constantized</span> <span class='op'>=</span> <span class='id identifier rubyid_camelized'>camelized</span><span class='period'>.</span><span class='id identifier rubyid_constantize'>constantize</span>
+      <span class='kw'>rescue</span> <span class='const'>NameError</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Errors/UnknownModel.html" title="Mongoid::Errors::UnknownModel (class)">UnknownModel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Errors/UnknownModel.html#initialize-instance_method" title="Mongoid::Errors::UnknownModel#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_camelized'>camelized</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
     <span class='kw'>end</span>
 
     <span class='comment'># Check if the class is a Document class
@@ -522,7 +548,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 29 18:50:01 2020 by
+  Generated on Wed Oct  7 19:39:01 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

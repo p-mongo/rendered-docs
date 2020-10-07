@@ -171,9 +171,9 @@
           
           <li>
           
-            <a class="version-selector" href="#" data-path="mongoid/5.2">
+            <a class="version-selector" href="#" data-path="mongoid/5.4">
               
-              Version 5.2
+              Version 5.4
             </a>
           </li>
         
@@ -181,7 +181,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/7.0/api/">API</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li></ul>
 
 
     </div>
@@ -232,17 +232,17 @@ It can be installed manually or with bundler.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>gem install mongoid
+<div class="copyable-code-block highlight-sh"><div class="highlight"><pre><span></span>gem install mongoid
 </pre></div>
 </div>
 </div>
-<p>To install the gem with bundler, include the following in your <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>:</p>
+<p>To install the gem with bundler, include the following in your <code class="docutils literal"><span class="pre">Gemfile</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s1">&#39;mongoid&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 7.1.0&#39;</span>
+<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s1">&#39;mongoid&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 7.1.0&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -250,23 +250,23 @@ copy</a>
 <div class="section" id="using-mongoid-with-a-new-rails-application">
 <h2>Using Mongoid with a New Rails Application<a class="headerlink" href="#using-mongoid-with-a-new-rails-application" title="Permalink to this headline">¶</a></h2>
 <p>When creating a new Rails application and wish to use Mongoid for
-data access, give the <code class="docutils literal notranslate"><span class="pre">--skip-active-record</span></code> flag to the <code class="docutils literal notranslate"><span class="pre">rails</span> <span class="pre">new</span></code>
+data access, give the <code class="docutils literal"><span class="pre">--skip-active-record</span></code> flag to the <code class="docutils literal"><span class="pre">rails</span> <span class="pre">new</span></code>
 command to avoid depending on and configuring ActiveRecord..</p>
 </div>
 <div class="section" id="using-mongoid-with-an-existing-rails-application">
 <h2>Using Mongoid with an Existing Rails Application<a class="headerlink" href="#using-mongoid-with-an-existing-rails-application" title="Permalink to this headline">¶</a></h2>
 <p>When converting an existing Rails application to use Mongoid for data access,
-the <code class="docutils literal notranslate"><span class="pre">config/application.rb</span></code> file needs to be updated to remove the
-<code class="docutils literal notranslate"><span class="pre">require</span> <span class="pre">'rails/all'</span></code> line and explicitly include the required frameworks
+the <code class="docutils literal"><span class="pre">config/application.rb</span></code> file needs to be updated to remove the
+<code class="docutils literal"><span class="pre">require</span> <span class="pre">'rails/all'</span></code> line and explicitly include the required frameworks
 (which could be all of the frameworks provided by Rails with the exception of
-ActiveRecord). Any references to ActiveRecord in files in the <code class="docutils literal notranslate"><span class="pre">config</span></code>
+ActiveRecord). Any references to ActiveRecord in files in the <code class="docutils literal"><span class="pre">config</span></code>
 directory and in the models also need to be removed.</p>
 </div>
 <div class="section" id="ruby-mongodb-driver-compatibility">
 <h2>Ruby MongoDB Driver Compatibility<a class="headerlink" href="#ruby-mongodb-driver-compatibility" title="Permalink to this headline">¶</a></h2>
 <p>The following compatibility table specifies the versions of <a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/">Ruby driver for
 MongoDB</a>
-(the <code class="docutils literal notranslate"><span class="pre">mongo</span></code> gem) supported by the most recent patch releases of the
+(the <code class="docutils literal"><span class="pre">mongo</span></code> gem) supported by the most recent patch releases of the
 specified Mongoid versions.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -276,41 +276,30 @@ newer, whereas Mongoid 7.0.6 requires driver version 2.7 or newer.</p>
 </div>
 <table border="1" class="compatibility-large no-padding docutils">
 <colgroup>
-<col width="17%" />
-<col width="17%" />
-<col width="17%" />
-<col width="17%" />
-<col width="17%" />
-<col width="17%" />
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head stub">Mongoid</th>
-<th class="head">Driver 2.11</th>
-<th class="head">Driver 2.10</th>
-<th class="head">Driver 2.9</th>
-<th class="head">Driver 2.8</th>
-<th class="head">Driver 2.7</th>
+<th class="head">Driver 2.14-2.10</th>
+<th class="head">Driver 2.9-2.7</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><th class="stub">7.1</th>
+<tr class="row-even"><th class="stub">7.2</th>
 <td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><th class="stub">7.1</th>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-odd"><th class="stub">7.0</th>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-even"><th class="stub">7.0</th>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><th class="stub">6.4</th>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-odd"><th class="stub">6.4</th>
 <td>✓</td>
 <td>✓</td>
 </tr>
@@ -344,7 +333,16 @@ supported by Mongoid.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><th class="stub">7.1</th>
+<tr class="row-even"><th class="stub">7.2</th>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>D</td>
+<td>D</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><th class="stub">7.1</th>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
@@ -353,7 +351,7 @@ supported by Mongoid.</p>
 <td>&#160;</td>
 <td>✓</td>
 </tr>
-<tr class="row-odd"><th class="stub">7.0</th>
+<tr class="row-even"><th class="stub">7.0</th>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
@@ -362,7 +360,7 @@ supported by Mongoid.</p>
 <td>✓ <a class="footnote-reference" href="#ruby-2-2" id="id3">[2]</a></td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><th class="stub">6.4</th>
+<tr class="row-odd"><th class="stub">6.4</th>
 <td>&#160;</td>
 <td>✓</td>
 <td>✓</td>
@@ -396,17 +394,19 @@ Please refer to <a class="reference external" href="https://docs.mongodb.com/rub
 for driver compatibility matrices.</p>
 <table border="1" class="compatibility-large no-padding docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head stub">Mongoid</th>
+<th class="head">MongoDB 4.4</th>
 <th class="head">MongoDB 4.2</th>
 <th class="head">MongoDB 4.0</th>
 <th class="head">MongoDB 3.6</th>
@@ -417,16 +417,8 @@ for driver compatibility matrices.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><th class="stub">7.1</th>
+<tr class="row-even"><th class="stub">7.2</th>
 <td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-odd"><th class="stub">7.0</th>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
@@ -435,7 +427,28 @@ for driver compatibility matrices.</p>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><th class="stub">6.4</th>
+<tr class="row-odd"><th class="stub">7.1</th>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><th class="stub">7.0</th>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><th class="stub">6.4</th>
+<td>✓</td>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
@@ -470,63 +483,70 @@ are supported by Mongoid.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><th class="stub">7.1</th>
+<tr class="row-even"><th class="stub">7.2</th>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
 <td>&#160;</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><th class="stub">7.0</th>
+<tr class="row-odd"><th class="stub">7.1</th>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><th class="stub">7.0</th>
 <td>✓ <a class="footnote-reference" href="#rails-6" id="id7">[3]</a></td>
 <td>✓</td>
 <td>✓</td>
 <td>&#160;</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><th class="stub">6.4</th>
+<tr class="row-odd"><th class="stub">6.4</th>
 <td>&#160;</td>
 <td>✓</td>
 <td>✓</td>
 <td>&#160;</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><th class="stub">6.3</th>
+<tr class="row-even"><th class="stub">6.3</th>
 <td>&#160;</td>
 <td>✓</td>
 <td>✓</td>
 <td>&#160;</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><th class="stub">6.2</th>
+<tr class="row-odd"><th class="stub">6.2</th>
 <td>&#160;</td>
 <td>✓</td>
 <td>✓</td>
 <td>&#160;</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><th class="stub">6.1</th>
+<tr class="row-even"><th class="stub">6.1</th>
 <td>&#160;</td>
 <td>&#160;</td>
 <td>&#160;</td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><th class="stub">6.0</th>
+<tr class="row-odd"><th class="stub">6.0</th>
 <td>&#160;</td>
 <td>&#160;</td>
 <td>&#160;</td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><th class="stub">5.4</th>
+<tr class="row-even"><th class="stub">5.4</th>
 <td>&#160;</td>
 <td>&#160;</td>
 <td>&#160;</td>
 <td>&#160;</td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><th class="stub">5.2</th>
+<tr class="row-odd"><th class="stub">5.2</th>
 <td>&#160;</td>
 <td>&#160;</td>
 <td>&#160;</td>

@@ -61,7 +61,7 @@
 
       <div id="content"><h1>Module: Mongoid::QueryCache::Base
   
-  
+  <span class="deprecated note title">Deprecated</span>
   
 </h1>
 <div class="box_info">
@@ -85,7 +85,10 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>This module is only used with driver versions 2.13 and lower.</p>
+</div></div>
+
 <p>Included to add behavior for clearing out the query cache on certain operations.</p>
 
 
@@ -196,20 +199,20 @@
       <pre class="lines">
 
 
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195</pre>
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 185</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 213</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alias_query_cache_clear'>alias_query_cache_clear</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_method_names'>method_names</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_method_names'>method_names</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method_name'>method_name</span><span class='op'>|</span>
@@ -232,7 +235,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 29 18:50:05 2020 by
+  Generated on Wed Oct  7 19:39:04 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

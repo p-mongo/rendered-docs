@@ -171,9 +171,9 @@
           
           <li>
           
-            <a class="version-selector" href="#" data-path="mongoid/5.2">
+            <a class="version-selector" href="#" data-path="mongoid/5.4">
               
-              Version 5.2
+              Version 5.4
             </a>
           </li>
         
@@ -181,7 +181,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/7.0/api/">API</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li></ul>
 
 
     </div>
@@ -210,14 +210,14 @@
                 
                   <div class="section" id="validation">
 <h1>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h1>
-<p>Mongoid includes <code class="docutils literal notranslate"><span class="pre">ActiveModel::Validations</span></code> to supply the basic
+<p>Mongoid includes <code class="docutils literal"><span class="pre">ActiveModel::Validations</span></code> to supply the basic
 validation plus an additional associated and uniqueness validator.</p>
 <p>See the <a class="reference external" href="https://guides.rubyonrails.org/active_record_validations.html">Active Record Validations</a>
 Rails guide and <a class="reference external" href="https://api.rubyonrails.org/classes/ActiveModel/Validations.html">ActiveModel::Validations</a>
 documentation for more information.</p>
-<p>Mongoid behaves slightly different to Active Record when using <code class="docutils literal notranslate"><span class="pre">#valid?</span></code>
-on already persisted data. Active Record’s <code class="docutils literal notranslate"><span class="pre">#valid?</span></code> will run all
-validations whereas Mongoid’s <code class="docutils literal notranslate"><span class="pre">#valid?</span></code> will only run validations on
+<p>Mongoid behaves slightly different to Active Record when using <code class="docutils literal"><span class="pre">#valid?</span></code>
+on already persisted data. Active Record’s <code class="docutils literal"><span class="pre">#valid?</span></code> will run all
+validations whereas Mongoid’s <code class="docutils literal"><span class="pre">#valid?</span></code> will only run validations on
 documents that are in memory as an optimization.</p>
 </div>
 

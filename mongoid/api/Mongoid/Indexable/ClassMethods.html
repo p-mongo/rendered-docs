@@ -335,8 +335,8 @@
       <pre class="code"><span class="info file"># File 'lib/mongoid/indexable.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_indexes'>add_indexes</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_hereditary?'>hereditary?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_index_keys'>index_keys</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='label'>_type:</span> <span class='int'>1</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>_type:</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>unique:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>background:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_hereditary?'>hereditary?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_index_keys'>index_keys</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='op'>=&gt;</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>unique:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>background:</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
@@ -844,7 +844,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 29 18:50:03 2020 by
+  Generated on Wed Oct  7 19:39:03 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

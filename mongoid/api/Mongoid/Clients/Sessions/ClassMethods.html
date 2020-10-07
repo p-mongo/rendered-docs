@@ -301,30 +301,46 @@
       <pre class="lines">
 
 
-94
-95
-96
-97
-98
-99
-100
-101
 102
 103
 104
 105
-106</pre>
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/clients/sessions.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/clients/sessions.rb', line 102</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_session'>with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors/InvalidSessionUse.html" title="Mongoid::Errors::InvalidSessionUse (class)">InvalidSessionUse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Errors/InvalidSessionUse.html#initialize-instance_method" title="Mongoid::Errors::InvalidSessionUse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='symbol'>:invalid_session_nesting</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../../Threaded.html" title="Mongoid::Threaded (module)">Threaded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_session'><span class='object_link'><a href="../../Threaded.html#get_session-instance_method" title="Mongoid::Threaded#get_session (method)">get_session</a></span></span>
+  <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../../Threaded.html" title="Mongoid::Threaded (module)">Threaded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_session'><span class='object_link'><a href="../../Threaded.html#get_session-instance_method" title="Mongoid::Threaded#get_session (method)">get_session</a></span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors/InvalidSessionUse.html" title="Mongoid::Errors::InvalidSessionUse (class)">InvalidSessionUse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Errors/InvalidSessionUse.html#initialize-instance_method" title="Mongoid::Errors::InvalidSessionUse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='symbol'>:invalid_session_nesting</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
   <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='id identifier rubyid_persistence_context'>persistence_context</span><span class='period'>.</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_start_session'>start_session</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../../Threaded.html" title="Mongoid::Threaded (module)">Threaded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_set_session'><span class='object_link'><a href="../../Threaded.html#set_session-instance_method" title="Mongoid::Threaded#set_session (method)">set_session</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
   <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
 <span class='kw'>rescue</span> <span class='const'>Mongo</span><span class='op'>::</span><span class='const'>Error</span><span class='op'>::</span><span class='const'>InvalidSession</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ex'>ex</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_ex'>ex</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='op'>==</span> <span class='const'>Mongo</span><span class='op'>::</span><span class='const'>Session</span><span class='op'>::</span><span class='const'>SESSIONS_NOT_SUPPORTED</span>
+  <span class='kw'>if</span>
+    <span class='comment'># Driver 2.13.0+
+</span>    <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'>Mongo</span><span class='op'>::</span><span class='const'>Error</span><span class='op'>::</span><span class='const'>SessionsNotSupported</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+      <span class='const'>Mongo</span><span class='op'>::</span><span class='const'>Error</span><span class='op'>::</span><span class='const'>SessionsNotSupported</span> <span class='op'>===</span> <span class='id identifier rubyid_ex'>ex</span> <span class='op'>||</span>
+    <span class='comment'># Legacy drivers
+</span>    <span class='id identifier rubyid_ex'>ex</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='op'>==</span> <span class='const'>Mongo</span><span class='op'>::</span><span class='const'>Session</span><span class='op'>::</span><span class='const'>SESSIONS_NOT_SUPPORTED</span>
+  <span class='kw'>then</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors/InvalidSessionUse.html" title="Mongoid::Errors::InvalidSessionUse (class)">InvalidSessionUse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Errors/InvalidSessionUse.html#initialize-instance_method" title="Mongoid::Errors::InvalidSessionUse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='symbol'>:sessions_not_supported</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors/InvalidSessionUse.html" title="Mongoid::Errors::InvalidSessionUse (class)">InvalidSessionUse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Errors/InvalidSessionUse.html#initialize-instance_method" title="Mongoid::Errors::InvalidSessionUse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='symbol'>:invalid_session_use</span><span class='rparen'>)</span>
@@ -341,7 +357,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 29 18:50:05 2020 by
+  Generated on Wed Oct  7 19:39:05 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

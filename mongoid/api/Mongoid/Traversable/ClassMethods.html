@@ -252,12 +252,12 @@
       <pre class="lines">
 
 
-181
-182
-183</pre>
+282
+283
+284</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/traversable.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/traversable.rb', line 282</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hereditary?'>hereditary?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Document.html" title="Mongoid::Document (module)">Document</a></span></span> <span class='op'>&gt;</span> <span class='id identifier rubyid_superclass'>superclass</span><span class='rparen'>)</span>
@@ -341,27 +341,33 @@
       <pre class="lines">
 
 
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212</pre>
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/traversable.rb', line 195</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/traversable.rb', line 296</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inherited'>inherited</span><span class='lparen'>(</span><span class='id identifier rubyid_subclass'>subclass</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -372,14 +378,20 @@
   <span class='id identifier rubyid_subclass'>subclass</span><span class='period'>.</span><span class='id identifier rubyid_pre_processed_defaults'>pre_processed_defaults</span> <span class='op'>=</span> <span class='id identifier rubyid_pre_processed_defaults'>pre_processed_defaults</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
   <span class='id identifier rubyid_subclass'>subclass</span><span class='period'>.</span><span class='id identifier rubyid_post_processed_defaults'>post_processed_defaults</span> <span class='op'>=</span> <span class='id identifier rubyid_post_processed_defaults'>post_processed_defaults</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
   <span class='id identifier rubyid_subclass'>subclass</span><span class='period'>.</span><span class='id identifier rubyid__declared_scopes'>_declared_scopes</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__declared_scopes'>_declared_scopes</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_subclass'>subclass</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_value'>discriminator_value</span> <span class='op'>=</span> <span class='id identifier rubyid_subclass'>subclass</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+
+  <span class='comment'># We need to do this here because the discriminator_value method is
+</span>  <span class='comment'># overriden in the subclass above.
+</span>  <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_subclass'>subclass</span>
+    <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="DiscriminatorRetrieval.html" title="Mongoid::Traversable::DiscriminatorRetrieval (module)">DiscriminatorRetrieval</a></span></span>
+  <span class='kw'>end</span>
 
   <span class='comment'># We only need the _type field if inheritance is in play, but need to
 </span>  <span class='comment'># add to the root class as well for backwards compatibility.
-</span>  <span class='kw'>unless</span> <span class='id identifier rubyid_fields'>fields</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_type</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_field'>field</span><span class='lparen'>(</span><span class='symbol'>:_type</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='const'>String</span><span class='rparen'>)</span>
+</span>  <span class='kw'>unless</span> <span class='id identifier rubyid_fields'>fields</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_default_proc'>default_proc</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_value'>discriminator_value</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_field'>field</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='id identifier rubyid_default_proc'>default_proc</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='const'>String</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_subclass_default'>subclass_default</span> <span class='op'>=</span> <span class='id identifier rubyid_subclass'>subclass</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>||</span> <span class='tlambda'>-&gt;</span><span class='tlambeg'>{</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span>
-  <span class='id identifier rubyid_subclass'>subclass</span><span class='period'>.</span><span class='id identifier rubyid_field'>field</span><span class='lparen'>(</span><span class='symbol'>:_type</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='id identifier rubyid_subclass_default'>subclass_default</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='const'>String</span><span class='comma'>,</span> <span class='label'>overwrite:</span> <span class='kw'>true</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -391,7 +403,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 29 18:50:05 2020 by
+  Generated on Wed Oct  7 19:39:04 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>

@@ -106,7 +106,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Raised when invalid query is passed to an embedded matcher.</p>
+<p>Raised when invalid query is passed to an embedded matcher, or an invalid query fragment is passed to the query builder (Criteria object).</p>
 
 
   </div>
@@ -116,7 +116,7 @@
 
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="InvalidExpressionOperator.html" title="Mongoid::Errors::InvalidExpressionOperator (class)">InvalidExpressionOperator</a></span></p>
+  <p class="children"><span class='object_link'><a href="InvalidElemMatchOperator.html" title="Mongoid::Errors::InvalidElemMatchOperator (class)">InvalidElemMatchOperator</a></span>, <span class='object_link'><a href="InvalidExpressionOperator.html" title="Mongoid::Errors::InvalidExpressionOperator (class)">InvalidExpressionOperator</a></span>, <span class='object_link'><a href="InvalidFieldOperator.html" title="Mongoid::Errors::InvalidFieldOperator (class)">InvalidFieldOperator</a></span></p>
 </div>
 
 
@@ -136,6 +136,39 @@
   <p class="inherited"><span class='object_link'><a href="MongoidError.html#problem-instance_method" title="Mongoid::Errors::MongoidError#problem (method)">#problem</a></span>, <span class='object_link'><a href="MongoidError.html#resolution-instance_method" title="Mongoid::Errors::MongoidError#resolution (method)">#resolution</a></span>, <span class='object_link'><a href="MongoidError.html#summary-instance_method" title="Mongoid::Errors::MongoidError#summary (method)">#summary</a></span></p>
 
 
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#truncate_expr-class_method" title="truncate_expr (class method)">.<strong>truncate_expr</strong>(expr)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Stringifies the argument using #inspect and truncates the result to about 100 characters.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
   
     <h2>
       Instance Method Summary
@@ -218,12 +251,12 @@
       <pre class="lines">
 
 
-13
 14
-15</pre>
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/errors/invalid_query.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/errors/invalid_query.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -236,10 +269,105 @@
 </div>
 
 
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="truncate_expr-class_method">
+  
+    .<strong>truncate_expr</strong>(expr)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Stringifies the argument using #inspect and truncates the result to about 100 characters.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expr</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An expression to stringify and truncate.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/errors/invalid_query.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_truncate_expr'>truncate_expr</span><span class='lparen'>(</span><span class='id identifier rubyid_expr'>expr</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_expr'>expr</span> <span class='op'>=</span> <span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>103</span>
+    <span class='id identifier rubyid_expr'>expr</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_expr'>expr</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A&lt;#((?:.|\n)*)&gt;\z</span><span class='regexp_end'>/</span></span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;#</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>97</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>...&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>100</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_expr'>expr</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 29 18:50:14 2020 by
+  Generated on Wed Oct  7 19:39:14 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.1).
 </div>
