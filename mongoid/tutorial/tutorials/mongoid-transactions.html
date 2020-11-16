@@ -224,14 +224,14 @@ versions of MongoDB). Transactions require Mongoid version 6.4 or higher and Rub
 <div class="section" id="using-transactions">
 <h2>Using Transactions<a class="headerlink" href="#using-transactions" title="Permalink to this headline">¶</a></h2>
 <p>In order to start a transaction, the application must have a <a class="reference internal" href="mongoid-sessions.html#sessions"><span class="std std-ref">session</span></a>.</p>
-<p>A transaction can be started by calling the <code class="docutils literal"><span class="pre">start_transaction</span></code> method on a session, which can be
-obtained by calling the <code class="docutils literal"><span class="pre">with_session</span></code> method on either a model class or instance:</p>
+<p>A transaction can be started by calling the <code class="docutils literal notranslate"><span class="pre">start_transaction</span></code> method on a session, which can be
+obtained by calling the <code class="docutils literal notranslate"><span class="pre">with_session</span></code> method on either a model class or instance:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 <span class="k">end</span>
 
@@ -253,7 +253,7 @@ when starting a transaction:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">with_session</span> <span class="k">do</span> <span class="o">|</span><span class="n">session</span><span class="o">|</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">with_session</span> <span class="k">do</span> <span class="o">|</span><span class="n">session</span><span class="o">|</span>
   <span class="n">session</span><span class="o">.</span><span class="n">start_transaction</span><span class="p">(</span>
     <span class="ss">read_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">level</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">},</span>
     <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
@@ -263,13 +263,13 @@ copy</a>
 </div>
 </div>
 <p>A transaction may be committed or aborted. The corresponding methods to do so are
-<code class="docutils literal"><span class="pre">commit_transaction</span></code> and <code class="docutils literal"><span class="pre">abort_transaction</span></code>, again on the session instance:</p>
+<code class="docutils literal notranslate"><span class="pre">commit_transaction</span></code> and <code class="docutils literal notranslate"><span class="pre">abort_transaction</span></code>, again on the session instance:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">with_session</span> <span class="k">do</span> <span class="o">|</span><span class="n">session</span><span class="o">|</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">with_session</span> <span class="k">do</span> <span class="o">|</span><span class="n">session</span><span class="o">|</span>
   <span class="n">session</span><span class="o">.</span><span class="n">commit_transaction</span>
 <span class="k">end</span>
 
@@ -288,7 +288,7 @@ if it fails. Here is the Ruby code to do so:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">begin</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">begin</span>
   <span class="n">session</span><span class="o">.</span><span class="n">commit_transaction</span>
 <span class="k">rescue</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Error</span> <span class="o">=&gt;</span> <span class="n">e</span>
   <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">label?</span><span class="p">(</span><span class="no">Mongo</span><span class="o">::</span><span class="no">Error</span><span class="o">::</span><span class="no">UNKNOWN_TRANSACTION_COMMIT_RESULT_LABEL</span><span class="p">)</span>
@@ -307,7 +307,7 @@ that the session was initiated on. By default, all operations will be done on th
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 <span class="k">end</span>
 
@@ -325,13 +325,13 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>To explicitly use a different client, use the <code class="docutils literal"><span class="pre">with</span></code> method:</p>
+<p>To explicitly use a different client, use the <code class="docutils literal notranslate"><span class="pre">with</span></code> method:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Post</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">client</span><span class="p">:</span> <span class="ss">:other</span><span class="p">)</span> <span class="k">do</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Post</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">client</span><span class="p">:</span> <span class="ss">:other</span><span class="p">)</span> <span class="k">do</span>
   <span class="no">Person</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">client</span><span class="p">:</span> <span class="ss">:other</span><span class="p">)</span> <span class="k">do</span>
     <span class="no">Person</span><span class="o">.</span><span class="n">with_session</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
       <span class="n">s</span><span class="o">.</span><span class="n">start_transaction</span>

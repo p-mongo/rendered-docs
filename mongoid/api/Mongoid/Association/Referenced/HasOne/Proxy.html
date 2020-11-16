@@ -6,7 +6,7 @@
 <title>
   Class: Mongoid::Association::Referenced::HasOne::Proxy
   
-    &mdash; mongoid-7.1.1
+    &mdash; mongoid-7.2.0.rc1
   
 </title>
 
@@ -514,12 +514,12 @@
       <pre class="lines">
 
 
-94
-95
-96</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/has_one/proxy.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/has_one/proxy.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_eager_loader'>eager_loader</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='comma'>,</span> <span class='id identifier rubyid_docs'>docs</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Eager.html" title="Mongoid::Association::Referenced::HasOne::Eager (class)">Eager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Eager/Base.html#initialize-instance_method" title="Mongoid::Association::Referenced::Eager::Base#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='comma'>,</span> <span class='id identifier rubyid_docs'>docs</span><span class='rparen'>)</span>
@@ -601,12 +601,12 @@
       <pre class="lines">
 
 
-107
-108
-109</pre>
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/has_one/proxy.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/has_one/proxy.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_embedded?'>embedded?</span>
   <span class='kw'>false</span>
@@ -795,15 +795,25 @@
 63
 64
 65
-66</pre>
+66
+67
+68
+69
+70
+71</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/association/referenced/has_one/proxy.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_substitute'>substitute</span><span class='lparen'>(</span><span class='id identifier rubyid_replacement'>replacement</span><span class='rparen'>)</span>
+  <span class='comment'># If the same object currently associated is being assigned,
+</span>  <span class='comment'># rebind the association and save the target but do not destroy
+</span>  <span class='comment'># the target.
+</span>
   <span class='id identifier rubyid_unbind_one'>unbind_one</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_persistable?'>persistable?</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid__association'>_association</span><span class='period'>.</span><span class='id identifier rubyid_destructive?'>destructive?</span>
+    <span class='comment'># TODO can this entire method be skipped if self == replacement?
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid__association'>_association</span><span class='period'>.</span><span class='id identifier rubyid_destructive?'>destructive?</span> <span class='op'>&amp;&amp;</span> <span class='kw'>self</span> <span class='op'>!=</span> <span class='id identifier rubyid_replacement'>replacement</span>
       <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid__association'>_association</span><span class='period'>.</span><span class='id identifier rubyid_dependent'>dependent</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_save'>save</span> <span class='kw'>if</span> <span class='id identifier rubyid_persisted?'>persisted?</span>
@@ -821,9 +831,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 19:39:18 2020 by
+  Generated on Mon Nov 16 13:14:25 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.25 (ruby-2.7.2).
 </div>
 
     </div>

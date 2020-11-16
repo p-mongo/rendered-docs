@@ -242,38 +242,39 @@
 <li><a class="reference internal" href="#autobuilding" id="id39">Autobuilding</a></li>
 <li><a class="reference internal" href="#touching" id="id40">Touching</a></li>
 <li><a class="reference internal" href="#the-counter-cache-option" id="id41">The counter_cache Option</a></li>
+<li><a class="reference internal" href="#association-proxies" id="id42">Association Proxies</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#association-metadata" id="id42">Association Metadata</a><ul>
-<li><a class="reference internal" href="#attributes" id="id43">Attributes</a></li>
-<li><a class="reference internal" href="#the-association-object" id="id44">The Association Object</a></li>
+<li><a class="reference internal" href="#association-metadata" id="id43">Association Metadata</a><ul>
+<li><a class="reference internal" href="#attributes" id="id44">Attributes</a></li>
+<li><a class="reference internal" href="#the-association-object" id="id45">The Association Object</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id12" id="id45">Aggregation Pipeline</a><ul>
-<li><a class="reference internal" href="#builder-dsl" id="id46">Builder DSL</a></li>
+<li><a class="reference internal" href="#id12" id="id46">Aggregation Pipeline</a><ul>
+<li><a class="reference internal" href="#builder-dsl" id="id47">Builder DSL</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="referenced-associations">
 <h2>Referenced Associations<a class="headerlink" href="#referenced-associations" title="Permalink to this headline">¶</a></h2>
-<p>Mongoid supports the <code class="docutils literal"><span class="pre">has_one</span></code>, <code class="docutils literal"><span class="pre">has_many</span></code>, <code class="docutils literal"><span class="pre">belongs_to</span></code> and
-<code class="docutils literal"><span class="pre">has_and_belongs_to_many</span></code> associations familiar to ActiveRecord users.</p>
+<p>Mongoid supports the <code class="docutils literal notranslate"><span class="pre">has_one</span></code>, <code class="docutils literal notranslate"><span class="pre">has_many</span></code>, <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> and
+<code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code> associations familiar to ActiveRecord users.</p>
 <div class="section" id="has-one">
 <h3>Has One<a class="headerlink" href="#has-one" title="Permalink to this headline">¶</a></h3>
 <p>One to one associations where documents are stored in separate collections
-are defined using <code class="docutils literal"><span class="pre">has_one</span></code> and <code class="docutils literal"><span class="pre">belongs_to</span></code> macros.</p>
+are defined using <code class="docutils literal notranslate"><span class="pre">has_one</span></code> and <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> macros.</p>
 <div class="section" id="defining">
 <h4>Defining<a class="headerlink" href="#defining" title="Permalink to this headline">¶</a></h4>
-<p>The parent document of the association should use the <code class="docutils literal"><span class="pre">has_one</span></code> macro to
+<p>The parent document of the association should use the <code class="docutils literal notranslate"><span class="pre">has_one</span></code> macro to
 indicate is has one referenced child, and the document that is referenced
-should use <code class="docutils literal"><span class="pre">belongs_to</span></code>.</p>
+should use <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_one</span> <span class="ss">:studio</span>
 <span class="k">end</span>
@@ -299,7 +300,7 @@ reference to the parent:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># The parent band document.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># The parent band document.</span>
 <span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="no">ObjectId</span><span class="p">(</span><span class="s2">&quot;4d3ed089fb60ab534684b7e9&quot;</span><span class="p">)</span> <span class="p">}</span>
 
 <span class="c1"># The child studio document.</span>
@@ -315,19 +316,19 @@ copy</a>
 <div class="section" id="has-many">
 <h3>Has Many<a class="headerlink" href="#has-many" title="Permalink to this headline">¶</a></h3>
 <p>One to many associations where the children are stored in a separate
-collection from the parent document are defined using Mongoid’s <code class="docutils literal"><span class="pre">has_many</span></code>
-and <code class="docutils literal"><span class="pre">belongs_to</span></code> macros.</p>
+collection from the parent document are defined using Mongoid’s <code class="docutils literal notranslate"><span class="pre">has_many</span></code>
+and <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> macros.</p>
 <div class="section" id="id1">
 <h4>Defining<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>The parent document of the association should use the <code class="docutils literal"><span class="pre">has_many</span></code> macro to
+<p>The parent document of the association should use the <code class="docutils literal notranslate"><span class="pre">has_many</span></code> macro to
 indicate is has n number of referenced children, where the document that is
-referenced uses <code class="docutils literal"><span class="pre">belongs_to</span></code>.</p>
+referenced uses <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_many</span> <span class="ss">:members</span>
 <span class="k">end</span>
@@ -353,7 +354,7 @@ reference to the parent.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># The parent band document.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># The parent band document.</span>
 <span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="no">ObjectId</span><span class="p">(</span><span class="s2">&quot;4d3ed089fb60ab534684b7e9&quot;</span><span class="p">)</span> <span class="p">}</span>
 
 <span class="c1"># A child member document.</span>
@@ -368,8 +369,8 @@ copy</a>
 <div class="section" id="queries">
 <h4>Queries<a class="headerlink" href="#queries" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="any">
-<span id="has-many-any"></span><h5><code class="docutils literal"><span class="pre">any?</span></code><a class="headerlink" href="#any" title="Permalink to this headline">¶</a></h5>
-<p>Use the <code class="docutils literal"><span class="pre">any?</span></code> method on the association to efficiently determine whether
+<span id="has-many-any"></span><h5><code class="docutils literal notranslate"><span class="pre">any?</span></code><a class="headerlink" href="#any" title="Permalink to this headline">¶</a></h5>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">any?</span></code> method on the association to efficiently determine whether
 the association contains any documents, without retrieving the entire set
 of documents from the database:</p>
 <div class="button-code-block">
@@ -377,19 +378,19 @@ of documents from the database:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
 <span class="n">band</span><span class="o">.</span><span class="n">members</span><span class="o">.</span><span class="n">any?</span>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">any?</span></code> also implements the <a class="reference external" href="https://ruby-doc.org/core/Enumerable.html#method-i-any-3F">Enumerable#any? API</a>, allowing
+<p><code class="docutils literal notranslate"><span class="pre">any?</span></code> also implements the <a class="reference external" href="https://ruby-doc.org/core/Enumerable.html#method-i-any-3F">Enumerable#any? API</a>, allowing
 filtering with a block:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
 <span class="n">band</span><span class="o">.</span><span class="n">members</span><span class="o">.</span><span class="n">any?</span> <span class="p">{</span> <span class="o">|</span><span class="n">member</span><span class="o">|</span> <span class="n">member</span><span class="o">.</span><span class="n">instrument</span> <span class="o">==</span> <span class="s1">&#39;piano&#39;</span> <span class="p">}</span>
 </pre></div>
 </div>
@@ -400,7 +401,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Drummer</span> <span class="o">&lt;</span> <span class="no">Member</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Drummer</span> <span class="o">&lt;</span> <span class="no">Member</span>
 <span class="k">end</span>
 
 <span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
@@ -408,14 +409,14 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>If the association is already loaded, <code class="docutils literal"><span class="pre">any?</span></code> inspects the loaded
+<p>If the association is already loaded, <code class="docutils literal notranslate"><span class="pre">any?</span></code> inspects the loaded
 documents and does not query the database:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
 <span class="c1"># Queries the database</span>
 <span class="n">band</span><span class="o">.</span><span class="n">members</span><span class="o">.</span><span class="n">any?</span>
 
@@ -426,28 +427,28 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Note that simply calling <code class="docutils literal"><span class="pre">any?</span></code> would <em>not</em> load the association
-(since <code class="docutils literal"><span class="pre">any?</span></code> only retrtieves the _id field of the first matching document).</p>
+<p>Note that simply calling <code class="docutils literal notranslate"><span class="pre">any?</span></code> would <em>not</em> load the association
+(since <code class="docutils literal notranslate"><span class="pre">any?</span></code> only retrtieves the _id field of the first matching document).</p>
 </div>
 <div class="section" id="exists">
-<h5><code class="docutils literal"><span class="pre">exists?</span></code><a class="headerlink" href="#exists" title="Permalink to this headline">¶</a></h5>
-<p>The <code class="docutils literal"><span class="pre">exists?</span></code> method on the association determines whether there are
-any <em>persisted</em> documents in the association. Unlike the <code class="docutils literal"><span class="pre">any?</span></code> method:</p>
+<h5><code class="docutils literal notranslate"><span class="pre">exists?</span></code><a class="headerlink" href="#exists" title="Permalink to this headline">¶</a></h5>
+<p>The <code class="docutils literal notranslate"><span class="pre">exists?</span></code> method on the association determines whether there are
+any <em>persisted</em> documents in the association. Unlike the <code class="docutils literal notranslate"><span class="pre">any?</span></code> method:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">exists?</span></code> always queries the database, even if the association is already
+<li><code class="docutils literal notranslate"><span class="pre">exists?</span></code> always queries the database, even if the association is already
 loaded.</li>
-<li><code class="docutils literal"><span class="pre">exists?</span></code> does not consider non-persisted documents.</li>
-<li><code class="docutils literal"><span class="pre">exists?</span></code> does not allow filtering in the application like <code class="docutils literal"><span class="pre">any?</span></code> does,
+<li><code class="docutils literal notranslate"><span class="pre">exists?</span></code> does not consider non-persisted documents.</li>
+<li><code class="docutils literal notranslate"><span class="pre">exists?</span></code> does not allow filtering in the application like <code class="docutils literal notranslate"><span class="pre">any?</span></code> does,
 and does not take any arguments.</li>
 </ul>
-<p>The following examle illustrates the difference between <code class="docutils literal"><span class="pre">exists?</span></code> and
-<code class="docutils literal"><span class="pre">any?</span></code>:</p>
+<p>The following examle illustrates the difference between <code class="docutils literal notranslate"><span class="pre">exists?</span></code> and
+<code class="docutils literal notranslate"><span class="pre">any?</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
 <span class="c1"># Member is not persisted.</span>
 <span class="n">band</span><span class="o">.</span><span class="n">members</span><span class="o">.</span><span class="n">build</span>
 
@@ -471,24 +472,24 @@ copy</a>
 </div>
 <div class="section" id="belongs-to">
 <h3>Belongs To<a class="headerlink" href="#belongs-to" title="Permalink to this headline">¶</a></h3>
-<p>A <code class="docutils literal"><span class="pre">belongs_to</span></code> macro is used when a document is the child in a <code class="docutils literal"><span class="pre">has_one</span></code>
-or <code class="docutils literal"><span class="pre">has_many</span></code> association. By default, in order for a document to
-be saved, each of its <code class="docutils literal"><span class="pre">belongs_to</span></code> associations must be provided a value.
+<p>A <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> macro is used when a document is the child in a <code class="docutils literal notranslate"><span class="pre">has_one</span></code>
+or <code class="docutils literal notranslate"><span class="pre">has_many</span></code> association. By default, in order for a document to
+be saved, each of its <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> associations must be provided a value.
 To override this requirement for a particular association, use the option
-<code class="docutils literal"><span class="pre">optional:</span> <span class="pre">false</span></code> on the <code class="docutils literal"><span class="pre">belong_to</span></code> association. To override this
-requirement globally, set the <code class="docutils literal"><span class="pre">belongs_to_required_by_default</span></code>
-<a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal"><span class="pre">false</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">optional:</span> <span class="pre">false</span></code> on the <code class="docutils literal notranslate"><span class="pre">belong_to</span></code> association. To override this
+requirement globally, set the <code class="docutils literal notranslate"><span class="pre">belongs_to_required_by_default</span></code>
+<a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <div class="section" id="id3">
 <h4>Defining<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>The child document of the association uses the <code class="docutils literal"><span class="pre">belongs_to</span></code> macro to indicate
-it is associated with a parent. The document on the <code class="docutils literal"><span class="pre">belongs_to</span></code> side
+<p>The child document of the association uses the <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> macro to indicate
+it is associated with a parent. The document on the <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> side
 stores the reference to the parent.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_one</span> <span class="ss">:studio</span>
 <span class="k">end</span>
@@ -513,7 +514,7 @@ but the child document contains a “foreign key” reference to the parent.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># The parent band document.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># The parent band document.</span>
 <span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="no">ObjectId</span><span class="p">(</span><span class="s2">&quot;4d3ed089fb60ab534684b7e9&quot;</span><span class="p">)</span> <span class="p">}</span>
 
 <span class="c1"># The child studio document.</span>
@@ -529,10 +530,10 @@ copy</a>
 <div class="section" id="has-and-belongs-to-many">
 <h3>Has And Belongs To Many<a class="headerlink" href="#has-and-belongs-to-many" title="Permalink to this headline">¶</a></h3>
 <p>Many to many associations in Mongoid are defined using the
-<code class="docutils literal"><span class="pre">has_and_belongs_to_many</span></code> macro. Unlike ActiveRecord’s
-<code class="docutils literal"><span class="pre">has_and_belongs_to_many</span></code>, in Mongoid there is no “join collection” -
+<code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code> macro. Unlike ActiveRecord’s
+<code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code>, in Mongoid there is no “join collection” -
 the foreign key ids are stored as arrays on both sides of the association.</p>
-<p><code class="docutils literal"><span class="pre">has_and_belongs_to_many</span></code> association has no embedded equivalent.</p>
+<p><code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code> association has no embedded equivalent.</p>
 <div class="section" id="id5">
 <h4>Defining<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>Both sides of the association use the same macro.</p>
@@ -541,7 +542,7 @@ the foreign key ids are stored as arrays on both sides of the association.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_and_belongs_to_many</span> <span class="ss">:tags</span>
 <span class="k">end</span>
@@ -561,7 +562,7 @@ that stores the keys as an array on the parent.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_and_belongs_to_many</span> <span class="ss">:tags</span><span class="p">,</span> <span class="ss">inverse_of</span><span class="p">:</span> <span class="kp">nil</span>
 <span class="k">end</span>
@@ -584,7 +585,7 @@ to the other in the form of an array.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># The band document.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># The band document.</span>
 <span class="p">{</span>
   <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="no">ObjectId</span><span class="p">(</span><span class="s2">&quot;4d3ed089fb60ab534684b7e9&quot;</span><span class="p">),</span>
   <span class="s2">&quot;tag_ids&quot;</span> <span class="p">:</span> <span class="o">[</span> <span class="no">ObjectId</span><span class="p">(</span><span class="s2">&quot;4d3ed089fb60ab534684b7f2&quot;</span><span class="p">)</span> <span class="o">]</span>
@@ -617,7 +618,7 @@ means association in question and any associations embedded in it).</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">has_many</span> <span class="ss">:tours</span>
@@ -650,20 +651,20 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band_ids</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">})</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:band_id</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band_ids</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">})</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:band_id</span><span class="p">)</span>
 <span class="n">bands</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">band_ids</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>The conditions on <code class="docutils literal"><span class="pre">Tour</span></code> can be arbitrarily complex, but they must all
-be on the same <code class="docutils literal"><span class="pre">Tour</span></code> document (or documents embedded in <code class="docutils literal"><span class="pre">Tour</span></code>).</p>
+<p>The conditions on <code class="docutils literal notranslate"><span class="pre">Tour</span></code> can be arbitrarily complex, but they must all
+be on the same <code class="docutils literal notranslate"><span class="pre">Tour</span></code> document (or documents embedded in <code class="docutils literal notranslate"><span class="pre">Tour</span></code>).</p>
 <p>To find awards for bands that have toured since 2000:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band_ids</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">})</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:band_id</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band_ids</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">})</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:band_id</span><span class="p">)</span>
 <span class="n">awards</span> <span class="o">=</span> <span class="no">Award</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">band_id</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span> <span class="o">=&gt;</span> <span class="n">band_ids</span><span class="p">})</span>
 </pre></div>
 </div>
@@ -675,25 +676,25 @@ copy</a>
 <p>Thanks to MongoDB’s document model, Mongoid also offers embedded associations
 which allow documents of different types to be stored hierarchically
 in the same collection. Embedded associations are defined using
-<code class="docutils literal"><span class="pre">embeds_one</span></code>, <code class="docutils literal"><span class="pre">embeds_many</span></code> and <code class="docutils literal"><span class="pre">embedded_in</span></code> macros, plus
-<code class="docutils literal"><span class="pre">recursively_embeds_one</span></code> and <code class="docutils literal"><span class="pre">recursively_embeds_many</span></code> for recursive
+<code class="docutils literal notranslate"><span class="pre">embeds_one</span></code>, <code class="docutils literal notranslate"><span class="pre">embeds_many</span></code> and <code class="docutils literal notranslate"><span class="pre">embedded_in</span></code> macros, plus
+<code class="docutils literal notranslate"><span class="pre">recursively_embeds_one</span></code> and <code class="docutils literal notranslate"><span class="pre">recursively_embeds_many</span></code> for recursive
 embedding.</p>
 <div class="section" id="embeds-one">
 <h3>Embeds One<a class="headerlink" href="#embeds-one" title="Permalink to this headline">¶</a></h3>
 <p>One to one associations where the children are embedded in the parent
-document are defined using Mongoid’s <code class="docutils literal"><span class="pre">embeds_one</span></code> and <code class="docutils literal"><span class="pre">embedded_in</span></code> macros.</p>
+document are defined using Mongoid’s <code class="docutils literal notranslate"><span class="pre">embeds_one</span></code> and <code class="docutils literal notranslate"><span class="pre">embedded_in</span></code> macros.</p>
 <div class="section" id="id7">
 <h4>Defining<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p>The parent document of the association should use the <code class="docutils literal"><span class="pre">embeds_one</span></code> macro to
+<p>The parent document of the association should use the <code class="docutils literal notranslate"><span class="pre">embeds_one</span></code> macro to
 indicate is has one embedded child, where the document that is embedded uses
-<code class="docutils literal"><span class="pre">embedded_in</span></code>. Definitions are required on both sides to the association
+<code class="docutils literal notranslate"><span class="pre">embedded_in</span></code>. Definitions are required on both sides to the association
 in order for it to work properly.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_one</span> <span class="ss">:label</span>
 <span class="k">end</span>
@@ -709,14 +710,14 @@ copy</a>
 </div>
 <div class="section" id="id8">
 <h4>Storage<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>Documents that are embedded using the <code class="docutils literal"><span class="pre">embeds_one</span></code> macro are stored as a
+<p>Documents that are embedded using the <code class="docutils literal notranslate"><span class="pre">embeds_one</span></code> macro are stored as a
 hash inside the parent in the parent’s database collection.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="no">ObjectId</span><span class="p">(</span><span class="s2">&quot;4d3ed089fb60ab534684b7e9&quot;</span><span class="p">),</span>
   <span class="s2">&quot;label&quot;</span> <span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="no">ObjectId</span><span class="p">(</span><span class="s2">&quot;4d3ed089fb60ab534684b7e0&quot;</span><span class="p">),</span>
@@ -727,13 +728,13 @@ copy</a>
 </div>
 </div>
 <p>You can optionally tell Mongoid to store the embedded document in a different
-attribute other than the name, by providing the <code class="docutils literal"><span class="pre">:store_as</span></code> option.</p>
+attribute other than the name, by providing the <code class="docutils literal notranslate"><span class="pre">:store_as</span></code> option.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_one</span> <span class="ss">:label</span><span class="p">,</span> <span class="ss">store_as</span><span class="p">:</span> <span class="s2">&quot;lab&quot;</span>
 <span class="k">end</span>
@@ -745,19 +746,19 @@ copy</a>
 <div class="section" id="embeds-many">
 <h3>Embeds Many<a class="headerlink" href="#embeds-many" title="Permalink to this headline">¶</a></h3>
 <p>One to many relationships where the children are embedded in the parent
-document are defined using Mongoid’s <code class="docutils literal"><span class="pre">embeds_many</span></code> and <code class="docutils literal"><span class="pre">embedded_in</span></code> macros.</p>
+document are defined using Mongoid’s <code class="docutils literal notranslate"><span class="pre">embeds_many</span></code> and <code class="docutils literal notranslate"><span class="pre">embedded_in</span></code> macros.</p>
 <div class="section" id="id9">
 <h4>Defining<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
-<p>The parent document of the association should use the <code class="docutils literal"><span class="pre">embeds_many</span></code> macro
+<p>The parent document of the association should use the <code class="docutils literal notranslate"><span class="pre">embeds_many</span></code> macro
 to indicate it has many embedded children, where the document that is
-embedded uses <code class="docutils literal"><span class="pre">embedded_in</span></code>. Definitions are required on both sides of
+embedded uses <code class="docutils literal notranslate"><span class="pre">embedded_in</span></code>. Definitions are required on both sides of
 the association in order for it to work properly.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:albums</span>
 <span class="k">end</span>
@@ -773,14 +774,14 @@ copy</a>
 </div>
 <div class="section" id="id10">
 <h4>Storage<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
-<p>Documents that are embedded using the <code class="docutils literal"><span class="pre">embeds_many</span></code> macro are stored as
+<p>Documents that are embedded using the <code class="docutils literal notranslate"><span class="pre">embeds_many</span></code> macro are stored as
 an array of hashes inside the parent in the parent’s database collection.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="no">ObjectId</span><span class="p">(</span><span class="s2">&quot;4d3ed089fb60ab534684b7e9&quot;</span><span class="p">),</span>
   <span class="s2">&quot;albums&quot;</span> <span class="p">:</span> <span class="o">[</span>
     <span class="p">{</span>
@@ -793,13 +794,13 @@ copy</a>
 </div>
 </div>
 <p>You can optionally tell Mongoid to store the embedded document in a different
-attribute other than the name, by providing the <code class="docutils literal"><span class="pre">:store_as</span></code> option.</p>
+attribute other than the name, by providing the <code class="docutils literal notranslate"><span class="pre">:store_as</span></code> option.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:albums</span><span class="p">,</span> <span class="ss">store_as</span><span class="p">:</span> <span class="s2">&quot;albs&quot;</span>
 <span class="k">end</span>
@@ -810,15 +811,15 @@ copy</a>
 </div>
 <div class="section" id="recursive-embedding">
 <h3>Recursive Embedding<a class="headerlink" href="#recursive-embedding" title="Permalink to this headline">¶</a></h3>
-<p>A document can recursively embed itself using <code class="docutils literal"><span class="pre">recursively_embeds_one</span></code> or
-<code class="docutils literal"><span class="pre">recursively_embeds_many</span></code>, which provides accessors for the parent and
-children via <code class="docutils literal"><span class="pre">parent_</span></code> and <code class="docutils literal"><span class="pre">child_</span></code> methods.</p>
+<p>A document can recursively embed itself using <code class="docutils literal notranslate"><span class="pre">recursively_embeds_one</span></code> or
+<code class="docutils literal notranslate"><span class="pre">recursively_embeds_many</span></code>, which provides accessors for the parent and
+children via <code class="docutils literal notranslate"><span class="pre">parent_</span></code> and <code class="docutils literal notranslate"><span class="pre">child_</span></code> methods.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tag</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tag</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">recursively_embeds_many</span>
@@ -870,7 +871,7 @@ help of MongoDB projection operation:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:started_on</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Date</span>
   <span class="n">embeds_one</span> <span class="ss">:label</span>
@@ -903,7 +904,7 @@ following models:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:tours</span>
   <span class="n">embeds_many</span> <span class="ss">:awards</span>
@@ -930,19 +931,19 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Get all bands that have toured since 2000</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all bands that have toured since 2000</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;tours.year&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 <p>To retrieve only documents of embedded associations, without retrieving
-top-level documents, use the <code class="docutils literal"><span class="pre">pluck</span></code> projection method:</p>
+top-level documents, use the <code class="docutils literal notranslate"><span class="pre">pluck</span></code> projection method:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Get awards for bands that have toured since 2000</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get awards for bands that have toured since 2000</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;tours.year&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">})</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:awards</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -966,8 +967,8 @@ The following operators are supported:</p>
 <li><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query-logical/">Logical operators</a>.</li>
 <li><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/exists/">$exists</a>
 (<a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/type/">$type</a> is not currently supported).</li>
-<li><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/regex/">$regex</a> (<code class="docutils literal"><span class="pre">$options</span></code> field
-is only supported when the <code class="docutils literal"><span class="pre">$regex</span></code> argument is a string).</li>
+<li><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/regex/">$regex</a> (<code class="docutils literal notranslate"><span class="pre">$options</span></code> field
+is only supported when the <code class="docutils literal notranslate"><span class="pre">$regex</span></code> argument is a string).</li>
 <li><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query-array/">Array query operators</a>.</li>
 </ul>
 <p>For example, using the model definitions just given, we could query
@@ -977,7 +978,7 @@ tours on a loaded band:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
 <span class="n">tours</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">})</span>
 </pre></div>
 </div>
@@ -996,17 +997,17 @@ behave the same regardless of the server version that backs the application.
 As such, it is possible for Mongoid to deviate from server behavior if
 the server itself behaves differently in different versions.</p>
 <p>As of this writing, the only known case of such deviation is 3.2 and
-earlier servers not validating <code class="docutils literal"><span class="pre">$size</span></code> arguments as strictly as
+earlier servers not validating <code class="docutils literal notranslate"><span class="pre">$size</span></code> arguments as strictly as
 newer versions do. Mongoid adopts the behavior of current server versions
 and validates more strictly.</p>
 </li>
-<li><p class="first">Mongoid DSL expands <code class="docutils literal"><span class="pre">Range</span></code> arguments to hashes with <code class="docutils literal"><span class="pre">$gte</span></code> and <code class="docutils literal"><span class="pre">$lte</span></code>
+<li><p class="first">Mongoid DSL expands <code class="docutils literal notranslate"><span class="pre">Range</span></code> arguments to hashes with <code class="docutils literal notranslate"><span class="pre">$gte</span></code> and <code class="docutils literal notranslate"><span class="pre">$lte</span></code>
 conditions. <a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4908">In some cases</a>
-this creates bogus queries. Embedded matchers raise the <code class="docutils literal"><span class="pre">InvalidQuery</span></code>
+this creates bogus queries. Embedded matchers raise the <code class="docutils literal notranslate"><span class="pre">InvalidQuery</span></code>
 exception in these cases. The operators that are known to be affected are
-<code class="docutils literal"><span class="pre">$elemMatch</span></code>, <code class="docutils literal"><span class="pre">$eq</span></code>, <code class="docutils literal"><span class="pre">$gt</span></code>, <code class="docutils literal"><span class="pre">$gte</span></code>, <code class="docutils literal"><span class="pre">$lt</span></code>, <code class="docutils literal"><span class="pre">$lte</span></code> and <code class="docutils literal"><span class="pre">$ne</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">$elemMatch</span></code>, <code class="docutils literal notranslate"><span class="pre">$eq</span></code>, <code class="docutils literal notranslate"><span class="pre">$gt</span></code>, <code class="docutils literal notranslate"><span class="pre">$gte</span></code>, <code class="docutils literal notranslate"><span class="pre">$lt</span></code>, <code class="docutils literal notranslate"><span class="pre">$lte</span></code> and <code class="docutils literal notranslate"><span class="pre">$ne</span></code>.</p>
 </li>
-<li><p class="first">When performing embedded matching with <code class="docutils literal"><span class="pre">$regex</span></code>, <a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4936">it is not currently
+<li><p class="first">When performing embedded matching with <code class="docutils literal notranslate"><span class="pre">$regex</span></code>, <a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4936">it is not currently
 possible</a> to specify a
 regular expression object as the pattern and also provide options.</p>
 </li>
@@ -1025,7 +1026,7 @@ functionality to the association. They are defined by providing a block to the a
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:addresses</span> <span class="k">do</span>
     <span class="k">def</span> <span class="nf">find_by_country</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
@@ -1053,7 +1054,7 @@ macro with some additional options to tell Mongoid how to hook them up.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Car</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Car</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_one</span> <span class="ss">:engine</span><span class="p">,</span> <span class="ss">class_name</span><span class="p">:</span> <span class="s2">&quot;Motor&quot;</span><span class="p">,</span> <span class="ss">inverse_of</span><span class="p">:</span> <span class="ss">:machine</span>
 <span class="k">end</span>
@@ -1069,14 +1070,14 @@ copy</a>
 <div class="section" id="custom-primary-foreign-keys">
 <h3>Custom Primary &amp; Foreign Keys<a class="headerlink" href="#custom-primary-foreign-keys" title="Permalink to this headline">¶</a></h3>
 <p>The fields used when looking up associations can be explicitly specified.
-The default is to use <code class="docutils literal"><span class="pre">id</span></code> on the “parent” association and <code class="docutils literal"><span class="pre">#{association_name}_id</span></code>
+The default is to use <code class="docutils literal notranslate"><span class="pre">id</span></code> on the “parent” association and <code class="docutils literal notranslate"><span class="pre">#{association_name}_id</span></code>
 on the “child” association, for example with a has_many/belongs_to:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Company</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Company</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_many</span> <span class="ss">:emails</span>
 <span class="k">end</span>
@@ -1092,15 +1093,15 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Specify a different <code class="docutils literal"><span class="pre">primary_key</span></code> to change the field name on the “parent”
-association and <code class="docutils literal"><span class="pre">foreign_key</span></code> to change the field name on the “child”
+<p>Specify a different <code class="docutils literal notranslate"><span class="pre">primary_key</span></code> to change the field name on the “parent”
+association and <code class="docutils literal notranslate"><span class="pre">foreign_key</span></code> to change the field name on the “child”
 association:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Company</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Company</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:c</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">has_many</span> <span class="ss">:emails</span><span class="p">,</span> <span class="ss">foreign_key</span><span class="p">:</span> <span class="s1">&#39;c_ref&#39;</span><span class="p">,</span> <span class="ss">primary_key</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span>
@@ -1125,14 +1126,14 @@ copy</a>
 sides of the association, there are 4 fields configurable when the association
 is defined:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">:primary_key</span></code> is the field on the remote model that contains the value
+<li><code class="docutils literal notranslate"><span class="pre">:primary_key</span></code> is the field on the remote model that contains the value
 by which the remote model is looked up.</li>
-<li><code class="docutils literal"><span class="pre">:foreign_key</span></code> is the field on the local model which stores the
-<code class="docutils literal"><span class="pre">:primary_key</span></code> values.</li>
-<li><code class="docutils literal"><span class="pre">:inverse_primary_key</span></code> is the field on the local model that the remote
+<li><code class="docutils literal notranslate"><span class="pre">:foreign_key</span></code> is the field on the local model which stores the
+<code class="docutils literal notranslate"><span class="pre">:primary_key</span></code> values.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:inverse_primary_key</span></code> is the field on the local model that the remote
 model uses to look up the local model docuemnts.</li>
-<li><code class="docutils literal"><span class="pre">:inverse_foreign_key</span></code> is the field on the remote model storing the
-values in <code class="docutils literal"><span class="pre">:inverse_primary_key</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:inverse_foreign_key</span></code> is the field on the remote model storing the
+values in <code class="docutils literal notranslate"><span class="pre">:inverse_primary_key</span></code>.</li>
 </ul>
 <p>An example might make this more clear:</p>
 <div class="button-code-block">
@@ -1140,7 +1141,7 @@ values in <code class="docutils literal"><span class="pre">:inverse_primary_key<
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Company</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Company</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:c_id</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
@@ -1178,8 +1179,8 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Note that just like with the default <code class="docutils literal"><span class="pre">#{association_name}_id</span></code> field,
-Mongoid automatically adds a field for the custom foreign key <code class="docutils literal"><span class="pre">c_ref</span></code> to
+<p>Note that just like with the default <code class="docutils literal notranslate"><span class="pre">#{association_name}_id</span></code> field,
+Mongoid automatically adds a field for the custom foreign key <code class="docutils literal notranslate"><span class="pre">c_ref</span></code> to
 the model. However, since Mongoid doesn’t know what type of data should be
 allowed in the field, the field is created with a type of Object. It is a
 good idea to explicitly define the field with the appropriate type.</p>
@@ -1187,14 +1188,14 @@ good idea to explicitly define the field with the appropriate type.</p>
 <div class="section" id="validations">
 <h3>Validations<a class="headerlink" href="#validations" title="Permalink to this headline">¶</a></h3>
 <p>It is important to note that by default, Mongoid will validate the children of any
-association that are loaded into memory via a <code class="docutils literal"><span class="pre">validates_associated</span></code>. The associations that
+association that are loaded into memory via a <code class="docutils literal notranslate"><span class="pre">validates_associated</span></code>. The associations that
 this applies to are:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">embeds_many</span></code></li>
-<li><code class="docutils literal"><span class="pre">embeds_one</span></code></li>
-<li><code class="docutils literal"><span class="pre">has_many</span></code></li>
-<li><code class="docutils literal"><span class="pre">has_one</span></code></li>
-<li><code class="docutils literal"><span class="pre">has_and_belongs_to_many</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">embeds_many</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">embeds_one</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">has_many</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">has_one</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code></li>
 </ul>
 <p>If you do not want this behavior, you may turn it off when defining the association.</p>
 <div class="button-code-block">
@@ -1202,7 +1203,7 @@ this applies to are:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">embeds_many</span> <span class="ss">:addresses</span><span class="p">,</span> <span class="ss">validate</span><span class="p">:</span> <span class="kp">false</span>
@@ -1223,7 +1224,7 @@ have managers as follows:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Department</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Department</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">has_one</span> <span class="ss">:manager</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:unit</span>
@@ -1260,7 +1261,7 @@ polymorphic association:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Product</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Product</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -1291,8 +1292,8 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>To define a polymorphic association, specify the <code class="docutils literal"><span class="pre">polymorphic:</span> <span class="pre">true</span></code> option
-on the child association and add the <code class="docutils literal"><span class="pre">as:</span> <span class="pre">:association_name</span></code> option to the
+<p>To define a polymorphic association, specify the <code class="docutils literal notranslate"><span class="pre">polymorphic:</span> <span class="pre">true</span></code> option
+on the child association and add the <code class="docutils literal notranslate"><span class="pre">as:</span> <span class="pre">:association_name</span></code> option to the
 parent association.</p>
 <p>Note that Mongoid currently supports polymorphism only in one direction - from
 the child to the parent. For example, polymorphism cannot be used to specify
@@ -1302,7 +1303,7 @@ that a bundle may contain other bundles or products:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Bundle</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Bundle</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="c1"># Does not work:</span>
@@ -1311,7 +1312,7 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">has_and_belongs_to_many</span></code> associations do not support polymorphism.</p>
+<p><code class="docutils literal notranslate"><span class="pre">has_and_belongs_to_many</span></code> associations do not support polymorphism.</p>
 </div>
 <div class="section" id="cascading-callbacks">
 <h3>Cascading Callbacks<a class="headerlink" href="#cascading-callbacks" title="Permalink to this headline">¶</a></h3>
@@ -1323,7 +1324,7 @@ to the association.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">Band</span>
    <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
    <span class="n">embeds_many</span> <span class="ss">:albums</span><span class="p">,</span> <span class="ss">cascade_callbacks</span><span class="p">:</span> <span class="kp">true</span>
    <span class="n">embeds_one</span> <span class="ss">:label</span><span class="p">,</span> <span class="ss">cascade_callbacks</span><span class="p">:</span> <span class="kp">true</span>
@@ -1340,13 +1341,13 @@ copy</a>
 how to handle situations where one side of the association is deleted, or is attempted
 to be deleted. The options are as follows:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">:delete_all</span></code>: Delete the child document(s) without running any of the model callbacks.</li>
-<li><code class="docutils literal"><span class="pre">:destroy</span></code>: Destroy the child document(s) and run all of the model callbacks.</li>
-<li><code class="docutils literal"><span class="pre">:nullify</span></code>: Set the foreign key field of the child document to nil. The child may become orphaned if it is ordinarily only referenced via the parent.</li>
-<li><code class="docutils literal"><span class="pre">:restrict_with_exception</span></code>: <code class="docutils literal"><span class="pre">raise</span></code> an error if the child is not empty.</li>
-<li><code class="docutils literal"><span class="pre">:restrict_with_error</span></code>: Cancel operation and return false if the child is not empty.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:delete_all</span></code>: Delete the child document(s) without running any of the model callbacks.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:destroy</span></code>: Destroy the child document(s) and run all of the model callbacks.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:nullify</span></code>: Set the foreign key field of the child document to nil. The child may become orphaned if it is ordinarily only referenced via the parent.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:restrict_with_exception</span></code>: <code class="docutils literal notranslate"><span class="pre">raise</span></code> an error if the child is not empty.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:restrict_with_error</span></code>: Cancel operation and return false if the child is not empty.</li>
 </ul>
-<p>If no <code class="docutils literal"><span class="pre">:dependent</span></code> option is provided, deleting the parent record leaves the child record unmodified
+<p>If no <code class="docutils literal notranslate"><span class="pre">:dependent</span></code> option is provided, deleting the parent record leaves the child record unmodified
 (in other words, the child record continues to reference the now deleted parent record via the foreign key field).
 The child may become orphaned if it is ordinarily only referenced via the parent.</p>
 <div class="button-code-block">
@@ -1354,7 +1355,7 @@ The child may become orphaned if it is ordinarily only referenced via the parent
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_many</span> <span class="ss">:albums</span><span class="p">,</span> <span class="ss">dependent</span><span class="p">:</span> <span class="ss">:delete_all</span>
   <span class="n">belongs_to</span> <span class="ss">:label</span><span class="p">,</span> <span class="ss">dependent</span><span class="p">:</span> <span class="ss">:nullify</span>
@@ -1388,13 +1389,13 @@ non-embedded associations. This is for performance reasons.</p>
 this since they are actually part of the parent in the database) add the autosave
 option to the association.</p>
 <p>Note that autosave functionality will automatically be added to an association when using
-<code class="docutils literal"><span class="pre">accepts_nested_attributes_for</span></code> or validating presence of the association.</p>
+<code class="docutils literal notranslate"><span class="pre">accepts_nested_attributes_for</span></code> or validating presence of the association.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_many</span> <span class="ss">:albums</span><span class="p">,</span> <span class="ss">autosave</span><span class="p">:</span> <span class="kp">true</span>
 <span class="k">end</span>
@@ -1408,14 +1409,14 @@ copy</a>
 </div>
 <div class="section" id="existence-predicates">
 <h3>Existence Predicates<a class="headerlink" href="#existence-predicates" title="Permalink to this headline">¶</a></h3>
-<p>All associations have existence predicates on them in the form of <code class="docutils literal"><span class="pre">name?</span></code> and <code class="docutils literal"><span class="pre">has_name?</span></code>
+<p>All associations have existence predicates on them in the form of <code class="docutils literal notranslate"><span class="pre">name?</span></code> and <code class="docutils literal notranslate"><span class="pre">has_name?</span></code>
 to check if the association is blank.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_one</span> <span class="ss">:label</span>
   <span class="n">embeds_many</span> <span class="ss">:albums</span>
@@ -1431,14 +1432,14 @@ copy</a>
 </div>
 <div class="section" id="autobuilding">
 <h3>Autobuilding<a class="headerlink" href="#autobuilding" title="Permalink to this headline">¶</a></h3>
-<p>One to one associations (<code class="docutils literal"><span class="pre">embeds_one</span></code>, <code class="docutils literal"><span class="pre">has_one</span></code>) have an autobuild option which tells
-Mongoid to instantiate a new document when the association is accessed and it is <code class="docutils literal"><span class="pre">nil</span></code>.</p>
+<p>One to one associations (<code class="docutils literal notranslate"><span class="pre">embeds_one</span></code>, <code class="docutils literal notranslate"><span class="pre">has_one</span></code>) have an autobuild option which tells
+Mongoid to instantiate a new document when the association is accessed and it is <code class="docutils literal notranslate"><span class="pre">nil</span></code>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_one</span> <span class="ss">:label</span><span class="p">,</span> <span class="ss">autobuild</span><span class="p">:</span> <span class="kp">true</span>
   <span class="n">has_one</span> <span class="ss">:producer</span><span class="p">,</span> <span class="ss">autobuild</span><span class="p">:</span> <span class="kp">true</span>
@@ -1453,15 +1454,15 @@ copy</a>
 </div>
 <div class="section" id="touching">
 <h3>Touching<a class="headerlink" href="#touching" title="Permalink to this headline">¶</a></h3>
-<p>Any <code class="docutils literal"><span class="pre">belongs_to</span></code> association, no matter where it hangs off from, can take an optional <code class="docutils literal"><span class="pre">:touch</span></code>
-option which will call the touch method on it and any parent associations with the option defined
-when the base document calls <code class="docutils literal"><span class="pre">#touch</span></code>.</p>
+<p>Any <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> association can take an optional <code class="docutils literal notranslate"><span class="pre">:touch</span></code> option which
+will cause the parent document be touched whenever the child document is
+touched:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">belongs_to</span> <span class="ss">:label</span><span class="p">,</span> <span class="ss">touch</span><span class="p">:</span> <span class="kp">true</span>
 <span class="k">end</span>
@@ -1471,21 +1472,57 @@ copy</a>
 </pre></div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">:touch</span></code> can also take a string or symbol argument specifying a field to
+be touched on the parent association in addition to updated_at:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Label</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Timestamps</span>
+  <span class="n">field</span> <span class="ss">:bands_updated_at</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span>
+  <span class="n">has_many</span> <span class="ss">:bands</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">belongs_to</span> <span class="ss">:label</span><span class="p">,</span> <span class="ss">touch</span><span class="p">:</span> <span class="ss">:bands_updated_at</span>
+<span class="k">end</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="no">Label</span><span class="o">.</span><span class="n">create!</span>
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">label</span><span class="p">:</span> <span class="n">label</span><span class="p">)</span>
+
+<span class="n">band</span><span class="o">.</span><span class="n">touch</span> <span class="c1"># Updates updated_at and bands_updated_at on the label.</span>
+</pre></div>
+</div>
+</div>
+<p>When an embedded document is touched, its parents are recursively touched
+through the composition root (because all of the parents are necessarily saved
+when the embedded document is saved). The <code class="docutils literal notranslate"><span class="pre">:touch</span></code> attribute therefore is
+unnecessary on <code class="docutils literal notranslate"><span class="pre">embedded_in</span></code> associations.</p>
+<p>Mongoid currently <a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-5014">does not support specifying an additional field to be
+touched on an embedded_in association</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">:touch</span></code> should not be set to <code class="docutils literal notranslate"><span class="pre">false</span></code> on an <code class="docutils literal notranslate"><span class="pre">embedded_in</span></code> association,
+since composition hierarchy is always updated upon a touch of an embedded
+document. This is currently not enforced but enforcement is <a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-5016">intended in the
+future</a>.</p>
 </div>
 <div class="section" id="the-counter-cache-option">
 <h3>The counter_cache Option<a class="headerlink" href="#the-counter-cache-option" title="Permalink to this headline">¶</a></h3>
-<p>As with ActiveRecord, the <code class="docutils literal"><span class="pre">:counter_cache</span></code> option can be used on an association
+<p>As with ActiveRecord, the <code class="docutils literal notranslate"><span class="pre">:counter_cache</span></code> option can be used on an association
 to make finding the number of belonging objects more efficient. Also similar
 to ActiveRecord, you must take into account that there will be an extra
 attribute on the associated model. This means that with Mongoid,
-you need to include <code class="docutils literal"><span class="pre">Mongoid::Attributes::Dynamic</span></code> on the associated model.
+you need to include <code class="docutils literal notranslate"><span class="pre">Mongoid::Attributes::Dynamic</span></code> on the associated model.
 For example:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Order</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Order</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">belongs_to</span> <span class="ss">:customer</span><span class="p">,</span> <span class="ss">counter_cache</span><span class="p">:</span> <span class="kp">true</span>
 <span class="k">end</span>
@@ -1495,6 +1532,53 @@ copy</a>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Attributes</span><span class="o">::</span><span class="no">Dynamic</span>
   <span class="n">has_many</span> <span class="ss">:orders</span>
 <span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="association-proxies">
+<h3>Association Proxies<a class="headerlink" href="#association-proxies" title="Permalink to this headline">¶</a></h3>
+<p>Associations employ transparent proxies to the target objects. This can
+cause surprising behavior in some situations.</p>
+<p>The method visibility may be lost when methods on association targets are
+accessed, depending on the association:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Order</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">belongs_to</span> <span class="ss">:customer</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">internal_status</span>
+    <span class="s1">&#39;new&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Customer</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">has_many</span> <span class="ss">:orders</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">internal_id</span>
+    <span class="mi">42</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">order</span> <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">new</span>
+<span class="n">customer</span> <span class="o">=</span> <span class="no">Customer</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">orders</span><span class="p">:</span> <span class="o">[</span><span class="n">order</span><span class="o">]</span><span class="p">)</span>
+
+<span class="c1"># has_many does not permit calling private methods on the target</span>
+<span class="n">customer</span><span class="o">.</span><span class="n">orders</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">internal_status</span>
+<span class="c1"># NoMethodError (private method `internal_status&#39; called for #&lt;Order:0x000055af2ec46c50&gt;)</span>
+
+<span class="c1"># belongs_to permits calling private methods on the target</span>
+<span class="n">order</span><span class="o">.</span><span class="n">customer</span><span class="o">.</span><span class="n">internal_id</span>
+<span class="c1"># =&gt; 42</span>
 </pre></div>
 </div>
 </div>
@@ -1510,7 +1594,7 @@ question, and is a valuable tool for third party developers to use to extend Mon
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Get the metadata for a named association from the class or document.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the metadata for a named association from the class or document.</span>
 <span class="no">Model</span><span class="o">.</span><span class="n">reflect_on_association</span><span class="p">(</span><span class="ss">:association_name</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">reflect_on_association</span><span class="p">(</span><span class="ss">:association_name</span><span class="p">)</span>
 
@@ -1522,15 +1606,15 @@ copy</a>
 </div>
 <div class="section" id="attributes">
 <h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
-<p>All associations contain a <code class="docutils literal"><span class="pre">_target</span></code>, which is the proxied document or documents, a <code class="docutils literal"><span class="pre">_base</span></code>
-which is the document the association hangs off, and <code class="docutils literal"><span class="pre">_association</span></code> which provides information
+<p>All associations contain a <code class="docutils literal notranslate"><span class="pre">_target</span></code>, which is the proxied document or documents, a <code class="docutils literal notranslate"><span class="pre">_base</span></code>
+which is the document the association hangs off, and <code class="docutils literal notranslate"><span class="pre">_association</span></code> which provides information
 about the association.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">embeds_many</span> <span class="ss">:addresses</span>
 <span class="k">end</span>
@@ -1558,115 +1642,115 @@ with, and is useful for developers of extensions to Mongoid.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#as</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#as</span></code></td>
 <td>Returns the name of the parent to a polymorphic child.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#as?</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#as?</span></code></td>
 <td>Returns whether or not an as option exists.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#autobuilding?</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#autobuilding?</span></code></td>
 <td>Returns whether or not the association is autobuilding.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#autosaving?</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#autosaving?</span></code></td>
 <td>Returns whether or not the association is autosaving.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#cascading_callbacks?</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#cascading_callbacks?</span></code></td>
 <td>Returns whether the association has callbacks cascaded down from the parent.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#class_name</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#class_name</span></code></td>
 <td>Returns the class name of the proxied document.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#cyclic?</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#cyclic?</span></code></td>
 <td>Returns whether the association is a cyclic association.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#dependent</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#dependent</span></code></td>
 <td>Returns the association’s dependent option.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#destructive?</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#destructive?</span></code></td>
 <td>Returns true if the association has a dependent delete or destroy.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#embedded?</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#embedded?</span></code></td>
 <td>Returns whether the association is embedded in another document.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#forced_nil_inverse?</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#forced_nil_inverse?</span></code></td>
 <td>Returns whether the association has a nil inverse defined.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#foreign_key</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#foreign_key</span></code></td>
 <td>Returns the name of the foreign key field.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#foreign_key_check</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#foreign_key_check</span></code></td>
 <td>Returns the name of the foreign key field dirty check method.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#foreign_key_setter</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#foreign_key_setter</span></code></td>
 <td>Returns the name of the foreign key field setter.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#indexed?</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#indexed?</span></code></td>
 <td>Returns whether the foreign key is auto indexed.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#inverses</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#inverses</span></code></td>
 <td>Returns the names of all inverse association.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#inverse</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse</span></code></td>
 <td>Returns the name of a single inverse association.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#inverse_class_name</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse_class_name</span></code></td>
 <td>Returns the class name of the association on the inverse side.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#inverse_foreign_key</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse_foreign_key</span></code></td>
 <td>Returns the name of the foreign key field on the inverse side.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#inverse_klass</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse_klass</span></code></td>
 <td>Returns the class of the association on the inverse side.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#inverse_association</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse_association</span></code></td>
 <td>Returns the metadata of the association on the inverse side.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#inverse_of</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse_of</span></code></td>
 <td>Returns the explicitly defined name of the inverse association.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#inverse_setter</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse_setter</span></code></td>
 <td>Returns the name of the method used to set the inverse.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#inverse_type</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse_type</span></code></td>
 <td>Returns the name for the polymorphic type field of the inverse.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#inverse_type_setter</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#inverse_type_setter</span></code></td>
 <td>Returns the name for the polymorphic type field setter of the inverse.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#key</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#key</span></code></td>
 <td>Returns the name of the field in the attributes hash to use to get the association.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#klass</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#klass</span></code></td>
 <td>Returns the class of the proxied documents in the association.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#name</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#name</span></code></td>
 <td>Returns the association name.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#options</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#options</span></code></td>
 <td>Returns self, for API compatibility with Active Record.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#order</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#order</span></code></td>
 <td>Returns the custom sorting options on the association.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#polymorphic?</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#polymorphic?</span></code></td>
 <td>Returns whether the association is polymorphic.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#setter</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#setter</span></code></td>
 <td>Returns the name of the field to set the association.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#store_as</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#store_as</span></code></td>
 <td>Returns the name of the attribute to store an embedded association in.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#touchable?</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#touchable?</span></code></td>
 <td>Returns whether or not the association has a touch option.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#type</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#type</span></code></td>
 <td>Returns the name of the field to get the polymorphic type.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Association#type_setter</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Association#type_setter</span></code></td>
 <td>Returns the name of the field to set the polymorphic type.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Association#validate?</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Association#validate?</span></code></td>
 <td>Returns whether the association has an associated validation.</td>
 </tr>
 </tbody>
@@ -1683,7 +1767,7 @@ referenced associations:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">has_many</span> <span class="ss">:tours</span>
   <span class="n">has_many</span> <span class="ss">:awards</span>
@@ -1711,7 +1795,7 @@ could do the following:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">band_ids</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band_ids</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span>
   <span class="p">{</span><span class="s1">&#39;$lookup&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="ss">from</span><span class="p">:</span> <span class="s1">&#39;tours&#39;</span><span class="p">,</span>
     <span class="ss">localField</span><span class="p">:</span> <span class="s1">&#39;_id&#39;</span><span class="p">,</span>
@@ -1735,9 +1819,9 @@ copy</a>
 </div>
 </div>
 <p>Note that the aggregation pipeline, since it is implemented by the Ruby driver
-for MongoDB and not Mongoid, returns raw <code class="docutils literal"><span class="pre">BSON::Document</span></code> objects rather than
-<code class="docutils literal"><span class="pre">Mongoid::Document</span></code> model instances. The above example projects only
-the <code class="docutils literal"><span class="pre">_id</span></code> field which is then used to load full models. An alternative is
+for MongoDB and not Mongoid, returns raw <code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code> objects rather than
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Document</span></code> model instances. The above example projects only
+the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field which is then used to load full models. An alternative is
 to not perform such a projection and work with raw fields, which would eliminate
 having to send the list of document ids to Mongoid in the second query
 (which could be large).</p>
@@ -1752,16 +1836,16 @@ are supported:</p>
 <li><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/">$unwind</a></li>
 </ul>
 <p>To construct a pipeline, call the corresponding aggregation pipeine methods
-on a <code class="docutils literal"><span class="pre">Criteria</span></code> instance. Aggregation pipeline operations are added to the
-<code class="docutils literal"><span class="pre">pipeline</span></code> attribute of the <code class="docutils literal"><span class="pre">Criteria</span></code> instance. To execute the pipeline,
-pass the <code class="docutils literal"><span class="pre">pipeline</span></code> attribute value to <code class="docutils literal"><span class="pre">Collection#aggragegate</span></code> method.</p>
+on a <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> instance. Aggregation pipeline operations are added to the
+<code class="docutils literal notranslate"><span class="pre">pipeline</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> instance. To execute the pipeline,
+pass the <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> attribute value to <code class="docutils literal notranslate"><span class="pre">Collection#aggragegate</span></code> method.</p>
 <p>For example, given the following models:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tour</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tour</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">embeds_many</span> <span class="ss">:participants</span>
@@ -1786,7 +1870,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;participants.name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Serenity&#39;</span><span class="p">,)</span><span class="o">.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;participants.name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Serenity&#39;</span><span class="p">,)</span><span class="o">.</span>
   <span class="n">unwind</span><span class="p">(</span><span class="ss">:states</span><span class="p">)</span><span class="o">.</span>
   <span class="n">group</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="ss">:states</span><span class="o">.</span><span class="n">add_to_set</span> <span class="o">=&gt;</span> <span class="s1">&#39;$states&#39;</span><span class="p">)</span><span class="o">.</span>
   <span class="n">project</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">states</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
@@ -1803,14 +1887,14 @@ copy</a>
 </div>
 <div class="section" id="id14">
 <h4>group<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
-<p>The <code class="docutils literal"><span class="pre">group</span></code> method adds a <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/group/">$group aggregation pipeline stage</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">group</span></code> method adds a <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/group/">$group aggregation pipeline stage</a>.</p>
 <p>The field expressions support Mongoid symbol-operator syntax:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="ss">:states</span><span class="o">.</span><span class="n">add_to_set</span> <span class="o">=&gt;</span> <span class="s1">&#39;$states&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="ss">:states</span><span class="o">.</span><span class="n">add_to_set</span> <span class="o">=&gt;</span> <span class="s1">&#39;$states&#39;</span><span class="p">)</span>
 <span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span>
 <span class="c1"># =&gt; [{&quot;$group&quot;=&gt;{&quot;_id&quot;=&gt;&quot;states&quot;, &quot;states&quot;=&gt;{&quot;$addToSet&quot;=&gt;&quot;$states&quot;}}}]</span>
 </pre></div>
@@ -1822,21 +1906,21 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="ss">states</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$addtoSet&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;$states&#39;</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="ss">states</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$addtoSet&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;$states&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="id15">
 <h4>project<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
-<p>The <code class="docutils literal"><span class="pre">project</span></code> method adds a <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/project/">$project aggregation pipeline stage</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">project</span></code> method adds a <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/project/">$project aggregation pipeline stage</a>.</p>
 <p>The argument should be a Hash specifying the projection:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">states</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">states</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span>
 <span class="c1"># =&gt; [{&quot;$project&quot;=&gt;{&quot;_id&quot;=&gt;0, &quot;states&quot;=&gt;1}}]</span>
 </pre></div>
@@ -1845,15 +1929,15 @@ copy</a>
 </div>
 <div class="section" id="unwind-dsl">
 <span id="id16"></span><h4>unwind<a class="headerlink" href="#unwind-dsl" title="Permalink to this headline">¶</a></h4>
-<p>The <code class="docutils literal"><span class="pre">unwind</span></code> method adds an <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/">$unwind aggregation pipeline stage</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">unwind</span></code> method adds an <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/">$unwind aggregation pipeline stage</a>.</p>
 <p>The argument can be a field name, specifyable as a symbol or a string, or
-a Hash or a <code class="docutils literal"><span class="pre">BSON::Document</span></code> instance:</p>
+a Hash or a <code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code> instance:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">unwind</span><span class="p">(</span><span class="ss">:states</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">unwind</span><span class="p">(</span><span class="ss">:states</span><span class="p">)</span>
 <span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">unwind</span><span class="p">(</span><span class="s1">&#39;states&#39;</span><span class="p">)</span>
 <span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span>
 <span class="c1"># =&gt; [{&quot;$unwind&quot;=&gt;&quot;$states&quot;}]</span>
