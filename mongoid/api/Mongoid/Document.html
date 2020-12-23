@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Document
   
-    &mdash; mongoid-7.2.0.rc1
+    &mdash; mongoid-7.3.0.alpha
   
 </title>
 
@@ -199,7 +199,7 @@
   
   <h3 class="inherited">Constants included
      from <span class='object_link'><a href="Fields.html" title="Mongoid::Fields (module)">Fields</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Fields.html#IDS-constant" title="Mongoid::Fields::IDS (constant)">Fields::IDS</a></span>, <span class='object_link'><a href="Fields.html#StringifiedSymbol-constant" title="Mongoid::Fields::StringifiedSymbol (constant)">Fields::StringifiedSymbol</a></span>, <span class='object_link'><a href="Fields.html#TYPE_MAPPINGS-constant" title="Mongoid::Fields::TYPE_MAPPINGS (constant)">Fields::TYPE_MAPPINGS</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Fields.html#Boolean-constant" title="Mongoid::Fields::Boolean (constant)">Fields::Boolean</a></span>, <span class='object_link'><a href="Fields.html#IDS-constant" title="Mongoid::Fields::IDS (constant)">Fields::IDS</a></span>, <span class='object_link'><a href="Fields.html#StringifiedSymbol-constant" title="Mongoid::Fields::StringifiedSymbol (constant)">Fields::StringifiedSymbol</a></span>, <span class='object_link'><a href="Fields.html#TYPE_MAPPINGS-constant" title="Mongoid::Fields::TYPE_MAPPINGS (constant)">Fields::TYPE_MAPPINGS</a></span></p>
 
   
   
@@ -1671,7 +1671,8 @@
 247
 248
 249
-250</pre>
+250
+251</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 224</span>
@@ -1684,8 +1685,9 @@
   <span class='id identifier rubyid_became'>became</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_clone_document'>clone_document</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid__id'>_id</span> <span class='op'>=</span> <span class='id identifier rubyid__id'>_id</span>
   <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@changed_attributes</span><span class='comma'>,</span> <span class='id identifier rubyid_changed_attributes'>changed_attributes</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@errors</span><span class='comma'>,</span> <span class='const'>ActiveModel</span><span class='op'>::</span><span class='const'>Errors</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_became'>became</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@messages</span><span class='comma'>,</span> <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='symbol'>:@messages</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new_errors'>new_errors</span> <span class='op'>=</span> <span class='const'>ActiveModel</span><span class='op'>::</span><span class='const'>Errors</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_became'>became</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new_errors'>new_errors</span><span class='period'>.</span><span class='id identifier rubyid_copy!'>copy!</span><span class='lparen'>(</span><span class='id identifier rubyid_errors'>errors</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@errors</span><span class='comma'>,</span> <span class='id identifier rubyid_new_errors'>new_errors</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@new_record</span><span class='comma'>,</span> <span class='id identifier rubyid_new_record?'>new_record?</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@destroyed</span><span class='comma'>,</span> <span class='id identifier rubyid_destroyed?'>destroyed?</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_became'>became</span><span class='period'>.</span><span class='id identifier rubyid_changed_attributes'>changed_attributes</span><span class='lbracket'>[</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_value'>discriminator_value</span>
@@ -2449,12 +2451,12 @@
       <pre class="lines">
 
 
-261
 262
-263</pre>
+263
+264</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 261</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 262</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_ary'>to_ary</span>
   <span class='kw'>nil</span>
@@ -2544,7 +2546,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_key'>to_key</span>
-  <span class='lparen'>(</span><span class='id identifier rubyid_persisted?'>persisted?</span> <span class='op'>||</span> <span class='id identifier rubyid_destroyed?'>destroyed?</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_persisted?'>persisted?</span> <span class='op'>||</span> <span class='id identifier rubyid_destroyed?'>destroyed?</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='lbracket'>[</span> <span class='id identifier rubyid__id'>_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2556,7 +2558,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Nov 16 13:14:09 2020 by
+  Generated on Wed Dec 23 02:21:46 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.2).
 </div>

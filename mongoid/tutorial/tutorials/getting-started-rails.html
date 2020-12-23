@@ -117,9 +117,18 @@
           
           <li>
           
+            <a class="version-selector" href="#" data-path="mongoid/7.2">
+              
+              Version 7.2 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
             <a class="version-selector" href="#" data-path="mongoid/7.1">
               
-              Version 7.1 (current)
+              Version 7.1
             </a>
           </li>
         
@@ -181,7 +190,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
 
 
     </div>
@@ -224,18 +233,17 @@
 <li><a class="reference internal" href="#run-application" id="id14">Run Application</a></li>
 <li><a class="reference internal" href="#add-posts" id="id15">Add Posts</a></li>
 <li><a class="reference internal" href="#add-comments" id="id16">Add Comments</a></li>
-<li><a class="reference internal" href="#source-code" id="id17">Source Code</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#existing-application" id="id18">Existing Application</a><ul>
-<li><a class="reference internal" href="#dependencies" id="id19">Dependencies</a></li>
-<li><a class="reference internal" href="#loaded-frameworks" id="id20">Loaded Frameworks</a></li>
-<li><a class="reference internal" href="#activerecord-configuration" id="id21">ActiveRecord Configuration</a></li>
-<li><a class="reference internal" href="#stop-spring" id="id22">Stop Spring</a></li>
-<li><a class="reference internal" href="#mongoid-configuration" id="id23">Mongoid Configuration</a></li>
-<li><a class="reference internal" href="#adjust-models" id="id24">Adjust Models</a></li>
-<li><a class="reference internal" href="#data-migration" id="id25">Data Migration</a></li>
-<li><a class="reference internal" href="#rails-api" id="id26">Rails API</a></li>
+<li><a class="reference internal" href="#existing-application" id="id17">Existing Application</a><ul>
+<li><a class="reference internal" href="#dependencies" id="id18">Dependencies</a></li>
+<li><a class="reference internal" href="#loaded-frameworks" id="id19">Loaded Frameworks</a></li>
+<li><a class="reference internal" href="#activerecord-configuration" id="id20">ActiveRecord Configuration</a></li>
+<li><a class="reference internal" href="#stop-spring" id="id21">Stop Spring</a></li>
+<li><a class="reference internal" href="#mongoid-configuration" id="id22">Mongoid Configuration</a></li>
+<li><a class="reference internal" href="#adjust-models" id="id23">Adjust Models</a></li>
+<li><a class="reference internal" href="#data-migration" id="id24">Data Migration</a></li>
+<li><a class="reference internal" href="#rails-api" id="id25">Rails API</a></li>
 </ul>
 </li>
 </ul>
@@ -246,6 +254,8 @@
 for data access. The application will be similar to the blog application
 described in the <a class="reference external" href="https://guides.rubyonrails.org/getting_started.html#creating-the-blog-application">Ruby on Rails Getting Started</a>
 guide, however using Mongoid instead of ActiveRecord as the database adapter.</p>
+<p>The complete source code for this application can be found in the
+<a class="reference external" href="https://github.com/mongoid/mongoid-demo/tree/master/rails">mongoid-demo GitHub repository</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This guide assumes basic familiarity with Ruby on Rails.
@@ -633,11 +643,6 @@ copy</a>
 <p>You should now be able to leave comments for the posts:</p>
 <img alt="Screenshot of the blog with a new comment being added" src="../_images/rails-blog-new-comment.png" />
 </div>
-<div class="section" id="source-code">
-<h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
-<p>The complete source code for this application can be found in the
-<a class="reference external" href="https://github.com/mongoid/mongoid-demo/tree/master/rails">mongoid-demo GitHub repository</a>.</p>
-</div>
 </div>
 <div class="section" id="existing-application">
 <h2>Existing Application<a class="headerlink" href="#existing-application" title="Permalink to this headline">¶</a></h2>
@@ -852,8 +857,8 @@ on migrating from an RDBMS to MongoDB.</p>
 as when creating a regular application, with the only change being the
 <code class="docutils literal notranslate"><span class="pre">--api</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">rails</span> <span class="pre">new</span></code>. Migrating a Rails API application to
 Mongoid follows the same process described above for regular Rails applications.</p>
-<p>A complete Rails API application using Mongoid can be found in the
-<a class="reference external" href="https://github.com/mongoid/mongoid-demo/tree/master/rails-api">mongoid-demo GitHub repository</a>.</p>
+<p>A complete Rails API application similar to the one described in this tutorial
+can be found in the <a class="reference external" href="https://github.com/mongoid/mongoid-demo/tree/master/rails-api">mongoid-demo GitHub repository</a>.</p>
 </div>
 </div>
 </div>

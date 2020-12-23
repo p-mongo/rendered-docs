@@ -6,7 +6,7 @@
 <title>
   Class: Mongoid::QueryCache::Middleware
   
-    &mdash; mongoid-7.2.0.rc1
+    &mdash; mongoid-7.3.0.alpha
   
 </title>
 
@@ -241,7 +241,7 @@
       
         &mdash;
         <div class='inline'>
-<p>The rack applciation stack.</p>
+<p>The rack application stack.</p>
 </div>
       
     </li>
@@ -271,12 +271,12 @@
       <pre class="lines">
 
 
-134
-135
-136</pre>
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 137</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_app'>app</span><span class='rparen'>)</span>
   <span class='ivar'>@app</span> <span class='op'>=</span> <span class='id identifier rubyid_app'>app</span>
@@ -385,17 +385,21 @@
       <pre class="lines">
 
 
-148
-149
-150
 151
-152</pre>
+152
+153
+154
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/query_cache.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
-  <span class='const'><span class='object_link'><a href="../QueryCache.html" title="Mongoid::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cache'><span class='object_link'><a href="../QueryCache.html#cache-class_method" title="Mongoid::QueryCache.cache (method)">cache</a></span></span> <span class='lbrace'>{</span> <span class='ivar'>@app</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='const'><span class='object_link'><a href="../QueryCache.html" title="Mongoid::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cache'><span class='object_link'><a href="../QueryCache.html#cache-class_method" title="Mongoid::QueryCache.cache (method)">cache</a></span></span> <span class='kw'>do</span>
+    <span class='ivar'>@app</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>ensure</span>
   <span class='const'><span class='object_link'><a href="../QueryCache.html" title="Mongoid::QueryCache (module)">QueryCache</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clear_cache'><span class='object_link'><a href="../QueryCache.html#clear_cache-class_method" title="Mongoid::QueryCache.clear_cache (method)">clear_cache</a></span></span>
 <span class='kw'>end</span></pre>
@@ -409,7 +413,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Nov 16 13:14:20 2020 by
+  Generated on Wed Dec 23 02:21:57 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.2).
 </div>

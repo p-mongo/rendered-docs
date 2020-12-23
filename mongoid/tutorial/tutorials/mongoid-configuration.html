@@ -117,9 +117,18 @@
           
           <li>
           
+            <a class="version-selector" href="#" data-path="mongoid/7.2">
+              
+              Version 7.2 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
             <a class="version-selector" href="#" data-path="mongoid/7.1">
               
-              Version 7.1 (current)
+              Version 7.1
             </a>
           </li>
         
@@ -181,7 +190,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
 
 
     </div>
@@ -980,6 +989,11 @@ copy</a>
 </div>
 <div class="section" id="query-cache-middleware">
 <span id="id5"></span><h2>Query Cache Middleware<a class="headerlink" href="#query-cache-middleware" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When used with Ruby driver version 2.15 or newer, Mongoid’s query cache
+middleware delegates to <span class="xref std std-ref">the driver’s query cache middleware</span>.</p>
+</div>
 <p>Mongoid provides a Rack middleware which enables the <a class="reference internal" href="mongoid-queries.html#query-cache"><span class="std std-ref">query cache</span></a> for the duration of each web request. Below is an example of
 how to enable the query cache middleware in a Ruby on Rails application:</p>
 <div class="button-code-block">

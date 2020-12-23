@@ -117,9 +117,18 @@
           
           <li>
           
+            <a class="version-selector" href="#" data-path="mongoid/7.2">
+              
+              Version 7.2 (current)
+            </a>
+          </li>
+        
+          
+          <li>
+          
             <a class="version-selector" href="#" data-path="mongoid/7.1">
               
-              Version 7.1 (current)
+              Version 7.1
             </a>
           </li>
         
@@ -181,7 +190,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
 
 
     </div>
@@ -213,50 +222,52 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#storage" id="id3">Storage</a></li>
-<li><a class="reference internal" href="#fields" id="id4">Fields</a><ul>
-<li><a class="reference internal" href="#the-stringifiedsymbol-type" id="id5">The StringifiedSymbol Type</a></li>
-<li><a class="reference internal" href="#updating-container-fields" id="id6">Updating Container Fields</a></li>
-<li><a class="reference internal" href="#accessing-field-values" id="id7">Accessing Field Values</a></li>
-<li><a class="reference internal" href="#hash-fields" id="id8">Hash Fields</a></li>
-<li><a class="reference internal" href="#date-fields" id="id9">Date Fields</a></li>
-<li><a class="reference internal" href="#datetime-fields" id="id10">DateTime Fields</a></li>
-<li><a class="reference internal" href="#regular-expression-fields" id="id11">Regular Expression Fields</a></li>
-<li><a class="reference internal" href="#defaults" id="id12">Defaults</a></li>
-<li><a class="reference internal" href="#aliasing-fields" id="id13">Aliasing Fields</a></li>
-<li><a class="reference internal" href="#custom-fields" id="id14">Custom Fields</a></li>
-<li><a class="reference internal" href="#reserved-names" id="id15">Reserved Names</a></li>
-<li><a class="reference internal" href="#field-redefinition" id="id16">Field Redefinition</a></li>
-<li><a class="reference internal" href="#custom-ids" id="id17">Custom Ids</a></li>
-<li><a class="reference internal" href="#bson-symbol-type" id="id18">BSON Symbol Type</a></li>
+<li><a class="reference internal" href="#storage" id="id4">Storage</a></li>
+<li><a class="reference internal" href="#fields" id="id5">Fields</a><ul>
+<li><a class="reference internal" href="#the-stringifiedsymbol-type" id="id6">The StringifiedSymbol Type</a></li>
+<li><a class="reference internal" href="#updating-container-fields" id="id7">Updating Container Fields</a></li>
+<li><a class="reference internal" href="#accessing-field-values" id="id8">Accessing Field Values</a></li>
+<li><a class="reference internal" href="#hash-fields" id="id9">Hash Fields</a></li>
+<li><a class="reference internal" href="#time-fields" id="id10">Time Fields</a></li>
+<li><a class="reference internal" href="#date-fields" id="id11">Date Fields</a></li>
+<li><a class="reference internal" href="#datetime-fields" id="id12">DateTime Fields</a></li>
+<li><a class="reference internal" href="#regular-expression-fields" id="id13">Regular Expression Fields</a></li>
+<li><a class="reference internal" href="#defaults" id="id14">Defaults</a></li>
+<li><a class="reference internal" href="#specifying-storage-field-names" id="id15">Specifying Storage Field Names</a></li>
+<li><a class="reference internal" href="#field-aliases" id="id16">Field Aliases</a></li>
+<li><a class="reference internal" href="#custom-fields" id="id17">Custom Fields</a></li>
+<li><a class="reference internal" href="#reserved-names" id="id18">Reserved Names</a></li>
+<li><a class="reference internal" href="#field-redefinition" id="id19">Field Redefinition</a></li>
+<li><a class="reference internal" href="#custom-ids" id="id20">Custom Ids</a></li>
+<li><a class="reference internal" href="#bson-symbol-type" id="id21">BSON Symbol Type</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dynamic-fields" id="id19">Dynamic Fields</a><ul>
-<li><a class="reference internal" href="#special-characters-in-field-names" id="id20">Special Characters in Field Names</a></li>
+<li><a class="reference internal" href="#dynamic-fields" id="id22">Dynamic Fields</a><ul>
+<li><a class="reference internal" href="#special-characters-in-field-names" id="id23">Special Characters in Field Names</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#localized-fields" id="id21">Localized Fields</a><ul>
-<li><a class="reference internal" href="#fallbacks" id="id22">Fallbacks</a></li>
-<li><a class="reference internal" href="#querying" id="id23">Querying</a></li>
-<li><a class="reference internal" href="#indexing" id="id24">Indexing</a></li>
+<li><a class="reference internal" href="#localized-fields" id="id24">Localized Fields</a><ul>
+<li><a class="reference internal" href="#fallbacks" id="id25">Fallbacks</a></li>
+<li><a class="reference internal" href="#querying" id="id26">Querying</a></li>
+<li><a class="reference internal" href="#indexing" id="id27">Indexing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dirty-tracking" id="id25">Dirty Tracking</a><ul>
-<li><a class="reference internal" href="#viewing-changes" id="id26">Viewing Changes</a></li>
-<li><a class="reference internal" href="#resetting-changes" id="id27">Resetting Changes</a></li>
-<li><a class="reference internal" href="#persistence" id="id28">Persistence</a></li>
-<li><a class="reference internal" href="#viewing-previous-changes" id="id29">Viewing Previous Changes</a></li>
+<li><a class="reference internal" href="#dirty-tracking" id="id28">Dirty Tracking</a><ul>
+<li><a class="reference internal" href="#viewing-changes" id="id29">Viewing Changes</a></li>
+<li><a class="reference internal" href="#resetting-changes" id="id30">Resetting Changes</a></li>
+<li><a class="reference internal" href="#persistence" id="id31">Persistence</a></li>
+<li><a class="reference internal" href="#viewing-previous-changes" id="id32">Viewing Previous Changes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#read-only-attributes" id="id30">Read-Only Attributes</a></li>
-<li><a class="reference internal" href="#inheritance" id="id31">Inheritance</a><ul>
-<li><a class="reference internal" href="#changing-the-discriminator-key" id="id32">Changing the Discriminator Key</a></li>
-<li><a class="reference internal" href="#changing-the-discriminator-value" id="id33">Changing the Discriminator Value</a></li>
-<li><a class="reference internal" href="#querying-subclasses" id="id34">Querying Subclasses</a></li>
-<li><a class="reference internal" href="#associations" id="id35">Associations</a></li>
+<li><a class="reference internal" href="#read-only-attributes" id="id33">Read-Only Attributes</a></li>
+<li><a class="reference internal" href="#inheritance" id="id34">Inheritance</a><ul>
+<li><a class="reference internal" href="#changing-the-discriminator-key" id="id35">Changing the Discriminator Key</a></li>
+<li><a class="reference internal" href="#changing-the-discriminator-value" id="id36">Changing the Discriminator Value</a></li>
+<li><a class="reference internal" href="#querying-subclasses" id="id37">Querying Subclasses</a></li>
+<li><a class="reference internal" href="#associations" id="id38">Associations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#timestamping" id="id36">Timestamping</a></li>
+<li><a class="reference internal" href="#timestamping" id="id39">Timestamping</a></li>
 </ul>
 </div>
 <p>Documents are the core objects in Mongoid and any object that is to be persisted to the
@@ -666,6 +677,31 @@ copy</a>
 </div>
 </div>
 </div>
+<div class="section" id="time-fields">
+<h3>Time Fields<a class="headerlink" href="#time-fields" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Time</span></code> fields store values as <code class="docutils literal notranslate"><span class="pre">Time</span></code> instances in the <a class="reference internal" href="mongoid-configuration.html#time-zones"><span class="std std-ref">configured
+time zone</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Date</span></code> and <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> instances are converted to <code class="docutils literal notranslate"><span class="pre">Time</span></code> instances upon
+assignment to a <code class="docutils literal notranslate"><span class="pre">Time</span></code> field:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Voter</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:registered_at</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span>
+<span class="k">end</span>
+
+<span class="no">Voter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">registered_at</span><span class="p">:</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Voter _id: 5fdd80392c97a618f07ba344, registered_at: 2020-12-18 05:00:00 UTC&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>In the above example, the value was interpreted as the beginning of today in
+local time, because the application was not configured to use UTC times.</p>
+</div>
 <div class="section" id="date-fields">
 <h3>Date Fields<a class="headerlink" href="#date-fields" title="Permalink to this headline">¶</a></h3>
 <p>Mongoid allows assignment of values of several types to <code class="docutils literal notranslate"><span class="pre">Date</span></code> fields:</p>
@@ -926,14 +962,15 @@ copy</a>
 </div>
 </div>
 </div>
-<div class="section" id="aliasing-fields">
-<span id="field-aliases"></span><h3>Aliasing Fields<a class="headerlink" href="#aliasing-fields" title="Permalink to this headline">¶</a></h3>
-<p>One of the drawbacks of having a schemaless database is that MongoDB must store all field
-information along with every document, meaning that it takes up a lot of storage space in RAM
-and on disk. A common pattern to limit this is to alias fields to a small number of characters,
-while keeping the domain in the application expressive. Mongoid allows you to do this and
-reference the fields in the domain via their long names in getters, setters, and criteria while
-performing the conversion for you.</p>
+<div class="section" id="specifying-storage-field-names">
+<span id="storage-field-names"></span><h3>Specifying Storage Field Names<a class="headerlink" href="#specifying-storage-field-names" title="Permalink to this headline">¶</a></h3>
+<p>One of the drawbacks of having a schemaless database is that MongoDB must
+store all field information along with every document, meaning that it
+takes up a lot of storage space in RAM and on disk. A common pattern to limit
+this is to alias fields to a small number of characters, while keeping the
+domain in the application expressive. Mongoid allows you to do this and
+reference the fields in the domain via their long names in getters, setters,
+and criteria while performing the conversion for you.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -950,6 +987,70 @@ copy</a>
 <span class="n">criteria</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Placebo&quot;</span><span class="p">)</span>
 <span class="n">criteria</span><span class="o">.</span><span class="n">selector</span> <span class="c1"># { &quot;n&quot; =&gt; &quot;Placebo&quot; }</span>
 </pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="field-aliases">
+<span id="id2"></span><h3>Field Aliases<a class="headerlink" href="#field-aliases" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to define field aliases. The value will be stored in the
+destination field but can be accessed from either the destination field or
+from the aliased field:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">alias_attribute</span> <span class="ss">:n</span><span class="p">,</span> <span class="ss">:name</span>
+<span class="k">end</span>
+
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">n</span><span class="p">:</span> <span class="s1">&#39;Astral Projection&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Band _id: 5fc1c1ee2c97a64accbeb5e1, name: &quot;Astral Projection&quot;&gt;</span>
+
+<span class="n">band</span><span class="o">.</span><span class="n">attributes</span>
+<span class="c1"># =&gt; {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;5fc1c1ee2c97a64accbeb5e1&#39;), &quot;name&quot;=&gt;&quot;Astral Projection&quot;}</span>
+
+<span class="n">band</span><span class="o">.</span><span class="n">n</span>
+<span class="c1"># =&gt; &quot;Astral Projection&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Aliases can be removed from model classes using the <code class="docutils literal notranslate"><span class="pre">unalias_attribute</span></code>
+method.</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="n">unalias_attribute</span> <span class="ss">:n</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="unaliasing-id">
+<span id="unalias-id"></span><h4>Unaliasing <code class="docutils literal notranslate"><span class="pre">id</span></code><a class="headerlink" href="#unaliasing-id" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">unalias_attribute</span></code> can be used to remove the predefined <code class="docutils literal notranslate"><span class="pre">id</span></code> alias.
+This is useful for storing different values in <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">_id</span></code> fields:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">unalias_attribute</span> <span class="ss">:id</span>
+  <span class="n">field</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;42&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Band _id: 5fc1c3f42c97a6590684046c, id: &quot;42&quot;&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -1096,9 +1197,11 @@ copy</a>
 </div>
 </div>
 <div class="section" id="custom-ids">
-<h3>Custom Ids<a class="headerlink" href="#custom-ids" title="Permalink to this headline">¶</a></h3>
-<p>For cases when you do not want to have <code class="docutils literal notranslate"><span class="pre">BSON::ObjectId</span></code> ids, you can override Mongoid’s
-<code class="docutils literal notranslate"><span class="pre">_id</span></code> field and set them to whatever you like.</p>
+<span id="custom-id"></span><h3>Custom Ids<a class="headerlink" href="#custom-ids" title="Permalink to this headline">¶</a></h3>
+<p>By default, Mongoid defines the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field on documents to contain a
+<code class="docutils literal notranslate"><span class="pre">BSON::ObjcetId</span></code> value which is automatically generated by Mongoid.</p>
+<p>It is possible to replace the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field definition to change the type
+of the <code class="docutils literal notranslate"><span class="pre">_id</span></code> values or have different default values:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -1112,6 +1215,47 @@ copy</a>
 </pre></div>
 </div>
 </div>
+<p>It is possible to omit the default entirely:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">field</span> <span class="ss">:_id</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>If the default on <code class="docutils literal notranslate"><span class="pre">_id</span></code> is omitted, and no <code class="docutils literal notranslate"><span class="pre">_id</span></code> value is provided by
+your application, Mongoid will persist the document without the <code class="docutils literal notranslate"><span class="pre">_id</span></code>
+value. In this case, if the document is a top-level document, an <code class="docutils literal notranslate"><span class="pre">_id</span></code>
+value will be assigned by the server; if the document is an embedded document,
+no <code class="docutils literal notranslate"><span class="pre">_id</span></code> value will be assigned. Mongoid will not automatically retrieve
+this value, if assigned, when the document is persisted - you
+must obtain the persisted value (and the complete persisted document) using
+other means:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Band _id: , &gt;</span>
+<span class="n">band</span><span class="o">.</span><span class="n">id</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+<span class="n">band</span><span class="o">.</span><span class="n">reload</span>
+<span class="c1"># raises Mongoid::Errors::DocumentNotFound</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">last</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Band _id: 5fc681c22c97a6791f324b99, &gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Omitting <code class="docutils literal notranslate"><span class="pre">_id</span></code> fields is more common in <a class="reference internal" href="mongoid-relations.html#omit-id"><span class="std std-ref">embedded documents</span></a>.</p>
+<p>Mongoid also defines the <code class="docutils literal notranslate"><span class="pre">id</span></code> field aliased to <code class="docutils literal notranslate"><span class="pre">_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">id</span></code>
+alias can <a class="reference internal" href="#unalias-id"><span class="std std-ref">be removed</span></a> if desired (such as to integrate
+with systems that use the <code class="docutils literal notranslate"><span class="pre">id</span></code> field to store value different from <code class="docutils literal notranslate"><span class="pre">_id</span></code>.</p>
 </div>
 <div class="section" id="bson-symbol-type">
 <span id="bson-symbol"></span><h3>BSON Symbol Type<a class="headerlink" href="#bson-symbol-type" title="Permalink to this headline">¶</a></h3>
@@ -1145,7 +1289,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="dynamic-fields">
-<span id="id2"></span><h2>Dynamic Fields<a class="headerlink" href="#dynamic-fields" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Dynamic Fields<a class="headerlink" href="#dynamic-fields" title="Permalink to this headline">¶</a></h2>
 <p>By default, Mongoid requires all fields that may be set on a document to
 be explicitly defined using <code class="docutils literal notranslate"><span class="pre">field</span></code> declarations. Mongoid also supports
 creating fields on the fly from an arbitrary hash or documents stored in

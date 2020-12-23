@@ -6,7 +6,7 @@
 <title>
   Class: Mongoid::Criteria
   
-    &mdash; mongoid-7.2.0.rc1
+    &mdash; mongoid-7.3.0.alpha
   
 </title>
 
@@ -1411,6 +1411,7 @@
       <pre class="lines">
 
 
+570
 571
 572
 573
@@ -1420,11 +1421,10 @@
 577
 578
 579
-580
-581</pre>
+580</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 571</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 570</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -2952,6 +2952,7 @@
       <pre class="lines">
 
 
+501
 502
 503
 504
@@ -2959,11 +2960,10 @@
 506
 507
 508
-509
-510</pre>
+509</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 502</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 501</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_for_js'>for_js</span><span class='lparen'>(</span><span class='id identifier rubyid_javascript'>javascript</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -3482,23 +3482,21 @@ criteria.merge({
 345
 346
 347
-348
-349</pre>
+348</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 338</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_only'>only</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_clone'>clone</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
   <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_clone'>clone</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>&amp;</span> <span class='const'><span class='object_link'><a href="Fields.html" title="Mongoid::Fields (module)">Fields</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Fields.html#IDS-constant" title="Mongoid::Fields::IDS (constant)">IDS</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
     <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_unshift'>unshift</span><span class='lparen'>(</span><span class='symbol'>:_id</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_hereditary?'>hereditary?</span>
-    <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3599,14 +3597,14 @@ criteria.merge({
       <pre class="lines">
 
 
+360
 361
 362
 363
-364
-365</pre>
+364</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 361</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 360</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clone'>clone</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_criteria'>criteria</span><span class='op'>|</span>
@@ -3712,12 +3710,12 @@ criteria.merge({
       <pre class="lines">
 
 
+390
 391
-392
-393</pre>
+392</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 391</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 390</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_include_private'>include_private</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>super</span> <span class='op'>||</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#CHECK-constant" title="Mongoid::Criteria::CHECK (constant)">CHECK</a></span></span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_include_private'>include_private</span><span class='rparen'>)</span>
@@ -3799,12 +3797,12 @@ criteria.merge({
       <pre class="lines">
 
 
+404
 405
-406
-407</pre>
+406</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 405</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 404</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_criteria'>to_criteria</span>
   <span class='kw'>self</span>
@@ -3886,12 +3884,12 @@ criteria.merge({
       <pre class="lines">
 
 
+416
 417
-418
-419</pre>
+418</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 417</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 416</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_proc'>to_proc</span>
   <span class='tlambda'>-&gt;</span><span class='tlambeg'>{</span> <span class='kw'>self</span> <span class='rbrace'>}</span>
@@ -3978,12 +3976,12 @@ criteria.merge({
       <pre class="lines">
 
 
+430
 431
-432
-433</pre>
+432</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 431</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 430</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_any_in'>any_in</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='op'>=&gt;</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -4110,6 +4108,7 @@ criteria.merge({
       <pre class="lines">
 
 
+452
 453
 454
 455
@@ -4127,11 +4126,10 @@ criteria.merge({
 467
 468
 469
-470
-471</pre>
+470</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 453</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 452</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='comment'># Historically this method required exactly one argument.
@@ -4249,16 +4247,16 @@ criteria.merge({
       <pre class="lines">
 
 
+376
 377
 378
-379
-380</pre>
+379</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 377</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 376</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_without'>without</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_args'>args</span> <span class='op'>-=</span> <span class='const'><span class='object_link'><a href="Fields.html" title="Mongoid::Fields (module)">Fields</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Fields.html#IDS-constant" title="Mongoid::Fields::IDS (constant)">IDS</a></span></span>
+  <span class='id identifier rubyid_args'>args</span> <span class='op'>-=</span> <span class='id identifier rubyid_id_fields'>id_fields</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -4338,14 +4336,14 @@ criteria.merge({
       <pre class="lines">
 
 
+481
 482
 483
 484
-485
-486</pre>
+485</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 482</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/criteria.rb', line 481</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_without_options'>without_options</span>
   <span class='id identifier rubyid_crit'>crit</span> <span class='op'>=</span> <span class='id identifier rubyid_clone'>clone</span>
@@ -4362,7 +4360,7 @@ criteria.merge({
 </div>
 
       <div id="footer">
-  Generated on Mon Nov 16 13:14:20 2020 by
+  Generated on Wed Dec 23 02:21:57 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.7.2).
 </div>
