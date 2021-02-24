@@ -6,7 +6,7 @@
 <title>
   Class: Mongoid::Fields::ForeignKey
   
-    &mdash; mongoid-7.3.0.alpha
+    &mdash; mongoid-7.3.0
   
 </title>
 
@@ -628,7 +628,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/fields/foreign_key.rb', line 66</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_evolve'><span class='object_link'><a href="../Extensions/Decimal128/ClassMethods.html#evolve-instance_method" title="Mongoid::Extensions::Decimal128::ClassMethods#evolve (method)">evolve</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_evolve'><span class='object_link'><a href="../Extensions/ObjectId/ClassMethods.html#evolve-instance_method" title="Mongoid::Extensions::ObjectId::ClassMethods#evolve (method)">evolve</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_object_id_field?'>object_id_field?</span> <span class='op'>||</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Document.html" title="Mongoid::Document (module)">Document</a></span></span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_association'>association</span><span class='period'>.</span><span class='id identifier rubyid_polymorphic?'>polymorphic?</span>
       <span class='id identifier rubyid_association'>association</span><span class='period'>.</span><span class='id identifier rubyid_convert_to_foreign_key'>convert_to_foreign_key</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
@@ -921,7 +921,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/fields/foreign_key.rb', line 100</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_mongoize'><span class='object_link'><a href="../Extensions/TimeWithZone/ClassMethods.html#mongoize-instance_method" title="Mongoid::Extensions::TimeWithZone::ClassMethods#mongoize (method)">mongoize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_mongoize'><span class='object_link'><a href="../Extensions/Set/ClassMethods.html#mongoize-instance_method" title="Mongoid::Extensions::Set::ClassMethods#mongoize (method)">mongoize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_resizable?'>resizable?</span> <span class='op'>||</span> <span class='id identifier rubyid_object_id_field?'>object_id_field?</span>
     <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid___mongoize_fk__'>__mongoize_fk__</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='comma'>,</span> <span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
@@ -1101,7 +1101,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/fields/foreign_key.rb', line 129</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_resizable?'><span class='object_link'><a href="../Extensions/Array/ClassMethods.html#resizable%3F-instance_method" title="Mongoid::Extensions::Array::ClassMethods#resizable? (method)">resizable?</a></span></span>
+<span class='kw'>def</span> <span class='id identifier rubyid_resizable?'><span class='object_link'><a href="../Extensions/Hash/ClassMethods.html#resizable%3F-instance_method" title="Mongoid::Extensions::Hash::ClassMethods#resizable? (method)">resizable?</a></span></span>
   <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_resizable?'>resizable?</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1114,9 +1114,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 23 02:25:40 2020 by
+  Generated on Tue Feb 23 22:09:37 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.2).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

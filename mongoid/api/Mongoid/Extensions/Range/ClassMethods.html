@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Extensions::Range::ClassMethods
   
-    &mdash; mongoid-7.3.0.alpha
+    &mdash; mongoid-7.3.0
   
 </title>
 
@@ -254,7 +254,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/extensions/range.rb', line 57</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_demongoize'><span class='object_link'><a href="../TimeWithZone/ClassMethods.html#demongoize-instance_method" title="Mongoid::Extensions::TimeWithZone::ClassMethods#demongoize (method)">demongoize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_demongoize'><span class='object_link'><a href="../Set/ClassMethods.html#demongoize-instance_method" title="Mongoid::Extensions::Set::ClassMethods#demongoize (method)">demongoize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='op'>::</span><span class='const'>Range</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>min</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_object'>object</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>max</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_object'>object</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>exclude_end</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -368,7 +368,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/extensions/range.rb', line 72</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_mongoize'><span class='object_link'><a href="../TimeWithZone/ClassMethods.html#mongoize-instance_method" title="Mongoid::Extensions::TimeWithZone::ClassMethods#mongoize (method)">mongoize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_mongoize'><span class='object_link'><a href="../Set/ClassMethods.html#mongoize-instance_method" title="Mongoid::Extensions::Set::ClassMethods#mongoize (method)">mongoize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_object'>object</span> <span class='kw'>if</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Hash</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_object'>object</span> <span class='kw'>if</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../String.html" title="Mongoid::Extensions::String (module)">String</a></span></span><span class='rparen'>)</span>
@@ -388,9 +388,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 23 02:25:31 2020 by
+  Generated on Tue Feb 23 22:09:30 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.2).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>
