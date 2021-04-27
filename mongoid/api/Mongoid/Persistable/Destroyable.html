@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Persistable::Destroyable
   
-    &mdash; mongoid-7.3.0
+    &mdash; mongoid-7.3.0.alpha
   
 </title>
 
@@ -314,7 +314,13 @@
 26
 27
 28
-29</pre>
+29
+30
+31
+32
+33
+34
+35</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mongoid/persistable/destroyable.rb', line 23</span>
@@ -322,7 +328,13 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Errors/ReadonlyDocument.html" title="Mongoid::Errors::ReadonlyDocument (class)">ReadonlyDocument</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Errors/ReadonlyDocument.html#initialize-instance_method" title="Mongoid::Errors::ReadonlyDocument#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_readonly?'>readonly?</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_flagged_for_destroy'>flagged_for_destroy</span> <span class='op'>=</span> <span class='kw'>true</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='symbol'>:destroy</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='symbol'>:destroy</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_catch'>catch</span><span class='lparen'>(</span><span class='symbol'>:abort</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_apply_destroy_dependencies!'>apply_destroy_dependencies!</span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='kw'>false</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_flagged_for_destroy'>flagged_for_destroy</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_result'>result</span>
 <span class='kw'>end</span></pre>
@@ -371,12 +383,12 @@
       <pre class="lines">
 
 
-31
-32
-33</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/persistable/destroyable.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/persistable/destroyable.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy!'>destroy!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_destroy'>destroy</span> <span class='op'>||</span> <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Errors.html" title="Mongoid::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Errors/DocumentNotDestroyed.html" title="Mongoid::Errors::DocumentNotDestroyed (class)">DocumentNotDestroyed</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Errors/DocumentNotDestroyed.html#initialize-instance_method" title="Mongoid::Errors::DocumentNotDestroyed#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid__id'>_id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -391,7 +403,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Feb 23 22:17:57 2021 by
+  Generated on Tue Apr 27 18:16:32 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>

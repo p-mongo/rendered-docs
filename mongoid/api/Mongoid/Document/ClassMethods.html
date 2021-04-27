@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Document::ClassMethods
   
-    &mdash; mongoid-7.3.0
+    &mdash; mongoid-7.3.0.alpha
   
 </title>
 
@@ -343,12 +343,12 @@
       <pre class="lines">
 
 
-317
-318
-319</pre>
+305
+306
+307</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 317</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 305</span>
 
 <span class='kw'>def</span> <span class='op'>===</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Class</span> <span class='op'>?</span> <span class='kw'>self</span> <span class='op'>&lt;=</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>:</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -400,13 +400,13 @@
       <pre class="lines">
 
 
-365
-366
-367
-368</pre>
+353
+354
+355
+356</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 365</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 353</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__mongoid_clear_types'>_mongoid_clear_types</span>
   <span class='ivar'>@_type</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -489,12 +489,12 @@
       <pre class="lines">
 
 
-354
-355
-356</pre>
+342
+343
+344</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 354</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 342</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__types'>_types</span>
   <span class='ivar'>@_type</span> <span class='op'>||=</span> <span class='lparen'>(</span><span class='id identifier rubyid_descendants'>descendants</span> <span class='op'>+</span> <span class='lbracket'>[</span> <span class='kw'>self</span> <span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:discriminator_value</span><span class='rparen'>)</span>
@@ -564,12 +564,12 @@
       <pre class="lines">
 
 
-375
-376
-377</pre>
+363
+364
+365</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 375</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 363</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_i18n_scope'>i18n_scope</span>
   <span class='symbol'>:mongoid</span>
@@ -704,20 +704,20 @@
       <pre class="lines">
 
 
-334
-335
-336
-337
-338
-339
-340
-341
-342
-343
-344</pre>
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 334</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 322</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_instantiate'>instantiate</span><span class='lparen'>(</span><span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_selected_fields'>selected_fields</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -807,12 +807,12 @@
       <pre class="lines">
 
 
-387
-388
-389</pre>
+375
+376
+377</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 387</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/document.rb', line 375</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logger'>logger</span>
   <span class='const'><span class='object_link'><a href="../../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger'><span class='object_link'><a href="../Loggable.html#logger-instance_method" title="Mongoid::Loggable#logger (method)">logger</a></span></span>
@@ -827,7 +827,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Feb 23 22:17:52 2021 by
+  Generated on Tue Apr 27 18:16:27 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>

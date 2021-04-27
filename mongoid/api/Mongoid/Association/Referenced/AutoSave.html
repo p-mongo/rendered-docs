@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Association::Referenced::AutoSave
   
-    &mdash; mongoid-7.3.0
+    &mdash; mongoid-7.3.0.alpha
   
 </title>
 
@@ -348,8 +348,8 @@
         <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_before_callback_halted'>before_callback_halted</span> <span class='op'>=</span> <span class='kw'>false</span>
       <span class='kw'>else</span>
         <span class='id identifier rubyid___autosaving__'>__autosaving__</span> <span class='kw'>do</span>
-          <span class='kw'>if</span> <span class='id identifier rubyid_relation'>relation</span> <span class='op'>=</span> <span class='id identifier rubyid_ivar'>ivar</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-            <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_relation'>relation</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>|</span>
+          <span class='kw'>if</span> <span class='id identifier rubyid_assoc_value'>assoc_value</span> <span class='op'>=</span> <span class='id identifier rubyid_ivar'>ivar</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+            <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_assoc_value'>assoc_value</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>|</span>
               <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_with'>with</span><span class='lparen'>(</span><span class='id identifier rubyid_persistence_context'>persistence_context</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_d'>d</span><span class='op'>|</span>
                 <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
               <span class='kw'>end</span>
@@ -624,7 +624,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Feb 23 22:17:59 2021 by
+  Generated on Tue Apr 27 18:16:33 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>

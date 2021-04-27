@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Persistable::Deletable::ClassMethods
   
-    &mdash; mongoid-7.3.0
+    &mdash; mongoid-7.3.0.alpha
   
 </title>
 
@@ -257,13 +257,13 @@
       <pre class="lines">
 
 
+142
 143
 144
-145
-146</pre>
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/persistable/deletable.rb', line 143</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/persistable/deletable.rb', line 142</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_all'>delete_all</span><span class='lparen'>(</span><span class='id identifier rubyid_conditions'>conditions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_selector'>selector</span> <span class='op'>=</span> <span class='id identifier rubyid_hereditary?'>hereditary?</span> <span class='op'>?</span> <span class='id identifier rubyid_conditions'>conditions</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_discriminator_key'>discriminator_key</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_discriminator_value'>discriminator_value</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_conditions'>conditions</span>
@@ -279,7 +279,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Feb 23 22:17:57 2021 by
+  Generated on Tue Apr 27 18:16:31 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>

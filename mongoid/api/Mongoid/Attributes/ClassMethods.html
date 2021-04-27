@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Attributes::ClassMethods
   
-    &mdash; mongoid-7.3.0
+    &mdash; mongoid-7.3.0.alpha
   
 </title>
 
@@ -249,6 +249,8 @@
       <pre class="lines">
 
 
+321
+322
 323
 324
 325
@@ -260,12 +262,10 @@
 331
 332
 333
-334
-335
-336</pre>
+334</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/attributes.rb', line 323</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/attributes.rb', line 321</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alias_attribute'>alias_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_original'>original</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_aliased_fields'>aliased_fields</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_original'>original</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -332,6 +332,8 @@
       <pre class="lines">
 
 
+339
+340
 341
 342
 343
@@ -345,12 +347,10 @@
 351
 352
 353
-354
-355
-356</pre>
+354</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/attributes.rb', line 341</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/attributes.rb', line 339</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unalias_attribute'>unalias_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_aliased_fields'>aliased_fields</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
@@ -378,7 +378,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Feb 23 22:17:53 2021 by
+  Generated on Tue Apr 27 18:16:27 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>
