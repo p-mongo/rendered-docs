@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
+    <title>Mongoid 5</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/release-notes/mongoid-5.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/release-notes/mongoid-5/" />
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Mongoid Manual" href="../index.html" /></head>
+<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
+  <!-- End Google Tag Manager -->
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Mongoid"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
+   </script><div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="../index.html">Mongoid Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      
+        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+          
+          
+          master (upcoming)<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          
+            
+            <li class="active">
+            
+              <a href="#" data-path="mongoid/current">
+                
+                master (upcoming)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.2">
+                
+                Version 7.2 (current)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.1">
+                
+                Version 7.1
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.0">
+                
+                Version 7.0
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.4">
+                
+                Version 6.4
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.3">
+                
+                Version 6.3
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.2">
+                
+                Version 6.2
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.1">
+                
+                Version 6.1
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/5.4">
+                
+                Version 5.4
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+
+<ul><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials/mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="release-notes/mongoid-5">
+
+                
+  <div class="bc">
+    
+      
+    
+    
+  </div>
+                
+                  <div class="section" id="mongoid-5">
+<h1>Mongoid 5<a class="headerlink" href="#mongoid-5" title="Permalink to this headline">¶</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><a class="reference internal" href="#upgrading-to-mongoid-5" id="id1">Upgrading to Mongoid 5</a></li>
+</ul>
+</div>
+<p>This page describes significant changes and improvements in Mongoid 5 releases.
+The complete list of releases is available <a class="reference external" href="https://github.com/mongodb/mongoid/releases">on GitHub</a> and <a class="reference external" href="https://jira.mongodb.org/projects/MONGOID?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page">in JIRA</a>;
+please consult GitHub releases for detailed release notes and JIRA for
+the complete list of issues fixed in each release, including bug fixes.</p>
+<div class="section" id="upgrading-to-mongoid-5">
+<h2>Upgrading to Mongoid 5<a class="headerlink" href="#upgrading-to-mongoid-5" title="Permalink to this headline">¶</a></h2>
+<p>The underlying driver has changed from Moped to the official MongoDB Ruby driver.
+For all users dropping down to the driver level for operations, please see the driver
+documentation for help with that API.</p>
+<p>All Mongoid configuration options have changed, as the underlying driver has changed
+from Moped to the official MongoDB Ruby driver. Please see the
+<a class="reference internal" href="../tutorials/mongoid-configuration.html#mongoid-configuration"><span class="std std-ref">configuration section</span></a> for a detailed description
+of all the new options.</p>
+<p>All references to session are now replaced with client. This includes the <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code>
+configuration, <code class="docutils literal notranslate"><span class="pre">store_in</span></code> options, and all exceptions and modules with Session in the name.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_and_modify</span></code> has been removed and replaced with 3 options: <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code>,
+<code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code> and <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">text_search</span></code> has been removed as it is now a $text option in a query from
+MongoDB 2.6 onward.</p>
+<p><code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> no longer add an <code class="docutils literal notranslate"><span class="pre">_id</span></code> sort when no sorting options have been
+provided. In order to guarantee that a document is the first or last, it needs to now
+contain an explicit sort.</p>
+<p>Mongoid 5 supports MongoDB 2.4 and higher only - MongoDB 2.2 is no longer
+supported.</p>
+</div>
+</div>
+
+                
+    <div id="btnv">
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
+
+  <script src="../_static/navbar.min.js"></script>
+
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = [];
+  </script></body>
+</html>

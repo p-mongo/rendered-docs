@@ -219,8 +219,6 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#upgrading-to-mongoid-7-0" id="id26">Upgrading to Mongoid 7.0</a></li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-6" id="id27">Upgrading to Mongoid 6</a></li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-5" id="id28">Upgrading to Mongoid 5</a></li>
 </ul>
 </div>
 <p>This page describes significant changes and improvements in Mongoid releases.
@@ -1299,36 +1297,6 @@ pipeline builder DSL</span></a>.</p>
 supports Rails 5.1-6.0.</p>
 <p>New in version 7.0.3: Embedded matchers now support the <code class="docutils literal notranslate"><span class="pre">$eq</span></code> operator.</p>
 <p>New in version 7.0.5: Mongoid now officially supports Rails 6.0.</p>
-</div>
-<div class="section" id="upgrading-to-mongoid-6">
-<h2>Upgrading to Mongoid 6<a class="headerlink" href="#upgrading-to-mongoid-6" title="Permalink to this headline">¶</a></h2>
-<p>Mongoid 6 is compatible with Rails 5 and requires Ruby 2.2.2 or higher.</p>
-<p>Please see the list of behavior changes for version
-<a class="reference external" href="https://github.com/mongodb/mongoid/releases/tag/v6.0.0.rc0">6.0.0.rc0</a>
-and version
-<a class="reference external" href="https://github.com/mongodb/mongoid/releases/tag/v6.0.0.beta">6.0.0.beta</a>
-for specific changes that might be required in your code.</p>
-</div>
-<div class="section" id="upgrading-to-mongoid-5">
-<h2>Upgrading to Mongoid 5<a class="headerlink" href="#upgrading-to-mongoid-5" title="Permalink to this headline">¶</a></h2>
-<p>The underlying driver has changed from Moped to the official MongoDB Ruby driver.
-For all users dropping down to the driver level for operations, please see the driver
-documentation for help with that API.</p>
-<p>All Mongoid configuration options have changed, as the underlying driver has changed
-from Moped to the official MongoDB Ruby driver. Please see the
-<a class="reference internal" href="mongoid-configuration.html#mongoid-configuration"><span class="std std-ref">configuration section</span></a> for a detailed description
-of all the new options.</p>
-<p>All references to session are now replaced with client. This includes the <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code>
-configuration, <code class="docutils literal notranslate"><span class="pre">store_in</span></code> options, and all exceptions and modules with Session in the name.</p>
-<p><code class="docutils literal notranslate"><span class="pre">find_and_modify</span></code> has been removed and replaced with 3 options: <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code>,
-<code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code> and <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">text_search</span></code> has been removed as it is now a $text option in a query from
-MongoDB 2.6 onward.</p>
-<p><code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> no longer add an <code class="docutils literal notranslate"><span class="pre">_id</span></code> sort when no sorting options have been
-provided. In order to guarantee that a document is the first or last, it needs to now
-contain an explicit sort.</p>
-<p>Mongoid 5 supports MongoDB 2.4 and higher only - MongoDB 2.2 is no longer
-supported.</p>
 </div>
 </div>
 
