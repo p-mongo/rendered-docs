@@ -246,17 +246,43 @@
                 
                   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>The Ruby driver is bundled as a gem and is hosted on <a class="reference external" href="https://rubygems.org/gems/mongo">Rubygems</a>.</p>
+<p>The Ruby driver is released as a gem hosted on <a class="reference external" href="https://rubygems.org/gems/mongo">Rubygems</a>.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Please see the <a class="reference internal" href="reference/driver-compatibility.html#compatibility"><span class="std std-ref">compatibility</span></a> page for the list of
+Ruby versions and MongoDB server versions that this release of the Ruby
+driver is compatible with.</p>
+<p>The driver itself is written entirely in Ruby, however it depends on the
+<a class="reference external" href="https://rubygems.org/gems/bson">bson library</a> which includes a C extension
+for MRI and a compiled Java extension for JRuby. A working C compiler and Ruby
+development headers and libraries are required when installing on MRI.
+When installing on JRuby, JRE is sufficient because the <code class="docutils literal notranslate"><span class="pre">bson</span></code> gem includes
+the compiled extension.</p>
+<p>Connecting to TLS-enabled MongoDB servers, using SCRAM authentication
+(both SCRAM-SHA-1 and SCRAM-SHA-256) and using X.509 authentication (which
+is performed over a TLS connection) requires the Ruby <code class="docutils literal notranslate"><span class="pre">openssl</span></code> extension
+to be present and working. The <a class="reference internal" href="reference/driver-compatibility.html#tls-compatibility"><span class="std std-ref">TLS compatibility</span></a>
+section provides further details on usage of newer TLS protocols like TLS 1.1.</p>
+</div>
 <div class="section" id="install-the-gem">
 <span id="ruby-driver-install"></span><h2>Install the Gem<a class="headerlink" href="#install-the-gem" title="Permalink to this headline">¶</a></h2>
-<p>The driver can be installed manually or with bundler.</p>
-<p>To install the mongo gem manually:</p>
+<p>Add <code class="docutils literal notranslate"><span class="pre">mongo</span></code> to your <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>gem install mongo -v <span class="m">2</span>.15.0.alpha
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s2">&quot;mongo&quot;</span><span class="p">,</span> <span class="s2">&quot;~&gt; 2&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>To install the driver manually:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>gem install mongo -v <span class="s1">&#39;~&gt; 2&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -265,42 +291,6 @@ copy</a>
 <h2>What’s New<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h2>
 <p>Please consult the <a class="reference external" href="https://github.com/mongodb/mongo-ruby-driver/releases">releases page on GitHub</a> for the list
 of improvements and changes in each version of the driver.</p>
-</div>
-<div class="section" id="tls-ssl-and-the-ruby-driver">
-<h2>TLS/SSL and the Ruby Driver<a class="headerlink" href="#tls-ssl-and-the-ruby-driver" title="Permalink to this headline">¶</a></h2>
-<p>Industry best practices, and some regulations, require the use of TLS 1.1
-or newer. Though no application changes are required for the Ruby driver to
-make use of the newest protocols, some operating systems or versions may
-not provide an OpenSSL version new enough to support them.</p>
-<p>Users of macOS older than 10.13 (High Sierra) will need to install Ruby from
-<a class="reference external" href="https://rvm.io/">rvm</a>, <a class="reference external" href="https://brew.sh/">homebrew</a>, <a class="reference external" href="https://www.macports.org/">macports</a>, or another similar source. See
-<a class="reference external" href="https://www.ruby-lang.org/en/documentation/installation">installation information on ruby-lang.org</a> for more options.</p>
-<p>Users of Linux or other non-macOS Unix can check their OpenSSL version like this:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>$ openssl version
-</pre></div>
-</div>
-</div>
-<p>If the version number is less than 1.0.1 support for TLS 1.1 or newer is
-not available. Contact your operating system vendor for a solution or upgrade
-to a newer distribution.</p>
-<p>You can check your Ruby interpreter by executing the following command:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>ruby -e <span class="s2">&quot;require &#39;net/http&#39;; require &#39;json&#39;; puts JSON.parse(Net::HTTP.get(URI(&#39;https://www.howsmyssl.com/a/check&#39;)))[&#39;tls_version&#39;]&quot;</span>
-</pre></div>
-</div>
-</div>
-<p>You should see “TLS 1.X” where X is &gt;= 1.</p>
-<p>You can read more about TLS versions and their security implications here:</p>
-<p><a class="reference external" href="https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet#Rule_-_Only_Support_Strong_Protocols">https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet#Rule_-_Only_Support_Strong_Protocols</a></p>
 </div>
 </div>
 
