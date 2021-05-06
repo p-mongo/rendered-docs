@@ -253,15 +253,15 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id2">Databases</a></li>
+<li><a class="reference internal" href="#list-collections" id="id1">List Collections</a></li>
+<li><a class="reference internal" href="#arbitrary-comands" id="id2">Arbitrary Comands</a></li>
+<li><a class="reference internal" href="#drop-database" id="id3">Drop Database</a></li>
 </ul>
 </div>
-<div class="section" id="id1">
-<h2>Databases<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The driver provides various helpers on database objects for executing
 commands, getting collection lists, and administrative tasks.</p>
 <div class="section" id="list-collections">
-<h3>List Collections<a class="headerlink" href="#list-collections" title="Permalink to this headline">¶</a></h3>
+<h2>List Collections<a class="headerlink" href="#list-collections" title="Permalink to this headline">¶</a></h2>
 <p>To get a list of collections or collection names for a database, use
 <code class="docutils literal notranslate"><span class="pre">collections</span></code> and <code class="docutils literal notranslate"><span class="pre">collection_names</span></code>, respectively.</p>
 <div class="button-code-block">
@@ -279,7 +279,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="arbitrary-comands">
-<span id="arbitrary-commands"></span><h3>Arbitrary Comands<a class="headerlink" href="#arbitrary-comands" title="Permalink to this headline">¶</a></h3>
+<span id="arbitrary-commands"></span><h2>Arbitrary Comands<a class="headerlink" href="#arbitrary-comands" title="Permalink to this headline">¶</a></h2>
 <p>To execute any command on the database, use the <code class="docutils literal notranslate"><span class="pre">command</span></code> method.</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -303,7 +303,7 @@ command parameters) at the same time is not allowed and will produce an error.</
 </div>
 </div>
 <div class="section" id="drop-database">
-<h3>Drop Database<a class="headerlink" href="#drop-database" title="Permalink to this headline">¶</a></h3>
+<h2>Drop Database<a class="headerlink" href="#drop-database" title="Permalink to this headline">¶</a></h2>
 <p>To drop a database, use the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method.</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -313,7 +313,6 @@ copy</a>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">drop</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
