@@ -15,6 +15,7 @@
   <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/tutorials/ruby-driver-crud-operations.txt"/>
   <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
   <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/tutorials/ruby-driver-crud-operations/" />
   
    <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,9 +30,9 @@
 <!-- <link rel="index" title="Index" href="../genindex.html" /> -->
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Ruby Driver Manual" href="../index.html" />
-<link rel="next" title="Collections" href="ruby-driver-collection-tasks.html" />
+<link rel="next" title="Bulk Writes" href="ruby-driver-bulk-operations.html" />
 <link rel="prev" title="User Management" href="user-management.html" /></head>
-<body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
+<body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
   <!-- Google Tag Manager -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -60,153 +61,164 @@
 
 
     <div class="btn-group version-sidebar">
-      <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-        
-        
-        master (upcoming)<span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        
+      
+        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
           
-          <li class="active">
           
-            <a href="#" data-path="ruby-driver/current">
-              
-              master (upcoming)
-            </a>
-          </li>
-        
+          master (upcoming)<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
           
-          <li>
+            
+            <li class="active">
+            
+              <a href="#" data-path="ruby-driver/current">
+                
+                master (upcoming)
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
-              
-              Version 2.13 (current)
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
+                
+                Version 2.14 (current)
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
+                
+                Version 2.13
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
-              
-              Version 2.12
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
+                
+                Version 2.12
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
+                
+                Version 2.11
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
-              
-              Version 2.11
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
+                
+                Version 2.10
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
+                
+                Version 2.9
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
-              
-              Version 2.10
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
+                
+                Version 2.8
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
+                
+                Version 2.7
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
-              
-              Version 2.9
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
+                
+                Version 2.6
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
+                
+                Version 2.5
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
-              
-              Version 2.8
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
+                
+                Version 2.4
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
+                
+                Version 2.3
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
-              
-              Version 2.7
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
+                
+                Version 2.2
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
+                
+                Version 2.0
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
-              
-              Version 2.6
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
+                
+                1.x
+              </a>
+            </li>
           
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
-              
-              Version 2.5
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
-              
-              Version 2.4
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
-              
-              Version 2.3
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
-              
-              Version 2.2
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
-              
-              Version 2.0
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
-              
-              1.x
-            </a>
-          </li>
-        
-      </ul>
+        </ul>
+      
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-bulk-operations.html">Bulk Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-bulk-operations.html">Bulk Writes</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
     </div>
   </div>
            
@@ -218,6 +230,7 @@
 
     <span id="showNav" class="showNav">Navigation</span>
 
+      
       
         <div class="document">
             <div class="documentwrapper"><div class="bodywrapper">
@@ -260,7 +273,7 @@ correct for Ruby version 1.9 and later:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-javascript"><div class="highlight"><pre><span></span><span class="nb">document</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Harriet&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mf">36</span> <span class="p">}</span>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nb">document</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Harriet&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">36</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -271,12 +284,12 @@ your keys in quotes.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-javascript"><div class="highlight"><pre><span></span><span class="nb">document</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Harriet&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mf">36</span> <span class="p">}</span>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nb">document</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Harriet&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">36</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
-<p>If you need to use any MongoDB operator which begins with <code class="docutils literal"><span class="pre">$</span></code>,
-such as <code class="docutils literal"><span class="pre">$set</span></code>, <code class="docutils literal"><span class="pre">$gte</span></code>, or <code class="docutils literal"><span class="pre">$near</span></code>, you must enclose it in
+<p>If you need to use any MongoDB operator which begins with <code class="docutils literal notranslate"><span class="pre">$</span></code>,
+such as <code class="docutils literal notranslate"><span class="pre">$set</span></code>, <code class="docutils literal notranslate"><span class="pre">$gte</span></code>, or <code class="docutils literal notranslate"><span class="pre">$near</span></code>, you must enclose it in
 quotes. If you’re using Ruby version 2.2 or greater, you can notate
 it as follows:</p>
 <div class="button-code-block">
@@ -284,7 +297,7 @@ it as follows:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">update_one</span><span class="p">({</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Harriet&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;$set&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span> <span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">update_one</span><span class="p">({</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Harriet&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;$set&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span> <span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -294,7 +307,7 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">update_one</span><span class="p">({</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Harriet&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;$set&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span> <span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">update_one</span><span class="p">({</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Harriet&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;$set&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span> <span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -305,7 +318,7 @@ version of Ruby:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">update_one</span><span class="p">({</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Harriet&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;$set&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span> <span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">update_one</span><span class="p">({</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Harriet&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;$set&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span> <span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -313,8 +326,8 @@ copy</a>
 <div class="section" id="creating-documents">
 <h2>Creating Documents<a class="headerlink" href="#creating-documents" title="Permalink to this headline">¶</a></h2>
 <p>To insert documents into a collection, select a
-collection on the client and call <code class="docutils literal"><span class="pre">insert_one</span></code> or <code class="docutils literal"><span class="pre">insert_many</span></code>.</p>
-<p>Insert operations return a <code class="docutils literal"><span class="pre">Mongo::Operation::Result</span></code> object which
+collection on the client and call <code class="docutils literal notranslate"><span class="pre">insert_one</span></code> or <code class="docutils literal notranslate"><span class="pre">insert_many</span></code>.</p>
+<p>Insert operations return a <code class="docutils literal notranslate"><span class="pre">Mongo::Operation::Result</span></code> object which
 gives you information about the insert itself.</p>
 <p>On MongoDB 2.6 and later, if the insert fails, an exception is
 raised, because write commands are used.</p>
@@ -325,7 +338,7 @@ raised, because write commands are used.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">insert_one</span><span class="p">(</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;FKA Twigs&#39;</span> <span class="p">}</span> <span class="p">)</span>
 <span class="n">result</span><span class="o">.</span><span class="n">n</span> <span class="c1"># returns 1, because 1 document was inserted.</span>
@@ -339,7 +352,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="specify-a-decimal128-number">
-<span id="specify-decimal128"></span><h3>Specify a <code class="docutils literal"><span class="pre">Decimal128</span></code> number<a class="headerlink" href="#specify-a-decimal128-number" title="Permalink to this headline">¶</a></h3>
+<span id="specify-decimal128"></span><h3>Specify a <code class="docutils literal notranslate"><span class="pre">Decimal128</span></code> number<a class="headerlink" href="#specify-a-decimal128-number" title="Permalink to this headline">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.4.</span></p>
 </div>
@@ -350,14 +363,14 @@ of emulating decimal rounding with exact precision. This
 functionality is intended for applications that handle
 <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/model-monetary-data">monetary data</a>,
 such as financial and tax computations.</p>
-<p>The following example inserts a value of type <code class="docutils literal"><span class="pre">Decimal128</span></code> into
-the <code class="docutils literal"><span class="pre">price</span></code> field of a collection named <code class="docutils literal"><span class="pre">inventory</span></code>:</p>
+<p>The following example inserts a value of type <code class="docutils literal notranslate"><span class="pre">Decimal128</span></code> into
+the <code class="docutils literal notranslate"><span class="pre">price</span></code> field of a collection named <code class="docutils literal notranslate"><span class="pre">inventory</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
 
 <span class="n">price</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Decimal128</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;428.79&quot;</span><span class="p">)</span>
 <span class="n">client</span><span class="o">[</span><span class="ss">:inventory</span><span class="o">].</span><span class="n">insert_one</span><span class="p">({</span> <span class="s2">&quot;_id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
@@ -372,18 +385,18 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span> <span class="o">:</span> <span class="s2">&quot;26 inch monitor&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="nx">NumberDecimal</span><span class="p">(</span><span class="s2">&quot;428.79&quot;</span><span class="p">)</span> <span class="p">}</span>
+<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span> <span class="o">:</span> <span class="s2">&quot;26 inch monitor&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="nx">NumberDecimal</span><span class="p">(</span><span class="s2">&quot;428.79&quot;</span><span class="p">)</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
-<p>You can also create a <code class="docutils literal"><span class="pre">Decimal128</span></code> object from a Ruby <code class="docutils literal"><span class="pre">BigDecimal</span></code>
-object, or with <code class="docutils literal"><span class="pre">Decimal128.from_string()</span></code>.</p>
+<p>You can also create a <code class="docutils literal notranslate"><span class="pre">Decimal128</span></code> object from a Ruby <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code>
+object, or with <code class="docutils literal notranslate"><span class="pre">Decimal128.from_string()</span></code>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">big_decimal</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">428</span><span class="o">.</span><span class="mi">79</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">big_decimal</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">428</span><span class="o">.</span><span class="mi">79</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">price</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Decimal128</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">big_decimal</span><span class="p">)</span>
 <span class="c1"># =&gt; BSON::Decimal128(&#39;428.79&#39;)</span>
 
@@ -404,20 +417,20 @@ when the same queries are performed again.</p>
 </div>
 <div class="section" id="reading">
 <h2>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
-<p>The Ruby driver provides a fluent interface for queries using the <code class="docutils literal"><span class="pre">find</span></code>
+<p>The Ruby driver provides a fluent interface for queries using the <code class="docutils literal notranslate"><span class="pre">find</span></code>
 method on the collection. Various options are available
-to the <code class="docutils literal"><span class="pre">find</span></code> method.</p>
+to the <code class="docutils literal notranslate"><span class="pre">find</span></code> method.</p>
 <p>The query is lazily executed against the server only when iterating the
-results - at that point the query is dispatched and a <code class="docutils literal"><span class="pre">Mongo::Cursor</span></code> is
+results - at that point the query is dispatched and a <code class="docutils literal notranslate"><span class="pre">Mongo::Cursor</span></code> is
 returned.</p>
-<p>To find all documents for a given filter, call <code class="docutils literal"><span class="pre">find</span></code> with the
+<p>To find all documents for a given filter, call <code class="docutils literal notranslate"><span class="pre">find</span></code> with the
 query:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Flying Lotus&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">document</span><span class="o">|</span>
   <span class="c1">#=&gt; Yields a BSON::Document.</span>
@@ -432,7 +445,7 @@ notation.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;records.releaseYear&quot;</span><span class="p">:</span> <span class="mi">2008</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">document</span><span class="o">|</span>
   <span class="c1">#=&gt; Yields a BSON::Document.</span>
 <span class="k">end</span>
@@ -442,14 +455,14 @@ copy</a>
 <div class="section" id="query-options">
 <span id="ruby-driver-query-options"></span><h3>Query Options<a class="headerlink" href="#query-options" title="Permalink to this headline">¶</a></h3>
 <p>To add options to a query, chain the appropriate methods after the
-<code class="docutils literal"><span class="pre">find</span></code> method. Note that the underlying object, the <code class="docutils literal"><span class="pre">Mongo::Collection::View</span></code>,
+<code class="docutils literal notranslate"><span class="pre">find</span></code> method. Note that the underlying object, the <code class="docutils literal notranslate"><span class="pre">Mongo::Collection::View</span></code>,
 is immutable and a new object will be returned after each method call.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 
 <span class="n">documents</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Flying Lotus&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">documents</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">document</span><span class="o">|</span>
@@ -471,19 +484,24 @@ when querying and their corresponding methods as examples.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">allow_partial_results</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">allow_disk_use</span></code></td>
+<td>When set to true, the server can write temporary data to disk while
+executing the find operation. This option is only available on MongoDB
+server versions 4.4 and newer.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">allow_partial_results</span></code></td>
 <td>For use with sharded clusters. If a shard is down, allows the query
 to return results from the shards that are up, potentially only getting
 a portion of the results.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">batch_size(Integer)</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">batch_size(Integer)</span></code></td>
 <td>Specifies the size of each batch of documents the cursor will return on
-each <code class="docutils literal"><span class="pre">GETMORE</span></code> operation.</td>
+each <code class="docutils literal notranslate"><span class="pre">GETMORE</span></code> operation.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">comment(String)</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">comment(String)</span></code></td>
 <td>Adds a comment to the query.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">explain(**opts)</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">explain(**opts)</span></code></td>
 <td><p class="first">Returns the query plan for the query. Pass the <a class="reference external" href="https://docs.mongodb.com/manual/reference/command/explain/">explain options</a> via the keyword arguments using symbol
 keys.</p>
 <div class="button-code-block">
@@ -491,7 +509,7 @@ keys.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># All server versions - default explain behavior</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># All server versions - default explain behavior</span>
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">explain</span>
 
 <span class="c1"># MongoDB 3.0 and newer</span>
@@ -511,72 +529,78 @@ copy</a>
 </div>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
-<p>The information returned by the server for the <code class="docutils literal"><span class="pre">explain</span></code> command
+<p>The information returned by the server for the <code class="docutils literal notranslate"><span class="pre">explain</span></code> command
 varies with server version and deployment topology. The driver’s
-<code class="docutils literal"><span class="pre">explain</span></code> method returns whatever the server provided.</p>
+<code class="docutils literal notranslate"><span class="pre">explain</span></code> method returns whatever the server provided.</p>
 <p class="last"><strong>The return value of ``explain`` method is not part of the driver’s
 public API and depends on the server version and deployment topology.</strong></p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">hint(Hash)</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">hint(Hash)</span></code></td>
 <td>Provides the query with an
 <a class="reference external" href="https://docs.mongodb.com/manual/reference/method/cursor.hint/">index hint</a> to use.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">limit(Integer)</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">limit(Integer)</span></code></td>
 <td>Limits the number of returned documents to the provided value.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">max_scan(Integer)</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">max_scan(Integer)</span></code></td>
 <td>Sets the maximum number of documents to scan if a full collection scan
 would be performed. Deprecated as of MongoDB server version 4.0.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">no_cursor_timeout</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">max_time_ms(Integer)</span></code></td>
+<td>The maximum amount of time to allow the query to run, in milliseconds.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">no_cursor_timeout</span></code></td>
 <td>MongoDB automatically closes inactive cursors after a period of 10
 minutes. Call this for cursors to remain open indefinitely on the server.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">projection(Hash)</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">projection(Hash)</span></code></td>
 <td><p class="first">Specifies the fields to include or exclude from the results.</p>
 <div class="last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">read(Hash)</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">read(Hash)</span></code></td>
 <td><p class="first">Changes the read preference for this query only.</p>
 <div class="last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="ss">:mode</span> <span class="o">=&gt;</span> <span class="ss">:secondary_preferred</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="ss">:mode</span> <span class="o">=&gt;</span> <span class="ss">:secondary_preferred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">show_disk_loc(Boolean)</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">session(Session)</span></code></td>
+<td>The session to use.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">show_disk_loc(Boolean)</span></code></td>
 <td>Tells the results to also include the location of the documents on disk.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">skip(Integer)</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">skip(Integer)</span></code></td>
 <td>Skip the provided number of documents in the results.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">snapshot</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">snapshot</span></code></td>
 <td>Execute the query in snapshot mode. Deprecated as of MongoDB server version 4.0.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">sort(Hash)</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">sort(Hash)</span></code></td>
 <td><p class="first">Specifies sort criteria for the query.</p>
 <div class="last button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -588,7 +612,7 @@ copy</a>
 <div class="section" id="additional-query-operations">
 <h3>Additional Query Operations<a class="headerlink" href="#additional-query-operations" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">count_documents</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">count_documents</span></code></dt>
 <dd>Get the total number of documents matching a filter, or the total number
 of documents in a collection.</dd>
 </dl>
@@ -597,16 +621,16 @@ of documents in a collection.</dd>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Flying Lotus&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count_documents</span>
 </pre></div>
 </div>
 </div>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">estimated_document_count</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code></dt>
 <dd><p class="first">Get an approximate number of documents in the collection.</p>
-<p class="last">Note that unlike <code class="docutils literal"><span class="pre">count_documents</span></code>, <code class="docutils literal"><span class="pre">estimated_document_count</span></code> does not
+<p class="last">Note that unlike <code class="docutils literal notranslate"><span class="pre">count_documents</span></code>, <code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code> does not
 accept a filter.</p>
 </dd>
 </dl>
@@ -615,19 +639,19 @@ accept a filter.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">estimated_document_count</span>
 </pre></div>
 </div>
 </div>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">count</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">count</span></code></dt>
 <dd><p class="first">Get an approximate number of documents matching a filter, or an approximate
 number of documents in the collection.</p>
-<p class="last"><em>Deprecated:</em> The <code class="docutils literal"><span class="pre">count</span></code> method is deprecated and does not work in
-transactions. Please use <code class="docutils literal"><span class="pre">count_documents</span></code> to obtain an exact count of
-documents potentially matching a filter or <code class="docutils literal"><span class="pre">estimated_document_count</span></code>
+<p class="last"><em>Deprecated:</em> The <code class="docutils literal notranslate"><span class="pre">count</span></code> method is deprecated and does not work in
+transactions. Please use <code class="docutils literal notranslate"><span class="pre">count_documents</span></code> to obtain an exact count of
+documents potentially matching a filter or <code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code>
 to obtain an approximate number of documents in the collection.</p>
 </dd>
 </dl>
@@ -636,23 +660,23 @@ to obtain an approximate number of documents in the collection.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Flying Lotus&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span>
 </pre></div>
 </div>
 </div>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">distinct</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">distinct</span></code></dt>
 <dd>Filters out documents with duplicate values. Equivalent to the SQL
-<code class="docutils literal"><span class="pre">distinct</span></code> clause.</dd>
+<code class="docutils literal notranslate"><span class="pre">distinct</span></code> clause.</dd>
 </dl>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="ss">:name</span> <span class="p">)</span>
 </pre></div>
@@ -669,7 +693,7 @@ following code example shows how a tailable cursor might be used:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">].</span><span class="n">drop</span>
 <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="p">,</span> <span class="ss">capped</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">512</span><span class="o">].</span><span class="n">create</span>
 
@@ -698,7 +722,7 @@ or on the collection:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:14420&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:14420&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
   <span class="ss">read_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">level</span><span class="p">:</span> <span class="ss">:local</span><span class="p">})</span>
 
 <span class="n">client</span><span class="o">[</span><span class="s1">&#39;collection&#39;</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">to_a</span>
@@ -720,7 +744,7 @@ part of the command:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="ss">collstats</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="ss">readConcern</span><span class="p">:</span> <span class="p">{</span><span class="ss">level</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="ss">collstats</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="ss">readConcern</span><span class="p">:</span> <span class="p">{</span><span class="ss">level</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -730,14 +754,14 @@ copy</a>
 <p>Read preference determines the candidate <a class="reference external" href="https://docs.mongodb.com/manual/replication/">replica set</a>
 members to which a query or command can be sent. They consist of a <strong>mode</strong>
 specified as a symbol, an array of hashes known as <strong>tag_sets</strong>,
-the <code class="docutils literal"><span class="pre">hedge</span></code> option, which is a Hash specifying hedged read behavior, and two
+the <code class="docutils literal notranslate"><span class="pre">hedge</span></code> option, which is a Hash specifying hedged read behavior, and two
 timing options: <strong>local_threshold</strong> and <strong>server_selection_timeout</strong>.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">local_threshold</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">local_threshold</span></code></dt>
 <dd>Defines the upper limit in seconds of the latency window
 between the nearest server and suitable servers to which an operation may be sent.
 The default is 15 milliseconds, or 0.015 seconds.</dd>
-<dt><code class="docutils literal"><span class="pre">server_selection_timeout</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">server_selection_timeout</span></code></dt>
 <dd>Defines how long to block for server selection
 before throwing an exception. The default is 30,000 milliseconds, or 30 seconds.</dd>
 </dl>
@@ -756,7 +780,7 @@ option when a command is run on a database:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Set read preference on a client, used for all operations</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set read preference on a client, used for all operations</span>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">read</span><span class="p">:</span> <span class="p">{</span> <span class="ss">mode</span><span class="p">:</span> <span class="ss">:secondary</span><span class="p">,</span>
                                    <span class="ss">tag_sets</span><span class="p">:</span> <span class="o">[</span> <span class="p">{</span> <span class="s1">&#39;dc&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nyc&#39;</span> <span class="p">}</span> <span class="o">]</span>
@@ -769,13 +793,13 @@ copy</a>
 </div>
 </div>
 <p>Read preference can also be set for specific operations on a collection
-using the <code class="docutils literal"><span class="pre">with</span></code> method:</p>
+using the <code class="docutils literal notranslate"><span class="pre">with</span></code> method:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">artists</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">]</span>
 <span class="n">artists</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">:read</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:mode</span> <span class="o">=&gt;</span> <span class="ss">:primary_preferred</span> <span class="p">})</span><span class="o">.</span><span class="n">find</span><span class="o">.</span><span class="n">to_a</span>
 </pre></div>
@@ -784,48 +808,48 @@ copy</a>
 </div>
 <div class="section" id="mode">
 <h3>Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
-<p>There are five possible read preference modes: <code class="docutils literal"><span class="pre">:primary</span></code>, <code class="docutils literal"><span class="pre">:secondary</span></code>,
-<code class="docutils literal"><span class="pre">:primary_preferred</span></code>, <code class="docutils literal"><span class="pre">:secondary_preferred</span></code> and``:nearest``.
+<p>There are five possible read preference modes: <code class="docutils literal notranslate"><span class="pre">:primary</span></code>, <code class="docutils literal notranslate"><span class="pre">:secondary</span></code>,
+<code class="docutils literal notranslate"><span class="pre">:primary_preferred</span></code>, <code class="docutils literal notranslate"><span class="pre">:secondary_preferred</span></code> and``:nearest``.
 Please see the <a class="reference external" href="https://docs.mongodb.com/manual/core/read-preference/">read preference documentation in the MongoDB Manual</a> for an explanation of the modes.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When a client is directly connected to a server using the <code class="docutils literal"><span class="pre">:direct_connection</span></code>
-Ruby option or the <code class="docutils literal"><span class="pre">directConnection</span></code> URI option, read preference mode
-is automatically set to <code class="docutils literal"><span class="pre">:primary_preferred</span></code> to permit read operations
-against secondaries. If the application specified a <code class="docutils literal"><span class="pre">:primary</span></code> read
-preference mode, the mode is automatically converted to <code class="docutils literal"><span class="pre">:primary_preferred</span></code>.
+<p class="last">When a client is directly connected to a server using the <code class="docutils literal notranslate"><span class="pre">:direct_connection</span></code>
+Ruby option or the <code class="docutils literal notranslate"><span class="pre">directConnection</span></code> URI option, read preference mode
+is automatically set to <code class="docutils literal notranslate"><span class="pre">:primary_preferred</span></code> to permit read operations
+against secondaries. If the application specified a <code class="docutils literal notranslate"><span class="pre">:primary</span></code> read
+preference mode, the mode is automatically converted to <code class="docutils literal notranslate"><span class="pre">:primary_preferred</span></code>.
 If another read preference mode is specified, it is passed to the server
 unchanged.</p>
 </div>
 </div>
 <div class="section" id="tag-sets">
 <h3>Tag sets<a class="headerlink" href="#tag-sets" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">tag_sets</span></code> parameter is an ordered list of tag sets used to
+<p>The <code class="docutils literal notranslate"><span class="pre">tag_sets</span></code> parameter is an ordered list of tag sets used to
 restrict the eligibility of servers for selection, such as for data
 center awareness. Please see the <a class="reference external" href="https://docs.mongodb.com/manual/core/read-preference/">read preference documentation in
 the MongoDB Manual</a> for an explanation of tag sets.</p>
 <p>A read preference tag set (T) matches a server tag set (S) – or
 equivalently a server tag set (S) matches a read preference tag set
 (T) — if T is a subset of S.</p>
-<p>For example, the read preference tag set <code class="docutils literal"><span class="pre">{</span> <span class="pre">dc:</span> <span class="pre">'ny',</span> <span class="pre">rack:</span> <span class="pre">2</span> <span class="pre">}</span></code>
-matches a secondary server with tag set <code class="docutils literal"><span class="pre">{</span> <span class="pre">dc:</span> <span class="pre">'ny',</span> <span class="pre">rack:</span> <span class="pre">2,</span> <span class="pre">size:</span> <span class="pre">'large'</span> <span class="pre">}</span></code>.</p>
+<p>For example, the read preference tag set <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">dc:</span> <span class="pre">'ny',</span> <span class="pre">rack:</span> <span class="pre">2</span> <span class="pre">}</span></code>
+matches a secondary server with tag set <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">dc:</span> <span class="pre">'ny',</span> <span class="pre">rack:</span> <span class="pre">2,</span> <span class="pre">size:</span> <span class="pre">'large'</span> <span class="pre">}</span></code>.</p>
 <p>A tag set that is an empty document matches any server, because
 the empty tag set is a subset of any tag set. This means the default
-<code class="docutils literal"><span class="pre">tag_sets</span></code> parameter <code class="docutils literal"><span class="pre">[{}]</span></code> matches all servers.</p>
+<code class="docutils literal notranslate"><span class="pre">tag_sets</span></code> parameter <code class="docutils literal notranslate"><span class="pre">[{}]</span></code> matches all servers.</p>
 </div>
 <div class="section" id="hedge">
 <h3>Hedge<a class="headerlink" href="#hedge" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">hedge</span></code> parameter is a Hash that specifies whether the server should use
+<p>The <code class="docutils literal notranslate"><span class="pre">hedge</span></code> parameter is a Hash that specifies whether the server should use
 hedged reads. With hedged reads, sharded clusters can route read operations to
 two replica set members and return results from the first respondent.</p>
-<p>The <code class="docutils literal"><span class="pre">hedge</span></code> option may only be specified on non-primary read preferences. It
-must be provided as Hash with the key <code class="docutils literal"><span class="pre">enabled</span></code> set to <code class="docutils literal"><span class="pre">true</span></code> or <code class="docutils literal"><span class="pre">false</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">hedge</span></code> option may only be specified on non-primary read preferences. It
+must be provided as Hash with the key <code class="docutils literal notranslate"><span class="pre">enabled</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
   <span class="ss">read</span><span class="p">:</span> <span class="p">{</span> <span class="ss">mode</span><span class="p">:</span> <span class="ss">:secondary</span><span class="p">,</span> <span class="ss">hedge</span><span class="p">:</span> <span class="p">{</span> <span class="ss">enabled</span><span class="p">:</span> <span class="kp">true</span> <span class="p">}</span> <span class="p">},</span>
 <span class="p">)</span>
@@ -836,7 +860,7 @@ copy</a>
 more information about hedged reads.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">hedge</span></code> option is only available on MongoDB server versions 4.4 and newer.
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">hedge</span></code> option is only available on MongoDB server versions 4.4 and newer.
 Attempting to use this option on older server versions will result in an error.</p>
 </div>
 </div>
@@ -844,14 +868,14 @@ Attempting to use this option on older server versions will result in an error.<
 <div class="section" id="updating">
 <span id="ruby-driver-updating"></span><h2>Updating<a class="headerlink" href="#updating" title="Permalink to this headline">¶</a></h2>
 <p>Updating documents is possible by executing a single or
-multiple update, or by using the <code class="docutils literal"><span class="pre">$findAndModify</span></code> command.</p>
-<p><code class="docutils literal"><span class="pre">update_one</span></code></p>
+multiple update, or by using the <code class="docutils literal notranslate"><span class="pre">$findAndModify</span></code> command.</p>
+<p><code class="docutils literal notranslate"><span class="pre">update_one</span></code></p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">artists</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">]</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Goldie&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">update_one</span><span class="p">(</span><span class="s2">&quot;$inc&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:plays</span> <span class="o">=&gt;</span>  <span class="mi">1</span> <span class="p">}</span> <span class="p">)</span>
@@ -862,13 +886,13 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">update_many</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">update_many</span></code></p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:label</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hospital&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">update_many</span><span class="p">(</span> <span class="s2">&quot;$inc&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:plays</span> <span class="o">=&gt;</span>  <span class="mi">1</span> <span class="p">}</span> <span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:label</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hospital&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">update_many</span><span class="p">(</span> <span class="s2">&quot;$inc&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:plays</span> <span class="o">=&gt;</span>  <span class="mi">1</span> <span class="p">}</span> <span class="p">)</span>
 <span class="n">result</span><span class="o">.</span><span class="n">modified_count</span> <span class="c1"># Returns the number of documents that were updated.</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">update_many</span><span class="p">(</span> <span class="p">{</span> <span class="ss">:label</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hospital&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;$inc&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:plays</span> <span class="o">=&gt;</span>  <span class="mi">1</span> <span class="p">}</span> <span class="p">}</span> <span class="p">)</span>
@@ -876,13 +900,13 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">replace_one</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">replace_one</span></code></p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Aphex Twin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace_one</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Richard James&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Aphex Twin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace_one</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Richard James&#39;</span><span class="p">)</span>
 <span class="n">result</span><span class="o">.</span><span class="n">modified_count</span> <span class="c1"># Returns 1.</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">replace_one</span><span class="p">(</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Aphex Twin&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Richard James&#39;</span> <span class="p">}</span> <span class="p">)</span>
@@ -890,30 +914,30 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>To update documents and return a document via <code class="docutils literal"><span class="pre">$findAndModify</span></code>, use one of
-the three provided helpers: <code class="docutils literal"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal"><span class="pre">find_one_and_replace</span></code>,
-or <code class="docutils literal"><span class="pre">find_one_and_update</span></code>. You can opt to return the document before or after
+<p>To update documents and return a document via <code class="docutils literal notranslate"><span class="pre">$findAndModify</span></code>, use one of
+the three provided helpers: <code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code>. You can opt to return the document before or after
 the modification occurs.</p>
-<p><code class="docutils literal"><span class="pre">find_one_and_delete</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code></p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">artists</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">]</span>
 
 <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José James&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_one_and_delete</span> <span class="c1"># Returns the document.</span>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">find_one_and_replace</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code></p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José James&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_one_and_replace</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José James&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_one_and_replace</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José&#39;</span><span class="p">)</span>
 <span class="n">doc</span> <span class="c1"># Return the document before the update.</span>
 
 <span class="n">doc</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find_one_and_replace</span><span class="p">({</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José James&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José&#39;</span> <span class="p">})</span>
@@ -925,13 +949,13 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">find_one_and_update</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code></p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José James&#39;</span><span class="p">)</span><span class="o">.</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José James&#39;</span><span class="p">)</span><span class="o">.</span>
   <span class="n">find_one_and_update</span><span class="p">(</span> <span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;José&#39;</span> <span class="p">}</span> <span class="p">)</span>
 <span class="n">doc</span> <span class="c1"># Return the document before the update.</span>
 
@@ -949,7 +973,7 @@ Hash argument.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">artists</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">]</span>
 
 <span class="n">artists</span><span class="o">.</span><span class="n">indexes</span><span class="o">.</span><span class="n">create_one</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
@@ -965,8 +989,8 @@ copy</a>
 </div>
 </div>
 <p>The following is a list of the options that can be added to update operations,
-including <code class="docutils literal"><span class="pre">update_one</span></code>, <code class="docutils literal"><span class="pre">update_many</span></code>, <code class="docutils literal"><span class="pre">replace_one</span></code>,
-<code class="docutils literal"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal"><span class="pre">find_one_and_update</span></code>, and <code class="docutils literal"><span class="pre">find_one_and_replace</span></code>.</p>
+including <code class="docutils literal notranslate"><span class="pre">update_one</span></code>, <code class="docutils literal notranslate"><span class="pre">update_many</span></code>, <code class="docutils literal notranslate"><span class="pre">replace_one</span></code>,
+<code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code>, and <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="33%" />
@@ -978,48 +1002,48 @@ including <code class="docutils literal"><span class="pre">update_one</span></co
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">array_filters</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">array_filters</span></code></td>
 <td>An Array of filter documents that determine which array elements to modify
 for an update operation on an array field.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">bypass_document_validation</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">bypass_document_validation</span></code></td>
 <td>Whether to skip document-level validation before writing the document.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">collation</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">collation</span></code></td>
 <td>Specifies a set of rules to use when comparing strings complying with the
 conventions of a particular language.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">hint</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">hint</span></code></td>
 <td>The index to use for this operation. May be specified as a Hash
 (e.g. { _id: 1 }) or as a String (e.g. “_id_”). Supported on MongoDB
-server versions 4.2 and newer for <code class="docutils literal"><span class="pre">update_one</span></code>, <code class="docutils literal"><span class="pre">update_many</span></code>, and
-<code class="docutils literal"><span class="pre">replace_one</span></code> commands, and on server versions 4.4 and newer for
-<code class="docutils literal"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal"><span class="pre">find_one_and_update</span></code>, and <code class="docutils literal"><span class="pre">find_one_and_replace</span></code>
+server versions 4.2 and newer for <code class="docutils literal notranslate"><span class="pre">update_one</span></code>, <code class="docutils literal notranslate"><span class="pre">update_many</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">replace_one</span></code> commands, and on server versions 4.4 and newer for
+<code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code>, and <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>
 commands.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">projection</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">projection</span></code></td>
 <td>The fields to exclude or include in the operation result (only available
-on <code class="docutils literal"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal"><span class="pre">find_one_and_replace</span></code>, and
-<code class="docutils literal"><span class="pre">find_one_and_update</span></code> commands).</td>
+on <code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code> commands).</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">return_document</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">return_document</span></code></td>
 <td>A symbol specifying whether to return the updated document as it was before or
-after the update. Potential values are <code class="docutils literal"><span class="pre">:before</span></code> or <code class="docutils literal"><span class="pre">:after</span></code>.
-(Only available on <code class="docutils literal"><span class="pre">find_one_and_update</span></code> and <code class="docutils literal"><span class="pre">find_one_and_replace</span></code> commands).</td>
+after the update. Potential values are <code class="docutils literal notranslate"><span class="pre">:before</span></code> or <code class="docutils literal notranslate"><span class="pre">:after</span></code>.
+(Only available on <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code> and <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code> commands).</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">sort</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">sort</span></code></td>
 <td>How to sort the results of a find and modify command. Specified as a Hash
 key-value pair, where the key is the name of the field to sort by, and
 the value is either 1 or -1, specifying a sort in ascending or descending
-order (only available on <code class="docutils literal"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal"><span class="pre">find_one_and_replace</span></code>,
-and <code class="docutils literal"><span class="pre">find_one_and_update</span></code> commands).</td>
+order (only available on <code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code>, <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code> commands).</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">session</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">session</span></code></td>
 <td>The session to use for this operation.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">upsert</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">upsert</span></code></td>
 <td>Whether to upsert if the document doesn’t exist. Cannot be used on
-<code class="docutils literal"><span class="pre">find_one_and_delete</span></code> operation.</td>
+<code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code> operation.</td>
 </tr>
 </tbody>
 </table>
@@ -1033,13 +1057,13 @@ on the following commands:</p>
 </div>
 <div class="section" id="deleting">
 <h2>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">delete_one</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">delete_one</span></code></p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">artists</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">]</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Björk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">delete_one</span>
@@ -1050,13 +1074,13 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">delete_many</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">delete_many</span></code></p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:label</span> <span class="o">=&gt;</span> <span class="s1">&#39;Mute&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">delete_many</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:label</span> <span class="o">=&gt;</span> <span class="s1">&#39;Mute&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">delete_many</span>
 <span class="n">result</span><span class="o">.</span><span class="n">deleted_count</span> <span class="c1"># Returns the number deleted.</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">artists</span><span class="o">.</span><span class="n">delete_many</span><span class="p">(</span><span class="ss">:label</span> <span class="o">=&gt;</span> <span class="s1">&#39;Mute&#39;</span><span class="p">)</span>
@@ -1073,7 +1097,7 @@ options Hash argument.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">artists</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="o">]</span>
 
 <span class="n">artists</span><span class="o">.</span><span class="n">indexes</span><span class="o">.</span><span class="n">create_one</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
@@ -1085,7 +1109,7 @@ copy</a>
 </div>
 </div>
 <p>The following is a full list of the available options that can be added
-to <code class="docutils literal"><span class="pre">delete_one</span></code> and <code class="docutils literal"><span class="pre">delete_many</span></code> operations.</p>
+to <code class="docutils literal notranslate"><span class="pre">delete_one</span></code> and <code class="docutils literal notranslate"><span class="pre">delete_many</span></code> operations.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="33%" />
@@ -1097,16 +1121,16 @@ to <code class="docutils literal"><span class="pre">delete_one</span></code> and
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">collation</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">collation</span></code></td>
 <td>Specifies a set of rules to use when comparing strings complying with the
 conventions of a particular language.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">hint</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">hint</span></code></td>
 <td>The index to use for this operation. May be specified as a Hash
 (e.g. { _id: 1 }) or as a String (e.g. “_id_”). Supported on MongoDB
 server versions 4.4 and newer.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">session</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">session</span></code></td>
 <td>The session to use for this operation.</td>
 </tr>
 </tbody>
@@ -1124,23 +1148,23 @@ More information about write concerns in general is available in the
 <p>The Ruby driver supports specifying write concern on client, collection,
 session (for transactions on that session), transaction, GridFS bucket
 and write stream levels, as well as when manually issuing commands via
-<code class="docutils literal"><span class="pre">Database#command</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">Database#command</span></code>.</p>
 <p>As of driver version 2.10, all driver objects accepting write concerns do so
-through the <code class="docutils literal"><span class="pre">:write_concern</span></code> option, which should be given a hash with
-the write concern options. Usage of the <code class="docutils literal"><span class="pre">:write</span></code> option is deprecated.
+through the <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> option, which should be given a hash with
+the write concern options. Usage of the <code class="docutils literal notranslate"><span class="pre">:write</span></code> option is deprecated.
 In driver versions 2.9 and below, client, collection and GridFS objects
-took write concern options in the <code class="docutils literal"><span class="pre">:write</span></code> option with session and
-transaction objects employing the <code class="docutils literal"><span class="pre">:write_concern</span></code> option.</p>
+took write concern options in the <code class="docutils literal notranslate"><span class="pre">:write</span></code> option with session and
+transaction objects employing the <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> option.</p>
 <p>Below are some examples of passing write concerns to client and collection
-objects. The <code class="docutils literal"><span class="pre">:write_concern</span></code> option can be provided when constructing
-new client and collection objects,  or to the <code class="docutils literal"><span class="pre">#with</span></code> methods.</p>
+objects. The <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> option can be provided when constructing
+new client and collection objects,  or to the <code class="docutils literal notranslate"><span class="pre">#with</span></code> methods.</p>
 <p>GridFS examples are provided on the <a class="reference internal" href="ruby-driver-gridfs.html#gridfs"><span class="std std-ref">GridFS</span></a> page.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
   <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="n">alt_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">})</span>
 
@@ -1155,14 +1179,14 @@ copy</a>
 </div>
 </div>
 <p>Driver versions 2.9 and earlier accepted write concerns on client and collection
-level via the <code class="docutils literal"><span class="pre">:write</span></code> option. This usage continues to be supported for
+level via the <code class="docutils literal notranslate"><span class="pre">:write</span></code> option. This usage continues to be supported for
 backwards compatibility, but is deprecated:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
   <span class="ss">write</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="n">alt_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">write</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">})</span>
 
@@ -1171,14 +1195,14 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>If both <code class="docutils literal"><span class="pre">:write</span></code> and <code class="docutils literal"><span class="pre">:write_concern</span></code> options are provided, their
+<p>If both <code class="docutils literal notranslate"><span class="pre">:write</span></code> and <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> options are provided, their
 values must be identical or an exception will be raised:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># OK</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># OK</span>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
   <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="ss">write</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
 
@@ -1188,14 +1212,14 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>When <code class="docutils literal"><span class="pre">#with</span></code> methods are used to alter the options on a client or collection,
+<p>When <code class="docutils literal notranslate"><span class="pre">#with</span></code> methods are used to alter the options on a client or collection,
 the last provided option wins in case of naming differences:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
   <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="n">alt_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">write</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
 
@@ -1208,22 +1232,22 @@ copy</a>
 </div>
 </div>
 <p>When using transactions, write concern is only sent to the server in
-<code class="docutils literal"><span class="pre">commit_transaction</span></code> and <code class="docutils literal"><span class="pre">abort_transaction</span></code> operations
+<code class="docutils literal notranslate"><span class="pre">commit_transaction</span></code> and <code class="docutils literal notranslate"><span class="pre">abort_transaction</span></code> operations
 per the <a class="reference external" href="https://github.com/mongodb/specifications/blob/master/source/transactions/transactions.rst#writeconcern">transactions specification</a>.
-Write concern may be set via the <code class="docutils literal"><span class="pre">:write_concern</span></code> option in a
-<code class="docutils literal"><span class="pre">with_transaction</span></code> or <code class="docutils literal"><span class="pre">start_transaction</span></code> call, or via
-<code class="docutils literal"><span class="pre">default_transaction_options</span></code> option on a session object.
+Write concern may be set via the <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> option in a
+<code class="docutils literal notranslate"><span class="pre">with_transaction</span></code> or <code class="docutils literal notranslate"><span class="pre">start_transaction</span></code> call, or via
+<code class="docutils literal notranslate"><span class="pre">default_transaction_options</span></code> option on a session object.
 If neither of these is set, write concern of the client is used; note
 that transactions ignore write concerns of collections that are involved
 in their operations. Note that when setting the write concern as a
-transaction option, the <code class="docutils literal"><span class="pre">:write</span></code> option is not recognized by any
+transaction option, the <code class="docutils literal notranslate"><span class="pre">:write</span></code> option is not recognized by any
 driver version.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
   <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="p">,</span> <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">}</span><span class="o">]</span>
 
@@ -1256,14 +1280,14 @@ copy</a>
 </div>
 </div>
 <p>When write concerns are inherited, inheritance applies to the entire
-write concern hash rather than individual elements. For example, <code class="docutils literal"><span class="pre">j:</span> <span class="pre">true</span></code>
+write concern hash rather than individual elements. For example, <code class="docutils literal notranslate"><span class="pre">j:</span> <span class="pre">true</span></code>
 is not inherited in the following case:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
   <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">j</span><span class="p">:</span> <span class="kp">true</span><span class="p">})</span>
 <span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="p">,</span> <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span><span class="o">]</span>
 
@@ -1273,13 +1297,13 @@ copy</a>
 </div>
 </div>
 <p>Although CRUD operations accept an options hash, they currently do not
-recognize the <code class="docutils literal"><span class="pre">:write_concern</span></code> option:</p>
+recognize the <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> option:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
   <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:artists</span><span class="p">,</span> <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">}</span><span class="o">]</span>
 
@@ -1288,25 +1312,25 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>The easiest workaround for this is to use <code class="docutils literal"><span class="pre">#with</span></code> to obtain a new collection
+<p>The easiest workaround for this is to use <code class="docutils literal notranslate"><span class="pre">#with</span></code> to obtain a new collection
 instance with the desired write concern:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Uses w: 1</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uses w: 1</span>
 <span class="n">collection</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;SUN Project&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Write concern can also be manually specified in <code class="docutils literal"><span class="pre">Database#command</span></code>:</p>
+<p>Write concern can also be manually specified in <code class="docutils literal notranslate"><span class="pre">Database#command</span></code>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="ss">create</span><span class="p">:</span> <span class="s1">&#39;foo-collection&#39;</span><span class="p">,</span> <span class="ss">writeConcern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">})</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="ss">create</span><span class="p">:</span> <span class="s1">&#39;foo-collection&#39;</span><span class="p">,</span> <span class="ss">writeConcern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1330,7 +1354,7 @@ as strings, include the following code snippet in your project:</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Symbol</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Symbol</span>
   <span class="k">def</span> <span class="nf">bson_type</span>
     <span class="no">BSON</span><span class="o">::</span><span class="nb">String</span><span class="o">::</span><span class="no">BSON_TYPE</span>
   <span class="k">end</span>
@@ -1345,7 +1369,7 @@ copy</a>
     <div id="btnv">
       <span class="btn-arrow-left">&larr; &nbsp;</span>
       <a class="btn-prev-text" href="user-management.html" title="Previous Section: User Management"><span>User Management</span></a>
-      <a class="btn-next-text" href="ruby-driver-collection-tasks.html" title="Next Section: Collections"><span>Collections</span></a>
+      <a class="btn-next-text" href="ruby-driver-bulk-operations.html" title="Next Section: Bulk Writes"><span>Bulk Writes</span></a>
       <span class="btn-arrow-right">&nbsp;&rarr;</span>
     </div>
                   <div class="footer">
@@ -1375,9 +1399,7 @@ copy</a>
   </div>
 <div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
 
-  
-    <script src="../_static/navbar.min.js"></script>
-  
+  <script src="../_static/navbar.min.js"></script>
 
   
 

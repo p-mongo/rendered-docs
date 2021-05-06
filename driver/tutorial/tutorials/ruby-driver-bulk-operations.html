@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Bulk Operations &mdash; Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Bulk Writes &mdash; Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="index" />
@@ -15,6 +15,7 @@
   <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/tutorials/ruby-driver-bulk-operations.txt"/>
   <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
   <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/tutorials/ruby-driver-bulk-operations/" />
   
    <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,9 +30,9 @@
 <!-- <link rel="index" title="Index" href="../genindex.html" /> -->
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Ruby Driver Manual" href="../index.html" />
-<link rel="next" title="Text Search" href="ruby-driver-text-search.html" />
-<link rel="prev" title="Aggregation" href="ruby-driver-aggregation.html" /></head>
-<body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1>
+<link rel="next" title="Collections" href="ruby-driver-collection-tasks.html" />
+<link rel="prev" title="CRUD Operations" href="ruby-driver-crud-operations.html" /></head>
+<body data-project="docs-ruby" data-project-title="Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
   <!-- Google Tag Manager -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -60,153 +61,164 @@
 
 
     <div class="btn-group version-sidebar">
-      <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-        
-        
-        master (upcoming)<span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        
+      
+        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
           
-          <li class="active">
           
-            <a href="#" data-path="ruby-driver/current">
-              
-              master (upcoming)
-            </a>
-          </li>
-        
+          master (upcoming)<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
           
-          <li>
+            
+            <li class="active">
+            
+              <a href="#" data-path="ruby-driver/current">
+                
+                master (upcoming)
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
-              
-              Version 2.13 (current)
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
+                
+                Version 2.14 (current)
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
+                
+                Version 2.13
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
-              
-              Version 2.12
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
+                
+                Version 2.12
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
+                
+                Version 2.11
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
-              
-              Version 2.11
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
+                
+                Version 2.10
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
+                
+                Version 2.9
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
-              
-              Version 2.10
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
+                
+                Version 2.8
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
+                
+                Version 2.7
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
-              
-              Version 2.9
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
+                
+                Version 2.6
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
+                
+                Version 2.5
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
-              
-              Version 2.8
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
+                
+                Version 2.4
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
+                
+                Version 2.3
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
-              
-              Version 2.7
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
+                
+                Version 2.2
+              </a>
+            </li>
           
-          <li>
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
+                
+                Version 2.0
+              </a>
+            </li>
           
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
-              
-              Version 2.6
-            </a>
-          </li>
-        
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
+                
+                1.x
+              </a>
+            </li>
           
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
-              
-              Version 2.5
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
-              
-              Version 2.4
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
-              
-              Version 2.3
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
-              
-              Version 2.2
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
-              
-              Version 2.0
-            </a>
-          </li>
-        
-          
-          <li>
-          
-            <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
-              
-              1.x
-            </a>
-          </li>
-        
-      </ul>
+        </ul>
+      
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-crud-operations.html">CRUD Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Bulk Operations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li><li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-create-client.html">Creating a Client</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-authentication.html">Authentication</a></li><li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-crud-operations.html">CRUD Operations</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Bulk Writes</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collection-tasks.html">Collections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-projections.html">Projections</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-change-streams.html">Change Streams</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-database-tasks.html">Databases</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-monitoring.html">Monitoring</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-indexing.html">Indexing</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-collations.html">Collations</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-aggregation.html">Aggregation</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-text-search.html">Text Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-geospatial-search.html">Geospatial Search</a></li><li class="toctree-l1"><a class="reference internal" href="ruby-driver-gridfs.html">GridFS</a></li><li class="toctree-l1"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li><li class="toctree-l1"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l1"><a class="reference internal" href="../reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
     </div>
   </div>
            
@@ -218,6 +230,7 @@
 
     <span id="showNav" class="showNav">Navigation</span>
 
+      
       
         <div class="document">
             <div class="documentwrapper"><div class="bodywrapper">
@@ -231,8 +244,8 @@
     
   </div>
                 
-                  <div class="section" id="bulk-operations">
-<h1>Bulk Operations<a class="headerlink" href="#bulk-operations" title="Permalink to this headline">¶</a></h1>
+                  <div class="section" id="bulk-writes">
+<h1>Bulk Writes<a class="headerlink" href="#bulk-writes" title="Permalink to this headline">¶</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
@@ -242,21 +255,87 @@
 <li><a class="reference internal" href="#replace-one" id="id4">replace_one</a></li>
 <li><a class="reference internal" href="#delete-one" id="id5">delete_one</a></li>
 <li><a class="reference internal" href="#delete-many" id="id6">delete_many</a></li>
+<li><a class="reference internal" href="#bulk-write-splitting" id="id7">Bulk Write Splitting</a></li>
 </ul>
 </div>
 <p id="ruby-driver-bulk-ops">The bulk write API sends several write operations to the server in a single
 command. Use the bulk write API to reduce the number of network round-trips
-when performing several writes at a time.</p>
-<p>If the <code class="docutils literal"><span class="pre">ordered</span></code> option is set to <code class="docutils literal"><span class="pre">true</span></code> (which is the default),
+when performing several writes at a time. For example, to efficiently perform
+multiple updates, one might do:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="s1">&#39;colors&#39;</span><span class="o">]</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">bulk_write</span><span class="p">(</span><span class="o">[</span>
+  <span class="p">{</span>
+    <span class="ss">update_one</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;yellow&#39;</span><span class="p">},</span>
+      <span class="ss">update</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">hex</span><span class="p">:</span> <span class="s1">&#39;ffff00&#39;</span><span class="p">}},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="ss">update_one</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;purple&#39;</span><span class="p">},</span>
+      <span class="ss">update</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">hex</span><span class="p">:</span> <span class="s1">&#39;800080&#39;</span><span class="p">}},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="o">]</span><span class="p">,</span> <span class="ss">ordered</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>The following example shows how to execute different types of operations
+in the same request:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">bulk_write</span><span class="p">(</span><span class="o">[</span>
+  <span class="p">{</span> <span class="ss">insert_one</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">update_one</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+    <span class="ss">update</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}</span> <span class="p">},</span>
+  <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">replace_one</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span>
+    <span class="ss">replacement</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">3</span> <span class="p">},</span>
+  <span class="p">}</span> <span class="p">},</span>
+<span class="o">]</span><span class="p">,</span> <span class="ss">:ordered</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The first argument to <code class="docutils literal notranslate"><span class="pre">bulk_write</span></code> is the list of operations to perform.
+Each operation must be specified as a hash with exactly one key which is
+the operation name and the operation specification as the corresponding
+value. The supported operations are detailed below. The <code class="docutils literal notranslate"><span class="pre">bulk_write</span></code> method
+also accepts the following options:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">bypass_document_validation</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>. Whether to bypass document validation.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ordered</span></code></td>
+<td>If the <code class="docutils literal notranslate"><span class="pre">ordered</span></code> option is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> (which is the default),
 the operations are applied in order and if any operation fails, subsequent
-operations are not attempted. If the <code class="docutils literal"><span class="pre">ordered</span></code> option is set to <code class="docutils literal"><span class="pre">false</span></code>,
-all specified operations are attempted.</p>
-<p>The <code class="docutils literal"><span class="pre">bulk_write</span></code> method takes three arguments:</p>
-<ul class="simple">
-<li>A list of operations to execute.</li>
-<li>The <code class="docutils literal"><span class="pre">ordered</span></code> option taking a boolean value. Defaults to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>The write concern option. Defaults to the collection’s write concern.</li>
-</ul>
+operations are not attempted. If the <code class="docutils literal notranslate"><span class="pre">ordered</span></code> option is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>,
+all specified operations are attempted.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">write_concern</span></code></td>
+<td>The write concern for the operation, specified as a hash.</td>
+</tr>
+</tbody>
+</table>
 <p>Valid bulk write operations are the following:</p>
 <div class="section" id="insert-one">
 <h2>insert_one<a class="headerlink" href="#insert-one" title="Permalink to this headline">¶</a></h2>
@@ -265,14 +344,14 @@ all specified operations are attempted.</p>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:insert_one</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">}</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">insert_one</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">There is no <code class="docutils literal"><span class="pre">insert_many</span></code> operation. To insert multiple documents,
-specify multiple <code class="docutils literal"><span class="pre">insert_one</span></code> operations.</p>
+<p class="last">There is no <code class="docutils literal notranslate"><span class="pre">insert_many</span></code> bulk operation. To insert multiple documents,
+specify multiple <code class="docutils literal notranslate"><span class="pre">insert_one</span></code> operations.</p>
 </div>
 </div>
 <div class="section" id="update-one">
@@ -282,10 +361,12 @@ specify multiple <code class="docutils literal"><span class="pre">insert_one</sp
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:update_one</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:filter</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
-                   <span class="ss">:update</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span>  <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">}</span> <span class="p">},</span>
-                   <span class="ss">:upsert</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span> <span class="c1"># upsert is optional and defaults to false</span>
- <span class="p">}</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">update_one</span><span class="p">:</span> <span class="p">{</span>
+  <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="ss">update</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}</span> <span class="p">},</span>
+  <span class="c1"># upsert is optional and defaults to false</span>
+  <span class="ss">upsert</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+<span class="p">}</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -297,33 +378,12 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:update_many</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:filter</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
-                    <span class="ss">:update</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span>  <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">}</span> <span class="p">},</span>
-                    <span class="ss">:upsert</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span> <span class="c1"># upsert is optional and defaults to false</span>
- <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<p>The following example shows how to pass operations
-to the <code class="docutils literal"><span class="pre">bulk_write</span></code> method.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="n">coll</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="s1">&#39;documents&#39;</span><span class="o">]</span>
-<span class="n">coll</span><span class="o">.</span><span class="n">bulk_write</span><span class="p">(</span><span class="o">[</span> <span class="p">{</span> <span class="ss">:insert_one</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span> <span class="ss">:update_one</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:filter</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
-                                     <span class="ss">:update</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">}</span> <span class="p">}</span>
-                                   <span class="p">}</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span> <span class="ss">:replace_one</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:filter</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">},</span>
-                                      <span class="ss">:replacement</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="p">}</span>
-                                    <span class="p">}</span>
-                  <span class="p">}</span>
-                <span class="o">]</span><span class="p">,</span>
-                <span class="ss">:ordered</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">update_many</span><span class="p">:</span> <span class="p">{</span>
+  <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="ss">update</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span>  <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}</span> <span class="p">},</span>
+  <span class="c1"># upsert is optional and defaults to false</span>
+  <span class="ss">:upsert</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+<span class="p">}</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -335,12 +395,21 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:replace_one</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:filter</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
-                    <span class="ss">:replacement</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">},</span>
-                    <span class="ss">:upsert</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span> <span class="c1"># upsert is optional and defaults to false</span>
- <span class="p">}</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">replace_one</span><span class="p">:</span> <span class="p">{</span>
+  <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="ss">replacement</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span>
+  <span class="c1"># upsert is optional and defaults to false</span>
+  <span class="ss">upsert</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+<span class="p">}</span> <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">:replace_one</span></code> operation requires that the replacement value is a
+document. <code class="docutils literal notranslate"><span class="pre">:replace_one</span></code> does not recognize MongoDB update operators in
+the replacement value. In a future release the driver is expected to
+prohibit using keys beginning with <code class="docutils literal notranslate"><span class="pre">$</span></code> in the replacement document.</p>
 </div>
 </div>
 <div class="section" id="delete-one">
@@ -350,7 +419,9 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:delete_one</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:filter</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">delete_one</span><span class="p">:</span> <span class="p">{</span>
+  <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+<span class="p">}</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -362,18 +433,30 @@ copy</a>
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:delete_many</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:filter</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">delete_many</span><span class="p">:</span> <span class="p">{</span>
+  <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+<span class="p">}</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="bulk-write-splitting">
+<h2>Bulk Write Splitting<a class="headerlink" href="#bulk-write-splitting" title="Permalink to this headline">¶</a></h2>
+<p>The driver allows the application to submit arbitrarily large bulk write
+requests. However, since MongoDB server limits the size of command documents
+(currently this limit is 48 MiB), bulk writes that exceed this limit will be
+split into multiple requests.</p>
+<p>When <a class="reference internal" href="client-side-encryption.html#client-side-encryption"><span class="std std-ref">client-side encryption</span></a> is used, the
+threshold used for bulk write splitting is reduced to allow for overhead in
+the ciphertext.</p>
 </div>
 </div>
 
                 
     <div id="btnv">
       <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="ruby-driver-aggregation.html" title="Previous Section: Aggregation"><span>Aggregation</span></a>
-      <a class="btn-next-text" href="ruby-driver-text-search.html" title="Next Section: Text Search"><span>Text Search</span></a>
+      <a class="btn-prev-text" href="ruby-driver-crud-operations.html" title="Previous Section: CRUD Operations"><span>CRUD Operations</span></a>
+      <a class="btn-next-text" href="ruby-driver-collection-tasks.html" title="Next Section: Collections"><span>Collections</span></a>
       <span class="btn-arrow-right">&nbsp;&rarr;</span>
     </div>
                   <div class="footer">
@@ -403,9 +486,7 @@ copy</a>
   </div>
 <div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
 
-  
-    <script src="../_static/navbar.min.js"></script>
-  
+  <script src="../_static/navbar.min.js"></script>
 
   
 
