@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Clients::Factory
   
-    &mdash; mongoid-7.3.0.alpha
+    &mdash; mongoid-7.3.0
   
 </title>
 
@@ -71,7 +71,7 @@
   
   <dl>
       <dt>Extended by:</dt>
-      <dd><span class='object_link'><a href="" title="Mongoid::Clients::Factory (module)">Factory</a></span></dd>
+      <dd><span class='object_link'><a href="" title="Mongoid::Clients::Factory (module)">Factory</a></span>, <span class='object_link'><a href="../Loggable.html" title="Mongoid::Loggable (module)">Loggable</a></span></dd>
   </dl>
   
   
@@ -159,6 +159,17 @@
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Loggable.html" title="Mongoid::Loggable (module)">Loggable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Loggable.html#logger-instance_method" title="Mongoid::Loggable#logger (method)">logger</a></span>, <span class='object_link'><a href="../Loggable.html#logger=-instance_method" title="Mongoid::Loggable#logger= (method)">logger=</a></span></p>
 
 
   <div id="instance_method_details" class="method_details_list">
@@ -277,15 +288,15 @@
       <pre class="lines">
 
 
-24
 25
 26
 27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/clients/factory.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/clients/factory.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_default'>default</span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span>
@@ -388,12 +399,12 @@
       <pre class="lines">
 
 
-42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/clients/factory.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/clients/factory.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_default'>default</span>
   <span class='id identifier rubyid_create_client'>create_client</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../Mongoid.html" title="Mongoid (module)">Mongoid</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clients'>clients</span><span class='lbracket'>[</span><span class='symbol'>:default</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -408,7 +419,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 27 18:31:31 2021 by
+  Generated on Sat May  8 15:32:58 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>

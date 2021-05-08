@@ -28,7 +28,6 @@
     <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/controller.js"></script>
       <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Mongoid Manual" href="../index.html" />
 <link rel="next" title="Persistence" href="mongoid-persistence.html" />
@@ -156,7 +155,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
     </div>
   </div>
            
@@ -187,52 +186,52 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#storage" id="id4">Storage</a></li>
-<li><a class="reference internal" href="#fields" id="id5">Fields</a><ul>
-<li><a class="reference internal" href="#the-stringifiedsymbol-type" id="id6">The StringifiedSymbol Type</a></li>
-<li><a class="reference internal" href="#updating-container-fields" id="id7">Updating Container Fields</a></li>
-<li><a class="reference internal" href="#accessing-field-values" id="id8">Accessing Field Values</a></li>
-<li><a class="reference internal" href="#hash-fields" id="id9">Hash Fields</a></li>
-<li><a class="reference internal" href="#time-fields" id="id10">Time Fields</a></li>
-<li><a class="reference internal" href="#date-fields" id="id11">Date Fields</a></li>
-<li><a class="reference internal" href="#datetime-fields" id="id12">DateTime Fields</a></li>
-<li><a class="reference internal" href="#regular-expression-fields" id="id13">Regular Expression Fields</a></li>
-<li><a class="reference internal" href="#defaults" id="id14">Defaults</a></li>
-<li><a class="reference internal" href="#specifying-storage-field-names" id="id15">Specifying Storage Field Names</a></li>
-<li><a class="reference internal" href="#field-aliases" id="id16">Field Aliases</a></li>
-<li><a class="reference internal" href="#custom-fields" id="id17">Custom Fields</a></li>
-<li><a class="reference internal" href="#reserved-names" id="id18">Reserved Names</a></li>
-<li><a class="reference internal" href="#field-redefinition" id="id19">Field Redefinition</a></li>
-<li><a class="reference internal" href="#custom-ids" id="id20">Custom Ids</a></li>
-<li><a class="reference internal" href="#bson-symbol-type" id="id21">BSON Symbol Type</a></li>
+<li><a class="reference internal" href="#storage" id="id5">Storage</a></li>
+<li><a class="reference internal" href="#fields" id="id6">Fields</a><ul>
+<li><a class="reference internal" href="#the-stringifiedsymbol-type" id="id7">The StringifiedSymbol Type</a></li>
+<li><a class="reference internal" href="#updating-container-fields" id="id8">Updating Container Fields</a></li>
+<li><a class="reference internal" href="#accessing-field-values" id="id9">Accessing Field Values</a></li>
+<li><a class="reference internal" href="#hash-fields" id="id10">Hash Fields</a></li>
+<li><a class="reference internal" href="#time-fields" id="id11">Time Fields</a></li>
+<li><a class="reference internal" href="#date-fields" id="id12">Date Fields</a></li>
+<li><a class="reference internal" href="#datetime-fields" id="id13">DateTime Fields</a></li>
+<li><a class="reference internal" href="#regular-expression-fields" id="id14">Regular Expression Fields</a></li>
+<li><a class="reference internal" href="#defaults" id="id15">Defaults</a></li>
+<li><a class="reference internal" href="#specifying-storage-field-names" id="id16">Specifying Storage Field Names</a></li>
+<li><a class="reference internal" href="#field-aliases" id="id17">Field Aliases</a></li>
+<li><a class="reference internal" href="#custom-fields" id="id18">Custom Fields</a></li>
+<li><a class="reference internal" href="#reserved-names" id="id19">Reserved Names</a></li>
+<li><a class="reference internal" href="#field-redefinition" id="id20">Field Redefinition</a></li>
+<li><a class="reference internal" href="#custom-ids" id="id21">Custom Ids</a></li>
+<li><a class="reference internal" href="#bson-symbol-type" id="id22">BSON Symbol Type</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dynamic-fields" id="id22">Dynamic Fields</a><ul>
-<li><a class="reference internal" href="#special-characters-in-field-names" id="id23">Special Characters in Field Names</a></li>
+<li><a class="reference internal" href="#dynamic-fields" id="id23">Dynamic Fields</a><ul>
+<li><a class="reference internal" href="#special-characters-in-field-names" id="id24">Special Characters in Field Names</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#localized-fields" id="id24">Localized Fields</a><ul>
-<li><a class="reference internal" href="#fallbacks" id="id25">Fallbacks</a></li>
-<li><a class="reference internal" href="#querying" id="id26">Querying</a></li>
-<li><a class="reference internal" href="#indexing" id="id27">Indexing</a></li>
+<li><a class="reference internal" href="#localized-fields" id="id25">Localized Fields</a><ul>
+<li><a class="reference internal" href="#fallbacks" id="id26">Fallbacks</a></li>
+<li><a class="reference internal" href="#querying" id="id27">Querying</a></li>
+<li><a class="reference internal" href="#indexing" id="id28">Indexing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dirty-tracking" id="id28">Dirty Tracking</a><ul>
-<li><a class="reference internal" href="#viewing-changes" id="id29">Viewing Changes</a></li>
-<li><a class="reference internal" href="#resetting-changes" id="id30">Resetting Changes</a></li>
-<li><a class="reference internal" href="#persistence" id="id31">Persistence</a></li>
-<li><a class="reference internal" href="#viewing-previous-changes" id="id32">Viewing Previous Changes</a></li>
+<li><a class="reference internal" href="#dirty-tracking" id="id29">Dirty Tracking</a><ul>
+<li><a class="reference internal" href="#viewing-changes" id="id30">Viewing Changes</a></li>
+<li><a class="reference internal" href="#resetting-changes" id="id31">Resetting Changes</a></li>
+<li><a class="reference internal" href="#persistence" id="id32">Persistence</a></li>
+<li><a class="reference internal" href="#viewing-previous-changes" id="id33">Viewing Previous Changes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#read-only-attributes" id="id33">Read-Only Attributes</a></li>
-<li><a class="reference internal" href="#inheritance" id="id34">Inheritance</a><ul>
-<li><a class="reference internal" href="#changing-the-discriminator-key" id="id35">Changing the Discriminator Key</a></li>
-<li><a class="reference internal" href="#changing-the-discriminator-value" id="id36">Changing the Discriminator Value</a></li>
-<li><a class="reference internal" href="#querying-subclasses" id="id37">Querying Subclasses</a></li>
-<li><a class="reference internal" href="#associations" id="id38">Associations</a></li>
+<li><a class="reference internal" href="#read-only-attributes" id="id34">Read-Only Attributes</a></li>
+<li><a class="reference internal" href="#inheritance" id="id35">Inheritance</a><ul>
+<li><a class="reference internal" href="#changing-the-discriminator-key" id="id36">Changing the Discriminator Key</a></li>
+<li><a class="reference internal" href="#changing-the-discriminator-value" id="id37">Changing the Discriminator Value</a></li>
+<li><a class="reference internal" href="#querying-subclasses" id="id38">Querying Subclasses</a></li>
+<li><a class="reference internal" href="#associations" id="id39">Associations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#timestamping" id="id39">Timestamping</a></li>
+<li><a class="reference internal" href="#timestamping" id="id40">Timestamping</a></li>
 </ul>
 </div>
 <p>Documents are the core objects in Mongoid and any object that is to be persisted to the
@@ -887,7 +886,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="regular-expression-fields">
-<h3>Regular Expression Fields<a class="headerlink" href="#regular-expression-fields" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>Regular Expression Fields<a class="headerlink" href="#regular-expression-fields" title="Permalink to this headline">¶</a></h3>
 <p>MongoDB supports storing regular expressions in documents, and querying using
 regular expressions. Of note for Ruby applications, MongoDB uses
 <a class="reference external" href="http://pcre.org/">Perl-compatible regular expressions (PCRE)</a>
@@ -1073,7 +1072,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="field-aliases">
-<span id="id2"></span><h3>Field Aliases<a class="headerlink" href="#field-aliases" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>Field Aliases<a class="headerlink" href="#field-aliases" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to define field aliases. The value will be stored in the
 destination field but can be accessed from either the destination field or
 from the aliased field:</p>
@@ -1371,7 +1370,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="dynamic-fields">
-<span id="id3"></span><h2>Dynamic Fields<a class="headerlink" href="#dynamic-fields" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Dynamic Fields<a class="headerlink" href="#dynamic-fields" title="Permalink to this headline">¶</a></h2>
 <p>By default, Mongoid requires all fields that may be set on a document to
 be explicitly defined using <code class="docutils literal notranslate"><span class="pre">field</span></code> declarations. Mongoid also supports
 creating fields on the fly from an arbitrary hash or documents stored in

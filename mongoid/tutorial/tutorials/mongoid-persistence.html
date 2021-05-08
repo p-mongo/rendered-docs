@@ -28,7 +28,6 @@
     <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/controller.js"></script>
       <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Mongoid Manual" href="../index.html" />
 <link rel="next" title="Queries" href="mongoid-queries.html" />
@@ -156,7 +155,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
     </div>
   </div>
            
@@ -456,7 +455,9 @@ copy</a>
 </td>
 </tr>
 <tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#delete</span></code></p>
-<p class="last"><em>Deletes the document from the database without running callbacks.</em></p>
+<p><em>Deletes the document from the database without running callbacks.</em></p>
+<p class="last"><em>If the document is not persisted, Mongoid will attempt to delete from
+the database any document with the same</em> <code class="docutils literal notranslate"><span class="pre">_id</span></code>.</p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">
@@ -464,13 +465,21 @@ copy</a>
 copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">delete</span>
+
+<span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">unsaved_person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">unsaved_person</span><span class="o">.</span><span class="n">delete</span>
+<span class="n">person</span><span class="o">.</span><span class="n">reload</span>
+<span class="c1"># raises Mongoid::Errors::DocumentNotFound because the person was deleted</span>
 </pre></div>
 </div>
 </div>
 </td>
 </tr>
 <tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#destroy</span></code></p>
-<p class="last"><em>Deletes the document from the database while running destroy callbacks.</em></p>
+<p><em>Deletes the document from the database while running destroy callbacks.</em></p>
+<p class="last"><em>If the document is not persisted, Mongoid will attempt to delete from
+the database any document with the same</em> <code class="docutils literal notranslate"><span class="pre">_id</span></code>.</p>
 </td>
 <td><div class="first last button-code-block">
 <div class="button-row">
@@ -478,6 +487,12 @@ copy</a>
 copy</a>
 </div>
 <div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">destroy</span>
+
+<span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">unsaved_person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">unsaved_person</span><span class="o">.</span><span class="n">destroy</span>
+<span class="n">person</span><span class="o">.</span><span class="n">reload</span>
+<span class="c1"># raises Mongoid::Errors::DocumentNotFound because the person was deleted</span>
 </pre></div>
 </div>
 </div>

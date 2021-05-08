@@ -6,7 +6,7 @@
 <title>
   Class: Mongoid::Association::Embedded::EmbedsMany::Proxy
   
-    &mdash; mongoid-7.3.0.alpha
+    &mdash; mongoid-7.3.0
   
 </title>
 
@@ -825,19 +825,19 @@
       <pre class="lines">
 
 
-229
-230
-231
-232
-233
-234
-235
 236
 237
-238</pre>
+238
+239
+240
+241
+242
+243
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 229</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='comma'>,</span> <span class='id identifier rubyid_target'>target</span><span class='comma'>,</span> <span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='comma'>,</span> <span class='id identifier rubyid_target'>target</span><span class='comma'>,</span> <span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span> <span class='kw'>do</span>
@@ -976,15 +976,15 @@
       <pre class="lines">
 
 
-418
-419
-420
-421
-422
-423</pre>
+425
+426
+427
+428
+429
+430</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 418</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 425</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>super</span> <span class='kw'>if</span> <span class='id identifier rubyid__target'>_target</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -1076,12 +1076,12 @@
       <pre class="lines">
 
 
-535
-536
-537</pre>
+542
+543
+544</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 535</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 542</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_embedded?'>embedded?</span>
   <span class='kw'>true</span>
@@ -1163,12 +1163,12 @@
       <pre class="lines">
 
 
-547
-548
-549</pre>
+554
+555
+556</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 547</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 554</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_foreign_key_suffix'>foreign_key_suffix</span>
   <span class='kw'>nil</span>
@@ -1553,6 +1553,8 @@
     
 <p>Clear the association. Will delete the documents from the db if they are already persisted.</p>
 
+<p>If the host document is not persisted but its _id matches a persisted document, calling #clear on an association will remove the association&#39;s documents from the database even though the set of documents in the application (as loaded in the host) is different from what is in the database, and the host may not contain any persisted documents in the association either.</p>
+
 
   </div>
 </div>
@@ -1611,13 +1613,13 @@
       <pre class="lines">
 
 
-93
-94
-95
-96</pre>
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span>
   <span class='id identifier rubyid_batch_clear'>batch_clear</span><span class='lparen'>(</span><span class='id identifier rubyid__target'>_target</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span><span class='rparen'>)</span>
@@ -1811,12 +1813,12 @@
       <pre class="lines">
 
 
-108
-109
-110</pre>
+115
+116
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_count'>count</span>
   <span class='id identifier rubyid__target'>_target</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_doc'>doc</span><span class='op'>|</span> <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_persisted?'>persisted?</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
@@ -1918,13 +1920,6 @@
       <pre class="lines">
 
 
-123
-124
-125
-126
-127
-128
-129
 130
 131
 132
@@ -1933,10 +1928,17 @@
 135
 136
 137
-138</pre>
+138
+139
+140
+141
+142
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_execute_callback'>execute_callback</span> <span class='symbol'>:before_remove</span><span class='comma'>,</span> <span class='id identifier rubyid_document'>document</span>
@@ -2060,12 +2062,12 @@
       <pre class="lines">
 
 
-151
-152
-153</pre>
+158
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 158</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_all'>delete_all</span><span class='lparen'>(</span><span class='id identifier rubyid_conditions'>conditions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_remove_all'>remove_all</span><span class='lparen'>(</span><span class='id identifier rubyid_conditions'>conditions</span><span class='comma'>,</span> <span class='symbol'>:delete</span><span class='rparen'>)</span>
@@ -2149,20 +2151,20 @@
       <pre class="lines">
 
 
-166
-167
-168
-169
-170
-171
-172
 173
 174
 175
-176</pre>
+176
+177
+178
+179
+180
+181
+182
+183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 173</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_if'>delete_if</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -2281,12 +2283,12 @@
       <pre class="lines">
 
 
-189
-190
-191</pre>
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 196</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy_all'>destroy_all</span><span class='lparen'>(</span><span class='id identifier rubyid_conditions'>conditions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_remove_all'>remove_all</span><span class='lparen'>(</span><span class='id identifier rubyid_conditions'>conditions</span><span class='comma'>,</span> <span class='symbol'>:destroy</span><span class='rparen'>)</span>
@@ -2368,12 +2370,12 @@
       <pre class="lines">
 
 
-199
-200
-201</pre>
+206
+207
+208</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 206</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span>
   <span class='id identifier rubyid_count'>count</span> <span class='op'>&gt;</span> <span class='int'>0</span>
@@ -2482,12 +2484,12 @@
       <pre class="lines">
 
 
-215
-216
-217</pre>
+222
+223
+224</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 215</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 222</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_criteria'>criteria</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
@@ -2569,12 +2571,12 @@
       <pre class="lines">
 
 
-248
-249
-250</pre>
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 248</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 255</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_in_memory'>in_memory</span>
   <span class='id identifier rubyid__target'>_target</span>
@@ -2685,18 +2687,18 @@
       <pre class="lines">
 
 
-267
-268
-269
-270
-271
-272
-273
 274
-275</pre>
+275
+276
+277
+278
+279
+280
+281
+282</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 267</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 274</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pop'>pop</span><span class='lparen'>(</span><span class='id identifier rubyid_count'>count</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_count'>count</span>
@@ -2813,18 +2815,18 @@
       <pre class="lines">
 
 
-290
-291
-292
-293
-294
-295
-296
 297
-298</pre>
+298
+299
+300
+301
+302
+303
+304
+305</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 290</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 297</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shift'>shift</span><span class='lparen'>(</span><span class='id identifier rubyid_count'>count</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_count'>count</span>
@@ -2932,13 +2934,13 @@
       <pre class="lines">
 
 
-311
-312
-313
-314</pre>
+318
+319
+320
+321</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 311</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 318</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_substitute'>substitute</span><span class='lparen'>(</span><span class='id identifier rubyid_docs'>docs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_batch_replace'>batch_replace</span><span class='lparen'>(</span><span class='id identifier rubyid_docs'>docs</span><span class='rparen'>)</span>
@@ -3021,15 +3023,15 @@
       <pre class="lines">
 
 
-325
-326
-327
-328
-329
-330</pre>
+332
+333
+334
+335
+336
+337</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 325</span>
+      <pre class="code"><span class="info file"># File 'lib/mongoid/association/embedded/embeds_many/proxy.rb', line 332</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unscoped'>unscoped</span>
   <span class='id identifier rubyid_criterion'>criterion</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_unscoped'>unscoped</span>
@@ -3047,7 +3049,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 27 18:31:43 2021 by
+  Generated on Sat May  8 15:33:10 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>

@@ -28,10 +28,9 @@
     <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/controller.js"></script>
       <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Mongoid Manual" href="../index.html" />
-<link rel="next" title="Release Notes" href="../release-notes.html" />
+<link rel="next" title="Additional Resources" href="../additional-resources.html" />
 <link rel="prev" title="Rails Integration" href="mongoid-rails.html" /></head>
 <body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
   <!-- Google Tag Manager -->
@@ -156,7 +155,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
     </div>
   </div>
            
@@ -191,34 +190,38 @@
 <li><a class="reference internal" href="#delete-method-does-not-trigger-association-dependent-behavior" id="id2"><code class="docutils literal notranslate"><span class="pre">delete</span></code> Method Does Not Trigger Association Dependent Behavior</a></li>
 <li><a class="reference internal" href="#boolean-removed" id="id3"><code class="docutils literal notranslate"><span class="pre">::Boolean</span></code> Removed</a></li>
 <li><a class="reference internal" href="#selector-key-stringification" id="id4">Selector Key Stringification</a></li>
-<li><a class="reference internal" href="#condition-combination-using-eq" id="id5">Condition Combination Using <code class="docutils literal notranslate"><span class="pre">$eq</span></code></a></li>
+<li><a class="reference internal" href="#condition-combination-using-eq-regex" id="id5">Condition Combination Using <code class="docutils literal notranslate"><span class="pre">$eq</span></code> / <code class="docutils literal notranslate"><span class="pre">$regex</span></code></a></li>
 <li><a class="reference internal" href="#new-embedded-matching-operators" id="id6">New Embedded Matching Operators</a></li>
 <li><a class="reference internal" href="#unaliasing-id-field" id="id7">Unaliasing <code class="docutils literal notranslate"><span class="pre">id</span></code> Field</a></li>
+<li><a class="reference internal" href="#mongoid-purge-and-mongoid-truncate-take-the-global-overrides-into-account" id="id8"><code class="docutils literal notranslate"><span class="pre">Mongoid.purge!</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid.truncate</span></code> take the global overrides into account</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-7-2" id="id8">Upgrading to Mongoid 7.2</a><ul>
-<li><a class="reference internal" href="#embedded-document-matching" id="id9">Embedded Document Matching</a></li>
-<li><a class="reference internal" href="#count-and-estimated-count-methods" id="id10"><code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">estimated_count</span></code> Methods</a></li>
-<li><a class="reference internal" href="#any-on-has-many-associations" id="id11"><code class="docutils literal notranslate"><span class="pre">any?</span></code> on <code class="docutils literal notranslate"><span class="pre">has_many</span></code> Associations</a></li>
-<li><a class="reference internal" href="#stringifiedsymbol-field-type" id="id12"><code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> Field Type</a></li>
-<li><a class="reference internal" href="#changing-the-discriminator-key" id="id13">Changing the Discriminator Key</a></li>
-<li><a class="reference internal" href="#changing-the-discriminator-value" id="id14">Changing the Discriminator Value</a></li>
-<li><a class="reference internal" href="#shard-key-used-for-reloading" id="id15">Shard Key Used For Reloading</a></li>
-<li><a class="reference internal" href="#query-cache-moved-to-driver" id="id16">Query Cache Moved to Driver</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-7-2" id="id9">Upgrading to Mongoid 7.2</a><ul>
+<li><a class="reference internal" href="#embedded-document-matching" id="id10">Embedded Document Matching</a></li>
+<li><a class="reference internal" href="#count-and-estimated-count-methods" id="id11"><code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">estimated_count</span></code> Methods</a></li>
+<li><a class="reference internal" href="#any-on-has-many-associations" id="id12"><code class="docutils literal notranslate"><span class="pre">any?</span></code> on <code class="docutils literal notranslate"><span class="pre">has_many</span></code> Associations</a></li>
+<li><a class="reference internal" href="#stringifiedsymbol-field-type" id="id13"><code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> Field Type</a></li>
+<li><a class="reference internal" href="#changing-the-discriminator-key" id="id14">Changing the Discriminator Key</a></li>
+<li><a class="reference internal" href="#changing-the-discriminator-value" id="id15">Changing the Discriminator Value</a></li>
+<li><a class="reference internal" href="#shard-key-used-for-reloading" id="id16">Shard Key Used For Reloading</a></li>
+<li><a class="reference internal" href="#query-cache-moved-to-driver" id="id17">Query Cache Moved to Driver</a></li>
+<li><a class="reference internal" href="#regexp-fields-store-assigned-strings-as-regular-expressions" id="id18"><code class="docutils literal notranslate"><span class="pre">Regexp</span></code> Fields Store Assigned Strings As Regular Expressions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-7-1" id="id17">Upgrading to Mongoid 7.1</a><ul>
-<li><a class="reference internal" href="#condition-combination" id="id18">Condition Combination</a></li>
-<li><a class="reference internal" href="#logical-operations" id="id19">Logical Operations</a></li>
-<li><a class="reference internal" href="#merge-strategies" id="id20">Merge Strategies</a></li>
-<li><a class="reference internal" href="#required-condition-arguments" id="id21">Required Condition Arguments</a></li>
-<li><a class="reference internal" href="#generated-queries" id="id22">Generated Queries</a></li>
-<li><a class="reference internal" href="#ruby-version-support" id="id23">Ruby Version Support</a></li>
-<li><a class="reference internal" href="#changes-in-mongoid-7-1-0" id="id24">Changes in Mongoid 7.1.0</a></li>
-<li><a class="reference internal" href="#changes-in-mongoid-7-1-1" id="id25">Changes in Mongoid 7.1.1</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-7-1" id="id19">Upgrading to Mongoid 7.1</a><ul>
+<li><a class="reference internal" href="#condition-combination" id="id20">Condition Combination</a></li>
+<li><a class="reference internal" href="#logical-operations" id="id21">Logical Operations</a></li>
+<li><a class="reference internal" href="#merge-strategies" id="id22">Merge Strategies</a></li>
+<li><a class="reference internal" href="#required-condition-arguments" id="id23">Required Condition Arguments</a></li>
+<li><a class="reference internal" href="#generated-queries" id="id24">Generated Queries</a></li>
+<li><a class="reference internal" href="#ruby-version-support" id="id25">Ruby Version Support</a></li>
+<li><a class="reference internal" href="#changes-in-mongoid-7-1-0" id="id26">Changes in Mongoid 7.1.0</a></li>
+<li><a class="reference internal" href="#changes-in-mongoid-7-1-1" id="id27">Changes in Mongoid 7.1.1</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#upgrading-to-mongoid-7-0" id="id26">Upgrading to Mongoid 7.0</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-7-0" id="id28">Upgrading to Mongoid 7.0</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-6" id="id29">Upgrading to Mongoid 6</a></li>
+<li><a class="reference internal" href="#upgrading-to-mongoid-5" id="id30">Upgrading to Mongoid 5</a></li>
 </ul>
 </div>
 <p>This page describes significant changes and improvements in Mongoid releases.
@@ -421,12 +424,13 @@ copy</a>
 </div>
 </div>
 </div>
-<div class="section" id="condition-combination-using-eq">
-<h3>Condition Combination Using <code class="docutils literal notranslate"><span class="pre">$eq</span></code><a class="headerlink" href="#condition-combination-using-eq" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="condition-combination-using-eq-regex">
+<h3>Condition Combination Using <code class="docutils literal notranslate"><span class="pre">$eq</span></code> / <code class="docutils literal notranslate"><span class="pre">$regex</span></code><a class="headerlink" href="#condition-combination-using-eq-regex" title="Permalink to this headline">¶</a></h3>
 <p>Minor change: when using the <code class="docutils literal notranslate"><span class="pre">where</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">nor</span></code> methods
 on <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects and providing multiple conditions on the same field
 in the same argument using the symbol operator syntax, conditions may be
-combined using <code class="docutils literal notranslate"><span class="pre">$eq</span></code> instead of <code class="docutils literal notranslate"><span class="pre">$and</span></code>.</p>
+combined using <code class="docutils literal notranslate"><span class="pre">$eq</span></code> or <code class="docutils literal notranslate"><span class="pre">$regex</span></code> operators, as appropriate, instead of
+<code class="docutils literal notranslate"><span class="pre">$and</span></code>.</p>
 <p>Mongoid 7.3 behavior:</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -437,6 +441,14 @@ copy</a>
 <span class="c1"># =&gt;</span>
 <span class="c1"># #&lt;Mongoid::Criteria</span>
 <span class="c1">#   selector: {&quot;year&quot;=&gt;{&quot;$eq&quot;=&gt;2020, &quot;$gt&quot;=&gt;1960}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/A/</span><span class="p">,</span> <span class="ss">:name</span><span class="o">.</span><span class="n">ne</span> <span class="o">=&gt;</span> <span class="s1">&#39;Astral&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;{&quot;$regex&quot;=&gt;/A/, &quot;$ne&quot;=&gt;&quot;Astral&quot;}}</span>
 <span class="c1">#   options:  {}</span>
 <span class="c1">#   class:    Band</span>
 <span class="c1">#   embedded: false&gt;</span>
@@ -456,9 +468,19 @@ copy</a>
 <span class="c1">#   options:  {}</span>
 <span class="c1">#   class:    Band</span>
 <span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/A/</span><span class="p">,</span> <span class="ss">:name</span><span class="o">.</span><span class="n">ne</span> <span class="o">=&gt;</span> <span class="s1">&#39;Astral&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;/A/, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;{&quot;$ne&quot;=&gt;&quot;Astral&quot;}}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
 </pre></div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">$regex</span></code> operator is used when the value is a regular expression, i.e.
+an instance of <code class="docutils literal notranslate"><span class="pre">Regexp</span></code> or <code class="docutils literal notranslate"><span class="pre">BSON::Regexp::Raw</span></code> classes.</p>
 <p>When using the <code class="docutils literal notranslate"><span class="pre">not</span></code> method with multiple conditions provided in the same
 argument, the conditions are kept together and negated as a group.</p>
 <p>Mongoid 7.3 behavior:</p>
@@ -503,6 +525,13 @@ copy</a>
 <h3>Unaliasing <code class="docutils literal notranslate"><span class="pre">id</span></code> Field<a class="headerlink" href="#unaliasing-id-field" title="Permalink to this headline">¶</a></h3>
 <p>It is now possible to <a class="reference internal" href="mongoid-documents.html#unalias-id"><span class="std std-ref">remove the id alias in models</span></a>,
 to make <code class="docutils literal notranslate"><span class="pre">id</span></code> a regular field.</p>
+</div>
+<div class="section" id="mongoid-purge-and-mongoid-truncate-take-the-global-overrides-into-account">
+<h3><code class="docutils literal notranslate"><span class="pre">Mongoid.purge!</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid.truncate</span></code> take the global overrides into account<a class="headerlink" href="#mongoid-purge-and-mongoid-truncate-take-the-global-overrides-into-account" title="Permalink to this headline">¶</a></h3>
+<p>Minor change: <code class="docutils literal notranslate"><span class="pre">Mongoid.purge!</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid.truncate!</span></code> now consider global
+overrides set with <code class="docutils literal notranslate"><span class="pre">Mongoid.override_database</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid.override_client</span></code>.</p>
+<p>Mongoid 7.3 behavior:</p>
+<p>Mongoid 7.2 behavior:</p>
 </div>
 </div>
 <div class="section" id="upgrading-to-mongoid-7-2">
@@ -937,6 +966,80 @@ that you upgrade to driver version 2.14.</p>
 <p>To read more about using the query cache with Mongoid and the limitations
 of the legacy query cache, see <a class="reference internal" href="mongoid-queries.html#query-cache"><span class="std std-ref">the query cache documentation</span></a>.</p>
 </div>
+<div class="section" id="regexp-fields-store-assigned-strings-as-regular-expressions">
+<h3><code class="docutils literal notranslate"><span class="pre">Regexp</span></code> Fields Store Assigned Strings As Regular Expressions<a class="headerlink" href="#regexp-fields-store-assigned-strings-as-regular-expressions" title="Permalink to this headline">¶</a></h3>
+<p>Minor change: when a <code class="docutils literal notranslate"><span class="pre">String</span></code> value is written in a <code class="docutils literal notranslate"><span class="pre">Regexp</span></code> field,
+Mongoid 7.2 stores that value in MongoDB as a regular expression.
+Subsequently it would be retrieved <a class="reference internal" href="mongoid-documents.html#regular-expression-fields"><span class="std std-ref">as a BSON::Regexp::Raw instance</span></a>.
+Previously the value would be stored as a string and would be retrieved as
+a string.</p>
+<p>Example Mongoid 7.2 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Offer</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:constraint</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Regexp</span>
+<span class="k">end</span>
+
+<span class="n">offer</span> <span class="o">=</span> <span class="no">Offer</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">constraint</span><span class="p">:</span> <span class="sr">/foo/</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Offer _id: 6082df412c97a66be6ba9970, constraint: /foo/&gt;</span>
+
+<span class="no">Offer</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span>
+  <span class="p">{</span><span class="s1">&#39;$match&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">_id</span><span class="p">:</span> <span class="n">offer</span><span class="o">.</span><span class="n">id</span><span class="p">}},</span>
+  <span class="p">{</span><span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">type</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;$constraint&#39;</span><span class="p">}}},</span>
+<span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;6082df412c97a66be6ba9970&#39;),</span>
+<span class="c1">#     &quot;constraint&quot;=&gt;#&lt;BSON::Regexp::Raw:0x000055b4ccdff738 @pattern=&quot;foo&quot;, @options=&quot;m&quot;&gt;,</span>
+<span class="c1">#     &quot;type&quot;=&gt;&quot;regex&quot;}</span>
+
+<span class="n">offer</span> <span class="o">=</span> <span class="no">Offer</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">constraint</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Offer _id: 6082df412c97a66be6ba9971, constraint: /foo/&gt;</span>
+
+<span class="no">Offer</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span>
+  <span class="p">{</span><span class="s1">&#39;$match&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">_id</span><span class="p">:</span> <span class="n">offer</span><span class="o">.</span><span class="n">id</span><span class="p">}},</span>
+  <span class="p">{</span><span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">type</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;$constraint&#39;</span><span class="p">}}},</span>
+<span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;6082df412c97a66be6ba9971&#39;),</span>
+<span class="c1">#     &quot;constraint&quot;=&gt;#&lt;BSON::Regexp::Raw:0x000055b4cce11320 @pattern=&quot;foo&quot;, @options=&quot;m&quot;&gt;,</span>
+<span class="c1">#     &quot;type&quot;=&gt;&quot;regex&quot;}</span>
+</pre></div>
+</div>
+</div>
+<p>Mongoid 7.1 behavior with the same model class:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">offer</span> <span class="o">=</span> <span class="no">Offer</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">constraint</span><span class="p">:</span> <span class="sr">/foo/</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Offer _id: 6082e0182c97a66c21e3f721, constraint: /foo/&gt;</span>
+
+<span class="no">Offer</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span>
+  <span class="p">{</span><span class="s1">&#39;$match&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">_id</span><span class="p">:</span> <span class="n">offer</span><span class="o">.</span><span class="n">id</span><span class="p">}},</span>
+  <span class="p">{</span><span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">type</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;$constraint&#39;</span><span class="p">}}},</span>
+<span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;6082e0182c97a66c21e3f721&#39;),</span>
+<span class="c1">#     &quot;constraint&quot;=&gt;#&lt;BSON::Regexp::Raw:0x000055ecf43f4cb0 @pattern=&quot;foo&quot;, @options=&quot;m&quot;&gt;,</span>
+<span class="c1">#     &quot;type&quot;=&gt;&quot;regex&quot;}</span>
+
+<span class="n">offer</span> <span class="o">=</span> <span class="no">Offer</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">constraint</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Offer _id: 6082e05c2c97a66c21e3f723, constraint: &quot;foo&quot;&gt;</span>
+
+<span class="no">Offer</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span>
+  <span class="p">{</span><span class="s1">&#39;$match&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">_id</span><span class="p">:</span> <span class="n">offer</span><span class="o">.</span><span class="n">id</span><span class="p">}},</span>
+  <span class="p">{</span><span class="s1">&#39;$set&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">type</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;$constraint&#39;</span><span class="p">}}},</span>
+<span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;6082e05c2c97a66c21e3f723&#39;),</span>
+<span class="c1">#     &quot;constraint&quot;=&gt;&quot;foo&quot;,</span>
+<span class="c1">#     &quot;type&quot;=&gt;&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="upgrading-to-mongoid-7-1">
 <h2>Upgrading to Mongoid 7.1<a class="headerlink" href="#upgrading-to-mongoid-7-1" title="Permalink to this headline">¶</a></h2>
@@ -1298,13 +1401,43 @@ supports Rails 5.1-6.0.</p>
 <p>New in version 7.0.3: Embedded matchers now support the <code class="docutils literal notranslate"><span class="pre">$eq</span></code> operator.</p>
 <p>New in version 7.0.5: Mongoid now officially supports Rails 6.0.</p>
 </div>
+<div class="section" id="upgrading-to-mongoid-6">
+<h2>Upgrading to Mongoid 6<a class="headerlink" href="#upgrading-to-mongoid-6" title="Permalink to this headline">¶</a></h2>
+<p>Mongoid 6 is compatible with Rails 5 and requires Ruby 2.2.2 or higher.</p>
+<p>Please see the list of behavior changes for version
+<a class="reference external" href="https://github.com/mongodb/mongoid/releases/tag/v6.0.0.rc0">6.0.0.rc0</a>
+and version
+<a class="reference external" href="https://github.com/mongodb/mongoid/releases/tag/v6.0.0.beta">6.0.0.beta</a>
+for specific changes that might be required in your code.</p>
+</div>
+<div class="section" id="upgrading-to-mongoid-5">
+<h2>Upgrading to Mongoid 5<a class="headerlink" href="#upgrading-to-mongoid-5" title="Permalink to this headline">¶</a></h2>
+<p>The underlying driver has changed from Moped to the official MongoDB Ruby driver.
+For all users dropping down to the driver level for operations, please see the driver
+documentation for help with that API.</p>
+<p>All Mongoid configuration options have changed, as the underlying driver has changed
+from Moped to the official MongoDB Ruby driver. Please see the
+<a class="reference internal" href="mongoid-configuration.html#mongoid-configuration"><span class="std std-ref">configuration section</span></a> for a detailed description
+of all the new options.</p>
+<p>All references to session are now replaced with client. This includes the <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code>
+configuration, <code class="docutils literal notranslate"><span class="pre">store_in</span></code> options, and all exceptions and modules with Session in the name.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_and_modify</span></code> has been removed and replaced with 3 options: <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code>,
+<code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code> and <code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">text_search</span></code> has been removed as it is now a $text option in a query from
+MongoDB 2.6 onward.</p>
+<p><code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> no longer add an <code class="docutils literal notranslate"><span class="pre">_id</span></code> sort when no sorting options have been
+provided. In order to guarantee that a document is the first or last, it needs to now
+contain an explicit sort.</p>
+<p>Mongoid 5 supports MongoDB 2.4 and higher only - MongoDB 2.2 is no longer
+supported.</p>
+</div>
 </div>
 
                 
     <div id="btnv">
       <span class="btn-arrow-left">&larr; &nbsp;</span>
       <a class="btn-prev-text" href="mongoid-rails.html" title="Previous Section: Rails Integration"><span>Rails Integration</span></a>
-      <a class="btn-next-text" href="../release-notes.html" title="Next Section: Release Notes"><span>Release Notes</span></a>
+      <a class="btn-next-text" href="../additional-resources.html" title="Next Section: Additional Resources"><span>Additional Resources</span></a>
       <span class="btn-arrow-right">&nbsp;&rarr;</span>
     </div>
                   <div class="footer">

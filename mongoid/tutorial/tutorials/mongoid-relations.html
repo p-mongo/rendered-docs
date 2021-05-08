@@ -28,7 +28,6 @@
     <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/controller.js"></script>
       <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<!-- <link rel="index" title="Index" href="../genindex.html" /> -->
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Mongoid Manual" href="../index.html" />
 <link rel="next" title="Nested Attributes" href="mongoid-nested-attributes.html" />
@@ -156,7 +155,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
     </div>
   </div>
            
@@ -187,46 +186,47 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#referenced-associations" id="id9">Referenced Associations</a><ul>
-<li><a class="reference internal" href="#has-one" id="id10">Has One</a></li>
-<li><a class="reference internal" href="#has-many" id="id11">Has Many</a></li>
-<li><a class="reference internal" href="#belongs-to" id="id12">Belongs To</a></li>
-<li><a class="reference internal" href="#has-and-belongs-to-many" id="id13">Has And Belongs To Many</a></li>
-<li><a class="reference internal" href="#querying-referenced-associations" id="id14">Querying Referenced Associations</a></li>
+<li><a class="reference internal" href="#referenced-associations" id="id11">Referenced Associations</a><ul>
+<li><a class="reference internal" href="#has-one" id="id12">Has One</a></li>
+<li><a class="reference internal" href="#has-many" id="id13">Has Many</a></li>
+<li><a class="reference internal" href="#belongs-to" id="id14">Belongs To</a></li>
+<li><a class="reference internal" href="#has-and-belongs-to-many" id="id15">Has And Belongs To Many</a></li>
+<li><a class="reference internal" href="#querying-referenced-associations" id="id16">Querying Referenced Associations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#embedded-associations" id="id15">Embedded Associations</a><ul>
-<li><a class="reference internal" href="#embeds-one" id="id16">Embeds One</a></li>
-<li><a class="reference internal" href="#embeds-many" id="id17">Embeds Many</a></li>
-<li><a class="reference internal" href="#recursive-embedding" id="id18">Recursive Embedding</a></li>
-<li><a class="reference internal" href="#referencing-vs-embedding" id="id19">Referencing Vs Embedding</a></li>
-<li><a class="reference internal" href="#querying-embedded-associations" id="id20">Querying Embedded Associations</a></li>
-<li><a class="reference internal" href="#omitting-id-fields" id="id21">Omitting <code class="docutils literal notranslate"><span class="pre">_id</span></code> Fields</a></li>
+<li><a class="reference internal" href="#embedded-associations" id="id17">Embedded Associations</a><ul>
+<li><a class="reference internal" href="#embeds-one" id="id18">Embeds One</a></li>
+<li><a class="reference internal" href="#embeds-many" id="id19">Embeds Many</a></li>
+<li><a class="reference internal" href="#recursive-embedding" id="id20">Recursive Embedding</a></li>
+<li><a class="reference internal" href="#referencing-vs-embedding" id="id21">Referencing Vs Embedding</a></li>
+<li><a class="reference internal" href="#querying-embedded-associations" id="id22">Querying Embedded Associations</a></li>
+<li><a class="reference internal" href="#omitting-id-fields" id="id23">Omitting <code class="docutils literal notranslate"><span class="pre">_id</span></code> Fields</a></li>
+<li><a class="reference internal" href="#deleting" id="id24">Deleting</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#common-behavior" id="id22">Common Behavior</a><ul>
-<li><a class="reference internal" href="#extensions" id="id23">Extensions</a></li>
-<li><a class="reference internal" href="#custom-association-names" id="id24">Custom Association Names</a></li>
-<li><a class="reference internal" href="#custom-primary-foreign-keys" id="id25">Custom Primary &amp; Foreign Keys</a></li>
-<li><a class="reference internal" href="#validations" id="id26">Validations</a></li>
-<li><a class="reference internal" href="#polymorphism" id="id27">Polymorphism</a></li>
-<li><a class="reference internal" href="#cascading-callbacks" id="id28">Cascading Callbacks</a></li>
-<li><a class="reference internal" href="#dependent-behavior" id="id29">Dependent Behavior</a></li>
-<li><a class="reference internal" href="#autosaving" id="id30">Autosaving</a></li>
-<li><a class="reference internal" href="#existence-predicates" id="id31">Existence Predicates</a></li>
-<li><a class="reference internal" href="#autobuilding" id="id32">Autobuilding</a></li>
-<li><a class="reference internal" href="#touching" id="id33">Touching</a></li>
-<li><a class="reference internal" href="#the-counter-cache-option" id="id34">The counter_cache Option</a></li>
-<li><a class="reference internal" href="#association-proxies" id="id35">Association Proxies</a></li>
+<li><a class="reference internal" href="#common-behavior" id="id25">Common Behavior</a><ul>
+<li><a class="reference internal" href="#extensions" id="id26">Extensions</a></li>
+<li><a class="reference internal" href="#custom-association-names" id="id27">Custom Association Names</a></li>
+<li><a class="reference internal" href="#custom-primary-foreign-keys" id="id28">Custom Primary &amp; Foreign Keys</a></li>
+<li><a class="reference internal" href="#validations" id="id29">Validations</a></li>
+<li><a class="reference internal" href="#polymorphism" id="id30">Polymorphism</a></li>
+<li><a class="reference internal" href="#cascading-callbacks" id="id31">Cascading Callbacks</a></li>
+<li><a class="reference internal" href="#dependent-behavior" id="id32">Dependent Behavior</a></li>
+<li><a class="reference internal" href="#autosaving" id="id33">Autosaving</a></li>
+<li><a class="reference internal" href="#existence-predicates" id="id34">Existence Predicates</a></li>
+<li><a class="reference internal" href="#autobuilding" id="id35">Autobuilding</a></li>
+<li><a class="reference internal" href="#touching" id="id36">Touching</a></li>
+<li><a class="reference internal" href="#the-counter-cache-option" id="id37">The counter_cache Option</a></li>
+<li><a class="reference internal" href="#association-proxies" id="id38">Association Proxies</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#association-metadata" id="id36">Association Metadata</a><ul>
-<li><a class="reference internal" href="#attributes" id="id37">Attributes</a></li>
-<li><a class="reference internal" href="#the-association-object" id="id38">The Association Object</a></li>
+<li><a class="reference internal" href="#association-metadata" id="id39">Association Metadata</a><ul>
+<li><a class="reference internal" href="#attributes" id="id40">Attributes</a></li>
+<li><a class="reference internal" href="#the-association-object" id="id41">The Association Object</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id4" id="id39">Aggregation Pipeline</a><ul>
-<li><a class="reference internal" href="#builder-dsl" id="id40">Builder DSL</a></li>
+<li><a class="reference internal" href="#id6" id="id42">Aggregation Pipeline</a><ul>
+<li><a class="reference internal" href="#builder-dsl" id="id43">Builder DSL</a></li>
 </ul>
 </li>
 </ul>
@@ -611,7 +611,7 @@ usable from the model where it is defined.</p>
 <p>In most cases, efficient queries across referenced associations (and in general
 involving data or conditions or multiple collections) are performed using
 the aggregation pipeline. Mongoid helpers for constructing aggregation pipeline
-queries are described in the <a class="reference internal" href="#id4"><span class="std std-ref">aggregation pipeline</span></a>
+queries are described in the <a class="reference internal" href="#id6"><span class="std std-ref">aggregation pipeline</span></a>
 section.</p>
 <p>For simple queries, the use of aggregation pipeline may be avoided and
 associations may be queried directly. When querying associations directly,
@@ -1070,6 +1070,87 @@ A future version of Mongoid may allow removing previously defined fields.</p>
 by their content attribute values during queries, updates and deletes.</p>
 </div>
 </div>
+<div class="section" id="deleting">
+<h3>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">¶</a></h3>
+<p>Mongoid provides three methods for deleting children from <code class="docutils literal notranslate"><span class="pre">embeds_many</span></code>
+associations: <code class="docutils literal notranslate"><span class="pre">clear</span></code>, <code class="docutils literal notranslate"><span class="pre">destroy_all</span></code> and <code class="docutils literal notranslate"><span class="pre">delete_all</span></code>.</p>
+<div class="section" id="clear">
+<h4><code class="docutils literal notranslate"><span class="pre">clear</span></code><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">clear</span></code> method uses the <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/update/unset">$unset operator</a> to remove the entire association from the
+host document. It does not run destroy callbacks on the documents being removed,
+acting like <a href="#id3"><span class="problematic" id="id4">``</span></a>delete_all` in this regard:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">clear</span>
+</pre></div>
+</div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">clear</span></code> is called on an association in an unsaved host document, it will
+still try to remove the association from the database based on the host
+document’s <code class="docutils literal notranslate"><span class="pre">_id</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">band</span><span class="o">.</span><span class="n">tours</span> <span class="o">&lt;&lt;</span> <span class="no">Tour</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">unsaved_band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">band</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="ss">tours</span><span class="p">:</span> <span class="o">[</span><span class="no">Tour</span><span class="o">.</span><span class="n">new</span><span class="o">]</span><span class="p">)</span>
+<span class="c1"># Removes all tours from the persisted band due to _id match.</span>
+<span class="n">unsaved_band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">clear</span>
+
+<span class="n">band</span><span class="o">.</span><span class="n">tours</span>
+<span class="c1"># =&gt; []</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="delete-all">
+<h4><code class="docutils literal notranslate"><span class="pre">delete_all</span></code><a class="headerlink" href="#delete-all" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">delete_all</span></code> method removes the documents that are in the association
+using the <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/update/pullAll">$pullAll operator</a>.
+Unlike <code class="docutils literal notranslate"><span class="pre">clear</span></code>, <code class="docutils literal notranslate"><span class="pre">delete_all</span></code>:</p>
+<ul class="simple">
+<li>Loads the association, if it wasn’t yet loaded;</li>
+<li>Only removes the documents that exist in the application.</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">delete_all</span></code> does not run destroy callbacks on the documents being removed.</p>
+<p>Example:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">delete_all</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="destroy-all">
+<h4><code class="docutils literal notranslate"><span class="pre">destroy_all</span></code><a class="headerlink" href="#destroy-all" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">delete_all</span></code> method removes the documents that are in the association
+using the <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/update/pullAll">$pullAll operator</a>
+while running the destroy callbacks. Like <code class="docutils literal notranslate"><span class="pre">delete_all</span></code>, <code class="docutils literal notranslate"><span class="pre">destroy_all</span></code>
+loads the entire association if it wasn’t yet loaded and it only removes
+documents that exist in the application:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">band</span><span class="o">.</span><span class="n">tours</span><span class="o">.</span><span class="n">destroy_all</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="common-behavior">
 <h2>Common Behavior<a class="headerlink" href="#common-behavior" title="Permalink to this headline">¶</a></h2>
@@ -1392,7 +1473,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="dependent-behavior">
-<span id="id3"></span><h3>Dependent Behavior<a class="headerlink" href="#dependent-behavior" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>Dependent Behavior<a class="headerlink" href="#dependent-behavior" title="Permalink to this headline">¶</a></h3>
 <p>You can provide dependent options to referenced associations to instruct Mongoid
 how to handle situations where one side of the association is deleted, or is attempted
 to be deleted. The options are as follows:</p>
@@ -1813,8 +1894,8 @@ with, and is useful for developers of extensions to Mongoid.</p>
 </table>
 </div>
 </div>
-<div class="section" id="id4">
-<span id="id5"></span><h2>Aggregation Pipeline<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<span id="id7"></span><h2>Aggregation Pipeline<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid exposes MongoDB’s aggregation pipeline for queries involving multiple
 referenced associations at the same time. Given the same setup as before with
 referenced associations:</p>
@@ -1941,8 +2022,8 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h4>group<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h4>group<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">group</span></code> method adds a <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/group/">$group aggregation pipeline stage</a>.</p>
 <p>The field expressions support Mongoid symbol-operator syntax:</p>
 <div class="button-code-block">
@@ -1967,8 +2048,8 @@ copy</a>
 </div>
 </div>
 </div>
-<div class="section" id="id7">
-<h4>project<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>project<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">project</span></code> method adds a <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/project/">$project aggregation pipeline stage</a>.</p>
 <p>The argument should be a Hash specifying the projection:</p>
 <div class="button-code-block">
@@ -1984,7 +2065,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="unwind-dsl">
-<span id="id8"></span><h4>unwind<a class="headerlink" href="#unwind-dsl" title="Permalink to this headline">¶</a></h4>
+<span id="id10"></span><h4>unwind<a class="headerlink" href="#unwind-dsl" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">unwind</span></code> method adds an <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/">$unwind aggregation pipeline stage</a>.</p>
 <p>The argument can be a field name, specifyable as a symbol or a string, or
 a Hash or a <code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code> instance:</p>

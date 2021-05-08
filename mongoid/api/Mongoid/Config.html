@@ -6,7 +6,7 @@
 <title>
   Module: Mongoid::Config
   
-    &mdash; mongoid-7.3.0.alpha
+    &mdash; mongoid-7.3.0
   
 </title>
 
@@ -1584,7 +1584,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 222</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_purge!'>purge!</span>
-  <span class='const'><span class='object_link'><a href="Clients.html" title="Mongoid::Clients (module)">Clients</a></span></span><span class='period'>.</span><span class='id identifier rubyid_default'><span class='object_link'><a href="Clients.html#default-class_method" title="Mongoid::Clients.default (method)">default</a></span></span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_collections'>collections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:drop</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_global_client'>global_client</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_collections'>collections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:drop</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1948,7 +1948,7 @@
       <pre class="code"><span class="info file"># File 'lib/mongoid/config.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_truncate!'>truncate!</span>
-  <span class='const'><span class='object_link'><a href="Clients.html" title="Mongoid::Clients (module)">Clients</a></span></span><span class='period'>.</span><span class='id identifier rubyid_default'><span class='object_link'><a href="Clients.html#default-class_method" title="Mongoid::Clients.default (method)">default</a></span></span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_collections'>collections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_collection'>collection</span><span class='op'>|</span>
+  <span class='id identifier rubyid_global_client'>global_client</span><span class='period'>.</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_collections'>collections</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_collection'>collection</span><span class='op'>|</span>
     <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='period'>.</span><span class='id identifier rubyid_delete_many'>delete_many</span>
   <span class='kw'>end</span> <span class='kw'>and</span> <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
@@ -1962,7 +1962,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 27 18:31:28 2021 by
+  Generated on Sat May  8 15:32:54 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>
