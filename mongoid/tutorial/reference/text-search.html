@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
+    <title>Text Search</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/reference/text-search.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/reference/text-search/" />
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Mongoid Manual" href="../index.html" />
+<link rel="up" title="Reference" href="../reference.html" />
+<link rel="next" title="Map/Reduce" href="map-reduce.html" />
+<link rel="prev" title="Queries" href="queries.html" /></head>
+<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
+  <!-- End Google Tag Manager -->
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Mongoid"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
+   </script><div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="../index.html">Mongoid Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      
+        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+          
+          
+          master (upcoming)<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          
+            
+            <li class="active">
+            
+              <a href="#" data-path="mongoid/current">
+                
+                master (upcoming)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.3">
+                
+                Version 7.3 (current)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.2">
+                
+                Version 7.2
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.1">
+                
+                Version 7.1
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.0">
+                
+                Version 7.0
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.4">
+                
+                Version 6.4
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.3">
+                
+                Version 6.3
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.2">
+                
+                Version 6.2
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.1">
+                
+                Version 6.1
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/5.4">
+                
+                Version 5.4
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="documents.html">Documents</a></li><li class="toctree-l2"><a class="reference internal" href="fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="crud.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="queries.html">Queries</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="indexes.html">Indexes</a></li><li class="toctree-l2"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="rails.html">Rails Integration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="reference/text-search">
+
+                
+  <div class="bc">
+    
+      <ul>
+          <li><a href="../reference.html">Reference</a><span class="bcpoint"> > </span></li>
+            <li>Text Search</li> 
+      </ul>
+    
+    
+  </div>
+                
+                  <div class="section" id="text-search">
+<span id="id1"></span><h1>Text Search<a class="headerlink" href="#text-search" title="Permalink to this headline">¶</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><a class="reference internal" href="#defining-text-search-index" id="id2">Defining Text Search Index</a></li>
+<li><a class="reference internal" href="#creating-text-index" id="id3">Creating Text Index</a></li>
+<li><a class="reference internal" href="#querying-using-text-index" id="id4">Querying Using Text Index</a></li>
+</ul>
+</div>
+<p>MongoDB provides <a class="reference external" href="https://docs.mongodb.com/manual/core/index-text/">text indexes</a>
+to support text search queries on string content. Text indexes
+can include any field whose value is a string or an array of
+string elements.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">MongoDB Atlas also provides
+<a class="reference external" href="https://docs.atlas.mongodb.com/atlas-search/">Atlas Search</a>
+which is a more powerful and flexible text search solution.
+The rest of this section discusses text indexes and not Atlas Search.</p>
+</div>
+<p>To perform text search with Mongoid, follow these steps:</p>
+<ol class="arabic simple">
+<li>Define a text index on a model.</li>
+<li>Create the text index on the server.</li>
+<li>Build a text search query.</li>
+</ol>
+<div class="section" id="defining-text-search-index">
+<h2>Defining Text Search Index<a class="headerlink" href="#defining-text-search-index" title="Permalink to this headline">¶</a></h2>
+<p>Index definition through Mongoid is described in detail on the <a class="reference external" href="indexes">indexes</a> page. Text search indexes are described in detail
+under <a class="reference external" href="https://docs.mongodb.com/manual/core/index-text/">text indexes</a>
+in the MongoDB manual. Below is an example definition of a Band model with
+a text index utilizing the description field:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+
+  <span class="n">index</span> <span class="ss">description</span><span class="p">:</span> <span class="s1">&#39;text&#39;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>Note that the index type (<code class="docutils literal notranslate"><span class="pre">text</span></code>) must be given as a string, not as a symbol.</p>
+</div>
+<div class="section" id="creating-text-index">
+<h2>Creating Text Index<a class="headerlink" href="#creating-text-index" title="Permalink to this headline">¶</a></h2>
+<p>To create the index, invoke the <code class="docutils literal notranslate"><span class="pre">db:mongoid:create_indexes</span></code> Rake task:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="ss">mongoid</span><span class="p">:</span><span class="n">create_indexes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="querying-using-text-index">
+<h2>Querying Using Text Index<a class="headerlink" href="#querying-using-text-index" title="Permalink to this headline">¶</a></h2>
+<p>To find bands whose description contains “ounces” or its variations, use the
+<a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/text/#op._S_text">$text operator</a>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;$text&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$search&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ounces&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; [#&lt;Band _id: 5d5341b3ce4ef35d5016746d, name: &quot;foo&quot;, description: &quot;ounce&quot;&gt;]</span>
+</pre></div>
+</div>
+</div>
+<p>Note that the description contains the word “ounce” even though the search
+query was “ounces”.</p>
+<p>Note also that when performing text search, the name of the field is not
+explicitly specified - <code class="docutils literal notranslate"><span class="pre">$text</span></code> operator searches all fields indexed with
+the text index.</p>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="queries.html" title="Previous Section: Queries"><span>Queries</span></a>
+      <a class="btn-next-text" href="map-reduce.html" title="Next Section: Map/Reduce"><span>Map/Reduce</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
+
+  <script src="../_static/navbar.min.js"></script>
+
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = [];
+  </script></body>
+</html>

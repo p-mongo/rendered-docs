@@ -6,17 +6,17 @@
 
 <head>
   <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
-    <title>Sessions</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+    <title>Nested Attributes</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="index" />
 
   <meta name="release" content="upcoming"/>
   <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/tutorials/mongoid-sessions.txt"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/reference/nested-attributes.txt"/>
   <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
   <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/tutorials/mongoid-sessions/" />
+    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/reference/nested-attributes/" />
   
    <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -30,8 +30,9 @@
       <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Mongoid Manual" href="../index.html" />
-<link rel="next" title="Transactions" href="mongoid-transactions.html" />
-<link rel="prev" title="Sharding" href="sharding.html" /></head>
+<link rel="up" title="Reference" href="../reference.html" />
+<link rel="next" title="Callbacks" href="callbacks.html" />
+<link rel="prev" title="Associations" href="associations.html" /></head>
 <body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
   <!-- Google Tag Manager -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
@@ -81,9 +82,18 @@
             
             <li>
             
+              <a class="version-selector" href="#" data-path="mongoid/7.3">
+                
+                Version 7.3 (current)
+              </a>
+            </li>
+          
+            
+            <li>
+            
               <a class="version-selector" href="#" data-path="mongoid/7.2">
                 
-                Version 7.2 (current)
+                Version 7.2
               </a>
             </li>
           
@@ -155,7 +165,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-queries.html">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="documents.html">Documents</a></li><li class="toctree-l2"><a class="reference internal" href="fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="crud.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="queries.html">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="associations.html">Associations</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="indexes.html">Indexes</a></li><li class="toctree-l2"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="rails.html">Rails Integration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
     </div>
   </div>
            
@@ -171,81 +181,79 @@
       
         <div class="document">
             <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="tutorials/mongoid-sessions">
+              <div class="body" data-pagename="reference/nested-attributes">
 
                 
   <div class="bc">
     
-      
+      <ul>
+          <li><a href="../reference.html">Reference</a><span class="bcpoint"> > </span></li>
+            <li>Nested Attributes</li> 
+      </ul>
     
     
   </div>
                 
-                  <div class="section" id="sessions">
-<span id="id1"></span><h1>Sessions<a class="headerlink" href="#sessions" title="Permalink to this headline">¶</a></h1>
+                  <div class="section" id="nested-attributes">
+<h1>Nested Attributes<a class="headerlink" href="#nested-attributes" title="Permalink to this headline">¶</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#using-a-session-via-model-with-session" id="id3">Using a Session via Model#with_session</a></li>
-<li><a class="reference internal" href="#id2" id="id4">Using a Session via model#with_session</a></li>
+<li><a class="reference internal" href="#behavior" id="id1">Behavior</a></li>
 </ul>
 </div>
-<p>Versions 3.6 and higher of the MongoDB server support sessions. You can use sessions with Mongoid in a similar way
-that you would execute a transaction in ActiveRecord. Namely, you can call a method, <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> on a model class
-or on an instance of a model and execute some operations in a block. All operations in the block will be
-executed in the context of single session. Please see the MongoDB Ruby driver documentation for what session options
-are available.</p>
-<p>Please note the following limitations of sessions:</p>
-<ul class="simple">
-<li>Sessions cannot be shared across threads; sessions are not thread-safe. This is consistent with the Ruby driver’s support for sessions.</li>
-<li>Sessions cannot be nested. You cannot called <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> on a model class or a model instance within the block passed to the <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> method on another model class or model instance.</li>
-<li>All model classes and instances used within the session block must use the same driver client. For example, if you have specified different <code class="docutils literal notranslate"><span class="pre">storage_options</span></code> for another model used in the block than that of the model class or instance on which <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> is called, you will get an error.</li>
-<li>All connected MongoDB servers must be version 3.6 or higher.</li>
-</ul>
-<div class="section" id="using-a-session-via-model-with-session">
-<h2>Using a Session via Model#with_session<a class="headerlink" href="#using-a-session-via-model-with-session" title="Permalink to this headline">¶</a></h2>
-<p>Call <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> on a model class and pass it session options to execute a block in the context
-of a session.</p>
+<p>Nested attributes provide a mechanism for updating documents and their
+associations in a single operation by nesting attributes in a single
+parameters hash. This is useful when wanting to edit multiple documents
+within a single web form.</p>
+<div class="section" id="behavior">
+<h2>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">¶</a></h2>
+<p>Nested attributes can be enabled for any association, embedded or referenced.
+To enable this for an association, simply provide the association name to the
+<code class="docutils literal notranslate"><span class="pre">accepts_nested_attributes_for</span></code> macro.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">with_session</span><span class="p">(</span><span class="ss">causal_consistency</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
-  <span class="no">Person</span><span class="o">.</span><span class="n">create!</span>
-  <span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">first</span>
-  <span class="n">person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Emily&quot;</span>
-  <span class="n">person</span><span class="o">.</span><span class="n">save</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">embeds_many</span> <span class="ss">:albums</span>
+  <span class="n">belongs_to</span> <span class="ss">:producer</span>
+  <span class="n">accepts_nested_attributes_for</span> <span class="ss">:albums</span><span class="p">,</span> <span class="ss">:producer</span>
 <span class="k">end</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>Using a Session via model#with_session<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Call <code class="docutils literal notranslate"><span class="pre">#with_session</span></code> on a model instance and pass it session options to execute a block in the context
-of a session.</p>
+<p>Note that when you add nested attributes functionality to a referenced
+association, Mongoid will automatically enable autosave for that association.</p>
+<p>When an association gains nested attributes behavior, an additional method is
+added to the base model, which should be used to update the attributes with
+the new functionality. This method is the association name plus <code class="docutils literal notranslate"><span class="pre">_attributes=</span></code>.
+You can use this method directly, or more commonly the name of the method can
+be an attribute in the updates for the base class, in which case
+Mongoid will call the appropriate setter under the covers.</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
 copy</a>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">with_session</span><span class="p">(</span><span class="ss">causal_consistency</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
-  <span class="n">person</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;Emily&#39;</span>
-  <span class="n">person</span><span class="o">.</span><span class="n">save</span>
-  <span class="n">person</span><span class="o">.</span><span class="n">posts</span> <span class="o">&lt;&lt;</span> <span class="no">Post</span><span class="o">.</span><span class="n">create!</span>
-<span class="k">end</span>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<span class="n">band</span><span class="o">.</span><span class="n">producer_attributes</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Flood&quot;</span> <span class="p">}</span>
+<span class="n">band</span><span class="o">.</span><span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">producer_attributes</span><span class="p">:</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Flood&quot;</span> <span class="p">}}</span>
 </pre></div>
 </div>
 </div>
+<p>Note that this will work with any attribute based setter method in Mongoid. This includes:
+<code class="docutils literal notranslate"><span class="pre">update_attributes</span></code>, <code class="docutils literal notranslate"><span class="pre">update_attributes!</span></code> and <code class="docutils literal notranslate"><span class="pre">attributes=</span></code>.</p>
 </div>
 </div>
 
                 
     <div id="btnv">
       <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="sharding.html" title="Previous Section: Sharding"><span>Sharding</span></a>
-      <a class="btn-next-text" href="mongoid-transactions.html" title="Next Section: Transactions"><span>Transactions</span></a>
+      <a class="btn-prev-text" href="associations.html" title="Previous Section: Associations"><span>Associations</span></a>
+      <a class="btn-next-text" href="callbacks.html" title="Next Section: Callbacks"><span>Callbacks</span></a>
       <span class="btn-arrow-right">&nbsp;&rarr;</span>
     </div>
                   <div class="footer">

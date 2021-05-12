@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
+    <title>Mongoid 7.1</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/release-notes/mongoid-7.1.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/release-notes/mongoid-7.1/" />
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Mongoid Manual" href="../index.html" />
+<link rel="up" title="Release Notes" href="../release-notes.html" />
+<link rel="next" title="Mongoid 7.0" href="mongoid-7.0.html" />
+<link rel="prev" title="Mongoid 7.2" href="mongoid-7.2.html" /></head>
+<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
+  <!-- End Google Tag Manager -->
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Mongoid"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
+   </script><div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="../index.html">Mongoid Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      
+        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+          
+          
+          master (upcoming)<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          
+            
+            <li class="active">
+            
+              <a href="#" data-path="mongoid/current">
+                
+                master (upcoming)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.3">
+                
+                Version 7.3 (current)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.2">
+                
+                Version 7.2
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.1">
+                
+                Version 7.1
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.0">
+                
+                Version 7.0
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.4">
+                
+                Version 6.4
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.3">
+                
+                Version 6.3
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.2">
+                
+                Version 6.2
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.1">
+                
+                Version 6.1
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/5.4">
+                
+                Version 5.4
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a><ul><li class="toctree-l2"><a class="reference internal" href="../reference/configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/documents.html">Documents</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/crud.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/queries.html">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/indexes.html">Indexes</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/sharding.html">Sharding</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/rails.html">Rails Integration</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="release-notes/mongoid-7.1">
+
+                
+  <div class="bc">
+    
+      <ul>
+          <li><a href="../release-notes.html">Release Notes</a><span class="bcpoint"> > </span></li>
+            <li>Mongoid 7.1</li> 
+      </ul>
+    
+    
+  </div>
+                
+                  <div class="section" id="mongoid-7-1">
+<h1>Mongoid 7.1<a class="headerlink" href="#mongoid-7-1" title="Permalink to this headline">¶</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><a class="reference internal" href="#condition-combination" id="id1">Condition Combination</a></li>
+<li><a class="reference internal" href="#logical-operations" id="id2">Logical Operations</a></li>
+<li><a class="reference internal" href="#merge-strategies" id="id3">Merge Strategies</a></li>
+<li><a class="reference internal" href="#required-condition-arguments" id="id4">Required Condition Arguments</a></li>
+<li><a class="reference internal" href="#generated-queries" id="id5">Generated Queries</a></li>
+<li><a class="reference internal" href="#ruby-version-support" id="id6">Ruby Version Support</a></li>
+<li><a class="reference internal" href="#changes-in-mongoid-7-1-0" id="id7">Changes in Mongoid 7.1.0</a></li>
+<li><a class="reference internal" href="#changes-in-mongoid-7-1-1" id="id8">Changes in Mongoid 7.1.1</a></li>
+</ul>
+</div>
+<p>This page describes significant changes and improvements in Mongoid 7.1.
+The complete list of releases is available <a class="reference external" href="https://github.com/mongodb/mongoid/releases">on GitHub</a> and <a class="reference external" href="https://jira.mongodb.org/projects/MONGOID?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page">in JIRA</a>;
+please consult GitHub releases for detailed release notes and JIRA for
+the complete list of issues fixed in each release, including bug fixes.</p>
+<div class="section" id="condition-combination">
+<h2>Condition Combination<a class="headerlink" href="#condition-combination" title="Permalink to this headline">¶</a></h2>
+<p><strong>Breaking change:</strong> In Mongoid 7.1, when condition methods are invoked on a
+Criteria object, they always add new conditions to the existing conditions in
+the Criteria object. Previously new conditions could have replaced existing
+conditions in some circumstances.</p>
+<p>Example Mongoid 7.1 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;_id&quot;=&gt;1, &quot;$and&quot;=&gt;[{&quot;_id&quot;=&gt;2}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Corresponding Mongoid 7.0 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;_id&quot;=&gt;2}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Known issue:</strong> When using Ruby 2.6 and lower, when adding multiple conditions
+on the same field using the same operator, the operator must be given as a
+string, not as a symbol. The following invocations fail:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">({</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span><span class="p">:</span> <span class="o">[</span><span class="mi">2020</span><span class="o">]</span><span class="p">}},</span> <span class="p">{</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span><span class="p">:</span> <span class="o">[</span><span class="mi">2020</span><span class="o">]</span><span class="p">}})</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#         2: from (irb):10</span>
+<span class="c1">#         1: from (irb):10:in `rescue in irb_binding&#39;</span>
+<span class="c1"># NoMethodError (undefined method `start_with?&#39; for :$in:Symbol)</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span><span class="p">:</span> <span class="o">[</span><span class="mi">2020</span><span class="o">]</span><span class="p">})</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span><span class="p">:</span> <span class="o">[</span><span class="mi">2020</span><span class="o">]</span><span class="p">})</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#         2: from (irb):11</span>
+<span class="c1">#         1: from (irb):11:in `rescue in irb_binding&#39;</span>
+<span class="c1"># NoMethodError (undefined method `start_with?&#39; for :$in:Symbol)</span>
+</pre></div>
+</div>
+</div>
+<p>Use string keys instead:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Band.and({year: {&#39;$in&#39; =&gt; [2020]}}, {year: {&#39;$in&#39; =&gt; [2020]}})</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;{&quot;$in&quot;=&gt;[2020]}, &quot;$and&quot;=&gt;[{&quot;year&quot;=&gt;{&quot;$in&quot;=&gt;[2020]}}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="mi">2020</span><span class="o">]</span><span class="p">})</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="mi">2020</span><span class="o">]</span><span class="p">})</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;{&quot;$in&quot;=&gt;[2020]}, &quot;$and&quot;=&gt;[{&quot;year&quot;=&gt;{&quot;$in&quot;=&gt;[2020]}}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>This issue is rectified in Mongoid 7.3.</p>
+</div>
+<div class="section" id="logical-operations">
+<h2>Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h2>
+<p><strong>Breaking change:</strong> In Mongoid 7.1 logical operator methods <code class="docutils literal notranslate"><span class="pre">or</span></code> and
+<code class="docutils literal notranslate"><span class="pre">nor</span></code> treat the receiver as one of the operands. This behavior matches that
+of ActiveRecord. Previously, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">nor</span></code> added their parameters as
+additional conditions to the receiver.</p>
+<p>Example Mongoid 7.1 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}, {&quot;name&quot;=&gt;&quot;Two&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Corresponding Mongoid 7.0 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;One&quot;, &quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Two&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>To add <code class="docutils literal notranslate"><span class="pre">or</span></code> or <code class="docutils literal notranslate"><span class="pre">nor</span></code> parameters to the existing query without disjuncting
+the existing query, create a separate scope:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="no">Band</span><span class="o">.</span><span class="n">or</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Three&#39;</span><span class="p">}))</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;One&quot;, &quot;$and&quot;=&gt;[{&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Two&quot;}, {&quot;name&quot;=&gt;&quot;Three&quot;}]}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Alternatively, use <code class="docutils literal notranslate"><span class="pre">any_of</span></code> which behaves as <code class="docutils literal notranslate"><span class="pre">or</span></code> did in Mongoid 7.0:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Three&#39;</span><span class="p">})</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;&quot;One&quot;, &quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;Two&quot;}, {&quot;name&quot;=&gt;&quot;Three&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>For more information, please review the <a class="reference internal" href="../reference/queries.html#logical-operations"><span class="std std-ref">logical operations</span></a> section of the documentation.</p>
+</div>
+<div class="section" id="merge-strategies">
+<h2>Merge Strategies<a class="headerlink" href="#merge-strategies" title="Permalink to this headline">¶</a></h2>
+<p><strong>Breaking change:</strong> In Mongoid 7.1, <a class="reference internal" href="../reference/queries.html#merge-strategies"><span class="std std-ref">Merge strategies</span></a>
+must be explicitly requested. Previously, <code class="docutils literal notranslate"><span class="pre">all</span></code> defaulted to the
+union strategy and <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">nin</span></code> defaulted to the intersect strategy.
+In Mongoid 7.1, there is no merge strategy applied by default.</p>
+<p>Example Mongoid 7.1 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[1]}, &quot;$and&quot;=&gt;[{&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[2]}}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Default Mongoid 7.0 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[1, 2]}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>To achieve the same behavior in Mongoid 7.1, the desired merge strategy must be
+explicitly requested:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;a&quot;=&gt;{&quot;$all&quot;=&gt;[1, 2]}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="required-condition-arguments">
+<h2>Required Condition Arguments<a class="headerlink" href="#required-condition-arguments" title="Permalink to this headline">¶</a></h2>
+<p><strong>Breaking change:</strong> <code class="docutils literal notranslate"><span class="pre">nil</span></code> arguments to Criteria methods are no longer
+accepted. For example, the following invocation is now an error:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Breaking change:</strong> Most Criteria methods (other than logical operations)
+can no longer be called without arguments. For example, the following
+invocation is now an error:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">in</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">any_of</span></code> and <code class="docutils literal notranslate"><span class="pre">where</span></code> can be called
+without arguments.</p>
+</div>
+<div class="section" id="generated-queries">
+<h2>Generated Queries<a class="headerlink" href="#generated-queries" title="Permalink to this headline">¶</a></h2>
+<p>Minor change: Mongoid 7.1 will simplify the Criteria selectors where possible
+by eliding unnecessary logical operators, typically <code class="docutils literal notranslate"><span class="pre">$and</span></code>.</p>
+<p>Example Mongoid 7.1 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;2000, &quot;name&quot;=&gt;&quot;One&quot;}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Corresponding Mongoid 7.0 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;2000, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Mongoid 7.1 also takes steps to produce the same selector shapes when
+semantically the same query is constructed using different code paths. For
+example, the following two approaches result in the same generated selector:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/ne/</span><span class="p">)</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/ne/</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">})</span>
+
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;/ne/, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ruby-version-support">
+<h2>Ruby Version Support<a class="headerlink" href="#ruby-version-support" title="Permalink to this headline">¶</a></h2>
+<p>As of version 7.1, Mongoid supports Ruby 2.3+ and JRuby 9.2.
+Support for Ruby 2.2 and JRuby 9.1 has been dropped.</p>
+</div>
+<div class="section" id="changes-in-mongoid-7-1-0">
+<h2>Changes in Mongoid 7.1.0<a class="headerlink" href="#changes-in-mongoid-7-1-0" title="Permalink to this headline">¶</a></h2>
+<p>Improvement: <a class="reference internal" href="../reference/crud.html#atomic-operation-grouping"><span class="std std-ref">Multiple atomic operations can now be grouped</span></a> to be executed as a single atomic operation.</p>
+<p>Improvement: <a class="reference internal" href="../reference/sharding.html#shard-keys"><span class="std std-ref">Shard key declarations</span></a> now support hashed
+shard keys, and a Rake task to shard collection has been added to the
+<a class="reference internal" href="../reference/sharding.html#sharding-management"><span class="std std-ref">sharding management Rake tasks</span></a>.</p>
+</div>
+<div class="section" id="changes-in-mongoid-7-1-1">
+<h2>Changes in Mongoid 7.1.1<a class="headerlink" href="#changes-in-mongoid-7-1-1" title="Permalink to this headline">¶</a></h2>
+<p><strong>Breaking change:</strong> The behavior of <a class="reference internal" href="../reference/queries.html#any-of"><span class="std std-ref">any_of</span></a> was reverted to
+its Mongoid 7.0 behavior. As was the case in Mongoid 7.0, <code class="docutils literal notranslate"><span class="pre">any_of</span></code> now
+does not treat the receiver as one of its operands:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1990</span><span class="p">)</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">})</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;1990, &quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;One&quot;}, {&quot;name&quot;=&gt;&quot;Two&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">or</span></code> behaves the same way in Mongoid 7.1.1 and 7.1.0:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">1990</span><span class="p">)</span><span class="o">.</span><span class="n">or</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">},</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Two&#39;</span><span class="p">})</span>
+<span class="c1"># =&gt; #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;year&quot;=&gt;1990}, {&quot;name&quot;=&gt;&quot;One&quot;}, {&quot;name&quot;=&gt;&quot;Two&quot;}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Minor change: The value of <code class="docutils literal notranslate"><span class="pre">include_root_in_json</span></code> is now properly respected
+throughout the model hierarchy. Previously the values set on model classes
+were ignored.</p>
+<p>Improvement: <code class="docutils literal notranslate"><span class="pre">Model.where</span></code> can now be called with no arguments.</p>
+<p>Improvement: Polymorphic <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> associations can now be eagerly loaded.</p>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="mongoid-7.2.html" title="Previous Section: Mongoid 7.2"><span>Mongoid 7.2</span></a>
+      <a class="btn-next-text" href="mongoid-7.0.html" title="Next Section: Mongoid 7.0"><span>Mongoid 7.0</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
+
+  <script src="../_static/navbar.min.js"></script>
+
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = [];
+  </script></body>
+</html>

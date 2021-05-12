@@ -1,0 +1,586 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
+    <title>Mongoid 7.3</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/release-notes/mongoid-7.3.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/release-notes/mongoid-7.3/" />
+  
+   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
+    
+    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<link rel="search" title="Search" href="../search.html" />
+<link rel="top" title="Mongoid Manual" href="../index.html" />
+<link rel="up" title="Release Notes" href="../release-notes.html" />
+<link rel="next" title="Mongoid 7.2" href="mongoid-7.2.html" />
+<link rel="prev" title="Release Notes" href="../release-notes.html" /></head>
+<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
+  <!-- End Google Tag Manager -->
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Mongoid"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
+   </script><div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="../index.html">Mongoid Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      
+        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+          
+          
+          master (upcoming)<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          
+            
+            <li class="active">
+            
+              <a href="#" data-path="mongoid/current">
+                
+                master (upcoming)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.3">
+                
+                Version 7.3 (current)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.2">
+                
+                Version 7.2
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.1">
+                
+                Version 7.1
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/7.0">
+                
+                Version 7.0
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.4">
+                
+                Version 6.4
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.3">
+                
+                Version 6.3
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.2">
+                
+                Version 6.2
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/6.1">
+                
+                Version 6.1
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="mongoid/5.4">
+                
+                Version 5.4
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a><ul><li class="toctree-l2"><a class="reference internal" href="../reference/configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/documents.html">Documents</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/crud.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/queries.html">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/indexes.html">Indexes</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/sharding.html">Sharding</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/rails.html">Rails Integration</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul class="current"><li class="toctree-l2 current"><a class="reference internal current" href="">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="release-notes/mongoid-7.3">
+
+                
+  <div class="bc">
+    
+      <ul>
+          <li><a href="../release-notes.html">Release Notes</a><span class="bcpoint"> > </span></li>
+            <li>Mongoid 7.3</li> 
+      </ul>
+    
+    
+  </div>
+                
+                  <div class="section" id="mongoid-7-3">
+<h1>Mongoid 7.3<a class="headerlink" href="#mongoid-7-3" title="Permalink to this headline">¶</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><a class="reference internal" href="#delete-method-does-not-trigger-association-dependent-behavior" id="id1"><code class="docutils literal notranslate"><span class="pre">delete</span></code> Method Does Not Trigger Association Dependent Behavior</a></li>
+<li><a class="reference internal" href="#boolean-removed" id="id2"><code class="docutils literal notranslate"><span class="pre">::Boolean</span></code> Removed</a></li>
+<li><a class="reference internal" href="#selector-key-stringification" id="id3">Selector Key Stringification</a></li>
+<li><a class="reference internal" href="#condition-combination-using-eq-regex" id="id4">Condition Combination Using <code class="docutils literal notranslate"><span class="pre">$eq</span></code> / <code class="docutils literal notranslate"><span class="pre">$regex</span></code></a></li>
+<li><a class="reference internal" href="#new-embedded-matching-operators" id="id5">New Embedded Matching Operators</a></li>
+<li><a class="reference internal" href="#unaliasing-id-field" id="id6">Unaliasing <code class="docutils literal notranslate"><span class="pre">id</span></code> Field</a></li>
+<li><a class="reference internal" href="#mongoid-purge-and-mongoid-truncate-take-the-global-overrides-into-account" id="id7"><code class="docutils literal notranslate"><span class="pre">Mongoid.purge!</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid.truncate</span></code> take the global overrides into account</a></li>
+</ul>
+</div>
+<p>This page describes significant changes and improvements in Mongoid 7.3.
+The complete list of releases is available <a class="reference external" href="https://github.com/mongodb/mongoid/releases">on GitHub</a> and <a class="reference external" href="https://jira.mongodb.org/projects/MONGOID?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page">in JIRA</a>;
+please consult GitHub releases for detailed release notes and JIRA for
+the complete list of issues fixed in each release, including bug fixes.</p>
+<div class="section" id="delete-method-does-not-trigger-association-dependent-behavior">
+<h2><code class="docutils literal notranslate"><span class="pre">delete</span></code> Method Does Not Trigger Association Dependent Behavior<a class="headerlink" href="#delete-method-does-not-trigger-association-dependent-behavior" title="Permalink to this headline">¶</a></h2>
+<p><strong>Breaking change:</strong> In Mongoid 7.3,
+<a class="reference internal" href="../reference/associations.html#dependent-behavior"><span class="std std-ref">dependent behavior</span></a> is not invoked
+when the parent association is deleted using the <code class="docutils literal notranslate"><span class="pre">delete</span></code> method.
+For example, after the following code snippet executes, in Mongoid 7.3 the
+album will remain in the database:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">has_many</span> <span class="ss">:albums</span><span class="p">,</span> <span class="ss">dependent</span><span class="p">:</span> <span class="ss">:destroy</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Album</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">belongs_to</span> <span class="ss">:band</span>
+<span class="k">end</span>
+
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
+<span class="n">album</span> <span class="o">=</span> <span class="no">Album</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">band</span><span class="p">:</span> <span class="n">band</span><span class="p">)</span>
+
+<span class="c1"># Does not delete the album from the database</span>
+<span class="n">band</span><span class="o">.</span><span class="n">delete</span>
+</pre></div>
+</div>
+</div>
+<p>Previous versions of Mongoid invoked dependent behavior when deleting parents.</p>
+<p>To invoke dependent behavior, use the <code class="docutils literal notranslate"><span class="pre">destroy</span></code> method:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Deletes the album from the database</span>
+<span class="n">band</span><span class="o">.</span><span class="n">destroy</span>
+</pre></div>
+</div>
+</div>
+<p>The behavior of Mongoid 7.3 is consistent with how ActiveRecord behaves.</p>
+</div>
+<div class="section" id="boolean-removed">
+<h2><code class="docutils literal notranslate"><span class="pre">::Boolean</span></code> Removed<a class="headerlink" href="#boolean-removed" title="Permalink to this headline">¶</a></h2>
+<p><strong>Breaking change:</strong> Mongoid 7.3 removes the global <code class="docutils literal notranslate"><span class="pre">::Boolean</span></code> class.</p>
+<p>This change should have no impact on classes that simply use <code class="docutils literal notranslate"><span class="pre">Boolean</span></code>
+fields, as the <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> class is aliased from <code class="docutils literal notranslate"><span class="pre">Mongoid::Fields</span></code>
+(which is included in <code class="docutils literal notranslate"><span class="pre">Mongoid::Document</span></code>). The following field definition
+continues to work in 7.3 as it did in 7.2:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:verified</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Boolean</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>However, code that is not executed in the context of a class including
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Document</span></code> may need to explicitly qualify <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> references.
+The following snippet fails with Mongoid 7.3 due to <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> being
+unqualified:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+<span class="k">end</span>
+
+<span class="no">User</span><span class="o">.</span><span class="n">field</span> <span class="ss">:verified</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Boolean</span>
+</pre></div>
+</div>
+</div>
+<p>To fix it, use the fully-qualified <code class="docutils literal notranslate"><span class="pre">Mongoid::Boolean</span></code> class:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">User</span><span class="o">.</span><span class="n">field</span> <span class="ss">:verified</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Boolean</span>
+</pre></div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">class_eval</span></code> is executed in the scope of the caller, not in
+the scope of the class being modified. Thus even when using <code class="docutils literal notranslate"><span class="pre">class_eval</span></code>
+it is necessary to fully qualify <code class="docutils literal notranslate"><span class="pre">Mongoid::Boolean</span></code>:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">User</span><span class="o">.</span><span class="n">class_eval</span> <span class="k">do</span>
+  <span class="n">field</span> <span class="ss">:verified</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Boolean</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>Additionally, in Mongoid 7.2 <code class="docutils literal notranslate"><span class="pre">::Boolean</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid::Boolean</span></code> were
+different classes. In Mongoid 7.3 there is only one class which is
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Boolean</span></code>.</p>
+<p>It is possible to restore the global <code class="docutils literal notranslate"><span class="pre">::Boolean</span></code> class by executing in
+your application:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Boolean</span> <span class="o">=</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Boolean</span>
+</pre></div>
+</div>
+</div>
+<p>Note that this aliases <code class="docutils literal notranslate"><span class="pre">Mongoid::Boolean</span></code> to <code class="docutils literal notranslate"><span class="pre">::Boolean</span></code> such that there
+is still only a single Boolean class:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># With Mongoid 7.3:</span>
+<span class="no">Boolean</span> <span class="o">=</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Boolean</span>
+<span class="no">Boolean</span> <span class="o">==</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Boolean</span>
+<span class="c1"># =&gt; true</span>
+
+<span class="c1"># With Mongoid 7.2:</span>
+<span class="no">Boolean</span> <span class="o">==</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Boolean</span>
+<span class="c1"># =&gt; false</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="selector-key-stringification">
+<h2>Selector Key Stringification<a class="headerlink" href="#selector-key-stringification" title="Permalink to this headline">¶</a></h2>
+<p>Minor change: Mongoid now converts symbol keys to string keys in the
+<code class="docutils literal notranslate"><span class="pre">Criteria</span></code> selectors. This applies to operators as well as hash literals.</p>
+<p>Mongoid 7.3 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span><span class="p">:</span> <span class="o">[</span><span class="mi">2020</span><span class="o">]</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;{&quot;$in&quot;=&gt;[2020]}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">tag</span><span class="p">:</span> <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;tag&quot;=&gt;{&quot;city&quot;=&gt;1}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Mongoid 7.2 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">and</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$in&#39;</span><span class="p">:</span> <span class="o">[</span><span class="mi">2020</span><span class="o">]</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;{:$in=&gt;[2020]}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">tag</span><span class="p">:</span> <span class="p">{</span><span class="ss">city</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;tag&quot;=&gt;{:city=&gt;1}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="condition-combination-using-eq-regex">
+<h2>Condition Combination Using <code class="docutils literal notranslate"><span class="pre">$eq</span></code> / <code class="docutils literal notranslate"><span class="pre">$regex</span></code><a class="headerlink" href="#condition-combination-using-eq-regex" title="Permalink to this headline">¶</a></h2>
+<p>Minor change: when using the <code class="docutils literal notranslate"><span class="pre">where</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">nor</span></code> methods
+on <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects and providing multiple conditions on the same field
+in the same argument using the symbol operator syntax, conditions may be
+combined using <code class="docutils literal notranslate"><span class="pre">$eq</span></code> or <code class="docutils literal notranslate"><span class="pre">$regex</span></code> operators, as appropriate, instead of
+<code class="docutils literal notranslate"><span class="pre">$and</span></code>.</p>
+<p>Mongoid 7.3 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="ss">:year</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">1960</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;{&quot;$eq&quot;=&gt;2020, &quot;$gt&quot;=&gt;1960}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/A/</span><span class="p">,</span> <span class="ss">:name</span><span class="o">.</span><span class="n">ne</span> <span class="o">=&gt;</span> <span class="s1">&#39;Astral&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;{&quot;$regex&quot;=&gt;/A/, &quot;$ne&quot;=&gt;&quot;Astral&quot;}}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Mongoid 7.2 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="ss">:year</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">1960</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;2020, &quot;$and&quot;=&gt;[{&quot;year&quot;=&gt;{&quot;$gt&quot;=&gt;1960}}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="sr">/A/</span><span class="p">,</span> <span class="ss">:name</span><span class="o">.</span><span class="n">ne</span> <span class="o">=&gt;</span> <span class="s1">&#39;Astral&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;name&quot;=&gt;/A/, &quot;$and&quot;=&gt;[{&quot;name&quot;=&gt;{&quot;$ne&quot;=&gt;&quot;Astral&quot;}}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">$regex</span></code> operator is used when the value is a regular expression, i.e.
+an instance of <code class="docutils literal notranslate"><span class="pre">Regexp</span></code> or <code class="docutils literal notranslate"><span class="pre">BSON::Regexp::Raw</span></code> classes.</p>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">not</span></code> method with multiple conditions provided in the same
+argument, the conditions are kept together and negated as a group.</p>
+<p>Mongoid 7.3 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">not</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="ss">:year</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">1960</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$and&quot;=&gt;[{&quot;$nor&quot;=&gt;[{&quot;year&quot;=&gt;{&quot;$eq&quot;=&gt;2020, &quot;$gt&quot;=&gt;1960}}]}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Mongoid 7.2 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">not</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="ss">:year</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">1960</span><span class="p">)</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;year&quot;=&gt;{&quot;$ne&quot;=&gt;2020}, &quot;$and&quot;=&gt;[{&quot;$nor&quot;=&gt;[{&quot;year&quot;=&gt;{&quot;$gt&quot;=&gt;1960}}]}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="new-embedded-matching-operators">
+<h2>New Embedded Matching Operators<a class="headerlink" href="#new-embedded-matching-operators" title="Permalink to this headline">¶</a></h2>
+<p>Mongoid 7.3 adds support for bitwise operators, <code class="docutils literal notranslate"><span class="pre">$comment</span></code>, <code class="docutils literal notranslate"><span class="pre">$mod</span></code> and
+<code class="docutils literal notranslate"><span class="pre">$type</span></code> operators when <a class="reference internal" href="../reference/associations.html#embedded-matching"><span class="std std-ref">embedded matching</span></a>.</p>
+</div>
+<div class="section" id="unaliasing-id-field">
+<h2>Unaliasing <code class="docutils literal notranslate"><span class="pre">id</span></code> Field<a class="headerlink" href="#unaliasing-id-field" title="Permalink to this headline">¶</a></h2>
+<p>It is now possible to <a class="reference internal" href="../reference/fields.html#unalias-id"><span class="std std-ref">remove the id alias in models</span></a>,
+to make <code class="docutils literal notranslate"><span class="pre">id</span></code> a regular field.</p>
+</div>
+<div class="section" id="mongoid-purge-and-mongoid-truncate-take-the-global-overrides-into-account">
+<h2><code class="docutils literal notranslate"><span class="pre">Mongoid.purge!</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid.truncate</span></code> take the global overrides into account<a class="headerlink" href="#mongoid-purge-and-mongoid-truncate-take-the-global-overrides-into-account" title="Permalink to this headline">¶</a></h2>
+<p>Minor change: <code class="docutils literal notranslate"><span class="pre">Mongoid.purge!</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid.truncate!</span></code> now consider global
+overrides set with <code class="docutils literal notranslate"><span class="pre">Mongoid.override_database</span></code> and <code class="docutils literal notranslate"><span class="pre">Mongoid.override_client</span></code>.</p>
+<p>Mongoid 7.3 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">override_database</span><span class="p">(</span><span class="s2">&quot;some_other_db&quot;</span><span class="p">)</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Garage&quot;</span><span class="p">)</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">count</span> <span class="c1"># =&gt; 1</span>
+<span class="no">Mongoid</span><span class="o">.</span><span class="n">purge!</span> <span class="c1"># or Mongoid.truncate!</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">count</span> <span class="c1"># =&gt; 0</span>
+</pre></div>
+</div>
+</div>
+<p>Mongoid 7.2 behavior:</p>
+<div class="button-code-block">
+<div class="button-row">
+<a class="code-button--copy code-button" role="button">
+copy</a>
+</div>
+<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">override_database</span><span class="p">(</span><span class="s2">&quot;some_other_db&quot;</span><span class="p">)</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Garage&quot;</span><span class="p">)</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">count</span> <span class="c1"># =&gt; 1</span>
+<span class="no">Mongoid</span><span class="o">.</span><span class="n">purge!</span> <span class="c1"># or Mongoid.truncate!</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">count</span> <span class="c1"># =&gt; 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="../release-notes.html" title="Previous Section: Release Notes"><span>Release Notes</span></a>
+      <a class="btn-next-text" href="mongoid-7.2.html" title="Next Section: Mongoid 7.2"><span>Mongoid 7.2</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
+
+  <script src="../_static/navbar.min.js"></script>
+
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = [];
+  </script></body>
+</html>

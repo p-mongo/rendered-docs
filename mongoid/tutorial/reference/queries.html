@@ -13,10 +13,10 @@
 
   <meta name="release" content="upcoming"/>
   <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/tutorials/mongoid-queries.txt"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/reference/queries.txt"/>
   <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
   <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/tutorials/mongoid-queries/" />
+    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/reference/queries/" />
   
    <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -30,8 +30,9 @@
       <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
 <link rel="search" title="Search" href="../search.html" />
 <link rel="top" title="Mongoid Manual" href="../index.html" />
-<link rel="next" title="Associations" href="mongoid-relations.html" />
-<link rel="prev" title="Persistence" href="mongoid-persistence.html" /></head>
+<link rel="up" title="Reference" href="../reference.html" />
+<link rel="next" title="Text Search" href="text-search.html" />
+<link rel="prev" title="CRUD Operations" href="crud.html" /></head>
 <body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
   <!-- Google Tag Manager -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
@@ -81,9 +82,18 @@
             
             <li>
             
+              <a class="version-selector" href="#" data-path="mongoid/7.3">
+                
+                Version 7.3 (current)
+              </a>
+            </li>
+          
+            
+            <li>
+            
               <a class="version-selector" href="#" data-path="mongoid/7.2">
                 
-                Version 7.2 (current)
+                Version 7.2
               </a>
             </li>
           
@@ -155,7 +165,7 @@
     </div>
 
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l1"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-configuration.html">Configuration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-documents.html">Documents</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-persistence.html">Persistence</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Queries</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-relations.html">Associations</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-nested-attributes.html">Nested Attributes</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-callbacks.html">Callbacks</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-validation.html">Validation</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-indexes.html">Indexes</a></li><li class="toctree-l1"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-sessions.html">Sessions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-transactions.html">Transactions</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-rails.html">Rails Integration</a></li><li class="toctree-l1"><a class="reference internal" href="mongoid-upgrade.html">Upgrading Mongoid</a></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="documents.html">Documents</a></li><li class="toctree-l2"><a class="reference internal" href="fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="crud.html">CRUD Operations</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="indexes.html">Indexes</a></li><li class="toctree-l2"><a class="reference internal" href="sharding.html">Sharding</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="rails.html">Rails Integration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
     </div>
   </div>
            
@@ -171,12 +181,15 @@
       
         <div class="document">
             <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="tutorials/mongoid-queries">
+              <div class="body" data-pagename="reference/queries">
 
                 
   <div class="bc">
     
-      
+      <ul>
+          <li><a href="../reference.html">Reference</a><span class="bcpoint"> > </span></li>
+            <li>Queries</li> 
+      </ul>
     
     
   </div>
@@ -186,45 +199,60 @@
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id13">Queries</a><ul>
-<li><a class="reference internal" href="#condition-syntax" id="id14">Condition Syntax</a></li>
-<li><a class="reference internal" href="#logical-operations" id="id15">Logical Operations</a></li>
-<li><a class="reference internal" href="#incremental-query-construction" id="id16">Incremental Query Construction</a></li>
-<li><a class="reference internal" href="#query-methods" id="id17">Query Methods</a></li>
-<li><a class="reference internal" href="#projection" id="id18">Projection</a></li>
-<li><a class="reference internal" href="#ordering" id="id19">Ordering</a></li>
-<li><a class="reference internal" href="#query-cache" id="id20">Query Cache</a></li>
-<li><a class="reference internal" href="#finding-by-id" id="id21">Finding By <code class="docutils literal notranslate"><span class="pre">_id</span></code></a></li>
-<li><a class="reference internal" href="#id11" id="id22">Additional Query Methods</a></li>
-<li><a class="reference internal" href="#eager-loading" id="id23">Eager Loading</a></li>
-<li><a class="reference internal" href="#regular-expressions" id="id24">Regular Expressions</a></li>
+<li><a class="reference internal" href="#condition-syntax" id="id11">Condition Syntax</a><ul>
+<li><a class="reference internal" href="#field-syntax" id="id12">Field Syntax</a></li>
+<li><a class="reference internal" href="#mql-syntax" id="id13">MQL Syntax</a></li>
+<li><a class="reference internal" href="#symbol-operator-syntax" id="id14">Symbol Operator Syntax</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#conditions-on-fields" id="id25">Conditions On Fields</a></li>
-<li><a class="reference internal" href="#reloading" id="id26">Reloading</a></li>
-<li><a class="reference internal" href="#queries-persistence" id="id27">Queries + Persistence</a></li>
-<li><a class="reference internal" href="#scoping" id="id28">Scoping</a><ul>
-<li><a class="reference internal" href="#named-scopes" id="id29">Named Scopes</a></li>
-<li><a class="reference internal" href="#default-scopes" id="id30">Default Scopes</a></li>
-<li><a class="reference internal" href="#class-methods" id="id31">Class Methods</a></li>
+<li><a class="reference internal" href="#embedded-documents" id="id15">Embedded Documents</a></li>
+<li><a class="reference internal" href="#field-types" id="id16">Field Types</a></li>
+<li><a class="reference internal" href="#aliases" id="id17">Aliases</a></li>
+<li><a class="reference internal" href="#logical-operations" id="id18">Logical Operations</a><ul>
+<li><a class="reference internal" href="#operator-combinations" id="id19">Operator Combinations</a></li>
+<li><a class="reference internal" href="#and-behavior" id="id20"><code class="docutils literal notranslate"><span class="pre">and</span></code> Behavior</a></li>
+<li><a class="reference internal" href="#any-of-behavior" id="id21"><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Behavior</a></li>
+<li><a class="reference internal" href="#not-behavior" id="id22"><code class="docutils literal notranslate"><span class="pre">not</span></code> Behavior</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#map-reduce" id="id32">Map/Reduce</a><ul>
-<li><a class="reference internal" href="#execution" id="id33">Execution</a></li>
-<li><a class="reference internal" href="#raw-results" id="id34">Raw Results</a></li>
-<li><a class="reference internal" href="#statistics" id="id35">Statistics</a></li>
+<li><a class="reference internal" href="#incremental-query-construction" id="id23">Incremental Query Construction</a><ul>
+<li><a class="reference internal" href="#merge-strategies" id="id24">Merge Strategies</a></li>
+<li><a class="reference internal" href="#supported-operator-methods" id="id25">Supported Operator Methods</a></li>
+<li><a class="reference internal" href="#operator-value-expansion" id="id26">Operator Value Expansion</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#text-search" id="id36">Text Search</a><ul>
-<li><a class="reference internal" href="#defining-text-search-index" id="id37">Defining Text Search Index</a></li>
-<li><a class="reference internal" href="#creating-text-index" id="id38">Creating Text Index</a></li>
-<li><a class="reference internal" href="#querying-using-text-index" id="id39">Querying Using Text Index</a></li>
+<li><a class="reference internal" href="#query-methods" id="id27">Query Methods</a><ul>
+<li><a class="reference internal" href="#elem-match" id="id28">elem_match</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#projection" id="id29">Projection</a><ul>
+<li><a class="reference internal" href="#only" id="id30"><code class="docutils literal notranslate"><span class="pre">only</span></code></a></li>
+<li><a class="reference internal" href="#without" id="id31"><code class="docutils literal notranslate"><span class="pre">without</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ordering" id="id32">Ordering</a></li>
+<li><a class="reference internal" href="#query-cache" id="id33">Query Cache</a><ul>
+<li><a class="reference internal" href="#the-improved-driver-query-cache" id="id34">The Improved Driver Query Cache</a></li>
+<li><a class="reference internal" href="#legacy-query-cache-limitations" id="id35">Legacy Query Cache Limitations</a></li>
+<li><a class="reference internal" href="#a-note-on-using-first" id="id36">A Note on using <code class="docutils literal notranslate"><span class="pre">#first</span></code></a></li>
+<li><a class="reference internal" href="#system-collections-and-the-query-cache" id="id37">System Collections and the Query Cache</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#finding-by-id" id="id38">Finding By <code class="docutils literal notranslate"><span class="pre">_id</span></code></a></li>
+<li><a class="reference internal" href="#additional-query-methods" id="id39">Additional Query Methods</a></li>
+<li><a class="reference internal" href="#eager-loading" id="id40">Eager Loading</a></li>
+<li><a class="reference internal" href="#regular-expressions" id="id41">Regular Expressions</a></li>
+<li><a class="reference internal" href="#conditions-on-fields" id="id42">Conditions On Fields</a></li>
+<li><a class="reference internal" href="#reloading" id="id43">Reloading</a></li>
+<li><a class="reference internal" href="#queries-persistence" id="id44">Queries + Persistence</a></li>
+<li><a class="reference internal" href="#scoping" id="id45">Scoping</a><ul>
+<li><a class="reference internal" href="#named-scopes" id="id46">Named Scopes</a></li>
+<li><a class="reference internal" href="#default-scopes" id="id47">Default Scopes</a></li>
+<li><a class="reference internal" href="#class-methods" id="id48">Class Methods</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="id1">
-<h2>Queries<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid provides a rich query DSL inspired by ActiveRecord. A trivial query
 looks as follows:</p>
 <div class="button-code-block">
@@ -310,7 +338,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="condition-syntax">
-<h3>Condition Syntax<a class="headerlink" href="#condition-syntax" title="Permalink to this headline">¶</a></h3>
+<h2>Condition Syntax<a class="headerlink" href="#condition-syntax" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid supports three ways of specifying individual conditions:</p>
 <ol class="arabic simple">
 <li>Field syntax.</li>
@@ -347,7 +375,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="field-syntax">
-<h4>Field Syntax<a class="headerlink" href="#field-syntax" title="Permalink to this headline">¶</a></h4>
+<h3>Field Syntax<a class="headerlink" href="#field-syntax" title="Permalink to this headline">¶</a></h3>
 <p>The simplest querying syntax utilizes the basic Ruby hashes. Keys can be
 symbols or strings, and correspond to field names in MongoDB documents:</p>
 <div class="button-code-block">
@@ -370,7 +398,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="mql-syntax">
-<h4>MQL Syntax<a class="headerlink" href="#mql-syntax" title="Permalink to this headline">¶</a></h4>
+<h3>MQL Syntax<a class="headerlink" href="#mql-syntax" title="Permalink to this headline">¶</a></h3>
 <p>An MQL operator may be specified on any field using the hash syntax:</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -392,7 +420,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="symbol-operator-syntax">
-<h4>Symbol Operator Syntax<a class="headerlink" href="#symbol-operator-syntax" title="Permalink to this headline">¶</a></h4>
+<h3>Symbol Operator Syntax<a class="headerlink" href="#symbol-operator-syntax" title="Permalink to this headline">¶</a></h3>
 <p>MQL operators may be specified as methods on symbols for the respective field
 name, as follows:</p>
 <div class="button-code-block">
@@ -410,8 +438,9 @@ copy</a>
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="embedded-documents">
-<h4>Embedded Documents<a class="headerlink" href="#embedded-documents" title="Permalink to this headline">¶</a></h4>
+<h2>Embedded Documents<a class="headerlink" href="#embedded-documents" title="Permalink to this headline">¶</a></h2>
 <p>To match values of fields of embedded documents, use the dot notation:</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -441,9 +470,9 @@ conditions are referencing embedded documents.</p>
 </div>
 </div>
 <div class="section" id="field-types">
-<h4>Field Types<a class="headerlink" href="#field-types" title="Permalink to this headline">¶</a></h4>
+<h2>Field Types<a class="headerlink" href="#field-types" title="Permalink to this headline">¶</a></h2>
 <p>In order to query on a field, it is not necessary to add the field to
-<a class="reference internal" href="mongoid-documents.html#fields"><span class="std std-ref">the model class definition</span></a>. However, if a field is defined in
+<a class="reference internal" href="fields.html#fields"><span class="std std-ref">the model class definition</span></a>. However, if a field is defined in
 the model class, the type of the field is taken into account when constructing
 the query:</p>
 <div class="button-code-block">
@@ -469,9 +498,9 @@ copy</a>
 </div>
 </div>
 <div class="section" id="aliases">
-<h4>Aliases<a class="headerlink" href="#aliases" title="Permalink to this headline">¶</a></h4>
-<p>Queries take into account <a class="reference internal" href="mongoid-documents.html#storage-field-names"><span class="std std-ref">storage field names</span></a>
-and <a class="reference internal" href="mongoid-documents.html#field-aliases"><span class="std std-ref">field aliases</span></a>:</p>
+<h2>Aliases<a class="headerlink" href="#aliases" title="Permalink to this headline">¶</a></h2>
+<p>Queries take into account <a class="reference internal" href="fields.html#storage-field-names"><span class="std std-ref">storage field names</span></a>
+and <a class="reference internal" href="fields.html#field-aliases"><span class="std std-ref">field aliases</span></a>:</p>
 <div class="button-code-block">
 <div class="button-row">
 <a class="code-button--copy code-button" role="button">
@@ -502,9 +531,8 @@ copy</a>
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="logical-operations">
-<span id="id2"></span><h3>Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h2>Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid supports <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code> logical operations on
 <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects. These methods take one or more hash of conditions
 or another <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> object as their arguments, with <code class="docutils literal notranslate"><span class="pre">not</span></code> additionally
@@ -566,7 +594,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="operator-combinations">
-<h4>Operator Combinations<a class="headerlink" href="#operator-combinations" title="Permalink to this headline">¶</a></h4>
+<h3>Operator Combinations<a class="headerlink" href="#operator-combinations" title="Permalink to this headline">¶</a></h3>
 <p>As of Mongoid 7.1, logical operators (<code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">nor</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code>)
 have been changed to have the the same semantics as <a class="reference external" href="https://guides.rubyonrails.org/active_record_querying.html">those of ActiveRecord</a>.
 To obtain the semantics of <code class="docutils literal notranslate"><span class="pre">or</span></code> as it behaved in Mongoid 7.0 and earlier,
@@ -621,7 +649,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="and-behavior">
-<h4><code class="docutils literal notranslate"><span class="pre">and</span></code> Behavior<a class="headerlink" href="#and-behavior" title="Permalink to this headline">¶</a></h4>
+<h3><code class="docutils literal notranslate"><span class="pre">and</span></code> Behavior<a class="headerlink" href="#and-behavior" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">and</span></code> method will add new simple conditions to the top level of the
 criteria, unless the receiving criteria already has a condition on the
 respective fields, in which case the conditions will be combined with <code class="docutils literal notranslate"><span class="pre">$and</span></code>.</p>
@@ -642,9 +670,8 @@ copy</a>
 combines all criteria so specified, whereas in previous versions of Mongoid
 conditions on a field sometimes replaced previously specified conditions on
 the same field, depending on which form of <code class="docutils literal notranslate"><span class="pre">and</span></code> was used.</p>
-</div>
-<div class="section" id="or-nor-behavior">
-<h4><code class="docutils literal notranslate"><span class="pre">or</span></code>/<code class="docutils literal notranslate"><span class="pre">nor</span></code> Behavior<a class="headerlink" href="#or-nor-behavior" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">or</span></code>/<code class="docutils literal notranslate"><span class="pre">nor</span></code> Behavior
+_———————-</p>
 <p><code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">nor</span></code> produce <code class="docutils literal notranslate"><span class="pre">$or</span></code> and <code class="docutils literal notranslate"><span class="pre">$nor</span></code> MongoDB operators, respectively,
 using the receiver and all of the arguments as operands. For example:</p>
 <div class="button-code-block">
@@ -678,7 +705,7 @@ copy</a>
 all of the conditions built up so far as they are.</p>
 </div>
 <div class="section" id="any-of-behavior">
-<span id="any-of"></span><h4><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Behavior<a class="headerlink" href="#any-of-behavior" title="Permalink to this headline">¶</a></h4>
+<span id="any-of"></span><h3><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Behavior<a class="headerlink" href="#any-of-behavior" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">any_of</span></code> adds a disjunction built from its arguments to the existing
 conditions in the criteria. For example:</p>
 <div class="button-code-block">
@@ -704,7 +731,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="not-behavior">
-<h4><code class="docutils literal notranslate"><span class="pre">not</span></code> Behavior<a class="headerlink" href="#not-behavior" title="Permalink to this headline">¶</a></h4>
+<h3><code class="docutils literal notranslate"><span class="pre">not</span></code> Behavior<a class="headerlink" href="#not-behavior" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">not</span></code> method can be called without arguments, in which case it will negate
 the next condition that is specified. <code class="docutils literal notranslate"><span class="pre">not</span></code> can also be called with one
 or more hash conditions or <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects, which will all be negated and
@@ -781,7 +808,7 @@ caveats/limitations of <code class="docutils literal notranslate"><span class="p
 </div>
 </div>
 <div class="section" id="incremental-query-construction">
-<h3>Incremental Query Construction<a class="headerlink" href="#incremental-query-construction" title="Permalink to this headline">¶</a></h3>
+<h2>Incremental Query Construction<a class="headerlink" href="#incremental-query-construction" title="Permalink to this headline">¶</a></h2>
 <p>By default, when conditions are added to a query, Mongoid considers each
 condition complete and independent from any other conditions potentially
 present in the query. For example, calling <code class="docutils literal notranslate"><span class="pre">in</span></code> twice adds two separate
@@ -806,7 +833,7 @@ is being added, if there already is a condition on the same field using the
 same operator, the operator expressions are combined according to the
 specified <em>merge strategy</em>.</p>
 <div class="section" id="merge-strategies">
-<span id="id3"></span><h4>Merge Strategies<a class="headerlink" href="#merge-strategies" title="Permalink to this headline">¶</a></h4>
+<span id="id2"></span><h3>Merge Strategies<a class="headerlink" href="#merge-strategies" title="Permalink to this headline">¶</a></h3>
 <p>Mongoid provides three merge strategies:</p>
 <ul class="simple">
 <li><strong>Override</strong>: the new operator instance replaces any existing conditions on
@@ -872,7 +899,7 @@ ignored and reset and when <code class="docutils literal notranslate"><span clas
 strategy active.</p>
 </div>
 <div class="section" id="supported-operator-methods">
-<h4>Supported Operator Methods<a class="headerlink" href="#supported-operator-methods" title="Permalink to this headline">¶</a></h4>
+<h3>Supported Operator Methods<a class="headerlink" href="#supported-operator-methods" title="Permalink to this headline">¶</a></h3>
 <p>The following operator methods support merge strategies:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">all</span></code></li>
@@ -922,7 +949,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="operator-value-expansion">
-<h4>Operator Value Expansion<a class="headerlink" href="#operator-value-expansion" title="Permalink to this headline">¶</a></h4>
+<h3>Operator Value Expansion<a class="headerlink" href="#operator-value-expansion" title="Permalink to this headline">¶</a></h3>
 <p>Operator methods that support merge strategies all take <code class="docutils literal notranslate"><span class="pre">Array</span></code> as their value
 type. Mongoid expands <code class="docutils literal notranslate"><span class="pre">Array</span></code>-compatible types, such as a <code class="docutils literal notranslate"><span class="pre">Range</span></code>,
 when they are used with these operator methods:</p>
@@ -961,9 +988,9 @@ removed in a future release of Mongoid.</p>
 </div>
 </div>
 <div class="section" id="query-methods">
-<h3>Query Methods<a class="headerlink" href="#query-methods" title="Permalink to this headline">¶</a></h3>
+<h2>Query Methods<a class="headerlink" href="#query-methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="elem-match">
-<h4>elem_match<a class="headerlink" href="#elem-match" title="Permalink to this headline">¶</a></h4>
+<h3>elem_match<a class="headerlink" href="#elem-match" title="Permalink to this headline">¶</a></h3>
 <p>This matcher finds documents with array fields where one of the array values
 matches all of the conditions. For example:</p>
 <div class="button-code-block">
@@ -1046,9 +1073,10 @@ copy</a>
 </div>
 </div>
 <div class="section" id="projection">
-<span id="id4"></span><h3>Projection<a class="headerlink" href="#projection" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h2>Projection<a class="headerlink" href="#projection" title="Permalink to this headline">¶</a></h2>
+<p>Mongoid provides two projection operators: <code class="docutils literal notranslate"><span class="pre">only</span></code> and <code class="docutils literal notranslate"><span class="pre">without</span></code>.</p>
 <div class="section" id="only">
-<span id="id5"></span><h4><code class="docutils literal notranslate"><span class="pre">only</span></code><a class="headerlink" href="#only" title="Permalink to this headline">¶</a></h4>
+<span id="id4"></span><h3><code class="docutils literal notranslate"><span class="pre">only</span></code><a class="headerlink" href="#only" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">only</span></code> method retrieves only the specified fields from the database. This
 operation is sometimes called “projection”.</p>
 <div class="button-code-block">
@@ -1174,7 +1202,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="without">
-<span id="id6"></span><h4><code class="docutils literal notranslate"><span class="pre">without</span></code><a class="headerlink" href="#without" title="Permalink to this headline">¶</a></h4>
+<span id="id5"></span><h3><code class="docutils literal notranslate"><span class="pre">without</span></code><a class="headerlink" href="#without" title="Permalink to this headline">¶</a></h3>
 <p>The opposite of <code class="docutils literal notranslate"><span class="pre">only</span></code>, <code class="docutils literal notranslate"><span class="pre">without</span></code> causes the specified fields to be omitted:</p>
 <div class="button-code-block">
 <div class="button-row">
@@ -1219,7 +1247,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="ordering">
-<h3>Ordering<a class="headerlink" href="#ordering" title="Permalink to this headline">¶</a></h3>
+<h2>Ordering<a class="headerlink" href="#ordering" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid provides the <code class="docutils literal notranslate"><span class="pre">order</span></code> method on <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects and its alias,
 <code class="docutils literal notranslate"><span class="pre">order_by</span></code>, to specify the ordering of documents. These methods take a
 hash indicating which fields to order the documents by, and whether to use
@@ -1352,7 +1380,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="query-cache">
-<span id="id7"></span><h3>Query Cache<a class="headerlink" href="#query-cache" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h2>Query Cache<a class="headerlink" href="#query-cache" title="Permalink to this headline">¶</a></h2>
 <p>When the query cache is enabled, Mongoid will cache results for MongoDB queries
 when the entire result set is returned in a single batch (1000 documents by
 default).</p>
@@ -1386,10 +1414,10 @@ copy</a>
 </pre></div>
 </div>
 </div>
-<p>Mongoid also provides a <a class="reference internal" href="mongoid-configuration.html#query-cache-middleware"><span class="std std-ref">Rack middleware</span></a>
+<p>Mongoid also provides a <a class="reference internal" href="configuration.html#query-cache-middleware"><span class="std std-ref">Rack middleware</span></a>
 to enable the query cache automatically for each web request.</p>
 <div class="section" id="the-improved-driver-query-cache">
-<h4>The Improved Driver Query Cache<a class="headerlink" href="#the-improved-driver-query-cache" title="Permalink to this headline">¶</a></h4>
+<h3>The Improved Driver Query Cache<a class="headerlink" href="#the-improved-driver-query-cache" title="Permalink to this headline">¶</a></h3>
 <p>The Mongoid query cache has been reimplemented in version 2.14.0 of the MongoDB
 Ruby Driver. The driver query cache is more correct and more effective, and it
 is recmomended that you upgrade to version 2.14.0 of the Ruby driver or newer.</p>
@@ -1417,7 +1445,7 @@ recommended that you upgrade to Ruby driver version 2.14.0 or newer.</p>
 </div>
 </div>
 <div class="section" id="legacy-query-cache-limitations">
-<h4>Legacy Query Cache Limitations<a class="headerlink" href="#legacy-query-cache-limitations" title="Permalink to this headline">¶</a></h4>
+<h3>Legacy Query Cache Limitations<a class="headerlink" href="#legacy-query-cache-limitations" title="Permalink to this headline">¶</a></h3>
 <p>The following is a list of limitations of the legacy query cache:</p>
 <ul class="simple">
 <li>The legacy query cache does not cache query results that exceed the batch size.
@@ -1433,7 +1461,7 @@ any of these operations.</li>
 </ul>
 </div>
 <div class="section" id="a-note-on-using-first">
-<h4>A Note on using <code class="docutils literal notranslate"><span class="pre">#first</span></code><a class="headerlink" href="#a-note-on-using-first" title="Permalink to this headline">¶</a></h4>
+<h3>A Note on using <code class="docutils literal notranslate"><span class="pre">#first</span></code><a class="headerlink" href="#a-note-on-using-first" title="Permalink to this headline">¶</a></h3>
 <p>Calling the <code class="docutils literal notranslate"><span class="pre">first</span></code> method on a model class imposes an ascending sort by
 the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field on the underlying query. This may produce unexpected behavior
 with query caching.</p>
@@ -1457,7 +1485,7 @@ copy</a>
 <p>To use the cached results, call <code class="docutils literal notranslate"><span class="pre">all.to_a.first</span></code> on the model class.</p>
 </div>
 <div class="section" id="system-collections-and-the-query-cache">
-<h4>System Collections and the Query Cache<a class="headerlink" href="#system-collections-and-the-query-cache" title="Permalink to this headline">¶</a></h4>
+<h3>System Collections and the Query Cache<a class="headerlink" href="#system-collections-and-the-query-cache" title="Permalink to this headline">¶</a></h3>
 <p>MongoDB stores system information in collections that use the <code class="docutils literal notranslate"><span class="pre">database.system.*</span></code>
 namespace pattern. These are called system collections.</p>
 <p>Data in system collections can change due to activity not triggered by the
@@ -1483,7 +1511,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="finding-by-id">
-<span id="additional-query-methods"></span><h3>Finding By <code class="docutils literal notranslate"><span class="pre">_id</span></code><a class="headerlink" href="#finding-by-id" title="Permalink to this headline">¶</a></h3>
+<h2>Finding By <code class="docutils literal notranslate"><span class="pre">_id</span></code><a class="headerlink" href="#finding-by-id" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid provides the <code class="docutils literal notranslate"><span class="pre">find</span></code> method on <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> objects to find documents
 by their <code class="docutils literal notranslate"><span class="pre">_id</span></code> values:</p>
 <div class="button-code-block">
@@ -1568,12 +1596,12 @@ option. If the option is set to <code class="docutils literal notranslate"><span
 <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::DocumentNotFound</span></code> if any of the <code class="docutils literal notranslate"><span class="pre">_id``s</span> <span class="pre">are</span> <span class="pre">not</span> <span class="pre">found.</span>
 <span class="pre">If</span> <span class="pre">the</span> <span class="pre">option</span> <span class="pre">is</span> <span class="pre">set</span> <span class="pre">to</span> <span class="pre">``false</span></code> and <code class="docutils literal notranslate"><span class="pre">find</span></code> is given a single <code class="docutils literal notranslate"><span class="pre">_id</span></code> to
 find and there is no matching document, <code class="docutils literal notranslate"><span class="pre">find</span></code> returns <code class="docutils literal notranslate"><span class="pre">nil</span></code>. If the
-option is set to <code class="docutils literal notranslate"><span class="pre">false</span></code> and <code class="docutils literal notranslate"><span class="pre">find</span></code> is given an array of <a href="#id9"><span class="problematic" id="id10">``</span></a>_id``s to find
+option is set to <code class="docutils literal notranslate"><span class="pre">false</span></code> and <code class="docutils literal notranslate"><span class="pre">find</span></code> is given an array of <a href="#id8"><span class="problematic" id="id9">``</span></a>_id``s to find
 and some are not found, the return value is an array of documents that were
 found (which could be empty if no documents were found at all).</p>
 </div>
-<div class="section" id="id11">
-<h3>Additional Query Methods<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="additional-query-methods">
+<span id="id10"></span><h2>Additional Query Methods<a class="headerlink" href="#additional-query-methods" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid also has some helpful methods on criteria.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -1879,7 +1907,7 @@ copy</a>
 </table>
 </div>
 <div class="section" id="eager-loading">
-<h3>Eager Loading<a class="headerlink" href="#eager-loading" title="Permalink to this headline">¶</a></h3>
+<h2>Eager Loading<a class="headerlink" href="#eager-loading" title="Permalink to this headline">¶</a></h2>
 <p>Mongoid provides a facility to eager load documents
 from associations to prevent the n+1 issue when
 iterating over documents with association access. Eager loading is supported on
@@ -1908,7 +1936,7 @@ copy</a>
 </div>
 </div>
 <div class="section" id="regular-expressions">
-<h3>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">¶</a></h3>
+<h2>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">¶</a></h2>
 <p>MongoDB, and Mongoid, allow querying documents by regular expressions.</p>
 <p>Given the following model definitions:</p>
 <div class="button-code-block">
@@ -1954,7 +1982,6 @@ copy</a>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="no">BSON</span><span class="o">::</span><span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;^Project&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">first</span>
 <span class="c1"># =&gt; #&lt;Band _id: 5dc9f7d5ce4ef34893354323, name: &quot;Sun Project&quot;, description: &quot;Sun\nProject&quot;&gt;</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -2023,7 +2050,7 @@ copy</a>
 </div>
 </div></blockquote>
 <p>When using the <code class="docutils literal notranslate"><span class="pre">registered_at</span></code> field which is of type <code class="docutils literal notranslate"><span class="pre">Time</span></code>, the date
-was interpreted to be in local time (as per the <a class="reference internal" href="mongoid-configuration.html#time-zones"><span class="std std-ref">configured time zone</span></a>). When using the <code class="docutils literal notranslate"><span class="pre">born_on</span></code> field which is of type <code class="docutils literal notranslate"><span class="pre">Date</span></code>,
+was interpreted to be in local time (as per the <a class="reference internal" href="configuration.html#time-zones"><span class="std std-ref">configured time zone</span></a>). When using the <code class="docutils literal notranslate"><span class="pre">born_on</span></code> field which is of type <code class="docutils literal notranslate"><span class="pre">Date</span></code>,
 the date was interpreted to be in UTC. When using the <code class="docutils literal notranslate"><span class="pre">voted_at</span></code> field
 which was defined without a type (hence implicitly as an <code class="docutils literal notranslate"><span class="pre">Object</span></code>),
 the date was used unmodified in the constructed query. When using a
@@ -2420,7 +2447,7 @@ copy</a>
 </div>
 </div>
 <p>To have Mongoid raise an error when a scope would overwrite an existing class
-method, set the <code class="docutils literal notranslate"><span class="pre">scope_overwrite_exception</span></code> <a class="reference internal" href="mongoid-configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+method, set the <code class="docutils literal notranslate"><span class="pre">scope_overwrite_exception</span></code> <a class="reference internal" href="configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </div>
 <div class="section" id="default-scopes">
 <h3>Default Scopes<a class="headerlink" href="#default-scopes" title="Permalink to this headline">¶</a></h3>
@@ -2606,224 +2633,13 @@ copy</a>
 </div>
 </div>
 </div>
-<div class="section" id="map-reduce">
-<h2>Map/Reduce<a class="headerlink" href="#map-reduce" title="Permalink to this headline">¶</a></h2>
-<p>Mongoid provides a DSL around MongoDB’s map/reduce framework, for performing
-custom map/reduce jobs or simple aggregations.</p>
-<div class="section" id="execution">
-<h3>Execution<a class="headerlink" href="#execution" title="Permalink to this headline">¶</a></h3>
-<p>You can tell Mongoid off the class or a criteria to perform a map/reduce
-by calling <code class="docutils literal notranslate"><span class="pre">map_reduce</span></code> and providing map and reduce javascript
-functions.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="sx">%Q{</span>
-<span class="sx">  function() {</span>
-<span class="sx">    emit(this.name, { likes: this.likes });</span>
-<span class="sx">  }</span>
-<span class="sx">}</span>
-
-<span class="n">reduce</span> <span class="o">=</span> <span class="sx">%Q{</span>
-<span class="sx">  function(key, values) {</span>
-<span class="sx">    var result = { likes: 0 };</span>
-<span class="sx">    values.forEach(function(value) {</span>
-<span class="sx">      result.likes += value.likes;</span>
-<span class="sx">    });</span>
-<span class="sx">    return result;</span>
-<span class="sx">  }</span>
-<span class="sx">}</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Just like criteria, map/reduce calls are lazily evaluated. So nothing will
-hit the database until you iterate over the results, or make a call on the
-wrapper that would need to force a database hit.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">replace</span><span class="p">:</span> <span class="s2">&quot;mr-results&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">document</span><span class="o">|</span>
-  <span class="nb">p</span> <span class="n">document</span> <span class="c1"># { &quot;_id&quot; =&gt; &quot;Tool&quot;, &quot;value&quot; =&gt; { &quot;likes&quot; =&gt; 200 }}</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-<p>The only required thing you provide along with a map/reduce is where to
-output the results. If you do not provide this an error will be raised.
-Valid options to <code class="docutils literal notranslate"><span class="pre">#out</span></code> are:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">inline:</span> <span class="pre">1</span></code>: Don’t store the output in a collection.</li>
-<li><code class="docutils literal notranslate"><span class="pre">replace:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
-provided name, and overwrite any documents that exist in it.</li>
-<li><code class="docutils literal notranslate"><span class="pre">merge:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
-provided name, and merge the results with the existing documents.</li>
-<li><code class="docutils literal notranslate"><span class="pre">reduce:</span> <span class="pre">&quot;name&quot;</span></code>: Store in a collection with the
-provided name, and reduce all existing results in that collection.</li>
-</ul>
-</div>
-<div class="section" id="raw-results">
-<h3>Raw Results<a class="headerlink" href="#raw-results" title="Permalink to this headline">¶</a></h3>
-<p>Results of Map/Reduce execution can be retrieved via the <code class="docutils literal notranslate"><span class="pre">execute</span></code> method
-or its aliases <code class="docutils literal notranslate"><span class="pre">raw</span></code> and <code class="docutils literal notranslate"><span class="pre">results</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">mr</span><span class="o">.</span><span class="n">execute</span>
-<span class="c1"># =&gt; {&quot;results&quot;=&gt;[{&quot;_id&quot;=&gt;&quot;Tool&quot;, &quot;value&quot;=&gt;{&quot;likes&quot;=&gt;200.0}}],</span>
-      <span class="s2">&quot;timeMillis&quot;</span><span class="o">=&gt;</span><span class="mi">14</span><span class="p">,</span>
-      <span class="s2">&quot;counts&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;input&quot;</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;emit&quot;</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;reduce&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">},</span>
-      <span class="s2">&quot;ok&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
-      <span class="s2">&quot;$clusterTime&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;clusterTime&quot;</span><span class="o">=&gt;</span><span class="c1">#&lt;BSON::Timestamp:0x00005633c2c2ad20 @seconds=1590105400, @increment=1&gt;, &quot;signature&quot;=&gt;{&quot;hash&quot;=&gt;&lt;BSON::Binary:0x12240 type=generic data=0x0000000000000000...&gt;, &quot;keyId&quot;=&gt;0}},</span>
-      <span class="s2">&quot;operationTime&quot;</span><span class="o">=&gt;</span><span class="c1">#&lt;BSON::Timestamp:0x00005633c2c2aaf0 @seconds=1590105400, @increment=1&gt;}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="statistics">
-<h3>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h3>
-<p>MongoDB servers 4.2 and lower provide Map/Reduce execution statistics. As of
-MongoDB 4.4, Map/Reduce is implemented via the aggregation pipeline and
-statistics described in this section are not available.</p>
-<p>The following methods are provided on the <code class="docutils literal notranslate"><span class="pre">MapReduce</span></code> object:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">counts</span></code>: Number of documents read, emitted, reduced and output through
-the pipeline.</li>
-<li><code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">emitted</span></code>, <code class="docutils literal notranslate"><span class="pre">reduced</span></code>, <code class="docutils literal notranslate"><span class="pre">output</span></code>: individual count methods.
-Note that <code class="docutils literal notranslate"><span class="pre">emitted</span></code> and <code class="docutils literal notranslate"><span class="pre">reduced</span></code> methods are named differently from
-hash keys in <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">time</span></code>: The time, in milliseconds, that Map/Reduce pipeline took to execute.</li>
-</ul>
-<p>The following code illustrates retrieving the statistics:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:likes</span><span class="o">.</span><span class="n">gt</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map_reduce</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="ss">inline</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">mr</span><span class="o">.</span><span class="n">counts</span>
-<span class="c1"># =&gt; {&quot;input&quot;=&gt;4, &quot;emit&quot;=&gt;4, &quot;reduce&quot;=&gt;1, &quot;output&quot;=&gt;1}</span>
-
-<span class="n">mr</span><span class="o">.</span><span class="n">input</span>
-<span class="c1"># =&gt; 4</span>
-
-<span class="n">mr</span><span class="o">.</span><span class="n">emitted</span>
-<span class="c1"># =&gt; 4</span>
-
-<span class="n">mr</span><span class="o">.</span><span class="n">reduced</span>
-<span class="c1"># =&gt; 1</span>
-
-<span class="n">mr</span><span class="o">.</span><span class="n">output</span>
-<span class="c1"># =&gt; 1</span>
-
-<span class="n">mr</span><span class="o">.</span><span class="n">time</span>
-<span class="c1"># =&gt; 14</span>
-</pre></div>
-</div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Each statistics method invocation re-executes the Map/Reduce pipeline.
-The results of execution are not stored by Mongoid. Consider using the
-<code class="docutils literal notranslate"><span class="pre">execute</span></code> method to retrieve the raw results and obtaining the statistics
-from the raw results if multiple statistics are desired.</p>
-</div>
-</div>
-</div>
-<div class="section" id="text-search">
-<span id="id12"></span><h2>Text Search<a class="headerlink" href="#text-search" title="Permalink to this headline">¶</a></h2>
-<p>MongoDB provides <a class="reference external" href="https://docs.mongodb.com/manual/core/index-text/">text indexes</a>
-to support text search queries on string content. Text indexes
-can include any field whose value is a string or an array of
-string elements.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">MongoDB Atlas also provides
-<a class="reference external" href="https://docs.atlas.mongodb.com/atlas-search/">Atlas Search</a>
-which is a more powerful and flexible text search solution.
-The rest of this section discusses text indexes and not Atlas Search.</p>
-</div>
-<p>To perform text search with Mongoid, follow these steps:</p>
-<ol class="arabic simple">
-<li>Define a text index on a model.</li>
-<li>Create the text index on the server.</li>
-<li>Build a text search query.</li>
-</ol>
-<div class="section" id="defining-text-search-index">
-<h3>Defining Text Search Index<a class="headerlink" href="#defining-text-search-index" title="Permalink to this headline">¶</a></h3>
-<p>Index definition through Mongoid is described in detail on the <a class="reference external" href="mongoid-indexes">indexes</a> page. Text search indexes are described in detail
-under <a class="reference external" href="https://docs.mongodb.com/manual/core/index-text/">text indexes</a>
-in the MongoDB manual. Below is an example definition of a Band model with
-a text index utilizing the description field:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-
-  <span class="n">index</span> <span class="ss">description</span><span class="p">:</span> <span class="s1">&#39;text&#39;</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-<p>Note that the index type (<code class="docutils literal notranslate"><span class="pre">text</span></code>) must be given as a string, not as a symbol.</p>
-</div>
-<div class="section" id="creating-text-index">
-<h3>Creating Text Index<a class="headerlink" href="#creating-text-index" title="Permalink to this headline">¶</a></h3>
-<p>To create the index, invoke the <code class="docutils literal notranslate"><span class="pre">db:mongoid:create_indexes</span></code> Rake task:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="ss">mongoid</span><span class="p">:</span><span class="n">create_indexes</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="querying-using-text-index">
-<h3>Querying Using Text Index<a class="headerlink" href="#querying-using-text-index" title="Permalink to this headline">¶</a></h3>
-<p>To find bands whose description contains “ounces” or its variations, use the
-<a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/text/#op._S_text">$text operator</a>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;$text&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$search&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ounces&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_a</span>
-<span class="c1"># =&gt; [#&lt;Band _id: 5d5341b3ce4ef35d5016746d, name: &quot;foo&quot;, description: &quot;ounce&quot;&gt;]</span>
-</pre></div>
-</div>
-</div>
-<p>Note that the description contains the word “ounce” even though the search
-query was “ounces”.</p>
-<p>Note also that when performing text search, the name of the field is not
-explicitly specified - <code class="docutils literal notranslate"><span class="pre">$text</span></code> operator searches all fields indexed with
-the text index.</p>
-</div>
-</div>
 </div>
 
                 
     <div id="btnv">
       <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="mongoid-persistence.html" title="Previous Section: Persistence"><span>Persistence</span></a>
-      <a class="btn-next-text" href="mongoid-relations.html" title="Next Section: Associations"><span>Associations</span></a>
+      <a class="btn-prev-text" href="crud.html" title="Previous Section: CRUD Operations"><span>CRUD Operations</span></a>
+      <a class="btn-next-text" href="text-search.html" title="Next Section: Text Search"><span>Text Search</span></a>
       <span class="btn-arrow-right">&nbsp;&rarr;</span>
     </div>
                   <div class="footer">
