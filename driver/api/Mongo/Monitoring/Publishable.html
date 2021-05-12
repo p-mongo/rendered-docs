@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Monitoring::Publishable
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -321,12 +321,12 @@
       <pre class="lines">
 
 
-25
-26
-27</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/publishable.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/publishable.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_monitoring'>monitoring</span>
   <span class='ivar'>@monitoring</span>
@@ -383,14 +383,14 @@
       <pre class="lines">
 
 
-39
-40
-41
 42
-43</pre>
+43
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/publishable.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/publishable.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_publish_cmap_event'>publish_cmap_event</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_monitoring?'>monitoring?</span>
@@ -443,12 +443,12 @@
       <pre class="lines">
 
 
-28
-29
-30</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/publishable.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/publishable.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_publish_event'>publish_event</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_monitoring'>monitoring</span><span class='period'>.</span><span class='id identifier rubyid_succeeded'>succeeded</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
@@ -498,15 +498,15 @@
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
-37</pre>
+37
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/publishable.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/publishable.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_publish_sdam_event'>publish_sdam_event</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_monitoring?'>monitoring?</span>
@@ -524,9 +524,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:23 2020 by
+  Generated on Wed May 12 17:19:07 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

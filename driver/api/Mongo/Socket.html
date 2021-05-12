@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Socket
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -162,13 +162,14 @@
 
     <dl class="constants">
       
-        <dt id="SSL_ERROR-constant" class="">SSL_ERROR =
+        <dt id="SSL_ERROR-constant" class="deprecated">SSL_ERROR =
           <div class="docstring">
   <div class="discussion">
     <p class="note private">
   <strong>This constant is part of a private API.</strong>
   You should avoid using this constant if possible, as it may be removed or be changed in the future.
 </p>
+<div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
 
 <p>Error message for TLS related exceptions.</p>
 
@@ -909,13 +910,13 @@
       <pre class="lines">
 
 
-65
-66
-67
-68</pre>
+69
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='ivar'>@timeout</span> <span class='op'>=</span> <span class='id identifier rubyid_timeout'>timeout</span>
@@ -997,12 +998,12 @@
       <pre class="lines">
 
 
-71
-72
-73</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_family'>family</span>
   <span class='ivar'>@family</span>
@@ -1078,12 +1079,12 @@
       <pre class="lines">
 
 
-77
-78
-79</pre>
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -1159,12 +1160,12 @@
       <pre class="lines">
 
 
-74
-75
-76</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_socket'>socket</span>
   <span class='ivar'>@socket</span>
@@ -1240,12 +1241,12 @@
       <pre class="lines">
 
 
-80
-81
-82</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_timeout'>timeout</span>
   <span class='ivar'>@timeout</span>
@@ -1341,10 +1342,6 @@
       <pre class="lines">
 
 
-130
-131
-132
-133
 134
 135
 136
@@ -1357,10 +1354,14 @@
 143
 144
 145
-146</pre>
+146
+147
+148
+149
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alive?'>alive?</span>
   <span class='id identifier rubyid_sock_arr'>sock_arr</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='ivar'>@socket</span> <span class='rbracket'>]</span>
@@ -1460,16 +1461,30 @@
       <pre class="lines">
 
 
-156
-157
-158
-159</pre>
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 160</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
-  <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span> <span class='kw'>rescue</span> <span class='kw'>nil</span>
+  <span class='kw'>begin</span>
+    <span class='comment'># Sometimes it seems the close call can hang for a long time
+</span>    <span class='op'>::</span><span class='const'>Timeout</span><span class='period'>.</span><span class='id identifier rubyid_timeout'>timeout</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>end</span>
+  <span class='kw'>rescue</span>
+    <span class='comment'># Silence all errors
+</span>  <span class='kw'>end</span>
   <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1542,12 +1557,12 @@
       <pre class="lines">
 
 
-249
-250
-251</pre>
+262
+263
+264</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 249</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 262</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connectable?'>connectable?</span>
   <span class='kw'>true</span>
@@ -1621,12 +1636,12 @@
       <pre class="lines">
 
 
-85
-86
-87</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection_address'>connection_address</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connection_address</span><span class='rbracket'>]</span>
@@ -1700,12 +1715,12 @@
       <pre class="lines">
 
 
-93
-94
-95</pre>
+97
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection_generation'>connection_generation</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connection_generation</span><span class='rbracket'>]</span>
@@ -1774,14 +1789,14 @@
       <pre class="lines">
 
 
-238
-239
-240
-241
-242</pre>
+251
+252
+253
+254
+255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 238</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 251</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_eof?'>eof?</span>
   <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_eof?'>eof?</span>
@@ -1889,14 +1904,14 @@
       <pre class="lines">
 
 
-171
-172
-173
-174
-175</pre>
+182
+183
+184
+185
+186</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 171</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 182</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gets'>gets</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
@@ -1972,12 +1987,12 @@
       <pre class="lines">
 
 
-101
-102
-103</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_monitor?'>monitor?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:monitor</span><span class='rbracket'>]</span>
@@ -2119,25 +2134,25 @@
       <pre class="lines">
 
 
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
 202
 203
 204
 205
-206</pre>
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 191</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 202</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span> <span class='label'>timeout:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
@@ -2236,14 +2251,14 @@
       <pre class="lines">
 
 
-216
-217
-218
-219
-220</pre>
+227
+228
+229
+230
+231</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 216</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 227</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_readbyte'>readbyte</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
@@ -2319,10 +2334,6 @@
       <pre class="lines">
 
 
-108
-109
-110
-111
 112
 113
 114
@@ -2331,10 +2342,14 @@
 117
 118
 119
-120</pre>
+120
+121
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_summary'>summary</span>
   <span class='id identifier rubyid_fileno'>fileno</span> <span class='op'>=</span> <span class='ivar'>@socket</span><span class='op'>&amp;.</span><span class='id identifier rubyid_fileno'>fileno</span> <span class='kw'>rescue</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;no socket&gt;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;no socket&gt;</span><span class='tstring_end'>&#39;</span></span>
@@ -2415,6 +2430,24 @@
     </li>
   
 </ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Error/SocketError.html" title="Mongo::Error::SocketError (class)">Error::SocketError</a></span> | <span class='object_link'><a href="Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">Error::SocketTimeoutError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>When there is a network error during the write.</p>
+</div>
+      
+    </li>
+  
+</ul>
 <p class="tag_title">Since:</p>
 <ul class="since">
   
@@ -2438,14 +2471,14 @@
       <pre class="lines">
 
 
-229
-230
-231
-232
-233</pre>
+242
+243
+244
+245
+246</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 229</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket.rb', line 242</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_map_exceptions'>map_exceptions</span> <span class='kw'>do</span>
@@ -2462,9 +2495,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:26 2020 by
+  Generated on Wed May 12 17:19:10 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

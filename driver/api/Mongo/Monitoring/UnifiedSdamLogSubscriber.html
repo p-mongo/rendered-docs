@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Monitoring::UnifiedSdamLogSubscriber
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -363,12 +363,12 @@
       <pre class="lines">
 
 
-37
-38
-39</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/unified_sdam_log_subscriber.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/unified_sdam_log_subscriber.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
@@ -445,12 +445,12 @@
       <pre class="lines">
 
 
-28
-29
-30</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/unified_sdam_log_subscriber.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/unified_sdam_log_subscriber.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -533,12 +533,12 @@
       <pre class="lines">
 
 
-46
-47
-48</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/unified_sdam_log_subscriber.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/unified_sdam_log_subscriber.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_published'>published</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_log_debug'>log_debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EVENT: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_summary'>summary</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug?'>debug?</span>
@@ -588,17 +588,17 @@
       <pre class="lines">
 
 
-52
-53
-54
 55
 56
 57
 58
-59</pre>
+59
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/unified_sdam_log_subscriber.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/unified_sdam_log_subscriber.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subscribe'>subscribe</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_subscribe'>subscribe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Monitoring.html" title="Mongo::Monitoring (class)">Monitoring</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Monitoring.html#TOPOLOGY_OPENING-constant" title="Mongo::Monitoring::TOPOLOGY_OPENING (constant)">TOPOLOGY_OPENING</a></span></span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
@@ -618,9 +618,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:39 2020 by
+  Generated on Wed May 12 17:19:21 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

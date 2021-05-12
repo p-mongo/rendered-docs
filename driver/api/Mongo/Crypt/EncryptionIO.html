@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Crypt::EncryptionIO
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -491,9 +491,6 @@
       <pre class="lines">
 
 
-52
-53
-54
 55
 56
 57
@@ -503,10 +500,13 @@
 61
 62
 63
-64</pre>
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span>
   <span class='label'>client:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>mongocryptd_client:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>key_vault_namespace:</span><span class='comma'>,</span>
@@ -596,16 +596,16 @@
       <pre class="lines">
 
 
-90
-91
-92
 93
 94
 95
-96</pre>
+96
+97
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collection_info'>collection_info</span><span class='lparen'>(</span><span class='id identifier rubyid_db_name'>db_name</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='ivar'>@client</span>
@@ -669,9 +669,6 @@
       <pre class="lines">
 
 
-131
-132
-133
 134
 135
 136
@@ -690,10 +687,13 @@
 149
 150
 151
-152</pre>
+152
+153
+154
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_feed_kms'>feed_kms</span><span class='lparen'>(</span><span class='id identifier rubyid_kms_context'>kms_context</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_with_ssl_socket'>with_ssl_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_kms_context'>kms_context</span><span class='period'>.</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='op'>|</span>
@@ -785,12 +785,12 @@
       <pre class="lines">
 
 
-72
-73
-74</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_keys'>find_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_key_vault_collection'>key_vault_collection</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
@@ -863,12 +863,12 @@
       <pre class="lines">
 
 
-81
-82
-83</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_insert_data_key'>insert_data_key</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_key_vault_collection'>key_vault_collection</span><span class='period'>.</span><span class='id identifier rubyid_insert_one'>insert_one</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
@@ -941,9 +941,6 @@
       <pre class="lines">
 
 
-103
-104
-105
 106
 107
 108
@@ -960,10 +957,13 @@
 119
 120
 121
-122</pre>
+122
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/encryption_io.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mark_command'>mark_command</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='ivar'>@mongocryptd_client</span>
@@ -995,9 +995,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:32 2020 by
+  Generated on Wed May 12 17:19:15 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

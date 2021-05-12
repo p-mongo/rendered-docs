@@ -6,7 +6,7 @@
 <title>
   Exception: Mongo::Error::BulkWriteError
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -106,7 +106,17 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Exception raised if there are write errors upon executing the bulk operation.</p>
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>A bulk operation that resulted in a BulkWriteError may have written some of the documents to the database. If the bulk write was unordered, writes may have also continued past the write that produced a BulkWriteError.</p>
+</div>
+  </div>
+
+
+<p>Exception raised if there are write errors upon executing a bulk operation.</p>
+
+<p>Unlike OperationFailure, BulkWriteError does not currently expose individual error components (such as the error code). The result document (which can be obtained using the <code>result</code> attribute) provides detailed error information and can be examined by the application if desired.</p>
 
 
   </div>
@@ -319,15 +329,15 @@
       <pre class="lines">
 
 
-36
-37
-38
-39
-40
-41</pre>
+49
+50
+51
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/bulk_write_error.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/bulk_write_error.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span>
   <span class='ivar'>@result</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span>
@@ -407,12 +417,12 @@
       <pre class="lines">
 
 
-25
-26
-27</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/bulk_write_error.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/bulk_write_error.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_result'>result</span>
   <span class='ivar'>@result</span>
@@ -428,9 +438,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:34 2020 by
+  Generated on Wed May 12 17:19:16 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

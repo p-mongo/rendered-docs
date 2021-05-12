@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Monitoring
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -820,9 +820,6 @@
       <pre class="lines">
 
 
-217
-218
-219
 220
 221
 222
@@ -839,10 +836,13 @@
 233
 234
 235
-236</pre>
+236
+237
+238
+239</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 217</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 220</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
@@ -920,12 +920,12 @@
       <pre class="lines">
 
 
-239
-240
-241</pre>
+242
+243
+244</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 239</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 242</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -1014,12 +1014,12 @@
       <pre class="lines">
 
 
-76
-77
-78</pre>
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_next_operation_id'>next_operation_id</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_next_id'>next_id</span>
@@ -1127,12 +1127,12 @@
       <pre class="lines">
 
 
-303
-304
-305</pre>
+306
+307
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 303</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 306</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_failed'>failed</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_subscribers_for'>subscribers_for</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_subscriber'>subscriber</span><span class='op'>|</span> <span class='id identifier rubyid_subscriber'>subscriber</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1199,12 +1199,12 @@
       <pre class="lines">
 
 
-242
-243
-244</pre>
+245
+246
+247</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 242</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 245</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_monitoring?'>monitoring?</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:monitoring</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>false</span>
@@ -1258,9 +1258,6 @@
       <pre class="lines">
 
 
-308
-309
-310
 311
 312
 313
@@ -1293,16 +1290,28 @@
 340
 341
 342
-343</pre>
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 308</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 311</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_publish_heartbeat'>publish_heartbeat</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>awaited:</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_monitoring?'>monitoring?</span>
-    <span class='id identifier rubyid_event'>event</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Monitoring/Event.html" title="Mongo::Monitoring::Event (module)">Event</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitoring/Event/ServerHeartbeatStarted.html" title="Mongo::Monitoring::Event::ServerHeartbeatStarted (class)">ServerHeartbeatStarted</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Monitoring/Event/ServerHeartbeatStarted.html#initialize-instance_method" title="Mongo::Monitoring::Event::ServerHeartbeatStarted#initialize (method)">new</a></span></span><span class='lparen'>(</span>
+    <span class='id identifier rubyid_started_event'>started_event</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Monitoring/Event.html" title="Mongo::Monitoring::Event (module)">Event</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitoring/Event/ServerHeartbeatStarted.html" title="Mongo::Monitoring::Event::ServerHeartbeatStarted (class)">ServerHeartbeatStarted</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Monitoring/Event/ServerHeartbeatStarted.html#initialize-instance_method" title="Mongo::Monitoring::Event::ServerHeartbeatStarted#initialize (method)">new</a></span></span><span class='lparen'>(</span>
       <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='label'>awaited:</span> <span class='id identifier rubyid_awaited'>awaited</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_started'>started</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#SERVER_HEARTBEAT-constant" title="Mongo::Monitoring::SERVER_HEARTBEAT (constant)">SERVER_HEARTBEAT</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_started'>started</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#SERVER_HEARTBEAT-constant" title="Mongo::Monitoring::SERVER_HEARTBEAT (constant)">SERVER_HEARTBEAT</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_started_event'>started_event</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># The duration we publish in heartbeat succeeded/failed events is
@@ -1314,21 +1323,30 @@
 </span>  <span class='comment'># message&quot; (ismaster). This requirement does not make sense if,
 </span>  <span class='comment'># for example, we were never able to connect to the server at all
 </span>  <span class='comment'># and thus ismaster was never sent.
-</span>  <span class='id identifier rubyid_start_time'>start_time</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+</span>  <span class='id identifier rubyid_start_time'>start_time</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span>
 
   <span class='kw'>begin</span>
     <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>yield</span>
   <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_exc'>exc</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_monitoring?'>monitoring?</span>
       <span class='id identifier rubyid_event'>event</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Monitoring/Event.html" title="Mongo::Monitoring::Event (module)">Event</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitoring/Event/ServerHeartbeatFailed.html" title="Mongo::Monitoring::Event::ServerHeartbeatFailed (class)">ServerHeartbeatFailed</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Monitoring/Event/ServerHeartbeatFailed.html#initialize-instance_method" title="Mongo::Monitoring::Event::ServerHeartbeatFailed#initialize (method)">new</a></span></span><span class='lparen'>(</span>
-        <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='op'>-</span><span class='id identifier rubyid_start_time'>start_time</span><span class='comma'>,</span> <span class='id identifier rubyid_exc'>exc</span><span class='comma'>,</span> <span class='label'>awaited:</span> <span class='id identifier rubyid_awaited'>awaited</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span>
+        <span class='const'><span class='object_link'><a href="Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span> <span class='op'>-</span> <span class='id identifier rubyid_start_time'>start_time</span><span class='comma'>,</span>
+        <span class='id identifier rubyid_exc'>exc</span><span class='comma'>,</span>
+        <span class='label'>awaited:</span> <span class='id identifier rubyid_awaited'>awaited</span><span class='comma'>,</span>
+        <span class='label'>started_event:</span> <span class='id identifier rubyid_started_event'>started_event</span><span class='comma'>,</span>
+      <span class='rparen'>)</span>
       <span class='id identifier rubyid_failed'>failed</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#SERVER_HEARTBEAT-constant" title="Mongo::Monitoring::SERVER_HEARTBEAT (constant)">SERVER_HEARTBEAT</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
     <span class='id identifier rubyid_raise'>raise</span>
   <span class='kw'>else</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_monitoring?'>monitoring?</span>
       <span class='id identifier rubyid_event'>event</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Monitoring/Event.html" title="Mongo::Monitoring::Event (module)">Event</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitoring/Event/ServerHeartbeatSucceeded.html" title="Mongo::Monitoring::Event::ServerHeartbeatSucceeded (class)">ServerHeartbeatSucceeded</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Monitoring/Event/ServerHeartbeatSucceeded.html#initialize-instance_method" title="Mongo::Monitoring::Event::ServerHeartbeatSucceeded#initialize (method)">new</a></span></span><span class='lparen'>(</span>
-        <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='op'>-</span><span class='id identifier rubyid_start_time'>start_time</span><span class='comma'>,</span> <span class='label'>awaited:</span> <span class='id identifier rubyid_awaited'>awaited</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span>
+        <span class='const'><span class='object_link'><a href="Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span> <span class='op'>-</span> <span class='id identifier rubyid_start_time'>start_time</span><span class='comma'>,</span>
+        <span class='label'>awaited:</span> <span class='id identifier rubyid_awaited'>awaited</span><span class='comma'>,</span>
+        <span class='label'>started_event:</span> <span class='id identifier rubyid_started_event'>started_event</span><span class='comma'>,</span>
+      <span class='rparen'>)</span>
       <span class='id identifier rubyid_succeeded'>succeeded</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#SERVER_HEARTBEAT-constant" title="Mongo::Monitoring::SERVER_HEARTBEAT (constant)">SERVER_HEARTBEAT</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
     <span class='id identifier rubyid_result'>result</span>
@@ -1419,12 +1437,12 @@
       <pre class="lines">
 
 
-255
-256
-257</pre>
+258
+259
+260</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 258</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_published'>published</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_subscribers_for'>subscribers_for</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_subscriber'>subscriber</span><span class='op'>|</span> <span class='id identifier rubyid_subscriber'>subscriber</span><span class='period'>.</span><span class='id identifier rubyid_published'>published</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1526,12 +1544,12 @@
       <pre class="lines">
 
 
-271
-272
-273</pre>
+274
+275
+276</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 271</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 274</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_started'>started</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_subscribers_for'>subscribers_for</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_subscriber'>subscriber</span><span class='op'>|</span> <span class='id identifier rubyid_subscriber'>subscriber</span><span class='period'>.</span><span class='id identifier rubyid_started'>started</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1633,12 +1651,12 @@
       <pre class="lines">
 
 
-287
-288
-289</pre>
+290
+291
+292</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 287</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring.rb', line 290</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_succeeded'>succeeded</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_subscribers_for'>subscribers_for</span><span class='lparen'>(</span><span class='id identifier rubyid_topic'>topic</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_subscriber'>subscriber</span><span class='op'>|</span> <span class='id identifier rubyid_subscriber'>subscriber</span><span class='period'>.</span><span class='id identifier rubyid_succeeded'>succeeded</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1653,9 +1671,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:28 2020 by
+  Generated on Wed May 12 17:19:11 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::URI::OptionsMapper
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -277,6 +277,28 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#smc_to_ruby-instance_method" title="#smc_to_ruby (instance method)">#<strong>smc_to_ruby</strong>(opts)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -382,12 +404,12 @@
       <pre class="lines">
 
 
-43
-44
-45</pre>
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span>
@@ -468,12 +490,12 @@
       <pre class="lines">
 
 
-48
-49
-50</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -593,9 +615,6 @@ Merges the option into the target.
       <pre class="lines">
 
 
-59
-60
-61
 62
 63
 64
@@ -617,10 +636,13 @@ Merges the option into the target.
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_uri_option'>add_uri_option</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_uri_options'>uri_options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_strategy'>strategy</span> <span class='op'>=</span> <span class='const'>URI_OPTION_MAP</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='rbracket'>]</span>
@@ -736,46 +758,46 @@ Merges the option into the target.
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126</pre>
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 131</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ruby_to_smc'>ruby_to_smc</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -819,14 +841,141 @@ Merges the option into the target.
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="smc_to_ruby-instance_method">
+  
+    #<strong>smc_to_ruby</strong>(opts)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri/options_mapper.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_smc_to_ruby'>smc_to_ruby</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_uri_options'>uri_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='id identifier rubyid_strategy'>strategy</span> <span class='op'>=</span> <span class='const'>URI_OPTION_MAP</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_strategy'>strategy</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='id identifier rubyid_log_warn'>log_warn</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unsupported URI option &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_key'>key</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39; on URI &#39;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@string</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;. It will be ignored.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='kw'>return</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_strategy'>strategy</span><span class='lbracket'>[</span><span class='symbol'>:group</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_target'>target</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_group'>group</span>
+      <span class='id identifier rubyid_uri_options'>uri_options</span><span class='lbracket'>[</span><span class='id identifier rubyid_group'>group</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_uri_options'>uri_options</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>readConcernLevel</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'>#value = apply_transform(key, value, strategy[:type])
+</span>    <span class='comment'># Sometimes the value here would be nil, for example if we are processing
+</span>    <span class='comment'># read preference tags or auth mechanism properties and all of the
+</span>    <span class='comment'># data within is invalid. Ignore such options.
+</span>    <span class='kw'>unless</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='id identifier rubyid_merge_uri_option'>merge_uri_option</span><span class='lparen'>(</span><span class='id identifier rubyid_target'>target</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_strategy'>strategy</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_group'>group</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_target'>target</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_uri_options'>uri_options</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_group'>group</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_uri_options'>uri_options</span><span class='lbracket'>[</span><span class='id identifier rubyid_group'>group</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_target'>target</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'>#p uri_options
+</span>  <span class='id identifier rubyid_uri_options'>uri_options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:32 2020 by
+  Generated on Wed May 12 17:19:15 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Socket::OcspVerifier
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -576,16 +576,16 @@
       <pre class="lines">
 
 
-48
-49
-50
 51
 52
 53
-54</pre>
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_host_name'>host_name</span><span class='comma'>,</span> <span class='id identifier rubyid_cert'>cert</span><span class='comma'>,</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span><span class='comma'>,</span> <span class='id identifier rubyid_cert_store'>cert_store</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
   <span class='ivar'>@host_name</span> <span class='op'>=</span> <span class='id identifier rubyid_host_name'>host_name</span>
@@ -650,12 +650,12 @@
       <pre class="lines">
 
 
-58
-59
-60</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span>
   <span class='ivar'>@ca_cert</span>
@@ -711,12 +711,12 @@
       <pre class="lines">
 
 
-57
-58
-59</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cert'>cert</span>
   <span class='ivar'>@cert</span>
@@ -772,12 +772,12 @@
       <pre class="lines">
 
 
-59
-60
-61</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cert_store'>cert_store</span>
   <span class='ivar'>@cert_store</span>
@@ -833,12 +833,12 @@
       <pre class="lines">
 
 
-56
-57
-58</pre>
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_host_name'>host_name</span>
   <span class='ivar'>@host_name</span>
@@ -894,12 +894,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -960,16 +960,16 @@
       <pre class="lines">
 
 
-88
-89
-90
 91
 92
 93
-94</pre>
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cert_id'>cert_id</span>
   <span class='ivar'>@cert_id</span> <span class='op'>||=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>OCSP</span><span class='op'>::</span><span class='const'>CertificateId</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
@@ -1047,9 +1047,6 @@
       <pre class="lines">
 
 
-67
-68
-69
 70
 71
 72
@@ -1066,10 +1063,13 @@
 83
 84
 85
-86</pre>
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ocsp_uris'>ocsp_uris</span>
   <span class='ivar'>@ocsp_uris</span> <span class='op'>||=</span> <span class='kw'>begin</span>
@@ -1140,12 +1140,12 @@
       <pre class="lines">
 
 
-62
-63
-64</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_timeout'>timeout</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:timeout</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='int'>5</span>
@@ -1237,17 +1237,17 @@
       <pre class="lines">
 
 
-119
-120
-121
 122
 123
 124
 125
-126</pre>
+126
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify'>verify</span>
   <span class='id identifier rubyid_handle_exceptions'>handle_exceptions</span> <span class='kw'>do</span>
@@ -1306,9 +1306,6 @@
       <pre class="lines">
 
 
-96
-97
-98
 99
 100
 101
@@ -1323,10 +1320,13 @@
 110
 111
 112
-113</pre>
+113
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/socket/ocsp_verifier.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify_with_cache'>verify_with_cache</span>
   <span class='id identifier rubyid_handle_exceptions'>handle_exceptions</span> <span class='kw'>do</span>
@@ -1356,9 +1356,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:33 2020 by
+  Generated on Wed May 12 17:19:16 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

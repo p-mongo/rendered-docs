@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Protocol::Serializers::Sections
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -343,9 +343,6 @@
       <pre class="lines">
 
 
-213
-214
-215
 216
 217
 218
@@ -357,10 +354,13 @@
 224
 225
 226
-227</pre>
+227
+228
+229
+230</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 213</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 216</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_end_length'>end_length</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='ivar'>@flag_bits</span> <span class='op'>&amp;</span> <span class='const'><span class='object_link'><a href="../Msg.html" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='op'>::</span><span class='const'>FLAGS</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='symbol'>:checksum_present</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>1</span> <span class='op'>?</span> <span class='int'>32</span> <span class='op'>:</span> <span class='int'>0</span>
@@ -518,9 +518,6 @@
       <pre class="lines">
 
 
-186
-187
-188
 189
 190
 191
@@ -531,10 +528,13 @@
 196
 197
 198
-199</pre>
+199
+200
+201
+202</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 186</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 189</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_validating_keys'>validating_keys</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_validating_keys?'>validating_keys?</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_section'>section</span><span class='op'>|</span>
@@ -619,12 +619,12 @@
       <pre class="lines">
 
 
-234
-235
-236</pre>
+237
+238
+239</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 234</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 237</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_size_limited?'>size_limited?</span>
   <span class='kw'>true</span>
@@ -639,9 +639,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:22 2020 by
+  Generated on Wed May 12 17:19:06 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

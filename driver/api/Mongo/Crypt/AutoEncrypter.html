@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Crypt::AutoEncrypter
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -531,9 +531,6 @@
       <pre class="lines">
 
 
-64
-65
-66
 67
 68
 69
@@ -566,10 +563,13 @@
 96
 97
 98
-99</pre>
+99
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 67</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_set_default_options'>set_default_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
@@ -586,7 +586,7 @@
 </span>  <span class='ivar'>@mongocryptd_client</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Client.html" title="Mongo::Client (class)">Client</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Client.html#initialize-instance_method" title="Mongo::Client#initialize (method)">new</a></span></span><span class='lparen'>(</span>
     <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:extra_options</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:mongocryptd_uri</span><span class='rbracket'>]</span><span class='comma'>,</span>
     <span class='label'>monitoring_io:</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:client</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:monitoring_io</span><span class='rbracket'>]</span><span class='comma'>,</span>
-    <span class='label'>server_selection_timeout:</span> <span class='int'>1</span><span class='comma'>,</span>
+    <span class='label'>server_selection_timeout:</span> <span class='int'>10</span><span class='comma'>,</span>
   <span class='rparen'>)</span>
 
   <span class='kw'>begin</span>
@@ -647,12 +647,12 @@
       <pre class="lines">
 
 
-31
-32
-33</pre>
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_key_vault_client'>key_vault_client</span>
   <span class='ivar'>@key_vault_client</span>
@@ -692,12 +692,12 @@
       <pre class="lines">
 
 
-30
-31
-32</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mongocryptd_client'>mongocryptd_client</span>
   <span class='ivar'>@mongocryptd_client</span>
@@ -737,12 +737,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -807,14 +807,14 @@
       <pre class="lines">
 
 
-141
-142
-143
 144
-145</pre>
+145
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='ivar'>@mongocryptd_client</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span> <span class='kw'>if</span> <span class='ivar'>@mongocryptd_client</span>
@@ -894,16 +894,16 @@
       <pre class="lines">
 
 
-130
-131
-132
 133
 134
 135
-136</pre>
+136
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="AutoDecryptionContext.html" title="Mongo::Crypt::AutoDecryptionContext (class)">AutoDecryptionContext</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="AutoDecryptionContext.html#initialize-instance_method" title="Mongo::Crypt::AutoDecryptionContext#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -1001,17 +1001,17 @@
       <pre class="lines">
 
 
-116
-117
-118
 119
 120
 121
 122
-123</pre>
+123
+124
+125
+126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypt'>encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_database_name'>database_name</span><span class='comma'>,</span> <span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="AutoEncryptionContext.html" title="Mongo::Crypt::AutoEncryptionContext (class)">AutoEncryptionContext</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="AutoEncryptionContext.html#initialize-instance_method" title="Mongo::Crypt::AutoEncryptionContext#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -1074,12 +1074,12 @@
       <pre class="lines">
 
 
-105
-106
-107</pre>
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/auto_encrypter.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypt?'>encrypt?</span>
   <span class='op'>!</span><span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:bypass_auto_encryption</span><span class='rbracket'>]</span>
@@ -1094,9 +1094,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:33 2020 by
+  Generated on Wed May 12 17:19:15 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

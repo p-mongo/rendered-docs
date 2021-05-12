@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Options::Redacted
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -495,12 +495,12 @@
       <pre class="lines">
 
 
-63
-64
-65</pre>
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_convert_key'>convert_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -570,12 +570,12 @@
       <pre class="lines">
 
 
-40
-41
-42</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='id identifier rubyid_redacted_string'>redacted_string</span><span class='lparen'>(</span><span class='symbol'>:inspect</span><span class='rparen'>)</span>
@@ -677,13 +677,13 @@
       <pre class="lines">
 
 
-78
-79
-80
-81</pre>
+81
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reject'>reject</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>=</span> <span class='id identifier rubyid_dup'>dup</span>
@@ -786,9 +786,6 @@
       <pre class="lines">
 
 
-93
-94
-95
 96
 97
 98
@@ -796,10 +793,13 @@
 100
 101
 102
-103</pre>
+103
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reject!'>reject!</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -909,13 +909,13 @@
       <pre class="lines">
 
 
-115
-116
-117
-118</pre>
+118
+119
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>=</span> <span class='id identifier rubyid_dup'>dup</span>
@@ -1018,9 +1018,6 @@
       <pre class="lines">
 
 
-130
-131
-132
 133
 134
 135
@@ -1028,10 +1025,13 @@
 137
 138
 139
-140</pre>
+140
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select!'>select!</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1109,12 +1109,12 @@
       <pre class="lines">
 
 
-49
-50
-51</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/options/redacted.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_redacted_string'>redacted_string</span><span class='lparen'>(</span><span class='symbol'>:to_s</span><span class='rparen'>)</span>
@@ -1129,9 +1129,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:31 2020 by
+  Generated on Wed May 12 17:19:14 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

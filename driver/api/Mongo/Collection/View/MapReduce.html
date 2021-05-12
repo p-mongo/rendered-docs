@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Collection::View::MapReduce
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -684,15 +684,15 @@
       <pre class="lines">
 
 
-110
-111
-112
 113
 114
-115</pre>
+115
+116
+117
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_map'>map</span><span class='comma'>,</span> <span class='id identifier rubyid_reduce'>reduce</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@view</span> <span class='op'>=</span> <span class='id identifier rubyid_view'>view</span>
@@ -772,12 +772,12 @@
       <pre class="lines">
 
 
-45
-46
-47</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_function'>map_function</span>
   <span class='ivar'>@map_function</span>
@@ -849,12 +849,12 @@
       <pre class="lines">
 
 
-48
-49
-50</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reduce_function'>reduce_function</span>
   <span class='ivar'>@reduce_function</span>
@@ -926,12 +926,12 @@
       <pre class="lines">
 
 
-42
-43
-44</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_view'>view</span>
   <span class='ivar'>@view</span>
@@ -1042,9 +1042,6 @@
       <pre class="lines">
 
 
-68
-69
-70
 71
 72
 73
@@ -1056,10 +1053,13 @@
 79
 80
 81
-82</pre>
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
   <span class='ivar'>@cursor</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -1156,17 +1156,17 @@
       <pre class="lines">
 
 
-196
-197
-198
 199
 200
 201
 202
-203</pre>
+203
+204
+205
+206</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 196</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 199</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
   <span class='id identifier rubyid_view'>view</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:with_session</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_session'>session</span><span class='op'>|</span>
@@ -1275,12 +1275,12 @@
       <pre class="lines">
 
 
-95
-96
-97</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='id identifier rubyid_function'>function</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configure'>configure</span><span class='lparen'>(</span><span class='symbol'>:finalize</span><span class='comma'>,</span> <span class='id identifier rubyid_function'>function</span><span class='rparen'>)</span>
@@ -1384,12 +1384,12 @@
       <pre class="lines">
 
 
-128
-129
-130</pre>
+131
+132
+133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 131</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_js_mode'>js_mode</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configure'>configure</span><span class='lparen'>(</span><span class='symbol'>:js_mode</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1514,12 +1514,12 @@
       <pre class="lines">
 
 
-152
-153
-154</pre>
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_out'>out</span><span class='lparen'>(</span><span class='id identifier rubyid_location'>location</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configure'>configure</span><span class='lparen'>(</span><span class='symbol'>:out</span><span class='comma'>,</span> <span class='id identifier rubyid_location'>location</span><span class='rparen'>)</span>
@@ -1623,12 +1623,12 @@
       <pre class="lines">
 
 
-167
-168
-169</pre>
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 167</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 170</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_scope'>scope</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configure'>configure</span><span class='lparen'>(</span><span class='symbol'>:scope</span><span class='comma'>,</span> <span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
@@ -1732,12 +1732,12 @@
       <pre class="lines">
 
 
-183
-184
-185</pre>
+186
+187
+188</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 183</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/map_reduce.rb', line 186</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verbose'>verbose</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configure'>configure</span><span class='lparen'>(</span><span class='symbol'>:verbose</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1752,9 +1752,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:36 2020 by
+  Generated on Wed May 12 17:19:18 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

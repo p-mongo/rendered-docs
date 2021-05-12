@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Operation::MapReduce::Result
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -517,12 +517,12 @@
       <pre class="lines">
 
 
-52
-53
-54</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_counts'>counts</span>
   <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#COUNTS-constant" title="Mongo::Operation::MapReduce::Result::COUNTS (constant)">COUNTS</a></span></span><span class='rbracket'>]</span>
@@ -608,12 +608,12 @@
       <pre class="lines">
 
 
-127
-128
-129</pre>
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cursor_id'>cursor_id</span>
   <span class='int'>0</span>
@@ -695,12 +695,12 @@
       <pre class="lines">
 
 
-65
-66
-67</pre>
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_documents'>documents</span>
   <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#RESULTS-constant" title="Mongo::Operation::MapReduce::Result::RESULTS (constant)">RESULTS</a></span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Result.html#RESULT-constant" title="Mongo::Operation::Result::RESULT (constant)">RESULT</a></span></span><span class='rbracket'>]</span>
@@ -790,12 +790,12 @@
       <pre class="lines">
 
 
-82
-83
-84</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_successful?'>successful?</span>
   <span class='op'>!</span><span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -877,12 +877,12 @@
       <pre class="lines">
 
 
-95
-96
-97</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_time'>time</span>
   <span class='id identifier rubyid_reply'>reply</span><span class='period'>.</span><span class='id identifier rubyid_documents'>documents</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#TIME-constant" title="Mongo::Operation::MapReduce::Result::TIME (constant)">TIME</a></span></span><span class='rbracket'>]</span>
@@ -994,12 +994,12 @@
       <pre class="lines">
 
 
-114
-115
-116</pre>
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/map_reduce/result.rb', line 117</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate!'>validate!</span>
   <span class='id identifier rubyid_documents'>documents</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='id identifier rubyid_raise_operation_failure'>raise_operation_failure</span> <span class='op'>:</span> <span class='kw'>self</span>
@@ -1014,9 +1014,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:37 2020 by
+  Generated on Wed May 12 17:19:19 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

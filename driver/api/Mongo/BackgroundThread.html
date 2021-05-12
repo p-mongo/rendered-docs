@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::BackgroundThread
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -99,6 +99,14 @@
   <strong>This module is part of a private API.</strong>
   You should avoid using this module if possible, as it may be removed or be changed in the future.
 </p>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Do not start or stop background threads in finalizers. See <a href="https://jira.mongodb.org/browse/RUBY-2453">jira.mongodb.org/browse/RUBY-2453</a> and <a href="https://bugs.ruby-lang.org/issues/16288">bugs.ruby-lang.org/issues/16288</a>. When interpreter exits, background threads are stopped first and finalizers are invoked next, and MRI&#39;s internal data structures are basically corrupt at this point if threads are being referenced. Prior to interpreter shutdown this means threads cannot be stopped by objects going out of scope, but most likely the threads hold references to said objects anyway if work is being performed thus the objects wouldn&#39;t go out of scope in the first place.</p>
+</div>
+  </div>
+
 
 <p>The run!, running? and stop! methods used to be part of the public API in some of the classes which now include this module. Therefore these methods must be considered part of the driver&#39;s public API for backwards compatibility reasons. However using these methods outside of the driver is deprecated.</p>
 
@@ -247,24 +255,24 @@
       <pre class="lines">
 
 
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46</pre>
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/background_thread.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/background_thread.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run!'>run!</span>
   <span class='kw'>if</span> <span class='ivar'>@stop_requested</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@thread</span>
@@ -323,16 +331,16 @@
       <pre class="lines">
 
 
-49
-50
-51
-52
-53
-54
-55</pre>
+63
+64
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/background_thread.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/background_thread.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_running?'>running?</span>
   <span class='kw'>if</span> <span class='ivar'>@thread</span>
@@ -390,20 +398,6 @@
       <pre class="lines">
 
 
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
 77
 78
 79
@@ -420,10 +414,24 @@
 90
 91
 92
-93</pre>
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/background_thread.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/background_thread.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stop!'>stop!</span>
   <span class='comment'># If the thread was not started, there is nothing to stop.
@@ -466,9 +474,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:22 2020 by
+  Generated on Wed May 12 17:19:06 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

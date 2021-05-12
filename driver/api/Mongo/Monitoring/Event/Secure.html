@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Monitoring::Event::Secure
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -332,12 +332,12 @@
       <pre class="lines">
 
 
-72
-73
-74</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/secure.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/secure.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compression_allowed?'>compression_allowed?</span><span class='lparen'>(</span><span class='id identifier rubyid_command_name'>command_name</span><span class='rparen'>)</span>
   <span class='ivar'>@compression_allowed</span> <span class='op'>||=</span> <span class='op'>!</span><span class='const'><span class='object_link'><a href="#REDACTED_COMMANDS-constant" title="Mongo::Monitoring::Event::Secure::REDACTED_COMMANDS (constant)">REDACTED_COMMANDS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_command_name'>command_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
@@ -455,18 +455,18 @@
       <pre class="lines">
 
 
-52
-53
-54
 55
 56
 57
 58
 59
-60</pre>
+60
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/secure.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/monitoring/event/secure.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_redacted'>redacted</span><span class='lparen'>(</span><span class='id identifier rubyid_command_name'>command_name</span><span class='comma'>,</span> <span class='id identifier rubyid_document'>document</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="#REDACTED_COMMANDS-constant" title="Mongo::Monitoring::Event::Secure::REDACTED_COMMANDS (constant)">REDACTED_COMMANDS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_command_name'>command_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
@@ -487,9 +487,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:23 2020 by
+  Generated on Wed May 12 17:19:07 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

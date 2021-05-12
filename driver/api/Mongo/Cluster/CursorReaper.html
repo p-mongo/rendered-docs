@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cluster::CursorReaper
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -396,14 +396,14 @@
       <pre class="lines">
 
 
-41
-42
-43
 44
-45</pre>
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@to_kill</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -484,9 +484,6 @@
       <pre class="lines">
 
 
-122
-123
-124
 125
 126
 127
@@ -509,10 +506,17 @@
 144
 145
 146
-147</pre>
+147
+148
+149
+150
+151
+152
+153
+154</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_kill_cursors'>kill_cursors</span>
   <span class='id identifier rubyid_to_kill_copy'>to_kill_copy</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -525,16 +529,20 @@
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_to_kill_copy'>to_kill_copy</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_op_specs'>op_specs</span><span class='op'>|</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+      <span class='label'>server_api:</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:server_api</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_context'>context</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/Context.html" title="Mongo::Operation::Context (class)">Context</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Operation/Context.html#initialize-instance_method" title="Mongo::Operation::Context#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>options:</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_op_specs'>op_specs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='op'>|</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_find_command_enabled?'>find_command_enabled?</span>
         <span class='const'><span class='object_link'><a href="../Cursor.html" title="Mongo::Cursor (class)">Cursor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cursor/Builder.html" title="Mongo::Cursor::Builder (module)">Builder</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cursor/Builder/KillCursorsCommand.html" title="Mongo::Cursor::Builder::KillCursorsCommand (class)">KillCursorsCommand</a></span></span><span class='period'>.</span><span class='id identifier rubyid_update_cursors'><span class='object_link'><a href="../Cursor/Builder/KillCursorsCommand.html#update_cursors-class_method" title="Mongo::Cursor::Builder::KillCursorsCommand.update_cursors (method)">update_cursors</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='comma'>,</span> <span class='id identifier rubyid_active_cursors_copy'>active_cursors_copy</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='rparen'>)</span>
         <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../Cursor.html" title="Mongo::Cursor (class)">Cursor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cursor/Builder.html" title="Mongo::Cursor::Builder (module)">Builder</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cursor/Builder/KillCursorsCommand.html" title="Mongo::Cursor::Builder::KillCursorsCommand (class)">KillCursorsCommand</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_cursors_list'><span class='object_link'><a href="../Cursor/Builder/KillCursorsCommand.html#get_cursors_list-class_method" title="Mongo::Cursor::Builder::KillCursorsCommand.get_cursors_list (method)">get_cursors_list</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
-          <span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/KillCursors.html" title="Mongo::Operation::KillCursors (class)">KillCursors</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+          <span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/KillCursors.html" title="Mongo::Operation::KillCursors (class)">KillCursors</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>context:</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
         <span class='kw'>end</span>
       <span class='kw'>else</span>
         <span class='const'><span class='object_link'><a href="../Cursor.html" title="Mongo::Cursor (class)">Cursor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cursor/Builder.html" title="Mongo::Cursor::Builder (module)">Builder</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cursor/Builder/OpKillCursors.html" title="Mongo::Cursor::Builder::OpKillCursors (class)">OpKillCursors</a></span></span><span class='period'>.</span><span class='id identifier rubyid_update_cursors'><span class='object_link'><a href="../Cursor/Builder/OpKillCursors.html#update_cursors-class_method" title="Mongo::Cursor::Builder::OpKillCursors.update_cursors (method)">update_cursors</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='comma'>,</span> <span class='id identifier rubyid_active_cursors_copy'>active_cursors_copy</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='rparen'>)</span>
         <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../Cursor.html" title="Mongo::Cursor (class)">Cursor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cursor/Builder.html" title="Mongo::Cursor::Builder (module)">Builder</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cursor/Builder/OpKillCursors.html" title="Mongo::Cursor::Builder::OpKillCursors (class)">OpKillCursors</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_cursors_list'><span class='object_link'><a href="../Cursor/Builder/OpKillCursors.html#get_cursors_list-class_method" title="Mongo::Cursor::Builder::OpKillCursors.get_cursors_list (method)">get_cursors_list</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
-          <span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/KillCursors.html" title="Mongo::Operation::KillCursors (class)">KillCursors</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+          <span class='const'><span class='object_link'><a href="../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operation/KillCursors.html" title="Mongo::Operation::KillCursors (class)">KillCursors</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Operation/Specifiable.html#initialize-instance_method" title="Mongo::Operation::Specifiable#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_op_spec'>op_spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>context:</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
         <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
@@ -623,9 +631,6 @@
       <pre class="lines">
 
 
-78
-79
-80
 81
 82
 83
@@ -634,10 +639,13 @@
 86
 87
 88
-89</pre>
+89
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_cursor'>register_cursor</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -766,17 +774,17 @@
       <pre class="lines">
 
 
-59
-60
-61
 62
 63
 64
 65
-66</pre>
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_schedule_kill_cursor'>schedule_kill_cursor</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_op_spec'>op_spec</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -869,9 +877,6 @@
       <pre class="lines">
 
 
-101
-102
-103
 104
 105
 106
@@ -880,10 +885,13 @@
 109
 110
 111
-112</pre>
+112
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/reapers/cursor_reaper.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unregister_cursor'>unregister_cursor</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -907,9 +915,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:37 2020 by
+  Generated on Wed May 12 17:19:19 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

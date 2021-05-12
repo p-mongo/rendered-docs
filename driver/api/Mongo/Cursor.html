@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cursor
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -753,9 +753,6 @@
       <pre class="lines">
 
 
-68
-69
-70
 71
 72
 73
@@ -773,21 +770,24 @@
 85
 86
 87
-88</pre>
+88
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@view</span> <span class='op'>=</span> <span class='id identifier rubyid_view'>view</span>
   <span class='ivar'>@server</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span>
   <span class='ivar'>@initial_result</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='ivar'>@namespace</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_namespace'>namespace</span>
   <span class='ivar'>@remaining</span> <span class='op'>=</span> <span class='id identifier rubyid_limit'>limit</span> <span class='kw'>if</span> <span class='id identifier rubyid_limited?'>limited?</span>
   <span class='ivar'>@cursor_id</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_cursor_id'>cursor_id</span>
   <span class='kw'>if</span> <span class='ivar'>@cursor_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Cursor id must be present in the result</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
-  <span class='ivar'>@coll_name</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@session</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:session</span><span class='rbracket'>]</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_closed?'>closed?</span>
@@ -859,12 +859,12 @@
       <pre class="lines">
 
 
-49
-50
-51</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resume_token'>resume_token</span>
   <span class='ivar'>@resume_token</span>
@@ -904,12 +904,12 @@
       <pre class="lines">
 
 
-91
-92
-93</pre>
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server'>server</span>
   <span class='ivar'>@server</span>
@@ -969,12 +969,12 @@
       <pre class="lines">
 
 
-43
-44
-45</pre>
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_view'>view</span>
   <span class='ivar'>@view</span>
@@ -1135,15 +1135,15 @@
       <pre class="lines">
 
 
-107
-108
-109
 110
 111
-112</pre>
+112
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='id identifier rubyid_cursor_id'>cursor_id</span><span class='comma'>,</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_op_spec'>op_spec</span><span class='comma'>,</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_proc'>proc</span> <span class='kw'>do</span>
@@ -1238,12 +1238,12 @@
       <pre class="lines">
 
 
-245
-246
-247</pre>
+248
+249
+250</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 245</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 248</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_batch_size'>batch_size</span>
   <span class='ivar'>@view</span><span class='period'>.</span><span class='id identifier rubyid_batch_size'>batch_size</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@view</span><span class='period'>.</span><span class='id identifier rubyid_batch_size'>batch_size</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>?</span> <span class='ivar'>@view</span><span class='period'>.</span><span class='id identifier rubyid_batch_size'>batch_size</span> <span class='op'>:</span> <span class='id identifier rubyid_limit'>limit</span>
@@ -1311,6 +1311,20 @@
       
     </li>
   
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Error/SocketError.html" title="Mongo::Error::SocketError (class)">Error::SocketError</a></span> | <span class='object_link'><a href="Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">Error::SocketTimeoutError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>When there is a network error.</p>
+</div>
+      
+    </li>
+  
 </ul>
 
 </div><table class="source_code">
@@ -1319,10 +1333,6 @@
       <pre class="lines">
 
 
-268
-269
-270
-271
 272
 273
 274
@@ -1331,17 +1341,21 @@
 277
 278
 279
-280</pre>
+280
+281
+282
+283
+284</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 268</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 272</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_closed?'>closed?</span>
 
   <span class='id identifier rubyid_unregister'>unregister</span>
   <span class='id identifier rubyid_read_with_one_retry'>read_with_one_retry</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_kill_cursors_operation'>kill_cursors_operation</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='ivar'>@server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_kill_cursors_operation'>kill_cursors_operation</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='ivar'>@server</span><span class='comma'>,</span> <span class='label'>context:</span> <span class='const'><span class='object_link'><a href="Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Operation/Context.html" title="Mongo::Operation::Context (class)">Context</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Operation/Context.html#initialize-instance_method" title="Mongo::Operation::Context#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='ivar'>@session</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>nil</span>
@@ -1430,13 +1444,13 @@
       <pre class="lines">
 
 
-257
-258
-259
-260</pre>
+260
+261
+262
+263</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 257</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 260</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_closed?'>closed?</span>
   <span class='comment'># @cursor_id should in principle never be nil
@@ -1523,15 +1537,41 @@
       <pre class="lines">
 
 
-290
-291
-292</pre>
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 290</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 294</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collection_name'>collection_name</span>
-  <span class='ivar'>@coll_name</span> <span class='op'>||</span> <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+  <span class='comment'># In most cases, this will be equivalent to the name of the collection
+</span>  <span class='comment'># object in the driver. However, in some cases (e.g. when connected
+</span>  <span class='comment'># to an Atlas Data Lake), the namespace returned by the find command
+</span>  <span class='comment'># may be different, which is why we want to use the collection name based
+</span>  <span class='comment'># on the namespace in the command result.
+</span>  <span class='kw'>if</span> <span class='ivar'>@namespace</span>
+    <span class='comment'># Often, the namespace will be in the format &quot;database.collection&quot;.
+</span>    <span class='comment'># However, sometimes the collection name will contain periods, which
+</span>    <span class='comment'># is why this method joins all the namespace components after the first.
+</span>    <span class='id identifier rubyid_ns_components'>ns_components</span> <span class='op'>=</span> <span class='ivar'>@namespace</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ns_components'>ns_components</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>...</span><span class='id identifier rubyid_ns_components'>ns_components</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1618,9 +1658,6 @@ end</code></pre>
       <pre class="lines">
 
 
-140
-141
-142
 143
 144
 145
@@ -1654,10 +1691,13 @@ end</code></pre>
 173
 174
 175
-176</pre>
+176
+177
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
 
@@ -1749,19 +1789,19 @@ end</code></pre>
       <pre class="lines">
 
 
-327
-328
-329
-330
-331
-332
-333
-334
-335
-336</pre>
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 327</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 344</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_more'>get_more</span>
   <span class='ivar'>@get_more_called</span> <span class='op'>=</span> <span class='kw'>true</span>
@@ -1771,7 +1811,7 @@ end</code></pre>
 </span>  <span class='comment'># doing so may result in silent data loss, the driver no longer retries
 </span>  <span class='comment'># getMore operations in any circumstance.
 </span>  <span class='comment'># https://github.com/mongodb/specifications/blob/master/source/retryable-reads/retryable-reads.rst#qa
-</span>  <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_get_more_operation'>get_more_operation</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='ivar'>@server</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_get_more_operation'>get_more_operation</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='ivar'>@server</span><span class='comma'>,</span> <span class='label'>context:</span> <span class='const'><span class='object_link'><a href="Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Operation/Context.html" title="Mongo::Operation::Context (class)">Context</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Operation/Context.html#initialize-instance_method" title="Mongo::Operation::Context#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='ivar'>@session</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1862,12 +1902,12 @@ end</code></pre>
       <pre class="lines">
 
 
-304
-305
-306</pre>
+321
+322
+323</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 304</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 321</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@cursor_id</span>
@@ -1953,12 +1993,12 @@ end</code></pre>
       <pre class="lines">
 
 
-122
-123
-124</pre>
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Mongo::Cursor:0x</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> @view=</span><span class='embexpr_beg'>#{</span><span class='ivar'>@view</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -2044,12 +2084,12 @@ end</code></pre>
       <pre class="lines">
 
 
-317
-318
-319</pre>
+334
+335
+336</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 317</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 334</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_return'>to_return</span>
   <span class='id identifier rubyid_use_limit?'>use_limit?</span> <span class='op'>?</span> <span class='ivar'>@remaining</span> <span class='op'>:</span> <span class='lparen'>(</span><span class='id identifier rubyid_batch_size'>batch_size</span> <span class='op'>||</span> <span class='int'>0</span><span class='rparen'>)</span>
@@ -2135,9 +2175,6 @@ end</code></pre>
       <pre class="lines">
 
 
-194
-195
-196
 197
 198
 199
@@ -2176,10 +2213,13 @@ end</code></pre>
 232
 233
 234
-235</pre>
+235
+236
+237
+238</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 194</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor.rb', line 197</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_try_next'>try_next</span>
   <span class='kw'>if</span> <span class='ivar'>@documents</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -2233,9 +2273,9 @@ end</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:26 2020 by
+  Generated on Wed May 12 17:19:09 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

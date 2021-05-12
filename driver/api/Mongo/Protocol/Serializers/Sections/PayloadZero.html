@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Protocol::Serializers::Sections::PayloadZero
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -390,13 +390,13 @@
       <pre class="lines">
 
 
-280
-281
-282
-283</pre>
+283
+284
+285
+286</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 280</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 283</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_mode'>mode</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:deserialize_as_bson</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='symbol'>:bson</span> <span class='op'>:</span> <span class='kw'>nil</span>
@@ -543,13 +543,13 @@
       <pre class="lines">
 
 
-263
-264
-265
-266</pre>
+266
+267
+268
+269</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 263</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/serializers.rb', line 266</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_serialize'>serialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_max_bson_size'>max_bson_size</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_validating_keys'>validating_keys</span> <span class='op'>=</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_validating_keys?'>validating_keys?</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_put_byte'>put_byte</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TYPE_BYTE-constant" title="Mongo::Protocol::Serializers::Sections::PayloadZero::TYPE_BYTE (constant)">TYPE_BYTE</a></span></span><span class='rparen'>)</span>
@@ -565,9 +565,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:22 2020 by
+  Generated on Wed May 12 17:19:06 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

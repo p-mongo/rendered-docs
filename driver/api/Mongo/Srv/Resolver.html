@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Srv::Resolver
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -434,14 +434,14 @@
       <pre class="lines">
 
 
-38
-39
-40
 41
-42</pre>
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
@@ -508,12 +508,12 @@
       <pre class="lines">
 
 
-45
-46
-47</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -632,9 +632,6 @@
       <pre class="lines">
 
 
-66
-67
-68
 69
 70
 71
@@ -664,10 +661,13 @@
 95
 96
 97
-98</pre>
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_records'>get_records</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_name'>query_name</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#RECORD_PREFIX-constant" title="Mongo::Srv::Resolver::RECORD_PREFIX (constant)">RECORD_PREFIX</a></span></span> <span class='op'>+</span> <span class='id identifier rubyid_hostname'>hostname</span>
@@ -793,9 +793,6 @@
       <pre class="lines">
 
 
-108
-109
-110
 111
 112
 113
@@ -806,10 +803,13 @@
 118
 119
 120
-121</pre>
+121
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 111</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_txt_options_string'>get_txt_options_string</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_records'>records</span> <span class='op'>=</span> <span class='ivar'>@resolver</span><span class='period'>.</span><span class='id identifier rubyid_getresources'>getresources</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='comma'>,</span> <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>TXT</span><span class='rparen'>)</span>
@@ -858,12 +858,12 @@
       <pre class="lines">
 
 
-47
-48
-49</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/resolver.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_timeout'>timeout</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:timeout</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Monitor.html" title="Mongo::Srv::Monitor (class)">Monitor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Monitor.html#DEFAULT_TIMEOUT-constant" title="Mongo::Srv::Monitor::DEFAULT_TIMEOUT (constant)">DEFAULT_TIMEOUT</a></span></span>
@@ -878,9 +878,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:29 2020 by
+  Generated on Wed May 12 17:19:12 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

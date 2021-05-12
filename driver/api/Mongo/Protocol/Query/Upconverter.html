@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Protocol::Query::Upconverter
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -657,15 +657,15 @@
       <pre class="lines">
 
 
-281
-282
-283
 284
 285
-286</pre>
+286
+287
+288
+289</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 281</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 284</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_flags'>flags</span><span class='rparen'>)</span>
   <span class='ivar'>@collection</span> <span class='op'>=</span> <span class='id identifier rubyid_collection'>collection</span>
@@ -745,12 +745,12 @@
       <pre class="lines">
 
 
-259
-260
-261</pre>
+262
+263
+264</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 259</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 262</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collection'>collection</span>
   <span class='ivar'>@collection</span>
@@ -822,12 +822,12 @@
       <pre class="lines">
 
 
-262
-263
-264</pre>
+265
+266
+267</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 262</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 265</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_filter'>filter</span>
   <span class='ivar'>@filter</span>
@@ -899,12 +899,12 @@
       <pre class="lines">
 
 
-268
-269
-270</pre>
+271
+272
+273</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 268</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 271</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_flags'>flags</span>
   <span class='ivar'>@flags</span>
@@ -976,12 +976,12 @@
       <pre class="lines">
 
 
-265
-266
-267</pre>
+268
+269
+270</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 265</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 268</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -1070,12 +1070,12 @@
       <pre class="lines">
 
 
-296
-297
-298</pre>
+299
+300
+301</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 296</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 299</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_command'>command</span>
   <span class='id identifier rubyid_command?'>command?</span> <span class='op'>?</span> <span class='id identifier rubyid_op_command'>op_command</span> <span class='op'>:</span> <span class='id identifier rubyid_find_command'>find_command</span>
@@ -1157,12 +1157,12 @@
       <pre class="lines">
 
 
-309
-310
-311</pre>
+312
+313
+314</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 309</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/query.rb', line 312</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_command_name'>command_name</span>
   <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='lbracket'>[</span><span class='symbol'>:$query</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='op'>!</span><span class='id identifier rubyid_command?'>command?</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='const'><span class='object_link'><a href="#FIND-constant" title="Mongo::Protocol::Query::Upconverter::FIND (constant)">FIND</a></span></span> <span class='op'>:</span> <span class='id identifier rubyid_filter'>filter</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -1177,9 +1177,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:30 2020 by
+  Generated on Wed May 12 17:19:13 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Error::Parser
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -62,7 +62,7 @@
       <div id="content"><h1>Class: Mongo::Error::Parser
   
   
-  
+  <span class="private note title">Private</span>
 </h1>
 <div class="box_info">
   
@@ -106,8 +106,25 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Class for parsing the various forms that errors can come in from MongoDB command responses.</p>
+
+<p>The errors can be reported by the server in a number of ways:</p>
+<ul><li>
+<p>ok:0 response indicates failure. In newer servers, code, codeName and errmsg fields should be set. In older servers some may not be set.</p>
+</li><li>
+<p>ok:1 response with a write concern error (writeConcernError top-level field). This indicates that the node responding successfully executed the request, but not enough other nodes successfully executed the request to satisfy the write concern.</p>
+</li><li>
+<p>ok:1 response with writeErrors top-level field. This can be obtained in a bulk write but also in a non-bulk write. In a non-bulk write there should be exactly one error in the writeErrors list. The case of multiple errors is handled by BulkWrite::Result.</p>
+</li><li>
+<p>ok:1 response with writeConcernErrors top-level field. This can only be obtained in a bulk write and is handled by BulkWrite::Result, not by this class.</p>
+</li></ul>
+
+<p>Note that writeErrors do not have codeName fields - they just provide codes and messages. writeConcernErrors may similarly not provide code names.</p>
 
 
   </div>
@@ -163,11 +180,11 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Code The error code parsed from the document.</p>
+<p>The error code parsed from the document.</p>
 </div></span>
   
 </li>
@@ -192,11 +209,11 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Code_name The error code name parsed from the document.</p>
+<p>The error code name parsed from the document.</p>
 </div></span>
   
 </li>
@@ -221,11 +238,11 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Document The returned document.</p>
+<p>The returned document.</p>
 </div></span>
   
 </li>
@@ -250,11 +267,11 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Labels The set of labels associated with the error.</p>
+<p>The set of labels associated with the error.</p>
 </div></span>
   
 </li>
@@ -279,11 +296,11 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Message The error message parsed from the document.</p>
+<p>The full error message to be used in the raised exception.</p>
 </div></span>
   
 </li>
@@ -308,11 +325,40 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Replies The message replies.</p>
+<p>The message replies.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server_message-instance_method" title="#server_message (instance method)">#<strong>server_message</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The server-returned error message parsed from the response.</p>
 </div></span>
   
 </li>
@@ -352,6 +398,37 @@
 
   
     <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_message-class_method" title="build_message (class method)">.<strong>build_message</strong>(code: nil, code_name: nil, message: nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
       Instance Method Summary
       <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
@@ -374,7 +451,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -494,7 +571,7 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'>
@@ -532,7 +609,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>Create the new parser with the returned document.</p>
 
 <p>In legacy mode, the code and codeName fields of the document are not examined because the status (ok: 1) is not part of the document and there is no way to distinguish successful from failed responses using the document itself, and a successful response may legitimately have { code: 123, codeName: &#39;foo&#39; } as the contents of a user-inserted document. The legacy server versions do not fill out code nor codeName thus not reading them does not lose information.</p>
@@ -659,19 +740,19 @@
       <pre class="lines">
 
 
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103</pre>
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_replies'>replies</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@document</span> <span class='op'>=</span> <span class='id identifier rubyid_document'>document</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -706,8 +787,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns code The error code parsed from the document.</p>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns The error code parsed from the document.</p>
 
 
   </div>
@@ -726,7 +811,7 @@
       
         &mdash;
         <div class='inline'>
-<p>code The error code parsed from the document.</p>
+<p>The error code parsed from the document.</p>
 </div>
       
     </li>
@@ -755,12 +840,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_code'>code</span>
   <span class='ivar'>@code</span>
@@ -783,8 +868,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns code_name The error code name parsed from the document.</p>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns The error code name parsed from the document.</p>
 
 
   </div>
@@ -803,7 +892,7 @@
       
         &mdash;
         <div class='inline'>
-<p>code_name The error code name parsed from the document.</p>
+<p>The error code name parsed from the document.</p>
 </div>
       
     </li>
@@ -832,12 +921,12 @@
       <pre class="lines">
 
 
-64
-65
-66</pre>
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_code_name'>code_name</span>
   <span class='ivar'>@code_name</span>
@@ -860,8 +949,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns document The returned document.</p>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns The returned document.</p>
 
 
   </div>
@@ -880,7 +973,7 @@
       
         &mdash;
         <div class='inline'>
-<p>document The returned document.</p>
+<p>The returned document.</p>
 </div>
       
     </li>
@@ -909,12 +1002,12 @@
       <pre class="lines">
 
 
-50
-51
-52</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_document'>document</span>
   <span class='ivar'>@document</span>
@@ -937,8 +1030,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns labels The set of labels associated with the error.</p>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns The set of labels associated with the error.</p>
 
 
   </div>
@@ -957,7 +1054,7 @@
       
         &mdash;
         <div class='inline'>
-<p>labels The set of labels associated with the error.</p>
+<p>The set of labels associated with the error.</p>
 </div>
       
     </li>
@@ -986,12 +1083,12 @@
       <pre class="lines">
 
 
-68
-69
-70</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_labels'>labels</span>
   <span class='ivar'>@labels</span>
@@ -1014,8 +1111,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns message The error message parsed from the document.</p>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns The full error message to be used in the raised exception.</p>
 
 
   </div>
@@ -1034,7 +1135,7 @@
       
         &mdash;
         <div class='inline'>
-<p>message The error message parsed from the document.</p>
+<p>The full error message to be used in the raised exception.</p>
 </div>
       
     </li>
@@ -1063,12 +1164,12 @@
       <pre class="lines">
 
 
-53
-54
-55</pre>
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_message'>message</span>
   <span class='ivar'>@message</span>
@@ -1091,8 +1192,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns replies The message replies.</p>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns The message replies.</p>
 
 
   </div>
@@ -1111,7 +1216,7 @@
       
         &mdash;
         <div class='inline'>
-<p>replies The message replies.</p>
+<p>The message replies.</p>
 </div>
       
     </li>
@@ -1140,15 +1245,96 @@
       <pre class="lines">
 
 
-56
-57
-58</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_replies'>replies</span>
   <span class='ivar'>@replies</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="server_message-instance_method">
+  
+    #<strong>server_message</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns The server-returned error message parsed from the response.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The server-returned error message parsed from the response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_server_message'>server_message</span>
+  <span class='ivar'>@server_message</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1201,12 +1387,12 @@
       <pre class="lines">
 
 
-71
-72
-73</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wtimeout'>wtimeout</span>
   <span class='ivar'>@wtimeout</span>
@@ -1218,6 +1404,93 @@
     
   </div>
 
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="build_message-class_method">
+  
+    .<strong>build_message</strong>(code: nil, code_name: nil, message: nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 177</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_build_message'>build_message</span><span class='lparen'>(</span><span class='label'>code:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>code_name:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>message:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_code_name'>code_name</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_code'>code</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_code'>code</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_code_name'>code_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>]: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_message'>message</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_code_name'>code_name</span>
+    <span class='comment'># This surely should never happen, if there&#39;s a code name
+</span>    <span class='comment'># there ought to also be the code provided.
+</span>    <span class='comment'># Handle this case for completeness.
+</span>    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_code_name'>code_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>]: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_message'>message</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_code'>code</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_code'>code</span><span class='embexpr_end'>}</span><span class='tstring_content'>]: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_message'>message</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -1283,12 +1556,12 @@
       <pre class="lines">
 
 
-111
-112
-113</pre>
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 139</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error?'>write_concern_error?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span>
@@ -1358,12 +1631,12 @@
       <pre class="lines">
 
 
-129
-130
-131</pre>
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code'>write_concern_error_code</span>
   <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>code</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1433,12 +1706,12 @@
       <pre class="lines">
 
 
-138
-139
-140</pre>
+166
+167
+168</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 138</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 166</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_code_name'>write_concern_error_code_name</span>
   <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>codeName</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1508,12 +1781,12 @@
       <pre class="lines">
 
 
-120
-121
-122</pre>
+148
+149
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 148</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span>
   <span class='id identifier rubyid_document'>document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>writeConcernError</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1534,7 +1807,11 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
 <p>write concern error, if there is a write concern error present.</p>
 
 
@@ -1583,12 +1860,12 @@
       <pre class="lines">
 
 
-144
-145
-146</pre>
+172
+173
+174</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/error/parser.rb', line 172</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern_error_labels'>write_concern_error_labels</span>
   <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_write_concern_error_document'>write_concern_error_document</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>errorLabels</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1603,9 +1880,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:29 2020 by
+  Generated on Wed May 12 17:19:12 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Server::RoundTripTimeAverager
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -302,13 +302,13 @@
       <pre class="lines">
 
 
-25
-26
-27
-28</pre>
+28
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@last_round_trip_time</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -370,12 +370,12 @@
       <pre class="lines">
 
 
-31
-32
-33</pre>
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_average_round_trip_time'>average_round_trip_time</span>
   <span class='ivar'>@average_round_trip_time</span>
@@ -431,12 +431,12 @@
       <pre class="lines">
 
 
-30
-31
-32</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_last_round_trip_time'>last_round_trip_time</span>
   <span class='ivar'>@last_round_trip_time</span>
@@ -497,9 +497,6 @@
       <pre class="lines">
 
 
-33
-34
-35
 36
 37
 38
@@ -523,13 +520,16 @@
 56
 57
 58
-59</pre>
+59
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/round_trip_time_averager.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_measure'>measure</span>
-  <span class='id identifier rubyid_start'>start</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+  <span class='id identifier rubyid_start'>start</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span>
   <span class='kw'>begin</span>
     <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>yield</span>
   <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/SocketError.html" title="Mongo::Error::SocketError (class)">SocketError</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/SocketTimeoutError.html" title="Mongo::Error::SocketTimeoutError (class)">SocketTimeoutError</a></span></span>
@@ -539,7 +539,7 @@
   <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/AuthError.html" title="Mongo::Error::AuthError (class)">AuthError</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_exc'>exc</span>
     <span class='comment'># For other errors, RTT is valid.
 </span>  <span class='kw'>end</span>
-  <span class='id identifier rubyid_last_round_trip_time'>last_round_trip_time</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_start'>start</span>
+  <span class='id identifier rubyid_last_round_trip_time'>last_round_trip_time</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span> <span class='op'>-</span> <span class='id identifier rubyid_start'>start</span>
 
   <span class='comment'># If ismaster fails, we need to return the last round trip time
 </span>  <span class='comment'># because it is used in the heartbeat failed SDAM event,
@@ -565,9 +565,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:38 2020 by
+  Generated on Wed May 12 17:19:20 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

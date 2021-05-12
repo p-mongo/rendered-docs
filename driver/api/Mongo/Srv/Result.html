@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Srv::Result
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -417,14 +417,14 @@
       <pre class="lines">
 
 
-46
-47
-48
 49
-50</pre>
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='rparen'>)</span>
   <span class='ivar'>@query_hostname</span> <span class='op'>=</span> <span class='id identifier rubyid_hostname'>hostname</span>
@@ -491,12 +491,12 @@
       <pre class="lines">
 
 
-37
-38
-39</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_address_strs'>address_strs</span>
   <span class='ivar'>@address_strs</span>
@@ -556,12 +556,12 @@
       <pre class="lines">
 
 
-41
-42
-43</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_min_ttl'>min_ttl</span>
   <span class='ivar'>@min_ttl</span>
@@ -621,12 +621,12 @@
       <pre class="lines">
 
 
-33
-34
-35</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query_hostname'>query_hostname</span>
   <span class='ivar'>@query_hostname</span>
@@ -693,9 +693,6 @@
       <pre class="lines">
 
 
-62
-63
-64
 65
 66
 67
@@ -713,10 +710,13 @@
 79
 80
 81
-82</pre>
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_record'>add_record</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_record_host'>record_host</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_hostname'>normalize_hostname</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
@@ -792,12 +792,12 @@
       <pre class="lines">
 
 
-55
-56
-57</pre>
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/result.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_empty?'>empty?</span>
   <span class='ivar'>@address_strs</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -812,9 +812,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:28 2020 by
+  Generated on Wed May 12 17:19:11 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

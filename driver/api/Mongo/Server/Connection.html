@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Server::Connection
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -851,6 +851,26 @@
           
         </li>
       
+        <li>
+          <span class="name">:server_api</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The requested server API version. This hash can have the following items:</p>
+<ul><li>
+<p><strong>:version</strong> – string</p>
+</li><li>
+<p><strong>:strict</strong> – boolean</p>
+</li><li>
+<p><strong>:deprecation_errors</strong> – boolean</p>
+</li></ul>
+</div>
+          
+        </li>
+      
     </ul>
   
 
@@ -877,23 +897,23 @@
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95
-96
-97
 98
 99
 100
 101
 102
-103</pre>
+103
+104
+105
+106
+107
+108
+109
+110
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_next_connection_id'>next_connection_id</span>
@@ -981,12 +1001,12 @@
       <pre class="lines">
 
 
-114
-115
-116</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@id</span>
@@ -1058,12 +1078,12 @@
       <pre class="lines">
 
 
-108
-109
-110</pre>
+116
+117
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_last_checkin'>last_checkin</span>
   <span class='ivar'>@last_checkin</span>
@@ -1142,12 +1162,12 @@
       <pre class="lines">
 
 
-132
-133
-134</pre>
+140
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 140</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_closed?'>closed?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@closed</span>
@@ -1239,14 +1259,6 @@
       <pre class="lines">
 
 
-154
-155
-156
-157
-158
-159
-160
-161
 162
 163
 164
@@ -1260,10 +1272,18 @@
 172
 173
 174
-175</pre>
+175
+176
+177
+178
+179
+180
+181
+182
+183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 154</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 162</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect!'>connect!</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_error?'>error?</span>
@@ -1338,12 +1358,12 @@
       <pre class="lines">
 
 
-120
-121
-122</pre>
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection_pool'>connection_pool</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connection_pool</span><span class='rbracket'>]</span>
@@ -1472,14 +1492,6 @@
       <pre class="lines">
 
 
-217
-218
-219
-220
-221
-222
-223
-224
 225
 226
 227
@@ -1501,10 +1513,18 @@
 243
 244
 245
-246</pre>
+246
+247
+248
+249
+250
+251
+252
+253
+254</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 217</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 225</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect!'>disconnect!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='comment'># Note: @closed may be true here but we also may have a socket.
@@ -1598,12 +1618,12 @@
       <pre class="lines">
 
 
-137
-138
-139</pre>
+145
+146
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_error?'>error?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@error</span>
@@ -1696,19 +1716,19 @@
       <pre class="lines">
 
 
-261
-262
-263
-264
-265
-266
-267
-268
 269
-270</pre>
+270
+271
+272
+273
+274
+275
+276
+277
+278</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 261</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 269</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ping'>ping</span>
   <span class='id identifier rubyid_bytes'>bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_op_msg_enabled?'>op_msg_enabled?</span> <span class='op'>?</span> <span class='const'><span class='object_link'><a href="#PING_OP_MSG_BYTES-constant" title="Mongo::Server::Connection::PING_OP_MSG_BYTES (constant)">PING_OP_MSG_BYTES</a></span></span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="#PING_BYTES-constant" title="Mongo::Server::Connection::PING_BYTES (constant)">PING_BYTES</a></span></span>
@@ -1792,13 +1812,13 @@
       <pre class="lines">
 
 
-291
-292
-293
-294</pre>
+299
+300
+301
+302</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 291</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 299</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_record_checkin!'>record_checkin!</span>
   <span class='ivar'>@last_checkin</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
@@ -1873,12 +1893,12 @@
       <pre class="lines">
 
 
-277
-278
-279</pre>
+285
+286
+287</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/connection.rb', line 285</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_socket_timeout'>socket_timeout</span>
   <span class='ivar'>@timeout</span> <span class='op'>||=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:socket_timeout</span><span class='rbracket'>]</span>
@@ -1893,9 +1913,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:32 2020 by
+  Generated on Wed May 12 17:19:14 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

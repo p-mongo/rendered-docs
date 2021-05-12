@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cursor::Builder::KillCursorsCommand
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -376,12 +376,12 @@
       <pre class="lines">
 
 
-38
-39
-40</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_cursor'>cursor</span><span class='rparen'>)</span>
   <span class='ivar'>@cursor</span> <span class='op'>=</span> <span class='id identifier rubyid_cursor'>cursor</span>
@@ -462,12 +462,12 @@
       <pre class="lines">
 
 
-26
-27
-28</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cursor'>cursor</span>
   <span class='ivar'>@cursor</span>
@@ -560,19 +560,19 @@
       <pre class="lines">
 
 
-94
-95
-96
 97
 98
 99
 100
 101
 102
-103</pre>
+103
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_cursors_list'>get_cursors_list</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbol'>:selector</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cursors</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
@@ -679,9 +679,6 @@
       <pre class="lines">
 
 
-74
-75
-76
 77
 78
 79
@@ -689,10 +686,13 @@
 81
 82
 83
-84</pre>
+84
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_cursors'>update_cursors</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
   <span class='comment'># Ruby 2.5+ can &amp; BSON::Int64 instances.
@@ -792,12 +792,12 @@
       <pre class="lines">
 
 
-50
-51
-52</pre>
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cursor/builder/kill_cursors_command.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_specification'>specification</span>
   <span class='lbrace'>{</span> <span class='label'>selector:</span> <span class='id identifier rubyid_kill_cursors_command'>kill_cursors_command</span><span class='comma'>,</span> <span class='label'>db_name:</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span>
@@ -812,9 +812,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:39 2020 by
+  Generated on Wed May 12 17:19:21 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

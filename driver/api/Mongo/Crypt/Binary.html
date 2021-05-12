@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Crypt::Binary
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -394,9 +394,6 @@
       <pre class="lines">
 
 
-36
-37
-38
 39
 40
 41
@@ -422,10 +419,13 @@
 61
 62
 63
-64</pre>
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>data:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>pointer:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_data'>data</span>
@@ -536,12 +536,12 @@
       <pre class="lines">
 
 
-84
-85
-86</pre>
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_data'>from_data</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>data:</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
@@ -619,12 +619,12 @@
       <pre class="lines">
 
 
-73
-74
-75</pre>
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_pointer'>from_pointer</span><span class='lparen'>(</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>pointer:</span> <span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
@@ -664,9 +664,6 @@
       <pre class="lines">
 
 
-142
-143
-144
 145
 146
 147
@@ -674,10 +671,13 @@
 149
 150
 151
-152</pre>
+152
+153
+154
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_wrap_string'>wrap_string</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_binary_p'>binary_p</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Binding.html" title="Mongo::Crypt::Binding (class)">Binding</a></span></span><span class='period'>.</span><span class='id identifier rubyid_mongocrypt_binary_new_from_data'><span class='object_link'><a href="Binding.html#mongocrypt_binary_new_from_data-class_method" title="Mongo::Crypt::Binding.mongocrypt_binary_new_from_data (method)">mongocrypt_binary_new_from_data</a></span></span><span class='lparen'>(</span>
@@ -749,12 +749,12 @@
       <pre class="lines">
 
 
-136
-137
-138</pre>
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 136</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 139</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ref'>ref</span>
   <span class='ivar'>@bin</span>
@@ -812,14 +812,14 @@
       <pre class="lines">
 
 
-126
-127
-128
 129
-130</pre>
+130
+131
+132
+133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 129</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_str_p'>str_p</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Binding.html" title="Mongo::Crypt::Binding (class)">Binding</a></span></span><span class='period'>.</span><span class='id identifier rubyid_mongocrypt_binary_data'><span class='object_link'><a href="Binding.html#mongocrypt_binary_data-class_method" title="Mongo::Crypt::Binding.mongocrypt_binary_data (method)">mongocrypt_binary_data</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_ref'>ref</span><span class='rparen'>)</span>
@@ -929,9 +929,6 @@
       <pre class="lines">
 
 
-101
-102
-103
 104
 105
 106
@@ -949,10 +946,13 @@
 118
 119
 120
-121</pre>
+121
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/binary.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@data</span>
@@ -985,9 +985,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:29 2020 by
+  Generated on Wed May 12 17:19:12 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::ClientEncryption
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -330,16 +330,16 @@
       <pre class="lines">
 
 
-33
-34
-35
 36
 37
 38
-39</pre>
+39
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client_encryption.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client_encryption.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key_vault_client'>key_vault_client</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@encrypter</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Crypt.html" title="Mongo::Crypt (module)">Crypt</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Crypt/ExplicitEncrypter.html" title="Mongo::Crypt::ExplicitEncrypter (class)">ExplicitEncrypter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Crypt/ExplicitEncrypter.html#initialize-instance_method" title="Mongo::Crypt::ExplicitEncrypter#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -481,15 +481,15 @@
       <pre class="lines">
 
 
-63
-64
-65
 66
 67
-68</pre>
+68
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client_encryption.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client_encryption.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_data_key'>create_data_key</span><span class='lparen'>(</span><span class='id identifier rubyid_kms_provider'>kms_provider</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@encrypter</span><span class='period'>.</span><span class='id identifier rubyid_create_and_insert_data_key'>create_and_insert_data_key</span><span class='lparen'>(</span>
@@ -566,12 +566,12 @@
       <pre class="lines">
 
 
-99
-100
-101</pre>
+102
+103
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client_encryption.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client_encryption.rb', line 102</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@encrypter</span><span class='period'>.</span><span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -716,12 +716,12 @@
       <pre class="lines">
 
 
-89
-90
-91</pre>
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client_encryption.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client_encryption.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypt'>encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@encrypter</span><span class='period'>.</span><span class='id identifier rubyid_encrypt'>encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -736,9 +736,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:31 2020 by
+  Generated on Wed May 12 17:19:14 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

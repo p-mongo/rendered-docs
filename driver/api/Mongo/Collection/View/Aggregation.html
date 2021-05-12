@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Collection::View::Aggregation
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -538,14 +538,14 @@
       <pre class="lines">
 
 
-74
-75
-76
 77
-78</pre>
+78
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@view</span> <span class='op'>=</span> <span class='id identifier rubyid_view'>view</span>
@@ -624,12 +624,12 @@
       <pre class="lines">
 
 
-34
-35
-36</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pipeline'>pipeline</span>
   <span class='ivar'>@pipeline</span>
@@ -701,12 +701,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_view'>view</span>
   <span class='ivar'>@view</span>
@@ -817,12 +817,12 @@
       <pre class="lines">
 
 
-59
-60
-61</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allow_disk_use'>allow_disk_use</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configure'>configure</span><span class='lparen'>(</span><span class='symbol'>:allow_disk_use</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -904,12 +904,12 @@
       <pre class="lines">
 
 
-88
-89
-90</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_explain'>explain</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>explain:</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -983,12 +983,12 @@
       <pre class="lines">
 
 
-98
-99
-100</pre>
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/aggregation.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write?'>write?</span>
   <span class='id identifier rubyid_pipeline'>pipeline</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_op'>op</span><span class='op'>|</span> <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$out</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:$out</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$merge</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:$merge</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1003,9 +1003,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:37 2020 by
+  Generated on Wed May 12 17:19:18 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

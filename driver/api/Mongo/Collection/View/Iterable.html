@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Collection::View::Iterable
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -281,14 +281,14 @@
       <pre class="lines">
 
 
-86
-87
-88
 89
-90</pre>
+90
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/iterable.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/iterable.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close_query'>close_query</span>
   <span class='kw'>if</span> <span class='ivar'>@cursor</span>
@@ -394,9 +394,6 @@
       <pre class="lines">
 
 
-37
-38
-39
 40
 41
 42
@@ -428,10 +425,13 @@
 68
 69
 70
-71</pre>
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/iterable.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/collection/view/iterable.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
   <span class='ivar'>@cursor</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_use_query_cache?'>use_query_cache?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_cached_cursor'>cached_cursor</span>
@@ -478,9 +478,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:23 2020 by
+  Generated on Wed May 12 17:19:07 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

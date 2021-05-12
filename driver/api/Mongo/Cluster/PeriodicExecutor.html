@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cluster::PeriodicExecutor
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -507,15 +507,15 @@
       <pre class="lines">
 
 
-43
-44
-45
 46
 47
-48</pre>
+48
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_executors'>executors</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@thread</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -579,12 +579,12 @@
       <pre class="lines">
 
 
-50
-51
-52</pre>
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -645,13 +645,13 @@
       <pre class="lines">
 
 
-54
-55
-56
-57</pre>
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_do_work'>do_work</span>
   <span class='id identifier rubyid_execute'>execute</span>
@@ -720,13 +720,13 @@
       <pre class="lines">
 
 
-82
-83
-84
-85</pre>
+85
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
   <span class='ivar'>@executors</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:execute</span><span class='rparen'>)</span>
@@ -795,13 +795,13 @@
       <pre class="lines">
 
 
-95
-96
-97
-98</pre>
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_flush'>flush</span>
   <span class='ivar'>@executors</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:flush</span><span class='rparen'>)</span>
@@ -856,12 +856,12 @@
       <pre class="lines">
 
 
-59
-60
-61</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pre_stop'>pre_stop</span>
   <span class='ivar'>@stop_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_signal'>signal</span>
@@ -915,19 +915,19 @@
       <pre class="lines">
 
 
-63
-64
-65
 66
 67
 68
 69
 70
 71
-72</pre>
+72
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster/periodic_executor.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stop'>stop</span><span class='lparen'>(</span><span class='id identifier rubyid_final'>final</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -949,9 +949,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:36 2020 by
+  Generated on Wed May 12 17:19:18 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

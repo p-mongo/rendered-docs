@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Semaphore
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -259,13 +259,13 @@
       <pre class="lines">
 
 
-21
-22
-23
-24</pre>
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/semaphore.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/semaphore.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -311,14 +311,14 @@
       <pre class="lines">
 
 
-34
-35
-36
 37
-38</pre>
+38
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/semaphore.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/semaphore.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_broadcast'>broadcast</span>
   <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -358,14 +358,14 @@
       <pre class="lines">
 
 
-40
-41
-42
 43
-44</pre>
+44
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/semaphore.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/semaphore.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_signal'>signal</span>
   <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -407,14 +407,14 @@
       <pre class="lines">
 
 
-28
-29
-30
 31
-32</pre>
+32
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/semaphore.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/semaphore.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -431,9 +431,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:27 2020 by
+  Generated on Wed May 12 17:19:11 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

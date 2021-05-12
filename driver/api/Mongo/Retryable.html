@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Retryable
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -391,9 +391,6 @@
       <pre class="lines">
 
 
-292
-293
-294
 295
 296
 297
@@ -415,10 +412,13 @@
 313
 314
 315
-316</pre>
+316
+317
+318
+319</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 292</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 295</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_legacy_write_with_retry'>legacy_write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='comment'># This is the pre-session retry logic, and is not subject to
@@ -556,9 +556,6 @@
       <pre class="lines">
 
 
-264
-265
-266
 267
 268
 269
@@ -568,10 +565,13 @@
 273
 274
 275
-276</pre>
+276
+277
+278
+279</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 264</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 267</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_nro_write_with_retry'>nro_write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:retry_writes</span><span class='rbracket'>]</span>
@@ -741,16 +741,16 @@ end</code></pre>
       <pre class="lines">
 
 
-161
-162
-163
 164
 165
 166
-167</pre>
+167
+168
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_with_one_retry'>read_with_one_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>yield</span>
@@ -902,9 +902,6 @@ end</code></pre>
       <pre class="lines">
 
 
-106
-107
-108
 109
 110
 111
@@ -932,10 +929,13 @@ end</code></pre>
 133
 134
 135
-136</pre>
+136
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_with_retry'>read_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1124,9 +1124,6 @@ end</code></pre>
       <pre class="lines">
 
 
-59
-60
-61
 62
 63
 64
@@ -1136,10 +1133,13 @@ end</code></pre>
 68
 69
 70
-71</pre>
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_with_retry_cursor'>read_with_retry_cursor</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_read_with_retry'>read_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -1355,9 +1355,6 @@ end</code></pre>
       <pre class="lines">
 
 
-203
-204
-205
 206
 207
 208
@@ -1398,10 +1395,13 @@ end</code></pre>
 243
 244
 245
-246</pre>
+246
+247
+248
+249</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 203</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/retryable.rb', line 206</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_with_retry'>write_with_retry</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='comma'>,</span> <span class='id identifier rubyid_ending_transaction'>ending_transaction</span> <span class='op'>=</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_ending_transaction'>ending_transaction</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_session'>session</span>
@@ -1457,9 +1457,9 @@ end</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:22 2020 by
+  Generated on Wed May 12 17:19:06 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

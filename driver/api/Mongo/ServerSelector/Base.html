@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::ServerSelector::Base
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -663,9 +663,6 @@
       <pre class="lines">
 
 
-46
-47
-48
 49
 50
 51
@@ -674,10 +671,13 @@
 54
 55
 56
-57</pre>
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -763,12 +763,12 @@
       <pre class="lines">
 
 
-73
-74
-75</pre>
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hedge'>hedge</span>
   <span class='ivar'>@hedge</span>
@@ -840,12 +840,12 @@
       <pre class="lines">
 
 
-69
-70
-71</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_staleness'>max_staleness</span>
   <span class='ivar'>@max_staleness</span>
@@ -917,12 +917,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -994,12 +994,12 @@
       <pre class="lines">
 
 
-63
-64
-65</pre>
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tag_sets'>tag_sets</span>
   <span class='ivar'>@tag_sets</span>
@@ -1108,13 +1108,13 @@
       <pre class="lines">
 
 
-133
-134
-135
-136</pre>
+136
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_hedge'>hedge</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_hedge'>hedge</span> <span class='op'>&amp;&amp;</span>
@@ -1211,9 +1211,6 @@
       <pre class="lines">
 
 
-329
-330
-331
 332
 333
 334
@@ -1226,10 +1223,13 @@
 341
 342
 343
-344</pre>
+344
+345
+346
+347</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 329</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 332</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_candidates'>candidates</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_servers'>servers</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_servers'>servers</span>
@@ -1324,12 +1324,12 @@
       <pre class="lines">
 
 
-119
-120
-121</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>:0x</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> tag_sets=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_tag_sets'>tag_sets</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'> max_staleness=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_max_staleness'>max_staleness</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'> hedge=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_hedge'>hedge</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -1414,12 +1414,12 @@
       <pre class="lines">
 
 
-102
-103
-104</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_local_threshold'>local_threshold</span>
   <span class='ivar'>@local_threshold</span> <span class='op'>||=</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:local_threshold</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../ServerSelector.html#LOCAL_THRESHOLD-constant" title="Mongo::ServerSelector::LOCAL_THRESHOLD (constant)">LOCAL_THRESHOLD</a></span></span><span class='rparen'>)</span>
@@ -1473,12 +1473,12 @@
       <pre class="lines">
 
 
-107
-108
-109</pre>
+110
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_local_threshold_with_cluster'>local_threshold_with_cluster</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:local_threshold</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:local_threshold</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../ServerSelector.html#LOCAL_THRESHOLD-constant" title="Mongo::ServerSelector::LOCAL_THRESHOLD (constant)">LOCAL_THRESHOLD</a></span></span>
@@ -1642,9 +1642,6 @@
       <pre class="lines">
 
 
-172
-173
-174
 175
 176
 177
@@ -1755,10 +1752,13 @@
 282
 283
 284
-285</pre>
+285
+286
+287
+288</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 172</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select_server'>select_server</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_ping'>ping</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:server_selection_timeout</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../ServerSelector.html#SERVER_SELECTION_TIMEOUT-constant" title="Mongo::ServerSelector::SERVER_SELECTION_TIMEOUT (constant)">SERVER_SELECTION_TIMEOUT</a></span></span>
@@ -1772,7 +1772,7 @@
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/NoServerAvailable.html" title="Mongo::Error::NoServerAvailable (class)">NoServerAvailable</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Error/NoServerAvailable.html#initialize-instance_method" title="Mongo::Error::NoServerAvailable#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span>
+  <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span> <span class='op'>+</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_pinned_server'>pinned_server</span>
     <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Lint.html" title="Mongo::Lint (module)">Lint</a></span></span><span class='period'>.</span><span class='id identifier rubyid_enabled?'><span class='object_link'><a href="../Lint.html#enabled%3F-class_method" title="Mongo::Lint.enabled? (method)">enabled?</a></span></span>
@@ -1790,7 +1790,7 @@
 </span>      <span class='comment'># This will no longer be the case once SRV polling is implemented.
 </span>
       <span class='kw'>unless</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_mongos?'>mongos?</span>
-        <span class='kw'>while</span> <span class='lparen'>(</span><span class='id identifier rubyid_time_remaining'>time_remaining</span> <span class='op'>=</span> <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>-</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+        <span class='kw'>while</span> <span class='lparen'>(</span><span class='id identifier rubyid_time_remaining'>time_remaining</span> <span class='op'>=</span> <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>-</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
           <span class='id identifier rubyid_wait_for_server_selection'>wait_for_server_selection</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='rparen'>)</span>
         <span class='kw'>end</span>
 
@@ -1843,7 +1843,7 @@
 
     <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_scan!'>scan!</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span>
 
-    <span class='id identifier rubyid_time_remaining'>time_remaining</span> <span class='op'>=</span> <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>-</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+    <span class='id identifier rubyid_time_remaining'>time_remaining</span> <span class='op'>=</span> <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>-</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_time_remaining'>time_remaining</span> <span class='op'>&gt;</span> <span class='int'>0</span>
       <span class='id identifier rubyid_wait_for_server_selection'>wait_for_server_selection</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='rparen'>)</span>
 
@@ -1954,13 +1954,13 @@
       <pre class="lines">
 
 
-86
-87
-88
-89</pre>
+89
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span>
   <span class='ivar'>@server_selection_timeout</span> <span class='op'>||=</span>
@@ -2055,9 +2055,6 @@
       <pre class="lines">
 
 
-353
-354
-355
 356
 357
 358
@@ -2069,10 +2066,13 @@
 364
 365
 366
-367</pre>
+367
+368
+369
+370</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 353</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 356</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_suitable_servers'>suitable_servers</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_single?'>single?</span>
@@ -2158,9 +2158,6 @@
       <pre class="lines">
 
 
-293
-294
-295
 296
 297
 298
@@ -2182,10 +2179,13 @@
 314
 315
 316
-317</pre>
+317
+318
+319
+320</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 293</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server_selector/base.rb', line 296</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_try_select_server'>try_select_server</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_servers'>servers</span> <span class='op'>=</span> <span class='id identifier rubyid_suitable_servers'>suitable_servers</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
@@ -2222,9 +2222,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:33 2020 by
+  Generated on Wed May 12 17:19:15 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

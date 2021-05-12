@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Crypt::ExplicitEncrypter
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -323,17 +323,17 @@
       <pre class="lines">
 
 
-32
-33
-34
 35
 36
 37
 38
-39</pre>
+39
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/explicit_encrypter.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/explicit_encrypter.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key_vault_client'>key_vault_client</span><span class='comma'>,</span> <span class='id identifier rubyid_key_vault_namespace'>key_vault_namespace</span><span class='comma'>,</span> <span class='id identifier rubyid_kms_providers'>kms_providers</span><span class='rparen'>)</span>
   <span class='ivar'>@crypt_handle</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Handle.html" title="Mongo::Crypt::Handle (class)">Handle</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Handle.html#initialize-instance_method" title="Mongo::Crypt::Handle#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_kms_providers'>kms_providers</span><span class='rparen'>)</span>
@@ -478,19 +478,19 @@
       <pre class="lines">
 
 
-63
-64
-65
 66
 67
 68
 69
 70
 71
-72</pre>
+72
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/explicit_encrypter.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/explicit_encrypter.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_and_insert_data_key'>create_and_insert_data_key</span><span class='lparen'>(</span><span class='id identifier rubyid_kms_provider'>kms_provider</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_data_key_document'>data_key_document</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Crypt.html" title="Mongo::Crypt (module)">Crypt</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="DataKeyContext.html" title="Mongo::Crypt::DataKeyContext (class)">DataKeyContext</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="DataKeyContext.html#initialize-instance_method" title="Mongo::Crypt::DataKeyContext#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -575,16 +575,16 @@
       <pre class="lines">
 
 
-108
-109
-110
 111
 112
 113
-114</pre>
+114
+115
+116
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/explicit_encrypter.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/explicit_encrypter.rb', line 111</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Crypt.html" title="Mongo::Crypt (module)">Crypt</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="ExplicitDecryptionContext.html" title="Mongo::Crypt::ExplicitDecryptionContext (class)">ExplicitDecryptionContext</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="ExplicitDecryptionContext.html#initialize-instance_method" title="Mongo::Crypt::ExplicitDecryptionContext#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -735,17 +735,17 @@
       <pre class="lines">
 
 
-93
-94
-95
 96
 97
 98
 99
-100</pre>
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/explicit_encrypter.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/crypt/explicit_encrypter.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypt'>encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../Crypt.html" title="Mongo::Crypt (module)">Crypt</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="ExplicitEncryptionContext.html" title="Mongo::Crypt::ExplicitEncryptionContext (class)">ExplicitEncryptionContext</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="ExplicitEncryptionContext.html#initialize-instance_method" title="Mongo::Crypt::ExplicitEncryptionContext#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -765,9 +765,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:35 2020 by
+  Generated on Wed May 12 17:19:17 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

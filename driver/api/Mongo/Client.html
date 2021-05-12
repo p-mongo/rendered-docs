@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Client
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -261,6 +261,7 @@
   <span class='symbol'>:retry_writes</span><span class='comma'>,</span>
   <span class='symbol'>:scan</span><span class='comma'>,</span>
   <span class='symbol'>:sdam_proc</span><span class='comma'>,</span>
+  <span class='symbol'>:server_api</span><span class='comma'>,</span>
   <span class='symbol'>:server_selection_timeout</span><span class='comma'>,</span>
   <span class='symbol'>:socket_timeout</span><span class='comma'>,</span>
   <span class='symbol'>:ssl</span><span class='comma'>,</span>
@@ -317,7 +318,45 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='lbracket'>[</span> <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol/Compressed.html" title="Mongo::Protocol::Compressed (class)">Compressed</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol/Compressed.html#ZLIB-constant" title="Mongo::Protocol::Compressed::ZLIB (constant)">ZLIB</a></span></span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+        <dd><pre class="code"><span class='lbracket'>[</span>
+  <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol/Compressed.html" title="Mongo::Protocol::Compressed (class)">Compressed</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol/Compressed.html#ZSTD-constant" title="Mongo::Protocol::Compressed::ZSTD (constant)">ZSTD</a></span></span><span class='comma'>,</span>
+  <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol/Compressed.html" title="Mongo::Protocol::Compressed (class)">Compressed</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol/Compressed.html#SNAPPY-constant" title="Mongo::Protocol::Compressed::SNAPPY (constant)">SNAPPY</a></span></span><span class='comma'>,</span>
+  <span class='const'><span class='object_link'><a href="../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol/Compressed.html" title="Mongo::Protocol::Compressed (class)">Compressed</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Protocol/Compressed.html#ZLIB-constant" title="Mongo::Protocol::Compressed::ZLIB (constant)">ZLIB</a></span></span>
+<span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+        <dt id="VALID_SERVER_API_VERSIONS-constant" class="">VALID_SERVER_API_VERSIONS =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The known server API versions.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='qwords_beg'>%w(</span><span class='words_sep'>
+  </span><span class='tstring_content'>1</span><span class='words_sep'>
+</span><span class='tstring_end'>)</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
     </dl>
   
@@ -455,6 +494,39 @@
 
 
 
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#canonicalize_ruby_options-class_method" title="canonicalize_ruby_options (class method)">.<strong>canonicalize_ruby_options</strong>(options)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Lowercases auth mechanism properties, if given, in the specified options, then converts the options to an instance of Options::Redacted.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
   
     <h2>
       Instance Method Summary
@@ -1044,7 +1116,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#with-instance_method" title="#with (instance method)">#<strong>with</strong>(new_options = Options::Redacted.new)  &#x21d2; Mongo::Client </a>
+      <a href="#with-instance_method" title="#with (instance method)">#<strong>with</strong>(new_options = nil)  &#x21d2; Mongo::Client </a>
     
 
     
@@ -1294,7 +1366,7 @@
           </span>
           
             &mdash; <div class='inline'>
-<p>A list of potential compressors to use, in order of preference. The driver chooses the first compressor that is also supported by the server. Currently the driver only supports &#39;zlib&#39;.</p>
+<p>A list of potential compressors to use, in order of preference. The driver chooses the first compressor that is also supported by the server. Currently the driver only supports &#39;zstd, &#39;snappy&#39; and &#39;zlib&#39;.</p>
 </div>
           
         </li>
@@ -1655,6 +1727,26 @@
 <p>A Proc to invoke with the client as the argument prior to performing server discovery and monitoring. Use this to set up SDAM event listeners to receive events published during client construction.</p>
 
 <p>Note: the client is not fully constructed when sdam_proc is invoked, in particular the cluster is nil at this time. sdam_proc should limit itself to calling #subscribe and #unsubscribe methods on the client only.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:server_api</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The requested server API version. This hash can have the following items:</p>
+<ul><li>
+<p><strong>:version</strong> – string</p>
+</li><li>
+<p><strong>:strict</strong> – boolean</p>
+</li><li>
+<p><strong>:deprecation_errors</strong> – boolean</p>
+</li></ul>
 </div>
           
         </li>
@@ -2047,24 +2139,6 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-433
-434
-435
-436
-437
-438
-439
-440
-441
-442
-443
-444
-445
-446
-447
-448
-449
-450
 451
 452
 453
@@ -2158,10 +2232,43 @@ Allowed hash keys: :name, :version, :platform.
 541
 542
 543
-544</pre>
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 433</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 451</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_addresses_or_uri'>addresses_or_uri</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -2196,12 +2303,19 @@ Allowed hash keys: :name, :version, :platform.
     <span class='ivar'>@srv_records</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Mongo::Options (module)">Options</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Options/Redacted.html" title="Mongo::Options::Redacted (class)">Redacted</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_k'>k</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>auth_mech_properties</span><span class='tstring_end'>&#39;</span></span>
-      <span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pk'>pk</span><span class='comma'>,</span> <span class='id identifier rubyid_pv'>pv</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_pk'>pk</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='comma'>,</span> <span class='id identifier rubyid_pv'>pv</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_canonicalize_ruby_options'>canonicalize_ruby_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+  <span class='comment'># The server API version is specified to be a string.
+</span>  <span class='comment'># However, it is very annoying to always provide the number 1 as a string,
+</span>  <span class='comment'># therefore cast to the string type here.
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_server_api'>server_api</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:server_api</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_server_api'>server_api</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_server_api'>server_api</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Mongo::Options (module)">Options</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Options/Redacted.html" title="Mongo::Options::Redacted (class)">Redacted</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_server_api'>server_api</span><span class='rparen'>)</span>
+      <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='id identifier rubyid_server_api'>server_api</span><span class='lbracket'>[</span><span class='symbol'>:version</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:server_api</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_server_api'>server_api</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>version:</span> <span class='id identifier rubyid_version'>version</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
     <span class='kw'>end</span>
-    <span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
   <span class='comment'># Special handling for sdam_proc as it is only used during client
 </span>  <span class='comment'># construction
@@ -2219,6 +2333,12 @@ Allowed hash keys: :name, :version, :platform.
   <span class='kw'>end</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_merged_options'>merged_options</span>
 
+  <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_validate_new_options!'>validate_new_options!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 <span class='embdoc_beg'>=begin WriteConcern object support
 </span><span class='embdoc'>  if @options[:write_concern].is_a?(WriteConcern::Base)
@@ -2231,7 +2351,9 @@ Allowed hash keys: :name, :version, :platform.
   <span class='id identifier rubyid_validate_options!'>validate_options!</span><span class='lparen'>(</span><span class='id identifier rubyid_addresses'>addresses</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_authentication_options!'>validate_authentication_options!</span>
 
-  <span class='ivar'>@database</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Database.html#initialize-instance_method" title="Mongo::Database#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:database</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_database_options'>database_options</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+  <span class='id identifier rubyid_database_options'>database_options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:server_api</span><span class='rparen'>)</span>
+  <span class='ivar'>@database</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Database.html#initialize-instance_method" title="Mongo::Database#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:database</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_database_options'>database_options</span><span class='rparen'>)</span>
 
   <span class='comment'># Temporarily set monitoring so that event subscriptions can be
 </span>  <span class='comment'># set up without there being a cluster
@@ -2347,12 +2469,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-120
-121
-122</pre>
+133
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster'>cluster</span>
   <span class='ivar'>@cluster</span>
@@ -2424,12 +2546,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-123
-124
-125</pre>
+136
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_database'>database</span>
   <span class='ivar'>@database</span>
@@ -2501,12 +2623,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-130
-131
-132</pre>
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypter'>encrypter</span>
   <span class='ivar'>@encrypter</span>
@@ -2578,12 +2700,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-126
-127
-128</pre>
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 139</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -2595,6 +2717,87 @@ Allowed hash keys: :name, :version, :platform.
     
   </div>
 
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="canonicalize_ruby_options-class_method">
+  
+    .<strong>canonicalize_ruby_options</strong>(options)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Lowercases auth mechanism properties, if given, in the specified options, then converts the options to an instance of Options::Redacted.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1069
+1070
+1071
+1072
+1073
+1074
+1075
+1076
+1077
+1078</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 1069</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_canonicalize_ruby_options'>canonicalize_ruby_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="Options.html" title="Mongo::Options (module)">Options</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Options/Redacted.html" title="Mongo::Options::Redacted (class)">Redacted</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_k'>k</span> <span class='op'>==</span> <span class='symbol'>:auth_mech_properties</span> <span class='op'>||</span> <span class='id identifier rubyid_k'>k</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>auth_mech_properties</span><span class='tstring_end'>&#39;</span></span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_v'>v</span>
+        <span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pk'>pk</span><span class='comma'>,</span> <span class='id identifier rubyid_pv'>pv</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_pk'>pk</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='comma'>,</span> <span class='id identifier rubyid_pv'>pv</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rbracket'>]</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -2696,13 +2899,13 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-159
-160
-161
-162</pre>
+172
+173
+174
+175</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 172</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Mongo::Client (class)">Client</a></span></span><span class='rparen'>)</span>
@@ -2823,12 +3026,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-176
-177
-178</pre>
+189
+190
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 189</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_collection_name'>collection_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_database'>database</span><span class='lbracket'>[</span><span class='id identifier rubyid_collection_name'>collection_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span>
@@ -2898,15 +3101,15 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-796
-797
-798
-799
-800
-801</pre>
+830
+831
+832
+833
+834
+835</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 796</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 830</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='ivar'>@connect_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -2979,14 +3182,14 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-806
-807
-808
-809
-810</pre>
+840
+841
+842
+843
+844</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 806</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 840</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close_encrypter'>close_encrypter</span>
   <span class='ivar'>@encrypter</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span> <span class='kw'>if</span> <span class='ivar'>@encrypter</span>
@@ -3042,33 +3245,33 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-547
-548
-549
-550
-551
-552
-553
-554
-555
-556
-557
-558
-559
-560
-561
-562
-563
-564
-565
-566
-567
-568
-569
-570</pre>
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 547</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 580</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_options'>cluster_options</span>
   <span class='comment'># We share clusters when a new client with different CRUD_OPTIONS
@@ -3237,12 +3440,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-854
-855
-856</pre>
+888
+889
+890</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 854</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 888</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_database_names'>database_names</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_list_databases'>list_databases</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_info'>info</span><span class='op'>|</span> <span class='id identifier rubyid_info'>info</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
@@ -3375,14 +3578,14 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-994
-995
-996
-997
-998</pre>
+1028
+1029
+1030
+1031
+1032</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 994</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 1028</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_session'>get_session</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get_session!'>get_session!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -3466,12 +3669,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-188
-189
-190</pre>
+201
+202
+203</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 201</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hash'>hash</span>
   <span class='lbracket'>[</span><span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span>
@@ -3553,12 +3756,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-610
-611
-612</pre>
+643
+644
+645</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 610</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 643</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Mongo::Client:0x</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> cluster=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_summary'>summary</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -3726,16 +3929,16 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-877
-878
-879
-880
-881
-882
-883</pre>
+911
+912
+913
+914
+915
+916
+917</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 877</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 911</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_databases'>list_databases</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_name_only'>name_only</span> <span class='op'>=</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cmd'>cmd</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>listDatabases:</span> <span class='int'>1</span> <span class='rbrace'>}</span>
@@ -3861,14 +4064,14 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-896
-897
-898
-899
-900</pre>
+930
+931
+932
+933
+934</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 896</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 930</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_mongo_databases'>list_mongo_databases</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_database_names'>database_names</span><span class='lparen'>(</span><span class='id identifier rubyid_filter'>filter</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
@@ -3944,12 +4147,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-578
-579
-580</pre>
+611
+612
+613</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 578</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 611</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_read_retries'>max_read_retries</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:max_read_retries</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Cluster.html" title="Mongo::Cluster (class)">Cluster</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Cluster.html#MAX_READ_RETRIES-constant" title="Mongo::Cluster::MAX_READ_RETRIES (constant)">MAX_READ_RETRIES</a></span></span>
@@ -4023,12 +4226,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-598
-599
-600</pre>
+631
+632
+633</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 598</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 631</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_write_retries'>max_write_retries</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:max_write_retries</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Cluster.html" title="Mongo::Cluster (class)">Cluster</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Cluster.html#MAX_WRITE_RETRIES-constant" title="Mongo::Cluster::MAX_WRITE_RETRIES (constant)">MAX_WRITE_RETRIES</a></span></span>
@@ -4110,12 +4313,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-773
-774
-775</pre>
+808
+809
+810</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 773</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 808</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_concern'>read_concern</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:read_concern</span><span class='rbracket'>]</span>
@@ -4204,12 +4407,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-658
-659
-660</pre>
+691
+692
+693</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 658</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 691</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_preference'>read_preference</span>
   <span class='ivar'>@read_preference</span> <span class='op'>||=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:read</span><span class='rbracket'>]</span>
@@ -4283,12 +4486,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-588
-589
-590</pre>
+621
+622
+623</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 588</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 621</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_retry_interval'>read_retry_interval</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:read_retry_interval</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Cluster.html" title="Mongo::Cluster (class)">Cluster</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Cluster.html#READ_RETRY_INTERVAL-constant" title="Mongo::Cluster::READ_RETRY_INTERVAL (constant)">READ_RETRY_INTERVAL</a></span></span>
@@ -4370,24 +4573,24 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-820
-821
-822
-823
-824
-825
-826
-827
-828
-829
-830
-831
-832
-833
-834</pre>
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 820</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 854</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reconnect'>reconnect</span>
   <span class='id identifier rubyid_addresses'>addresses</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_addresses'>addresses</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:to_s</span><span class='rparen'>)</span>
@@ -4481,16 +4684,16 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-636
-637
-638
-639
-640
-641
-642</pre>
+669
+670
+671
+672
+673
+674
+675</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 636</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 669</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_selector'>server_selector</span>
   <span class='ivar'>@server_selector</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_read_preference'>read_preference</span>
@@ -4608,21 +4811,21 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-921
-922
-923
-924
-925
-926
-927
-928
-929
-930
-931
-932</pre>
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 921</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 955</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_start_session'>start_session</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='id identifier rubyid_get_session!'>get_session!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>implicit:</span> <span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -4709,12 +4912,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-622
-623
-624</pre>
+655
+656
+657</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 622</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 655</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_summary'>summary</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Client cluster=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cluster'>cluster</span><span class='period'>.</span><span class='id identifier rubyid_summary'>summary</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -4812,51 +5015,55 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-725
-726
-727
-728
-729
-730
-731
-732
-733
-734
-735
-736
-737
-738
-739
-740
-741
-742
-743
-744
-745
-746
-747
-748
-749
-750
-751
-752
-753
-754
-755
-756
-757
 758
 759
 760
 761
 762
-763</pre>
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 725</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 758</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_options'>update_options</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_old_options'>old_options</span> <span class='op'>=</span> <span class='ivar'>@options</span>
+
+  <span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_canonicalize_ruby_options'>canonicalize_ruby_options</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_validate_new_options!'>validate_new_options!</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_opts'>opts</span><span class='op'>|</span>
     <span class='comment'># Our options are frozen
@@ -4999,12 +5206,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-677
-678
-679</pre>
+710
+711
+712</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 677</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 710</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_with'>with</span><span class='lparen'>(</span><span class='label'>database:</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -5243,18 +5450,18 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-967
-968
-969
-970
-971
-972
-973
-974
-975</pre>
+1001
+1002
+1003
+1004
+1005
+1006
+1007
+1008
+1009</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 967</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 1001</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_watch'>watch</span><span class='lparen'>(</span><span class='id identifier rubyid_pipeline'>pipeline</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Database.html#ADMIN-constant" title="Mongo::Database::ADMIN (constant)">ADMIN</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_watch'>watch</span><span class='lparen'>(</span><span class='id identifier rubyid_pipeline'>pipeline</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Database.html#ADMIN-constant" title="Mongo::Database::ADMIN (constant)">ADMIN</a></span></span>
@@ -5273,7 +5480,7 @@ Allowed hash keys: :name, :version, :platform.
       <div class="method_details ">
   <h3 class="signature " id="with-instance_method">
   
-    #<strong>with</strong>(new_options = Options::Redacted.new)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Client (class)">Mongo::Client</a></span></tt> 
+    #<strong>with</strong>(new_options = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Client (class)">Mongo::Client</a></span></tt> 
   
 
   
@@ -5319,7 +5526,7 @@ Allowed hash keys: :name, :version, :platform.
         <span class='type'>(<tt>Hash</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>Options::Redacted.new</tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
         &mdash;
@@ -5372,24 +5579,24 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-699
-700
-701
-702
-703
-704
-705
-706
-707
-708
-709</pre>
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 699</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 732</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_with'>with</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Mongo::Options (module)">Options</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Options/Redacted.html" title="Mongo::Options::Redacted (class)">Redacted</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_with'>with</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clone'>clone</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
-    <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update_options'>update_options</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update_options'>update_options</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Options.html" title="Mongo::Options (module)">Options</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Options/Redacted.html" title="Mongo::Options::Redacted (class)">Redacted</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span>
     <span class='const'><span class='object_link'><a href="Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='period'>.</span><span class='id identifier rubyid_create'><span class='object_link'><a href="Database.html#create-class_method" title="Mongo::Database.create (method)">create</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
     <span class='comment'># We can&#39;t use the same cluster if some options that would affect it
 </span>    <span class='comment'># have changed.
@@ -5512,18 +5719,18 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-1020
-1021
-1022
-1023
-1024
-1025
-1026
-1027
-1028</pre>
+1054
+1055
+1056
+1057
+1058
+1059
+1060
+1061
+1062</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 1020</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 1054</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_session'>with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='id identifier rubyid_get_session'>get_session</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -5611,12 +5818,12 @@ Allowed hash keys: :name, :version, :platform.
       <pre class="lines">
 
 
-787
-788
-789</pre>
+821
+822
+823</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 787</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/client.rb', line 821</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern'>write_concern</span>
   <span class='ivar'>@write_concern</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="WriteConcern.html" title="Mongo::WriteConcern (module)">WriteConcern</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="WriteConcern.html#get-instance_method" title="Mongo::WriteConcern#get (method)">get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -5631,9 +5838,9 @@ Allowed hash keys: :name, :version, :platform.
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:26 2020 by
+  Generated on Wed May 12 17:19:09 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

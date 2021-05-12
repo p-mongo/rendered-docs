@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Server::Monitor::AppMetadata
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -141,7 +141,7 @@
   
   <h3 class="inherited">Constants inherited
      from <span class='object_link'><a href="../AppMetadata.html" title="Mongo::Server::AppMetadata (class)">AppMetadata</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../AppMetadata.html#AUTH_OPTION_KEYS-constant" title="Mongo::Server::AppMetadata::AUTH_OPTION_KEYS (constant)">AppMetadata::AUTH_OPTION_KEYS</a></span>, <span class='object_link'><a href="../AppMetadata.html#DRIVER_NAME-constant" title="Mongo::Server::AppMetadata::DRIVER_NAME (constant)">AppMetadata::DRIVER_NAME</a></span>, <span class='object_link'><a href="../AppMetadata.html#MAX_APP_NAME_SIZE-constant" title="Mongo::Server::AppMetadata::MAX_APP_NAME_SIZE (constant)">AppMetadata::MAX_APP_NAME_SIZE</a></span>, <span class='object_link'><a href="../AppMetadata.html#MAX_DOCUMENT_SIZE-constant" title="Mongo::Server::AppMetadata::MAX_DOCUMENT_SIZE (constant)">AppMetadata::MAX_DOCUMENT_SIZE</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../AppMetadata.html#AUTH_OPTION_KEYS-constant" title="Mongo::Server::AppMetadata::AUTH_OPTION_KEYS (constant)">AppMetadata::AUTH_OPTION_KEYS</a></span>, <span class='object_link'><a href="../AppMetadata.html#DRIVER_NAME-constant" title="Mongo::Server::AppMetadata::DRIVER_NAME (constant)">AppMetadata::DRIVER_NAME</a></span>, <span class='object_link'><a href="../AppMetadata.html#MAX_APP_NAME_SIZE-constant" title="Mongo::Server::AppMetadata::MAX_APP_NAME_SIZE (constant)">AppMetadata::MAX_APP_NAME_SIZE</a></span>, <span class='object_link'><a href="../AppMetadata.html#MAX_DOCUMENT_SIZE-constant" title="Mongo::Server::AppMetadata::MAX_DOCUMENT_SIZE (constant)">AppMetadata::MAX_DOCUMENT_SIZE</a></span>, <span class='object_link'><a href="../AppMetadata.html#PURPOSES-constant" title="Mongo::Server::AppMetadata::PURPOSES (constant)">AppMetadata::PURPOSES</a></span></p>
 
 
 
@@ -149,7 +149,7 @@
   <h2>Instance Attribute Summary</h2>
   
   <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../AppMetadata.html" title="Mongo::Server::AppMetadata (class)">AppMetadata</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../AppMetadata.html#wrapping_libraries-instance_method" title="Mongo::Server::AppMetadata#wrapping_libraries (method)">#wrapping_libraries</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../AppMetadata.html#purpose-instance_method" title="Mongo::Server::AppMetadata#purpose (method)">#purpose</a></span>, <span class='object_link'><a href="../AppMetadata.html#wrapping_libraries-instance_method" title="Mongo::Server::AppMetadata#wrapping_libraries (method)">#wrapping_libraries</a></span></p>
 
 
   
@@ -163,7 +163,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(options)  &#x21d2; AppMetadata </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(options = {})  &#x21d2; AppMetadata </a>
     
 
     
@@ -207,7 +207,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(options)  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Server::Monitor::AppMetadata (class)">AppMetadata</a></span></tt> 
+    #<strong>initialize</strong>(options = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Mongo::Server::Monitor::AppMetadata (class)">AppMetadata</a></span></tt> 
   
 
   
@@ -250,17 +250,17 @@
       <pre class="lines">
 
 
-25
-26
-27
 28
 29
-30</pre>
+30
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/app_metadata.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/server/monitor/app_metadata.rb', line 28</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_instance_variable_defined?'>instance_variable_defined?</span><span class='lparen'>(</span><span class='symbol'>:@request_auth_mech</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_remove_instance_variable'>remove_instance_variable</span><span class='lparen'>(</span><span class='symbol'>:@request_auth_mech</span><span class='rparen'>)</span>
@@ -277,9 +277,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:37 2020 by
+  Generated on Wed May 12 17:19:19 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

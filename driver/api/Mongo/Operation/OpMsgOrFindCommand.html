@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Operation::OpMsgOrFindCommand
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -73,7 +73,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd><span class='object_link'><a href="PolymorphicLookup.html" title="Mongo::Operation::PolymorphicLookup (module)">PolymorphicLookup</a></span></dd>
+      <dd><span class='object_link'><a href="PolymorphicLookup.html" title="Mongo::Operation::PolymorphicLookup (module)">PolymorphicLookup</a></span>, <span class='object_link'><a href="PolymorphicOperation.html" title="Mongo::Operation::PolymorphicOperation (module)">PolymorphicOperation</a></span></dd>
   </dl>
   
   
@@ -115,39 +115,6 @@
 
 
 
-  
-    <h2>
-      Instance Method Summary
-      <small><a href="#" class="summary_toggle">collapse</a></small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#execute-instance_method" title="#execute (instance method)">#<strong>execute</strong>(server, client:)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
-
 
   
   
@@ -155,68 +122,24 @@
   
   
   
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="execute-instance_method">
   
-    #<strong>execute</strong>(server, client:)  &#x21d2; <tt>Object</tt> 
   
-
   
-
   
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
   
+  
+  <h2>Method Summary</h2>
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="PolymorphicOperation.html" title="Mongo::Operation::PolymorphicOperation (module)">PolymorphicOperation</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="PolymorphicOperation.html#execute-instance_method" title="Mongo::Operation::PolymorphicOperation#execute (method)">#execute</a></span></p>
 
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-26
-27
-28
-29
-30
-31</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/op_msg_or_find_command.rb', line 26</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='label'>client:</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_connection'>connection</span><span class='op'>|</span>
-    <span class='id identifier rubyid_operation'>operation</span> <span class='op'>=</span> <span class='id identifier rubyid_final_operation'>final_operation</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
 
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:24 2020 by
+  Generated on Wed May 12 17:19:08 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

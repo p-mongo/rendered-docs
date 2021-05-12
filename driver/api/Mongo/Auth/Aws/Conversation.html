@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Auth::Aws::Conversation
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -215,7 +215,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../ConversationBase.html" title="Mongo::Auth::ConversationBase (class)">ConversationBase</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../ConversationBase.html#initialize-instance_method" title="Mongo::Auth::ConversationBase#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../ConversationBase.html#speculative_auth_document-instance_method" title="Mongo::Auth::ConversationBase#speculative_auth_document (method)">#speculative_auth_document</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../ConversationBase.html#build_message-instance_method" title="Mongo::Auth::ConversationBase#build_message (method)">#build_message</a></span>, <span class='object_link'><a href="../ConversationBase.html#initialize-instance_method" title="Mongo::Auth::ConversationBase#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../ConversationBase.html#speculative_auth_document-instance_method" title="Mongo::Auth::ConversationBase#speculative_auth_document (method)">#speculative_auth_document</a></span>, <span class='object_link'><a href="../ConversationBase.html#validate_external_auth_source-instance_method" title="Mongo::Auth::ConversationBase#validate_external_auth_source (method)">#validate_external_auth_source</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -328,9 +328,6 @@
       <pre class="lines">
 
 
-37
-38
-39
 40
 41
 42
@@ -350,7 +347,7 @@
 56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/conversation.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/auth/aws/conversation.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_continue'>continue</span><span class='lparen'>(</span><span class='id identifier rubyid_reply_document'>reply_document</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
   <span class='ivar'>@conversation_id</span> <span class='op'>=</span> <span class='id identifier rubyid_reply_document'>reply_document</span><span class='lbracket'>[</span><span class='symbol'>:conversationId</span><span class='rbracket'>]</span>
@@ -367,10 +364,7 @@
     <span class='label'>payload:</span> <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Binary</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_client_final_payload'>client_final_payload</span><span class='rparen'>)</span><span class='comma'>,</span>
     <span class='label'>conversationId:</span> <span class='id identifier rubyid_conversation_id'>conversation_id</span><span class='comma'>,</span>
   <span class='rparen'>)</span>
-  <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Protocol/Msg.html" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Protocol/Msg.html#DATABASE_IDENTIFIER-constant" title="Mongo::Protocol::Msg::DATABASE_IDENTIFIER (constant)">DATABASE_IDENTIFIER</a></span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_auth_source'>auth_source</span>
-  <span class='id identifier rubyid_cluster_time'>cluster_time</span> <span class='op'>=</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_mongos?'>mongos?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_cluster_time'>cluster_time</span>
-  <span class='id identifier rubyid_selector'>selector</span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../../Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Operation.html#CLUSTER_TIME-constant" title="Mongo::Operation::CLUSTER_TIME (constant)">CLUSTER_TIME</a></span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster_time'>cluster_time</span> <span class='kw'>if</span> <span class='id identifier rubyid_cluster_time'>cluster_time</span>
-  <span class='const'><span class='object_link'><a href="../../Protocol.html" title="Mongo::Protocol (module)">Protocol</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Protocol/Msg.html" title="Mongo::Protocol::Msg (class)">Msg</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../../Protocol/Msg.html#initialize-instance_method" title="Mongo::Protocol::Msg#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_selector'>selector</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_build_message'>build_message</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_auth_source'>auth_source</span><span class='comma'>,</span> <span class='id identifier rubyid_selector'>selector</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -382,9 +376,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:33 2020 by
+  Generated on Wed May 12 17:19:16 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

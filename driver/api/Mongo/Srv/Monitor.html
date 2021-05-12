@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Srv::Monitor
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -303,28 +303,6 @@
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#start!-instance_method" title="#start! (instance method)">#<strong>start!</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
     </ul>
   
 
@@ -469,19 +447,19 @@
       <pre class="lines">
 
 
-42
-43
-44
 45
 46
 47
 48
 49
 50
-51</pre>
+51
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_cluster'>cluster</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
   <span class='ivar'>@cluster</span> <span class='op'>=</span> <span class='id identifier rubyid_cluster'>cluster</span>
@@ -533,12 +511,12 @@
       <pre class="lines">
 
 
-55
-56
-57</pre>
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster'>cluster</span>
   <span class='ivar'>@cluster</span>
@@ -598,12 +576,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_last_result'>last_result</span>
   <span class='ivar'>@last_result</span>
@@ -643,12 +621,12 @@
       <pre class="lines">
 
 
-53
-54
-55</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -661,63 +639,12 @@
   </div>
 
 
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="start!-instance_method">
-  
-    #<strong>start!</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-62
-63
-64
-65</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/srv/monitor.rb', line 62</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_start!'>start!</span>
-  <span class='kw'>super</span>
-  <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id identifier rubyid_define_finalizer'>define_finalizer</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='ivar'>@thread</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:28 2020 by
+  Generated on Wed May 12 17:19:12 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

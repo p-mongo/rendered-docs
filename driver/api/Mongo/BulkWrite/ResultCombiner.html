@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::BulkWrite::ResultCombiner
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -346,13 +346,13 @@
       <pre class="lines">
 
 
-39
-40
-41
-42</pre>
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@results</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -434,12 +434,12 @@
       <pre class="lines">
 
 
-26
-27
-28</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_count'>count</span>
   <span class='ivar'>@count</span>
@@ -515,12 +515,12 @@
       <pre class="lines">
 
 
-29
-30
-31</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_results'>results</span>
   <span class='ivar'>@results</span>
@@ -631,9 +631,6 @@
       <pre class="lines">
 
 
-55
-56
-57
 58
 59
 60
@@ -646,10 +643,13 @@
 67
 68
 69
-70</pre>
+70
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_combine!'>combine!</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_count'>count</span><span class='rparen'>)</span>
   <span class='comment'># Errors can be communicated by the server in a variety of fields:
@@ -748,12 +748,12 @@
       <pre class="lines">
 
 
-82
-83
-84</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write/result_combiner.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_result'>result</span>
   <span class='const'><span class='object_link'><a href="../BulkWrite.html" title="Mongo::BulkWrite (class)">BulkWrite</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Result.html" title="Mongo::BulkWrite::Result (class)">Result</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Result.html#initialize-instance_method" title="Mongo::BulkWrite::Result#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_results'>results</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_validate!'><span class='object_link'><a href="Result.html#validate!-instance_method" title="Mongo::BulkWrite::Result#validate! (method)">validate!</a></span></span>
@@ -768,9 +768,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:36 2020 by
+  Generated on Wed May 12 17:19:18 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

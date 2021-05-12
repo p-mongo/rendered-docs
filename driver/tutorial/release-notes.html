@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Release Notes &mdash; MongoDB Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index" />
+
+  <meta name="release" content="upcoming"/>
+  <meta name="version" content="master"/>
+  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/release-notes.txt"/>
+  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
+    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/release-notes/" />
+  
+   <link rel="stylesheet" href="_static/mongodb-docs.css" type="text/css" />
+   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="_static/css/navbar.min.css?t=nocache" type="text/css" />
+    
+    <script type="text/javascript" src="_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="_static/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
+<link rel="search" title="Search" href="search.html" />
+<link rel="top" title="MongoDB Ruby Driver Manual" href="index.html" />
+<link rel="next" title="Additional Resources" href="reference/additional-resources.html" />
+<link rel="prev" title="BSON 3.x Tutorial" href="tutorials/bson-v3.html" /></head>
+<body data-project="docs-ruby" data-project-title="MongoDB Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start':new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
+  </script>
+  <!-- End Google Tag Manager -->
+   <script>
+     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
+     window.googleSearchPlaceholder = "Search Ruby Driver"
+     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
+   </script><div class="content" >
+
+   <div id="left-column">
+         <aside id="sidebar" class="sidebar">
+             
+  <div class="sphinxsidebar" id="sphinxsidebar">
+    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+
+
+<h3>
+  <a href="index.html">MongoDB Ruby Driver Manual</a>
+</h3>
+
+
+    <div class="btn-group version-sidebar">
+      
+        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
+          
+          
+          master (upcoming)<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          
+            
+            <li class="active">
+            
+              <a href="#" data-path="ruby-driver/current">
+                
+                master (upcoming)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
+                
+                Version 2.14 (current)
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
+                
+                Version 2.13
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
+                
+                Version 2.12
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
+                
+                Version 2.11
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
+                
+                Version 2.10
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
+                
+                Version 2.9
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
+                
+                Version 2.8
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
+                
+                Version 2.7
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
+                
+                Version 2.6
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
+                
+                Version 2.5
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
+                
+                Version 2.4
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
+                
+                Version 2.3
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
+                
+                Version 2.2
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
+                
+                Version 2.0
+              </a>
+            </li>
+          
+            
+            <li>
+            
+              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
+                
+                1.x
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+
+<ul class="current"><li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul><li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="reference/driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="support.html">Support</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="tutorials/quick-start.html">Quick Start</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="reference/connection-and-configuration.html">Connection &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="reference/create-client.html">Creating a Client</a></li><li class="toctree-l2"><a class="reference internal" href="reference/authentication.html">Authentication</a></li><li class="toctree-l2"><a class="reference internal" href="reference/monitoring.html">Monitoring</a></li><li class="toctree-l2"><a class="reference internal" href="reference/user-management.html">User Management</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="reference/working-with-data.html">Working With Data</a><ul><li class="toctree-l2"><a class="reference internal" href="reference/crud-operations.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="reference/bulk-operations.html">Bulk Writes</a></li><li class="toctree-l2"><a class="reference internal" href="reference/projection.html">Projection</a></li><li class="toctree-l2"><a class="reference internal" href="reference/aggregation.html">Aggregation</a></li><li class="toctree-l2"><a class="reference internal" href="reference/text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="reference/geospatial-search.html">Geospatial Search</a></li><li class="toctree-l2"><a class="reference internal" href="reference/query-cache.html">Query Cache</a></li><li class="toctree-l2"><a class="reference internal" href="reference/gridfs.html">GridFS</a></li><li class="toctree-l2"><a class="reference internal" href="reference/change-streams.html">Change Streams</a></li><li class="toctree-l2"><a class="reference internal" href="reference/sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="reference/transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="reference/client-side-encryption.html">Client-Side Encryption</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="reference/schema-operations.html">Schema Operations</a><ul><li class="toctree-l2"><a class="reference internal" href="reference/database-tasks.html">Databases</a></li><li class="toctree-l2"><a class="reference internal" href="reference/collection-tasks.html">Collections</a></li><li class="toctree-l2"><a class="reference internal" href="reference/indexing.html">Indexing</a></li><li class="toctree-l2"><a class="reference internal" href="reference/collations.html">Collations</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="tutorials/bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="tutorials/bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1 current"><a class="reference internal current" href="">Release Notes</a></li><li class="toctree-l1"><a class="reference internal" href="reference/additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute to the Driver</a></li></ul>
+    </div>
+  </div>
+           
+         </aside>
+
+   </div>
+
+    <div id="main-column" class="main-column">
+
+    <span id="showNav" class="showNav">Navigation</span>
+
+      
+      
+        <div class="document">
+            <div class="documentwrapper"><div class="bodywrapper">
+              <div class="body" data-pagename="release-notes">
+
+                
+  <div class="bc">
+    
+      
+    
+    
+  </div>
+                
+                  <div class="section" id="release-notes">
+<span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<p>This page documents significant changes in driver releases.</p>
+<p>It is not an exhaustive list of changes and generally does not enumerate
+bug fixes; please consult the <a class="reference external" href="https://github.com/mongodb/mongo-ruby-driver/releases">releases page on GitHub</a> for the full
+list of changes in each version of the driver.</p>
+<div class="section" id="id2">
+<h2>2.15<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>This release adds the following new features:</p>
+<ul class="simple">
+<li>Ability to specify the <a class="reference internal" href="reference/create-client.html#server-api-parameters"><span class="std std-ref">server API parameters</span></a>.</li>
+<li>Support for Zstandard and Snappy <a class="reference internal" href="reference/create-client.html#compression"><span class="std std-ref">wire protocol compression</span></a>.</li>
+<li><a class="reference internal" href="reference/query-cache.html#query-cache-middleware"><span class="std std-ref">Query cache middleware</span></a> was moved to the
+driver from Mongoid and is now usable in applications that do not use Mongoid.</li>
+</ul>
+<p>The following smaller improvements have been made:</p>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">OperationFailure</span></code> exception message now contains the server error code
+name, if provided by the server. The layout of the message was changed to
+accommodate the error code name.</li>
+<li>The generic SSL messaging has been removed from <code class="docutils literal notranslate"><span class="pre">SocketError</span></code> messages
+when TLS is used. TLS connections to MongoDB are now the norm, with Atlas
+requiring TLS, and it is more likely that a connection fails due to failed
+certificate verification than due to the server not having TLS enabled.</li>
+<li>A hook was added to permit applications to <a class="reference internal" href="reference/create-client.html#modifying-tls-context"><span class="std std-ref">modify the TLS context</span></a> used for TLS connections, for example to exclude
+ciphers.</li>
+<li>Heartbeat succeeded and heartbeat failed <a class="reference internal" href="reference/monitoring.html#server-heartbeats"><span class="std std-ref">server monitoring events</span></a> are now linked to the respective heartbeat started
+event, to improve usability.</li>
+<li>When the driver closes network sockets it now enforces the socket timeout.</li>
+<li><code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code> collection method now uses the <code class="docutils literal notranslate"><span class="pre">$collStats</span></code>
+aggregation pipeline stage instead of the count command on 5.0 and newer
+servers.</li>
+<li>The platform metadata sent by the driver to the server in the handshake
+now includes the purpose of the connection being established, permitting
+administrators to distinguish monitoring connections from application
+connections.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>2.14<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>This release adds the following new features:</p>
+<ul class="simple">
+<li>Queries against Atlas Data Lake are now supported.</li>
+<li>The <a class="reference internal" href="reference/query-cache.html#id1"><span class="std std-ref">query cache</span></a> has been moved from Mongoid into the
+driver. Mongoid will use the driver’s query cache as of driver 2.14.
+As part of the move, several issues with the query cache have been fixed
+and its functionality was extended to cover aggregation pipeline queries
+and to support result sets of any size.</li>
+<li>Explain verbosity can now <a class="reference internal" href="reference/crud-operations.html#query-options"><span class="std std-ref">be specified</span></a> when explaining.</li>
+<li>Mixed case read preference tag names are now supported.</li>
+<li>The driver will perform <a class="reference internal" href="reference/create-client.html#ocsp-verification"><span class="std std-ref">OCSP endpoint verification</span></a>
+by default when TLS is enabled. Due to lack of support in Ruby’s <code class="docutils literal notranslate"><span class="pre">openssl</span></code>
+extension, OCSP stapling is not yet implemented.</li>
+</ul>
+<p>The following smaller improvements have been made:</p>
+<ul class="simple">
+<li>Default logger level for <code class="docutils literal notranslate"><span class="pre">Client</span></code> objects is now info (up from debug).
+This reduces the amount of log output produced by the driver by default.</li>
+<li>Database and collection write methods support specifying write concern for
+the individual operations.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Client#summary</span></code> method now shows the monitoring state of each server.</li>
+<li>When objects other than hashes are attempted to be inserted (which is not
+allowed), the driver now provides better diagnostics.</li>
+<li>DNS queries for SRV URIs are now subject to configured socket timeouts.</li>
+<li>When the <code class="docutils literal notranslate"><span class="pre">Client</span></code> object is reconnected, session pools are now cleared.</li>
+</ul>
+<p>Support for Ruby versions 2.3 and 2.4 has been deprecated as of this release.</p>
+</div>
+<div class="section" id="id4">
+<h2>2.13<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>This release implements the necessary client-side functionality to use the
+features added in MongoDB 4.4. Specifically, the following new driver
+functionality has been added:</p>
+<ul class="simple">
+<li>Support for the <code class="docutils literal notranslate"><span class="pre">directConnection</span></code> URI option to provide a consistent
+cross-driver mechanims to discover deployment topology or force direct
+connection.</li>
+<li>Support for <a class="reference internal" href="reference/authentication.html#aws-auth"><span class="std std-ref">MONGODB-AWS authentication mechanism</span></a>.</li>
+<li>When SCRAM authentication is used with 4.4 and newer servers, the driver will
+complete authentication with fewer network roundtrips.</li>
+<li>The driver creates an additional monitoring connection for 4.4 and newer
+servers, permitting the server to notify the driver when its state changes.
+This reduces the time for the driver to discover the new primary during
+failover events.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Client</span></code> constructor can be given a block, in which case the client object
+will be yielded to the block and automatically closed when the block ends.</li>
+<li><code class="docutils literal notranslate"><span class="pre">start_session</span></code> can be given a block, in which case the session object will
+be yielded to the block and automatically ended when the block ends.</li>
+<li>Write options can now be specified for individual CRUD operations.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">:allow_disk_use</span></code> option was added to find operations.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">:authorized_databases</span></code> option was added to <code class="docutils literal notranslate"><span class="pre">list_databases</span></code>
+method.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">list_collections</span></code> method now passes through all options.</li>
+<li>Ability to set an index <a class="reference internal" href="reference/indexing.html#index-options"><span class="std std-ref">as hidden</span></a> when creating it.</li>
+<li>Ability to specify commit quorum when creating indexes.</li>
+<li><code class="docutils literal notranslate"><span class="pre">:wrapping_libraries</span></code> <a class="reference internal" href="reference/create-client.html#client-options"><span class="std std-ref">client option</span></a>, to be used
+by libraries like Mongoid which wrap the driver to report their version to
+the server for troubleshooting/statistics aggregation purposes.</li>
+</ul>
+<p>The following smaller improvements have been made:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">count_documents</span></code> can now be invoked with no arguments.</li>
+<li>The default TCP keep-alive time has been reduced to make the driver
+correctly detect dropped connections on Microsoft Azure.</li>
+<li><code class="docutils literal notranslate"><span class="pre">CursorNotFound</span></code> is now a resumable change stream error.</li>
+<li>The number of backtrace lines in exceptions handled by background threads
+can now be configured.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>2.12<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>This release adds the following new features:</p>
+<ul class="simple">
+<li><a class="reference internal" href="reference/client-side-encryption.html#client-side-encryption"><span class="std std-ref">Client-side encryption</span></a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">list_collections</span></code> method now accepts the <code class="docutils literal notranslate"><span class="pre">:filter</span></code> option.</li>
+</ul>
+<p>The following smaller improvements have been made:</p>
+<ul class="simple">
+<li>Authentication exceptions now include server information to aid in
+troubleshooting.</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>2.11<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>This release adds the following new features:</p>
+<ul class="simple">
+<li>If a minimum connection pool size is specified, the pool for each server
+will create a background thread to eagerly establish connections up to
+the specified minimum pool size.</li>
+<li>If the driver connects to the deployment using a SRV URI and the deployment
+is a sharded cluster, the driver will poll the SRV DNS records to
+automatically discover new and removed mongos servers and adjust the
+set of known servers accordingly.</li>
+</ul>
+<p>The following smaller improvements have been made:</p>
+<ul class="simple">
+<li>The driver now permits unencoded subdelimiters in usernames and passwords in
+MongoDB URIs.</li>
+<li>User management helpers now accept the write concern option.</li>
+<li>The <a class="reference internal" href="reference/monitoring.html#command-monitoring"><span class="std std-ref">command monitoring</span></a> logger provided with the
+driver will now log connection ids used for each command.</li>
+<li>When legacy read retries are used, retry on the same set of server errors
+that the modern retries would have retried on.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">distinct(nil)</span></code> call is prohibited because it is rejected by MongoDB
+4.4 and newer servers.</li>
+</ul>
+<p>This release of the Ruby driver increases the minimum required Ruby version
+to 2.3, as well as minimum supported JRuby version to 9.2.</p>
+</div>
+<div class="section" id="id7">
+<h2>2.10<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>This release implements the necessary client-side functionality to use the
+features added in MongoDB 4.2. Specifically, the following new driver
+functionality has been added:</p>
+<ul class="simple">
+<li>Support for sharded transactions.</li>
+<li>Applications can set the <code class="docutils literal notranslate"><span class="pre">:max_time_ms</span></code> option in <code class="docutils literal notranslate"><span class="pre">commit_transaction</span></code>
+method.</li>
+<li>Support for database-level aggregation.</li>
+<li>Support for <code class="docutils literal notranslate"><span class="pre">$merge</span></code> aggregation pipeline stage.</li>
+<li>The update operations now accept an aggregation pipeline as an array.</li>
+<li>TLS regenotiation is now disabled when possible.</li>
+<li>Change streams now handle post-batch resume tokens provided by the server.</li>
+</ul>
+<p>The following smaller improvements have been made:</p>
+<ul class="simple">
+<li>All methods now accept <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code> option for the write concern,
+including those that previously accepted the <code class="docutils literal notranslate"><span class="pre">:write</span></code> option.</li>
+<li>The query string in a MongoDB URI can now start with <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.</li>
+</ul>
+<p>Support for Ruby versions less than 2.3 is deprecated in this release.</p>
+</div>
+<div class="section" id="id8">
+<h2>2.9<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>This release adds the following new features:</p>
+<ul class="simple">
+<li>A rewrite of the connection pool code with improved monitoring,
+compliant with the CMAP specification</li>
+<li>A modern retryable reads implementation compliant with the cross-driver
+retryable reads specification, enabled by default.</li>
+<li>Modern retryable writes are now enabled by default.</li>
+<li>Legacy retryable writes can be disabled in most cases.</li>
+<li>The driver now supports certificate chains being provided as client
+certificates for TLS connections.</li>
+<li>Ability to specify multiple CA certificates when creating a <code class="docutils literal notranslate"><span class="pre">Client</span></code>.</li>
+<li>Ability to pass the private key and certificate via URI options.</li>
+</ul>
+<p>The following smaller improvements have been made:</p>
+<ul class="simple">
+<li>Support for the <code class="docutils literal notranslate"><span class="pre">startAfter</span></code> option in the <code class="docutils literal notranslate"><span class="pre">$changeStream</span></code>
+aggregation pipeline stage.</li>
+<li>Field order of BSON documents sent to the server changed for better logging.</li>
+<li>Certificate paths with unescaped slashes can now be specified in
+MongoDB URIs.</li>
+</ul>
+<p>This release deprecates support for Ruby versions less than 2.3.</p>
+</div>
+</div>
+
+                
+    <div id="btnv">
+      <span class="btn-arrow-left">&larr; &nbsp;</span>
+      <a class="btn-prev-text" href="tutorials/bson-v3.html" title="Previous Section: BSON 3.x Tutorial"><span>BSON 3.x Tutorial</span></a>
+      <a class="btn-next-text" href="reference/additional-resources.html" title="Next Section: Additional Resources"><span>Additional Resources</span></a>
+      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    </div>
+                  <div class="footer">
+                    <div class="copyright">
+                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
+                    </div>
+                  </div>
+              </div></div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+      <div class="wrapper"> 
+            <div class="social">
+               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
+               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
+               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
+               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
+               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
+            </div>
+        
+
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
+
+  <script src="_static/navbar.min.js"></script>
+
+  
+
+  <script type="text/javascript">
+  // Bootstrap array of links that should trigger a full page reload
+  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
+  </script></body>
+</html>

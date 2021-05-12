@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Cluster
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -358,6 +358,33 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#monitor_app_metadata-instance_method" title="#monitor_app_metadata (instance method)">#<strong>monitor_app_metadata</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#monitoring-instance_method" title="#monitoring (instance method)">#<strong>monitoring</strong>  &#x21d2; Monitoring </a>
     
 
@@ -409,6 +436,33 @@
     <span class="summary_desc"><div class='inline'>
 <p>The options hash.</p>
 </div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#push_monitor_app_metadata-instance_method" title="#push_monitor_app_metadata (instance method)">#<strong>push_monitor_app_metadata</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -594,30 +648,6 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Create a cluster for the provided client, for use when we don&#39;t want the client&#39;s original cluster instance to be the same.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#finalize-class_method" title="finalize (class method)">.<strong>finalize</strong>(pools, periodic_executor, session_pool)  &#x21d2; Proc </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Finalize the cluster for garbage collection.</p>
 </div></span>
   
 </li>
@@ -1537,6 +1567,26 @@
           
         </li>
       
+        <li>
+          <span class="name">:server_api</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The requested server API version. This hash can have the following items:</p>
+<ul><li>
+<p><strong>:version</strong> – string</p>
+</li><li>
+<p><strong>:strict</strong> – boolean</p>
+</li><li>
+<p><strong>:deprecation_errors</strong> – boolean</p>
+</li></ul>
+</div>
+          
+        </li>
+      
     </ul>
   
 
@@ -1563,14 +1613,6 @@
       <pre class="lines">
 
 
-112
-113
-114
-115
-116
-117
-118
-119
 120
 121
 122
@@ -1703,10 +1745,21 @@
 249
 250
 251
-252</pre>
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_seeds'>seeds</span><span class='comma'>,</span> <span class='id identifier rubyid_monitoring'>monitoring</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Mongo::Options (module)">Options</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Options/Redacted.html" title="Mongo::Options::Redacted (class)">Redacted</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_seeds'>seeds</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1728,7 +1781,9 @@
   <span class='ivar'>@servers</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='ivar'>@monitoring</span> <span class='op'>=</span> <span class='id identifier rubyid_monitoring'>monitoring</span>
   <span class='ivar'>@event_listeners</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Event.html" title="Mongo::Event (module)">Event</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Event/Listeners.html" title="Mongo::Event::Listeners (class)">Listeners</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Event/Listeners.html#initialize-instance_method" title="Mongo::Event::Listeners#initialize (method)">new</a></span></span>
-  <span class='ivar'>@app_metadata</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/AppMetadata.html" title="Mongo::Server::AppMetadata (class)">AppMetadata</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server/AppMetadata.html#initialize-instance_method" title="Mongo::Server::AppMetadata#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@options</span><span class='rparen'>)</span>
+  <span class='ivar'>@app_metadata</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/AppMetadata.html" title="Mongo::Server::AppMetadata (class)">AppMetadata</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server/AppMetadata.html#initialize-instance_method" title="Mongo::Server::AppMetadata#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>purpose:</span> <span class='symbol'>:application</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='ivar'>@monitor_app_metadata</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Monitor.html" title="Mongo::Server::Monitor (class)">Monitor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Monitor/AppMetadata.html" title="Mongo::Server::Monitor::AppMetadata (class)">AppMetadata</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server/Monitor/AppMetadata.html#initialize-instance_method" title="Mongo::Server::Monitor::AppMetadata#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>purpose:</span> <span class='symbol'>:monitor</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='ivar'>@push_monitor_app_metadata</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Monitor.html" title="Mongo::Server::Monitor (class)">Monitor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Monitor/AppMetadata.html" title="Mongo::Server::Monitor::AppMetadata (class)">AppMetadata</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server/Monitor/AppMetadata.html#initialize-instance_method" title="Mongo::Server::Monitor::AppMetadata#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>purpose:</span> <span class='symbol'>:push_monitor</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='ivar'>@cluster_time_lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@cluster_time</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@srv_monitor_lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1798,14 +1853,11 @@
       <span class='ivar'>@cursor_reaper</span><span class='comma'>,</span> <span class='ivar'>@socket_reaper</span><span class='comma'>,</span>
     <span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 
-    <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id identifier rubyid_define_finalizer'>define_finalizer</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span>
-      <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='ivar'>@periodic_executor</span><span class='comma'>,</span> <span class='ivar'>@session_pool</span><span class='rparen'>)</span><span class='rparen'>)</span>
-
     <span class='ivar'>@periodic_executor</span><span class='period'>.</span><span class='id identifier rubyid_run!'>run!</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Need to record start time prior to starting monitoring
-</span>  <span class='id identifier rubyid_start_time'>start_time</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+</span>  <span class='id identifier rubyid_start_monotime'>start_monotime</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span>
 
   <span class='id identifier rubyid_servers'>servers</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
     <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_start_monitoring'>start_monitoring</span>
@@ -1821,7 +1873,7 @@
 </span>    <span class='kw'>if</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span> <span class='op'>&lt;</span> <span class='int'>3</span>
       <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span> <span class='op'>=</span> <span class='int'>3</span>
     <span class='kw'>end</span>
-    <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>=</span> <span class='id identifier rubyid_start_time'>start_time</span> <span class='op'>+</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span>
+    <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>=</span> <span class='id identifier rubyid_start_monotime'>start_monotime</span> <span class='op'>+</span> <span class='id identifier rubyid_server_selection_timeout'>server_selection_timeout</span>
     <span class='comment'># Wait for the first scan of each server to complete, for
 </span>    <span class='comment'># backwards compatibility.
 </span>    <span class='comment'># If any servers are discovered during this SDAM round we are going to
@@ -1832,10 +1884,10 @@
 </span>      <span class='id identifier rubyid_servers'>servers</span> <span class='op'>=</span> <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
         <span class='id identifier rubyid_servers_list'>servers_list</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
       <span class='kw'>end</span>
-      <span class='kw'>if</span> <span class='id identifier rubyid_servers'>servers</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_last_scan'>last_scan</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_last_scan'>last_scan</span> <span class='op'>&gt;=</span> <span class='id identifier rubyid_start_time'>start_time</span> <span class='rbrace'>}</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_servers'>servers</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_last_scan_monotime'>last_scan_monotime</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_last_scan_monotime'>last_scan_monotime</span> <span class='op'>&gt;=</span> <span class='id identifier rubyid_start_monotime'>start_monotime</span> <span class='rbrace'>}</span>
         <span class='kw'>break</span>
       <span class='kw'>end</span>
-      <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_time_remaining'>time_remaining</span> <span class='op'>=</span> <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>-</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+      <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_time_remaining'>time_remaining</span> <span class='op'>=</span> <span class='id identifier rubyid_deadline'>deadline</span> <span class='op'>-</span> <span class='const'><span class='object_link'><a href="Utils.html" title="Mongo::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_monotonic_time'>monotonic_time</span><span class='rparen'>)</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
         <span class='kw'>break</span>
       <span class='kw'>end</span>
       <span class='id identifier rubyid_log_debug'>log_debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Waiting for up to </span><span class='embexpr_beg'>#{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%.2f</span><span class='tstring_end'>&#39;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='embexpr_end'>}</span><span class='tstring_content'> seconds for servers to be scanned: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_summary'>summary</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -1843,7 +1895,11 @@
 </span>      <span class='comment'># the servers list above and the wait call below, we should not
 </span>      <span class='comment'># wait for the full remaining time - wait for up to 1 second, then
 </span>      <span class='comment'># recheck the state.
-</span>      <span class='id identifier rubyid_server_selection_semaphore'>server_selection_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span>
+</span>      <span class='kw'>begin</span>
+        <span class='id identifier rubyid_server_selection_semaphore'>server_selection_semaphore</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_time_remaining'>time_remaining</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='rparen'>)</span>
+      <span class='kw'>rescue</span> <span class='op'>::</span><span class='const'>Timeout</span><span class='op'>::</span><span class='const'>Error</span>
+        <span class='comment'># nothing
+</span>      <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
@@ -1921,15 +1977,76 @@
       <pre class="lines">
 
 
-289
-290
-291</pre>
+300
+301
+302</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 289</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 300</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_app_metadata'>app_metadata</span>
   <span class='ivar'>@app_metadata</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="monitor_app_metadata-instance_method">
+  
+    #<strong>monitor_app_metadata</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+303
+304
+305</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 303</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_monitor_app_metadata'>monitor_app_metadata</span>
+  <span class='ivar'>@monitor_app_metadata</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1998,12 +2115,12 @@
       <pre class="lines">
 
 
-280
-281
-282</pre>
+291
+292
+293</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 280</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 291</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_monitoring'>monitoring</span>
   <span class='ivar'>@monitoring</span>
@@ -2075,15 +2192,76 @@
       <pre class="lines">
 
 
-277
-278
-279</pre>
+288
+289
+290</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 288</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="push_monitor_app_metadata-instance_method">
+  
+    #<strong>push_monitor_app_metadata</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+306
+307
+308</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 306</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_push_monitor_app_metadata'>push_monitor_app_metadata</span>
+  <span class='ivar'>@push_monitor_app_metadata</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2156,12 +2334,12 @@
       <pre class="lines">
 
 
-297
-298
-299</pre>
+314
+315
+316</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 297</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 314</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_seeds'>seeds</span>
   <span class='ivar'>@seeds</span>
@@ -2217,12 +2395,12 @@
       <pre class="lines">
 
 
-446
-447
-448</pre>
+463
+464
+465</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 446</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 463</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_selection_semaphore'>server_selection_semaphore</span>
   <span class='ivar'>@server_selection_semaphore</span>
@@ -2274,12 +2452,12 @@
       <pre class="lines">
 
 
-302
-303
-304</pre>
+319
+320
+321</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 302</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 319</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_session_pool'>session_pool</span>
   <span class='ivar'>@session_pool</span>
@@ -2335,12 +2513,12 @@
       <pre class="lines">
 
 
-316
-317
-318</pre>
+333
+334
+335</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 316</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 333</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_srv_monitor'>srv_monitor</span>
   <span class='ivar'>@srv_monitor</span>
@@ -2424,12 +2602,12 @@
       <pre class="lines">
 
 
-283
-284
-285</pre>
+294
+295
+296</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 283</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 294</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_topology'>topology</span>
   <span class='ivar'>@topology</span>
@@ -2542,17 +2720,17 @@
       <pre class="lines">
 
 
-267
-268
-269
-270
-271
-272
-273
-274</pre>
+278
+279
+280
+281
+282
+283
+284
+285</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 267</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 278</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cluster'>cluster</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Mongo::Cluster (class)">Cluster</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Mongo::Cluster#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -2561,151 +2739,6 @@
     <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_cluster_options'>cluster_options</span><span class='comma'>,</span>
   <span class='rparen'>)</span>
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@cluster</span><span class='comma'>,</span> <span class='id identifier rubyid_cluster'>cluster</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="finalize-class_method">
-  
-    .<strong>finalize</strong>(pools, periodic_executor, session_pool)  &#x21d2; <tt>Proc</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Finalize the cluster for garbage collection.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-        <p class="example_title"><div class='inline'>
-<p>Finalize the cluster.</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Mongo::Cluster (class)">Cluster</a></span></span><span class='period'>.</span><span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='id identifier rubyid_pools'>pools</span><span class='rparen'>)</span></code></pre>
-    
-  </div>
-<p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>pools</span>
-      
-      
-        <span class='type'>(<tt>Hash&lt;<span class='object_link'><a href="Address.html" title="Mongo::Address (class)">Address</a></span>, <span class='object_link'><a href="Server/ConnectionPool.html" title="Mongo::Server::ConnectionPool (class)">Server::ConnectionPool</a></span>&gt;</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Ignored.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>periodic_executor</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Cluster/PeriodicExecutor.html" title="Mongo::Cluster::PeriodicExecutor (class)">PeriodicExecutor</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>The periodic executor.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>session_pool</span>
-      
-      
-        <span class='type'>(<tt>SessionPool</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>The session pool.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Proc</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>The Finalizer.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'>
-<p>2.2.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-460
-461
-462
-463
-464
-465</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 460</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='id identifier rubyid_pools'>pools</span><span class='comma'>,</span> <span class='id identifier rubyid_periodic_executor'>periodic_executor</span><span class='comma'>,</span> <span class='id identifier rubyid_session_pool'>session_pool</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_proc'>proc</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_session_pool'>session_pool</span><span class='period'>.</span><span class='id identifier rubyid_end_sessions'>end_sessions</span>
-    <span class='id identifier rubyid_periodic_executor'>periodic_executor</span><span class='period'>.</span><span class='id identifier rubyid_stop!'>stop!</span>
-  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2810,13 +2843,13 @@
       <pre class="lines">
 
 
+684
+685
 686
-687
-688
-689</pre>
+687</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 686</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 684</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Mongo::Cluster (class)">Cluster</a></span></span><span class='rparen'>)</span>
@@ -2941,6 +2974,8 @@
       <pre class="lines">
 
 
+782
+783
 784
 785
 786
@@ -2957,12 +2992,10 @@
 797
 798
 799
-800
-801
-802</pre>
+800</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 784</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 782</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_add_options'>add_options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Address.html" title="Mongo::Address (class)">Address</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Address.html#initialize-instance_method" title="Mongo::Address#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -3060,12 +3093,12 @@
       <pre class="lines">
 
 
-409
-410
-411</pre>
+426
+427
+428</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 409</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 426</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_addresses'>addresses</span>
   <span class='id identifier rubyid_servers_list'>servers_list</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:address</span><span class='rparen'>)</span>
@@ -3139,14 +3172,14 @@
       <pre class="lines">
 
 
-382
-383
-384
-385
-386</pre>
+399
+400
+401
+402
+403</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 382</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 399</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connected?'>connected?</span>
   <span class='ivar'>@update_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -3222,14 +3255,14 @@
       <pre class="lines">
 
 
-370
-371
-372
-373
-374</pre>
+387
+388
+389
+390
+391</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 370</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 387</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connecting?'>connecting?</span>
   <span class='ivar'>@update_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -3313,6 +3346,8 @@
       <pre class="lines">
 
 
+478
+479
 480
 481
 482
@@ -3343,12 +3378,10 @@
 507
 508
 509
-510
-511
-512</pre>
+510</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 480</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 478</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect!'>disconnect!</span>
   <span class='ivar'>@state_change_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -3432,18 +3465,18 @@
       <pre class="lines">
 
 
+880
+881
 882
 883
 884
 885
 886
 887
-888
-889
-890</pre>
+888</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 882</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 880</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect_server_if_connected'>disconnect_server_if_connected</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_connected?'>connected?</span>
@@ -3553,12 +3586,12 @@
       <pre class="lines">
 
 
-703
-704
-705</pre>
+701
+702
+703</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 703</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 701</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_readable_server?'>has_readable_server?</span><span class='lparen'>(</span><span class='id identifier rubyid_server_selector'>server_selector</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_has_readable_server?'>has_readable_server?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_server_selector'>server_selector</span><span class='rparen'>)</span>
@@ -3640,12 +3673,12 @@
       <pre class="lines">
 
 
-715
-716
-717</pre>
+713
+714
+715</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 715</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 713</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_writable_server?'>has_writable_server?</span>
   <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_has_writable_server?'>has_writable_server?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -3719,12 +3752,12 @@
       <pre class="lines">
 
 
-361
-362
-363</pre>
+378
+379
+380</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 361</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 378</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_heartbeat_interval'>heartbeat_interval</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:heartbeat_frequency</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Monitor.html" title="Mongo::Server::Monitor (class)">Monitor</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Monitor.html#DEFAULT_HEARTBEAT_INTERVAL-constant" title="Mongo::Server::Monitor::DEFAULT_HEARTBEAT_INTERVAL (constant)">DEFAULT_HEARTBEAT_INTERVAL</a></span></span>
@@ -3806,12 +3839,12 @@
       <pre class="lines">
 
 
-431
-432
-433</pre>
+448
+449
+450</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 431</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 448</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Mongo::Cluster:0x</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> servers=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_servers'>servers</span><span class='embexpr_end'>}</span><span class='tstring_content'> topology=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_summary'>summary</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -3902,12 +3935,12 @@
       <pre class="lines">
 
 
-332
-333
-334</pre>
+349
+350
+351</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 332</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 349</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_read_retries'>max_read_retries</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:max_read_retries</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#MAX_READ_RETRIES-constant" title="Mongo::Cluster::MAX_READ_RETRIES (constant)">MAX_READ_RETRIES</a></span></span>
@@ -4029,12 +4062,12 @@
       <pre class="lines">
 
 
-732
-733
-734</pre>
+730
+731
+732</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 732</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 730</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_next_primary'>next_primary</span><span class='lparen'>(</span><span class='id identifier rubyid_ping'>ping</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="ServerSelector.html" title="Mongo::ServerSelector (module)">ServerSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_primary'><span class='object_link'><a href="ServerSelector.html#primary-instance_method" title="Mongo::ServerSelector#primary (method)">primary</a></span></span><span class='period'>.</span><span class='id identifier rubyid_select_server'>select_server</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
@@ -4137,12 +4170,12 @@
       <pre class="lines">
 
 
-747
-748
-749</pre>
+745
+746
+747</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 747</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 745</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pool'>pool</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_pool'>pool</span>
@@ -4233,12 +4266,12 @@
       <pre class="lines">
 
 
-350
-351
-352</pre>
+367
+368
+369</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 350</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 367</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_retry_interval'>read_retry_interval</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:read_retry_interval</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#READ_RETRY_INTERVAL-constant" title="Mongo::Cluster::READ_RETRY_INTERVAL (constant)">READ_RETRY_INTERVAL</a></span></span>
@@ -4323,6 +4356,8 @@
       <pre class="lines">
 
 
+522
+523
 524
 525
 526
@@ -4341,12 +4376,10 @@
 539
 540
 541
-542
-543
-544</pre>
+542</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 524</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 522</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reconnect!'>reconnect!</span>
   <span class='ivar'>@state_change_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -4492,6 +4525,8 @@
       <pre class="lines">
 
 
+821
+822
 823
 824
 825
@@ -4512,12 +4547,10 @@
 840
 841
 842
-843
-844
-845</pre>
+843</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 823</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 821</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove'>remove</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='label'>disconnect:</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Address.html" title="Mongo::Address (class)">Address</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Address.html#initialize-instance_method" title="Mongo::Address#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
@@ -4691,6 +4724,8 @@
       <pre class="lines">
 
 
+604
+605
 606
 607
 608
@@ -4726,12 +4761,10 @@
 638
 639
 640
-641
-642
-643</pre>
+641</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 606</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 604</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run_sdam_flow'>run_sdam_flow</span><span class='lparen'>(</span><span class='id identifier rubyid_previous_desc'>previous_desc</span><span class='comma'>,</span> <span class='id identifier rubyid_updated_desc'>updated_desc</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -4860,6 +4893,8 @@
       <pre class="lines">
 
 
+567
+568
 569
 570
 571
@@ -4873,12 +4908,10 @@
 579
 580
 581
-582
-583
-584</pre>
+582</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 569</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 567</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_scan!'>scan!</span><span class='lparen'>(</span><span class='id identifier rubyid_sync'>sync</span><span class='op'>=</span><span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sync'>sync</span>
@@ -4973,12 +5006,12 @@
       <pre class="lines">
 
 
-397
-398
-399</pre>
+414
+415
+416</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 397</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 414</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_servers'>servers</span>
   <span class='id identifier rubyid_topology'>topology</span><span class='period'>.</span><span class='id identifier rubyid_servers'>servers</span><span class='lparen'>(</span><span class='id identifier rubyid_servers_list'>servers_list</span><span class='rparen'>)</span>
@@ -5032,14 +5065,14 @@
       <pre class="lines">
 
 
+873
+874
 875
 876
-877
-878
-879</pre>
+877</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 875</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 873</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_servers_list'>servers_list</span>
   <span class='ivar'>@update_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -5121,6 +5154,8 @@
       <pre class="lines">
 
 
+657
+658
 659
 660
 661
@@ -5133,12 +5168,10 @@
 668
 669
 670
-671
-672
-673</pre>
+671</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 659</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 657</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_server_list'>set_server_list</span><span class='lparen'>(</span><span class='id identifier rubyid_server_address_strs'>server_address_strs</span><span class='rparen'>)</span>
   <span class='ivar'>@sdam_flow_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -5208,14 +5241,14 @@
       <pre class="lines">
 
 
-439
-440
-441
-442
-443</pre>
+456
+457
+458
+459
+460</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 439</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 456</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_summary'>summary</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Cluster </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
@@ -5319,16 +5352,16 @@
       <pre class="lines">
 
 
+759
+760
 761
 762
 763
 764
-765
-766
-767</pre>
+765</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 761</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 759</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_cluster_time'>update_cluster_time</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_cluster_time_doc'>cluster_time_doc</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_cluster_time'>cluster_time</span>
@@ -5386,6 +5419,8 @@
       <pre class="lines">
 
 
+846
+847
 848
 849
 850
@@ -5408,12 +5443,10 @@
 867
 868
 869
-870
-871
-872</pre>
+870</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 848</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 846</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_topology'>update_topology</span><span class='lparen'>(</span><span class='id identifier rubyid_new_topology'>new_topology</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_old_topology'>old_topology</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -5493,6 +5526,8 @@
       <pre class="lines">
 
 
+901
+902
 903
 904
 905
@@ -5527,12 +5562,10 @@
 934
 935
 936
-937
-938
-939</pre>
+937</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 903</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/cluster.rb', line 901</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate_session_support!'>validate_session_support!</span>
   <span class='ivar'>@state_change_lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -5581,9 +5614,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:27 2020 by
+  Generated on Wed May 12 17:19:10 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

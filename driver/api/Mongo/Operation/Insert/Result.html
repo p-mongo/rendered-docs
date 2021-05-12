@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Operation::Insert::Result
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -391,13 +391,13 @@
       <pre class="lines">
 
 
-47
-48
-49
-50</pre>
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_replies'>replies</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_description'>connection_description</span><span class='comma'>,</span> <span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_replies'>replies</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_description'>connection_description</span><span class='rparen'>)</span>
@@ -457,12 +457,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inserted_ids'>inserted_ids</span>
   <span class='ivar'>@inserted_ids</span>
@@ -519,12 +519,12 @@
       <pre class="lines">
 
 
-66
-67
-68</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bulk_result'>bulk_result</span>
   <span class='const'><span class='object_link'><a href="BulkResult.html" title="Mongo::Operation::Insert::BulkResult (class)">BulkResult</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="BulkResult.html#initialize-instance_method" title="Mongo::Operation::Insert::BulkResult#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@replies</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_description'>connection_description</span><span class='comma'>,</span> <span class='ivar'>@inserted_ids</span><span class='rparen'>)</span>
@@ -606,12 +606,12 @@
       <pre class="lines">
 
 
-61
-62
-63</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/insert/result.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inserted_id'>inserted_id</span>
   <span class='id identifier rubyid_inserted_ids'>inserted_ids</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -626,9 +626,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:35 2020 by
+  Generated on Wed May 12 17:19:17 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

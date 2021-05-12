@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::URI
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -1523,9 +1523,6 @@
       <pre class="lines">
 
 
-281
-282
-283
 284
 285
 286
@@ -1542,10 +1539,13 @@
 297
 298
 299
-300</pre>
+300
+301
+302
+303</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 281</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 284</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_string'>string</span>
@@ -1621,12 +1621,12 @@
       <pre class="lines">
 
 
-36
-37
-38</pre>
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -1680,12 +1680,12 @@
       <pre class="lines">
 
 
-46
-47
-48</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_servers'>servers</span>
   <span class='ivar'>@servers</span>
@@ -1739,12 +1739,12 @@
       <pre class="lines">
 
 
-41
-42
-43</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_uri_options'>uri_options</span>
   <span class='ivar'>@uri_options</span>
@@ -1893,9 +1893,6 @@
       <pre class="lines">
 
 
-227
-228
-229
 230
 231
 232
@@ -1910,10 +1907,13 @@
 241
 242
 243
-244</pre>
+244
+245
+246
+247</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 227</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 230</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_string'>string</span>
@@ -2016,16 +2016,16 @@
       <pre class="lines">
 
 
-256
-257
-258
 259
 260
 261
-262</pre>
+262
+263
+264
+265</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 256</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 259</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_client_options'>client_options</span>
   <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='id identifier rubyid_uri_options'>uri_options</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_opts'>opts</span><span class='op'>|</span>
@@ -2116,12 +2116,12 @@
       <pre class="lines">
 
 
-312
-313
-314</pre>
+315
+316
+317</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 312</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 315</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_credentials'>credentials</span>
   <span class='lbrace'>{</span> <span class='symbol'>:user</span> <span class='op'>=&gt;</span> <span class='ivar'>@user</span><span class='comma'>,</span> <span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='ivar'>@password</span> <span class='rbrace'>}</span>
@@ -2203,12 +2203,12 @@
       <pre class="lines">
 
 
-324
-325
-326</pre>
+327
+328
+329</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 324</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 327</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_database'>database</span>
   <span class='ivar'>@database</span> <span class='op'>?</span> <span class='ivar'>@database</span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="Database.html" title="Mongo::Database (class)">Database</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Database.html#ADMIN-constant" title="Mongo::Database::ADMIN (constant)">ADMIN</a></span></span>
@@ -2258,12 +2258,12 @@
       <pre class="lines">
 
 
-264
-265
-266</pre>
+267
+268
+269</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 264</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/uri.rb', line 267</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_srv_records'>srv_records</span>
   <span class='kw'>nil</span>
@@ -2278,9 +2278,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:25 2020 by
+  Generated on Wed May 12 17:19:09 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

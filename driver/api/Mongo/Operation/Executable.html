@@ -6,7 +6,7 @@
 <title>
   Module: Mongo::Operation::Executable
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -142,7 +142,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#do_execute-instance_method" title="#do_execute (instance method)">#<strong>do_execute</strong>(connection, client, options = {})  &#x21d2; Object </a>
+      <a href="#do_execute-instance_method" title="#do_execute (instance method)">#<strong>do_execute</strong>(connection, context, options = {})  &#x21d2; Object </a>
     
 
     
@@ -164,7 +164,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#execute-instance_method" title="#execute (instance method)">#<strong>execute</strong>(connection, client:, options: {})  &#x21d2; Object </a>
+      <a href="#execute-instance_method" title="#execute (instance method)">#<strong>execute</strong>(connection, context:, options: {})  &#x21d2; Object </a>
     
 
     
@@ -201,7 +201,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="do_execute-instance_method">
   
-    #<strong>do_execute</strong>(connection, client, options = {})  &#x21d2; <tt>Object</tt> 
+    #<strong>do_execute</strong>(connection, context, options = {})  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -242,9 +242,6 @@
       <pre class="lines">
 
 
-26
-27
-28
 29
 30
 31
@@ -252,16 +249,19 @@
 33
 34
 35
-36</pre>
+36
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/executable.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/executable.rb', line 29</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_do_execute'>do_execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_do_execute'>do_execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_unpin_maybe'>unpin_maybe</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_add_error_labels'>add_error_labels</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_add_error_labels'>add_error_labels</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span> <span class='kw'>do</span>
       <span class='id identifier rubyid_add_server_diagnostics'>add_server_diagnostics</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span> <span class='kw'>do</span>
-        <span class='id identifier rubyid_get_result'>get_result</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='op'>|</span>
+        <span class='id identifier rubyid_get_result'>get_result</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='op'>|</span>
           <span class='id identifier rubyid_process_result'>process_result</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
         <span class='kw'>end</span>
       <span class='kw'>end</span>
@@ -276,7 +276,7 @@
       <div class="method_details ">
   <h3 class="signature " id="execute-instance_method">
   
-    #<strong>execute</strong>(connection, client:, options: {})  &#x21d2; <tt>Object</tt> 
+    #<strong>execute</strong>(connection, context:, options: {})  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -317,9 +317,6 @@
       <pre class="lines">
 
 
-38
-39
-40
 41
 42
 43
@@ -327,20 +324,23 @@
 45
 46
 47
-48</pre>
+48
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/executable.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/operation/shared/executable.rb', line 41</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>client:</span><span class='comma'>,</span> <span class='label'>options:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='label'>context:</span><span class='comma'>,</span> <span class='label'>options:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../Lint.html" title="Mongo::Lint (module)">Lint</a></span></span><span class='period'>.</span><span class='id identifier rubyid_enabled?'><span class='object_link'><a href="../Lint.html#enabled%3F-class_method" title="Mongo::Lint.enabled? (method)">enabled?</a></span></span>
     <span class='kw'>unless</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../Mongo.html" title="Mongo (module)">Mongo</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Server.html" title="Mongo::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Server/Connection.html" title="Mongo::Server::Connection (class)">Connection</a></span></span><span class='rparen'>)</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../Error.html" title="Mongo::Error (class)">Error</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Error/LintError.html" title="Mongo::Error::LintError (class)">LintError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Connection argument is of wrong type: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_connection'>connection</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_do_execute'>do_execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='op'>|</span>
-    <span class='id identifier rubyid_validate_result'>validate_result</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_do_execute'>do_execute</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='op'>|</span>
+    <span class='id identifier rubyid_validate_result'>validate_result</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -353,9 +353,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:24 2020 by
+  Generated on Wed May 12 17:19:08 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

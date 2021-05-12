@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::BulkWrite
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -474,14 +474,14 @@
       <pre class="lines">
 
 
-119
-120
-121
-122
-123</pre>
+125
+126
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span> <span class='id identifier rubyid_requests'>requests</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@collection</span> <span class='op'>=</span> <span class='id identifier rubyid_collection'>collection</span>
@@ -544,12 +544,12 @@
       <pre class="lines">
 
 
-29
-30
-31</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collection'>collection</span>
   <span class='ivar'>@collection</span>
@@ -605,12 +605,12 @@
       <pre class="lines">
 
 
-35
-36
-37</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -666,12 +666,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_requests'>requests</span>
   <span class='ivar'>@requests</span>
@@ -760,9 +760,6 @@
       <pre class="lines">
 
 
-55
-56
-57
 58
 59
 60
@@ -797,10 +794,16 @@
 89
 90
 91
-92</pre>
+92
+93
+94
+95
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
   <span class='id identifier rubyid_operation_id'>operation_id</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Monitoring.html" title="Mongo::Monitoring (class)">Monitoring</a></span></span><span class='period'>.</span><span class='id identifier rubyid_next_operation_id'><span class='object_link'><a href="Monitoring.html#next_operation_id-class_method" title="Mongo::Monitoring.next_operation_id (method)">next_operation_id</a></span></span>
@@ -808,6 +811,7 @@
   <span class='id identifier rubyid_operations'>operations</span> <span class='op'>=</span> <span class='id identifier rubyid_op_combiner'>op_combiner</span><span class='period'>.</span><span class='id identifier rubyid_combine'>combine</span>
 
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:with_session</span><span class='comma'>,</span> <span class='ivar'>@options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_session'>session</span><span class='op'>|</span>
+    <span class='id identifier rubyid_context'>context</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Operation.html" title="Mongo::Operation (module)">Operation</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Operation/Context.html" title="Mongo::Operation::Context (class)">Context</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Operation/Context.html#initialize-instance_method" title="Mongo::Operation::Context#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>client:</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_operations'>operations</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_operation'>operation</span><span class='op'>|</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_single_statement?'>single_statement?</span><span class='lparen'>(</span><span class='id identifier rubyid_operation'>operation</span><span class='rparen'>)</span>
         <span class='id identifier rubyid_write_concern'>write_concern</span> <span class='op'>=</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
@@ -817,6 +821,7 @@
               <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='comma'>,</span>
               <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='comma'>,</span>
               <span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span>
+              <span class='id identifier rubyid_context'>context</span><span class='comma'>,</span>
               <span class='id identifier rubyid_operation_id'>operation_id</span><span class='comma'>,</span>
               <span class='id identifier rubyid_result_combiner'>result_combiner</span><span class='comma'>,</span>
               <span class='id identifier rubyid_session'>session</span><span class='comma'>,</span>
@@ -830,6 +835,7 @@
               <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='comma'>,</span>
               <span class='id identifier rubyid_operation'>operation</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='comma'>,</span>
               <span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span>
+              <span class='id identifier rubyid_context'>context</span><span class='comma'>,</span>
               <span class='id identifier rubyid_operation_id'>operation_id</span><span class='comma'>,</span>
               <span class='id identifier rubyid_result_combiner'>result_combiner</span><span class='comma'>,</span>
               <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
@@ -921,12 +927,12 @@
       <pre class="lines">
 
 
-135
-136
-137</pre>
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ordered?'>ordered?</span>
   <span class='ivar'>@ordered</span> <span class='op'>||=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:ordered</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -1012,14 +1018,14 @@
       <pre class="lines">
 
 
-149
-150
-151
-152
-153</pre>
+155
+156
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/bulk_write.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_concern'>write_concern</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@write_concern</span> <span class='op'>||=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:write_concern</span><span class='rbracket'>]</span> <span class='op'>?</span>
@@ -1036,9 +1042,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:28 2020 by
+  Generated on Wed May 12 17:19:11 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>

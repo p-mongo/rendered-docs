@@ -6,7 +6,7 @@
 <title>
   Class: Mongo::Protocol::KillCursors
   
-    &mdash; mongo-2.14.0.beta
+    &mdash; mongo-2.15.0.alpha
   
 </title>
 
@@ -213,7 +213,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Message.html" title="Mongo::Protocol::Message (class)">Message</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Message.html#==-instance_method" title="Mongo::Protocol::Message#== (method)">#==</a></span>, <span class='object_link'><a href="Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span>, <span class='object_link'><a href="Message.html#hash-instance_method" title="Mongo::Protocol::Message#hash (method)">#hash</a></span>, <span class='object_link'><a href="Message.html#maybe_compress-instance_method" title="Mongo::Protocol::Message#maybe_compress (method)">#maybe_compress</a></span>, <span class='object_link'><a href="Message.html#maybe_decrypt-instance_method" title="Mongo::Protocol::Message#maybe_decrypt (method)">#maybe_decrypt</a></span>, <span class='object_link'><a href="Message.html#maybe_encrypt-instance_method" title="Mongo::Protocol::Message#maybe_encrypt (method)">#maybe_encrypt</a></span>, <span class='object_link'><a href="Message.html#maybe_inflate-instance_method" title="Mongo::Protocol::Message#maybe_inflate (method)">#maybe_inflate</a></span>, <span class='object_link'><a href="Message.html#number_returned-instance_method" title="Mongo::Protocol::Message#number_returned (method)">#number_returned</a></span>, <span class='object_link'><a href="Message.html#replyable%3F-instance_method" title="Mongo::Protocol::Message#replyable? (method)">#replyable?</a></span>, <span class='object_link'><a href="Message.html#serialize-instance_method" title="Mongo::Protocol::Message#serialize (method)">#serialize</a></span>, <span class='object_link'><a href="Message.html#set_request_id-instance_method" title="Mongo::Protocol::Message#set_request_id (method)">#set_request_id</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Message.html#==-instance_method" title="Mongo::Protocol::Message#== (method)">#==</a></span>, <span class='object_link'><a href="Message.html#deserialize-class_method" title="Mongo::Protocol::Message.deserialize (method)">deserialize</a></span>, <span class='object_link'><a href="Message.html#hash-instance_method" title="Mongo::Protocol::Message#hash (method)">#hash</a></span>, <span class='object_link'><a href="Message.html#maybe_add_server_api-instance_method" title="Mongo::Protocol::Message#maybe_add_server_api (method)">#maybe_add_server_api</a></span>, <span class='object_link'><a href="Message.html#maybe_compress-instance_method" title="Mongo::Protocol::Message#maybe_compress (method)">#maybe_compress</a></span>, <span class='object_link'><a href="Message.html#maybe_decrypt-instance_method" title="Mongo::Protocol::Message#maybe_decrypt (method)">#maybe_decrypt</a></span>, <span class='object_link'><a href="Message.html#maybe_encrypt-instance_method" title="Mongo::Protocol::Message#maybe_encrypt (method)">#maybe_encrypt</a></span>, <span class='object_link'><a href="Message.html#maybe_inflate-instance_method" title="Mongo::Protocol::Message#maybe_inflate (method)">#maybe_inflate</a></span>, <span class='object_link'><a href="Message.html#number_returned-instance_method" title="Mongo::Protocol::Message#number_returned (method)">#number_returned</a></span>, <span class='object_link'><a href="Message.html#replyable%3F-instance_method" title="Mongo::Protocol::Message#replyable? (method)">#replyable?</a></span>, <span class='object_link'><a href="Message.html#serialize-instance_method" title="Mongo::Protocol::Message#serialize (method)">#serialize</a></span>, <span class='object_link'><a href="Message.html#set_request_id-instance_method" title="Mongo::Protocol::Message#set_request_id (method)">#set_request_id</a></span></p>
 
   
   
@@ -324,16 +324,16 @@
       <pre class="lines">
 
 
-34
-35
-36
 37
 38
 39
-40</pre>
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/kill_cursors.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/kill_cursors.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span> <span class='id identifier rubyid_database'>database</span><span class='comma'>,</span> <span class='id identifier rubyid_cursor_ids'>cursor_ids</span><span class='rparen'>)</span>
   <span class='ivar'>@database</span> <span class='op'>=</span> <span class='id identifier rubyid_database'>database</span>
@@ -426,17 +426,17 @@
       <pre class="lines">
 
 
-50
-51
-52
 53
 54
 55
 56
-57</pre>
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/kill_cursors.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/mongo/protocol/kill_cursors.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_payload'>payload</span>
   <span class='const'>BSON</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
@@ -456,9 +456,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct  7 18:23:33 2020 by
+  Generated on Wed May 12 17:19:16 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.1).
+  0.9.26 (ruby-2.7.2).
 </div>
 
     </div>
