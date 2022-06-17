@@ -1,287 +1,607 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Authentication &#8212; Ruby MongoDB Driver  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Monitoring" href="monitoring.html" />
+    <link rel="prev" title="Creating a Client" href="create-client.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Ruby MongoDB Driver  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../getting-started.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="driver-compatibility.html">
+     Driver Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../support.html">
+     Support
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/quick-start.html">
+     Quick Start
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="connection-and-configuration.html">
+   Connection &amp; Configuration
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="create-client.html">
+     Creating a Client
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="user-management.html">
+     User Management
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="working-with-data.html">
+   Working With Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud-operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bulk-operations.html">
+     Bulk Writes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projection.html">
+     Projection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map-Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geospatial-search.html">
+     Geospatial Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="query-cache.html">
+     Query Cache
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gridfs.html">
+     GridFS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="change-streams.html">
+     Change Streams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="client-side-encryption.html">
+     Client-Side Encryption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="schema-operations.html">
+   Schema Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="database-tasks.html">
+     Databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-tasks.html">
+     Collections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexing.html">
+     Indexing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collations.html">
+     Collations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/ruby-driver/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute.html">
+   Contribute to the Driver
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Authentication &mdash; MongoDB Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/reference/authentication.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/reference/authentication/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="MongoDB Ruby Driver Manual" href="../index.html" />
-<link rel="up" title="Connection &amp; Configuration" href="connection-and-configuration.html" />
-<link rel="next" title="Monitoring" href="monitoring.html" />
-<link rel="prev" title="Creating a Client" href="create-client.html" /></head>
-<body data-project="docs-ruby" data-project-title="MongoDB Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Ruby Driver"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">MongoDB Ruby Driver Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="ruby-driver/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
-                
-                Version 2.14 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
-                
-                Version 2.13
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
-                
-                Version 2.12
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
-                
-                Version 2.11
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
-                
-                Version 2.10
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
-                
-                Version 2.9
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
-                
-                Version 2.8
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
-                
-                Version 2.7
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
-                
-                Version 2.6
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
-                
-                Version 2.5
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
-                
-                Version 2.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
-                
-                Version 2.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
-                
-                Version 2.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
-                
-                Version 2.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
-                
-                1.x
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="../support.html">Support</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/quick-start.html">Quick Start</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="connection-and-configuration.html">Connection &amp; Configuration</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="create-client.html">Creating a Client</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Authentication</a></li><li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li><li class="toctree-l2"><a class="reference internal" href="user-management.html">User Management</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="working-with-data.html">Working With Data</a><ul><li class="toctree-l2"><a class="reference internal" href="crud-operations.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="bulk-operations.html">Bulk Writes</a></li><li class="toctree-l2"><a class="reference internal" href="projection.html">Projection</a></li><li class="toctree-l2"><a class="reference internal" href="aggregation.html">Aggregation</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="geospatial-search.html">Geospatial Search</a></li><li class="toctree-l2"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l2"><a class="reference internal" href="gridfs.html">GridFS</a></li><li class="toctree-l2"><a class="reference internal" href="change-streams.html">Change Streams</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="schema-operations.html">Schema Operations</a><ul><li class="toctree-l2"><a class="reference internal" href="database-tasks.html">Databases</a></li><li class="toctree-l2"><a class="reference internal" href="collection-tasks.html">Collections</a></li><li class="toctree-l2"><a class="reference internal" href="indexing.html">Indexing</a></li><li class="toctree-l2"><a class="reference internal" href="collations.html">Collations</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li><li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/authentication.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#providing-credentials">
+   Providing credentials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auth-source">
+   Auth Source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authentication-mechanisms">
+   Authentication Mechanisms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scram">
+     SCRAM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#client-certificate-x-509">
+     Client Certificate (X.509)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aws">
+     AWS
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#providing-credentials-explicitly">
+       Providing Credentials Explicitly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#automatically-retrieving-credentials">
+       Automatically Retrieving Credentials
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ldap-sasl-plain">
+     LDAP (SASL PLAIN)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kerberos-gssapi">
+     Kerberos (GSSAPI)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mongodb-cr">
+     MONGODB-CR
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Authentication</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#providing-credentials">
+   Providing credentials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auth-source">
+   Auth Source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authentication-mechanisms">
+   Authentication Mechanisms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scram">
+     SCRAM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#client-certificate-x-509">
+     Client Certificate (X.509)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aws">
+     AWS
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#providing-credentials-explicitly">
+       Providing Credentials Explicitly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#automatically-retrieving-credentials">
+       Automatically Retrieving Credentials
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ldap-sasl-plain">
+     LDAP (SASL PLAIN)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kerberos-gssapi">
+     Kerberos (GSSAPI)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mongodb-cr">
+     MONGODB-CR
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/authentication">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="connection-and-configuration.html">Connection &amp; Configuration</a><span class="bcpoint"> > </span></li>
-            <li>Authentication</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="authentication">
-<h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
+  <section id="authentication">
+<h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#providing-credentials" id="id3">Providing credentials</a></li>
-<li><a class="reference internal" href="#auth-source" id="id4">Auth Source</a></li>
-<li><a class="reference internal" href="#authentication-mechanisms" id="id5">Authentication Mechanisms</a><ul>
-<li><a class="reference internal" href="#scram" id="id6">SCRAM</a></li>
-<li><a class="reference internal" href="#client-certificate-x-509" id="id7">Client Certificate (X.509)</a></li>
-<li><a class="reference internal" href="#aws" id="id8">AWS</a></li>
-<li><a class="reference internal" href="#ldap-sasl-plain" id="id9">LDAP (SASL PLAIN)</a></li>
-<li><a class="reference internal" href="#kerberos-gssapi" id="id10">Kerberos (GSSAPI)</a></li>
-<li><a class="reference internal" href="#mongodb-cr" id="id11">MONGODB-CR</a></li>
+<li><p><a class="reference internal" href="#providing-credentials" id="id15">Providing credentials</a></p></li>
+<li><p><a class="reference internal" href="#auth-source" id="id16">Auth Source</a></p></li>
+<li><p><a class="reference internal" href="#authentication-mechanisms" id="id17">Authentication Mechanisms</a></p>
+<ul>
+<li><p><a class="reference internal" href="#scram" id="id18">SCRAM</a></p></li>
+<li><p><a class="reference internal" href="#client-certificate-x-509" id="id19">Client Certificate (X.509)</a></p></li>
+<li><p><a class="reference internal" href="#aws" id="id20">AWS</a></p></li>
+<li><p><a class="reference internal" href="#ldap-sasl-plain" id="id21">LDAP (SASL PLAIN)</a></p></li>
+<li><p><a class="reference internal" href="#kerberos-gssapi" id="id22">Kerberos (GSSAPI)</a></p></li>
+<li><p><a class="reference internal" href="#mongodb-cr" id="id23">MONGODB-CR</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <p>MongoDB supports a variety of
-<a class="reference external" href="https://docs.mongodb.com/manual/core/authentication/">authentication mechanisms</a>.</p>
+<a href="#id1"><span class="problematic" id="id2">:manual:`authentication mechanisms &lt;/core/authentication/&gt;`</span></a>.</p>
 <p>For more information about configuring your MongoDB server for each of
 these authentication mechanisms see MongoDB’s
-<a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication">online documentation</a>.</p>
+<a href="#id3"><span class="problematic" id="id4">:manual:`online documentation &lt;/tutorial/enable-authentication&gt;`</span></a>.</p>
 <p>For more information about users and the Ruby driver’s helpers for
 user management, see the <a class="reference internal" href="user-management.html#user-management"><span class="std std-ref">User Management tutorial</span></a>.</p>
-<div class="section" id="providing-credentials">
-<h2>Providing credentials<a class="headerlink" href="#providing-credentials" title="Permalink to this headline">¶</a></h2>
+<section id="providing-credentials">
+<h2>Providing credentials<a class="headerlink" href="#providing-credentials" title="Permalink to this headline">#</a></h2>
 <p>If authentication is enabled, provide credentials when creating a new
 client:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
                            <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
                            <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span> <span class="p">)</span>
@@ -290,44 +610,26 @@ copy</a>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://test:123@127.0.0.1:27017/mydb&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>Authentication credentials can be changed on a client instance to obtain
 a new client using the <code class="docutils literal notranslate"><span class="pre">Client#with</span></code> method:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">authenticated_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">with</span><span class="p">(</span> <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;another-user&#39;</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">authenticated_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">with</span><span class="p">(</span> <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;another-user&#39;</span><span class="p">,</span>
                                     <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>It is also possible to change the client’s database and credentials in
 one step:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">authenticated_music_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">with</span><span class="p">(</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">authenticated_music_client</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">with</span><span class="p">(</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">,</span>
                                           <span class="ss">user</span><span class="p">:</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
                                           <span class="ss">password</span><span class="p">:</span><span class="s1">&#39;123&#39;</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="auth-source">
-<span id="id1"></span><h2>Auth Source<a class="headerlink" href="#auth-source" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="auth-source">
+<span id="id5"></span><h2>Auth Source<a class="headerlink" href="#auth-source" title="Permalink to this headline">#</a></h2>
 <p>A user’s auth source is the database where that user’s authentication
 credentials are stored.</p>
 <p>The user’s auth source may be specified whenever the credentials are specified:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
                            <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
@@ -336,7 +638,6 @@ copy</a>
 <span class="c1"># If using a URI:</span>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://test:123@127.0.0.1:27017/mydb?authSource=admin&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 <p>If no auth source is specified, then a default will be assumed by the client.
 The default auth source depends on the authentication mechanism that is being
@@ -360,18 +661,12 @@ failure to look up TXT records can cause authentication errors, as the driver
 may end up using an incorrect auth source. If reliable DNS resolution cannot
 be guaranteed, the auth source can be specified explicitly in SRV URIs as
 a URI option:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb+srv://username:myRealPassword@cluster0.mongodb.net/test?w=majority&amp;authSource=admin&quot;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb+srv://username:myRealPassword@cluster0.mongodb.net/test?w=majority&amp;authSource=admin&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When changing the database using the <code class="docutils literal notranslate"><span class="pre">with</span></code> method, the auth source is
+<p class="admonition-title">Note</p>
+<p>When changing the database using the <code class="docutils literal notranslate"><span class="pre">with</span></code> method, the auth source is
 determined in the new <code class="docutils literal notranslate"><span class="pre">Client</span></code> instance using the full set of options
 that applies to it. For example, if the original client had an auth source
 specified, this auth source would take precedence over the database
@@ -379,34 +674,34 @@ given in the <code class="docutils literal notranslate"><span class="pre">with</
 source specified, the new database would be the new auth source, subject
 to the rules of the authentication mechanism used.</p>
 </div>
-</div>
-<div class="section" id="authentication-mechanisms">
-<h2>Authentication Mechanisms<a class="headerlink" href="#authentication-mechanisms" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="authentication-mechanisms">
+<h2>Authentication Mechanisms<a class="headerlink" href="#authentication-mechanisms" title="Permalink to this headline">#</a></h2>
 <p>MongoDB supports several authentication mechanisms, as detailed in this section.
 Authentication mechanism to use can be explicitly specified when a Client is
 created; if authentication mechanism is not provided by the application, it is
 selected as follows:</p>
 <ul class="simple">
-<li>For MongoDB 4.0 and higher, the client performs SCRAM mechanism negotiation
+<li><p>For MongoDB 4.0 and higher, the client performs SCRAM mechanism negotiation
 with the server. If the user specified in client configuration permits
 authentication with SCRAM-SHA-256, then SCRAM-SHA-256 is used for
-authentication. Otherwise SCRAM-SHA-1 is used.</li>
-<li>For MongoDB 3.0 through 3.6, SCRAM-SHA-1 is used.</li>
-<li>For MongoDB 2.6, MONGODB-CR is used.</li>
+authentication. Otherwise SCRAM-SHA-1 is used.</p></li>
+<li><p>For MongoDB 3.0 through 3.6, SCRAM-SHA-1 is used.</p></li>
+<li><p>For MongoDB 2.6, MONGODB-CR is used.</p></li>
 </ul>
 <p>Note that:</p>
 <ul class="simple">
-<li>X.509, AWS, LDAP and Kerberos authentication mechanisms must always be
-explicitly requested.</li>
-<li>If the MongoDB server that the client is connecting to supports SCRAM,
+<li><p>X.509, AWS, LDAP and Kerberos authentication mechanisms must always be
+explicitly requested.</p></li>
+<li><p>If the MongoDB server that the client is connecting to supports SCRAM,
 the client will attempt to authenticate using SCRAM if no authentication
 mechanism is explicitly specified. To authenticate to MongoDB 3.0 and
 higher servers using MONGODB-CR, the MONGODB-CR mechanism must be
-explicitly requested.</li>
+explicitly requested.</p></li>
 </ul>
-<div class="section" id="scram">
-<span id="id2"></span><h3>SCRAM<a class="headerlink" href="#scram" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://docs.mongodb.com/manual/core/security-scram/">SCRAM authentication</a> is the default
+<section id="scram">
+<span id="id6"></span><h3>SCRAM<a class="headerlink" href="#scram" title="Permalink to this headline">#</a></h3>
+<p><a href="#id7"><span class="problematic" id="id8">:manual:`SCRAM authentication &lt;/core/security-scram/&gt;`</span></a> is the default
 authentication mechanism for MongoDB. There are two SCRAM mechanisms in
 MongoDB: SCRAM-SHA-1 (available as of MongoDB 3.0) and SCRAM-SHA-256
 (available as of MongoDB 4.0). If an authentication mechanism is not
@@ -418,12 +713,7 @@ allow SCRAM-SHA-1 mechanism, only SCRAM-SHA-256 mechanism or both).</p>
 <p>To explicitly specify SCRAM-SHA-1 as the authentication mechanism, use the
 <code class="docutils literal notranslate"><span class="pre">auth_mech:</span> <span class="pre">:scram</span></code> Ruby client option or the <code class="docutils literal notranslate"><span class="pre">SCRAM-SHA-1</span></code> as the value
 for the <code class="docutils literal notranslate"><span class="pre">authMechanism</span></code> URI option, as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
                            <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
@@ -432,16 +722,10 @@ copy</a>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://test:123@127.0.0.1:27017/mydb?authMechanism=SCRAM-SHA-1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>To explicitly specify SCRAM-SHA-256 as the authentication mechanism, use the
 <code class="docutils literal notranslate"><span class="pre">auth_mech:</span> <span class="pre">:scram256</span></code> Ruby client option or the <code class="docutils literal notranslate"><span class="pre">SCRAM-SHA-256</span></code> as the
 value for the <code class="docutils literal notranslate"><span class="pre">authMechanism</span></code> URI option, as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
                            <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
@@ -450,10 +734,9 @@ copy</a>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://test:123@127.0.0.1:27017/mydb?authMechanism=SCRAM-SHA-256&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="client-certificate-x-509">
-<span id="x-509"></span><h3>Client Certificate (X.509)<a class="headerlink" href="#client-certificate-x-509" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="client-certificate-x-509">
+<span id="x-509"></span><h3>Client Certificate (X.509)<a class="headerlink" href="#client-certificate-x-509" title="Permalink to this headline">#</a></h3>
 <p>The driver presents an X.509 certificate during TLS negotiation.
 The MONGODB-X509 authentication mechanism authenticates a username
 derived from the distinguished subject name of this certificate.</p>
@@ -466,13 +749,9 @@ and private key are stored in the same file, you must specify the path to
 that file by passing both the <code class="docutils literal notranslate"><span class="pre">ssl_cert</span></code> and <code class="docutils literal notranslate"><span class="pre">ssl_key</span></code> options
 to the client.</p>
 <p>For more information about configuring X.509 authentication in MongoDB,
-see the <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/configure-x509/">X.509 tutorial in the MongoDB Manual</a>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+see the <a href="#id9"><span class="problematic" id="id10">:manual:`X.509 tutorial in the MongoDB Manual
+&lt;/tutorial/configure-x509/&gt;`</span></a>.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:mongodb_x509</span><span class="p">,</span>
                            <span class="ss">ssl</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
                            <span class="ss">ssl_cert</span><span class="p">:</span> <span class="s1">&#39;/path/to/client.pem&#39;</span><span class="p">,</span>
@@ -480,27 +759,26 @@ copy</a>
                            <span class="ss">ssl_ca_cert</span><span class="p">:</span> <span class="s1">&#39;/path/to/ca.pem&#39;</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="aws">
-<span id="aws-auth"></span><h3>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="aws">
+<span id="aws-auth"></span><h3>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">#</a></h3>
 <p><em>Requires MongoDB Enterprise Edition and server version 4.4 or later.</em></p>
 <p>The AWS authentication mechanism uses AWS <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html">Identity and Access Management (IAM)</a>
 and AWS <a class="reference external" href="https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html">Security Token Service (STS)</a>
 to prove the client’s identity to a MongoDB server. Briefly, AWS authentication
 works as follows:</p>
 <ol class="arabic simple">
-<li>The client uses AWS IAM credentials to create a signature that is sent to
-the MongoDB server.</li>
-<li>The server sends a request to AWS STS using the client’s signature.</li>
-<li>A successful STS request returns the username (technically, the ARN of
+<li><p>The client uses AWS IAM credentials to create a signature that is sent to
+the MongoDB server.</p></li>
+<li><p>The server sends a request to AWS STS using the client’s signature.</p></li>
+<li><p>A successful STS request returns the username (technically, the ARN of
 the IAM user or role) corresponding to the credentials that the client used.
 The IAM user ARN is used by the server to look up a defined user, and the
-client is considered to have authenticated as this user.</li>
+client is considered to have authenticated as this user.</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Unlike other authentication mechanisms, the username that the application
+<p class="admonition-title">Note</p>
+<p>Unlike other authentication mechanisms, the username that the application
 provides when creating a client and the username of the server user are
 different: the username on the client is the AWS access key ID, but the
 username on the server is the ARN of the IAM user or role corresponding
@@ -508,41 +786,36 @@ to the access key ID.</p>
 </div>
 <p>AWS credentials are comprised of:</p>
 <ul class="simple">
-<li>The access key ID.</li>
-<li>The secret access key.</li>
-<li>The optional session token.</li>
+<li><p>The access key ID.</p></li>
+<li><p>The secret access key.</p></li>
+<li><p>The optional session token.</p></li>
 </ul>
 <p>Authentication with <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">AWS IAM credentials</a>,
 uses the access key ID and the secret access key. Authentication with
 <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html">temporary AWS IAM credentials</a>
 uses all three components.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The driver never sends the secret access key or the session token over
+<p class="admonition-title">Note</p>
+<p>The driver never sends the secret access key or the session token over
 the network.</p>
 </div>
 <p>Temporary credentials are used with:</p>
 <ul class="simple">
-<li>STS <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Assume Role</a>
-requests.</li>
-<li><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html">EC2 instance roles</a>.</li>
-<li><a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task roles</a>.</li>
-<li><a class="reference external" href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">AWS Lambda environment</a>.</li>
+<li><p>STS <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Assume Role</a>
+requests.</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html">EC2 instance roles</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task roles</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">AWS Lambda environment</a>.</p></li>
 </ul>
 <p>The Ruby driver allows providing both regular and temporary credentials
 explicitly as Ruby options or URI options. If credentials are not explicitly
 provided, the driver will attempt to retrieve them from environment variables
 described below and from EC2 instance and ECS task metadata endpoints.</p>
-<div class="section" id="providing-credentials-explicitly">
-<h4>Providing Credentials Explicitly<a class="headerlink" href="#providing-credentials-explicitly" title="Permalink to this headline">¶</a></h4>
+<section id="providing-credentials-explicitly">
+<h4>Providing Credentials Explicitly<a class="headerlink" href="#providing-credentials-explicitly" title="Permalink to this headline">#</a></h4>
 <p>Regular (non-temporary) IAM credentials can be provided as Ruby options,
 as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
   <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
   <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-ACCESS-KEY-ID&gt;&#39;</span><span class="p">,</span>
   <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SECRET-ACCESS-KEY&gt;&#39;</span><span class="p">,</span>
@@ -550,30 +823,18 @@ copy</a>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>They can also be provided via a URI:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="s1">&#39;mongodb://&lt;AWS-ACCESS-KEY-ID&gt;:&lt;AWS-SECRET-ACCESS-KEY&gt;@mongodb.example.com/mydb?authMechanism=MONGODB-AWS&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When credentials are provided via a URI, they must be percent-escaped.</p>
+<p class="admonition-title">Note</p>
+<p>When credentials are provided via a URI, they must be percent-escaped.</p>
 </div>
 <p>To provide temporary credentials, specify the session token in the
 authentication mechanism properties as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
   <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
   <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-ACCESS-KEY-ID&gt;&#39;</span><span class="p">,</span>
   <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;&lt;AWS-SECRET-ACCESS-KEY&gt;&#39;</span><span class="p">,</span>
@@ -584,30 +845,18 @@ copy</a>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>The temporary credentials can also be provided via a URI:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="s1">&#39;mongodb://&lt;AWS-ACCESS-KEY-ID&gt;:&lt;AWS-SECRET-ACCESS-KEY&gt;@mongodb.example.com/mydb?authMechanism=MONGODB-AWS&amp;authMechanismProperties=AWS_SESSION_TOKEN:&lt;AWS-SESSION-TOKEN&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="automatically-retrieving-credentials">
-<h4>Automatically Retrieving Credentials<a class="headerlink" href="#automatically-retrieving-credentials" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="automatically-retrieving-credentials">
+<h4>Automatically Retrieving Credentials<a class="headerlink" href="#automatically-retrieving-credentials" title="Permalink to this headline">#</a></h4>
 <p>The client can retrieve credentials from the environment or from EC2 or ECS
 metadata endpoints. To retrieve credentials automatically, specify the
 AWS authentication mechanism but do not specify a username nor a password:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;mongodb.example.com&#39;</span><span class="o">]</span><span class="p">,</span>
   <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:aws</span><span class="p">,</span>
   <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -617,60 +866,55 @@ copy</a>
   <span class="s1">&#39;mongodb://mongodb.example.com/mydb?authMechanism=MONGODB-AWS&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>The driver will try to obtain credentials from the following sources, in
 the specified order:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code> and <code class="docutils literal notranslate"><span class="pre">AWS_SESSION_TOKEN</span></code>
+<li><p><code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code> and <code class="docutils literal notranslate"><span class="pre">AWS_SESSION_TOKEN</span></code>
 environment variables. These environment variables are recognized by
 a variety of AWS-related libraries and tools such as the official
 AWS Ruby SDK and the AWS CLI. They are also defined when running in an
-AWS Lambda environment.</li>
-<li>The AWS <a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task metadata endpoint</a>.
+AWS Lambda environment.</p></li>
+<li><p>The AWS <a class="reference external" href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS task metadata endpoint</a>.
 This returns credentials associated with the ECS task role assigned to
-the container.</li>
-<li>The AWS <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">EC2 instance metadata endpoint</a>.
+the container.</p></li>
+<li><p>The AWS <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">EC2 instance metadata endpoint</a>.
 This returns credentials associated with the EC2 instance role assigned to
-the instance.</li>
+the instance.</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A credentials source that provides any credentials must provide a complete
+<p class="admonition-title">Note</p>
+<p>A credentials source that provides any credentials must provide a complete
 set of credentials. For example, the driver will raise an error if only
 one of <code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY_ID</span></code> or <code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code> environment
 variables is populated but not the other.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If an application is running in an ECS container on an EC2 instance and
+<p class="admonition-title">Note</p>
+<p>If an application is running in an ECS container on an EC2 instance and
 <a class="reference external" href="https://aws.amazon.com/premiumsupport/knowledge-center/ecs-container-ec2-metadata/">the container is allowed access to the instance metadata</a>,
 the driver will attempt to retrieve credentials for the AWS authentication
 mechanism from the EC2 instance metadata endpoint, thus potentially
 authenticating as the IAM role assigned to the EC2 instance, if it was not
 able to retrieve ECS task role credentials from the ECS task endpoint.</p>
 </div>
-</div>
-</div>
-<div class="section" id="ldap-sasl-plain">
-<span id="plain"></span><h3>LDAP (SASL PLAIN)<a class="headerlink" href="#ldap-sasl-plain" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="ldap-sasl-plain">
+<span id="plain"></span><h3>LDAP (SASL PLAIN)<a class="headerlink" href="#ldap-sasl-plain" title="Permalink to this headline">#</a></h3>
 <p><em>Requires MongoDB Enterprise Edition.</em></p>
 <p>MongoDB Enterprise Edition supports the LDAP authentication mechanism
 which allows you to delegate authentication using a Lightweight Directory
 Access Protocol <a class="reference external" href="http://en.wikipedia.org/wiki/LDAP">LDAP</a> server.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">When using LDAP, passwords are sent to the server in plain text. For this
+<p class="admonition-title">Warning</p>
+<p>When using LDAP, passwords are sent to the server in plain text. For this
 reason, we strongly recommend enabling TLS when using LDAP as your
 authentication mechanism.</p>
 </div>
 <p>For more information about configuring LDAP authentication in
-MongoDB, see the <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/configure-ldap-sasl-authentication/">SASL/LDAP tutorial in the MongoDB Manual</a>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+MongoDB, see the <a href="#id11"><span class="problematic" id="id12">:manual:`SASL/LDAP tutorial in the MongoDB Manual
+&lt;/tutorial/configure-ldap-sasl-authentication/&gt;`</span></a>.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:plain</span><span class="p">,</span>
                            <span class="ss">ssl</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
                            <span class="ss">ssl_verify</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
@@ -678,37 +922,25 @@ copy</a>
                            <span class="ss">ssl_ca_cert</span><span class="p">:</span> <span class="s1">&#39;/path/to/ca.pem&#39;</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="kerberos-gssapi">
-<span id="kerberos"></span><h3>Kerberos (GSSAPI)<a class="headerlink" href="#kerberos-gssapi" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="kerberos-gssapi">
+<span id="kerberos"></span><h3>Kerberos (GSSAPI)<a class="headerlink" href="#kerberos-gssapi" title="Permalink to this headline">#</a></h3>
 <p><em>Requires MongoDB Enterprise Edition.</em></p>
 <p>To configure the MongoDB server to use Kerberos, please refer to the
-<a class="reference external" href="https://docs.mongodb.com/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">server Kerberos documentation</a>.</p>
+<a href="#id13"><span class="problematic" id="id14">:manual:`server Kerberos documentation
+&lt;/tutorial/control-access-to-mongodb-with-kerberos-authentication/&gt;`</span></a>.</p>
 <p>To use the Kerberos authentication mechanism with the Ruby MongoDB driver,
 an additional library implementing the Kerberos authenticator -
 <a class="reference external" href="https://rubygems.org/gems/mongo_kerberos">mongo_kerberos</a> - must be
 installed and loaded. To do so, add to your <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s1">&#39;mongo&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2&#39;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s1">&#39;mongo&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2&#39;</span>
 <span class="n">gem</span> <span class="s1">&#39;mongo_kerberos&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2&#39;</span>
 </pre></div>
 </div>
-</div>
 <p>… and add to your application code:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;mongo_kerberos&#39;</span>
 </pre></div>
-</div>
 </div>
 <p>If using Kerberos authentication with <strong>MRI</strong>, the password is not specified
 in driver configuration and it is not sent to the MongoDB server by the driver.
@@ -727,21 +959,16 @@ Additionally, the Java runtime environment must be configured for Kerberos;
 please refer to the  <a class="reference external" href="http://mongodb.github.io/mongo-java-driver/4.0/driver/tutorials/authentication/#gssapi">MongoDB Java Driver Kerberos documentation</a>
 for more information.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">As per the server Kerberos documentation, the FQDN of the host
+<p class="admonition-title">Note</p>
+<p>As per the server Kerberos documentation, the FQDN of the host
 running MongoDB must be specified when using Kerberos authentication.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If using MongoDB URIs, be sure to percent-escape special characters like
+<p class="admonition-title">Note</p>
+<p>If using MongoDB URIs, be sure to percent-escape special characters like
 <code class="docutils literal notranslate"><span class="pre">/</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> when they appear in the username.</p>
 </div>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authenticate as appuser@MYREALM:</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authenticate as appuser@MYREALM:</span>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;mongodb://appuser%40MYREALM@myserver.mycompany.com:27017/mydb?authMechanism=GSSAPI&quot;</span><span class="p">)</span>
 
 <span class="c1"># Authenticate as myapp/appuser@MYREALM:</span>
@@ -753,80 +980,76 @@ copy</a>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;myapp/appuser@MYREALM&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="mongodb-cr">
-<h3>MONGODB-CR<a class="headerlink" href="#mongodb-cr" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mongodb-cr">
+<h3>MONGODB-CR<a class="headerlink" href="#mongodb-cr" title="Permalink to this headline">#</a></h3>
 <p><em>Deprecated:</em> MONGODB-CR mechanism is deprecated as of MongoDB 3.6 and
 removed as of MongoDB 4.0. Please use <a class="reference external" href="#scram">SCRAM authentication</a> instead.</p>
 <p>MONGODB-CR was the default authentication mechanism for MongoDB through
 version 2.6.</p>
 <p>The mechanism can be explicitly set with the credentials:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span>
                            <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
                            <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
                            <span class="ss">password</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
                            <span class="ss">auth_mech</span><span class="p">:</span> <span class="ss">:mongodb_cr</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If the MongoDB server that the client is connecting to supports SCRAM,
+<p class="admonition-title">Note</p>
+<p>If the MongoDB server that the client is connecting to supports SCRAM,
 the client will attempt to authenticate using SCRAM if no authentication
 mechanism is explicitly specified. To authenticate to MongoDB 3.0 and
 higher servers using MONGODB-CR, the MONGODB-CR mechanism must be
 explicitly requested.</p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="create-client.html" title="Previous Section: Creating a Client"><span>Creating a Client</span></a>
-      <a class="btn-next-text" href="monitoring.html" title="Next Section: Monitoring"><span>Monitoring</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="create-client.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Creating a Client</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="monitoring.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Monitoring</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div>
-<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
-  </script></body>
+
+  </body>
 </html>

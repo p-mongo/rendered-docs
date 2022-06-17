@@ -1,305 +1,624 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Query Cache &#8212; Ruby MongoDB Driver  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GridFS" href="gridfs.html" />
+    <link rel="prev" title="Geospatial Search" href="geospatial-search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Ruby MongoDB Driver  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../getting-started.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="driver-compatibility.html">
+     Driver Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../support.html">
+     Support
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/quick-start.html">
+     Quick Start
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="connection-and-configuration.html">
+   Connection &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="create-client.html">
+     Creating a Client
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="authentication.html">
+     Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="user-management.html">
+     User Management
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="working-with-data.html">
+   Working With Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud-operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bulk-operations.html">
+     Bulk Writes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projection.html">
+     Projection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map-Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geospatial-search.html">
+     Geospatial Search
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Query Cache
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gridfs.html">
+     GridFS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="change-streams.html">
+     Change Streams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="client-side-encryption.html">
+     Client-Side Encryption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="schema-operations.html">
+   Schema Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="database-tasks.html">
+     Databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-tasks.html">
+     Collections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexing.html">
+     Indexing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collations.html">
+     Collations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/ruby-driver/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute.html">
+   Contribute to the Driver
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Query Cache &mdash; MongoDB Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/reference/query-cache.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/reference/query-cache/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="MongoDB Ruby Driver Manual" href="../index.html" />
-<link rel="up" title="Working With Data" href="working-with-data.html" />
-<link rel="next" title="GridFS" href="gridfs.html" />
-<link rel="prev" title="Geospatial Search" href="geospatial-search.html" /></head>
-<body data-project="docs-ruby" data-project-title="MongoDB Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Ruby Driver"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">MongoDB Ruby Driver Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="ruby-driver/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
-                
-                Version 2.14 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
-                
-                Version 2.13
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
-                
-                Version 2.12
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
-                
-                Version 2.11
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
-                
-                Version 2.10
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
-                
-                Version 2.9
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
-                
-                Version 2.8
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
-                
-                Version 2.7
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
-                
-                Version 2.6
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
-                
-                Version 2.5
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
-                
-                Version 2.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
-                
-                Version 2.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
-                
-                Version 2.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
-                
-                Version 2.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
-                
-                1.x
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="../support.html">Support</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/quick-start.html">Quick Start</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="connection-and-configuration.html">Connection &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="create-client.html">Creating a Client</a></li><li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li><li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li><li class="toctree-l2"><a class="reference internal" href="user-management.html">User Management</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="working-with-data.html">Working With Data</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="crud-operations.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="bulk-operations.html">Bulk Writes</a></li><li class="toctree-l2"><a class="reference internal" href="projection.html">Projection</a></li><li class="toctree-l2"><a class="reference internal" href="aggregation.html">Aggregation</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="geospatial-search.html">Geospatial Search</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Query Cache</a></li><li class="toctree-l2"><a class="reference internal" href="gridfs.html">GridFS</a></li><li class="toctree-l2"><a class="reference internal" href="change-streams.html">Change Streams</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="schema-operations.html">Schema Operations</a><ul><li class="toctree-l2"><a class="reference internal" href="database-tasks.html">Databases</a></li><li class="toctree-l2"><a class="reference internal" href="collection-tasks.html">Collections</a></li><li class="toctree-l2"><a class="reference internal" href="indexing.html">Indexing</a></li><li class="toctree-l2"><a class="reference internal" href="collations.html">Collations</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li><li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/query-cache.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interactions-with-fibers">
+   Interactions With Fibers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query-matching">
+   Query Matching
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limits">
+   Limits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cache-invalidation">
+   Cache Invalidation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-cache-invalidation">
+   Manual Cache Invalidation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transactions">
+   Transactions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aggregations">
+   Aggregations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-collections">
+   System Collections
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query-cache-middleware">
+   Query Cache Middleware
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rack-middleware">
+     Rack Middleware
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#active-job-middleware">
+     Active Job Middleware
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Query Cache</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interactions-with-fibers">
+   Interactions With Fibers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query-matching">
+   Query Matching
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limits">
+   Limits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cache-invalidation">
+   Cache Invalidation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-cache-invalidation">
+   Manual Cache Invalidation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transactions">
+   Transactions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aggregations">
+   Aggregations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-collections">
+   System Collections
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query-cache-middleware">
+   Query Cache Middleware
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rack-middleware">
+     Rack Middleware
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#active-job-middleware">
+     Active Job Middleware
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/query-cache">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="working-with-data.html">Working With Data</a><span class="bcpoint"> > </span></li>
-            <li>Query Cache</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="query-cache">
-<h1>Query Cache<a class="headerlink" href="#query-cache" title="Permalink to this headline">¶</a></h1>
+  <section id="query-cache">
+<h1>Query Cache<a class="headerlink" href="#query-cache" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#usage" id="id3">Usage</a></li>
-<li><a class="reference internal" href="#query-matching" id="id4">Query Matching</a></li>
-<li><a class="reference internal" href="#limits" id="id5">Limits</a></li>
-<li><a class="reference internal" href="#cache-invalidation" id="id6">Cache Invalidation</a></li>
-<li><a class="reference internal" href="#manual-cache-invalidation" id="id7">Manual Cache Invalidation</a></li>
-<li><a class="reference internal" href="#transactions" id="id8">Transactions</a></li>
-<li><a class="reference internal" href="#aggregations" id="id9">Aggregations</a></li>
-<li><a class="reference internal" href="#system-collections" id="id10">System Collections</a></li>
-<li><a class="reference internal" href="#query-cache-middleware" id="id11">Query Cache Middleware</a></li>
+<li><p><a class="reference internal" href="#usage" id="id5">Usage</a></p></li>
+<li><p><a class="reference internal" href="#interactions-with-fibers" id="id6">Interactions With Fibers</a></p></li>
+<li><p><a class="reference internal" href="#query-matching" id="id7">Query Matching</a></p></li>
+<li><p><a class="reference internal" href="#limits" id="id8">Limits</a></p></li>
+<li><p><a class="reference internal" href="#cache-invalidation" id="id9">Cache Invalidation</a></p></li>
+<li><p><a class="reference internal" href="#manual-cache-invalidation" id="id10">Manual Cache Invalidation</a></p></li>
+<li><p><a class="reference internal" href="#transactions" id="id11">Transactions</a></p></li>
+<li><p><a class="reference internal" href="#aggregations" id="id12">Aggregations</a></p></li>
+<li><p><a class="reference internal" href="#system-collections" id="id13">System Collections</a></p></li>
+<li><p><a class="reference internal" href="#query-cache-middleware" id="id14">Query Cache Middleware</a></p>
+<ul>
+<li><p><a class="reference internal" href="#rack-middleware" id="id15">Rack Middleware</a></p></li>
+<li><p><a class="reference internal" href="#active-job-middleware" id="id16">Active Job Middleware</a></p></li>
+</ul>
+</li>
 </ul>
 </div>
 <p id="id1">The MongoDB Ruby driver provides a built-in query cache. When enabled, the
 query cache saves the results of previously-executed find and aggregation
 queries. When those same queries are performed again, the driver returns
-the cached reuslts to prevent unnecessary roundtrips to the database.</p>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+the cached results to prevent unnecessary roundtrips to the database.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h2>
 <p>The query cache is disabled by default. It can be enabled on the global
 scope as well as within the context of a specific block. The driver also
 provides a <a class="reference internal" href="#query-cache-middleware"><span class="std std-ref">Rack middleware</span></a> to enable the
 query cache automatically for each web request.</p>
 <p>To enable the query cache globally:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kp">true</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kp">true</span>
 </pre></div>
-</div>
 </div>
 <p>Similarly, to disable it globally:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kp">false</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kp">false</span>
 </pre></div>
 </div>
-</div>
 <p>To enable the query cache within the context of a block:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">cache</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">cache</span> <span class="k">do</span>
   <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">client</span><span class="o">|</span>
     <span class="n">client</span><span class="o">[</span><span class="s1">&#39;artists&#39;</span><span class="o">].</span><span class="n">find</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Flying Lotus&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
     <span class="c1">#=&gt; Queries the database and caches the result</span>
@@ -310,14 +629,8 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>And to disable the query cache in the context of a block:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">uncached</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">uncached</span> <span class="k">do</span>
   <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">client</span><span class="o">|</span>
     <span class="n">client</span><span class="o">[</span><span class="s1">&#39;artists&#39;</span><span class="o">].</span><span class="n">find</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Flying Lotus&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
     <span class="c1">#=&gt; Sends the query to the database; does NOT cache the result</span>
@@ -328,39 +641,62 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>You may check whether the query cache is enabled at any time by calling
 <code class="docutils literal notranslate"><span class="pre">Mongo::QueryCache.enabled?</span></code>, which will return <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</section>
+<section id="interactions-with-fibers">
+<h2>Interactions With Fibers<a class="headerlink" href="#interactions-with-fibers" title="Permalink to this headline">#</a></h2>
+<p>The Query cache enablement flag is stored in fiber-local storage (using
+<a class="reference external" href="https://ruby-doc.org/core/Thread.html#class-Thread-label-Fiber-local+vs.+Thread-local">Thread.current</a>.
+This, in principle, permits query cache state to be per fiber, although
+this is not currently tested.</p>
+<p>There are methods in the Ruby standard library, like <code class="docutils literal notranslate"><span class="pre">Enumerable#next</span></code>,
+that <a class="reference external" href="https://stackoverflow.com/questions/11057223/how-does-rubys-enumerator-object-iterate-externally-over-an-internal-iterator/11058270#11058270">utilize fibers</a>
+in their implementation. These methods would not see the query cache
+enablement flag when it is set by the applications, and subsequently would
+not use the query cache. For example, the following code does not utilize
+the query cache despite requesting it:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="n">client</span><span class="o">[</span><span class="s1">&#39;artists&#39;</span><span class="o">].</span><span class="n">find</span><span class="p">({},</span> <span class="ss">limit</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_enum</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># Issues the query again.</span>
+<span class="n">client</span><span class="o">[</span><span class="s1">&#39;artists&#39;</span><span class="o">].</span><span class="n">find</span><span class="p">({},</span> <span class="ss">limit</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_enum</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
 </div>
-<div class="section" id="query-matching">
-<span id="query-cache-matching"></span><h2>Query Matching<a class="headerlink" href="#query-matching" title="Permalink to this headline">¶</a></h2>
+<p>Rewriting this code to use <code class="docutils literal notranslate"><span class="pre">first</span></code> instead of <code class="docutils literal notranslate"><span class="pre">next</span></code> would make it use
+the query cache:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="n">client</span><span class="o">[</span><span class="s1">&#39;artists&#39;</span><span class="o">].</span><span class="n">find</span><span class="p">({},</span> <span class="ss">limit</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># Utilizes the cached result from the first query.</span>
+<span class="n">client</span><span class="o">[</span><span class="s1">&#39;artists&#39;</span><span class="o">].</span><span class="n">find</span><span class="p">({},</span> <span class="ss">limit</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+</pre></div>
+</div>
+</section>
+<section id="query-matching">
+<span id="query-cache-matching"></span><h2>Query Matching<a class="headerlink" href="#query-matching" title="Permalink to this headline">#</a></h2>
 <p>A query is eligible to use cached results if it matches the original query
 that produced the cached results. Two queries are considered matching if they
 are identical in the following values:</p>
 <ul class="simple">
-<li>Namespace (the database and collection on which the query was performed)</li>
-<li>Selector (for aggregations, the aggregation pipeline stages)</li>
-<li>Skip</li>
-<li>Sort</li>
-<li>Projection</li>
-<li>Collation</li>
-<li>Read Concern</li>
-<li>Read Preference</li>
+<li><p>Namespace (the database and collection on which the query was performed)</p></li>
+<li><p>Selector (for aggregations, the aggregation pipeline stages)</p></li>
+<li><p>Skip</p></li>
+<li><p>Sort</p></li>
+<li><p>Projection</p></li>
+<li><p>Collation</p></li>
+<li><p>Read Concern</p></li>
+<li><p>Read Preference</p></li>
 </ul>
 <p>For example, if you perform one query, and then perform a mostly identical query
 with a different sort order, those queries will not be considered matching,
 and the second query will not use the cached results of the first.</p>
-</div>
-<div class="section" id="limits">
-<h2>Limits<a class="headerlink" href="#limits" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="limits">
+<h2>Limits<a class="headerlink" href="#limits" title="Permalink to this headline">#</a></h2>
 <p>When performing a query with a limit, the query cache will reuse an existing
 cached query with a larger limit if one exists. For example:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">cache</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">cache</span> <span class="k">do</span>
   <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">client</span><span class="o">|</span>
     <span class="n">client</span><span class="o">[</span><span class="s1">&#39;artists&#39;</span><span class="o">].</span><span class="n">find</span><span class="p">(</span><span class="ss">genre</span><span class="p">:</span> <span class="s1">&#39;Rock&#39;</span><span class="p">,</span> <span class="ss">limit</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
     <span class="c1">#=&gt; Queries the database and caches the result</span>
@@ -374,10 +710,9 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="cache-invalidation">
-<h2>Cache Invalidation<a class="headerlink" href="#cache-invalidation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cache-invalidation">
+<h2>Cache Invalidation<a class="headerlink" href="#cache-invalidation" title="Permalink to this headline">#</a></h2>
 <p>The query cache is cleared in part or in full on every write operation. Most
 write operations will clear the results of any queries were performed on the same
 collection that is being written to. Some operations will clear the entire
@@ -385,47 +720,36 @@ query cache.</p>
 <p>The following operations will clear cached query results on the same database and
 collection (including during bulk writes):</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">insert_one</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">update_one</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">replace_one</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">update_many</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">delete_one</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">delete_many</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_one</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update_one</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">replace_one</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update_many</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delete_one</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delete_many</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_one_and_delete</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_one_and_replace</span></code></p></li>
 </ul>
 <p>The following operations will clear the entire query cache:</p>
 <ul class="simple">
-<li>aggregation with <code class="docutils literal notranslate"><span class="pre">$merge</span></code> or <code class="docutils literal notranslate"><span class="pre">$out</span></code> pipeline stages</li>
-<li><code class="docutils literal notranslate"><span class="pre">commit_transaction</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">abort_transaction</span></code></li>
+<li><p>aggregation with <code class="docutils literal notranslate"><span class="pre">$merge</span></code> or <code class="docutils literal notranslate"><span class="pre">$out</span></code> pipeline stages</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">commit_transaction</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">abort_transaction</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="manual-cache-invalidation">
-<h2>Manual Cache Invalidation<a class="headerlink" href="#manual-cache-invalidation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="manual-cache-invalidation">
+<h2>Manual Cache Invalidation<a class="headerlink" href="#manual-cache-invalidation" title="Permalink to this headline">#</a></h2>
 <p>You may clear the query cache at any time with the following method:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">clear</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">clear</span>
 </pre></div>
 </div>
-</div>
 <p>This will remove all cached query results.</p>
-</div>
-<div class="section" id="transactions">
-<h2>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="transactions">
+<h2>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">#</a></h2>
 <p>Queries are cached within the context of a transaction, but the entire
 cache will be cleared when the transaction is committed or aborted.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">cache</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">cache</span> <span class="k">do</span>
   <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">client</span><span class="o">|</span>
     <span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
 
@@ -450,26 +774,20 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Transactions are often performed with a “snapshot” read concern level. Keep
 in mind that a query with a “snapshot” read concern cannot return cached
 results from a query without the “snapshot” read concern, so it is possible
 that a transaction may not use previously cached queries.</p>
-<p class="last">To understand when a query will use a cached result, see the
+<p>To understand when a query will use a cached result, see the
 <a class="reference internal" href="#query-cache-matching"><span class="std std-ref">Query Matching</span></a> section.</p>
 </div>
-</div>
-<div class="section" id="aggregations">
-<h2>Aggregations<a class="headerlink" href="#aggregations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="aggregations">
+<h2>Aggregations<a class="headerlink" href="#aggregations" title="Permalink to this headline">#</a></h2>
 <p>The query cache also caches the results of aggregation pipelines. For example:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">cache</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">.</span><span class="n">cache</span> <span class="k">do</span>
   <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">client</span><span class="o">|</span>
     <span class="n">client</span><span class="o">[</span><span class="s1">&#39;artists&#39;</span><span class="o">].</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span> <span class="p">{</span> <span class="s1">&#39;$match&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Fleet Foxes&#39;</span> <span class="p">}</span> <span class="p">}</span> <span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
     <span class="c1">#=&gt; Queries the database and caches the result</span>
@@ -480,15 +798,14 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Aggregation results are cleared from the cache during every write operation,
+<p class="admonition-title">Note</p>
+<p>Aggregation results are cleared from the cache during every write operation,
 with no exceptions.</p>
 </div>
-</div>
-<div class="section" id="system-collections">
-<h2>System Collections<a class="headerlink" href="#system-collections" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="system-collections">
+<h2>System Collections<a class="headerlink" href="#system-collections" title="Permalink to this headline">#</a></h2>
 <p>MongoDB stores system information in collections that use the <code class="docutils literal notranslate"><span class="pre">database.system.*</span></code>
 namespace pattern. These are called system collections.</p>
 <p>Data in system collections can change due to activity not triggered by the
@@ -497,76 +814,89 @@ database commands issued by the application. Because of the difficulty of
 determining when the cached results for system collections should be expired,
 queries on system collections bypass the query cache.</p>
 <p>You may read more about system collections in the
-<a class="reference external" href="https://docs.mongodb.com/manual/reference/system-collections/">MongoDB documentation</a>.</p>
+<a href="#id2"><span class="problematic" id="id3">:manual:`MongoDB documentation &lt;/reference/system-collections/&gt;`</span></a>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Even when the query cache is enabled, query results from system collections
+<p class="admonition-title">Note</p>
+<p>Even when the query cache is enabled, query results from system collections
 will not be cached.</p>
 </div>
-</div>
-<div class="section" id="query-cache-middleware">
-<span id="id2"></span><h2>Query Cache Middleware<a class="headerlink" href="#query-cache-middleware" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="query-cache-middleware">
+<span id="id4"></span><h2>Query Cache Middleware<a class="headerlink" href="#query-cache-middleware" title="Permalink to this headline">#</a></h2>
+<section id="rack-middleware">
+<h3>Rack Middleware<a class="headerlink" href="#rack-middleware" title="Permalink to this headline">#</a></h3>
 <p>The driver provides a Rack middleware which enables the query cache for the
 duration of each web request. Below is an example of how to enable the
 query cache middleware in a Ruby on Rails application:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/application.rb</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/application.rb</span>
 
 <span class="c1"># Add Mongo::QueryCache::Middleware at the bottom of the middleware stack</span>
 <span class="c1"># or before other middleware that queries MongoDB.</span>
 <span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">use</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">::</span><span class="no">Middleware</span>
 </pre></div>
 </div>
-</div>
 <p>Please refer to the <a class="reference external" href="https://guides.rubyonrails.org/rails_on_rack.html#configuring-middleware-stack">Rails on Rack guide</a>
 for more information about using Rack middleware in Rails applications.</p>
-</div>
-</div>
+</section>
+<section id="active-job-middleware">
+<h3>Active Job Middleware<a class="headerlink" href="#active-job-middleware" title="Permalink to this headline">#</a></h3>
+<p>The driver provides an Active Job middleware which enables the query cache for
+each job. Below is an example of how to enable the query cache Active Job
+middleware in a Ruby on Rails application:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/application.rb</span>
 
+<span class="no">ActiveSupport</span><span class="o">.</span><span class="n">on_load</span><span class="p">(</span><span class="ss">:active_job</span><span class="p">)</span> <span class="k">do</span>
+  <span class="kp">include</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">::</span><span class="no">Middleware</span><span class="o">::</span><span class="no">ActiveJob</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="geospatial-search.html" title="Previous Section: Geospatial Search"><span>Geospatial Search</span></a>
-      <a class="btn-next-text" href="gridfs.html" title="Next Section: GridFS"><span>GridFS</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="geospatial-search.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Geospatial Search</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="gridfs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">GridFS</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div>
-<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
-  </script></body>
+
+  </body>
 </html>

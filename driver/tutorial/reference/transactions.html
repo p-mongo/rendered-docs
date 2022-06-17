@@ -1,291 +1,531 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Transactions &#8212; Ruby MongoDB Driver  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Client-Side Encryption" href="client-side-encryption.html" />
+    <link rel="prev" title="Sessions" href="sessions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Ruby MongoDB Driver  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../getting-started.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="driver-compatibility.html">
+     Driver Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../support.html">
+     Support
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/quick-start.html">
+     Quick Start
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="connection-and-configuration.html">
+   Connection &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="create-client.html">
+     Creating a Client
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="authentication.html">
+     Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="user-management.html">
+     User Management
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="working-with-data.html">
+   Working With Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud-operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bulk-operations.html">
+     Bulk Writes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projection.html">
+     Projection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map-Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geospatial-search.html">
+     Geospatial Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="query-cache.html">
+     Query Cache
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gridfs.html">
+     GridFS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="change-streams.html">
+     Change Streams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="client-side-encryption.html">
+     Client-Side Encryption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="schema-operations.html">
+   Schema Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="database-tasks.html">
+     Databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-tasks.html">
+     Collections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexing.html">
+     Indexing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collations.html">
+     Collations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/ruby-driver/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute.html">
+   Contribute to the Driver
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Transactions &mdash; MongoDB Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/reference/transactions.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/reference/transactions/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="MongoDB Ruby Driver Manual" href="../index.html" />
-<link rel="up" title="Working With Data" href="working-with-data.html" />
-<link rel="next" title="Client-Side Encryption" href="client-side-encryption.html" />
-<link rel="prev" title="Sessions" href="sessions.html" /></head>
-<body data-project="docs-ruby" data-project-title="MongoDB Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Ruby Driver"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">MongoDB Ruby Driver Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="ruby-driver/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
-                
-                Version 2.14 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
-                
-                Version 2.13
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
-                
-                Version 2.12
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
-                
-                Version 2.11
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
-                
-                Version 2.10
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
-                
-                Version 2.9
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
-                
-                Version 2.8
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
-                
-                Version 2.7
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
-                
-                Version 2.6
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
-                
-                Version 2.5
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
-                
-                Version 2.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
-                
-                Version 2.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
-                
-                Version 2.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
-                
-                Version 2.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
-                
-                1.x
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="../support.html">Support</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/quick-start.html">Quick Start</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="connection-and-configuration.html">Connection &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="create-client.html">Creating a Client</a></li><li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li><li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li><li class="toctree-l2"><a class="reference internal" href="user-management.html">User Management</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="working-with-data.html">Working With Data</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="crud-operations.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="bulk-operations.html">Bulk Writes</a></li><li class="toctree-l2"><a class="reference internal" href="projection.html">Projection</a></li><li class="toctree-l2"><a class="reference internal" href="aggregation.html">Aggregation</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="geospatial-search.html">Geospatial Search</a></li><li class="toctree-l2"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l2"><a class="reference internal" href="gridfs.html">GridFS</a></li><li class="toctree-l2"><a class="reference internal" href="change-streams.html">Change Streams</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="schema-operations.html">Schema Operations</a><ul><li class="toctree-l2"><a class="reference internal" href="database-tasks.html">Databases</a></li><li class="toctree-l2"><a class="reference internal" href="collection-tasks.html">Collections</a></li><li class="toctree-l2"><a class="reference internal" href="indexing.html">Indexing</a></li><li class="toctree-l2"><a class="reference internal" href="collations.html">Collations</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li><li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/transactions.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-transactions">
+   Using Transactions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#low-level-api">
+   Low Level API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#retrying-commits">
+   Retrying Commits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transaction-nesting">
+   Transaction Nesting
+  </a>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Transactions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-transactions">
+   Using Transactions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#low-level-api">
+   Low Level API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#retrying-commits">
+   Retrying Commits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transaction-nesting">
+   Transaction Nesting
+  </a>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/transactions">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="working-with-data.html">Working With Data</a><span class="bcpoint"> > </span></li>
-            <li>Transactions</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="transactions">
-<h1>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h1>
+  <section id="transactions">
+<h1>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#using-transactions" id="id2">Using Transactions</a></li>
-<li><a class="reference internal" href="#low-level-api" id="id3">Low Level API</a></li>
-<li><a class="reference internal" href="#retrying-commits" id="id4">Retrying Commits</a></li>
-<li><a class="reference internal" href="#transaction-nesting" id="id5">Transaction Nesting</a></li>
+<li><p><a class="reference internal" href="#using-transactions" id="id2">Using Transactions</a></p></li>
+<li><p><a class="reference internal" href="#low-level-api" id="id3">Low Level API</a></p></li>
+<li><p><a class="reference internal" href="#retrying-commits" id="id4">Retrying Commits</a></p></li>
+<li><p><a class="reference internal" href="#transaction-nesting" id="id5">Transaction Nesting</a></p></li>
 </ul>
 </div>
 <p>Version 4.0 of the MongoDB server introduces
-<a class="reference external" href="https://docs.mongodb.com/manual/core/transactions/">multi-document transactions</a>.
+<a class="reference external" href="https://mongodb.com/docs/manual/core/transactions/">multi-document transactions</a>.
 (Updates to multiple fields within a single document are atomic in all
 versions of MongoDB.) Ruby driver version 2.6.0 adds support for transactions.</p>
-<div class="section" id="using-transactions">
-<span id="id1"></span><h2>Using Transactions<a class="headerlink" href="#using-transactions" title="Permalink to this headline">¶</a></h2>
+<section id="using-transactions">
+<span id="id1"></span><h2>Using Transactions<a class="headerlink" href="#using-transactions" title="Permalink to this headline">#</a></h2>
 <p>In order to start a transaction, the application must have a <a class="reference internal" href="sessions.html#sessions"><span class="std std-ref">session</span></a>.</p>
 <p>The recommended way to use transactions is to utilize the <code class="docutils literal notranslate"><span class="pre">with_transaction</span></code>
 helper method:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
 <span class="n">session</span><span class="o">.</span><span class="n">with_transaction</span> <span class="k">do</span>
   <span class="n">collection</span><span class="o">.</span><span class="n">insert_one</span><span class="p">({</span><span class="ss">hello</span><span class="p">:</span> <span class="s1">&#39;world&#39;</span><span class="p">},</span> <span class="ss">session</span><span class="p">:</span> <span class="n">session</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>The <code class="docutils literal notranslate"><span class="pre">with_transaction</span></code> helper does the following:</p>
 <ul class="simple">
-<li>It starts a transaction prior to calling the supplied block, and commits
-the transaction when the block finishes.</li>
-<li>If any of the operations in the block, or the commit operation, result in
+<li><p>It starts a transaction prior to calling the supplied block, and commits
+the transaction when the block finishes.</p></li>
+<li><p>If any of the operations in the block, or the commit operation, result in
 a transient transaction error, the block and/or the commit will be executed
-again.</li>
+again.</p></li>
 </ul>
 <p>The block should be idempotent, because it may be called multiple times.</p>
 <p>The block may explicitly commit or abort the transaction, by calling
@@ -305,12 +545,7 @@ further retry attempts will not be initiated.</p>
 <p>A low level API is also available if more control over transactions is desired.</p>
 <p><code class="docutils literal notranslate"><span class="pre">with_transaction</span></code> takes the same options as <code class="docutils literal notranslate"><span class="pre">start_transaction</span></code> does,
 which are read concern, write concern and read preference:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
 <span class="n">session</span><span class="o">.</span><span class="n">with_transaction</span><span class="p">(</span>
   <span class="ss">read_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">level</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">},</span>
   <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
@@ -320,63 +555,39 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="low-level-api">
-<h2>Low Level API<a class="headerlink" href="#low-level-api" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="low-level-api">
+<h2>Low Level API<a class="headerlink" href="#low-level-api" title="Permalink to this headline">#</a></h2>
 <p>A transaction can be started by calling the <code class="docutils literal notranslate"><span class="pre">start_transaction</span></code> method on a session:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
 <span class="n">session</span><span class="o">.</span><span class="n">start_transaction</span>
 </pre></div>
 </div>
-</div>
 <p>It is also possible to specify read concern, write concern and read preference
 when starting a transaction:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_session</span>
 <span class="n">session</span><span class="o">.</span><span class="n">start_transaction</span><span class="p">(</span>
   <span class="ss">read_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">level</span><span class="p">:</span> <span class="ss">:majority</span><span class="p">},</span>
   <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
   <span class="ss">read</span><span class="p">:</span> <span class="p">{</span><span class="ss">mode</span><span class="p">:</span> <span class="ss">:primary</span><span class="p">})</span>
 </pre></div>
 </div>
-</div>
 <p>To persist changes made in a transaction to the database, the transaction
 must be explicitly committed. If a session ends with an open transaction,
-<a class="reference external" href="https://docs.mongodb.com/manual/core/transactions/#transactions-and-sessions">the transaction is aborted</a>.
+<a class="reference external" href="https://mongodb.com/docs/manual/core/transactions/#transactions-and-sessions">the transaction is aborted</a>.
 A transaction may also be aborted explicitly.</p>
 <p>To commit or abort a transaction, call <code class="docutils literal notranslate"><span class="pre">commit_transaction</span></code> or
 <code class="docutils literal notranslate"><span class="pre">abort_transaction</span></code> on the session instance:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">commit_transaction</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">commit_transaction</span>
 
 <span class="n">session</span><span class="o">.</span><span class="n">abort_transaction</span>
 </pre></div>
 </div>
-</div>
 <p>Note: an outstanding transaction can hold locks to various objects in the
 server, such as the database. For example, the drop call in the following
-snippet will hang for <a class="reference external" href="https://docs.mongodb.com/manual/reference/parameters/#param.transactionLifetimeLimitSeconds">transactionLifetimeLimitSeconds</a>
+snippet will hang for <a class="reference external" href="https://mongodb.com/docs/manual/reference/parameters/#param.transactionLifetimeLimitSeconds">transactionLifetimeLimitSeconds</a>
 seconds (default 60) until the server expires and aborts the transaction:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">c1</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;127.0.0.1:27017&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="ss">:test_db</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">c1</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;127.0.0.1:27017&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="ss">:test_db</span><span class="p">)</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">start_session</span>
 <span class="n">c1</span><span class="o">[</span><span class="s1">&#39;foo&#39;</span><span class="o">].</span><span class="n">insert_one</span><span class="p">(</span><span class="nb">test</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">session</span><span class="o">.</span><span class="n">start_transaction</span>
@@ -387,37 +598,25 @@ copy</a>
 <span class="n">c2</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">drop</span>
 </pre></div>
 </div>
-</div>
 <p>Since transactions are associated with server-side sessions, closing the client
 does not abort a transaction that this client initiated - the application must
 either call <code class="docutils literal notranslate"><span class="pre">abort_transaction</span></code> or wait for the transaction to time out on
 the server side. In addition to committing or aborting the transaction, an
 application can also end the session which will abort a transaction on this
 session if one is in progress:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">end_session</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">end_session</span>
 
 <span class="n">c2</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;127.0.0.1:27017&#39;</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="ss">:test_db</span><span class="p">)</span>
 <span class="c1"># ok</span>
 <span class="n">c2</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">drop</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="retrying-commits">
-<h2>Retrying Commits<a class="headerlink" href="#retrying-commits" title="Permalink to this headline">¶</a></h2>
-<p>The transaction commit <a class="reference external" href="https://docs.mongodb.com/manual/core/transactions/#retry-commit-operation">can be retried</a>
+</section>
+<section id="retrying-commits">
+<h2>Retrying Commits<a class="headerlink" href="#retrying-commits" title="Permalink to this headline">#</a></h2>
+<p>The transaction commit <a class="reference external" href="https://mongodb.com/docs/manual/core/transactions/#retry-commit-operation">can be retried</a>
 if it fails. Here is the Ruby code to do so:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">begin</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">begin</span>
   <span class="n">session</span><span class="o">.</span><span class="n">commit_transaction</span>
 <span class="k">rescue</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Error</span> <span class="o">=&gt;</span> <span class="n">e</span>
   <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">label?</span><span class="p">(</span><span class="s1">&#39;UnknownTransactionCommitResult&#39;</span><span class="p">)</span>
@@ -428,56 +627,58 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="transaction-nesting">
-<h2>Transaction Nesting<a class="headerlink" href="#transaction-nesting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="transaction-nesting">
+<h2>Transaction Nesting<a class="headerlink" href="#transaction-nesting" title="Permalink to this headline">#</a></h2>
 <p>MongoDB does not support nesting transactions. Attempting to call
 <code class="docutils literal notranslate"><span class="pre">start_transaction</span></code> or <code class="docutils literal notranslate"><span class="pre">with_transaction</span></code> when a transaction is already
 in progress will result in an error.</p>
-</div>
-</div>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="sessions.html" title="Previous Section: Sessions"><span>Sessions</span></a>
-      <a class="btn-next-text" href="client-side-encryption.html" title="Next Section: Client-Side Encryption"><span>Client-Side Encryption</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="sessions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Sessions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="client-side-encryption.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Client-Side Encryption</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div>
-<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
-  </script></body>
+
+  </body>
 </html>

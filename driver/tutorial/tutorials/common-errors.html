@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Common Errors &#8212; Ruby MongoDB Driver  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Connection &amp; Configuration" href="../reference/connection-and-configuration.html" />
+    <link rel="prev" title="Quick Start" href="quick-start.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Ruby MongoDB Driver  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../getting-started.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/driver-compatibility.html">
+     Driver Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../support.html">
+     Support
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="quick-start.html">
+     Quick Start
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../reference/connection-and-configuration.html">
+   Connection &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/create-client.html">
+     Creating a Client
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/authentication.html">
+     Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/monitoring.html">
+     Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/user-management.html">
+     User Management
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../reference/working-with-data.html">
+   Working With Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/crud-operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/bulk-operations.html">
+     Bulk Writes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/projection.html">
+     Projection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/aggregation.html">
+     Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/map-reduce.html">
+     Map-Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/geospatial-search.html">
+     Geospatial Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/query-cache.html">
+     Query Cache
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/gridfs.html">
+     GridFS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/change-streams.html">
+     Change Streams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/transactions.html">
+     Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/client-side-encryption.html">
+     Client-Side Encryption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../reference/schema-operations.html">
+   Schema Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/database-tasks.html">
+     Databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/collection-tasks.html">
+     Collections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/indexing.html">
+     Indexing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/collations.html">
+     Collations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/ruby-driver/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute.html">
+   Contribute to the Driver
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/tutorials/common-errors.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#no-server-is-available-matching-preference">
+   No Server is Available Matching Preference
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operationfailure-when-reading-local-database-with-auth-on">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     OperationFailure
+    </span>
+   </code>
+   When Reading
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     local
+    </span>
+   </code>
+   Database With Auth On
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sockettimeouterror-and-name-resolution-errors-on-ec2">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SocketTimeoutError
+    </span>
+   </code>
+   and name resolution errors on EC2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mongo-auth-unauthorized-user-is-not-authorized-to-access">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongo::Auth::Unauthorized
+    </span>
+   </code>
+   User is Not Authorized to Access
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Common Errors</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#no-server-is-available-matching-preference">
+   No Server is Available Matching Preference
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operationfailure-when-reading-local-database-with-auth-on">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     OperationFailure
+    </span>
+   </code>
+   When Reading
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     local
+    </span>
+   </code>
+   Database With Auth On
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sockettimeouterror-and-name-resolution-errors-on-ec2">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SocketTimeoutError
+    </span>
+   </code>
+   and name resolution errors on EC2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mongo-auth-unauthorized-user-is-not-authorized-to-access">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongo::Auth::Unauthorized
+    </span>
+   </code>
+   User is Not Authorized to Access
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="common-errors">
+<h1>Common Errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">#</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#no-server-is-available-matching-preference" id="id3">No Server is Available Matching Preference</a></p></li>
+<li><p><a class="reference internal" href="#operationfailure-when-reading-local-database-with-auth-on" id="id4"><code class="docutils literal notranslate"><span class="pre">OperationFailure</span></code> When Reading <code class="docutils literal notranslate"><span class="pre">local</span></code> Database With Auth On</a></p></li>
+<li><p><a class="reference internal" href="#sockettimeouterror-and-name-resolution-errors-on-ec2" id="id5"><code class="docutils literal notranslate"><span class="pre">SocketTimeoutError</span></code> and name resolution errors on EC2</a></p></li>
+<li><p><a class="reference internal" href="#mongo-auth-unauthorized-user-is-not-authorized-to-access" id="id6"><code class="docutils literal notranslate"><span class="pre">Mongo::Auth::Unauthorized</span></code> User is Not Authorized to Access</a></p></li>
+</ul>
+</div>
+<section id="no-server-is-available-matching-preference">
+<h2>No Server is Available Matching Preference<a class="headerlink" href="#no-server-is-available-matching-preference" title="Permalink to this headline">#</a></h2>
+<p>If you receive the following error:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">client</span><span class="o">[</span><span class="ss">:contacts</span><span class="o">].</span><span class="n">insert_one</span><span class="p">({</span> <span class="ss">vpa</span><span class="p">:</span> <span class="s1">&#39;cool@cool&#39;</span><span class="p">})</span>
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Error</span><span class="o">::</span><span class="ss">NoServerAvailable</span><span class="p">:</span> <span class="no">No</span> <span class="n">server</span> <span class="n">is</span> <span class="n">available</span> <span class="n">matching</span> <span class="ss">preference</span><span class="p">:</span> <span class="c1">#&lt;Mongo::ServerSelector::Primary:0x14987080 tag_sets=[] max_staleness=nil&gt; using server_selection_timeout=30 and local_threshold=0.015</span>
+<span class="n">from</span> <span class="sr">/rvm/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">4</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mongo</span><span class="o">/</span><span class="n">server_selector</span><span class="o">/</span><span class="n">selectable</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">115</span><span class="ss">:in</span> <span class="sb">`select_server&#39;</span>
+<span class="sb">from /rvm/gems/ruby-2.4.2/gems/mongo-2.5.0/lib/mongo/cluster.rb:246:in `</span><span class="n">next_primary</span><span class="s1">&#39;</span>
+<span class="s1">from /rvm/gems/ruby-2.4.2/gems/mongo-2.5.0/lib/mongo/retryable.rb:150:in `legacy_write_with_retry&#39;</span>
+<span class="n">from</span> <span class="sr">/rvm/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">4</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mongo</span><span class="o">/</span><span class="n">retryable</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">103</span><span class="ss">:in</span> <span class="sb">`write_with_retry&#39;</span>
+<span class="sb">from /rvm/gems/ruby-2.4.2/gems/mongo-2.5.0/lib/mongo/collection.rb:422:in `</span><span class="n">block</span> <span class="k">in</span> <span class="n">insert_one</span><span class="s1">&#39;</span>
+<span class="s1">from /rvm/gems/ruby-2.4.2/gems/mongo-2.5.0/lib/mongo/client.rb:485:in `with_session&#39;</span>
+<span class="n">from</span> <span class="sr">/rvm/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">4</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mongo</span><span class="o">/</span><span class="n">collection</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">421</span><span class="ss">:in</span> <span class="sb">`insert_one&#39;</span>
+<span class="sb">from (irb):6</span>
+<span class="sb">from /rvm/rubies/ruby-2.4.2/bin/irb:11:in `</span><span class="o">&lt;</span><span class="n">main</span><span class="o">&gt;</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>This error was produced on Ruby Driver version 2.6.x and earlier. This error is
+raised when the driver is unable to connect to the server. In order to solve
+this, you can try the following:</p>
+<ul class="simple">
+<li><p>Update the driver to the most recent 2.x release.</p></li>
+<li><p>Ensure that the port number is correct in the URI/connection string, or the
+host list.</p></li>
+<li><p>If you are connecting to Atlas, ensure that the firewall rules are configured
+correctly. See the documentation on <a class="reference external" href="https://www.mongodb.com/docs/atlas/setup-cluster-security/">Cluster Security</a>.</p></li>
+<li><p>If your application uses a forking web server, see the documentation on <a class="reference internal" href="../reference/create-client.html#forking"><span class="std std-ref">Forking</span></a>.</p></li>
+</ul>
+<p>See more on this issue here:
+<a class="reference external" href="https://jira.mongodb.org/browse/RUBY-1281">RUBY-1281</a>.</p>
+</section>
+<section id="operationfailure-when-reading-local-database-with-auth-on">
+<h2><code class="docutils literal notranslate"><span class="pre">OperationFailure</span></code> When Reading <code class="docutils literal notranslate"><span class="pre">local</span></code> Database With Auth On<a class="headerlink" href="#operationfailure-when-reading-local-database-with-auth-on" title="Permalink to this headline">#</a></h2>
+<p>If you are getting the following error when trying to read the <code class="docutils literal notranslate"><span class="pre">local</span></code> database:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Error</span><span class="o">::</span><span class="ss">OperationFailure</span><span class="p">:</span> <span class="ow">not</span> <span class="n">authorized</span> <span class="n">on</span> <span class="n">local</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">command</span> <span class="p">{</span> <span class="ss">find</span><span class="p">:</span> <span class="s2">&quot;oplog.rs&quot;</span><span class="p">,</span> <span class="ss">filter</span><span class="p">:</span> <span class="p">{</span> <span class="ss">ts</span><span class="p">:</span>
+  <span class="p">{</span> <span class="vg">$gte</span><span class="p">:</span> <span class="no">Timestamp</span> <span class="mi">1497449043000</span><span class="o">|</span><span class="mi">0</span> <span class="p">}</span> <span class="p">},</span> <span class="ss">sort</span><span class="p">:</span> <span class="p">{</span> <span class="vg">$natural</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">}</span> <span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can fix this by adjusting the roles your user has and ensuring that it has
+privileges to the local database. If you specifically want to access the oplog,
+you can also create a custom role with read access to the local database’s
+<code class="docutils literal notranslate"><span class="pre">oplog.rs</span></code> collection. You can find more information about role management
+<a class="reference external" href="https://www.mongodb.com/docs/manual/reference/method/js-role-management/">here</a>.</p>
+<p>You can find more information about this issue here:
+<a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4446">MONGOID-4446</a>.</p>
+</section>
+<section id="sockettimeouterror-and-name-resolution-errors-on-ec2">
+<h2><code class="docutils literal notranslate"><span class="pre">SocketTimeoutError</span></code> and name resolution errors on EC2<a class="headerlink" href="#sockettimeouterror-and-name-resolution-errors-on-ec2" title="Permalink to this headline">#</a></h2>
+<p>Some users reported getting the following error:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Exception</span>
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Error</span><span class="o">::</span><span class="no">SocketTimeoutError</span>
+<span class="no">Error</span>
+<span class="n">execution</span> <span class="n">expired</span>
+<span class="sr">/var/</span><span class="n">lib</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mongo</span><span class="o">/</span><span class="n">socket</span><span class="o">/</span><span class="n">ssl</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">57</span><span class="ss">:in</span> <span class="sb">`pack_sockaddr_in&#39;</span>
+<span class="sb">/var/lib/gems/2.3.0/gems/mongo-2.5.0/lib/mongo/socket/ssl.rb:57:in `</span><span class="n">block</span> <span class="p">(</span><span class="mi">2</span> <span class="n">levels</span><span class="p">)</span> <span class="k">in</span> <span class="n">connect!</span><span class="s1">&#39;</span>
+<span class="s1">/var/lib/gems/2.3.0/gems/mongo-2.5.0/lib/mongo/socket.rb:199:in `handle_errors&#39;</span>
+<span class="sr">/var/</span><span class="n">lib</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mongo</span><span class="o">/</span><span class="n">socket</span><span class="o">/</span><span class="n">ssl</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">57</span><span class="ss">:in</span> <span class="sb">`block in connect!&#39;</span>
+<span class="sb">/usr/lib/ruby/2.3.0/timeout.rb:101:in `</span><span class="n">timeout</span><span class="s1">&#39;</span>
+<span class="s1">/var/lib/gems/2.3.0/gems/mongo-2.5.0/lib/mongo/socket/ssl.rb:56:in `connect!&#39;</span>
+<span class="sr">/var/</span><span class="n">lib</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mongo</span><span class="o">/</span><span class="n">address</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">172</span><span class="ss">:in</span> <span class="sb">`connect_socket!&#39;</span>
+<span class="sb">/var/lib/gems/2.3.0/gems/mongo-2.5.0/lib/mongo/server/connection.rb:86:in `</span><span class="n">connect!</span><span class="s1">&#39;</span>
+<span class="s1">/var/lib/gems/2.3.0/gems/mongo-2.5.0/lib/mongo/server/connectable.rb:84:in `ensure_connected&#39;</span>
+<span class="sr">/var/</span><span class="n">lib</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mongo</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">connection</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">256</span><span class="ss">:in</span> <span class="sb">`write&#39;</span>
+</pre></div>
+</div>
+<p>This error was last reported on Ruby Driver version 2.5.1, so updating the driver
+can potentially solve this issue. A user has reported that they solved this issue
+as follows:</p>
+<blockquote>
+<div><p>DNS servers on EC2 are generated in /etc/resolv.conf by default. Following
+the answer <a class="reference external" href="https://askubuntu.com/questions/157154/how-do-i-include-lines-in-resolv-conf-that-wont-get-lost-on-reboot?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">here</a>
+and setting the nameservers to Google NS I was able to fix this issue.</p>
+</div></blockquote>
+<p>You can find more information about this issue here:
+<a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-4527">MONGOID-4527</a>.</p>
+</section>
+<section id="mongo-auth-unauthorized-user-is-not-authorized-to-access">
+<h2><code class="docutils literal notranslate"><span class="pre">Mongo::Auth::Unauthorized</span></code> User is Not Authorized to Access<a class="headerlink" href="#mongo-auth-unauthorized-user-is-not-authorized-to-access" title="Permalink to this headline">#</a></h2>
+<p>Some users reported getting the following error:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Auth</span><span class="o">::</span><span class="ss">Unauthorized</span><span class="p">:</span> <span class="no">User</span> <span class="o">...</span> <span class="n">is</span> <span class="ow">not</span> <span class="n">authorized</span> <span class="n">to</span> <span class="n">access</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>After upgrading to Ruby Driver version 2.5+, the driver was changed to use
+the scram authorization mechanism by default. This error might be happen if the
+authorization mechanism your user was created with does not match the
+authorization mechanism used by the driver. You can specify the preferred
+authorization mechanism using the <code class="docutils literal notranslate"><span class="pre">auth_mech</span></code> option in your <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code>
+file.</p>
+<p>See more on this issue here:
+<a class="reference external" href="https://jira.mongodb.org/browse/RUBY-1684">RUBY-1281</a>.</p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="quick-start.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Quick Start</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../reference/connection-and-configuration.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Connection &amp; Configuration</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

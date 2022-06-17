@@ -1,384 +1,657 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>GridFS &#8212; Ruby MongoDB Driver  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Change Streams" href="change-streams.html" />
+    <link rel="prev" title="Query Cache" href="query-cache.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Ruby MongoDB Driver  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../getting-started.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="driver-compatibility.html">
+     Driver Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../support.html">
+     Support
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/quick-start.html">
+     Quick Start
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="connection-and-configuration.html">
+   Connection &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="create-client.html">
+     Creating a Client
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="authentication.html">
+     Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="user-management.html">
+     User Management
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="working-with-data.html">
+   Working With Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud-operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bulk-operations.html">
+     Bulk Writes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projection.html">
+     Projection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map-Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geospatial-search.html">
+     Geospatial Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="query-cache.html">
+     Query Cache
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     GridFS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="change-streams.html">
+     Change Streams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="client-side-encryption.html">
+     Client-Side Encryption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="schema-operations.html">
+   Schema Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="database-tasks.html">
+     Databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-tasks.html">
+     Collections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexing.html">
+     Indexing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collations.html">
+     Collations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/ruby-driver/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute.html">
+   Contribute to the Driver
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>GridFS &mdash; MongoDB Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/reference/gridfs.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/reference/gridfs/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="MongoDB Ruby Driver Manual" href="../index.html" />
-<link rel="up" title="Working With Data" href="working-with-data.html" />
-<link rel="next" title="Change Streams" href="change-streams.html" />
-<link rel="prev" title="Query Cache" href="query-cache.html" /></head>
-<body data-project="docs-ruby" data-project-title="MongoDB Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Ruby Driver"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">MongoDB Ruby Driver Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="ruby-driver/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
-                
-                Version 2.14 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
-                
-                Version 2.13
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
-                
-                Version 2.12
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
-                
-                Version 2.11
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
-                
-                Version 2.10
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
-                
-                Version 2.9
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
-                
-                Version 2.8
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
-                
-                Version 2.7
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
-                
-                Version 2.6
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
-                
-                Version 2.5
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
-                
-                Version 2.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
-                
-                Version 2.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
-                
-                Version 2.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
-                
-                Version 2.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
-                
-                1.x
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="../support.html">Support</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/quick-start.html">Quick Start</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="connection-and-configuration.html">Connection &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="create-client.html">Creating a Client</a></li><li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li><li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li><li class="toctree-l2"><a class="reference internal" href="user-management.html">User Management</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="working-with-data.html">Working With Data</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="crud-operations.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="bulk-operations.html">Bulk Writes</a></li><li class="toctree-l2"><a class="reference internal" href="projection.html">Projection</a></li><li class="toctree-l2"><a class="reference internal" href="aggregation.html">Aggregation</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="geospatial-search.html">Geospatial Search</a></li><li class="toctree-l2"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">GridFS</a></li><li class="toctree-l2"><a class="reference internal" href="change-streams.html">Change Streams</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="schema-operations.html">Schema Operations</a><ul><li class="toctree-l2"><a class="reference internal" href="database-tasks.html">Databases</a></li><li class="toctree-l2"><a class="reference internal" href="collection-tasks.html">Collections</a></li><li class="toctree-l2"><a class="reference internal" href="indexing.html">Indexing</a></li><li class="toctree-l2"><a class="reference internal" href="collations.html">Collations</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li><li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/gridfs.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-gridfs-object-grid-fsbucket">
+   Creating a GridFS object (“Grid::FSBucket”)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-write-streams">
+   Working with write streams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-read-streams">
+   Working with read streams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-file-metadata">
+   Finding file metadata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deleting-files">
+   Deleting files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-grid-file-objects">
+   Working with Grid::File objects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inserting-files">
+   Inserting Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-files">
+   Finding Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Deleting Files
+  </a>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>GridFS</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-gridfs-object-grid-fsbucket">
+   Creating a GridFS object (“Grid::FSBucket”)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-write-streams">
+   Working with write streams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-read-streams">
+   Working with read streams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-file-metadata">
+   Finding file metadata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deleting-files">
+   Deleting files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-grid-file-objects">
+   Working with Grid::File objects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inserting-files">
+   Inserting Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-files">
+   Finding Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Deleting Files
+  </a>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/gridfs">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="working-with-data.html">Working With Data</a><span class="bcpoint"> > </span></li>
-            <li>GridFS</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="gridfs">
-<span id="id1"></span><h1>GridFS<a class="headerlink" href="#gridfs" title="Permalink to this headline">¶</a></h1>
+  <section id="gridfs">
+<span id="id1"></span><h1>GridFS<a class="headerlink" href="#gridfs" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#creating-a-gridfs-object-grid-fsbucket" id="id3">Creating a GridFS object (“Grid::FSBucket”)</a></li>
-<li><a class="reference internal" href="#working-with-write-streams" id="id4">Working with write streams</a></li>
-<li><a class="reference internal" href="#working-with-read-streams" id="id5">Working with read streams</a></li>
-<li><a class="reference internal" href="#finding-file-metadata" id="id6">Finding file metadata</a></li>
-<li><a class="reference internal" href="#deleting-files" id="id7">Deleting files</a></li>
-<li><a class="reference internal" href="#working-with-grid-file-objects" id="id8">Working with Grid::File objects</a></li>
-<li><a class="reference internal" href="#inserting-files" id="id9">Inserting Files</a></li>
-<li><a class="reference internal" href="#finding-files" id="id10">Finding Files</a></li>
-<li><a class="reference internal" href="#id2" id="id11">Deleting Files</a></li>
+<li><p><a class="reference internal" href="#creating-a-gridfs-object-grid-fsbucket" id="id3">Creating a GridFS object (“Grid::FSBucket”)</a></p></li>
+<li><p><a class="reference internal" href="#working-with-write-streams" id="id4">Working with write streams</a></p></li>
+<li><p><a class="reference internal" href="#working-with-read-streams" id="id5">Working with read streams</a></p></li>
+<li><p><a class="reference internal" href="#finding-file-metadata" id="id6">Finding file metadata</a></p></li>
+<li><p><a class="reference internal" href="#deleting-files" id="id7">Deleting files</a></p></li>
+<li><p><a class="reference internal" href="#working-with-grid-file-objects" id="id8">Working with Grid::File objects</a></p></li>
+<li><p><a class="reference internal" href="#inserting-files" id="id9">Inserting Files</a></p></li>
+<li><p><a class="reference internal" href="#finding-files" id="id10">Finding Files</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id11">Deleting Files</a></p></li>
 </ul>
 </div>
 <p>The driver provides a clean and simple interface to work with storage of
 chunked files in the database, also known as the pattern “GridFS”. The API allows you to either
 work with Grid::File objects or with read and write streams.</p>
-<div class="section" id="creating-a-gridfs-object-grid-fsbucket">
-<h2>Creating a GridFS object (“Grid::FSBucket”)<a class="headerlink" href="#creating-a-gridfs-object-grid-fsbucket" title="Permalink to this headline">¶</a></h2>
+<section id="creating-a-gridfs-object-grid-fsbucket">
+<h2>Creating a GridFS object (“Grid::FSBucket”)<a class="headerlink" href="#creating-a-gridfs-object-grid-fsbucket" title="Permalink to this headline">#</a></h2>
 <p>You can create a GridFS object by calling <code class="docutils literal notranslate"><span class="pre">fs</span></code> on a database, with optional
 arguments. <code class="docutils literal notranslate"><span class="pre">fs</span></code> returns a <code class="docutils literal notranslate"><span class="pre">Grid::FSBucket</span></code> object.</p>
 <p>The options that <code class="docutils literal notranslate"><span class="pre">Grid::FSBucket</span></code> supports are:</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given table">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Option</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:bucket_name</span></code></td>
-<td>The name of the GridFS Bucket. Default is <code class="docutils literal notranslate"><span class="pre">fs</span></code>.</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:bucket_name</span></code></p></td>
+<td><p>The name of the GridFS Bucket. Default is <code class="docutils literal notranslate"><span class="pre">fs</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:fs_name</span></code></td>
-<td>The name of the GridFS Bucket. Takes precedence over <code class="docutils literal notranslate"><span class="pre">bucket_name</span></code>.
-Default is <code class="docutils literal notranslate"><span class="pre">fs</span></code>.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:fs_name</span></code></p></td>
+<td><p>The name of the GridFS Bucket. Takes precedence over <code class="docutils literal notranslate"><span class="pre">bucket_name</span></code>.
+Default is <code class="docutils literal notranslate"><span class="pre">fs</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:chunk_size</span></code></td>
-<td>Specifies the size of each file chunk in the database.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:chunk_size</span></code></p></td>
+<td><p>Specifies the size of each file chunk in the database.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:write_concern</span></code></td>
-<td>The write concern to use when uploading files. Please see the
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:write_concern</span></code></p></td>
+<td><p>The write concern to use when uploading files. Please see the
 <a class="reference internal" href="crud-operations.html#write-concern"><span class="std std-ref">Write Concern</span></a> section under CRUD operations
-for how to work with write concerns.</td>
+for how to work with write concerns.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:write</span></code></td>
-<td>Deprecated. Same as <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code>.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:write</span></code></p></td>
+<td><p>Deprecated. Same as <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:read</span></code></td>
-<td>The read preference to use when downloading files.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:read</span></code></p></td>
+<td><p>The read preference to use when downloading files.</p></td>
 </tr>
 </tbody>
 </table>
 <p>For example, you can create a GridFS bucket object with a particular read preference:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="p">(</span> <span class="ss">read</span><span class="p">:</span> <span class="p">{</span> <span class="ss">mode</span><span class="p">:</span> <span class="ss">:secondary</span> <span class="p">}</span> <span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="p">(</span> <span class="ss">read</span><span class="p">:</span> <span class="p">{</span> <span class="ss">mode</span><span class="p">:</span> <span class="ss">:secondary</span> <span class="p">}</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="working-with-write-streams">
-<h2>Working with write streams<a class="headerlink" href="#working-with-write-streams" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="working-with-write-streams">
+<h2>Working with write streams<a class="headerlink" href="#working-with-write-streams" title="Permalink to this headline">#</a></h2>
 <p>To upload a file to GridFS using a write stream, you can either open a stream
 and write to it directly or write the entire contents of an <code class="docutils literal notranslate"><span class="pre">IO</span></code> object to
 GridFS all at once.</p>
 <p>To open an upload stream and write to it:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
   <span class="n">fs_bucket</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="s1">&#39;my-file.txt&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
     <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>To upload the entire contents of an IO object in one call:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
   <span class="n">fs_bucket</span><span class="o">.</span><span class="n">upload_from_stream</span><span class="p">(</span><span class="s1">&#39;my-file.txt&#39;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>Write streams support the following options:</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given table">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Option</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:chunk_size</span></code></td>
-<td>Specifies the size of each file chunk in the database.</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:chunk_size</span></code></p></td>
+<td><p>Specifies the size of each file chunk in the database.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:write_concern</span></code></td>
-<td>The write concern to use when uploading files. Please see the
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:write_concern</span></code></p></td>
+<td><p>The write concern to use when uploading files. Please see the
 <a class="reference internal" href="crud-operations.html#write-concern"><span class="std std-ref">Write Concern</span></a> section under CRUD operations
-for how to work with write concerns.</td>
+for how to work with write concerns.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:write</span></code></td>
-<td>Deprecated. Same as <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code>.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:write</span></code></p></td>
+<td><p>Deprecated. Same as <code class="docutils literal notranslate"><span class="pre">:write_concern</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 <p>The options can be provided as the last argument to the write stream methods:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="s1">&#39;my-file.txt&#39;</span><span class="p">,</span> <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="s1">&#39;my-file.txt&#39;</span><span class="p">,</span> <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
   <span class="n">stream</span><span class="o">.</span><span class="n">write_concern</span>
   <span class="c1"># =&gt; #&lt;Mongo::WriteConcern::Acknowledged:0x46980201422160 options={:w=&gt;2}&gt;</span>
 
@@ -388,147 +661,93 @@ copy</a>
 <span class="n">fs_bucket</span><span class="o">.</span><span class="n">upload_from_stream</span><span class="p">(</span><span class="s1">&#39;my-file.txt&#39;</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="ss">write_concern</span><span class="p">:</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="working-with-read-streams">
-<h2>Working with read streams<a class="headerlink" href="#working-with-read-streams" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="working-with-read-streams">
+<h2>Working with read streams<a class="headerlink" href="#working-with-read-streams" title="Permalink to this headline">#</a></h2>
 <p>To download a file from GridFS using a read stream, you can either open a
 read stream and read from it directly or download the entire file all at once.</p>
 <p>To open a download stream and read from it:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-output-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-output-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
   <span class="n">fs_bucket</span><span class="o">.</span><span class="n">open_download_stream</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
     <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>To download the file all at once and write it to an IO object:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-output-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-output-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
   <span class="n">fs_bucket</span><span class="o">.</span><span class="n">download_from_stream</span><span class="p">(</span><span class="n">file_id</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
-</div>
 </div>
 <p>You can also download a file specified by a name and (optionally)
 revision number. Revision numbers are used to distinguish between files
 sharing the same name, ordered by date of upload. The revision number passed to
 <code class="docutils literal notranslate"><span class="pre">open_download_stream_by_name</span></code> can be positive or negative.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-output-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-output-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
   <span class="n">fs_bucket</span><span class="o">.</span><span class="n">open_download_stream_by_name</span><span class="p">(</span><span class="s1">&#39;my-file.txt&#39;</span><span class="p">,</span> <span class="ss">revision</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
     <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>To download the entire contents of the file specified by name and (optionally)
 revision number:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-output-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-output-file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
   <span class="n">fs_bucket</span><span class="o">.</span><span class="n">download_to_stream_by_name</span><span class="p">(</span><span class="s1">&#39;my-file.txt&#39;</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="ss">revision</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>Read streams support the following options:</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given table">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Option</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:read</span></code></td>
-<td>The read preference to use when downloading files.</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:read</span></code></p></td>
+<td><p>The read preference to use when downloading files.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Some, but not all, of the read methods listed above pass these options to
 the underlying read streams. Please consult the API documentation for each
 method to determine whether it supports a particular option.</p>
-</div>
-<div class="section" id="finding-file-metadata">
-<h2>Finding file metadata<a class="headerlink" href="#finding-file-metadata" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="finding-file-metadata">
+<h2>Finding file metadata<a class="headerlink" href="#finding-file-metadata" title="Permalink to this headline">#</a></h2>
 <p>You can retrieve documents containing metadata about files in the GridFS files collection.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">filename</span><span class="p">:</span> <span class="s1">&#39;my-file.txt&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">filename</span><span class="p">:</span> <span class="s1">&#39;my-file.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="deleting-files">
-<h2>Deleting files<a class="headerlink" href="#deleting-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="deleting-files">
+<h2>Deleting files<a class="headerlink" href="#deleting-files" title="Permalink to this headline">#</a></h2>
 <p>You can delete a file by id.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">fs_bucket</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="working-with-grid-file-objects">
-<h2>Working with Grid::File objects<a class="headerlink" href="#working-with-grid-file-objects" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="working-with-grid-file-objects">
+<h2>Working with Grid::File objects<a class="headerlink" href="#working-with-grid-file-objects" title="Permalink to this headline">#</a></h2>
 <p>This object can be used to wrap a file to be inserted into the database using
 GridFS and the object that is retrieved.</p>
 <p>To create a file with raw data:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;I am a file&#39;</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;I am a file&#39;</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>To create a file from a Ruby <code class="docutils literal notranslate"><span class="pre">File</span></code> object:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-file.txt&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-file.txt&#39;</span><span class="p">)</span>
 <span class="n">grid_file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
 <p>To change file options such as chunk size, pass options to the constructor:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-file.txt&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/my-file.txt&#39;</span><span class="p">)</span>
 <span class="n">grid_file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">,</span>
   <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">),</span>
@@ -536,175 +755,148 @@ copy</a>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>The following is a full list of the available options that files support.</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given table">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Option</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:chunk_size</span></code></td>
-<td>Sets the size of each file chunk in the database.</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:chunk_size</span></code></p></td>
+<td><p>Sets the size of each file chunk in the database.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:content_type</span></code></td>
-<td>Set a content type for the file.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:content_type</span></code></p></td>
+<td><p>Set a content type for the file.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:filename</span></code> (Required)</td>
-<td>The file name.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:filename</span></code> (Required)</p></td>
+<td><p>The file name.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:upload_date</span></code></td>
-<td>The date the file was uploaded (stored).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:upload_date</span></code></p></td>
+<td><p>The date the file was uploaded (stored).</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inserting-files">
-<h2>Inserting Files<a class="headerlink" href="#inserting-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="inserting-files">
+<h2>Inserting Files<a class="headerlink" href="#inserting-files" title="Permalink to this headline">#</a></h2>
 <p>Files can be inserted into the database one at a time. File chunks are inserted
 by default into the <code class="docutils literal notranslate"><span class="pre">fs.chunks</span></code> collection and file metadata is inserted into the
 <code class="docutils literal notranslate"><span class="pre">fs.files</span></code> collection.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;I am a file&#39;</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>To insert into collections with a name prefix other than <cite>fs</cite>, access the
 filesystem with a <code class="docutils literal notranslate"><span class="pre">:fs_name</span></code> option.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">file</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Grid</span><span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;I am a file&#39;</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="p">(</span><span class="ss">:fs_name</span> <span class="o">=&gt;</span> <span class="s1">&#39;grid&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<p>Note that the first time a file is inserted, it will create the required index
-for you on the <code class="docutils literal notranslate"><span class="pre">chunks</span></code> collection. This index is a compound index:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="ss">:files_id</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:n</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span>
+<p>When the driver is inserting the first file into a bucket, it will attempt to create the required
+indexes on <code class="docutils literal notranslate"><span class="pre">files</span></code> and <code class="docutils literal notranslate"><span class="pre">chunks</span></code> collections. The required indexes are as follows:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># files collection</span>
+<span class="p">{</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:uploadDate</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span>
+
+<span class="c1"># chunks collection</span>
+<span class="p">{</span> <span class="ss">:files_id</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:n</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">:unique</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the indexes cannot be created, such as due to the current user lacking the permissions to do so,
+the file insert will be aborted. If the application does not have permissions to create indexes,
+a database administrator must create the required indexes ahead of time.</p>
+<p>If the bucket already has files, the driver will not attempt to create indexes, even if they are
+missing and the current user has permissions to create them. In this case a database administrator
+should create the needed indexes as soon as possible to ensure data integrity.</p>
 </div>
 <p>Files can also be streamed as an alternative to a direct insert.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">open_upload_stream</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
   <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="finding-files">
-<h2>Finding Files<a class="headerlink" href="#finding-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="finding-files">
+<h2>Finding Files<a class="headerlink" href="#finding-files" title="Permalink to this headline">#</a></h2>
 <p>To retrieve a file from the database, call <code class="docutils literal notranslate"><span class="pre">find_one</span></code> with the appropriate filter.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span> <span class="c1"># Returns a Mongo::Grid::File</span>
 </pre></div>
 </div>
-</div>
 <p>Files can also be streamed as an alternative to a direct find.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">open_download_stream</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">open_download_stream</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">stream</span><span class="o">|</span>
   <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">)</span>
 <span class="k">end</span>
 
 <span class="n">fs</span><span class="o">.</span><span class="n">download_to_stream</span><span class="p">(</span><span class="n">file_id</span><span class="p">,</span> <span class="n">io</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id2">
-<h2>Deleting Files<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id2">
+<h2>Deleting Files<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>To delete a file, pass the file object to <code class="docutils literal notranslate"><span class="pre">delete_one</span></code>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s1">&#39;127.0.0.1:27017&#39;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">&#39;music&#39;</span><span class="p">)</span>
 <span class="n">fs</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">fs</span>
 <span class="n">file</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-file.txt&#39;</span><span class="p">)</span>
 <span class="n">fs</span><span class="o">.</span><span class="n">delete_one</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="query-cache.html" title="Previous Section: Query Cache"><span>Query Cache</span></a>
-      <a class="btn-next-text" href="change-streams.html" title="Next Section: Change Streams"><span>Change Streams</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="query-cache.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Query Cache</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="change-streams.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Change Streams</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div>
-<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
-  </script></body>
+
+  </body>
 </html>

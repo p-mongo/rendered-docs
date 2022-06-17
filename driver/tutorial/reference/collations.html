@@ -1,319 +1,664 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Collations &#8212; Ruby MongoDB Driver  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release Notes" href="../release-notes.html" />
+    <link rel="prev" title="Indexing" href="indexing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Ruby MongoDB Driver  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../getting-started.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="driver-compatibility.html">
+     Driver Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../support.html">
+     Support
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/quick-start.html">
+     Quick Start
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="connection-and-configuration.html">
+   Connection &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="create-client.html">
+     Creating a Client
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="authentication.html">
+     Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="user-management.html">
+     User Management
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="working-with-data.html">
+   Working With Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud-operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bulk-operations.html">
+     Bulk Writes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projection.html">
+     Projection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map-Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geospatial-search.html">
+     Geospatial Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="query-cache.html">
+     Query Cache
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gridfs.html">
+     GridFS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="change-streams.html">
+     Change Streams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="client-side-encryption.html">
+     Client-Side Encryption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="schema-operations.html">
+   Schema Operations
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="database-tasks.html">
+     Databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-tasks.html">
+     Collections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexing.html">
+     Indexing
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Collations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/ruby-driver/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute.html">
+   Contribute to the Driver
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Collations &mdash; MongoDB Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/reference/collations.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/reference/collations/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="MongoDB Ruby Driver Manual" href="../index.html" />
-<link rel="up" title="Schema Operations" href="schema-operations.html" />
-<link rel="next" title="BSON" href="../bson-tutorials.html" />
-<link rel="prev" title="Indexing" href="indexing.html" /></head>
-<body data-project="docs-ruby" data-project-title="MongoDB Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Ruby Driver"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">MongoDB Ruby Driver Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="ruby-driver/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
-                
-                Version 2.14 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
-                
-                Version 2.13
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
-                
-                Version 2.12
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
-                
-                Version 2.11
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
-                
-                Version 2.10
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
-                
-                Version 2.9
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
-                
-                Version 2.8
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
-                
-                Version 2.7
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
-                
-                Version 2.6
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
-                
-                Version 2.5
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
-                
-                Version 2.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
-                
-                Version 2.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
-                
-                Version 2.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
-                
-                Version 2.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
-                
-                1.x
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="../support.html">Support</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/quick-start.html">Quick Start</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="connection-and-configuration.html">Connection &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="create-client.html">Creating a Client</a></li><li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li><li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li><li class="toctree-l2"><a class="reference internal" href="user-management.html">User Management</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="working-with-data.html">Working With Data</a><ul><li class="toctree-l2"><a class="reference internal" href="crud-operations.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="bulk-operations.html">Bulk Writes</a></li><li class="toctree-l2"><a class="reference internal" href="projection.html">Projection</a></li><li class="toctree-l2"><a class="reference internal" href="aggregation.html">Aggregation</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="geospatial-search.html">Geospatial Search</a></li><li class="toctree-l2"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l2"><a class="reference internal" href="gridfs.html">GridFS</a></li><li class="toctree-l2"><a class="reference internal" href="change-streams.html">Change Streams</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li><li class="toctree-l2"><a class="reference internal" href="client-side-encryption.html">Client-Side Encryption</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="schema-operations.html">Schema Operations</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="database-tasks.html">Databases</a></li><li class="toctree-l2"><a class="reference internal" href="collection-tasks.html">Collections</a></li><li class="toctree-l2"><a class="reference internal" href="indexing.html">Indexing</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Collations</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li><li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/collations.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collation-parameters">
+     Collation Parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-a-default-collation-to-a-collection">
+     Assign a Default Collation to a Collection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-a-collation-to-an-index">
+     Assign a Collation to an Index
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operations-that-support-collation">
+   Operations that Support Collation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-and-sort">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       find()
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sort()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-one-and-update">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       find_one_and_update()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-one-and-delete">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       find_one_and_delete()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#delete-many">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       delete_many()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregation">
+     Aggregation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Collations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collation-parameters">
+     Collation Parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-a-default-collation-to-a-collection">
+     Assign a Default Collation to a Collection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-a-collation-to-an-index">
+     Assign a Collation to an Index
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operations-that-support-collation">
+   Operations that Support Collation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-and-sort">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       find()
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sort()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-one-and-update">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       find_one_and_update()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-one-and-delete">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       find_one_and_delete()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#delete-many">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       delete_many()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregation">
+     Aggregation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/collations">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="schema-operations.html">Schema Operations</a><span class="bcpoint"> > </span></li>
-            <li>Collations</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="collations">
-<h1>Collations<a class="headerlink" href="#collations" title="Permalink to this headline">¶</a></h1>
+  <section id="collations">
+<h1>Collations<a class="headerlink" href="#collations" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#overview" id="id1">Overview</a></li>
-<li><a class="reference internal" href="#usage" id="id2">Usage</a></li>
-<li><a class="reference internal" href="#operations-that-support-collation" id="id3">Operations that Support Collation</a></li>
+<li><p><a class="reference internal" href="#overview" id="id3">Overview</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id4">Usage</a></p></li>
+<li><p><a class="reference internal" href="#operations-that-support-collation" id="id5">Operations that Support Collation</a></p></li>
 </ul>
 </div>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 3.4.</span></p>
+<p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
 <p>Collations are sets of rules for how to compare strings, typically in a
 particular natural language.</p>
 <p>For example, in Canadian French, the last accent in a given word
 determines the sorting order.</p>
 <p>Consider the following French words:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; coté &lt; côte &lt; côté
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; coté &lt; côte &lt; côté
 </pre></div>
-</div>
 </div>
 <p>The sort order using the Canadian French collation would result in
 the following:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; côte &lt; coté &lt; côté
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; côte &lt; coté &lt; côté
 </pre></div>
-</div>
 </div>
 <p>If collation is unspecified, MongoDB uses the simple binary comparison for
 strings.  As such, the sort order of the words would be:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; coté &lt; côte &lt; côté
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cote &lt; coté &lt; côte &lt; côté
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h2>
 <p>You can specify a default collation for collections and indexes when
 they are created, or specify a collation for CRUD operations and
 aggregations. For operations that support collation, MongoDB uses the
 collection’s default collation unless the operation specifies a
 different collation.</p>
-<div class="section" id="collation-parameters">
-<h3>Collation Parameters<a class="headerlink" href="#collation-parameters" title="Permalink to this headline">¶</a></h3>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<section id="collation-parameters">
+<h3>Collation Parameters<a class="headerlink" href="#collation-parameters" title="Permalink to this headline">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
    <span class="s1">&#39;locale&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
    <span class="s1">&#39;caseLevel&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span><span class="p">,</span>
    <span class="s1">&#39;caseFirst&#39;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
@@ -326,16 +671,15 @@ copy</a>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
 <p>The only required parameter is <code class="docutils literal notranslate"><span class="pre">locale</span></code>, which the server parses as
 an <a class="reference external" href="http://userguide.icu-project.org/locale">ICU format locale ID</a>.
 For example, set <code class="docutils literal notranslate"><span class="pre">locale</span></code> to <code class="docutils literal notranslate"><span class="pre">en_US</span></code> to represent US English
 or <code class="docutils literal notranslate"><span class="pre">fr_CA</span></code> to represent Canadian French.</p>
 <p>For a complete description of the available parameters, see the
-<a class="reference external" href="https://docs.mongodb.com/manual/reference/collation">MongoDB manual entry</a>.</p>
-</div>
-<div class="section" id="assign-a-default-collation-to-a-collection">
-<span id="collation-on-collection"></span><h3>Assign a Default Collation to a Collection<a class="headerlink" href="#assign-a-default-collation-to-a-collection" title="Permalink to this headline">¶</a></h3>
+<a href="#id1"><span class="problematic" id="id2">:manual:`MongoDB manual entry&lt;/reference/collation&gt;`</span></a>.</p>
+</section>
+<section id="assign-a-default-collation-to-a-collection">
+<span id="collation-on-collection"></span><h3>Assign a Default Collation to a Collection<a class="headerlink" href="#assign-a-default-collation-to-a-collection" title="Permalink to this headline">#</a></h3>
 <p>The following example creates a new collection
 called <code class="docutils literal notranslate"><span class="pre">contacts</span></code> on the <code class="docutils literal notranslate"><span class="pre">test</span></code> database and assigns a default
 collation with the <code class="docutils literal notranslate"><span class="pre">fr_CA</span></code> locale. Specifying a collation when you
@@ -345,269 +689,168 @@ that are run against the
 specifies another collation. Any indexes on the new collection also
 inherit the default collation, unless the creation command specifies
 another collation.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">client</span><span class="o">[</span><span class="ss">:contacts</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;fr_CA&quot;</span> <span class="p">}</span> <span class="p">}</span> <span class="o">].</span><span class="n">create</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="assign-a-collation-to-an-index">
-<span id="collation-on-index"></span><h3>Assign a Collation to an Index<a class="headerlink" href="#assign-a-collation-to-an-index" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="assign-a-collation-to-an-index">
+<span id="collation-on-index"></span><h3>Assign a Collation to an Index<a class="headerlink" href="#assign-a-collation-to-an-index" title="Permalink to this headline">#</a></h3>
 <p>To specify a collation for an index, use the <code class="docutils literal notranslate"><span class="pre">collation</span></code>
 option when you create the index.</p>
 <p>The following example creates an index on the <code class="docutils literal notranslate"><span class="pre">name</span></code>
 field of the <code class="docutils literal notranslate"><span class="pre">address_book</span></code> collection, with the <code class="docutils literal notranslate"><span class="pre">unique</span></code> parameter
 enabled and a default collation with <code class="docutils literal notranslate"><span class="pre">locale</span></code> set to <code class="docutils literal notranslate"><span class="pre">en_US</span></code>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">indexes</span><span class="o">.</span><span class="n">create_one</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
                                         <span class="s2">&quot;unique&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
                                         <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en_US&quot;</span> <span class="p">}</span>
                                        <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>To use this index, make sure your queries also specify the same
 collation. The following query uses the above index:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;first_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Adam&quot;</span> <span class="p">},</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;first_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Adam&quot;</span> <span class="p">},</span>
                             <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en_US&quot;</span> <span class="p">})</span>
 </pre></div>
-</div>
 </div>
 <p>The following queries do <strong>NOT</strong> use the index. The first query uses no
 collation, and the second uses a collation with a different <code class="docutils literal notranslate"><span class="pre">strength</span></code>
 value than the collation on the index.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;first_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Adam&quot;</span> <span class="p">})</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;first_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Adam&quot;</span> <span class="p">})</span>
 
 <span class="n">client</span><span class="o">[</span><span class="ss">:address_book</span><span class="o">].</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;first_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Adam&quot;</span> <span class="p">},</span>
                             <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en_US&quot;</span><span class="p">,</span> <span class="s2">&quot;strength&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">})</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="operations-that-support-collation">
-<h2>Operations that Support Collation<a class="headerlink" href="#operations-that-support-collation" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="operations-that-support-collation">
+<h2>Operations that Support Collation<a class="headerlink" href="#operations-that-support-collation" title="Permalink to this headline">#</a></h2>
 <p>All reading, updating, and deleting methods support collation. Some
 examples are listed below.</p>
-<div class="section" id="find-and-sort">
-<h3><code class="docutils literal notranslate"><span class="pre">find()</span></code> and <code class="docutils literal notranslate"><span class="pre">sort()</span></code><a class="headerlink" href="#find-and-sort" title="Permalink to this headline">¶</a></h3>
+<section id="find-and-sort">
+<h3><code class="docutils literal notranslate"><span class="pre">find()</span></code> and <code class="docutils literal notranslate"><span class="pre">sort()</span></code><a class="headerlink" href="#find-and-sort" title="Permalink to this headline">#</a></h3>
 <p>Individual queries can specify a collation to use when matching
 and sorting results. The following query and sort operation uses
 a German collation with the <code class="docutils literal notranslate"><span class="pre">locale</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">de</span></code>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">docs</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:contacts</span><span class="o">].</span><span class="n">find</span><span class="p">({</span> <span class="s2">&quot;city&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;New York&quot;</span> <span class="p">},</span>
   <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;de&quot;</span> <span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="find-one-and-update">
-<h3><code class="docutils literal notranslate"><span class="pre">find_one_and_update()</span></code><a class="headerlink" href="#find-one-and-update" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="find-one-and-update">
+<h3><code class="docutils literal notranslate"><span class="pre">find_one_and_update()</span></code><a class="headerlink" href="#find-one-and-update" title="Permalink to this headline">#</a></h3>
 <p>A collection called <code class="docutils literal notranslate"><span class="pre">names</span></code> contains the following documents:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Hans&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Gunter&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Günter&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Jürgen&quot;</span> <span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Hans&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Gunter&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">3</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Günter&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">4</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Jürgen&quot;</span> <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 <p>The following <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code> operation on the collection
 does not specify a collation.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:names</span><span class="o">].</span><span class="n">find_one_and_update</span><span class="p">(</span> <span class="p">{</span><span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$lt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Gunter&quot;</span> <span class="p">}},</span>
   <span class="p">{</span> <span class="s2">&quot;$set&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;verified&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span> <span class="p">})</span>
 </pre></div>
-</div>
 </div>
 <p>Because <code class="docutils literal notranslate"><span class="pre">Gunter</span></code> is lexically first in the collection,
 the above operation returns no results and updates no documents.</p>
 <p>Consider the same <code class="docutils literal notranslate"><span class="pre">find_one_and_update</span></code> operation but with the
 collation specified.  The locale is set to <code class="docutils literal notranslate"><span class="pre">de&#64;collation=phonebook</span></code>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Some locales have a <code class="docutils literal notranslate"><span class="pre">collation=phonebook</span></code> option available for
+<p class="admonition-title">Note</p>
+<p>Some locales have a <code class="docutils literal notranslate"><span class="pre">collation=phonebook</span></code> option available for
 use with languages which sort proper nouns differently from other
 words. According to the <code class="docutils literal notranslate"><span class="pre">de&#64;collation=phonebook</span></code> collation,
 characters with umlauts come before the same characters without
 umlauts.</p>
 </div>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:names</span><span class="o">].</span><span class="n">find_one_and_update</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$lt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Gunter&quot;</span> <span class="p">}</span> <span class="p">},</span>
   <span class="p">{</span> <span class="s2">&quot;$set&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;verified&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;de@collation=phonebook&quot;</span> <span class="p">},</span>
       <span class="ss">:return_document</span> <span class="o">=&gt;</span> <span class="ss">:after</span> <span class="p">}</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>The operation returns the following updated document:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="p">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;Günter&quot;</span><span class="p">,</span> <span class="s2">&quot;verified&quot;</span> <span class="p">=&gt;</span> <span class="kc">true</span> <span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="p">=&gt;</span> <span class="mf">3</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;Günter&quot;</span><span class="p">,</span> <span class="s2">&quot;verified&quot;</span> <span class="p">=&gt;</span> <span class="kc">true</span> <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="find-one-and-delete">
-<h3><code class="docutils literal notranslate"><span class="pre">find_one_and_delete()</span></code><a class="headerlink" href="#find-one-and-delete" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="find-one-and-delete">
+<h3><code class="docutils literal notranslate"><span class="pre">find_one_and_delete()</span></code><a class="headerlink" href="#find-one-and-delete" title="Permalink to this headline">#</a></h3>
 <p>Set the <code class="docutils literal notranslate"><span class="pre">numericOrdering</span></code> collation parameter to <code class="docutils literal notranslate"><span class="pre">true</span></code>
 to compare numeric string by their numeric values.</p>
 <p>The collection <code class="docutils literal notranslate"><span class="pre">numbers</span></code> contains the following documents:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;16&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;179&quot;</span> <span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;16&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;179&quot;</span> <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 <p>The following example matches the first document in which field <code class="docutils literal notranslate"><span class="pre">a</span></code>
 has a numeric value greater than 100 and deletes it.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">docs</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">find_one_and_delete</span><span class="p">({</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$gt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;100&quot;</span> <span class="p">}</span> <span class="p">},</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">docs</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">find_one_and_delete</span><span class="p">({</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$gt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;100&quot;</span> <span class="p">}</span> <span class="p">},</span>
   <span class="p">{</span> <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;numericOrdering&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span>  <span class="p">}</span> <span class="p">})</span>
 </pre></div>
 </div>
-</div>
 <p>After the above operation, the following documents remain in the
 collection:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;16&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;16&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 <p>If you perform the same operation without collation, the server deletes
 the first document it finds in which the lexical value of <code class="docutils literal notranslate"><span class="pre">a</span></code> is
 greater than <code class="docutils literal notranslate"><span class="pre">&quot;100&quot;</span></code>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:numbers</span><span class="o">]</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:numbers</span><span class="o">]</span>
 <span class="n">docs</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">find_one_and_delete</span><span class="p">({</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$gt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;100&quot;</span> <span class="p">}</span> <span class="p">})</span>
 </pre></div>
-</div>
 </div>
 <p>After the above operation the document in which <code class="docutils literal notranslate"><span class="pre">a</span></code> was equal to
 <code class="docutils literal notranslate"><span class="pre">&quot;16&quot;</span></code> has been deleted, and the following documents remain in the
 collection:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;179&quot;</span> <span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;84&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="o">:</span> <span class="s2">&quot;179&quot;</span> <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="delete-many">
-<h3><code class="docutils literal notranslate"><span class="pre">delete_many()</span></code><a class="headerlink" href="#delete-many" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="delete-many">
+<h3><code class="docutils literal notranslate"><span class="pre">delete_many()</span></code><a class="headerlink" href="#delete-many" title="Permalink to this headline">#</a></h3>
 <p>You can use collations with all the various bulk operations which
 exist in the Ruby driver.</p>
 <p>The collection <code class="docutils literal notranslate"><span class="pre">recipes</span></code> contains the following documents:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;veggie empanadas&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Spanish&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;beef bourgignon&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;French&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;chicken molé&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Mexican&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;chicken paillard&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;french&quot;</span> <span class="p">}</span>
-<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;pozole verde&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Mexican&quot;</span> <span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;veggie empanadas&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Spanish&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;beef bourgignon&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;French&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">3</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;chicken molé&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Mexican&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">4</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;chicken paillard&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;french&quot;</span> <span class="p">}</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">:</span> <span class="mf">5</span><span class="p">,</span> <span class="s2">&quot;dish&quot;</span> <span class="o">:</span> <span class="s2">&quot;pozole verde&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">:</span> <span class="s2">&quot;Mexican&quot;</span> <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 <p>Setting the <code class="docutils literal notranslate"><span class="pre">strength</span></code> parameter of the collation document to <code class="docutils literal notranslate"><span class="pre">1</span></code>
 or <code class="docutils literal notranslate"><span class="pre">2</span></code> causes the server to disregard case in the query filter. The
 following example uses a case-insensitive query filter
 to delete all records in which the <code class="docutils literal notranslate"><span class="pre">cuisine</span></code> field matches
 <code class="docutils literal notranslate"><span class="pre">French</span></code>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span> <span class="s2">&quot;127.0.0.1:27017&quot;</span> <span class="o">]</span><span class="p">,</span> <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">recipes</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="ss">:recipes</span><span class="o">]</span>
 <span class="n">docs</span> <span class="o">=</span> <span class="n">recipes</span><span class="o">.</span><span class="n">delete_many</span><span class="p">({</span> <span class="s2">&quot;cuisine&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;French&quot;</span> <span class="p">},</span>
                              <span class="s2">&quot;collation&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;locale&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;en_US&quot;</span><span class="p">,</span> <span class="s2">&quot;strength&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">})</span>
 </pre></div>
 </div>
-</div>
 <p>After the above operation runs, the documents with <code class="docutils literal notranslate"><span class="pre">_id</span></code> values of
 <code class="docutils literal notranslate"><span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">4</span></code> are deleted from the collection.</p>
-</div>
-<div class="section" id="aggregation">
-<h3>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="aggregation">
+<h3>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this headline">#</a></h3>
 <p>To use collation with an aggregation operation, specify a collation in
 the aggregation options.</p>
 <p>The following aggregation example uses a collection called <code class="docutils literal notranslate"><span class="pre">names</span></code>
 and groups the <code class="docutils literal notranslate"><span class="pre">first_name</span></code> field together, counts the total
 number of results in each group, and sorts the
 results by German phonebook order.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">aggregation</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">aggregation</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
   <span class="o">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;$group&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;$first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;name_count&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">&quot;$sum&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">}</span>
@@ -624,51 +867,53 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="indexing.html" title="Previous Section: Indexing"><span>Indexing</span></a>
-      <a class="btn-next-text" href="../bson-tutorials.html" title="Next Section: BSON"><span>BSON</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="indexing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Indexing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../release-notes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Release Notes</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div>
-<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
-  </script></body>
+
+  </body>
 </html>

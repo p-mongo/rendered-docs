@@ -1,263 +1,742 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Client-Side Encryption &#8212; Ruby MongoDB Driver  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Schema Operations" href="schema-operations.html" />
+    <link rel="prev" title="Transactions" href="transactions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Ruby MongoDB Driver  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../getting-started.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="driver-compatibility.html">
+     Driver Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../support.html">
+     Support
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/quick-start.html">
+     Quick Start
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="connection-and-configuration.html">
+   Connection &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="create-client.html">
+     Creating a Client
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="authentication.html">
+     Authentication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="user-management.html">
+     User Management
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="working-with-data.html">
+   Working With Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud-operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bulk-operations.html">
+     Bulk Writes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projection.html">
+     Projection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map-Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geospatial-search.html">
+     Geospatial Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="query-cache.html">
+     Query Cache
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gridfs.html">
+     GridFS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="change-streams.html">
+     Change Streams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Client-Side Encryption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="schema-operations.html">
+   Schema Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="database-tasks.html">
+     Databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-tasks.html">
+     Collections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexing.html">
+     Indexing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collations.html">
+     Collations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/ruby-driver/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute.html">
+   Contribute to the Driver
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' /><title>Client-Side Encryption &mdash; MongoDB Ruby Driver Manual upcoming</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-ruby/blob/master/source/reference/client-side-encryption.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/docs-ruby/current/reference/client-side-encryption/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="MongoDB Ruby Driver Manual" href="../index.html" />
-<link rel="up" title="Working With Data" href="working-with-data.html" />
-<link rel="next" title="Schema Operations" href="schema-operations.html" />
-<link rel="prev" title="Transactions" href="transactions.html" /></head>
-<body data-project="docs-ruby" data-project-title="MongoDB Ruby Driver Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Ruby Driver"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/ruby-driver/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">MongoDB Ruby Driver Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="ruby-driver/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.14">
-                
-                Version 2.14 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.13">
-                
-                Version 2.13
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.12">
-                
-                Version 2.12
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.11">
-                
-                Version 2.11
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.10">
-                
-                Version 2.10
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.9">
-                
-                Version 2.9
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.8">
-                
-                Version 2.8
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.7">
-                
-                Version 2.7
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.6">
-                
-                Version 2.6
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.5">
-                
-                Version 2.5
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.4">
-                
-                Version 2.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.3">
-                
-                Version 2.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.2">
-                
-                Version 2.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v2.0">
-                
-                Version 2.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="ruby-driver/v1.x">
-                
-                1.x
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="driver-compatibility.html">Driver Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="../support.html">Support</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/quick-start.html">Quick Start</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="connection-and-configuration.html">Connection &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="create-client.html">Creating a Client</a></li><li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li><li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li><li class="toctree-l2"><a class="reference internal" href="user-management.html">User Management</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="working-with-data.html">Working With Data</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="crud-operations.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="bulk-operations.html">Bulk Writes</a></li><li class="toctree-l2"><a class="reference internal" href="projection.html">Projection</a></li><li class="toctree-l2"><a class="reference internal" href="aggregation.html">Aggregation</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="geospatial-search.html">Geospatial Search</a></li><li class="toctree-l2"><a class="reference internal" href="query-cache.html">Query Cache</a></li><li class="toctree-l2"><a class="reference internal" href="gridfs.html">GridFS</a></li><li class="toctree-l2"><a class="reference internal" href="change-streams.html">Change Streams</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Client-Side Encryption</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="schema-operations.html">Schema Operations</a><ul><li class="toctree-l2"><a class="reference internal" href="database-tasks.html">Databases</a></li><li class="toctree-l2"><a class="reference internal" href="collection-tasks.html">Collections</a></li><li class="toctree-l2"><a class="reference internal" href="indexing.html">Indexing</a></li><li class="toctree-l2"><a class="reference internal" href="collations.html">Collations</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../bson-tutorials.html">BSON</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v4.html">BSON 4.x Tutorial</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/bson-v3.html">BSON 3.x Tutorial</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li><li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contribute to the Driver</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/client-side-encryption.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#libmongocrypt">
+     libmongocrypt
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mongocryptd">
+     mongocryptd
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automatic-encryption">
+   Automatic Encryption
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explicit-encryption">
+   Explicit Encryption
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#queryable-encryption">
+   Queryable Encryption
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-master-key">
+   Creating a Master Key
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-master-key">
+     Local Master Key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#remote-master-key">
+     Remote Master Key
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-data-key">
+   Creating a Data Key
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-a-data-key-using-a-local-master-key">
+     Create a Data Key Using a Local Master Key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-a-data-key-using-a-remote-master-key">
+     Create a Data Key Using a Remote Master Key
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auto-encryption-options">
+   Auto-Encryption Options
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-vault-client">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :key_vault_client
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-vault-namespace">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :key_vault_namespace
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kms-providers">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :kms_providers
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kms-tls-options">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :kms_tls_options
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schema-map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :schema_map
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bypass-auto-encryption">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :bypass_auto_encryption
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extra-options">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :extra_options
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Client-Side Encryption</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#libmongocrypt">
+     libmongocrypt
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mongocryptd">
+     mongocryptd
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automatic-encryption">
+   Automatic Encryption
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explicit-encryption">
+   Explicit Encryption
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#queryable-encryption">
+   Queryable Encryption
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-master-key">
+   Creating a Master Key
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-master-key">
+     Local Master Key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#remote-master-key">
+     Remote Master Key
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-data-key">
+   Creating a Data Key
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-a-data-key-using-a-local-master-key">
+     Create a Data Key Using a Local Master Key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-a-data-key-using-a-remote-master-key">
+     Create a Data Key Using a Remote Master Key
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auto-encryption-options">
+   Auto-Encryption Options
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-vault-client">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :key_vault_client
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-vault-namespace">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :key_vault_namespace
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kms-providers">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :kms_providers
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kms-tls-options">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :kms_tls_options
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schema-map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :schema_map
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bypass-auto-encryption">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :bypass_auto_encryption
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extra-options">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :extra_options
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/client-side-encryption">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="working-with-data.html">Working With Data</a><span class="bcpoint"> > </span></li>
-            <li>Client-Side Encryption</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="client-side-encryption">
-<span id="id1"></span><h1>Client-Side Encryption<a class="headerlink" href="#client-side-encryption" title="Permalink to this headline">¶</a></h1>
+  <section id="client-side-encryption">
+<span id="id1"></span><h1>Client-Side Encryption<a class="headerlink" href="#client-side-encryption" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#installation" id="id2">Installation</a></li>
-<li><a class="reference internal" href="#automatic-encryption" id="id3">Automatic Encryption</a></li>
-<li><a class="reference internal" href="#explicit-encryption" id="id4">Explicit Encryption</a></li>
-<li><a class="reference internal" href="#creating-a-master-key" id="id5">Creating a Master Key</a></li>
-<li><a class="reference internal" href="#creating-a-data-key" id="id6">Creating a Data Key</a></li>
-<li><a class="reference internal" href="#auto-encryption-options" id="id7">Auto-Encryption Options</a></li>
+<li><p><a class="reference internal" href="#installation" id="id18">Installation</a></p></li>
+<li><p><a class="reference internal" href="#automatic-encryption" id="id19">Automatic Encryption</a></p></li>
+<li><p><a class="reference internal" href="#explicit-encryption" id="id20">Explicit Encryption</a></p></li>
+<li><p><a class="reference internal" href="#queryable-encryption" id="id21">Queryable Encryption</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-master-key" id="id22">Creating a Master Key</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-data-key" id="id23">Creating a Data Key</a></p></li>
+<li><p><a class="reference internal" href="#auto-encryption-options" id="id24">Auto-Encryption Options</a></p></li>
 </ul>
 </div>
 <p>New in MongoDB 4.2, client-side encryption allows administrators and developers
@@ -268,64 +747,78 @@ any server-side configuration or directives. Client-side encryption supports
 workloads where applications must guarantee that unauthorized parties,
 including server administrators, cannot read the encrypted data.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Enabling Client Side Encryption reduces the maximum write batch size and may
+<p class="admonition-title">Warning</p>
+<p>Enabling Client Side Encryption reduces the maximum write batch size and may
 have a negative performance impact.</p>
 </div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
 <p>Client-side encryption requires the installation of additional packages.</p>
-<div class="section" id="libmongocrypt">
-<h3>libmongocrypt<a class="headerlink" href="#libmongocrypt" title="Permalink to this headline">¶</a></h3>
+<section id="libmongocrypt">
+<h3>libmongocrypt<a class="headerlink" href="#libmongocrypt" title="Permalink to this headline">#</a></h3>
 <p>Libmongocrypt is a C library used by the driver for client-side encryption.
-To use client-side encryption, you must install the libmongocrypt binary
+To use client-side encryption, you must install the libmongocrypt library
 on the machine running your Ruby program.</p>
-<p>To download a pre-built binary:</p>
+<p>The easiest way to install this library is to install <a class="reference external" href="https://rubygems.org/gems/libmongocrypt-helper">libmongocrypt-helper</a> as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gem install libmongocrypt-helper --pre
+</pre></div>
+</div>
+<p>The version number of libmongocrypt-helper is the version of included
+libmongocrypt followed by the release number, e.g. 1.3.2.r1.
+Because Ruby considers any letters in the version number to indicate a
+pre-release version, the <code class="docutils literal notranslate"><span class="pre">--pre</span></code> flag is needed.</p>
+<p>The driver will automatically load libmongocrypt-helper - no further
+configuration is needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>libmongocrypt-helper currently only supports Linux operating systems.</p>
+</div>
+<p>Alternatively you can download a pre-built binary distribution of libmongocrypt
+and manually place the required shared object on your computer, as follows:</p>
 <ul class="simple">
-<li>Download a tarball of all libmongocrypt variations <a class="reference external" href="https://s3.amazonaws.com/mciuploads/libmongocrypt/all/master/latest/libmongocrypt-all.tar.gz">here</a>.</li>
-<li>Extract the file you downloaded. You will see a list of directories, each
+<li><p>Download a tarball of all libmongocrypt variations <a class="reference external" href="https://s3.amazonaws.com/mciuploads/libmongocrypt/all/master/latest/libmongocrypt-all.tar.gz">here</a>.</p></li>
+<li><p>Extract the file you downloaded. You will see a list of directories, each
 corresponding to an operating system. Find the directory that matches your
-operating system and open it.</li>
-<li>Inside that folder, open the folder called “nocrypto.” In either the
+operating system and open it.</p></li>
+<li><p>Inside that folder, open the folder called “nocrypto.” In either the
 lib or lb64 folder, you will find the libmongocrypt.so or
-libmongocrypt.dylib or libmongocrypt.dll file, depending on your OS.</li>
-<li>Move that file to wherever you want to keep it on your machine. You may delete
-the other files included in the tarball.</li>
+libmongocrypt.dylib or libmongocrypt.dll file, depending on your OS.</p></li>
+<li><p>Move that file to wherever you want to keep it on your machine. You may delete
+the other files included in the tarball.</p></li>
 </ul>
 <p>To build the binary from source:</p>
 <ul class="simple">
-<li>Follow the instructions in the README in the <a class="reference external" href="https://github.com/mongodb/libmongocrypt">libmongocrypt GitHub repo</a>.</li>
+<li><p>Follow the instructions in the README in the <a class="reference external" href="https://github.com/mongodb/libmongocrypt">libmongocrypt GitHub repo</a>.</p></li>
 </ul>
 <p>Once you have the libmongocrypt binary on your machine, specify the path to the
 binary using the LIBMONGOCRYPT_PATH environment variable. It is recommended that
 you add this variable to your rc files. For example:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LIBMONGOCRYPT_PATH</span><span class="o">=</span>/path/to/your/libmongocrypt.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LIBMONGOCRYPT_PATH</span><span class="o">=</span>/path/to/your/libmongocrypt.so
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The binary referenced in this section can be a pre-release version of
+libmongocrypt which is not recommended for production environments.</p>
 </div>
-</div>
-<div class="section" id="mongocryptd">
-<h3>mongocryptd<a class="headerlink" href="#mongocryptd" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mongocryptd">
+<h3>mongocryptd<a class="headerlink" href="#mongocryptd" title="Permalink to this headline">#</a></h3>
 <p>Mongocryptd is a daemon that tells the driver which fields to encrypt in a
 given operation. It is only required for automatic encryption, which is an
 enterprise-only feature. If you only intend to use explicit encryption, you may
 skip this step.</p>
 <p>Mongocryptd comes pre-packaged with enterprise builds of the MongoDB server
 (versions 4.2 and newer). For installation instructions, see
-<a class="reference external" href="https://docs.mongodb.com/manual/reference/security-client-side-encryption-appendix/#installation">the MongoDB manual</a>.</p>
+<a class="reference external" href="https://mongodb.com/docs/manual/reference/security-client-side-encryption-appendix/#installation">the MongoDB manual</a>.</p>
 <p>In order to configure mongocryptd (for example, which port it listens on or the
 path used to spawn the daemon), it is necessary to pass different options to the
 <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> performing automatic encryption. See the <a class="reference internal" href="#extra-options">:extra_options</a>
 section of this tutorial for more information.</p>
-</div>
-</div>
-<div class="section" id="automatic-encryption">
-<h2>Automatic Encryption<a class="headerlink" href="#automatic-encryption" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="automatic-encryption">
+<h2>Automatic Encryption<a class="headerlink" href="#automatic-encryption" title="Permalink to this headline">#</a></h2>
 <p>Automatic encryption is a feature that allows users to configure a
 <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> instance to always encrypt specific document fields when
 performing database operations. Once the <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> is configured, it
@@ -336,31 +829,26 @@ them.</p>
 encrypting data with a data key, which is in turn encrypted using a master key.
 Thus, using client-side encryption with MongoDB involves three main steps:</p>
 <ol class="arabic simple">
-<li>Create a master key</li>
-<li>Create a data key (and encrypt it using the master key)</li>
-<li>Encrypt data using the data key</li>
+<li><p>Create a master key</p></li>
+<li><p>Create a data key (and encrypt it using the master key)</p></li>
+<li><p>Encrypt data using the data key</p></li>
 </ol>
 <p>The example below demonstrates how to follow these steps with a local master key
 in order to perform automatic encryption.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Automatic encryption is an enterprise only feature that only applies to
+<p class="admonition-title">Note</p>
+<p>Automatic encryption is an enterprise only feature that only applies to
 operations on a collection. Automatic encryption is not supported for operations
 on a database or view, and operations that are not bypassed will result in
-error (see <a class="reference external" href="https://github.com/mongodb/specifications/blob/master/source/client-side-encryption/client-side-encryption.rst#libmongocrypt-auto-encryption-whitelist">Auto Encryption Whitelist</a>
+error (see <a class="reference external" href="https://github.com/mongodb/specifications/blob/master/source/client-side-encryption/client-side-encryption.rst#libmongocrypt-auto-encryption-allow-list">Auto Encryption Allow-List</a>
 ). To bypass automatic encryption for all operations, set <code class="docutils literal notranslate"><span class="pre">bypass_auto_encryption</span></code>
 to true in <code class="docutils literal notranslate"><span class="pre">auto_encryption_options</span></code>.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Automatic encryption requires the authenticated user to have the listCollections privilege action.</p>
+<p class="admonition-title">Note</p>
+<p>Automatic encryption requires the authenticated user to have the listCollections privilege action.</p>
 </div>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
 
 <span class="c1">#####################################</span>
 <span class="c1"># Step 1: Create a local master key #</span>
@@ -387,7 +875,7 @@ copy</a>
 <span class="c1"># Use an instance of Mongo::ClientEncryption to create a new data key</span>
 <span class="n">client_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">ClientEncryption</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="n">key_vault_client</span><span class="p">,</span>
-  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;admin.datakeys&#39;</span><span class="p">,</span>
+  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;encryption.__keyVault&#39;</span><span class="p">,</span>
   <span class="ss">kms_providers</span><span class="p">:</span> <span class="n">kms_providers</span>
 <span class="p">)</span>
 
@@ -418,13 +906,14 @@ copy</a>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">,</span>
   <span class="ss">auto_encryption_options</span><span class="p">:</span> <span class="p">{</span>
-    <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;admin.datakeys&#39;</span><span class="p">,</span>
+    <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;encryption.__keyVault&#39;</span><span class="p">,</span>
     <span class="ss">kms_providers</span><span class="p">:</span> <span class="n">kms_providers</span><span class="p">,</span>
     <span class="ss">schema_map</span><span class="p">:</span> <span class="n">schema_map</span>
-  <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;encryption_db&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;encryption_db&#39;</span><span class="p">)</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">]</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">]</span>
 <span class="n">collection</span><span class="o">.</span><span class="n">drop</span> <span class="c1"># Make sure there is no data in the collection</span>
 
 <span class="c1"># The string &quot;sensitive data&quot; will be encrypted and stored in the database</span>
@@ -436,22 +925,24 @@ copy</a>
 <span class="c1"># =&gt; &quot;sensitive data&quot;</span>
 
 <span class="c1"># A client with no auto_encryption_options is unable to decrypt the data</span>
-<span class="n">client_no_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">)</span>
-<span class="n">client_no_encryption</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;encryption_db&#39;</span><span class="p">)</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="s1">&#39;encrypted_field&#39;</span><span class="o">]</span>
+<span class="n">client_no_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;encryption_db&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">client_no_encryption</span><span class="o">.</span><span class="n">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="s1">&#39;encrypted_field&#39;</span><span class="o">]</span>
 <span class="c1"># =&gt; &lt;BSON::Binary... type=ciphertext...&gt;</span>
 </pre></div>
 </div>
-</div>
 <p>The example above demonstrates using automatic encryption with a local master key.
-For more information about using the AWS Key Management Service to create a
+For more information about using other key management services to create a
 master key and create data keys, see the following sections of this tutorial:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#creating-a-master-key">Creating A Master Key</a></li>
-<li><a class="reference internal" href="#creating-a-data-key">Creating A Data Key</a></li>
+<li><p><a class="reference internal" href="#creating-a-master-key">Creating A Master Key</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-data-key">Creating A Data Key</a></p></li>
 </ul>
-</div>
-<div class="section" id="explicit-encryption">
-<h2>Explicit Encryption<a class="headerlink" href="#explicit-encryption" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="explicit-encryption">
+<h2>Explicit Encryption<a class="headerlink" href="#explicit-encryption" title="Permalink to this headline">#</a></h2>
 <p>Explicit encryption is a feature that allows users to encrypt and decrypt
 individual pieces of data such as strings, integers, or symbols. Explicit
 encryption is a community feature and does not require an enterprise build
@@ -461,18 +952,13 @@ operations, use an instance of the ClientEncryption class.</p>
 encrypting data with a data key, which is in turn encrypted using a master key.
 Thus, using client-side encryption with MongoDB involves three main steps:</p>
 <ol class="arabic simple">
-<li>Create a master key</li>
-<li>Create a data key (and encrypt it using the master key)</li>
-<li>Encrypt data using the data key</li>
+<li><p>Create a master key</p></li>
+<li><p>Create a data key (and encrypt it using the master key)</p></li>
+<li><p>Encrypt data using the data key</p></li>
 </ol>
 <p>The example below demonstrates how to follow these steps with a local master key
 in order to perform explicit encryption.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
 
 <span class="c1">#####################################</span>
 <span class="c1"># Step 1: Create a local master key #</span>
@@ -499,7 +985,7 @@ copy</a>
 <span class="c1"># Use an instance of Mongo::ClientEncryption to create a new data key</span>
 <span class="n">client_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">ClientEncryption</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="n">key_vault_client</span><span class="p">,</span>
-  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;admin.datakeys&#39;</span><span class="p">,</span>
+  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;encryption.__keyVault&#39;</span><span class="p">,</span>
   <span class="ss">kms_providers</span><span class="p">:</span> <span class="n">kms_providers</span>
 <span class="p">)</span>
 
@@ -523,8 +1009,11 @@ copy</a>
 <span class="p">)</span>
 
 <span class="c1"># Create the client you will use to read and write the data to MongoDB</span>
-<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">)</span>
-<span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;encryption_db&#39;</span><span class="p">)</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">]</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;encryption_db&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">]</span>
 <span class="n">collection</span><span class="o">.</span><span class="n">drop</span> <span class="c1"># Make sure there is no data in the collection</span>
 
 <span class="c1"># Insert the encrypted value into the collection</span>
@@ -539,77 +1028,268 @@ copy</a>
 <span class="c1"># =&gt; &quot;sensitive data&quot;</span>
 </pre></div>
 </div>
-</div>
 <p>The example above demonstrates using explicit encryption with a local master key.
-For more information about using the AWS Key Management Service to create a
+For more information about using other key management services to create a
 master key and create data keys, see the following sections of this tutorial:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#creating-a-master-key">Creating A Master Key</a>,</li>
-<li><a class="reference internal" href="#creating-a-data-key">Creating A Data Key</a>,</li>
+<li><p><a class="reference internal" href="#creating-a-master-key">Creating A Master Key</a>,</p></li>
+<li><p><a class="reference internal" href="#creating-a-data-key">Creating A Data Key</a>,</p></li>
+</ul>
+</section>
+<section id="queryable-encryption">
+<h2>Queryable Encryption<a class="headerlink" href="#queryable-encryption" title="Permalink to this headline">#</a></h2>
+<p>Queryable encryption is a new feature in MongoDB 6.0. It also requires
+libmongocrypt version 1.5.0-rc1 or above.</p>
+<p>You can find more information about queryable encryption in <a class="reference external" href="https://www.mongodb.com/docs/upcoming/core/queryable-encryption/queryable-encryption/">MongoDB Manual</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The queryable encryption feature is in public technical preview.
+Therefore, the following options should be considered experimental
+and are subject to change:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:encrypted_fields_map</span></code> and <code class="docutils literal notranslate"><span class="pre">:bypass_query_analysis</span></code> in auto encryption options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:contention_factor</span></code> and <code class="docutils literal notranslate"><span class="pre">:query_type</span></code> in client encryption options.</p></li>
 </ul>
 </div>
-<div class="section" id="creating-a-master-key">
-<h2>Creating a Master Key<a class="headerlink" href="#creating-a-master-key" title="Permalink to this headline">¶</a></h2>
+<p>Below is an example of using automatic queryable encryption using the Ruby driver:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
+
+<span class="c1">#####################################</span>
+<span class="c1"># Step 1: Create a local master key #</span>
+<span class="c1">#####################################</span>
+
+<span class="c1"># A local master key is a 96-byte binary blob.</span>
+<span class="n">local_master_key</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">random_bytes</span><span class="p">(</span><span class="mi">96</span><span class="p">)</span>
+<span class="c1"># =&gt; &quot;\xB2\xBE\x8EN\xD4\x14\xC2\x13\xC3...&quot;</span>
+
+<span class="c1">#############################</span>
+<span class="c1"># Step 2: Create a data key #</span>
+<span class="c1">#############################</span>
+
+<span class="n">kms_providers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">local</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">key</span><span class="p">:</span> <span class="n">local_master_key</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># The key vault client is a Mongo::Client instance</span>
+<span class="c1"># that will be used to store your data keys.</span>
+<span class="n">key_vault_client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">)</span>
+
+<span class="c1"># Use an instance of Mongo::ClientEncryption to create a new data key</span>
+<span class="n">client_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">ClientEncryption</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="n">key_vault_client</span><span class="p">,</span>
+  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;encryption.__keyVault&#39;</span><span class="p">,</span>
+  <span class="ss">kms_providers</span><span class="p">:</span> <span class="n">kms_providers</span>
+<span class="p">)</span>
+
+<span class="n">data_key_id</span> <span class="o">=</span> <span class="n">client_encryption</span><span class="o">.</span><span class="n">create_data_key</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary... type=ciphertext...&gt;</span>
+
+<span class="c1">#######################################################</span>
+<span class="c1"># Step 3: Configure Mongo::Client for auto-encryption #</span>
+<span class="c1">#######################################################</span>
+
+<span class="c1"># Create an encrypted fields map, which tells the Mongo::Client which fields to encrypt.</span>
+<span class="n">encrypted_fields_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;encryption_db.encryption_coll&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="ss">fields</span><span class="p">:</span> <span class="o">[</span>
+        <span class="p">{</span>
+          <span class="ss">path</span><span class="p">:</span> <span class="s1">&#39;encrypted_field&#39;</span><span class="p">,</span>
+          <span class="ss">bsonType</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+          <span class="ss">keyId</span><span class="p">:</span> <span class="n">data_key_id</span><span class="p">,</span>
+          <span class="ss">queries</span><span class="p">:</span> <span class="p">{</span>
+            <span class="ss">queryType</span><span class="p">:</span> <span class="s1">&#39;equality&#39;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="o">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="c1"># Configure the client for automatic encryption</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="ss">auto_encryption_options</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;encryption.__keyVault&#39;</span><span class="p">,</span>
+    <span class="ss">kms_providers</span><span class="p">:</span> <span class="n">kms_providers</span><span class="p">,</span>
+    <span class="ss">encrypted_fields_map</span><span class="p">:</span> <span class="n">encrypted_fields_map</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;encryption_db&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Make sure there is no data in the collection.</span>
+<span class="n">client</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">drop</span>
+
+<span class="c1"># Create encrypted collection explicitly.</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">].</span><span class="n">create</span>
+
+<span class="c1"># The string &quot;sensitive data&quot; will be encrypted and stored in the database</span>
+<span class="c1"># as ciphertext</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="ss">encrypted_field</span><span class="p">:</span> <span class="s1">&#39;sensitive data&#39;</span><span class="p">)</span>
+
+<span class="c1"># The data is decrypted before being returned to the user</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">encrypted_field</span><span class="p">:</span> <span class="s1">&#39;sensitive data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="s1">&#39;encrypted_field&#39;</span><span class="o">]</span>
+<span class="c1"># =&gt; &quot;sensitive data&quot;</span>
+
+<span class="c1"># A client with no auto_encryption_options is unable to decrypt the data</span>
+<span class="n">client_no_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;encryption_db&#39;</span><span class="p">)</span>
+<span class="n">client_no_encryption</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">].</span><span class="n">find</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="s1">&#39;encrypted_field&#39;</span><span class="o">]</span>
+<span class="c1"># =&gt; &lt;BSON::Binary... type=ciphertext...&gt;</span>
+</pre></div>
+</div>
+<p>The example above demonstrates using automatic encryption with a local master key.
+For more information about using other key management services to create a
+master key and create data keys, see the following sections of this tutorial:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#creating-a-master-key">Creating A Master Key</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-data-key">Creating A Data Key</a></p></li>
+</ul>
+<p>Below is an example of explicit queryable encryption.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;mongo&#39;</span>
+
+<span class="c1">#####################################</span>
+<span class="c1"># Step 1: Create a local master key #</span>
+<span class="c1">#####################################</span>
+
+<span class="c1"># A local master key is a 96-byte binary blob.</span>
+<span class="n">local_master_key</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">random_bytes</span><span class="p">(</span><span class="mi">96</span><span class="p">)</span>
+<span class="c1"># =&gt; &quot;\xB2\xBE\x8EN\xD4\x14\xC2\x13\xC3...&quot;</span>
+
+<span class="c1">#############################</span>
+<span class="c1"># Step 2: Create a data key #</span>
+<span class="c1">#############################</span>
+
+<span class="n">kms_providers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">local</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">key</span><span class="p">:</span> <span class="n">local_master_key</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># The key vault client is a Mongo::Client instance</span>
+<span class="c1"># that will be used to store your data keys.</span>
+<span class="n">key_vault_client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">)</span>
+
+<span class="c1"># Use an instance of Mongo::ClientEncryption to create a new data key</span>
+<span class="n">client_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">ClientEncryption</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="n">key_vault_client</span><span class="p">,</span>
+  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;encryption.__keyVault&#39;</span><span class="p">,</span>
+  <span class="ss">kms_providers</span><span class="p">:</span> <span class="n">kms_providers</span>
+<span class="p">)</span>
+
+<span class="n">data_key_id</span> <span class="o">=</span> <span class="n">client_encryption</span><span class="o">.</span><span class="n">create_data_key</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary... type=ciphertext...&gt;</span>
+
+<span class="c1">##########################################</span>
+<span class="c1"># Step 3: Create an encrypted collection #</span>
+<span class="c1">##########################################</span>
+
+<span class="c1"># Create the client you will use to read and write the data to MongoDB</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;encryption_db&#39;</span><span class="p">)</span>
+
+<span class="n">encrypted_fields</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">fields</span><span class="p">:</span> <span class="o">[</span>
+    <span class="p">{</span>
+      <span class="ss">path</span><span class="p">:</span> <span class="s1">&#39;encrypted_field&#39;</span><span class="p">,</span>
+      <span class="ss">bsonType</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+      <span class="ss">keyId</span><span class="p">:</span> <span class="n">data_key_id</span><span class="p">,</span>
+      <span class="ss">queries</span><span class="p">:</span> <span class="p">{</span>
+        <span class="ss">queryType</span><span class="p">:</span> <span class="s1">&#39;equality&#39;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="o">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Make sure there is no data in the collection.</span>
+<span class="n">client</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">].</span><span class="n">drop</span><span class="p">(</span><span class="ss">encrypted_field</span><span class="p">:</span> <span class="n">encrypted_fields</span><span class="p">)</span>
+<span class="c1"># Create encrypted collection explicitly.</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">[</span><span class="s1">&#39;encryption_coll&#39;</span><span class="o">].</span><span class="n">create</span><span class="p">(</span><span class="ss">encrypted_fields</span><span class="p">:</span> <span class="n">encrypted_fields</span><span class="p">)</span>
+
+<span class="c1">#####################################################</span>
+<span class="c1"># Step 4: Encrypt a string with explicit encryption #</span>
+<span class="c1">#####################################################</span>
+
+<span class="c1"># The value to encrypt</span>
+<span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;sensitive data&#39;</span>
+
+<span class="c1"># Encrypt the value</span>
+<span class="n">insert_payload</span> <span class="o">=</span> <span class="n">client_encryption</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span>
+  <span class="s1">&#39;sensitive data&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">key_id</span><span class="p">:</span> <span class="n">data_key_id</span><span class="p">,</span>
+    <span class="ss">algorithm</span><span class="p">:</span> <span class="s2">&quot;Indexed&quot;</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Insert the encrypted value into the collection</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="ss">encrypted_field</span><span class="p">:</span> <span class="n">insert_payload</span><span class="p">)</span>
+
+<span class="c1"># Use the client to read the encrypted value from the database, then</span>
+<span class="c1"># use the ClientEncryption object to decrypt it</span>
+<span class="n">find_payload</span> <span class="o">=</span> <span class="n">client_encryption</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span>
+  <span class="s1">&#39;sensitive data&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">key_id</span><span class="p">:</span> <span class="n">data_key_id</span><span class="p">,</span>
+    <span class="ss">algorithm</span><span class="p">:</span> <span class="s2">&quot;Indexed&quot;</span><span class="p">,</span>
+    <span class="ss">query_type</span><span class="p">:</span> <span class="ss">:equality</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">find_result</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">encrypted_field</span><span class="p">:</span> <span class="n">find_payload</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="s1">&#39;encrypted_field&#39;</span><span class="o">]</span>
+<span class="c1"># =&gt; &#39;sensitive data&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-master-key">
+<h2>Creating a Master Key<a class="headerlink" href="#creating-a-master-key" title="Permalink to this headline">#</a></h2>
 <p>Both automatic encryption and explicit encryption require an encryption master key.
 This master key is used to encrypt data keys, which are in turn used to encrypt
 user data. The master key can be generated in one of two ways: by creating a
-local key, or by creating a key in the Amazon Web Services Key Management
-Service (AWS KMS).</p>
-<div class="section" id="local-master-key">
-<h3>Local Master Key<a class="headerlink" href="#local-master-key" title="Permalink to this headline">¶</a></h3>
+local key, or by creating a key in a key management service. Currently
+Ruby driver supports AWS Key Management Service (KMS), Azure Key Vault, and
+Google Cloud Key Management (GCP KMS).</p>
+<section id="local-master-key">
+<h3>Local Master Key<a class="headerlink" href="#local-master-key" title="Permalink to this headline">#</a></h3>
 <p>A local master key is a 96-byte binary string. It should be persisted
 on your machine as an environment variable or in a text file.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Using a local master key is insecure and not recommended if you plan
+<p class="admonition-title">Warning</p>
+<p>Using a local master key is insecure and not recommended if you plan
 to use client-side encryption in production.</p>
 </div>
 <p>Run the following code to generate a local master key using Ruby:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">local_master_key</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">random_bytes</span><span class="p">(</span><span class="mi">96</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">local_master_key</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">random_bytes</span><span class="p">(</span><span class="mi">96</span><span class="p">)</span>
 <span class="c1"># =&gt; &quot;\xB2\xBE\x8EN\xD4\x14\xC2\x13\xC3...&quot; (a binary blob)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="aws-master-key">
-<h3>AWS Master Key<a class="headerlink" href="#aws-master-key" title="Permalink to this headline">¶</a></h3>
-<p>It is recommended that you use Amazon’s Key Management Service to create and
-store your master key. To do so, follow steps 1 and 2 of the
-<a class="reference external" href="https://docs.mongodb.com/manual/ecosystem/use-cases/client-side-field-level-encryption-local-key-to-kms/#convert-to-a-remote-master-key">“Convert to a Remote Master Key” section</a>
+</section>
+<section id="remote-master-key">
+<h3>Remote Master Key<a class="headerlink" href="#remote-master-key" title="Permalink to this headline">#</a></h3>
+<p>It is recommended that you use a remote Key Management Service to create and
+store your master key. To do so, follow steps of the
+<a href="#id2"><span class="problematic" id="id3">:drivers:`&quot;Set up a Remote Master Key&quot; section&lt;/security/client-side-field-level-encryption-local-key-to-kms/#set-up-a-remote-master-key&gt;`</span></a>
 in the MongoDB Client-Side Encryption documentation.</p>
 <p>For more information about creating a master key, see the
-<a class="reference external" href="https://docs.mongodb.com/manual/ecosystem/use-cases/client-side-field-level-encryption-guide/#a-create-a-master-key">Create a Master Key</a>
+<a href="#id4"><span class="problematic" id="id5">:drivers:`Create a Master Key &lt;/security/client-side-field-level-encryption-guide/#a.-create-a-master-key&gt;`</span></a>
 section of the MongoDB manual.</p>
-</div>
-</div>
-<div class="section" id="creating-a-data-key">
-<h2>Creating a Data Key<a class="headerlink" href="#creating-a-data-key" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="creating-a-data-key">
+<h2>Creating a Data Key<a class="headerlink" href="#creating-a-data-key" title="Permalink to this headline">#</a></h2>
 <p>Once you have created a master key, create a data key by calling the
 <code class="docutils literal notranslate"><span class="pre">#create_data_key</span></code> method on an instance of the <code class="docutils literal notranslate"><span class="pre">Mongo::ClientEncryption</span></code>
 class. This method generates a new data key and inserts it into the key vault
 collection, which is the MongoDB collection in which you choose to store your
 data keys. The <code class="docutils literal notranslate"><span class="pre">#create_data_key</span></code> method returns id of the newly-created
 data key in the form of a BSON::Binary object.</p>
-<div class="section" id="create-a-data-key-using-a-local-master-key">
-<h3>Create a Data Key Using a Local Master Key<a class="headerlink" href="#create-a-data-key-using-a-local-master-key" title="Permalink to this headline">¶</a></h3>
+<section id="create-a-data-key-using-a-local-master-key">
+<h3>Create a Data Key Using a Local Master Key<a class="headerlink" href="#create-a-data-key-using-a-local-master-key" title="Permalink to this headline">#</a></h3>
 <p>If you have created a local master key, you may use it to generate a new data
 key with the following code snippet:</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Using a local master key is insecure and not recommended if you plan
+<p class="admonition-title">Warning</p>
+<p>Using a local master key is insecure and not recommended if you plan
 to use client-side encryption in production.</p>
 </div>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># A Mongo::Client instance that will be used to connect to the key vault</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># A Mongo::Client instance that will be used to connect to the key vault</span>
 <span class="c1"># collection. Replace the server address with the address of the MongoDB</span>
 <span class="c1"># server where you would like to store your key vault collection.</span>
 <span class="n">key_vault_client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">)</span>
@@ -617,7 +1297,7 @@ copy</a>
 <span class="n">client_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">ClientEncryption</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="n">key_vault_client</span><span class="p">,</span>
   <span class="c1"># Replace with the database and collection names for your key vault collection</span>
-  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;admin.datakeys&#39;</span><span class="p">,</span>
+  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;encryption.__keyVault&#39;</span><span class="p">,</span>
   <span class="ss">kms_providers</span><span class="p">:</span> <span class="p">{</span>
     <span class="ss">local</span><span class="p">:</span> <span class="p">{</span>
       <span class="ss">key</span><span class="p">:</span> <span class="n">local_master_key</span>
@@ -629,22 +1309,33 @@ copy</a>
 <span class="c1"># =&gt; &lt;BSON::Binary... type=ciphertext...&gt;</span>
 </pre></div>
 </div>
-</div>
 <p>See the <a class="reference internal" href="#local-master-key">Local Master Key</a> section for more information about generating a new
 local master key.</p>
-</div>
-<div class="section" id="create-a-data-key-using-an-aws-master-key">
-<h3>Create a Data Key Using an AWS Master Key<a class="headerlink" href="#create-a-data-key-using-an-aws-master-key" title="Permalink to this headline">¶</a></h3>
-<p>If you have created an AWS master key, note the access key ID and the secret access
+</section>
+<section id="create-a-data-key-using-a-remote-master-key">
+<h3>Create a Data Key Using a Remote Master Key<a class="headerlink" href="#create-a-data-key-using-a-remote-master-key" title="Permalink to this headline">#</a></h3>
+<p>If you have created an AWS KMS master key, note the access key ID and the secret access
 key of the IAM user that has permissions to use the key. Additionally, note
 the AWS region and the Amazon Resource Number (ARN) of your master key. You will
 use that information to generate a data key.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># A Mongo::Client instance that will be used to connect to the key vault</span>
+<p>If you have created an Azure master key, note the tenant id, the client id, and
+the client secret of the application that has permissions to use the key.
+Additionally, note the key name, key version (if any), and key vault endpoint
+for your master key. You will use that information to generate a data key.</p>
+<p>If you have created a GCP KMS master key, note the email and the private key,
+and the client secret of the application that has permissions to use the key.
+Additionally, note the project id, location, key ring, key name, and
+key version (if any) for your master key. You will use that information to
+generate a data key.</p>
+<p>Please note that GCP private key can be in different formats. Ruby driver
+supports DER encoded RSA private key as base64 encoded string. For MRI Ruby
+the driver additionally support PEM encoded RSA private key.</p>
+<p>If you have created a master key using a Key Management Interoperability
+Protocol (KMIP) compatible key management server, note the server host and port,
+and key id. You will use that information to generate a data key. You may also
+need certificate authority certificate(s), as well as  and your client
+certificate and private key to authenticate to KMIP server.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># A Mongo::Client instance that will be used to connect to the key vault</span>
 <span class="c1"># collection. Replace the server address with the address of the MongoDB</span>
 <span class="c1"># server where you would like to store your key vault collection.</span>
 <span class="n">key_vault_client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">)</span>
@@ -652,92 +1343,170 @@ copy</a>
 <span class="n">client_encryption</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">ClientEncryption</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="n">key_vault_client</span><span class="p">,</span>
   <span class="c1"># Replace with the database and collection names for your key vault collection</span>
-  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;admin.datakeys&#39;</span><span class="p">,</span>
+  <span class="ss">key_vault_namespace</span><span class="p">:</span> <span class="s1">&#39;encryption.__keyVault&#39;</span><span class="p">,</span>
   <span class="ss">kms_providers</span><span class="p">:</span> <span class="p">{</span>
     <span class="ss">aws</span><span class="p">:</span> <span class="p">{</span>
       <span class="ss">access_key_id</span><span class="p">:</span> <span class="s1">&#39;IAM-ACCESS-KEY-ID&#39;</span><span class="p">,</span>
       <span class="ss">secret_access_key</span><span class="p">:</span> <span class="s1">&#39;IAM-SECRET-ACCESS-KEY&#39;</span>
+    <span class="p">},</span>
+    <span class="ss">azure</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">tenant_id</span><span class="p">:</span> <span class="s1">&#39;AZURE-TENANT-ID&#39;</span><span class="p">,</span>
+      <span class="ss">client_id</span><span class="p">:</span> <span class="s1">&#39;AZURE-CLIENT-ID&#39;</span><span class="p">,</span>
+      <span class="ss">client_secret</span><span class="p">:</span> <span class="s1">&#39;AZURE-CLIENT-SECRET&#39;</span>
+    <span class="p">},</span>
+    <span class="ss">gcp</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">email</span><span class="p">:</span> <span class="s1">&#39;GCP-EMAIL&#39;</span><span class="p">,</span>
+      <span class="c1"># :private_key value should be GCP private key as base64 encoded</span>
+      <span class="c1"># DER RSA private key, or PEM RSA private key, if you are using MRI Ruby.</span>
+      <span class="ss">private_key</span><span class="p">:</span> <span class="s1">&#39;GCP-PRIVATE-KEY&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="ss">kmip</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1"># KMIP server endpoint may include port.</span>
+      <span class="ss">endpoint</span><span class="p">:</span> <span class="s1">&#39;KMIP-SERVER-HOST&#39;</span>
+    <span class="p">},</span>
+    <span class="c1"># TLS options to connect to KMIP server.</span>
+    <span class="ss">kms_tls_options</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">kmip</span><span class="p">:</span> <span class="p">{</span>
+        <span class="ss">ssl_ca_cert</span><span class="p">:</span> <span class="s1">&#39;PATH-TO-CA-FILE&#39;</span><span class="p">,</span>
+        <span class="ss">ssl_cert</span><span class="p">:</span> <span class="s1">&#39;PATH-TO-CLIENT-CERT-FILE&#39;</span><span class="p">,</span>
+        <span class="ss">ssl_key</span><span class="p">:</span> <span class="s1">&#39;PATH-TO-CLIENT-KEY-FILE&#39;</span>
+      <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">)</span>
 
-<span class="n">data_key_id</span> <span class="o">=</span> <span class="n">client_encryption</span><span class="o">.</span><span class="n">create_data_key</span><span class="p">(</span>
+<span class="n">aws_data_key_id</span> <span class="o">=</span> <span class="n">client_encryption</span><span class="o">.</span><span class="n">create_data_key</span><span class="p">(</span>
   <span class="s1">&#39;aws&#39;</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">master_key</span><span class="p">:</span> <span class="p">{</span>
       <span class="ss">region</span><span class="p">:</span> <span class="s1">&#39;REGION-OF-YOUR-MASTER-KEY&#39;</span><span class="p">,</span>
       <span class="ss">key</span><span class="p">:</span> <span class="s1">&#39;ARN-OF-YOUR-MASTER-KEY&#39;</span>
     <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary... type=ciphertext...&gt;</span>
 
+<span class="n">azure_data_key_id</span> <span class="o">=</span> <span class="n">client_encryption</span><span class="o">.</span><span class="n">create_data_key</span><span class="p">(</span>
+  <span class="s1">&#39;azure&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">master_key</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">key_vault_endpoint</span><span class="p">:</span> <span class="s1">&#39;AZURE-KEY-VAULT-ENDPOINT&#39;</span><span class="p">,</span>
+      <span class="ss">key_name</span><span class="p">:</span> <span class="s1">&#39;AZURE-KEY-NAME&#39;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+<span class="c1"># =&gt; &lt;BSON::Binary... type=ciphertext...&gt;</span>
+
+<span class="n">gcp_data_key_id</span> <span class="o">=</span> <span class="n">client_encryption</span><span class="o">.</span><span class="n">create_data_key</span><span class="p">(</span>
+  <span class="s1">&#39;gcp&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">master_key</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">project_id</span><span class="p">:</span> <span class="s1">&#39;GCP-PROJECT-ID&#39;</span><span class="p">,</span>
+      <span class="ss">location</span><span class="p">:</span> <span class="s1">&#39;GCP-LOCATION&#39;</span><span class="p">,</span>
+      <span class="ss">key_ring</span><span class="p">:</span> <span class="s1">&#39;GCP-KEY-RING&#39;</span><span class="p">,</span>
+      <span class="ss">key_name</span><span class="p">:</span> <span class="s1">&#39;GCP-KEY-NAME&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">)</span>
 <span class="c1"># =&gt; &lt;BSON::Binary... type=ciphertext...&gt;</span>
 </pre></div>
 </div>
-</div>
-<p>See the <a class="reference internal" href="#aws-master-key">AWS Master Key</a> section of this tutorial  for more information about
-generating a new master key on AWS and finding the information you need to
+<p>See the <a class="reference internal" href="#remote-master-key">Remote Master Key</a> section of this tutorial  for more information about
+generating a new remote master key and finding the information you need to
 create data keys.</p>
 <p>For more information about creating a data key, see the
-<a class="reference external" href="https://docs.mongodb.com/manual/ecosystem/use-cases/client-side-field-level-encryption-guide/#b-create-a-data-encryption-key">Create a Data Encryption Key</a>
+<a href="#id6"><span class="problematic" id="id7">:drivers:`Create a Data Encryption Key &lt;/security/client-side-field-level-encryption-guide/#b.-create-a-data-encryption-key&gt;`</span></a>
 section of the MongoDB manual.</p>
-</div>
-</div>
-<div class="section" id="auto-encryption-options">
-<h2>Auto-Encryption Options<a class="headerlink" href="#auto-encryption-options" title="Permalink to this headline">¶</a></h2>
+<p>For a list of possible KMS TLS options
+see <a href="#id8"><span class="problematic" id="id9">:manual:`create client reference &lt;/reference/config-database/&gt;`</span></a>.
+<code class="docutils literal notranslate"><span class="pre">Mongo::ClientEncryption</span></code> constructor accepts same <code class="docutils literal notranslate"><span class="pre">ssl_</span></code> options as
+<code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code>.</p>
+</section>
+</section>
+<section id="auto-encryption-options">
+<h2>Auto-Encryption Options<a class="headerlink" href="#auto-encryption-options" title="Permalink to this headline">#</a></h2>
 <p>Automatic encryption can be configured on a <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> using the
 <code class="docutils literal notranslate"><span class="pre">auto_encryption_options</span></code> option <code class="docutils literal notranslate"><span class="pre">Hash</span></code>. This section provides an overview
 of the fields inside <code class="docutils literal notranslate"><span class="pre">auto_encryption_options</span></code> and explains how to choose their
 values.</p>
-<div class="section" id="key-vault-client">
-<h3><code class="docutils literal notranslate"><span class="pre">:key_vault_client</span></code><a class="headerlink" href="#key-vault-client" title="Permalink to this headline">¶</a></h3>
+<section id="key-vault-client">
+<h3><code class="docutils literal notranslate"><span class="pre">:key_vault_client</span></code><a class="headerlink" href="#key-vault-client" title="Permalink to this headline">#</a></h3>
 <p>The key vault client is a <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> instance that will be used to connect
 to the MongoDB collection containing your encryption data keys. For example, if
 your key vault was hosted on a MongoDB instance at <code class="docutils literal notranslate"><span class="pre">localhost:30000</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>key_vault_client = Mongo::Client.new([&#39;localhost:30000&#39;])
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">key_vault_client</span> <span class="o">=</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:30000&#39;</span><span class="o">]</span><span class="p">)</span>
 
-Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    key_vault_client: key_vault_client,
-    # ... (Fill in other options here)
-  }
-)
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    key_vault_client: key_vault_client,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
-</div>
 </div>
 <p>If your data keys are stored in the same MongoDB instance that stores your encrypted
 data, you may leave this option blank, and the top-level client will be used
 to insert and fetch data keys.</p>
-</div>
-<div class="section" id="key-vault-namespace">
-<h3><code class="docutils literal notranslate"><span class="pre">:key_vault_namespace</span></code><a class="headerlink" href="#key-vault-namespace" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="key-vault-namespace">
+<h3><code class="docutils literal notranslate"><span class="pre">:key_vault_namespace</span></code><a class="headerlink" href="#key-vault-namespace" title="Permalink to this headline">#</a></h3>
 <p>The key vault namespace is a <code class="docutils literal notranslate"><span class="pre">String</span></code> in the format <code class="docutils literal notranslate"><span class="pre">&quot;database_name.collection_name&quot;</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">database_name</span></code> and <code class="docutils literal notranslate"><span class="pre">collection_name</span></code> are the name of the database and
 collection in which you would like to store your data keys. For example, if your data
-keys are stored in the <code class="docutils literal notranslate"><span class="pre">admin</span></code> database in the <code class="docutils literal notranslate"><span class="pre">datakeys</span></code> collection:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    key_vault_namespace: &#39;admin.datakeys&#39;,
-    # ... (Fill in other options here)
-  }
-)
+keys are stored in the <code class="docutils literal notranslate"><span class="pre">encryption</span></code> database in the <code class="docutils literal notranslate"><span class="pre">__keyVault</span></code> collection:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    key_vault_namespace: &#39;</span><span class="n">encryption</span><span class="o">.</span><span class="n">__keyVault</span><span class="s1">&#39;,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
-</div>
 <p>There is no default key vault namespace, and this option must be provided.</p>
+</section>
+<section id="kms-providers">
+<h3><code class="docutils literal notranslate"><span class="pre">:kms_providers</span></code><a class="headerlink" href="#kms-providers" title="Permalink to this headline">#</a></h3>
+<p>A Hash that contains KMP provider names as keys, and provider options as values.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    key_vault_namespace: &#39;</span><span class="n">encryption</span><span class="o">.</span><span class="n">__keyVault</span><span class="s1">&#39;,</span>
+<span class="s1">    kms_providers: {</span>
+<span class="s1">      aws: {</span>
+<span class="s1">        access_key_id: &#39;</span><span class="no">IAM</span><span class="o">-</span><span class="no">ACCESS</span><span class="o">-</span><span class="no">KEY</span><span class="o">-</span><span class="no">ID</span><span class="s1">&#39;,</span>
+<span class="s1">        secret_access_key: &#39;</span><span class="no">IAM</span><span class="o">-</span><span class="no">SECRET</span><span class="o">-</span><span class="no">ACCESS</span><span class="o">-</span><span class="no">KEY</span><span class="s1">&#39;</span>
+<span class="s1">      }</span>
+<span class="s1">    }</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
+</pre></div>
 </div>
-<div class="section" id="schema-map">
-<h3><code class="docutils literal notranslate"><span class="pre">:schema_map</span></code><a class="headerlink" href="#schema-map" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="kms-tls-options">
+<h3><code class="docutils literal notranslate"><span class="pre">:kms_tls_options</span></code><a class="headerlink" href="#kms-tls-options" title="Permalink to this headline">#</a></h3>
+<p>A Hash that contains KMP provider names as keys, and TLS options to connect to
+corresponding providers.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    key_vault_namespace: &#39;</span><span class="n">encryption</span><span class="o">.</span><span class="n">__keyVault</span><span class="s1">&#39;,</span>
+<span class="s1">    kms_providers: {</span>
+<span class="s1">      kmip: {</span>
+<span class="s1">        endpoint: &#39;</span><span class="no">KMIP</span><span class="o">-</span><span class="no">SERVER</span><span class="o">-</span><span class="no">HOST</span><span class="s1">&#39;</span>
+<span class="s1">      }</span>
+<span class="s1">    },</span>
+<span class="s1">    kms_tls_options: {</span>
+<span class="s1">      kmip: {</span>
+<span class="s1">        ssl_ca_cert: &#39;</span><span class="no">PATH</span><span class="o">-</span><span class="no">TO</span><span class="o">-</span><span class="no">CA</span><span class="o">-</span><span class="no">FILE</span><span class="s1">&#39;,</span>
+<span class="s1">        ssl_cert: &#39;</span><span class="no">PATH</span><span class="o">-</span><span class="no">TO</span><span class="o">-</span><span class="no">CLIENT</span><span class="o">-</span><span class="no">CERT</span><span class="o">-</span><span class="no">FILE</span><span class="s1">&#39;,</span>
+<span class="s1">        ssl_key: &#39;</span><span class="no">PATH</span><span class="o">-</span><span class="no">TO</span><span class="o">-</span><span class="no">CLIENT</span><span class="o">-</span><span class="no">KEY</span><span class="o">-</span><span class="no">FILE</span><span class="s1">&#39;</span>
+<span class="s1">      }</span>
+<span class="s1">    }</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
+</pre></div>
+</div>
+</section>
+<section id="schema-map">
+<h3><code class="docutils literal notranslate"><span class="pre">:schema_map</span></code><a class="headerlink" href="#schema-map" title="Permalink to this headline">#</a></h3>
 <p>A schema map is a Hash with information about which fields to automatically
 encrypt and decrypt.</p>
 <p>The code snippet at the top of this tutorial demonstrates creating a schema
@@ -746,68 +1515,50 @@ large and it could be unweildy to include them in your Ruby code. Instead, it is
 recommended that you store them in a separate JSON (JavaScript Object Notation)
 file.</p>
 <p>Before creating the JSON file, Base64-encode the UUID of the your data key.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="n">data_key_id</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="n">data_key_id</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="c1"># =&gt; &quot;sr6OTtQUwhPD...&quot; (a base64-encoded string)</span>
 </pre></div>
 </div>
-</div>
 <p>Then, create a new JSON file containing your schema map in the format defined by
 the JSON Schema Draft 4 standard syntax. You can read more about formatting
-your schema map in the <a class="reference external" href="https://docs.mongodb.com/manual/reference/security-client-side-automatic-json-schema/">Automatic Encryption Rules</a>
+your schema map in the <a href="#id10"><span class="problematic" id="id11">:manual:`Automatic Encryption Rules&lt;/reference/security-client-side-automatic-json-schema/&gt;`</span></a>
 section of the MongoDB manual.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;encryption_db.encryption_coll&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;encrypted_field&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;encrypt&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;keyId&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="nt">&quot;$binary&quot;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&quot;base64&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-BASE64-ENCODED-DATA-KEY-ID&quot;</span><span class="p">,</span>
-              <span class="nt">&quot;subType&quot;</span><span class="p">:</span> <span class="s2">&quot;04&quot;</span>
-            <span class="p">}</span>
-          <span class="p">}],</span>
-          <span class="nt">&quot;bsonType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;algorithm&quot;</span><span class="p">:</span> <span class="s2">&quot;AEAD_AES_256_CBC_HMAC_SHA_512-Deterministic&quot;</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;bsonType&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;encryption_db.encryption_coll&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;encrypted_field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;encrypt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;keyId&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;$binary&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;base64&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR-BASE64-ENCODED-DATA-KEY-ID&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;subType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;04&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">          </span><span class="p">}],</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;bsonType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AEAD_AES_256_CBC_HMAC_SHA_512-Deterministic&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bsonType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
-</div>
 </div>
 <p>When you intend to use your schema map, convert it to a Ruby <code class="docutils literal notranslate"><span class="pre">Hash</span></code> using the
 <code class="docutils literal notranslate"><span class="pre">BSON::ExtJSON</span></code> module in the <code class="docutils literal notranslate"><span class="pre">bson</span></code> Ruby gem.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>schema_map = BSON::ExtJSON.parse(File.read(&#39;/path/to/your/file.json&#39;))
-# =&gt; { &#39;encryption_db.encryption_coll&#39; =&gt; { ... } }
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">schema_map</span> <span class="o">=</span> <span class="no">BSON</span><span class="o">::</span><span class="no">ExtJSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/path/to/your/file.json&#39;</span><span class="p">))</span>
+<span class="c1"># =&gt; { &#39;encryption_db.encryption_coll&#39; =&gt; { ... } }</span>
 
-Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    schema_map: schema_map,
-    # ... (Fill in other options here)
-  }
-)
+<span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    schema_map: schema_map,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>It is also possible to supply a schema map as a validator on a MongoDB collection.
 This is referred to as a “remote schema map,” while providing the schema map as
 an option on the <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> is called a “local schema map.”</p>
@@ -815,127 +1566,119 @@ an option on the <code class="docutils literal notranslate"><span class="pre">Mo
 obtained from the server. It protects against a malicious server advertising
 a false JSON schema, which could trick the client into sending unencrypted
 data that should be encrypted.</p>
-<p class="last">See <a class="reference external" href="https://docs.mongodb.com/manual/core/security-automatic-client-side-encryption/#server-side-field-level-encryption-enforcement">Server-Side Field Level Encryption Enforcement</a>
+<p>See <a href="#id12"><span class="problematic" id="id13">:manual:`Server-Side Field Level Encryption Enforcement&lt;/core/security-automatic-client-side-encryption/#server-side-field-level-encryption-enforcement&gt;`</span></a>
 in the MongoDB manual for more information about using the schema map to
 create a JSON schema validator on your collection.</p>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference external" href="https://docs.mongodb.com/manual/ecosystem/use-cases/client-side-field-level-encryption-guide/#c-specify-encrypted-fields-using-json-schema">Specify Encrypted Fields Using JSON Schema</a>,
-<a class="reference external" href="https://docs.mongodb.com/manual/reference/security-client-side-automatic-json-schema/">Automatic Encryption Rules</a></p>
+<p class="admonition-title">See also</p>
+<p><a href="#id14"><span class="problematic" id="id15">:drivers:`Specify Encrypted Fields Using JSON Schema&lt;/security/client-side-field-level-encryption-guide/#c-specify-encrypted-fields-using-json-schema&gt;`</span></a>,
+<a href="#id16"><span class="problematic" id="id17">:manual:`Automatic Encryption Rules&lt;/reference/security-client-side-automatic-json-schema/&gt;`</span></a></p>
 </div>
-</div>
-<div class="section" id="bypass-auto-encryption">
-<h3><code class="docutils literal notranslate"><span class="pre">:bypass_auto_encryption</span></code><a class="headerlink" href="#bypass-auto-encryption" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="bypass-auto-encryption">
+<h3><code class="docutils literal notranslate"><span class="pre">:bypass_auto_encryption</span></code><a class="headerlink" href="#bypass-auto-encryption" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">:bypass_auto_encryption</span></code> option is a <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> that specifies whether the
 <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code> should skip encryption when writing to the database. If
 <code class="docutils literal notranslate"><span class="pre">:bypass_auto_encryption</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the client will still perform automatic
 decryption of any previously-encrypted data.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    bypass_auto_encryption: true,
-    # ... (Fill in other options here)
-  }
-)
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    bypass_auto_encryption: true,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="extra-options">
-<h3><code class="docutils literal notranslate"><span class="pre">:extra_options</span></code><a class="headerlink" href="#extra-options" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="extra-options">
+<h3><code class="docutils literal notranslate"><span class="pre">:extra_options</span></code><a class="headerlink" href="#extra-options" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">:extra_options</span></code> is a <code class="docutils literal notranslate"><span class="pre">Hash</span></code> of options related to spawning mongocryptd.
 Every option in this <code class="docutils literal notranslate"><span class="pre">Hash</span></code> has a default value, so it is only necessary to
 provide the options whose defaults you want to override.</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">:mongocryptd_spawn_args</span></code> - This is an <code class="docutils literal notranslate"><span class="pre">Array&lt;String&gt;</span></code> containing arguments
+<li><p><code class="docutils literal notranslate"><span class="pre">:mongocryptd_spawn_args</span></code> - This is an <code class="docutils literal notranslate"><span class="pre">Array&lt;String&gt;</span></code> containing arguments
 for spawning mongocryptd. The Ruby driver will pass these arguments to
-mongocryptd on spawning the daemon. Possible arguments are:<ul>
-<li><code class="docutils literal notranslate"><span class="pre">&quot;--idleShutdownTimeoutSecs&quot;</span></code> - The number of seconds mongocryptd must remain
-idle before it shuts itself down. The default value is 60.</li>
-<li><code class="docutils literal notranslate"><span class="pre">&quot;--port&quot;</span></code> - The port at which mongocryptd will listen for connections. The
-default is 27020.</li>
+mongocryptd on spawning the daemon. Possible arguments are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;--idleShutdownTimeoutSecs&quot;</span></code> - The number of seconds mongocryptd must remain
+idle before it shuts itself down. The default value is 60.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;--port&quot;</span></code> - The port at which mongocryptd will listen for connections. The
+default is 27020.</p></li>
 </ul>
 </li>
-<li><code class="docutils literal notranslate"><span class="pre">:mongocryptd_uri</span></code> - The URI that the driver will use to connect to mongocryptd.
-By default, this is <code class="docutils literal notranslate"><span class="pre">&quot;mongodb://localhost:27020&quot;</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">:mongocryptd_spawn_path</span></code> - The path to the mongocryptd executable. The default
-is <code class="docutils literal notranslate"><span class="pre">&quot;mongocryptd&quot;</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">:mongocryptd_bypass_spawn</span></code> - A <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> indicating whether the driver should
-skip spawning mongocryptd.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:mongocryptd_uri</span></code> - The URI that the driver will use to connect to mongocryptd.
+By default, this is <code class="docutils literal notranslate"><span class="pre">&quot;mongodb://localhost:27020&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:mongocryptd_spawn_path</span></code> - The path to the mongocryptd executable. The default
+is <code class="docutils literal notranslate"><span class="pre">&quot;mongocryptd&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:mongocryptd_bypass_spawn</span></code> - A <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> indicating whether the driver should
+skip spawning mongocryptd.</p></li>
 </ul>
 <p>For example, if you would like to run mongocryptd on port 30000, provide
 <code class="docutils literal notranslate"><span class="pre">extra_options</span></code> as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span>  Mongo::Client.new([&#39;localhost:27017],
-  auto_encryption_options: {
-    extra_options: {
-      mongocryptd_spawn_args: [&#39;--port=30000&#39;],
-      mongocryptd_uri: &#39;mongodb://localhost:30000&#39;,
-    }
-    # ... (Fill in other options here)
-  }
-)
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span>  <span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    extra_options: {</span>
+<span class="s1">      mongocryptd_spawn_args: [&#39;</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">30000</span><span class="s1">&#39;],</span>
+<span class="s1">      mongocryptd_uri: &#39;</span><span class="ss">mongodb</span><span class="p">:</span><span class="sr">//</span><span class="ss">localhost</span><span class="p">:</span><span class="mi">30000</span><span class="s1">&#39;,</span>
+<span class="s1">    }</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The contents of <code class="docutils literal notranslate"><span class="pre">:extra_options</span></code> is subject to change in future versions
+<p class="admonition-title">Warning</p>
+<p>The contents of <code class="docutils literal notranslate"><span class="pre">:extra_options</span></code> is subject to change in future versions
 of the client-side encryption API.</p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="transactions.html" title="Previous Section: Transactions"><span>Transactions</span></a>
-      <a class="btn-next-text" href="schema-operations.html" title="Next Section: Schema Operations"><span>Schema Operations</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="transactions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Transactions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="schema-operations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Schema Operations</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div>
-<div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers","active": true},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides"}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = ['/bson-tutorials', '/mongoid-tutorials'];
-  </script></body>
+
+  </body>
 </html>
