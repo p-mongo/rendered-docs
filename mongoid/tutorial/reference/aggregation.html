@@ -1,0 +1,772 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Aggregation Pipeline &#8212; Mongoid  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Map/Reduce" href="map-reduce.html" />
+    <link rel="prev" title="Text Search" href="text-search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mongoid  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../installation-configuration.html">
+   Installation &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compatibility.html">
+     Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="configuration.html">
+     Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rails-integration.html">
+     Rails Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-sinatra.html">
+     Getting Started (Sinatra)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-rails.html">
+     Getting Started (Rails)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/documents.html">
+     Documents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../schema-configuration.html">
+   Schema Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fields.html">
+     Field Definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inheritance.html">
+     Inheritance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="associations.html">
+     Associations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-configuration.html">
+     Collection Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexes.html">
+     Index Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sharding.html">
+     Sharding Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../working-with-data.html">
+   Working With Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="queries.html">
+     Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Aggregation Pipeline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map/Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="persistence-configuration.html">
+     Persistence Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nested-attributes.html">
+     Nested Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="callbacks.html">
+     Callbacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/mongoid/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.0.html">
+     Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.4.html">
+     Mongoid 7.4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.3.html">
+     Mongoid 7.3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.2.html">
+     Mongoid 7.2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.1.html">
+     Mongoid 7.1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.0.html">
+     Mongoid 7.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-6.html">
+     Mongoid 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-5.html">
+     Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ecosystem.html">
+   Ecosystem
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/aggregation.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-usage">
+   Basic Usage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#querying-across-multiple-collections">
+     Querying Across Multiple Collections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#builder-dsl">
+   Builder DSL
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     project
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unwind-dsl">
+     unwind
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Aggregation Pipeline</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-usage">
+   Basic Usage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#querying-across-multiple-collections">
+     Querying Across Multiple Collections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#builder-dsl">
+   Builder DSL
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     project
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unwind-dsl">
+     unwind
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="aggregation-pipeline">
+<span id="id1"></span><h1>Aggregation Pipeline<a class="headerlink" href="#aggregation-pipeline" title="Permalink to this headline">#</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#basic-usage" id="id5">Basic Usage</a></p>
+<ul>
+<li><p><a class="reference internal" href="#querying-across-multiple-collections" id="id6">Querying Across Multiple Collections</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#builder-dsl" id="id7">Builder DSL</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id8">group</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id9">project</a></p></li>
+<li><p><a class="reference internal" href="#unwind-dsl" id="id10">unwind</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Mongoid exposes <a class="reference external" href="https://www.mongodb.com/docs/manual/core/aggregation-pipeline/">MongoDB’s aggregation pipeline</a>,
+which is used to construct flows of operations that process and return results.
+The aggregation pipeline is a superset of the deprecated
+<a class="reference internal" href="map-reduce.html#map-reduce"><span class="std std-ref">map/reduce framework</span></a> functionality.</p>
+<section id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">#</a></h2>
+<section id="querying-across-multiple-collections">
+<span id="aggregation-pipeline-example-multiple-collections"></span><h3>Querying Across Multiple Collections<a class="headerlink" href="#querying-across-multiple-collections" title="Permalink to this headline">#</a></h3>
+<p>The aggregation pipeline may be used for queries involving multiple
+referenced associations at the same time:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">has_many</span> <span class="ss">:tours</span>
+  <span class="n">has_many</span> <span class="ss">:awards</span>
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Tour</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">belongs_to</span> <span class="ss">:band</span>
+  <span class="n">field</span> <span class="ss">:year</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Award</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">belongs_to</span> <span class="ss">:band</span>
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>To retrieve bands that toured since 2000 and have at least one award, one
+could do the following:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band_ids</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span>
+  <span class="p">{</span> <span class="s1">&#39;$lookup&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="ss">from</span><span class="p">:</span> <span class="s1">&#39;tours&#39;</span><span class="p">,</span>
+    <span class="ss">localField</span><span class="p">:</span> <span class="s1">&#39;_id&#39;</span><span class="p">,</span>
+    <span class="ss">foreignField</span><span class="p">:</span> <span class="s1">&#39;band_id&#39;</span><span class="p">,</span>
+    <span class="ss">as</span><span class="p">:</span> <span class="s1">&#39;tours&#39;</span><span class="p">,</span>
+  <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="s1">&#39;$lookup&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="ss">from</span><span class="p">:</span> <span class="s1">&#39;awards&#39;</span><span class="p">,</span>
+    <span class="ss">localField</span><span class="p">:</span> <span class="s1">&#39;_id&#39;</span><span class="p">,</span>
+    <span class="ss">foreignField</span><span class="p">:</span> <span class="s1">&#39;band_id&#39;</span><span class="p">,</span>
+    <span class="ss">as</span><span class="p">:</span> <span class="s1">&#39;awards&#39;</span><span class="p">,</span>
+  <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="s1">&#39;$match&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="s1">&#39;tours.year&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span> <span class="o">=&gt;</span> <span class="mi">2000</span><span class="p">},</span>
+    <span class="s1">&#39;awards._id&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">&#39;$exists&#39;</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">},</span>
+  <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span><span class="s1">&#39;$project&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">_id</span><span class="p">:</span> <span class="mi">1</span><span class="p">}},</span>
+<span class="o">]</span><span class="p">)</span>
+<span class="n">bands</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">band_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the aggregation pipeline, since it is implemented by the Ruby driver
+for MongoDB and not Mongoid, returns raw <code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code> objects rather than
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Document</span></code> model instances. The above example projects only
+the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field which is then used to load full models. An alternative is
+to not perform such a projection and work with raw fields, which would eliminate
+having to send the list of document ids to Mongoid in the second query
+(which could be large).</p>
+</section>
+</section>
+<section id="builder-dsl">
+<span id="aggregation-pipeline-builder-dsl"></span><h2>Builder DSL<a class="headerlink" href="#builder-dsl" title="Permalink to this headline">#</a></h2>
+<p>Mongoid provides limited support for constructing the aggregation pipeline
+itself using a high-level DSL. The following aggregation pipeline operators
+are supported:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mongodb.com/docs/manual/reference/operator/aggregation/group/">$group</a></p></li>
+<li><p><a class="reference external" href="https://mongodb.com/docs/manual/reference/operator/aggregation/project/">$project</a></p></li>
+<li><p><a class="reference external" href="https://mongodb.com/docs/manual/reference/operator/aggregation/unwind/">$unwind</a></p></li>
+</ul>
+<p>To construct a pipeline, call the corresponding aggregation pipeline methods
+on a <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> instance. Aggregation pipeline operations are added to the
+<code class="docutils literal notranslate"><span class="pre">pipeline</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">Criteria</span></code> instance. To execute the pipeline,
+pass the <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> attribute value to <code class="docutils literal notranslate"><span class="pre">Collection#aggragegate</span></code> method.</p>
+<p>For example, given the following models:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tour</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">embeds_many</span> <span class="ss">:participants</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:states</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Array</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Participant</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">embedded_in</span> <span class="ss">:tour</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>We can find out which states a participant visited:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;participants.name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Serenity&#39;</span><span class="p">,)</span><span class="o">.</span>
+  <span class="n">unwind</span><span class="p">(</span><span class="ss">:states</span><span class="p">)</span><span class="o">.</span>
+  <span class="n">group</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="ss">:states</span><span class="o">.</span><span class="n">add_to_set</span> <span class="o">=&gt;</span> <span class="s1">&#39;$states&#39;</span><span class="p">)</span><span class="o">.</span>
+  <span class="n">project</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">states</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">pp</span> <span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="c1"># =&gt; [{&quot;$match&quot;=&gt;{&quot;participants.name&quot;=&gt;&quot;Serenity&quot;}},</span>
+<span class="c1">#     {&quot;$unwind&quot;=&gt;&quot;$states&quot;},</span>
+<span class="c1">#     {&quot;$group&quot;=&gt;{&quot;_id&quot;=&gt;&quot;states&quot;, &quot;states&quot;=&gt;{&quot;$addToSet&quot;=&gt;&quot;$states&quot;}}},</span>
+<span class="c1">#     {&quot;$project&quot;=&gt;{&quot;_id&quot;=&gt;0, &quot;states&quot;=&gt;1}}]</span>
+
+<span class="no">Tour</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+</pre></div>
+</div>
+<section id="id2">
+<h3>group<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">group</span></code> method adds a <a class="reference external" href="https://mongodb.com/docs/manual/reference/operator/aggregation/group/">$group aggregation pipeline stage</a>.</p>
+<p>The field expressions support Mongoid symbol-operator syntax:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="ss">:states</span><span class="o">.</span><span class="n">add_to_set</span> <span class="o">=&gt;</span> <span class="s1">&#39;$states&#39;</span><span class="p">)</span>
+<span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="c1"># =&gt; [{&quot;$group&quot;=&gt;{&quot;_id&quot;=&gt;&quot;states&quot;, &quot;states&quot;=&gt;{&quot;$addToSet&quot;=&gt;&quot;$states&quot;}}}]</span>
+</pre></div>
+</div>
+<p>Alternatively, standard MongoDB aggregation pipeline syntax may be used:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="ss">states</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$addToSet&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;$states&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>project<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">project</span></code> method adds a <a class="reference external" href="https://mongodb.com/docs/manual/reference/operator/aggregation/project/">$project aggregation pipeline stage</a>.</p>
+<p>The argument should be a Hash specifying the projection:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="ss">_id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">states</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="c1"># =&gt; [{&quot;$project&quot;=&gt;{&quot;_id&quot;=&gt;0, &quot;states&quot;=&gt;1}}]</span>
+</pre></div>
+</div>
+</section>
+<section id="unwind-dsl">
+<span id="id4"></span><h3>unwind<a class="headerlink" href="#unwind-dsl" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">unwind</span></code> method adds an <a class="reference external" href="https://mongodb.com/docs/manual/reference/operator/aggregation/unwind/">$unwind aggregation pipeline stage</a>.</p>
+<p>The argument can be a field name, specifiable as a symbol or a string, or
+a Hash or a <code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code> instance:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">unwind</span><span class="p">(</span><span class="ss">:states</span><span class="p">)</span>
+<span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">unwind</span><span class="p">(</span><span class="s1">&#39;states&#39;</span><span class="p">)</span>
+<span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="c1"># =&gt; [{&quot;$unwind&quot;=&gt;&quot;$states&quot;}]</span>
+
+<span class="n">criteria</span> <span class="o">=</span> <span class="no">Tour</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">unwind</span><span class="p">(</span><span class="ss">path</span><span class="p">:</span> <span class="s1">&#39;$states&#39;</span><span class="p">)</span>
+<span class="n">criteria</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="c1"># =&gt; [{&quot;$unwind&quot;=&gt;{:path=&gt;&quot;$states&quot;}}]</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="text-search.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Text Search</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="map-reduce.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Map/Reduce</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

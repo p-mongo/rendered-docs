@@ -1,230 +1,746 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CRUD Operations &#8212; Mongoid  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Queries" href="queries.html" />
+    <link rel="prev" title="Working With Data" href="../working-with-data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mongoid  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../installation-configuration.html">
+   Installation &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compatibility.html">
+     Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="configuration.html">
+     Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rails-integration.html">
+     Rails Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-sinatra.html">
+     Getting Started (Sinatra)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-rails.html">
+     Getting Started (Rails)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/documents.html">
+     Documents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../schema-configuration.html">
+   Schema Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fields.html">
+     Field Definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inheritance.html">
+     Inheritance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="associations.html">
+     Associations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-configuration.html">
+     Collection Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexes.html">
+     Index Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sharding.html">
+     Sharding Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../working-with-data.html">
+   Working With Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="queries.html">
+     Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation Pipeline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map/Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="persistence-configuration.html">
+     Persistence Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nested-attributes.html">
+     Nested Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="callbacks.html">
+     Callbacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/mongoid/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.0.html">
+     Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.4.html">
+     Mongoid 7.4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.3.html">
+     Mongoid 7.3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.2.html">
+     Mongoid 7.2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.1.html">
+     Mongoid 7.1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.0.html">
+     Mongoid 7.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-6.html">
+     Mongoid 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-5.html">
+     Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ecosystem.html">
+   Ecosystem
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
-    <title>CRUD Operations</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/reference/crud.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/reference/crud/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="Mongoid Manual" href="../index.html" />
-<link rel="up" title="Working With Data" href="../working-with-data.html" />
-<link rel="next" title="Queries" href="queries.html" />
-<link rel="prev" title="Working With Data" href="../working-with-data.html" /></head>
-<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Mongoid"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">Mongoid Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="mongoid/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.3">
-                
-                Version 7.3 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.2">
-                
-                Version 7.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.1">
-                
-                Version 7.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.0">
-                
-                Version 7.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.4">
-                
-                Version 6.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.3">
-                
-                Version 6.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.2">
-                
-                Version 6.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.1">
-                
-                Version 6.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/5.4">
-                
-                Version 5.4
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation-configuration.html">Installation &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="compatibility.html">Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="rails-integration.html">Rails Integration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/documents.html">Documents</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../schema-configuration.html">Schema Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="collection-configuration.html">Collection Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="indexes.html">Index Management</a></li><li class="toctree-l2"><a class="reference internal" href="sharding.html">Sharding Configuration</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="../working-with-data.html">Working With Data</a><ul class="current"><li class="toctree-l2 current"><a class="reference internal current" href="">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="queries.html">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/crud.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-documents">
+   Saving Documents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard">
+     Standard
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atomic">
+     Atomic
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#atomic-operation-grouping">
+       Atomic Operation Grouping
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reloading">
+   Reloading
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reloading-unsaved-documents">
+     Reloading Unsaved Documents
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-field-values">
+   Accessing Field Values
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getters-setters">
+     Getters &amp; Setters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-getters-setters">
+     Custom Getters &amp; Setters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-attribute-write-attribute">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       read_attribute
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       write_attribute
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-access">
+     Hash Access
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bulk-attribute-writes">
+     Bulk Attribute Writes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dirty-tracking">
+   Dirty Tracking
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewing-changes">
+     Viewing Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resetting-changes">
+     Resetting Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#persistence">
+     Persistence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewing-previous-changes">
+     Viewing Previous Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#updating-container-fields">
+   Updating Container Fields
+  </a>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>CRUD Operations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-documents">
+   Saving Documents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard">
+     Standard
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atomic">
+     Atomic
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#atomic-operation-grouping">
+       Atomic Operation Grouping
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reloading">
+   Reloading
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reloading-unsaved-documents">
+     Reloading Unsaved Documents
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-field-values">
+   Accessing Field Values
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getters-setters">
+     Getters &amp; Setters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-getters-setters">
+     Custom Getters &amp; Setters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-attribute-write-attribute">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       read_attribute
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       write_attribute
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-access">
+     Hash Access
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bulk-attribute-writes">
+     Bulk Attribute Writes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dirty-tracking">
+   Dirty Tracking
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewing-changes">
+     Viewing Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resetting-changes">
+     Resetting Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#persistence">
+     Persistence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewing-previous-changes">
+     Viewing Previous Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#updating-container-fields">
+   Updating Container Fields
+  </a>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/crud">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="../working-with-data.html">Working With Data</a><span class="bcpoint"> > </span></li>
-            <li>CRUD Operations</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="crud-operations">
-<h1>CRUD Operations<a class="headerlink" href="#crud-operations" title="Permalink to this headline">¶</a></h1>
+  <section id="crud-operations">
+<h1>CRUD Operations<a class="headerlink" href="#crud-operations" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#saving-documents" id="id2">Saving Documents</a><ul>
-<li><a class="reference internal" href="#standard" id="id3">Standard</a></li>
-<li><a class="reference internal" href="#atomic" id="id4">Atomic</a></li>
+<li><p><a class="reference internal" href="#saving-documents" id="id2">Saving Documents</a></p>
+<ul>
+<li><p><a class="reference internal" href="#standard" id="id3">Standard</a></p></li>
+<li><p><a class="reference internal" href="#atomic" id="id4">Atomic</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#reloading" id="id5">Reloading</a></li>
-<li><a class="reference internal" href="#accessing-field-values" id="id6">Accessing Field Values</a><ul>
-<li><a class="reference internal" href="#getters-setters" id="id7">Getters &amp; Setters</a></li>
-<li><a class="reference internal" href="#custom-getters-setters" id="id8">Custom Getters &amp; Setters</a></li>
-<li><a class="reference internal" href="#read-attribute-write-attribute" id="id9"><code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code></a></li>
-<li><a class="reference internal" href="#hash-access" id="id10">Hash Access</a></li>
-<li><a class="reference internal" href="#bulk-attribute-writes" id="id11">Bulk Attribute Writes</a></li>
+<li><p><a class="reference internal" href="#reloading" id="id5">Reloading</a></p>
+<ul>
+<li><p><a class="reference internal" href="#reloading-unsaved-documents" id="id6">Reloading Unsaved Documents</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dirty-tracking" id="id12">Dirty Tracking</a><ul>
-<li><a class="reference internal" href="#viewing-changes" id="id13">Viewing Changes</a></li>
-<li><a class="reference internal" href="#resetting-changes" id="id14">Resetting Changes</a></li>
-<li><a class="reference internal" href="#persistence" id="id15">Persistence</a></li>
-<li><a class="reference internal" href="#viewing-previous-changes" id="id16">Viewing Previous Changes</a></li>
+<li><p><a class="reference internal" href="#accessing-field-values" id="id7">Accessing Field Values</a></p>
+<ul>
+<li><p><a class="reference internal" href="#getters-setters" id="id8">Getters &amp; Setters</a></p></li>
+<li><p><a class="reference internal" href="#custom-getters-setters" id="id9">Custom Getters &amp; Setters</a></p></li>
+<li><p><a class="reference internal" href="#read-attribute-write-attribute" id="id10"><code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code></a></p></li>
+<li><p><a class="reference internal" href="#hash-access" id="id11">Hash Access</a></p></li>
+<li><p><a class="reference internal" href="#bulk-attribute-writes" id="id12">Bulk Attribute Writes</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#updating-container-fields" id="id17">Updating Container Fields</a></li>
+<li><p><a class="reference internal" href="#dirty-tracking" id="id13">Dirty Tracking</a></p>
+<ul>
+<li><p><a class="reference internal" href="#viewing-changes" id="id14">Viewing Changes</a></p></li>
+<li><p><a class="reference internal" href="#resetting-changes" id="id15">Resetting Changes</a></p></li>
+<li><p><a class="reference internal" href="#persistence" id="id16">Persistence</a></p></li>
+<li><p><a class="reference internal" href="#viewing-previous-changes" id="id17">Viewing Previous Changes</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#updating-container-fields" id="id18">Updating Container Fields</a></p></li>
 </ul>
 </div>
-<div class="section" id="saving-documents">
-<h2>Saving Documents<a class="headerlink" href="#saving-documents" title="Permalink to this headline">¶</a></h2>
+<section id="saving-documents">
+<h2>Saving Documents<a class="headerlink" href="#saving-documents" title="Permalink to this headline">#</a></h2>
 <p>Mongoid supports all expected CRUD operations for those familiar with other
 Ruby mappers like Active Record or Data Mapper. What distinguishes Mongoid
 from other mappers for MongoDB is that the general persistence operations
@@ -232,23 +748,23 @@ perform atomic updates on only the fields that have changed instead of
 writing the entire document to the database each time.</p>
 <p>The persistence sections will provide examples on what database operation is
 performed when executing the documented command.</p>
-<div class="section" id="standard">
-<h3>Standard<a class="headerlink" href="#standard" title="Permalink to this headline">¶</a></h3>
+<section id="standard">
+<h3>Standard<a class="headerlink" href="#standard" title="Permalink to this headline">#</a></h3>
 <p>Mongoid’s standard persistence methods come in the form of common methods you
 would find in other mapping frameworks. The following table shows all standard
 operations with examples.</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given table">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Operation</th>
-<th class="head">Example</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Example</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model.create!</span></code></p>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model.create!</span></code></p>
 <p><em>Insert a document or multiple documents into the database, raising an
 error if a validation or server error occurs.</em></p>
 <p><em>Pass a hash of attributes to create one document with the specified
@@ -259,18 +775,13 @@ to the hashes is returned.</em></p>
 <p><em>If a block is given to</em> <code class="docutils literal notranslate"><span class="pre">create!</span></code> <em>, it will be invoked with each
 document as the argument in turn prior to attempting to save that
 document.</em></p>
-<p class="last"><em>If there is a problem saving any of the documents, such as
+<p><em>If there is a problem saving any of the documents, such as
 a validation error or a server error, an exception is raised
 and, consequently, none of the documents are returned.
 However, if an array of hashes was passed and previous documents were
 successfully saved, those documents will remain in the database.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Heinrich&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Heine&quot;</span>
 <span class="p">)</span> <span class="c1"># =&gt; Person instance</span>
@@ -285,28 +796,22 @@ copy</a>
 <span class="k">end</span> <span class="c1"># =&gt; Person instance</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model.create</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model.create</span></code></p>
 <p><em>Instantiate a document or multiple documents and, if validations pass,
 insert them into the database.</em></p>
 <p><code class="docutils literal notranslate"><span class="pre">create</span></code> <em>is similar to</em> <code class="docutils literal notranslate"><span class="pre">create!</span></code> <em>but does not raise
 exceptions on validation errors. It still raises errors on server
 errors, such as trying to insert a document with an</em> <code class="docutils literal notranslate"><span class="pre">_id</span></code> <em>that
 already exists in the collection.</em></p>
-<p class="last"><em>If any validation errors are encountered, the respective document
+<p><em>If any validation errors are encountered, the respective document
 is not inserted but is returned along with documents that were inserted.
 Use</em> <code class="docutils literal notranslate"><span class="pre">persisted?</span></code> <em>,</em> <code class="docutils literal notranslate"><span class="pre">new_record?</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">errors</span></code> <em>methods
 to check which of the returned documents were inserted into the
 database.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Heinrich&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Heine&quot;</span>
 <span class="p">)</span> <span class="c1"># =&gt; Person instance</span>
@@ -331,20 +836,14 @@ copy</a>
 <span class="n">posts</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span> <span class="n">post</span><span class="o">.</span><span class="n">persisted?</span> <span class="p">}</span> <span class="c1"># =&gt; [true, false]</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#save!</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#save!</span></code></p>
 <p><em>Save the changed attributes to the database atomically, or insert the document if
 new. Raises an exception if validations fail or there is a server error.</em></p>
-<p class="last"><em>Returns true if the changed attributes were saved, raises an exception otherwise.</em></p>
+<p><em>Returns true if the changed attributes were saved, raises an exception otherwise.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Heinrich&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Heine&quot;</span>
 <span class="p">)</span>
@@ -354,24 +853,18 @@ copy</a>
 <span class="n">person</span><span class="o">.</span><span class="n">save!</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#save</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#save</span></code></p>
 <p><em>Save the changed attributes to the database atomically, or insert the document
 if new.</em></p>
 <p><em>Returns true if the changed attributes were saved. Returns false
 if there were any validation errors. Raises an exception if
 the document passed validation but there was a server error during
 the save.</em></p>
-<p class="last"><em>Pass</em> <code class="docutils literal notranslate"><span class="pre">validate:</span> <span class="pre">false</span></code> <em>option to bypass validations.</em></p>
+<p><em>Pass</em> <code class="docutils literal notranslate"><span class="pre">validate:</span> <span class="pre">false</span></code> <em>option to bypass validations.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Heinrich&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Heine&quot;</span>
 <span class="p">)</span>
@@ -382,112 +875,77 @@ copy</a>
 <span class="n">person</span><span class="o">.</span><span class="n">save</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#update_attributes</span></code></p>
-<p class="last"><em>Update the document attributes in the database. Will return true if validation passed,
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#update_attributes</span></code></p>
+<p><em>Update the document attributes in the database. Will return true if validation passed,
 false if not.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">update_attributes</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">update_attributes</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Jean&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Zorg&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#update_attributes!</span></code></p>
-<p class="last"><em>Update the document attributes in the database and raise an error if validation failed.</em></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#update_attributes!</span></code></p>
+<p><em>Update the document attributes in the database and raise an error if validation failed.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">update_attributes!</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">update_attributes!</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Leo&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Tolstoy&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#update_attribute</span></code></p>
-<p class="last"><em>Update a single attribute, bypassing validations.</em></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#update_attribute</span></code></p>
+<p><em>Update a single attribute, bypassing validations.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">update_attribute</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">,</span> <span class="s2">&quot;Jean&quot;</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">update_attribute</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">,</span> <span class="s2">&quot;Jean&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#upsert</span></code></p>
-<p class="last"><em>Performs a MongoDB upsert on the document. If the document exists in the database,
-it will get overwritten with the current attributes of the document in memory.
-If the document does not exist in the database, it will be inserted. Note that
-this only runs the</em> <code class="docutils literal notranslate"><span class="pre">{before|after|around}_upsert</span></code> <em>callbacks.</em></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#upsert</span></code></p>
+<p><em>Performs a MongoDB replace with upsert on the document. If the document
+exists in the database, it will get overwritten with the current
+document in the application (any attributes present in the database but
+not in the application’s document instance will be lost).
+If the document does not exist in the database, it will be inserted.
+Note that this only runs the</em> <code class="docutils literal notranslate"><span class="pre">{before|after|around}_upsert</span></code> <em>callbacks.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Heinrich&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Heine&quot;</span>
 <span class="p">)</span>
 <span class="n">person</span><span class="o">.</span><span class="n">upsert</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#touch</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#touch</span></code></p>
 <p><em>Update the document’s updated_at timestamp, optionally with one extra
 provided time field. This will cascade the touch to all</em>
 <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> <em>associations of the document with the option set.
 This operation skips validations and callbacks.</em></p>
-<p class="last"><em>Attempting to touch a destroyed document will raise</em> <code class="docutils literal notranslate"><span class="pre">FrozenError</span></code>
-* (as of Ruby 2.5,* <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> <em>on previous Ruby versions),
-same as if attempting to update an attribute on a destroyed
+<p><em>Attempting to touch a destroyed document will raise</em> <code class="docutils literal notranslate"><span class="pre">FrozenError</span></code>,
+<em>same as if attempting to update an attribute on a destroyed
 document.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">touch</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">touch</span>
 <span class="n">person</span><span class="o">.</span><span class="n">touch</span><span class="p">(</span><span class="ss">:audited_at</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#delete</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#delete</span></code></p>
 <p><em>Deletes the document from the database without running callbacks.</em></p>
-<p class="last"><em>If the document is not persisted, Mongoid will attempt to delete from
+<p><em>If the document is not persisted, Mongoid will attempt to delete from
 the database any document with the same</em> <code class="docutils literal notranslate"><span class="pre">_id</span></code>.</p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">delete</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">delete</span>
 
 <span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 <span class="n">unsaved_person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
@@ -496,20 +954,14 @@ copy</a>
 <span class="c1"># raises Mongoid::Errors::DocumentNotFound because the person was deleted</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#destroy</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#destroy</span></code></p>
 <p><em>Deletes the document from the database while running destroy callbacks.</em></p>
-<p class="last"><em>If the document is not persisted, Mongoid will attempt to delete from
+<p><em>If the document is not persisted, Mongoid will attempt to delete from
 the database any document with the same</em> <code class="docutils literal notranslate"><span class="pre">_id</span></code>.</p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">destroy</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">destroy</span>
 
 <span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 <span class="n">unsaved_person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
@@ -518,62 +970,44 @@ copy</a>
 <span class="c1"># raises Mongoid::Errors::DocumentNotFound because the person was deleted</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model.delete_all</span></code></p>
-<p class="last"><em>Deletes all documents from the database without running any callbacks.</em></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model.delete_all</span></code></p>
+<p><em>Deletes all documents from the database without running any callbacks.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">delete_all</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">delete_all</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model.destroy_all</span></code></p>
-<p class="last"><em>Deletes all documents from the database while running callbacks. This is a
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model.destroy_all</span></code></p>
+<p><em>Deletes all documents from the database while running callbacks. This is a
 potentially expensive operation since all documents will be loaded into memory.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">destroy_all</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Person</span><span class="o">.</span><span class="n">destroy_all</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Mongoid provides the following persistence-related attributes:</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given table">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Attribute</th>
-<th class="head">Example</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Example</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#new_record?</span></code></p>
-<p class="last"><em>Returns</em> <code class="docutils literal notranslate"><span class="pre">true</span></code> <em>if the model instance has not yet been saved
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#new_record?</span></code></p>
+<p><em>Returns</em> <code class="docutils literal notranslate"><span class="pre">true</span></code> <em>if the model instance has not yet been saved
 to the database. Opposite of</em> <code class="docutils literal notranslate"><span class="pre">persisted?</span></code></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Heinrich&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Heine&quot;</span>
 <span class="p">)</span>
@@ -582,19 +1016,13 @@ copy</a>
 <span class="n">person</span><span class="o">.</span><span class="n">new_record?</span> <span class="c1"># =&gt; false</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#persisted?</span></code></p>
-<p class="last"><em>Returns</em> <code class="docutils literal notranslate"><span class="pre">true</span></code> <em>if the model instance has been saved
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#persisted?</span></code></p>
+<p><em>Returns</em> <code class="docutils literal notranslate"><span class="pre">true</span></code> <em>if the model instance has been saved
 to the database. Opposite of</em> <code class="docutils literal notranslate"><span class="pre">new_record?</span></code></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Heinrich&quot;</span><span class="p">,</span>
   <span class="ss">last_name</span><span class="p">:</span> <span class="s2">&quot;Heine&quot;</span>
 <span class="p">)</span>
@@ -603,143 +1031,94 @@ copy</a>
 <span class="n">person</span><span class="o">.</span><span class="n">persisted?</span> <span class="c1"># =&gt; true</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="atomic">
-<h3>Atomic<a class="headerlink" href="#atomic" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="atomic">
+<h3>Atomic<a class="headerlink" href="#atomic" title="Permalink to this headline">#</a></h3>
 <p>Although Mongoid performs atomic operations under the covers by default,
 there may be cases where you want to do this explicitly without persisting
 other fields. Mongoid provides support for all of these operations as well.
 When executing atomic operations via these methods, callbacks and validations
 are not invoked.</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given table">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Operation</th>
-<th class="head">Example</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Example</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#add_to_set</span></code></p>
-<p class="last"><em>Performs an atomic $addToSet on the field.</em></p>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#add_to_set</span></code></p>
+<p><em>Performs an atomic $addToSet on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">add_to_set</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="s2">&quot;Bond&quot;</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">add_to_set</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="s2">&quot;Bond&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#bit</span></code></p>
-<p class="last"><em>Performs an atomic $bit on the field.</em></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#bit</span></code></p>
+<p><em>Performs an atomic $bit on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">bit</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="p">{</span> <span class="ow">and</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="ow">or</span><span class="p">:</span> <span class="mi">12</span> <span class="p">})</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">bit</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="p">{</span> <span class="ow">and</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="ow">or</span><span class="p">:</span> <span class="mi">12</span> <span class="p">})</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#inc</span></code></p>
-<p class="last"><em>Performs an atomic $inc on the field.</em></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#inc</span></code></p>
+<p><em>Performs an atomic $inc on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">inc</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">inc</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#pop</span></code></p>
-<p class="last"><em>Performs an atomic $pop on the field.</em></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#pop</span></code></p>
+<p><em>Performs an atomic $pop on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#pull</span></code></p>
-<p class="last"><em>Performs an atomic $pull on the field.</em></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#pull</span></code></p>
+<p><em>Performs an atomic $pull on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="s2">&quot;Bond&quot;</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="s2">&quot;Bond&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#pull_all</span></code></p>
-<p class="last"><em>Performs an atomic $pullAll on the field.</em></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#pull_all</span></code></p>
+<p><em>Performs an atomic $pullAll on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">pull_all</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="o">[</span> <span class="s2">&quot;Bond&quot;</span><span class="p">,</span> <span class="s2">&quot;James&quot;</span> <span class="o">]</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">pull_all</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="o">[</span> <span class="s2">&quot;Bond&quot;</span><span class="p">,</span> <span class="s2">&quot;James&quot;</span> <span class="o">]</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#push</span></code></p>
-<p class="last"><em>Performs an atomic $push on the field.</em></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#push</span></code></p>
+<p><em>Performs an atomic $push on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="o">[</span><span class="s2">&quot;007&quot;</span><span class="p">,</span><span class="s2">&quot;008&quot;</span><span class="o">]</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="ss">aliases</span><span class="p">:</span> <span class="o">[</span><span class="s2">&quot;007&quot;</span><span class="p">,</span><span class="s2">&quot;008&quot;</span><span class="o">]</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#rename</span></code></p>
-<p class="last"><em>Performs an atomic $rename on the field.</em></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#rename</span></code></p>
+<p><em>Performs an atomic $rename on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="ss">bday</span><span class="p">:</span> <span class="ss">:dob</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="ss">bday</span><span class="p">:</span> <span class="ss">:dob</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#set</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Model#set</span></code></p>
 <p><em>Updates an attribute on the model instance and, if the instance
 is already persisted, performs an atomic $set on the field, bypassing
 validations.</em></p>
@@ -747,15 +1126,10 @@ validations.</em></p>
 <p><code class="docutils literal notranslate"><span class="pre">set</span></code> <em>can also deeply set values on</em> <code class="docutils literal notranslate"><span class="pre">embeds_one</span></code> <em>associations.
 If such an association’s document is nil, one will be created prior
 to the update.</em></p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">set</span></code> <em>should not be used with</em> <code class="docutils literal notranslate"><span class="pre">has_one</span></code> <em>associations, as it
+<p><code class="docutils literal notranslate"><span class="pre">set</span></code> <em>should not be used with</em> <code class="docutils literal notranslate"><span class="pre">has_one</span></code> <em>associations, as it
 does not correctly work in such cases.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Ricky Bobby&quot;</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Ricky Bobby&quot;</span><span class="p">)</span>
 <span class="n">person</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tyler Durden&quot;</span><span class="p">)</span> <span class="c1"># updates name in the database</span>
 
 
@@ -800,50 +1174,32 @@ copy</a>
 <span class="n">flight</span><span class="o">.</span><span class="n">plan</span><span class="o">.</span><span class="n">route</span> <span class="c1"># =&gt; &quot;test route&quot;</span>
 </pre></div>
 </div>
-</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal notranslate"><span class="pre">Model#unset</span></code></p>
-<p class="last"><em>Performs an atomic $unset on the field.</em></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Model#unset</span></code></p>
+<p><em>Performs an atomic $unset on the field.</em></p>
 </td>
-<td><div class="first last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="atomic-operation-grouping">
-<span id="id1"></span><h4>Atomic Operation Grouping<a class="headerlink" href="#atomic-operation-grouping" title="Permalink to this headline">¶</a></h4>
+<section id="atomic-operation-grouping">
+<span id="id1"></span><h4>Atomic Operation Grouping<a class="headerlink" href="#atomic-operation-grouping" title="Permalink to this headline">#</a></h4>
 <p>Atomic operations may be grouped together using the <code class="docutils literal notranslate"><span class="pre">#atomically</span></code> method
 on a document. All operations inside the block given to <code class="docutils literal notranslate"><span class="pre">#atomically</span></code>
 are sent to the cluster in a single atomic command. For example:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">atomically</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">atomically</span> <span class="k">do</span>
   <span class="n">person</span><span class="o">.</span><span class="n">inc</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
   <span class="n">person</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Jake&#39;</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">#atomically</span></code> blocks may be nested. The default behavior is to write
 changes performed by each block as soon as the block ends:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">atomically</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">atomically</span> <span class="k">do</span>
   <span class="n">person</span><span class="o">.</span><span class="n">atomically</span> <span class="k">do</span>
     <span class="n">person</span><span class="o">.</span><span class="n">inc</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">person</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Jake&#39;</span><span class="p">)</span>
@@ -853,7 +1209,6 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>This behavior can be changed by specifying the <code class="docutils literal notranslate"><span class="pre">join_context:</span> <span class="pre">true</span></code> option
 to <code class="docutils literal notranslate"><span class="pre">#atomically</span></code>, or globally by setting the <code class="docutils literal notranslate"><span class="pre">join_contexts</span></code>
 <a class="reference internal" href="configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>. When
@@ -861,12 +1216,7 @@ context joining is enabled, nested <code class="docutils literal notranslate"><s
 the outer blocks, and only the outermost block (or the first block where
 <code class="docutils literal notranslate"><span class="pre">join_contexts</span></code> is false) actually writes changes to the cluster.
 For example:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">atomically</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">atomically</span> <span class="k">do</span>
   <span class="n">person</span><span class="o">.</span><span class="n">atomically</span><span class="p">(</span><span class="ss">join_context</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
     <span class="n">person</span><span class="o">.</span><span class="n">inc</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">person</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Jake&#39;</span><span class="p">)</span>
@@ -876,7 +1226,6 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>The context joining behavior can be enabled globally by default by setting
 <code class="docutils literal notranslate"><span class="pre">join_context</span></code> option in Mongoid configuration. In this case specifying
 <code class="docutils literal notranslate"><span class="pre">join_context:</span> <span class="pre">false</span></code> on an <code class="docutils literal notranslate"><span class="pre">#atomically</span></code> block can be used to
@@ -884,12 +1233,7 @@ obtain the independent persistence context behavior.</p>
 <p>If an exception is raised in an <code class="docutils literal notranslate"><span class="pre">#atomically</span></code> block which has not yet
 persisted its changes to the cluster, any pending attribute changes on
 Mongoid models are reverted. For example:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
 <span class="k">begin</span>
   <span class="n">person</span><span class="o">.</span><span class="n">atomically</span> <span class="k">do</span>
     <span class="n">person</span><span class="o">.</span><span class="n">inc</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
@@ -902,43 +1246,86 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>Atomic operations described in this section apply to one document at a time,
 therefore nesting <code class="docutils literal notranslate"><span class="pre">#atomically</span></code> blocks invoked on multiple documents does
 not make changes to the different documents be persisted atomically together.
 However, MongoDB offers <a class="reference internal" href="transactions.html#transactions"><span class="std std-ref">multi-document transactions</span></a>
 as of server version 4.0 which provide atomic persistence across multiple
 documents.</p>
-</div>
-</div>
-</div>
-<div class="section" id="reloading">
-<h2>Reloading<a class="headerlink" href="#reloading" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="reloading">
+<h2>Reloading<a class="headerlink" href="#reloading" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">reload</span></code> method to fetch the most recent version of a document from
-the database:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">..</span><span class="p">)</span>
+the database. Any unsaved modifications to the document’s attributes are lost:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Band _id: 6206d06de1b8324561f179c9, name: &quot;foo&quot;, description: nil, likes: nil&gt;</span>
+
+<span class="n">band</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span>
+<span class="n">band</span>
+<span class="c1"># =&gt; #&lt;Band _id: 6206d06de1b8324561f179c9, name: &quot;bar&quot;, description: nil, likes: nil&gt;</span>
+
 <span class="n">band</span><span class="o">.</span><span class="n">reload</span>
+<span class="c1"># =&gt; #&lt;Band _id: 6206d06de1b8324561f179c9, name: &quot;foo&quot;, description: nil, likes: nil&gt;</span>
+</pre></div>
+</div>
+<p>When a document is reloaded, all of its embedded associations are also reloaded
+in the same query (since embedded documents are stored in the parent document
+on the server). If a document has referenced associations, the loaded
+associations’ are not reloaded but their values are cleared, such that these
+associations would be loaded from the database at the next access.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some operations on associations, for example assignment, persists the new
+document. In these cases there may not be any unsaved modifications to
+revert by reloading. In the following example, the assignment of the
+empty array to the association is immediately persisted and reloading
+does not make any changes to the document:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming band has many tours, which could be referenced:</span>
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">tours</span><span class="p">:</span> <span class="o">[</span><span class="no">Tour</span><span class="o">.</span><span class="n">create!</span><span class="o">]</span><span class="p">)</span>
+<span class="c1"># ... or embedded:</span>
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">tours</span><span class="p">:</span> <span class="o">[</span><span class="no">Tour</span><span class="o">.</span><span class="n">new</span><span class="o">]</span><span class="p">)</span>
+
+<span class="c1"># This writes the empty tour list into the database.</span>
+<span class="n">band</span><span class="o">.</span><span class="n">tours</span> <span class="o">=</span> <span class="o">[]</span>
+
+<span class="c1"># There are no unsaved modifications in band at this point to be reverted.</span>
+<span class="n">band</span><span class="o">.</span><span class="n">reload</span>
+
+<span class="c1"># Returns the empty array since this is what is in the database.</span>
+<span class="n">band</span><span class="o">.</span><span class="n">tours</span>
+<span class="c1"># =&gt; []</span>
 </pre></div>
 </div>
 </div>
 <p>If the model has a <a class="reference internal" href="sharding.html#shard-keys"><span class="std std-ref">shard key</span></a> defined, the shard key value
 is included in the reloading query.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">reload</span></code> also works when the document has not been persisted, in which case
-it performs a query using the <code class="docutils literal notranslate"><span class="pre">id</span></code> value (and shard key value, if a shard
-key is defined):</p>
-<div class="last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
+<p>If the database does not contain a matching document, Mongoid normally raises
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::DocumentNotFound</span></code>. However, if the configuration option
+<code class="docutils literal notranslate"><span class="pre">raise_not_found_error</span></code> is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, and the database does not
+contain a matching document, Mongoid replaces the current document with a newly
+created document whose attributes are set to default values. Importantly, this
+generally causes the <code class="docutils literal notranslate"><span class="pre">_id</span></code> of the document to change, as the following
+example demonstrates:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
+<span class="c1"># =&gt; #&lt;Band _id: 6206d00de1b8324561f179c7, name: &quot;foo&quot;, description: nil, likes: nil&gt;</span>
+
+<span class="no">Mongoid</span><span class="o">.</span><span class="n">raise_not_found_error</span> <span class="o">=</span> <span class="kp">false</span>
+<span class="n">band</span><span class="o">.</span><span class="n">destroy</span>
+
+<span class="n">band</span><span class="o">.</span><span class="n">reload</span>
+<span class="c1"># =&gt; #&lt;Band _id: 6206d031e1b8324561f179c8, name: nil, description: nil, likes: nil&gt;</span>
+</pre></div>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">existing</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Photek&#39;</span><span class="p">)</span>
+<p>For this reason, it is not recommended to use <code class="docutils literal notranslate"><span class="pre">reload</span></code> when
+<code class="docutils literal notranslate"><span class="pre">raise_not_found_error</span></code> is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<section id="reloading-unsaved-documents">
+<h3>Reloading Unsaved Documents<a class="headerlink" href="#reloading-unsaved-documents" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">reload</span></code> can be called when the document has not yet been persisted.
+In this case <code class="docutils literal notranslate"><span class="pre">reload</span></code> performs a <code class="docutils literal notranslate"><span class="pre">find</span></code> query using the <code class="docutils literal notranslate"><span class="pre">id</span></code> value
+specified in the document (and the shard key value, if a shard key is defined):</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">existing</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Photek&#39;</span><span class="p">)</span>
 
 <span class="c1"># Unsaved document</span>
 <span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">existing</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
@@ -947,30 +1334,24 @@ copy</a>
 <span class="c1"># =&gt; &quot;Photek&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="accessing-field-values">
-<h2>Accessing Field Values<a class="headerlink" href="#accessing-field-values" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="accessing-field-values">
+<h2>Accessing Field Values<a class="headerlink" href="#accessing-field-values" title="Permalink to this headline">#</a></h2>
 <p>Mongoid provides several ways of accessing field values.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All of the access methods described below raise
+<p class="admonition-title">Note</p>
+<p>All of the access methods described below raise
 <code class="docutils literal notranslate"><span class="pre">ActiveModel::MissingAttributeError</span></code> when the field being accessed is
 <a class="reference internal" href="queries.html#projection"><span class="std std-ref">projected out</span></a>, either by virtue of not being included in
 <a class="reference internal" href="queries.html#only"><span class="std std-ref">only</span></a> or by virtue of being included in
 <a class="reference internal" href="queries.html#without"><span class="std std-ref">without</span></a>. This applies to both reads and writes.</p>
 </div>
-<div class="section" id="getters-setters">
-<h3>Getters &amp; Setters<a class="headerlink" href="#getters-setters" title="Permalink to this headline">¶</a></h3>
+<section id="getters-setters">
+<h3>Getters &amp; Setters<a class="headerlink" href="#getters-setters" title="Permalink to this headline">#</a></h3>
 <p>The recommended way is to use the getter and setter methods generated for
 each declared field:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:first_name</span>
@@ -983,30 +1364,24 @@ copy</a>
 <span class="c1"># =&gt; &quot;Artem&quot;</span>
 </pre></div>
 </div>
-</div>
 <p>To use this mechanism, each field must be explicitly declared, or the
 model class must enable <a class="reference internal" href="fields.html#dynamic-fields"><span class="std std-ref">dynamic fields</span></a>.</p>
-</div>
-<div class="section" id="custom-getters-setters">
-<h3>Custom Getters &amp; Setters<a class="headerlink" href="#custom-getters-setters" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="custom-getters-setters">
+<h3>Custom Getters &amp; Setters<a class="headerlink" href="#custom-getters-setters" title="Permalink to this headline">#</a></h3>
 <p>It is possible to explicitly define the getter and setter methods to provide
 custom behavior when reading or writing fields, for example value
 transformations or storing values under different field names. In this case
 <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> and <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code> methods can be used to read and
 write the values directly into the attributes hash:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="k">def</span> <span class="nf">first_name</span>
     <span class="n">read_attribute</span><span class="p">(</span><span class="ss">:fn</span><span class="p">)</span>
   <span class="k">end</span>
 
-  <span class="k">def</span> <span class="nf">first_name</span><span class="o">=</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">first_name=</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="n">write_attribute</span><span class="p">(</span><span class="ss">:fn</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
@@ -1021,19 +1396,13 @@ copy</a>
 <span class="c1"># =&gt; {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;606477dc2c97a628cf47075b&#39;), &quot;fn&quot;=&gt;&quot;Artem&quot;}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="read-attribute-write-attribute">
-<span id="read-write-attribute"></span><h3><code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code><a class="headerlink" href="#read-attribute-write-attribute" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="read-attribute-write-attribute">
+<span id="read-write-attribute"></span><h3><code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code><a class="headerlink" href="#read-attribute-write-attribute" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> and <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code> methods can be used explicitly
 as well. Note that if a field specifies its <a class="reference internal" href="fields.html#storage-field-names"><span class="std std-ref">storage field name</span></a>, both <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> and <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code>
 accept either the declared field name or the storage field name for operations:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:first_name</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:fn</span>
@@ -1058,16 +1427,10 @@ copy</a>
 <span class="c1"># =&gt; #&lt;Person _id: 60647a522c97a6292c195b4b, first_name(fn): &quot;Artem&quot;, last_name(ln): &quot;Medvedev&quot;&gt;</span>
 </pre></div>
 </div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> and <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code> do not require that a field with
 the used name is defined, but writing field values with <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code>
 does not cause the respective field to be defined either:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">write_attribute</span><span class="p">(</span><span class="ss">:undefined</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">write_attribute</span><span class="p">(</span><span class="ss">:undefined</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 <span class="n">person</span>
 <span class="c1"># =&gt; #&lt;Person _id: 60647b212c97a6292c195b4c, first_name(fn): &quot;Artem&quot;, last_name(ln): &quot;Medvedev&quot;&gt;</span>
 <span class="n">person</span><span class="o">.</span><span class="n">attributes</span>
@@ -1079,22 +1442,16 @@ copy</a>
 <span class="c1"># raises NoMethodError</span>
 </pre></div>
 </div>
-</div>
 <p>When <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> is used to access a missing field, it returns <code class="docutils literal notranslate"><span class="pre">nil</span></code>.</p>
-</div>
-<div class="section" id="hash-access">
-<h3>Hash Access<a class="headerlink" href="#hash-access" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="hash-access">
+<h3>Hash Access<a class="headerlink" href="#hash-access" title="Permalink to this headline">#</a></h3>
 <p>Mongoid model instances define the <code class="docutils literal notranslate"><span class="pre">[]</span></code> and <code class="docutils literal notranslate"><span class="pre">[]=</span></code> methods to provide
-<code class="docutils literal notranslate"><span class="pre">Hash</span></code> style acccess to the attributes. <code class="docutils literal notranslate"><span class="pre">[]</span></code> is an alias for
+<code class="docutils literal notranslate"><span class="pre">Hash</span></code> style access to the attributes. <code class="docutils literal notranslate"><span class="pre">[]</span></code> is an alias for
 <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> and <code class="docutils literal notranslate"><span class="pre">[]=</span></code> is an alias for <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code>; see
 the section on <a class="reference internal" href="#read-write-attribute"><span class="std std-ref">read_attribute and write_attribute</span></a>
 for the detailed description of their behavior.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:first_name</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:fn</span>
@@ -1118,18 +1475,12 @@ copy</a>
 <span class="c1"># =&gt; #&lt;Person _id: 606483742c97a629bdde5cfc, first_name(fn): &quot;Artem&quot;, last_name(ln): &quot;Pushkin&quot;&gt;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="bulk-attribute-writes">
-<h3>Bulk Attribute Writes<a class="headerlink" href="#bulk-attribute-writes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="bulk-attribute-writes">
+<h3>Bulk Attribute Writes<a class="headerlink" href="#bulk-attribute-writes" title="Permalink to this headline">#</a></h3>
 <p>In cases where you want to set multiple field values at once, there are a few
 different ways of accomplishing this as well.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the field values as a hash.</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the field values as a hash.</span>
 <span class="n">person</span><span class="o">.</span><span class="n">attributes</span>
 
 <span class="c1"># Set the field values in the document.</span>
@@ -1141,25 +1492,19 @@ copy</a>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="dirty-tracking">
-<h2>Dirty Tracking<a class="headerlink" href="#dirty-tracking" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="dirty-tracking">
+<h2>Dirty Tracking<a class="headerlink" href="#dirty-tracking" title="Permalink to this headline">#</a></h2>
 <p>Mongoid supports tracking of changed or “dirty” fields with an API that mirrors that of
 Active Model. If a defined field has been modified in a model the model will be marked as
 dirty and some additional behavior comes into play.</p>
-<div class="section" id="viewing-changes">
-<h3>Viewing Changes<a class="headerlink" href="#viewing-changes" title="Permalink to this headline">¶</a></h3>
+<section id="viewing-changes">
+<h3>Viewing Changes<a class="headerlink" href="#viewing-changes" title="Permalink to this headline">#</a></h3>
 <p>There are various ways to view what has been altered on a model. Changes are recorded
 from the time a document is instantiated, either as a new document or via loading from
 the database up to the time it is saved. Any persistence operation clears the changes.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
 <span class="k">end</span>
@@ -1186,17 +1531,19 @@ copy</a>
 <span class="n">person</span><span class="o">.</span><span class="n">name_was</span> <span class="c1"># &quot;Alan Parsons&quot;</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting the associations on a document does not cause the <code class="docutils literal notranslate"><span class="pre">changes</span></code> or
+<code class="docutils literal notranslate"><span class="pre">changed_attributes</span></code> hashes to be modified. This is true for all associations
+whether referenced or embedded. Note that changing the _id(s) field on
+referenced associations does cause the changes to show up in the <code class="docutils literal notranslate"><span class="pre">changes</span></code>
+and the <code class="docutils literal notranslate"><span class="pre">changed_attributes</span></code> hashes.</p>
 </div>
-</div>
-<div class="section" id="resetting-changes">
-<h3>Resetting Changes<a class="headerlink" href="#resetting-changes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="resetting-changes">
+<h3>Resetting Changes<a class="headerlink" href="#resetting-changes" title="Permalink to this headline">#</a></h3>
 <p>You can reset changes of a field to its previous value by calling the reset method.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">first</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">first</span>
 <span class="n">person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alan Garner&quot;</span>
 
 <span class="c1"># Reset the changed name back to the original</span>
@@ -1204,25 +1551,19 @@ copy</a>
 <span class="n">person</span><span class="o">.</span><span class="n">name</span> <span class="c1"># &quot;Alan Parsons&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="persistence">
-<h3>Persistence<a class="headerlink" href="#persistence" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="persistence">
+<h3>Persistence<a class="headerlink" href="#persistence" title="Permalink to this headline">#</a></h3>
 <p>Mongoid uses dirty tracking as the core of its persistence operations. It looks at the
 changes on a document and atomically updates only what has changed, unlike other frameworks
 that write the entire document on each save. If no changes have been made, Mongoid will
 not hit the database on a call to <code class="docutils literal notranslate"><span class="pre">Model#save</span></code>.</p>
-</div>
-<div class="section" id="viewing-previous-changes">
-<h3>Viewing Previous Changes<a class="headerlink" href="#viewing-previous-changes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="viewing-previous-changes">
+<h3>Viewing Previous Changes<a class="headerlink" href="#viewing-previous-changes" title="Permalink to this headline">#</a></h3>
 <p>After a document has been persisted, you can see what the changes were previously by
 calling <code class="docutils literal notranslate"><span class="pre">Model#previous_changes</span></code>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">first</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">first</span>
 <span class="n">person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alan Garner&quot;</span>
 <span class="n">person</span><span class="o">.</span><span class="n">save</span> <span class="c1"># Clears out current changes.</span>
 
@@ -1230,22 +1571,16 @@ copy</a>
 <span class="n">person</span><span class="o">.</span><span class="n">previous_changes</span> <span class="c1"># { &quot;name&quot; =&gt; [ &quot;Alan Parsons&quot;, &quot;Alan Garner&quot; ] }</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="updating-container-fields">
-<h2>Updating Container Fields<a class="headerlink" href="#updating-container-fields" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="updating-container-fields">
+<h2>Updating Container Fields<a class="headerlink" href="#updating-container-fields" title="Permalink to this headline">#</a></h2>
 <p>Be aware that, until
 <a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-2951">MONGOID-2951</a>
 is resolved, all fields including container ones must be assigned to for
 their values to be persisted to the database.</p>
 <p>For example, adding to a set like this does not work:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:tours</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Set</span>
@@ -1261,15 +1596,9 @@ copy</a>
 <span class="c1"># =&gt; #&lt;Set: {}&gt;</span>
 </pre></div>
 </div>
-</div>
 <p>Instead, the field value must be modified outside of the model and assigned
 back to the model as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:tours</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Set</span>
@@ -1290,49 +1619,52 @@ copy</a>
 <span class="c1"># =&gt; #&lt;Set: {&quot;London&quot;}&gt;</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="../working-with-data.html" title="Previous Section: Working With Data"><span>Working With Data</span></a>
-      <a class="btn-next-text" href="queries.html" title="Next Section: Queries"><span>Queries</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../working-with-data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Working With Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="queries.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Queries</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = [];
-  </script></body>
+
+  </body>
 </html>

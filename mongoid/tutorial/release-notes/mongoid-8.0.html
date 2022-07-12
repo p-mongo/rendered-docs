@@ -1,0 +1,1652 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Mongoid 8.0 &#8212; Mongoid  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mongoid 7.4" href="mongoid-7.4.html" />
+    <link rel="prev" title="Release Notes" href="../release-notes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mongoid  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../installation-configuration.html">
+   Installation &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/compatibility.html">
+     Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/configuration.html">
+     Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/rails-integration.html">
+     Rails Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-sinatra.html">
+     Getting Started (Sinatra)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-rails.html">
+     Getting Started (Rails)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/documents.html">
+     Documents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../schema-configuration.html">
+   Schema Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/fields.html">
+     Field Definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/inheritance.html">
+     Inheritance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/associations.html">
+     Associations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/validation.html">
+     Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/collection-configuration.html">
+     Collection Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/indexes.html">
+     Index Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/sharding.html">
+     Sharding Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../working-with-data.html">
+   Working With Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/crud.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/queries.html">
+     Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/aggregation.html">
+     Aggregation Pipeline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/map-reduce.html">
+     Map/Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/persistence-configuration.html">
+     Persistence Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/nested-attributes.html">
+     Nested Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/callbacks.html">
+     Callbacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/transactions.html">
+     Transactions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/mongoid/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-7.4.html">
+     Mongoid 7.4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-7.3.html">
+     Mongoid 7.3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-7.2.html">
+     Mongoid 7.2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-7.1.html">
+     Mongoid 7.1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-7.0.html">
+     Mongoid 7.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-6.html">
+     Mongoid 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-5.html">
+     Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ecosystem.html">
+   Ecosystem
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/release-notes/mongoid-8.0.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-for-mongodb-3-4-and-earlier-servers-dropped">
+   Support for MongoDB 3.4 and Earlier Servers Dropped
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-for-ruby-2-5-dropped">
+   Support for Ruby 2.5 Dropped
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-for-rails-5-1-dropped">
+   Support for Rails 5.1 Dropped
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#default-option-values-changed">
+   Default Option Values Changed
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#order-of-callback-invocation">
+   Order of Callback Invocation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#any-of-adds-multiple-arguments-as-top-level-conditions">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     any_of
+    </span>
+   </code>
+   Adds Multiple Arguments As Top-Level Conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changeable-module-behavior-made-compatible-with-activemodel-dirty">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Changeable
+    </span>
+   </code>
+   Module Behavior Made Compatible With
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     ActiveModel::Dirty
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#previously-was-previously-new-record-and-previously-persisted-helpers">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     *_previously_was
+    </span>
+   </code>
+   ,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     previously_new_record?
+    </span>
+   </code>
+   , and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     previously_persisted?
+    </span>
+   </code>
+   helpers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unknown-field-type-symbols-strings-prohibited">
+   Unknown Field Type Symbols/Strings Prohibited
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pluck-on-embedded-criteria-returns-nil-values">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     #pluck
+    </span>
+   </code>
+   on Embedded Criteria Returns
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nil
+    </span>
+   </code>
+   Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-drop-dups-option-from-indexes">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     :drop_dups
+    </span>
+   </code>
+   Option from Indexes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-document-to-a-method">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Document#to_a
+    </span>
+   </code>
+   Method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-mongoid-errors-eagerload-exception-class">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongoid::Errors::EagerLoad
+    </span>
+   </code>
+   Exception Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial">
+   Replaced
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongoid::Criteria#geo_spacial
+    </span>
+   </code>
+   with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     #geo_spatial
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-deprecated-constants">
+   Removed Deprecated Constants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-array-update-values-and-hash-update-values-methods">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Array#update_values
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hash#update_values
+    </span>
+   </code>
+   methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations">
+   No Longer Persisting Documents with Invalid
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     belongs_to
+    </span>
+   </code>
+   Associations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-local-habtm-association-correctly">
+   Update Local HABTM Association Correctly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repaired-storing-strings-in-bson-binary-fields">
+   Repaired Storing Strings in BSON::Binary fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decimal128-backed-bigdecimal-fields">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Decimal128
+    </span>
+   </code>
+   -backed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BigDecimal
+    </span>
+   </code>
+   fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implemented-tally-method-on-mongoid-criteria">
+   Implemented
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .tally
+    </span>
+   </code>
+   method on
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongoid#Criteria
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-delegates-to-enumerable-find-when-given-a-block">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     find
+    </span>
+   </code>
+   delegates to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Enumerable#find
+    </span>
+   </code>
+   when given a block
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changes-to-the-attributes-before-type-cast-hash">
+   Changes to the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     attributes_before_type_cast
+    </span>
+   </code>
+   Hash
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Mongoid 8.0</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-for-mongodb-3-4-and-earlier-servers-dropped">
+   Support for MongoDB 3.4 and Earlier Servers Dropped
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-for-ruby-2-5-dropped">
+   Support for Ruby 2.5 Dropped
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-for-rails-5-1-dropped">
+   Support for Rails 5.1 Dropped
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#default-option-values-changed">
+   Default Option Values Changed
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#order-of-callback-invocation">
+   Order of Callback Invocation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#any-of-adds-multiple-arguments-as-top-level-conditions">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     any_of
+    </span>
+   </code>
+   Adds Multiple Arguments As Top-Level Conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changeable-module-behavior-made-compatible-with-activemodel-dirty">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Changeable
+    </span>
+   </code>
+   Module Behavior Made Compatible With
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     ActiveModel::Dirty
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#previously-was-previously-new-record-and-previously-persisted-helpers">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     *_previously_was
+    </span>
+   </code>
+   ,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     previously_new_record?
+    </span>
+   </code>
+   , and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     previously_persisted?
+    </span>
+   </code>
+   helpers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unknown-field-type-symbols-strings-prohibited">
+   Unknown Field Type Symbols/Strings Prohibited
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pluck-on-embedded-criteria-returns-nil-values">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     #pluck
+    </span>
+   </code>
+   on Embedded Criteria Returns
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nil
+    </span>
+   </code>
+   Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-drop-dups-option-from-indexes">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     :drop_dups
+    </span>
+   </code>
+   Option from Indexes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-document-to-a-method">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Document#to_a
+    </span>
+   </code>
+   Method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-mongoid-errors-eagerload-exception-class">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongoid::Errors::EagerLoad
+    </span>
+   </code>
+   Exception Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial">
+   Replaced
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongoid::Criteria#geo_spacial
+    </span>
+   </code>
+   with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     #geo_spatial
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-deprecated-constants">
+   Removed Deprecated Constants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-array-update-values-and-hash-update-values-methods">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Array#update_values
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hash#update_values
+    </span>
+   </code>
+   methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations">
+   No Longer Persisting Documents with Invalid
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     belongs_to
+    </span>
+   </code>
+   Associations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-local-habtm-association-correctly">
+   Update Local HABTM Association Correctly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repaired-storing-strings-in-bson-binary-fields">
+   Repaired Storing Strings in BSON::Binary fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decimal128-backed-bigdecimal-fields">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Decimal128
+    </span>
+   </code>
+   -backed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BigDecimal
+    </span>
+   </code>
+   fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implemented-tally-method-on-mongoid-criteria">
+   Implemented
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .tally
+    </span>
+   </code>
+   method on
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongoid#Criteria
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-delegates-to-enumerable-find-when-given-a-block">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     find
+    </span>
+   </code>
+   delegates to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Enumerable#find
+    </span>
+   </code>
+   when given a block
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changes-to-the-attributes-before-type-cast-hash">
+   Changes to the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     attributes_before_type_cast
+    </span>
+   </code>
+   Hash
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="mongoid-8-0">
+<h1>Mongoid 8.0<a class="headerlink" href="#mongoid-8-0" title="Permalink to this headline">#</a></h1>
+<div class="contents singlecol local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#support-for-mongodb-3-4-and-earlier-servers-dropped" id="id1">Support for MongoDB 3.4 and Earlier Servers Dropped</a></p></li>
+<li><p><a class="reference internal" href="#support-for-ruby-2-5-dropped" id="id2">Support for Ruby 2.5 Dropped</a></p></li>
+<li><p><a class="reference internal" href="#support-for-rails-5-1-dropped" id="id3">Support for Rails 5.1 Dropped</a></p></li>
+<li><p><a class="reference internal" href="#default-option-values-changed" id="id4">Default Option Values Changed</a></p></li>
+<li><p><a class="reference internal" href="#order-of-callback-invocation" id="id5">Order of Callback Invocation</a></p></li>
+<li><p><a class="reference internal" href="#any-of-adds-multiple-arguments-as-top-level-conditions" id="id6"><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Adds Multiple Arguments As Top-Level Conditions</a></p></li>
+<li><p><a class="reference internal" href="#changeable-module-behavior-made-compatible-with-activemodel-dirty" id="id7"><code class="docutils literal notranslate"><span class="pre">Changeable</span></code> Module Behavior Made Compatible With <code class="docutils literal notranslate"><span class="pre">ActiveModel::Dirty</span></code></a></p></li>
+<li><p><a class="reference internal" href="#previously-was-previously-new-record-and-previously-persisted-helpers" id="id8"><code class="docutils literal notranslate"><span class="pre">*_previously_was</span></code>, <code class="docutils literal notranslate"><span class="pre">previously_new_record?</span></code>, and <code class="docutils literal notranslate"><span class="pre">previously_persisted?</span></code> helpers</a></p></li>
+<li><p><a class="reference internal" href="#unknown-field-type-symbols-strings-prohibited" id="id9">Unknown Field Type Symbols/Strings Prohibited</a></p></li>
+<li><p><a class="reference internal" href="#pluck-on-embedded-criteria-returns-nil-values" id="id10"><code class="docutils literal notranslate"><span class="pre">#pluck</span></code> on Embedded Criteria Returns <code class="docutils literal notranslate"><span class="pre">nil</span></code> Values</a></p></li>
+<li><p><a class="reference internal" href="#removed-drop-dups-option-from-indexes" id="id11">Removed <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> Option from Indexes</a></p></li>
+<li><p><a class="reference internal" href="#removed-document-to-a-method" id="id12">Removed <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> Method</a></p></li>
+<li><p><a class="reference internal" href="#removed-mongoid-errors-eagerload-exception-class" id="id13">Removed <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> Exception Class</a></p></li>
+<li><p><a class="reference internal" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial" id="id14">Replaced <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria#geo_spacial</span></code> with <code class="docutils literal notranslate"><span class="pre">#geo_spatial</span></code></a></p></li>
+<li><p><a class="reference internal" href="#removed-deprecated-constants" id="id15">Removed Deprecated Constants</a></p></li>
+<li><p><a class="reference internal" href="#removed-array-update-values-and-hash-update-values-methods" id="id16">Removed <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> methods</a></p></li>
+<li><p><a class="reference internal" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations" id="id17">No Longer Persisting Documents with Invalid <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> Associations</a></p></li>
+<li><p><a class="reference internal" href="#update-local-habtm-association-correctly" id="id18">Update Local HABTM Association Correctly</a></p></li>
+<li><p><a class="reference internal" href="#repaired-storing-strings-in-bson-binary-fields" id="id19">Repaired Storing Strings in BSON::Binary fields</a></p></li>
+<li><p><a class="reference internal" href="#decimal128-backed-bigdecimal-fields" id="id20"><code class="docutils literal notranslate"><span class="pre">Decimal128</span></code>-backed <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> fields</a></p></li>
+<li><p><a class="reference internal" href="#implemented-tally-method-on-mongoid-criteria" id="id21">Implemented <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code></a></p></li>
+<li><p><a class="reference internal" href="#find-delegates-to-enumerable-find-when-given-a-block" id="id22"><code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to <code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code> when given a block</a></p></li>
+<li><p><a class="reference internal" href="#changes-to-the-attributes-before-type-cast-hash" id="id23">Changes to the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> Hash</a></p></li>
+</ul>
+</div>
+<p>This page describes significant changes and improvements in Mongoid 8.0.
+The complete list of releases is available <a class="reference external" href="https://github.com/mongodb/mongoid/releases">on GitHub</a> and <a class="reference external" href="https://jira.mongodb.org/projects/MONGOID?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page">in JIRA</a>;
+please consult GitHub releases for detailed release notes and JIRA for
+the complete list of issues fixed in each release, including bug fixes.</p>
+<section id="support-for-mongodb-3-4-and-earlier-servers-dropped">
+<h2>Support for MongoDB 3.4 and Earlier Servers Dropped<a class="headerlink" href="#support-for-mongodb-3-4-and-earlier-servers-dropped" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 requires MongoDB 3.6 or newer. Earlier server versions are not
+supported.</p>
+</section>
+<section id="support-for-ruby-2-5-dropped">
+<h2>Support for Ruby 2.5 Dropped<a class="headerlink" href="#support-for-ruby-2-5-dropped" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 requires Ruby 2.6 or newer. Earlier Ruby versions are not supported.</p>
+</section>
+<section id="support-for-rails-5-1-dropped">
+<h2>Support for Rails 5.1 Dropped<a class="headerlink" href="#support-for-rails-5-1-dropped" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 requires Rails 5.2 or newer. Earlier Rails versions are not supported.</p>
+</section>
+<section id="default-option-values-changed">
+<h2>Default Option Values Changed<a class="headerlink" href="#default-option-values-changed" title="Permalink to this headline">#</a></h2>
+<p><strong>Breaking change:</strong> The following options have had their default values
+changed in Mongoid 8.0:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:broken_aggregables</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:broken_alias_handling</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:broken_and</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:broken_scoping</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:broken_updates</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:compare_time_by_ms</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:legacy_attributes</span></code> =&gt; true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:legacy_pluck_distinct</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:legacy_triple_equals</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:object_id_as_json_oid</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:overwrite_chained_operators</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+</ul>
+<p>Please refer to <a class="reference internal" href="../reference/configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> for
+the description and effects of each of these options.</p>
+</section>
+<section id="order-of-callback-invocation">
+<h2>Order of Callback Invocation<a class="headerlink" href="#order-of-callback-invocation" title="Permalink to this headline">#</a></h2>
+<p><strong>Breaking change:</strong> Mongoid 8.0 changes the order of _create and _save callback
+invocation for documents with associations.</p>
+<p>Referenced associations (<code class="docutils literal notranslate"><span class="pre">has_one</span></code> and <code class="docutils literal notranslate"><span class="pre">has_many</span></code>):</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Mongoid 8.0</p></th>
+<th class="head"><p>Mongoid 7</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Parent :before_save</p></td>
+<td><p>Parent :before_save</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parent :around_save_open</p></td>
+<td><p>Parent :around_save_open</p></td>
+</tr>
+<tr class="row-even"><td><p>Parent :before_create</p></td>
+<td><p>Parent :before_create</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parent :around_create_open</p></td>
+<td><p>Parent :around_create_open</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Parent persisted in MongoDB</strong></p></td>
+<td><p><strong>Parent persisted in MongoDB</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Child :before_save</p></td>
+<td><p>Parent :around_create_close</p></td>
+</tr>
+<tr class="row-even"><td><p>Child :around_save_open</p></td>
+<td><p>Parent :after_create</p></td>
+</tr>
+<tr class="row-odd"><td><p>Child :before_create</p></td>
+<td><p>Child :before_save</p></td>
+</tr>
+<tr class="row-even"><td><p>Child :around_create_open</p></td>
+<td><p>Child :around_save_open</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Child :before_create</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Child :around_create_open</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Child persisted in MongoDB</strong></p></td>
+<td><p><strong>Child persisted in MongoDB</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Child :around_create_close</p></td>
+<td><p>Child :around_create_close</p></td>
+</tr>
+<tr class="row-odd"><td><p>Child :after_create</p></td>
+<td><p>Child :after_create</p></td>
+</tr>
+<tr class="row-even"><td><p>Child :around_save_close</p></td>
+<td><p>Child :around_save_close</p></td>
+</tr>
+<tr class="row-odd"><td><p>Child :after_save</p></td>
+<td><p>Child :after_save</p></td>
+</tr>
+<tr class="row-even"><td><p>Parent :around_create_close</p></td>
+<td><p>Parent :around_save_close</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parent :after_create</p></td>
+<td><p>Parent :after_save</p></td>
+</tr>
+<tr class="row-even"><td><p>Parent :around_save_close</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Parent :after_save</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Embedded associations (<code class="docutils literal notranslate"><span class="pre">embeds_one</span></code> and <code class="docutils literal notranslate"><span class="pre">embeds_many</span></code>):</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Mongoid 8.0</p></th>
+<th class="head"><p>Mongoid 7</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Parent :before_save</p></td>
+<td><p>Child :before_save</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parent :around_save_open</p></td>
+<td><p>Child :around_save_open</p></td>
+</tr>
+<tr class="row-even"><td><p>Parent :before_create</p></td>
+<td><p>Child :around_save_close</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parent :around_create_open</p></td>
+<td><p>Child :after_save</p></td>
+</tr>
+<tr class="row-even"><td><p>Child :before_save</p></td>
+<td><p>Parent :before_save</p></td>
+</tr>
+<tr class="row-odd"><td><p>Child :around_save_open</p></td>
+<td><p>Parent :around_save_open</p></td>
+</tr>
+<tr class="row-even"><td><p>Child :before_create</p></td>
+<td><p>Child :before_create</p></td>
+</tr>
+<tr class="row-odd"><td><p>Child :around_create_open</p></td>
+<td><p>Child :around_create_open</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Child :around_create_close</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Child :after_create</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Parent :before_create</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Parent :around_create_open</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Document persisted in MongoDB</strong></p></td>
+<td><p><strong>Document persisted in MongoDB</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Child :around_create_close</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Child :after_create</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Child :around_save_close</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Child :after_save</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Parent :around_create_close</p></td>
+<td><p>Parent :around_create_close</p></td>
+</tr>
+<tr class="row-even"><td><p>Parent :after_create</p></td>
+<td><p>Parent :after_create</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parent :around_save_close</p></td>
+<td><p>Parent :around_save_close</p></td>
+</tr>
+<tr class="row-even"><td><p>Parent :after_save</p></td>
+<td><p>Parent :after_save</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="any-of-adds-multiple-arguments-as-top-level-conditions">
+<h2><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Adds Multiple Arguments As Top-Level Conditions<a class="headerlink" href="#any-of-adds-multiple-arguments-as-top-level-conditions" title="Permalink to this headline">#</a></h2>
+<p><strong>Breaking change:</strong> When <code class="docutils literal notranslate"><span class="pre">any_of</span></code> is invoked with multiple conditions, the
+conditions are now added to the top level of the criteria, same as when
+<code class="docutils literal notranslate"><span class="pre">any_of</span></code> is invoked with a single condition. Previously when multiple
+conditions were provided, and the criteria already had an <code class="docutils literal notranslate"><span class="pre">$or</span></code> operator,
+the new conditions would be added to the existing <code class="docutils literal notranslate"><span class="pre">$or</span></code> as an additional
+branch.</p>
+<p>Mongoid 8.0 behavior:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span>
+  <span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="ss">last_tour</span><span class="p">:</span> <span class="mi">1995</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}],</span>
+<span class="c1">#     &quot;$and&quot;=&gt;[{&quot;$or&quot;=&gt;[{&quot;members&quot;=&gt;2}, {&quot;last_tour&quot;=&gt;1995}]}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}], &quot;members&quot;=&gt;2}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+<p>Mongoid 7 behavior:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span>
+  <span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="ss">last_tour</span><span class="p">:</span> <span class="mi">1995</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990},</span>
+<span class="c1">#     {&quot;members&quot;=&gt;2}, {&quot;last_tour&quot;=&gt;1995}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}], &quot;members&quot;=&gt;2}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="changeable-module-behavior-made-compatible-with-activemodel-dirty">
+<h2><code class="docutils literal notranslate"><span class="pre">Changeable</span></code> Module Behavior Made Compatible With <code class="docutils literal notranslate"><span class="pre">ActiveModel::Dirty</span></code><a class="headerlink" href="#changeable-module-behavior-made-compatible-with-activemodel-dirty" title="Permalink to this headline">#</a></h2>
+<p>When updating documents, it is now possible to get updated attribute values
+in <code class="docutils literal notranslate"><span class="pre">after_*</span></code> callbacks. This follows ActiveRecord/ActiveModel behavior.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+
+  <span class="n">after_save</span> <span class="k">do</span>
+    <span class="nb">p</span> <span class="nb">self</span>
+    <span class="nb">p</span> <span class="n">attribute_was</span><span class="p">(</span><span class="ss">:age</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="no">Cat</span><span class="o">.</span><span class="n">create!</span>
+<span class="n">a</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">a</span><span class="o">.</span><span class="n">save!</span>
+</pre></div>
+</div>
+<p>Mongoid 8.0 output:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1">#&lt;Cat _id: 60aef1652c97a617438dc9bb, age: 2&gt;</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>Mongoid 7 output:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1">#&lt;Cat _id: 60aef1652c97a617438dc9bb, age: 2&gt;</span>
+<span class="kp">nil</span>
+</pre></div>
+</div>
+<p>Notice that in 7 <code class="docutils literal notranslate"><span class="pre">attribute_was(:age)</span></code> returns the old attribute value,
+while in 8.0 <code class="docutils literal notranslate"><span class="pre">attribute_was(:age)</span></code> returns the new value.</p>
+</section>
+<section id="previously-was-previously-new-record-and-previously-persisted-helpers">
+<h2><code class="docutils literal notranslate"><span class="pre">*_previously_was</span></code>, <code class="docutils literal notranslate"><span class="pre">previously_new_record?</span></code>, and <code class="docutils literal notranslate"><span class="pre">previously_persisted?</span></code> helpers<a class="headerlink" href="#previously-was-previously-new-record-and-previously-persisted-helpers" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8.0 introduces ActiveModel-compatible <code class="docutils literal notranslate"><span class="pre">*_previously_was</span></code> helpers,
+as well as ActiveRecord-compatible <code class="docutils literal notranslate"><span class="pre">previously_new_record?</span></code> and
+<code class="docutils literal notranslate"><span class="pre">previously_persisted?</span></code> helpers:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+<span class="k">end</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Sam&#39;</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">previously_new_record?</span>     <span class="c1"># =&gt; true</span>
+
+<span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Nick&quot;</span>
+<span class="n">user</span><span class="o">.</span><span class="n">save!</span>
+<span class="n">user</span><span class="o">.</span><span class="n">name_previously_was</span>        <span class="c1"># =&gt; &quot;Sam&quot;</span>
+<span class="n">user</span><span class="o">.</span><span class="n">age_previously_was</span>         <span class="c1"># =&gt; 18</span>
+<span class="n">user</span><span class="o">.</span><span class="n">previously_new_record?</span>     <span class="c1"># =&gt; false</span>
+
+<span class="n">user</span><span class="o">.</span><span class="n">destroy</span>
+<span class="n">user</span><span class="o">.</span><span class="n">previously_persisted?</span>   <span class="c1"># =&gt; true</span>
+</pre></div>
+</div>
+</section>
+<section id="unknown-field-type-symbols-strings-prohibited">
+<h2>Unknown Field Type Symbols/Strings Prohibited<a class="headerlink" href="#unknown-field-type-symbols-strings-prohibited" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 prohibits using symbols and strings as field types when these symbols
+and strings do not map to a known type. Previously such usage would create a
+field of type <code class="docutils literal notranslate"><span class="pre">Object</span></code>.</p>
+<p>Mongoid 8 behavior:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">:bogus</span>
+  <span class="c1"># =&gt; raises Mongoid::Errors::InvalidFieldType</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Mongoid 7 behavior:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">:bogus</span>
+  <span class="c1"># Equivalent to:</span>
+  <span class="n">field</span> <span class="ss">:name</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</section>
+<section id="pluck-on-embedded-criteria-returns-nil-values">
+<h2><code class="docutils literal notranslate"><span class="pre">#pluck</span></code> on Embedded Criteria Returns <code class="docutils literal notranslate"><span class="pre">nil</span></code> Values<a class="headerlink" href="#pluck-on-embedded-criteria-returns-nil-values" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 fixes a bug where calling <code class="docutils literal notranslate"><span class="pre">#pluck</span></code> on a Mongoid::Criteria
+for embedded documents discarded nil values. This behavior was
+inconsistent with both the <code class="docutils literal notranslate"><span class="pre">#pluck</span></code> method in ActiveSupport and
+with how <code class="docutils literal notranslate"><span class="pre">#pluck</span></code> works when reading documents from the database.</p>
+<p>Mongoid 8.0 behavior:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Address</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">embedded_in</span> <span class="ss">:mall</span>
+
+  <span class="n">field</span> <span class="ss">:street</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Mall</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">embeds_many</span> <span class="ss">:addresses</span>
+<span class="k">end</span>
+
+<span class="n">mall</span> <span class="o">=</span> <span class="no">Mall</span><span class="o">.</span><span class="n">create!</span>
+<span class="n">mall</span><span class="o">.</span><span class="n">addresses</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">street</span><span class="p">:</span> <span class="s2">&quot;Elm Street&quot;</span><span class="p">)</span>
+<span class="n">mall</span><span class="o">.</span><span class="n">addresses</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">street</span><span class="p">:</span> <span class="kp">nil</span><span class="p">)</span>
+
+<span class="c1"># Pluck from embedded document criteria</span>
+<span class="n">mall</span><span class="o">.</span><span class="n">addresses</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:street</span><span class="p">)</span>
+  <span class="c1">#=&gt; [&#39;Elm Street&#39;, nil]</span>
+</pre></div>
+</div>
+<p>Mongoid 7 behavior, given the same setup:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pluck from embedded document criteria</span>
+<span class="n">mall</span><span class="o">.</span><span class="n">addresses</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:street</span><span class="p">)</span>
+  <span class="c1">#=&gt; [&#39;Elm Street&#39;]</span>
+</pre></div>
+</div>
+<p>For clarity, the following behavior is unchanged from Mongoid 7 to Mongoid 8.0:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pluck from database</span>
+<span class="no">Mall</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="s1">&#39;addresses.street&#39;</span><span class="p">)</span>
+  <span class="c1">#=&gt; [ [&#39;Elm Street&#39;, nil] ]</span>
+
+<span class="c1"># Pluck using ActiveSupport Array#pluck</span>
+<span class="n">mall</span><span class="o">.</span><span class="n">addresses</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:street</span><span class="p">)</span>
+  <span class="c1">#=&gt; [&#39;Elm Street&#39;, nil]</span>
+</pre></div>
+</div>
+</section>
+<section id="removed-drop-dups-option-from-indexes">
+<h2>Removed <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> Option from Indexes<a class="headerlink" href="#removed-drop-dups-option-from-indexes" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> option has been removed from the <code class="docutils literal notranslate"><span class="pre">index</span></code> macro. This option
+was specific to MongoDB server 2.6 and earlier, which Mongoid no longer supports.</p>
+</section>
+<section id="removed-document-to-a-method">
+<h2>Removed <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> Method<a class="headerlink" href="#removed-document-to-a-method" title="Permalink to this headline">#</a></h2>
+<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> method has been removed in
+Mongoid 8.</p>
+</section>
+<section id="removed-mongoid-errors-eagerload-exception-class">
+<h2>Removed <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> Exception Class<a class="headerlink" href="#removed-mongoid-errors-eagerload-exception-class" title="Permalink to this headline">#</a></h2>
+<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> exception class
+has been removed in Mongoid 8. It has not been used by Mongoid since
+version 7.1.1 when eager loading for polymorphic <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> associations
+was implemented.</p>
+</section>
+<section id="replaced-mongoid-criteria-geo-spacial-with-geo-spatial">
+<h2>Replaced <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria#geo_spacial</span></code> with <code class="docutils literal notranslate"><span class="pre">#geo_spatial</span></code><a class="headerlink" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial" title="Permalink to this headline">#</a></h2>
+<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria#geo_spacial</span></code> method has been
+removed in Mongoid 8. It has been replaced one-for-one with <code class="docutils literal notranslate"><span class="pre">#geo_spatial</span></code>
+which was added in Mongoid 7.2.0.</p>
+</section>
+<section id="removed-deprecated-constants">
+<h2>Removed Deprecated Constants<a class="headerlink" href="#removed-deprecated-constants" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 removes the following deprecated constants that are not expected
+to have been used outside of Mongoid:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Extensions::Date::EPOCH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Extensions::Time::EPOCH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Factory::TYPE</span></code></p></li>
+</ul>
+</section>
+<section id="removed-array-update-values-and-hash-update-values-methods">
+<h2>Removed <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> methods<a class="headerlink" href="#removed-array-update-values-and-hash-update-values-methods" title="Permalink to this headline">#</a></h2>
+<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code>
+methods have been removed in Mongoid 8.</p>
+</section>
+<section id="no-longer-persisting-documents-with-invalid-belongs-to-associations">
+<h2>No Longer Persisting Documents with Invalid <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> Associations<a class="headerlink" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations" title="Permalink to this headline">#</a></h2>
+<p>In Mongoid 8, if an invalid document is assigned to a <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> association,
+and the base document is saved, if the <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> association had the
+option <code class="docutils literal notranslate"><span class="pre">optional:</span> <span class="pre">false</span></code> or <code class="docutils literal notranslate"><span class="pre">optional</span></code> is unset and the global flag
+<code class="docutils literal notranslate"><span class="pre">belongs_to_required_by_default</span></code> is true, neither the document nor the
+associated document will be persisted. For example, given the following
+models:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+  <span class="n">has_one</span> <span class="p">:</span><span class="n">child</span>
+  <span class="n">field</span> <span class="p">:</span><span class="n">name</span>
+  <span class="n">validates</span> <span class="p">:</span><span class="n">name</span><span class="p">,</span> <span class="n">presence</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">end</span>
+
+<span class="k">class</span> <span class="nc">Child</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+
+  <span class="n">belongs_to</span> <span class="p">:</span><span class="n">parent</span><span class="p">,</span> <span class="n">autosave</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="n">validate</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="n">false</span>
+<span class="n">end</span>
+
+<span class="n">child</span> <span class="o">=</span> <span class="n">Child</span><span class="o">.</span><span class="n">new</span>
+<span class="n">parent</span> <span class="o">=</span> <span class="n">Parent</span><span class="o">.</span><span class="n">new</span>
+<span class="n">child</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span> <span class="c1"># parent is invalid, it does not have a name</span>
+<span class="n">child</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<p>In this case, both the child and the parent will not be persisted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">save!</span></code> were called, a validation error would be raised.</p>
+</div>
+<p>If optional is false, then the Child will be persisted with a parent_id, but the
+parent will not be persisted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">child</span> <span class="o">=</span> <span class="n">Child</span><span class="o">.</span><span class="n">new</span>
+<span class="n">parent</span> <span class="o">=</span> <span class="n">Parent</span><span class="o">.</span><span class="n">new</span>
+<span class="n">child</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span> <span class="c1"># parent is invalid, it does not have a name</span>
+<span class="n">child</span><span class="o">.</span><span class="n">save</span>
+
+<span class="n">p</span> <span class="n">Child</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; &lt;Child _id: 629a50b0d1327aad89d214d2, parent_id: BSON::ObjectId(&#39;629a50b0d1327aad89d214d3&#39;)&gt;</span>
+<span class="n">p</span> <span class="n">Parent</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; nil</span>
+</pre></div>
+</div>
+<p>If you want the functionality of neither document being persisted in Mongoid 7 or 8
+and earlier, the <code class="docutils literal notranslate"><span class="pre">validate:</span> <span class="pre">true</span></code> option can be set on the association. If
+you want the functionality of only the Child being persisted, the <code class="docutils literal notranslate"><span class="pre">validate:</span>
+<span class="pre">false</span></code> option can be set on the association.</p>
+</section>
+<section id="update-local-habtm-association-correctly">
+<h2>Update Local HABTM Association Correctly<a class="headerlink" href="#update-local-habtm-association-correctly" title="Permalink to this headline">#</a></h2>
+<p>In Mongoid 8, when pushing persisted elements to a HABTM association, the
+association will now update correctly without requiring a reload.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>class User
+  include Mongoid::Document
+  has_and_belongs_to_many :posts
+end
+
+class Post
+  include Mongoid::Document
+  has_and_belongs_to_many :users
+end
+
+user1 = User.create!
+user2 = User.create!
+
+post = user1.posts.create!
+
+p post.users.length
+# =&gt; 1
+
+post.users &lt;&lt; user2
+
+p post.users.length
+# =&gt; 1 in Mongoid 7, 2 in Mongoid 8
+
+p post.reload.users.length
+# =&gt; 2
+</pre></div>
+</div>
+<p>As you can see from this example, after pushing <code class="docutils literal notranslate"><span class="pre">user2</span></code> to the users array,
+Mongoid 8 correctly updates the number of elements without requiring a reload.</p>
+</section>
+<section id="repaired-storing-strings-in-bson-binary-fields">
+<h2>Repaired Storing Strings in BSON::Binary fields<a class="headerlink" href="#repaired-storing-strings-in-bson-binary-fields" title="Permalink to this headline">#</a></h2>
+<p>In Mongoid 8, storing a String in a field of type <code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code> will be
+stored in and returned from the database as a <code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code>. Prior to Mongoid 8
+it was stored and returned as a String.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>class Registry
+  include Mongoid::Document
+  field :data, type: BSON::Binary
+end
+
+registry = Registry.create!(data: &quot;data!&quot;)
+p registry.data
+# =&gt; Mongoid 7: &quot;data!&quot;
+# =&gt; Mongoid 8: &lt;BSON::Binary:0x2580 type=generic data=0x6461746121...&gt;
+
+registry = Registry.find(registry.id)
+p registry.data
+# =&gt; Mongoid 7: &quot;data!&quot;
+# =&gt; Mongoid 8: &lt;BSON::Binary:0x2600 type=generic data=0x6461746121...&gt;
+</pre></div>
+</div>
+</section>
+<section id="decimal128-backed-bigdecimal-fields">
+<h2><code class="docutils literal notranslate"><span class="pre">Decimal128</span></code>-backed <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> fields<a class="headerlink" href="#decimal128-backed-bigdecimal-fields" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 introduces the <code class="docutils literal notranslate"><span class="pre">map_big_decimal_to_decimal128</span></code> feature flag, which
+allows values assigned to a field of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> to be stored as type
+<code class="docutils literal notranslate"><span class="pre">String</span></code> in the database for compatibility with Mongoid 7 and earlier. In
+Mongoid 8 by default (with this feature flag turned on), values assigned to
+fields of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> are stored in the database as type
+<code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code>. In Mongoid 7 and earlier, and in Mongoid 8 with this
+feature flag turned off, values assigned to fields of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> are
+stored as Strings. See the section on <a class="reference internal" href="../reference/fields.html#bigdecimal-fields"><span class="std std-ref">BigDecimal Fields</span></a>
+for more details.</p>
+</section>
+<section id="implemented-tally-method-on-mongoid-criteria">
+<h2>Implemented <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code><a class="headerlink" href="#implemented-tally-method-on-mongoid-criteria" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 implements the <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code>. <code class="docutils literal notranslate"><span class="pre">tally</span></code>
+takes a field name as a parameter and returns a mapping from values to their
+counts. For example, take the following model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+  <span class="n">field</span> <span class="p">:</span><span class="n">age</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>and the following documents in the database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
+<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
+<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">22</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">tally</span></code> on the age field yields the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="o">.</span><span class="n">tally</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; { 21 =&gt; 2, 22 =&gt; 1 }</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">tally</span></code> method accepts the dot notation and field aliases. It also
+allows for tallying localized fields.</p>
+</section>
+<section id="find-delegates-to-enumerable-find-when-given-a-block">
+<h2><code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to <code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code> when given a block<a class="headerlink" href="#find-delegates-to-enumerable-find-when-given-a-block" title="Permalink to this headline">#</a></h2>
+<p>When given a block, without <code class="docutils literal notranslate"><span class="pre">_id</span></code> arguments, <code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to
+<code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code>. Consider the following model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>class Band
+  include Mongoid::Document
+  field :name, type: String
+end
+
+Band.create!(name: &quot;Depeche Mode&quot;)
+Band.create!(name: &quot;The Rolling Stones&quot;)
+</pre></div>
+</div>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">find</span></code> with a block returns the first document for which the block
+returns <code class="docutils literal notranslate"><span class="pre">true</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Band</span><span class="o">.</span><span class="n">find</span> <span class="n">do</span> <span class="o">|</span><span class="n">b</span><span class="o">|</span>
+  <span class="n">b</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Depeche Mode&quot;</span>
+<span class="n">end</span>
+<span class="c1"># =&gt; #&lt;Band _id: 62c58e383282a4cbe82bd74b, name: &quot;Depeche Mode&quot;&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="changes-to-the-attributes-before-type-cast-hash">
+<h2>Changes to the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> Hash<a class="headerlink" href="#changes-to-the-attributes-before-type-cast-hash" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash has been changed to function more like
+ActiveRecord:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>On instantiation of a new model (without parameters), the
+<code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash has the same contents as the
+<code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash. If parameters are passed to the initializer, those
+values will be stored in the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash before
+they are <code class="docutils literal notranslate"><span class="pre">mongoized</span></code>.</p></li>
+<li><p>When assigning a value to the model, the <code class="docutils literal notranslate"><span class="pre">mongoized</span></code> value (i.e. when
+assiging ‘1’ to an Integer field, it is <code class="docutils literal notranslate"><span class="pre">mongoized</span></code> to 1) is stored in
+the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash, whereas the raw value (i.e. ‘1’) is stored in the
+<code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash.</p></li>
+<li><p>When saving, creating (i.e. using the <code class="docutils literal notranslate"><span class="pre">create!</span></code> method), or reloading the
+model, the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash is reset to have the same
+contents as the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash.</p></li>
+<li><p>When reading a document from the database, the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code>
+hash contains the attributes as they appear in the database, as opposed to
+their <code class="docutils literal notranslate"><span class="pre">demongoized</span></code> form.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../release-notes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Release Notes</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="mongoid-7.4.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mongoid 7.4</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

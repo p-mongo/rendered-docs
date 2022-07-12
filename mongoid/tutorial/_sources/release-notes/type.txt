@@ -1,0 +1,89 @@
+field :time, type: Time
+
+model.time = 'snap'
+# Time.mongoize('snap')
+#   -> raise
+#
+# Time.mongoizable?('snap')
+#   # no
+#   -> false
+# write nil or raise
+
+model.time = '2020-01-01T00:00:00'
+# Time.mongoizable?('2020-01-01T00:00:00')
+#   # yes
+#   -> true
+# Time.mongoize('2020-01-01T00:00:00')
+#   -> Time.parse('2020-01-01T00:00:00')
+#     -> writes Time value
+
+# strict on
+
+model.time = '2020-01-01T00:00:00'
+# raise because input is of type String not Time
+
+field :discount_rate, type: Float
+model.discount_rate = 0
+# raise because input is of type Integer not Float
+
+field :color, type: EnumOfColors
+model.color = 'black'
+# raise because input is of type String not EnumOfColors
+
+def mongoize(value)
+  if %w(black white).include?(value)
+    value
+  else
+    nil
+  end
+end
+
+# --
+
+class EnumOfColors
+  def mongoize(value)
+    if %w(black white).include?(value)
+      value
+    else
+      nil
+    end
+  end
+
+  alias mongoize_strict mongoize
+end
+
+class Time
+  def mongoize(value)
+    case value
+    when Time
+      value
+    when String
+      Time.parse(value)
+    else
+      nil
+    end
+  end
+
+  def mongoize_strict(value)
+    case value
+    when Time
+      value
+    else
+      #raise NotMongoizable
+      NotMongoizable.new(value)
+    end
+  end
+end
+
+# flag name: strict_fields (all fields are strict by default)
+
+---
+
+evolve:
+
+Model.where(time: "2020-01-01")
+
+evolve: use strict behavior, if does not mongoize strictly pass value as is
+
+# mongoize
+model.attributes = params[:model]

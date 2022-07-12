@@ -1,283 +1,644 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Started (Sinatra) &#8212; Mongoid  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting Started (Rails)" href="getting-started-rails.html" />
+    <link rel="prev" title="Tutorials" href="../tutorials.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mongoid  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../installation-configuration.html">
+   Installation &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/compatibility.html">
+     Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/configuration.html">
+     Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/rails-integration.html">
+     Rails Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Getting Started (Sinatra)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="getting-started-rails.html">
+     Getting Started (Rails)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="documents.html">
+     Documents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../schema-configuration.html">
+   Schema Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/fields.html">
+     Field Definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/inheritance.html">
+     Inheritance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/associations.html">
+     Associations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/validation.html">
+     Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/collection-configuration.html">
+     Collection Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/indexes.html">
+     Index Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/sharding.html">
+     Sharding Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../working-with-data.html">
+   Working With Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/crud.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/queries.html">
+     Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/aggregation.html">
+     Aggregation Pipeline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/map-reduce.html">
+     Map/Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/persistence-configuration.html">
+     Persistence Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/nested-attributes.html">
+     Nested Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/callbacks.html">
+     Callbacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/transactions.html">
+     Transactions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/mongoid/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.0.html">
+     Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.4.html">
+     Mongoid 7.4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.3.html">
+     Mongoid 7.3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.2.html">
+     Mongoid 7.2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.1.html">
+     Mongoid 7.1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.0.html">
+     Mongoid 7.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-6.html">
+     Mongoid 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-5.html">
+     Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ecosystem.html">
+   Ecosystem
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
-    <title>Getting Started (Sinatra)</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/tutorials/getting-started-sinatra.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/tutorials/getting-started-sinatra/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="Mongoid Manual" href="../index.html" />
-<link rel="up" title="Tutorials" href="../tutorials.html" />
-<link rel="next" title="Getting Started (Rails)" href="getting-started-rails.html" />
-<link rel="prev" title="Tutorials" href="../tutorials.html" /></head>
-<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Mongoid"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">Mongoid Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="mongoid/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.3">
-                
-                Version 7.3 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.2">
-                
-                Version 7.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.1">
-                
-                Version 7.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.0">
-                
-                Version 7.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.4">
-                
-                Version 6.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.3">
-                
-                Version 6.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.2">
-                
-                Version 6.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.1">
-                
-                Version 6.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/5.4">
-                
-                Version 5.4
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation-configuration.html">Installation &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/compatibility.html">Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/rails-integration.html">Rails Integration</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current"><li class="toctree-l2 current"><a class="reference internal current" href="">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l2"><a class="reference internal" href="documents.html">Documents</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../schema-configuration.html">Schema Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="../reference/fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/collection-configuration.html">Collection Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/indexes.html">Index Management</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/sharding.html">Sharding Configuration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../working-with-data.html">Working With Data</a><ul><li class="toctree-l2"><a class="reference internal" href="../reference/crud.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/queries.html">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="../reference/transactions.html">Transactions</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/tutorials/getting-started-sinatra.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#new-application">
+   New Application
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-git-repo">
+     Create Git Repo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-gemfile">
+     Create Gemfile
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-dependencies">
+     Install Dependencies
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-mongodb-locally">
+     Run MongoDB Locally
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-mongodb-atlas">
+     Use MongoDB Atlas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-application">
+     Basic Application
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-application">
+   Run Application
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#existing-application">
+   Existing Application
+  </a>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Started (Sinatra)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#new-application">
+   New Application
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-git-repo">
+     Create Git Repo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-gemfile">
+     Create Gemfile
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-dependencies">
+     Install Dependencies
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-mongodb-locally">
+     Run MongoDB Locally
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-mongodb-atlas">
+     Use MongoDB Atlas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-application">
+     Basic Application
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-application">
+   Run Application
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#existing-application">
+   Existing Application
+  </a>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="tutorials/getting-started-sinatra">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="../tutorials.html">Tutorials</a><span class="bcpoint"> > </span></li>
-            <li>Getting Started (Sinatra)</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="getting-started-sinatra">
-<h1>Getting Started (Sinatra)<a class="headerlink" href="#getting-started-sinatra" title="Permalink to this headline">¶</a></h1>
+  <section id="getting-started-sinatra">
+<h1>Getting Started (Sinatra)<a class="headerlink" href="#getting-started-sinatra" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#new-application" id="id1">New Application</a><ul>
-<li><a class="reference internal" href="#create-git-repo" id="id2">Create Git Repo</a></li>
-<li><a class="reference internal" href="#create-gemfile" id="id3">Create Gemfile</a></li>
-<li><a class="reference internal" href="#install-dependencies" id="id4">Install Dependencies</a></li>
-<li><a class="reference internal" href="#run-mongodb-locally" id="id5">Run MongoDB Locally</a></li>
-<li><a class="reference internal" href="#use-mongodb-atlas" id="id6">Use MongoDB Atlas</a></li>
-<li><a class="reference internal" href="#basic-application" id="id7">Basic Application</a></li>
+<li><p><a class="reference internal" href="#new-application" id="id1">New Application</a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-git-repo" id="id2">Create Git Repo</a></p></li>
+<li><p><a class="reference internal" href="#create-gemfile" id="id3">Create Gemfile</a></p></li>
+<li><p><a class="reference internal" href="#install-dependencies" id="id4">Install Dependencies</a></p></li>
+<li><p><a class="reference internal" href="#run-mongodb-locally" id="id5">Run MongoDB Locally</a></p></li>
+<li><p><a class="reference internal" href="#use-mongodb-atlas" id="id6">Use MongoDB Atlas</a></p></li>
+<li><p><a class="reference internal" href="#basic-application" id="id7">Basic Application</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#run-application" id="id8">Run Application</a></li>
-<li><a class="reference internal" href="#existing-application" id="id9">Existing Application</a></li>
+<li><p><a class="reference internal" href="#run-application" id="id8">Run Application</a></p></li>
+<li><p><a class="reference internal" href="#existing-application" id="id9">Existing Application</a></p></li>
 </ul>
 </div>
-<div class="section" id="new-application">
-<h2>New Application<a class="headerlink" href="#new-application" title="Permalink to this headline">¶</a></h2>
+<section id="new-application">
+<h2>New Application<a class="headerlink" href="#new-application" title="Permalink to this headline">#</a></h2>
 <p>This section shows how to create a new Sinatra application using Mongoid
 for data access. The process is similar for other Ruby applications not
 using Ruby on Rails.</p>
 <p>The complete source code for this application is available <a class="reference external" href="https://github.com/mongoid/mongoid-demo/tree/master/sinatra-minimal">in the
 mongoid-demo GitHub repository</a>.</p>
-<div class="section" id="create-git-repo">
-<h3>Create Git Repo<a class="headerlink" href="#create-git-repo" title="Permalink to this headline">¶</a></h3>
+<section id="create-git-repo">
+<h3>Create Git Repo<a class="headerlink" href="#create-git-repo" title="Permalink to this headline">#</a></h3>
 <p>While not required, we recommend creating a Git repository for your application:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>git init blog
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git init blog
 <span class="nb">cd</span> blog
 </pre></div>
 </div>
-</div>
 <p>Commit your changes as you are following this tutorial.</p>
-</div>
-<div class="section" id="create-gemfile">
-<h3>Create Gemfile<a class="headerlink" href="#create-gemfile" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="create-gemfile">
+<h3>Create Gemfile<a class="headerlink" href="#create-gemfile" title="Permalink to this headline">#</a></h3>
 <p>Create a file named <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code> with the following contents:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
 
 <span class="n">gem</span> <span class="s1">&#39;sinatra&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
 <span class="n">gem</span> <span class="s1">&#39;mongoid&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 7.0&#39;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="install-dependencies">
-<h3>Install Dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="install-dependencies">
+<h3>Install Dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">#</a></h3>
 <p>Run the following commands to install the dependencies:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>gem install bundler
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gem install bundler
 bundle install
 </pre></div>
 </div>
-</div>
 <p>This command will generate a file named <code class="docutils literal notranslate"><span class="pre">Gemfile.lock</span></code> which we recommend
 committing to your Git repository.</p>
-</div>
-<div class="section" id="run-mongodb-locally">
-<h3>Run MongoDB Locally<a class="headerlink" href="#run-mongodb-locally" title="Permalink to this headline">¶</a></h3>
-<p>To develop locally with MongoDB, <a class="reference external" href="https://docs.mongodb.com/manual/installation/">download and install MongoDB</a>.</p>
+</section>
+<section id="run-mongodb-locally">
+<h3>Run MongoDB Locally<a class="headerlink" href="#run-mongodb-locally" title="Permalink to this headline">#</a></h3>
+<p>To develop locally with MongoDB, <a class="reference external" href="https://mongodb.com/docs/manual/installation/">download and install MongoDB</a>.</p>
 <p>Once MongoDB is installed and running, create a file named <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code>
 pointing to your deployment. For example, if you launched a standalone
 <code class="docutils literal notranslate"><span class="pre">mongod</span></code> on the default port, the following contents would be appropriate:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-none notranslate"><div class="highlight"><pre><span></span>development:
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>development:
   clients:
     default:
       database: blog_development
@@ -287,65 +648,41 @@ copy</a>
         server_selection_timeout: 1
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="use-mongodb-atlas">
-<h3>Use MongoDB Atlas<a class="headerlink" href="#use-mongodb-atlas" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="use-mongodb-atlas">
+<h3>Use MongoDB Atlas<a class="headerlink" href="#use-mongodb-atlas" title="Permalink to this headline">#</a></h3>
 <p>Instead of downloading, installing and running MongoDB locally, you can create
-a free MongoDB Atlas account and create a <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/atlas-free-tier-setup/">free MongoDB cluster in Atlas</a>.
+a free MongoDB Atlas account and create a <a class="reference external" href="https://mongodb.com/docs/manual/tutorial/atlas-free-tier-setup/">free MongoDB cluster in Atlas</a>.
 Once the cluster is created, follow the instructions in <a class="reference external" href="https://docs.atlas.mongodb.com/connect-to-cluster/#connect-to-a-cluster">connect to the cluster
 page</a>
 to obtain the URI. Use the <em>Ruby driver 2.5 or later</em> format.</p>
 <p>Create a file named <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code> with the following
 contents, replacing the URI with the actual URI for your cluster:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
-  <span class="nt">clients</span><span class="p">:</span>
-    <span class="nt">default</span><span class="p">:</span>
-      <span class="nt">uri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongodb+srv://user:pass@yourcluster.mongodb.net/blog_development?retryWrites=true&amp;w=majority</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="nt">server_selection_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">clients</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongodb+srv://user:pass@yourcluster.mongodb.net/blog_development?retryWrites=true&amp;w=majority</span><span class="w"></span>
+<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">server_selection_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="basic-application">
-<h3>Basic Application<a class="headerlink" href="#basic-application" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="basic-application">
+<h3>Basic Application<a class="headerlink" href="#basic-application" title="Permalink to this headline">#</a></h3>
 <p>Create a file named <code class="docutils literal notranslate"><span class="pre">app.rb</span></code> with the following contents. First, some
 requires:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;mongoid&#39;</span>
 </pre></div>
-</div>
 </div>
 <p>Load the Mongoid configuration file and configure Mongoid. This is done
 automatically when Mongoid is used with Rails, but since we are using Mongoid
 with Sinatra, we need to do this ourselves:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">load!</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;mongoid.yml&#39;</span><span class="p">))</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">load!</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;mongoid.yml&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
 <p>Now we can define some models:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -364,14 +701,8 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>… and add some routes:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">get</span> <span class="s1">&#39;/posts&#39;</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">get</span> <span class="s1">&#39;/posts&#39;</span> <span class="k">do</span>
   <span class="no">Post</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">to_json</span>
 <span class="k">end</span>
 
@@ -394,28 +725,16 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="run-application">
-<h2>Run Application<a class="headerlink" href="#run-application" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="run-application">
+<h2>Run Application<a class="headerlink" href="#run-application" title="Permalink to this headline">#</a></h2>
 <p>Launch the application:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>bundle <span class="nb">exec</span> ruby app.rb
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bundle <span class="nb">exec</span> ruby app.rb
 </pre></div>
 </div>
-</div>
 <p>Try some requests via curl:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-sh notranslate"><div class="highlight"><pre><span></span>curl http://localhost:4567/posts
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl http://localhost:4567/posts
 <span class="c1"># =&gt; []</span>
 
 curl -d <span class="s1">&#39;post[title]=hello&amp;post[body]=hello+world&#39;</span> http://localhost:4567/posts
@@ -431,60 +750,63 @@ curl http://localhost:4567/posts/5d8151ec96fb4f0ed5a7a03f
 <span class="c1"># =&gt; {&quot;_id&quot;:{&quot;$oid&quot;:&quot;5d8151ec96fb4f0ed5a7a03f&quot;},&quot;title&quot;:&quot;hello&quot;,&quot;body&quot;:&quot;hello world&quot;,&quot;comments&quot;:[{&quot;_id&quot;:{&quot;$oid&quot;:&quot;5d8157ac96fb4f20c5e45c4d&quot;},&quot;message&quot;:&quot;I like&quot;,&quot;name&quot;:&quot;David&quot;,&quot;post_id&quot;:{&quot;$oid&quot;:&quot;5d8151ec96fb4f0ed5a7a03f&quot;}}]}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="existing-application">
-<h2>Existing Application<a class="headerlink" href="#existing-application" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="existing-application">
+<h2>Existing Application<a class="headerlink" href="#existing-application" title="Permalink to this headline">#</a></h2>
 <p>To start using Mongoid in an existing Sinatra applications, the steps are
 essentially the same as the one given above for a new application:</p>
 <ol class="arabic simple">
-<li>Add the <code class="docutils literal notranslate"><span class="pre">mongoid</span></code> dependency to the <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>.</li>
-<li>Create a <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> configuration file.</li>
-<li>Load the configuration file and configure Mongoid in the application.</li>
-<li>Define Mongoid models.</li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">mongoid</span></code> dependency to the <code class="docutils literal notranslate"><span class="pre">Gemfile</span></code>.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> configuration file.</p></li>
+<li><p>Load the configuration file and configure Mongoid in the application.</p></li>
+<li><p>Define Mongoid models.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="../tutorials.html" title="Previous Section: Tutorials"><span>Tutorials</span></a>
-      <a class="btn-next-text" href="getting-started-rails.html" title="Next Section: Getting Started (Rails)"><span>Getting Started (Rails)</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../tutorials.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Tutorials</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="getting-started-rails.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting Started (Rails)</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = [];
-  </script></body>
+
+  </body>
 </html>

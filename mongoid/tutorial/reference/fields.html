@@ -1,242 +1,963 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Field Definition &#8212; Mongoid  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Inheritance" href="inheritance.html" />
+    <link rel="prev" title="Schema Configuration" href="../schema-configuration.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mongoid  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../installation-configuration.html">
+   Installation &amp; Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compatibility.html">
+     Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="configuration.html">
+     Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rails-integration.html">
+     Rails Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-sinatra.html">
+     Getting Started (Sinatra)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-rails.html">
+     Getting Started (Rails)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/documents.html">
+     Documents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../schema-configuration.html">
+   Schema Configuration
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Field Definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inheritance.html">
+     Inheritance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="associations.html">
+     Associations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-configuration.html">
+     Collection Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexes.html">
+     Index Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sharding.html">
+     Sharding Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../working-with-data.html">
+   Working With Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="queries.html">
+     Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation Pipeline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map/Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="persistence-configuration.html">
+     Persistence Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nested-attributes.html">
+     Nested Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="callbacks.html">
+     Callbacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/mongoid/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.0.html">
+     Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.4.html">
+     Mongoid 7.4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.3.html">
+     Mongoid 7.3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.2.html">
+     Mongoid 7.2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.1.html">
+     Mongoid 7.1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.0.html">
+     Mongoid 7.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-6.html">
+     Mongoid 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-5.html">
+     Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ecosystem.html">
+   Ecosystem
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
-    <title>Field Definition</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/reference/fields.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/reference/fields/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="Mongoid Manual" href="../index.html" />
-<link rel="up" title="Schema Configuration" href="../schema-configuration.html" />
-<link rel="next" title="Inheritance" href="inheritance.html" />
-<link rel="prev" title="Schema Configuration" href="../schema-configuration.html" /></head>
-<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Mongoid"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">Mongoid Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="mongoid/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.3">
-                
-                Version 7.3 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.2">
-                
-                Version 7.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.1">
-                
-                Version 7.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.0">
-                
-                Version 7.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.4">
-                
-                Version 6.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.3">
-                
-                Version 6.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.2">
-                
-                Version 6.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.1">
-                
-                Version 6.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/5.4">
-                
-                Version 5.4
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1"><a class="reference internal" href="../installation-configuration.html">Installation &amp; Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="compatibility.html">Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="rails-integration.html">Rails Integration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/documents.html">Documents</a></li></ul></li><li class="toctree-l1 current"><a class="reference internal" href="../schema-configuration.html">Schema Configuration</a><ul class="current"><li class="toctree-l2 current"><a class="reference internal current" href="">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="collection-configuration.html">Collection Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="indexes.html">Index Management</a></li><li class="toctree-l2"><a class="reference internal" href="sharding.html">Sharding Configuration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../working-with-data.html">Working With Data</a><ul><li class="toctree-l2"><a class="reference internal" href="crud.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="queries.html">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/fields.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#field-types">
+   Field Types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#omitting-field-type-definition">
+     Omitting Field Type Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-stringifiedsymbol">
+     Field Type: StringifiedSymbol
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-symbol">
+     Field Type: Symbol
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-hash">
+     Field Type: Hash
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-time">
+     Field Type: Time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-date">
+     Field Type: Date
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-datetime">
+     Field Type: DateTime
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-regexp">
+     Field Type: Regexp
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bigdecimal-fields">
+     BigDecimal Fields
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#migration-to-decimal128-backed-bigdecimal-field">
+       Migration to
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         decimal128
+        </span>
+       </code>
+       -backed
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BigDecimal
+        </span>
+       </code>
+       Field
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-symbols-or-strings-instead-of-classes">
+     Using Symbols Or Strings Instead Of Classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-field-default-values">
+     Specifying Field Default Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-storage-field-names">
+     Specifying Storage Field Names
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-aliases">
+     Field Aliases
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unaliasing-id">
+       Unaliasing
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         id
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reserved-names">
+     Reserved Names
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-redefinition">
+     Field Redefinition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-ids">
+     Custom IDs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#customizing-field-behavior">
+   Customizing Field Behavior
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-getters-and-setters">
+     Custom Getters And Setters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-field-types">
+     Custom Field Types
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#phantom-custom-field-types">
+       Phantom Custom Field Types
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-field-options">
+     Custom Field Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-fields">
+   Dynamic Fields
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#special-characters-in-field-names">
+     Special Characters in Field Names
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#localized-fields">
+   Localized Fields
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fallbacks">
+     Fallbacks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#querying">
+     Querying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing">
+     Indexing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-only-attributes">
+   Read-Only Attributes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#timestamp-fields">
+   Timestamp Fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#field-names-with-dots-periods-and-dollar-signs">
+   Field Names with Dots/Periods (
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .
+    </span>
+   </code>
+   ) and Dollar Signs (
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     $
+    </span>
+   </code>
+   )
+  </a>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Field Definition</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#field-types">
+   Field Types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#omitting-field-type-definition">
+     Omitting Field Type Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-stringifiedsymbol">
+     Field Type: StringifiedSymbol
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-symbol">
+     Field Type: Symbol
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-hash">
+     Field Type: Hash
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-time">
+     Field Type: Time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-date">
+     Field Type: Date
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-datetime">
+     Field Type: DateTime
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-type-regexp">
+     Field Type: Regexp
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bigdecimal-fields">
+     BigDecimal Fields
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#migration-to-decimal128-backed-bigdecimal-field">
+       Migration to
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         decimal128
+        </span>
+       </code>
+       -backed
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BigDecimal
+        </span>
+       </code>
+       Field
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-symbols-or-strings-instead-of-classes">
+     Using Symbols Or Strings Instead Of Classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-field-default-values">
+     Specifying Field Default Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-storage-field-names">
+     Specifying Storage Field Names
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-aliases">
+     Field Aliases
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unaliasing-id">
+       Unaliasing
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         id
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reserved-names">
+     Reserved Names
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#field-redefinition">
+     Field Redefinition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-ids">
+     Custom IDs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#customizing-field-behavior">
+   Customizing Field Behavior
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-getters-and-setters">
+     Custom Getters And Setters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-field-types">
+     Custom Field Types
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#phantom-custom-field-types">
+       Phantom Custom Field Types
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-field-options">
+     Custom Field Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-fields">
+   Dynamic Fields
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#special-characters-in-field-names">
+     Special Characters in Field Names
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#localized-fields">
+   Localized Fields
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fallbacks">
+     Fallbacks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#querying">
+     Querying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing">
+     Indexing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-only-attributes">
+   Read-Only Attributes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#timestamp-fields">
+   Timestamp Fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#field-names-with-dots-periods-and-dollar-signs">
+   Field Names with Dots/Periods (
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .
+    </span>
+   </code>
+   ) and Dollar Signs (
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     $
+    </span>
+   </code>
+   )
+  </a>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/fields">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="../schema-configuration.html">Schema Configuration</a><span class="bcpoint"> > </span></li>
-            <li>Field Definition</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="field-definition">
-<span id="fields"></span><h1>Field Definition<a class="headerlink" href="#field-definition" title="Permalink to this headline">¶</a></h1>
+  <section id="field-definition">
+<span id="fields"></span><h1>Field Definition<a class="headerlink" href="#field-definition" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#field-types" id="id4">Field Types</a><ul>
-<li><a class="reference internal" href="#the-stringifiedsymbol-type" id="id5">The StringifiedSymbol Type</a></li>
-<li><a class="reference internal" href="#bson-symbol-type" id="id6">BSON Symbol Type</a></li>
-<li><a class="reference internal" href="#hash-fields" id="id7">Hash Fields</a></li>
-<li><a class="reference internal" href="#time-fields" id="id8">Time Fields</a></li>
-<li><a class="reference internal" href="#date-fields" id="id9">Date Fields</a></li>
-<li><a class="reference internal" href="#datetime-fields" id="id10">DateTime Fields</a></li>
-<li><a class="reference internal" href="#regular-expression-fields" id="id11">Regular Expression Fields</a></li>
-<li><a class="reference internal" href="#defaults" id="id12">Defaults</a></li>
-<li><a class="reference internal" href="#specifying-storage-field-names" id="id13">Specifying Storage Field Names</a></li>
-<li><a class="reference internal" href="#field-aliases" id="id14">Field Aliases</a></li>
-<li><a class="reference internal" href="#custom-fields" id="id15">Custom Fields</a></li>
-<li><a class="reference internal" href="#reserved-names" id="id16">Reserved Names</a></li>
-<li><a class="reference internal" href="#field-redefinition" id="id17">Field Redefinition</a></li>
-<li><a class="reference internal" href="#custom-ids" id="id18">Custom Ids</a></li>
+<li><p><a class="reference internal" href="#field-types" id="id20">Field Types</a></p>
+<ul>
+<li><p><a class="reference internal" href="#omitting-field-type-definition" id="id21">Omitting Field Type Definition</a></p></li>
+<li><p><a class="reference internal" href="#field-type-stringifiedsymbol" id="id22">Field Type: StringifiedSymbol</a></p></li>
+<li><p><a class="reference internal" href="#field-type-symbol" id="id23">Field Type: Symbol</a></p></li>
+<li><p><a class="reference internal" href="#field-type-hash" id="id24">Field Type: Hash</a></p></li>
+<li><p><a class="reference internal" href="#field-type-time" id="id25">Field Type: Time</a></p></li>
+<li><p><a class="reference internal" href="#field-type-date" id="id26">Field Type: Date</a></p></li>
+<li><p><a class="reference internal" href="#field-type-datetime" id="id27">Field Type: DateTime</a></p></li>
+<li><p><a class="reference internal" href="#field-type-regexp" id="id28">Field Type: Regexp</a></p></li>
+<li><p><a class="reference internal" href="#bigdecimal-fields" id="id29">BigDecimal Fields</a></p></li>
+<li><p><a class="reference internal" href="#using-symbols-or-strings-instead-of-classes" id="id30">Using Symbols Or Strings Instead Of Classes</a></p></li>
+<li><p><a class="reference internal" href="#specifying-field-default-values" id="id31">Specifying Field Default Values</a></p></li>
+<li><p><a class="reference internal" href="#specifying-storage-field-names" id="id32">Specifying Storage Field Names</a></p></li>
+<li><p><a class="reference internal" href="#field-aliases" id="id33">Field Aliases</a></p></li>
+<li><p><a class="reference internal" href="#reserved-names" id="id34">Reserved Names</a></p></li>
+<li><p><a class="reference internal" href="#field-redefinition" id="id35">Field Redefinition</a></p></li>
+<li><p><a class="reference internal" href="#custom-ids" id="id36">Custom IDs</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dynamic-fields" id="id19">Dynamic Fields</a><ul>
-<li><a class="reference internal" href="#special-characters-in-field-names" id="id20">Special Characters in Field Names</a></li>
+<li><p><a class="reference internal" href="#customizing-field-behavior" id="id37">Customizing Field Behavior</a></p>
+<ul>
+<li><p><a class="reference internal" href="#custom-getters-and-setters" id="id38">Custom Getters And Setters</a></p></li>
+<li><p><a class="reference internal" href="#custom-field-types" id="id39">Custom Field Types</a></p></li>
+<li><p><a class="reference internal" href="#custom-field-options" id="id40">Custom Field Options</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#localized-fields" id="id21">Localized Fields</a><ul>
-<li><a class="reference internal" href="#fallbacks" id="id22">Fallbacks</a></li>
-<li><a class="reference internal" href="#querying" id="id23">Querying</a></li>
-<li><a class="reference internal" href="#indexing" id="id24">Indexing</a></li>
+<li><p><a class="reference internal" href="#dynamic-fields" id="id41">Dynamic Fields</a></p>
+<ul>
+<li><p><a class="reference internal" href="#special-characters-in-field-names" id="id42">Special Characters in Field Names</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#read-only-attributes" id="id25">Read-Only Attributes</a></li>
-<li><a class="reference internal" href="#timestamp-fields" id="id26">Timestamp Fields</a></li>
+<li><p><a class="reference internal" href="#localized-fields" id="id43">Localized Fields</a></p>
+<ul>
+<li><p><a class="reference internal" href="#fallbacks" id="id44">Fallbacks</a></p></li>
+<li><p><a class="reference internal" href="#querying" id="id45">Querying</a></p></li>
+<li><p><a class="reference internal" href="#indexing" id="id46">Indexing</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#read-only-attributes" id="id47">Read-Only Attributes</a></p></li>
+<li><p><a class="reference internal" href="#timestamp-fields" id="id48">Timestamp Fields</a></p></li>
+<li><p><a class="reference internal" href="#field-names-with-dots-periods-and-dollar-signs" id="id49">Field Names with Dots/Periods (<code class="docutils literal notranslate"><span class="pre">.</span></code>) and Dollar Signs (<code class="docutils literal notranslate"><span class="pre">$</span></code>)</a></p></li>
 </ul>
 </div>
-<div class="section" id="field-types">
-<h2>Field Types<a class="headerlink" href="#field-types" title="Permalink to this headline">¶</a></h2>
-<p>Even though MongoDB is a schemaless database and allows data to be stored
-as strings, Mongoid permits the application to declare the type of data
-stored in the various fields of a document. Field type declarations affect
-the following:</p>
-<p>1. When assigning values to fields, the values are converted to the
+<section id="field-types">
+<span id="id1"></span><h2>Field Types<a class="headerlink" href="#field-types" title="Permalink to this headline">#</a></h2>
+<p>MongoDB stores underlying document data using
+<a class="reference external" href="https://mongodb.com/docs/manual/reference/bson-types/">BSON types</a>, and
+Mongoid converts BSON types to Ruby types at runtime in your application.
+For example, a field defined with <cite>type: :float</cite> will use the Ruby <code class="docutils literal notranslate"><span class="pre">Float</span></code>
+class in-memory and will persist in the database as the the BSON <code class="docutils literal notranslate"><span class="pre">double</span></code> type.</p>
+<p>Field type definitions determine how Mongoid behaves when constructing queries
+and retrieving/writing fields from/to the database. Specifically:</p>
+<p>1. When assigning values to fields at runtime, the values are converted to the
 specified type.</p>
 <p>2. When persisting data to MongoDB, the data is sent in an appropriate
 type, permitting richer data manipulation within MongoDB or by other
@@ -245,67 +966,70 @@ tools.</p>
 type before being sent to MongoDB.</p>
 <p>4. When retrieving documents from the database, field values are converted
 to the specified type.</p>
-<p>Field type definitions determine how Mongoid behaves when constructing the
-queries, retrieving and writing fields from the database. Changing the field
-definitions in a model class does not alter data already stored in
+<p>Changing the field definitions in a model class does not alter data already stored in
 MongoDB. To update type or contents of fields of existing documents,
 the field must be re-saved to the database. Note that, due to Mongoid
 tracking which attributes on a model change and only saving the changed ones,
 it may be necessary to explicitly write a field value when changing the
 type of an existing field without changing the stored values.</p>
 <p>Consider a simple class for modeling a person in an application. A person may
-have a first name, last name, and middle name. We can define these attributes
+have a name, date_of_birth, and weight. We can define these attributes
 on a person by using the <code class="docutils literal notranslate"><span class="pre">field</span></code> macro.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-  <span class="n">field</span> <span class="ss">:first_name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:middle_name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:last_name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:date_of_birth</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Date</span>
+  <span class="n">field</span> <span class="ss">:weight</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Float</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<p>Below is a list of valid types for fields.</p>
+<p>The valid types for fields are as follows:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">Array</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Date</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">DateTime</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Float</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Hash</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Integer</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">BSON::ObjectId</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Range</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Regexp</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Set</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">String</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Symbol</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Time</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">TimeWithZone</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Array</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Boolean</span></code>, which may be specified simply as <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> in the
+scope of a class which included <code class="docutils literal notranslate"><span class="pre">Mongoid::Document</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DateTime</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Float</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Hash</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Integer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BSON::ObjectId</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Range</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Regexp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Set</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::StringifiedSymbol</span></code>, which may be specified simply as
+<code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> in the scope of a class which included
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Document</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Symbol</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Time</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code></p></li>
 </ul>
+<p>Mongoid also recognizes the string <code class="docutils literal notranslate"><span class="pre">&quot;Boolean&quot;</span></code> as an alias for the
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Boolean</span></code> class.</p>
+<p>To define custom field types, refer to <a class="reference internal" href="#custom-field-types"><span class="std std-ref">Custom Field Types</span></a> below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">BSON::Int64</span></code> and <code class="docutils literal notranslate"><span class="pre">BSON::Int32</span></code> types as field types is unsupported.
+Saving these types to the database will work as expected, however, querying them
+will return the native Ruby <code class="docutils literal notranslate"><span class="pre">Integer</span></code> type. Querying fields of type
+<code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code> will return values of type <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code> in
+BSON &lt;=4 and values of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> in BSON 5+.</p>
+</div>
+<section id="omitting-field-type-definition">
+<span id="id2"></span><h3>Omitting Field Type Definition<a class="headerlink" href="#omitting-field-type-definition" title="Permalink to this headline">#</a></h3>
 <p>If you decide not to specify the type of field with the definition, Mongoid will treat
 it as an object and not try to typecast it when sending the values to the database.
 This can be advantageous as the lack of attempted conversion will yield a slight
 performance gain. However some types are not supported if not defined as fields.
 You can safely omit type specifications when:</p>
 <ul class="simple">
-<li>You’re not using a web front end and values are already properly cast.</li>
-<li>All of your fields are strings.</li>
+<li><p>You’re not using a web front end and values are already properly cast.</p></li>
+<li><p>All of your fields are strings.</p></li>
 </ul>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:first_name</span>
   <span class="n">field</span> <span class="ss">:middle_name</span>
@@ -313,31 +1037,25 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>Types that are not supported as dynamic attributes since they cannot be cast are:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Date</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">DateTime</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Range</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DateTime</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Range</span></code></p></li>
 </ul>
-<div class="section" id="the-stringifiedsymbol-type">
-<span id="stringified-symbol"></span><h3>The StringifiedSymbol Type<a class="headerlink" href="#the-stringifiedsymbol-type" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="field-type-stringifiedsymbol">
+<span id="field-type-stringified-symbol"></span><h3>Field Type: StringifiedSymbol<a class="headerlink" href="#field-type-stringifiedsymbol" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> field type is the recommended field type for storing
 values that should be exposed as symbols to Ruby applications. When using the <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> field type,
 Mongoid defaults to storing values as BSON symbols. For more information on the
-BSON symbol type, see <a class="reference internal" href="#bson-symbol"><span class="std std-ref">here</span></a>.
+BSON symbol type, see <a class="reference internal" href="#field-type-symbol"><span class="std std-ref">here</span></a>.
 However, the BSON symbol type is deprecated and is difficult to work with in programming languages
 without native symbol types, so the <code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> type allows the use of symbols
 while ensuring interoperability with other drivers. The <code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> type stores all data
 on the database as strings, while exposing values to the application as symbols.</p>
 <p>An example usage is shown below:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:status</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">StringifiedSymbol</span>
@@ -355,31 +1073,24 @@ copy</a>
 <span class="c1"># =&gt; :hello</span>
 </pre></div>
 </div>
-</div>
 <p>All non-string values will be stringified upon being sent to the database (via <code class="docutils literal notranslate"><span class="pre">to_s</span></code>), and
 all values will be converted to symbols when returned to the application. Values that cannot be
 converted directly to symbols, such as integers and arrays, will first be converted to strings and
 then symbols before being returned to the application.</p>
 <p>For example, setting an integer as <code class="docutils literal notranslate"><span class="pre">status</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">status</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">status</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span>
 <span class="n">post</span><span class="o">.</span><span class="n">status</span>
 <span class="c1"># =&gt; :&quot;42&quot;</span>
 </pre></div>
-</div>
 </div>
 <p>If the <code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> type is applied to a field that contains BSON symbols, the values
 will be stored as strings instead of BSON symbols on the next save. This permits transparent lazy
 migration from fields that currently store either strings or BSON symbols in the database to the
 <code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> field type.</p>
-</div>
-<div class="section" id="bson-symbol-type">
-<span id="bson-symbol"></span><h3>BSON Symbol Type<a class="headerlink" href="#bson-symbol-type" title="Permalink to this headline">¶</a></h3>
-<p>New applications should use the <a class="reference internal" href="#stringified-symbol"><span class="std std-ref">StringifiedSymbol field type</span></a>
+</section>
+<section id="field-type-symbol">
+<span id="id3"></span><h3>Field Type: Symbol<a class="headerlink" href="#field-type-symbol" title="Permalink to this headline">#</a></h3>
+<p>New applications should use the <a class="reference internal" href="#field-type-stringified-symbol"><span class="std std-ref">StringifiedSymbol field type</span></a>
 to store Ruby symbols in the database. The <code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code> field type
 provides maximum compatibility with other applications and programming languages
 and has the same behavior in all circumstances.</p>
@@ -393,31 +1104,20 @@ documents which contain BSON symbols as fields.</p>
 <p>To override the default behavior and configure the <code class="docutils literal notranslate"><span class="pre">mongo</span></code> gem (and thereby
 Mongoid as well) to encode symbol values as strings, include the following code
 snippet in your project:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Symbol</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Symbol</span>
   <span class="k">def</span> <span class="nf">bson_type</span>
     <span class="no">BSON</span><span class="o">::</span><span class="nb">String</span><span class="o">::</span><span class="no">BSON_TYPE</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="hash-fields">
-<h3>Hash Fields<a class="headerlink" href="#hash-fields" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="field-type-hash">
+<span id="id4"></span><h3>Field Type: Hash<a class="headerlink" href="#field-type-hash" title="Permalink to this headline">#</a></h3>
 <p>When using a field of type Hash, be wary of adhering to the
 <a class="reference external" href="http://docs.mongodb.org/manual/reference/limits/#naming-restrictions">legal key names for mongoDB</a>,
 or else the values will not store properly.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:first_name</span>
   <span class="n">field</span> <span class="ss">:url</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Hash</span>
@@ -429,7 +1129,7 @@ copy</a>
     <span class="n">save</span>
   <span class="k">end</span>
 
-  <span class="c1"># all data will fail to save due to the illegal hashkey</span>
+  <span class="c1"># all data will fail to save due to the illegal hash key</span>
   <span class="k">def</span> <span class="nf">set_vals_fail</span>
     <span class="nb">self</span><span class="o">.</span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Daniel&#39;</span>
     <span class="nb">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;home.page&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://www.homepage.com&#39;</span><span class="p">}</span>
@@ -438,20 +1138,14 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="time-fields">
-<h3>Time Fields<a class="headerlink" href="#time-fields" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="field-type-time">
+<span id="id5"></span><h3>Field Type: Time<a class="headerlink" href="#field-type-time" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Time</span></code> fields store values as <code class="docutils literal notranslate"><span class="pre">Time</span></code> instances in the <a class="reference internal" href="configuration.html#time-zones"><span class="std std-ref">configured
 time zone</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Date</span></code> and <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> instances are converted to <code class="docutils literal notranslate"><span class="pre">Time</span></code> instances upon
 assignment to a <code class="docutils literal notranslate"><span class="pre">Time</span></code> field:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Voter</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Voter</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:registered_at</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span>
@@ -461,22 +1155,21 @@ copy</a>
 <span class="c1"># =&gt; #&lt;Voter _id: 5fdd80392c97a618f07ba344, registered_at: 2020-12-18 05:00:00 UTC&gt;</span>
 </pre></div>
 </div>
-</div>
 <p>In the above example, the value was interpreted as the beginning of today in
 local time, because the application was not configured to use UTC times.</p>
-</div>
-<div class="section" id="date-fields">
-<h3>Date Fields<a class="headerlink" href="#date-fields" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="field-type-date">
+<span id="id6"></span><h3>Field Type: Date<a class="headerlink" href="#field-type-date" title="Permalink to this headline">#</a></h3>
 <p>Mongoid allows assignment of values of several types to <code class="docutils literal notranslate"><span class="pre">Date</span></code> fields:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">Date</span></code> - the provided date is stored as is.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Time</span></code>, <code class="docutils literal notranslate"><span class="pre">DateTime</span></code>, <code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code> - the date component
-of the value is taken in the value’s time zone.</li>
-<li><code class="docutils literal notranslate"><span class="pre">String</span></code> - the date specified in the string is used.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Integer</span></code>, <code class="docutils literal notranslate"><span class="pre">Float</span></code> - the value is taken to be a UTC timestamp which is
+<li><p><code class="docutils literal notranslate"><span class="pre">Date</span></code> - the provided date is stored as is.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Time</span></code>, <code class="docutils literal notranslate"><span class="pre">DateTime</span></code>, <code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code> - the date component
+of the value is taken in the value’s time zone.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code> - the date specified in the string is used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Integer</span></code>, <code class="docutils literal notranslate"><span class="pre">Float</span></code> - the value is taken to be a UTC timestamp which is
 converted to the <a class="reference internal" href="configuration.html#time-zones"><span class="std std-ref">configured time zone</span></a> (note that
 <code class="docutils literal notranslate"><span class="pre">Mongoid.use_utc</span></code> has no effect on this conversion), then the date is
-taken from the resulting time.</li>
+taken from the resulting time.</p></li>
 </ul>
 <p>In other words, if a date is specified in the value, that date is used without
 first converting the value to the configured time zone.</p>
@@ -485,9 +1178,9 @@ especially if an application operates with times in different time zones it is
 recommended to explicitly convert <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Time</span></code> and <code class="docutils literal notranslate"><span class="pre">DateTime</span></code>
 objects to <code class="docutils literal notranslate"><span class="pre">Date</span></code> objects before assigning the values to fields of type
 <code class="docutils literal notranslate"><span class="pre">Date</span></code>.</p>
-</div>
-<div class="section" id="datetime-fields">
-<h3>DateTime Fields<a class="headerlink" href="#datetime-fields" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="field-type-datetime">
+<span id="field-type-date-time"></span><h3>Field Type: DateTime<a class="headerlink" href="#field-type-datetime" title="Permalink to this headline">#</a></h3>
 <p>MongoDB stores all times as UTC timestamps. When assigning a value to a
 <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> field, or when querying a <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> field, Mongoid
 converts the passed in value to a UTC <code class="docutils literal notranslate"><span class="pre">Time</span></code> before sending it to the
@@ -496,12 +1189,7 @@ MongoDB server.</p>
 time zone information, and the value persisted is the specified moment in
 time, in UTC. When the value is retrieved, the time zone in which it is
 returned is defined by the <a class="reference internal" href="configuration.html#time-zones"><span class="std std-ref">configured time zone settings</span></a>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Ticket</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Ticket</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:opened_at</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">DateTime</span>
 <span class="k">end</span>
@@ -525,52 +1213,33 @@ copy</a>
  <span class="c1"># =&gt; Sun, 18 Feb 2018 12:00:08 +0000</span>
 </pre></div>
 </div>
-</div>
 <p>Mongoid also supports casting integers and floats to <code class="docutils literal notranslate"><span class="pre">DateTime</span></code>. When
 doing so, the integers/floats are assumed to be Unix timestamps (in UTC):</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span> <span class="o">=</span> <span class="mi">1544803974</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span> <span class="o">=</span> <span class="mi">1544803974</span>
 <span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span>
 <span class="c1"># =&gt; Fri, 14 Dec 2018 16:12:54 +0000</span>
 </pre></div>
 </div>
-</div>
 <p>If a string is used as a <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> field value, the behavior depends on
 whether the string includes a time zone. If no time zone is specified,
 the <a class="reference internal" href="configuration.html#time-zones"><span class="std std-ref">default Mongoid time zone</span></a> is used:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Time</span><span class="o">.</span><span class="n">zone</span> <span class="o">=</span> <span class="s1">&#39;America/New_York&#39;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Time</span><span class="o">.</span><span class="n">zone</span> <span class="o">=</span> <span class="s1">&#39;America/New_York&#39;</span>
 <span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span> <span class="o">=</span> <span class="s1">&#39;Mar 4, 2018 10:00:00&#39;</span>
 <span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span>
 <span class="c1"># =&gt; Sun, 04 Mar 2018 15:00:00 +0000</span>
 </pre></div>
 </div>
-</div>
-<p>If a time zone is specfied, it is respected:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span> <span class="o">=</span> <span class="s1">&#39;Mar 4, 2018 10:00:00 +01:00&#39;</span>
+<p>If a time zone is specified, it is respected:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span> <span class="o">=</span> <span class="s1">&#39;Mar 4, 2018 10:00:00 +01:00&#39;</span>
 <span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span>
 <span class="c1"># =&gt; Sun, 04 Mar 2018 09:00:00 +0000</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="regular-expression-fields">
-<span id="id1"></span><h3>Regular Expression Fields<a class="headerlink" href="#regular-expression-fields" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="field-type-regexp">
+<span id="id7"></span><h3>Field Type: Regexp<a class="headerlink" href="#field-type-regexp" title="Permalink to this headline">#</a></h3>
 <p>MongoDB supports storing regular expressions in documents, and querying using
-regular expressions. Of note for Ruby applications, MongoDB uses
+regular expressions. Note that MongoDB uses
 <a class="reference external" href="http://pcre.org/">Perl-compatible regular expressions (PCRE)</a>
 and Ruby uses <a class="reference external" href="https://github.com/k-takata/Onigmo">Onigmo</a>, which is a
 fork of <a class="reference external" href="https://github.com/kkos/oniguruma">Oniguruma regular expression engine</a>.
@@ -580,12 +1249,7 @@ functionality but have several important syntax differences.</p>
 expressions to BSON regular expressions and stores the result in MongoDB.
 Retrieving the field from the database produces a <code class="docutils literal notranslate"><span class="pre">BSON::Regexp::Raw</span></code>
 instance:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Token</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Token</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:pattern</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Regexp</span>
@@ -600,106 +1264,194 @@ copy</a>
 <span class="c1"># =&gt; #&lt;BSON::Regexp::Raw:0x0000555f505e4a20 @pattern=&quot;hello.world&quot;, @options=&quot;ms&quot;&gt;</span>
 </pre></div>
 </div>
-</div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">#compile</span></code> method on <code class="docutils literal notranslate"><span class="pre">BSON::Regexp::Raw</span></code> to get back the Ruby regular
 expression:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">token</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">compile</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">token</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">compile</span>
 <span class="c1"># =&gt; /hello.world/m</span>
 </pre></div>
-</div>
 </div>
 <p>Note that, if the regular expression was not originally a Ruby one, calling
 <code class="docutils literal notranslate"><span class="pre">#compile</span></code> on it may produce a different regular expression. For example,
 the following is a PCRE matching a string that ends in “hello”:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;hello$&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;hello$&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; #&lt;BSON::Regexp::Raw:0x0000555f51441640 @pattern=&quot;hello$&quot;, @options=&quot;s&quot;&gt;</span>
 </pre></div>
-</div>
 </div>
 <p>Compiling this regular expression produces a Ruby regular expression that
 matches strings containing “hello” before a newline, besides strings ending in
 “hello”:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;hello$&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">compile</span> <span class="o">=~</span> <span class="s2">&quot;hello</span><span class="se">\n</span><span class="s2">world&quot;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">BSON</span><span class="o">::</span><span class="no">Regexp</span><span class="o">::</span><span class="no">Raw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;hello$&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">compile</span> <span class="o">=~</span> <span class="s2">&quot;hello</span><span class="se">\n</span><span class="s2">world&quot;</span>
 <span class="c1"># =&gt; 0</span>
 </pre></div>
 </div>
-</div>
 <p>This is because the meaning of <code class="docutils literal notranslate"><span class="pre">$</span></code> is different between PCRE and Ruby
 regular expressions.</p>
+</section>
+<section id="bigdecimal-fields">
+<span id="id8"></span><h3>BigDecimal Fields<a class="headerlink" href="#bigdecimal-fields" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> field type is used to store numbers with increased precision.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> field type stores its values in two different ways in the
+database, depending on the value of the <code class="docutils literal notranslate"><span class="pre">Mongoid.map_big_decimal_to_decimal128</span></code>
+global config option. If this flag is set to false (which is the default),
+the <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> field will be stored as a string, otherwise it will be stored
+as a <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> field type has some limitations when converting to and from
+a <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code> has a limited range and precision, while <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code>
+has no restrictions in terms of range and precision. <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code> has
+a max value of approximately <code class="docutils literal notranslate"><span class="pre">10^6145</span></code> and a min value of approximately
+<code class="docutils literal notranslate"><span class="pre">-10^6145</span></code>, and has a maximum of 34 bits of precision. When attempting to
+store values that don’t fit into a <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code>, it is recommended to
+have them stored as a string instead of a <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code>. You can do
+that by setting <code class="docutils literal notranslate"><span class="pre">Mongoid.map_big_decimal_to_decimal128</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>. If a
+value that does not fit in a <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code> is attempted to be stored
+as one, an error will be raised.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code> is able to accept signed <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values, while
+<code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> is not. When retrieving signed <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values from
+the database using the <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> field type, the <code class="docutils literal notranslate"><span class="pre">NaN</span></code> will be
+unsigned.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code> maintains trailing zeroes when stored in the database.
+<code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code>, however, does not maintain trailing zeroes, and therefore
+retrieving <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code> values using the <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> field type
+may result in a loss of precision.</p></li>
+</ul>
+<p>There is an additional caveat when storing a <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> in a field with no
+type (i.e. a dynamically typed field) and <code class="docutils literal notranslate"><span class="pre">Mongoid.map_big_decimal_to_decimal128</span></code>
+is <code class="docutils literal notranslate"><span class="pre">false</span></code>. In this case, the <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> is stored as a string, and since a
+dynamic field is being used, querying for that field with a <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> will
+not find the string for that <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code>, since the query is looking for a
+<code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code>. In order to query for that string, the <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> must
+first be converted to a string with <code class="docutils literal notranslate"><span class="pre">to_s</span></code>. Note that this is not a problem
+when the field has type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code>.</p>
+<p>If you wish to avoid using <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> altogether, you can set the field
+type to <code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code>. This will allow you to keep track of trailing
+zeroes and signed <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.</p>
+<section id="migration-to-decimal128-backed-bigdecimal-field">
+<h4>Migration to <code class="docutils literal notranslate"><span class="pre">decimal128</span></code>-backed <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> Field<a class="headerlink" href="#migration-to-decimal128-backed-bigdecimal-field" title="Permalink to this headline">#</a></h4>
+<p>In a future major version of Mongoid, the <code class="docutils literal notranslate"><span class="pre">Mongoid.map_big_decimal_to_decimal128</span></code>
+global config option will be defaulted to <code class="docutils literal notranslate"><span class="pre">true</span></code>. When this flag is turned on,
+<code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> values in queries will not match to the strings that are already
+stored in the database; they will only match to <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> values that are
+in the database. If you have a <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> field that is backed by strings,
+you have three options:</p>
+<ol class="arabic">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Mongoid.map_big_decimal_to_decimal128</span></code> global config option can be
+set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, and you can continue storing your <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> values as
+strings. Note that you are surrendering the advantages of storing <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code>
+values as a <code class="docutils literal notranslate"><span class="pre">decimal128</span></code>, like being able to do queries and aggregations
+based on the numerical value of the field.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Mongoid.map_big_decimal_to_decimal128</span></code> global config option can be
+set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, and you can convert all values for that field from strings to
+<code class="docutils literal notranslate"><span class="pre">decimal128</span></code> values in the database. You should do this conversion before
+setting the global config option to true. An example query to accomplish this
+is as follows:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">bands</span><span class="p">.</span><span class="nx">updateMany</span><span class="p">({</span>
+  <span class="s2">&quot;field&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;$exists&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+<span class="p">},</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;$set&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;field&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;$toDecimal&quot;</span><span class="o">:</span> <span class="s2">&quot;$field&quot;</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">])</span>
+</pre></div>
 </div>
-<div class="section" id="defaults">
-<h3>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline">¶</a></h3>
+<p>This query updates all documents that have the given field, setting that
+field to its corresponding <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> value. Note that this query only
+works in MongoDB 4.2+.</p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Mongoid.map_big_decimal_to_decimal128</span></code> global config option can be
+set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, and you can have both strings and <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> values for
+that field. This way, only <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> values will be inserted into and
+updated to the database going forward. Note that you still don’t get the
+full advantages of using only <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> values, but your dataset is
+slowly migrating to all <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> values, as old string values are
+updated to <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> and new <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> values are added. With this
+setup, you can still query for <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> values as follows:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">map_big_decimal_to_decimal128</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">big_decimal</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="s1">&#39;2E9&#39;</span><span class="p">)</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">in</span><span class="p">(</span><span class="ss">sales</span><span class="p">:</span> <span class="o">[</span><span class="n">big_decimal</span><span class="p">,</span> <span class="n">big_decimal</span><span class="o">.</span><span class="n">to_s</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+</pre></div>
+</div>
+<p>This query will find all values that are either a <code class="docutils literal notranslate"><span class="pre">decimal128</span></code> value or
+a string that match that value.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="using-symbols-or-strings-instead-of-classes">
+<h3>Using Symbols Or Strings Instead Of Classes<a class="headerlink" href="#using-symbols-or-strings-instead-of-classes" title="Permalink to this headline">#</a></h3>
+<p>Mongoid permits using symbols or strings instead of classes to specify the
+type of fields, for example:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Order</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:state</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">:integer</span>
+  <span class="c1"># Equivalent to:</span>
+  <span class="n">field</span> <span class="ss">:state</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
+  <span class="c1"># Equivalent to:</span>
+  <span class="n">field</span> <span class="ss">:state</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Only standard field types as listed below can be specified using symbols or
+strings in this manner. Mongoid recognizes the following expansions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:array</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Array</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:big_decimal</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:binary</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:boolean</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Mongoid::Boolean</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:date</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:date_time</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">DateTime</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:float</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Float</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:hash</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Hash</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:integer</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Integer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:object_id</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">BSON::ObjectId</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:range</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Range</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:regexp</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Regexp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:set</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Set</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:string</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">String</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:stringified_symbol</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">StringifiedSymbol</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:symbol</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Symbol</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:time</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Time</span></code></p></li>
+</ul>
+</section>
+<section id="specifying-field-default-values">
+<span id="field-default-values"></span><h3>Specifying Field Default Values<a class="headerlink" href="#specifying-field-default-values" title="Permalink to this headline">#</a></h3>
 <p>A field can be configured to have a default value. The default value can be
 fixed, as in the following example:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Order</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Order</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:state</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s1">&#39;created&#39;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>The default value can also be specified as a <code class="docutils literal notranslate"><span class="pre">Proc</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Order</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Order</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:fulfill_by</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span> <span class="o">+</span> <span class="mi">3</span><span class="o">.</span><span class="n">days</span> <span class="p">}</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Default values that are not <code class="docutils literal notranslate"><span class="pre">Proc</span></code> instances are evaluated at class load
 time, meaning the following two definitions are not equivalent:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="ss">:submitted_at</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="ss">:submitted_at</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
 <span class="n">field</span> <span class="ss">:submitted_at</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span> <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<p class="last">The second definition is most likely the desired one, which causes the
+<p>The second definition is most likely the desired one, which causes the
 time of submission to be set to the current time at the moment of
 document instantiation.</p>
 </div>
 <p>To set a default which depends on the document’s state, use <code class="docutils literal notranslate"><span class="pre">self</span></code>
 inside the <code class="docutils literal notranslate"><span class="pre">Proc</span></code> instance which would evaluate to the document instance
 being operated on:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="ss">:fulfill_by</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="ss">:fulfill_by</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span>
   <span class="c1"># Order should be fulfilled in 2 business hours.</span>
   <span class="k">if</span> <span class="p">(</span><span class="mi">7</span><span class="o">..</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">submitted_at</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
     <span class="nb">self</span><span class="o">.</span><span class="n">submitted_at</span> <span class="o">+</span> <span class="mi">4</span><span class="o">.</span><span class="n">hours</span>
@@ -711,23 +1463,23 @@ copy</a>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
 <p>When defining a default value as a <code class="docutils literal notranslate"><span class="pre">Proc</span></code>, Mongoid will apply the default
-after all other attributes are set. To have the default be applied before
-the other attributes are set, use the <code class="docutils literal notranslate"><span class="pre">pre_processed:</span> <span class="pre">true</span></code> field option:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="ss">:fulfill_by</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span> <span class="o">+</span> <span class="mi">3</span><span class="o">.</span><span class="n">days</span> <span class="p">},</span>
+after all other attributes are set and associations are initialized.
+To have the default be applied before the other attributes are set,
+use the <code class="docutils literal notranslate"><span class="pre">pre_processed:</span> <span class="pre">true</span></code> field option:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="ss">:fulfill_by</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span> <span class="o">+</span> <span class="mi">3</span><span class="o">.</span><span class="n">days</span> <span class="p">},</span>
   <span class="ss">pre_processed</span><span class="p">:</span> <span class="kp">true</span>
 </pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">pre_processed:</span> <span class="pre">true</span></code> option is also necessary when specifying a custom
+default value via a <code class="docutils literal notranslate"><span class="pre">Proc</span></code> for the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field, to ensure the <code class="docutils literal notranslate"><span class="pre">_id</span></code>
+is set correctly via associations:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="ss">:_id</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s1">&#39;hello&#39;</span> <span class="p">},</span> <span class="ss">pre_processed</span><span class="p">:</span> <span class="kp">true</span>
+</pre></div>
 </div>
-</div>
-<div class="section" id="specifying-storage-field-names">
-<span id="storage-field-names"></span><h3>Specifying Storage Field Names<a class="headerlink" href="#specifying-storage-field-names" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="specifying-storage-field-names">
+<span id="storage-field-names"></span><h3>Specifying Storage Field Names<a class="headerlink" href="#specifying-storage-field-names" title="Permalink to this headline">#</a></h3>
 <p>One of the drawbacks of having a schemaless database is that MongoDB must
 store all field information along with every document, meaning that it
 takes up a lot of storage space in RAM and on disk. A common pattern to limit
@@ -735,12 +1487,7 @@ this is to alias fields to a small number of characters, while keeping the
 domain in the application expressive. Mongoid allows you to do this and
 reference the fields in the domain via their long names in getters, setters,
 and criteria while performing the conversion for you.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:n</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
 <span class="k">end</span>
@@ -752,19 +1499,13 @@ copy</a>
 <span class="n">criteria</span><span class="o">.</span><span class="n">selector</span> <span class="c1"># { &quot;n&quot; =&gt; &quot;Placebo&quot; }</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="field-aliases">
-<span id="id2"></span><h3>Field Aliases<a class="headerlink" href="#field-aliases" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="field-aliases">
+<span id="id9"></span><h3>Field Aliases<a class="headerlink" href="#field-aliases" title="Permalink to this headline">#</a></h3>
 <p>It is possible to define field aliases. The value will be stored in the
 destination field but can be accessed from either the destination field or
 from the aliased field:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -781,30 +1522,18 @@ copy</a>
 <span class="c1"># =&gt; &quot;Astral Projection&quot;</span>
 </pre></div>
 </div>
-</div>
 <p>Aliases can be removed from model classes using the <code class="docutils literal notranslate"><span class="pre">unalias_attribute</span></code>
 method.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="n">unalias_attribute</span> <span class="ss">:n</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="unaliasing-id">
-<span id="unalias-id"></span><h4>Unaliasing <code class="docutils literal notranslate"><span class="pre">id</span></code><a class="headerlink" href="#unaliasing-id" title="Permalink to this headline">¶</a></h4>
+<section id="unaliasing-id">
+<span id="unalias-id"></span><h4>Unaliasing <code class="docutils literal notranslate"><span class="pre">id</span></code><a class="headerlink" href="#unaliasing-id" title="Permalink to this headline">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">unalias_attribute</span></code> can be used to remove the predefined <code class="docutils literal notranslate"><span class="pre">id</span></code> alias.
 This is useful for storing different values in <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">_id</span></code> fields:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
   <span class="n">unalias_attribute</span> <span class="ss">:id</span>
@@ -815,25 +1544,156 @@ copy</a>
 <span class="c1"># =&gt; #&lt;Band _id: 5fc1c3f42c97a6590684046c, id: &quot;42&quot;&gt;</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="reserved-names">
+<h3>Reserved Names<a class="headerlink" href="#reserved-names" title="Permalink to this headline">#</a></h3>
+<p>Attempting to define a field on a document that conflicts with a reserved
+method name in Mongoid will raise an error. The list of reserved names can
+be obtained by invoking the <code class="docutils literal notranslate"><span class="pre">Mongoid.destructive_fields</span></code> method.</p>
+</section>
+<section id="field-redefinition">
+<h3>Field Redefinition<a class="headerlink" href="#field-redefinition" title="Permalink to this headline">#</a></h3>
+<p>By default Mongoid allows redefining fields on a model. To raise an error
+when a field is redefined, set the <code class="docutils literal notranslate"><span class="pre">duplicate_fields_exception</span></code>
+<a class="reference internal" href="configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>With the option set to true, the following example will raise an error:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+</pre></div>
 </div>
+<p>To define the field anyway, use the <code class="docutils literal notranslate"><span class="pre">overwrite:</span> <span class="pre">true</span></code> option:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span>
+
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">overwrite</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</pre></div>
 </div>
+</section>
+<section id="custom-ids">
+<span id="custom-id"></span><h3>Custom IDs<a class="headerlink" href="#custom-ids" title="Permalink to this headline">#</a></h3>
+<p>By default, Mongoid defines the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field on documents to contain a
+<code class="docutils literal notranslate"><span class="pre">BSON::ObjectId</span></code> value which is automatically generated by Mongoid.</p>
+<p>It is possible to replace the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field definition to change the type
+of the <code class="docutils literal notranslate"><span class="pre">_id</span></code> values or have different default values:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="n">field</span> <span class="ss">:_id</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span> <span class="nb">name</span> <span class="p">}</span>
+<span class="k">end</span>
+</pre></div>
 </div>
-<div class="section" id="custom-fields">
-<h3>Custom Fields<a class="headerlink" href="#custom-fields" title="Permalink to this headline">¶</a></h3>
-<p>You can define custom types in Mongoid and determine how they are serialized and deserialized.
-You simply need to provide three methods on it for Mongoid to call to convert your object to
-and from MongoDB friendly values.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
+<p>It is possible to omit the default entirely:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">field</span> <span class="ss">:_id</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="k">end</span>
+</pre></div>
 </div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Profile</span>
+<p>If the default on <code class="docutils literal notranslate"><span class="pre">_id</span></code> is omitted, and no <code class="docutils literal notranslate"><span class="pre">_id</span></code> value is provided by
+your application, Mongoid will persist the document without the <code class="docutils literal notranslate"><span class="pre">_id</span></code>
+value. In this case, if the document is a top-level document, an <code class="docutils literal notranslate"><span class="pre">_id</span></code>
+value will be assigned by the server; if the document is an embedded document,
+no <code class="docutils literal notranslate"><span class="pre">_id</span></code> value will be assigned. Mongoid will not automatically retrieve
+this value, if assigned, when the document is persisted - you
+must obtain the persisted value (and the complete persisted document) using
+other means:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Band _id: , &gt;</span>
+<span class="n">band</span><span class="o">.</span><span class="n">id</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+<span class="n">band</span><span class="o">.</span><span class="n">reload</span>
+<span class="c1"># raises Mongoid::Errors::DocumentNotFound</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">last</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Band _id: 5fc681c22c97a6791f324b99, &gt;</span>
+</pre></div>
+</div>
+<p>Omitting <code class="docutils literal notranslate"><span class="pre">_id</span></code> fields is more common in <a class="reference internal" href="associations.html#omit-id"><span class="std std-ref">embedded documents</span></a>.</p>
+<p>Mongoid also defines the <code class="docutils literal notranslate"><span class="pre">id</span></code> field aliased to <code class="docutils literal notranslate"><span class="pre">_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">id</span></code>
+alias can <a class="reference internal" href="#unalias-id"><span class="std std-ref">be removed</span></a> if desired (such as to integrate
+with systems that use the <code class="docutils literal notranslate"><span class="pre">id</span></code> field to store value different from <code class="docutils literal notranslate"><span class="pre">_id</span></code>.</p>
+</section>
+</section>
+<section id="customizing-field-behavior">
+<span id="id10"></span><h2>Customizing Field Behavior<a class="headerlink" href="#customizing-field-behavior" title="Permalink to this headline">#</a></h2>
+<p>Mongoid offers several ways to customize the behavior of fields.</p>
+<section id="custom-getters-and-setters">
+<span id="id11"></span><h3>Custom Getters And Setters<a class="headerlink" href="#custom-getters-and-setters" title="Permalink to this headline">#</a></h3>
+<p>You may override getters and setters for fields to modify the values
+when they are being accessed or written. The getters and setters use the
+same name as the field. Use <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> and <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code>
+methods inside the getters and setters to operate on the raw attribute
+values.</p>
+<p>For example, Mongoid provides the <code class="docutils literal notranslate"><span class="pre">:default</span></code> field option to write a
+default value into the field. If you wish to have a field default value
+in your application but do not wish to persist it, you can override the
+getter as follows:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DistanceMeasurement</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:value</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Float</span>
+  <span class="n">field</span> <span class="ss">:unit</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+
+  <span class="k">def</span> <span class="nf">unit</span>
+    <span class="n">read_attribute</span><span class="p">(</span><span class="ss">:unit</span><span class="p">)</span> <span class="o">||</span> <span class="s2">&quot;m&quot;</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">to_s</span>
+    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">measurement</span> <span class="o">=</span> <span class="no">DistanceMeasurement</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">measurement</span><span class="o">.</span><span class="n">to_s</span>
+<span class="c1"># =&gt; &quot;2.0 m&quot;</span>
+<span class="n">measurement</span><span class="o">.</span><span class="n">attributes</span>
+<span class="c1"># =&gt; {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;613fa0b0a15d5d61502f3447&#39;), &quot;value&quot;=&gt;2.0}</span>
+</pre></div>
+</div>
+<p>To give another example, a field which converts empty strings to nil values
+may be implemented as follows:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DistanceMeasurement</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:value</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Float</span>
+  <span class="n">field</span> <span class="ss">:unit</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+
+  <span class="k">def</span> <span class="nf">unit=</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">blank?</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="kp">nil</span>
+    <span class="k">end</span>
+    <span class="n">write_attribute</span><span class="p">(</span><span class="ss">:unit</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">measurement</span> <span class="o">=</span> <span class="no">DistanceMeasurement</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="ss">unit</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">measurement</span><span class="o">.</span><span class="n">attributes</span>
+<span class="c1"># =&gt; {&quot;_id&quot;=&gt;BSON::ObjectId(&#39;613fa15aa15d5d617216104c&#39;), &quot;value&quot;=&gt;2.0, &quot;unit&quot;=&gt;nil}</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-field-types">
+<span id="id12"></span><h3>Custom Field Types<a class="headerlink" href="#custom-field-types" title="Permalink to this headline">#</a></h3>
+<p>You can define custom types in Mongoid and determine how they are serialized
+and deserialized. In this example, we define a new field type <code class="docutils literal notranslate"><span class="pre">Point</span></code>, which we
+can use in our model class as follows:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Profile</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:location</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Point</span>
 <span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">Point</span>
+</pre></div>
+</div>
+<p>Then make a Ruby class to represent the type. This class must define methods
+used for MongoDB serialization and deserialization as follows:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span>
 
   <span class="kp">attr_reader</span> <span class="ss">:x</span><span class="p">,</span> <span class="ss">:y</span>
 
@@ -842,17 +1702,12 @@ copy</a>
   <span class="k">end</span>
 
   <span class="c1"># Converts an object of this instance into a database friendly value.</span>
+  <span class="c1"># In this example, we store the values in the database as array.</span>
   <span class="k">def</span> <span class="nf">mongoize</span>
     <span class="o">[</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">]</span>
   <span class="k">end</span>
 
   <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-
-    <span class="c1"># Get the object as it was stored in the database, and instantiate</span>
-    <span class="c1"># this custom class from it.</span>
-    <span class="k">def</span> <span class="nf">demongoize</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
-      <span class="no">Point</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">object</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="n">object</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
-    <span class="k">end</span>
 
     <span class="c1"># Takes any possible object and converts it to how it would be</span>
     <span class="c1"># stored in the database.</span>
@@ -864,8 +1719,14 @@ copy</a>
       <span class="k">end</span>
     <span class="k">end</span>
 
+    <span class="c1"># Get the object as it was stored in the database, and instantiate</span>
+    <span class="c1"># this custom class from it.</span>
+    <span class="k">def</span> <span class="nf">demongoize</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
+      <span class="no">Point</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">object</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="n">object</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+    <span class="k">end</span>
+
     <span class="c1"># Converts the object that was supplied to a criteria and converts it</span>
-    <span class="c1"># into a database friendly form.</span>
+    <span class="c1"># into a query-friendly form.</span>
     <span class="k">def</span> <span class="nf">evolve</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
       <span class="k">case</span> <span class="n">object</span>
       <span class="k">when</span> <span class="no">Point</span> <span class="k">then</span> <span class="n">object</span><span class="o">.</span><span class="n">mongoize</span>
@@ -876,154 +1737,112 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<p>The instance method <code class="docutils literal notranslate"><span class="pre">mongoize</span></code> takes an instance of your object, and converts it
-into how it will be stored in the database. In our example above, we want to store our
-point object as an array in the form <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">x,</span> <span class="pre">y</span> <span class="pre">]</span></code>.</p>
-<p>The class method <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> takes an object as how it was stored in the database,
-and is responsible for instantiating an object of your custom type. In this case, we
-take an array and instantiate a <code class="docutils literal notranslate"><span class="pre">Point</span></code> from it.</p>
-<p>The class method <code class="docutils literal notranslate"><span class="pre">mongoize</span></code> takes an object that you would use to set on your model
-from your application code, and create the object as it would be stored in the database.
-This is for cases where you are not passing your model instances of your custom type in the setter:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="no">Point</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-<span class="n">venue</span> <span class="o">=</span> <span class="no">Venue</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">location</span><span class="p">:</span> <span class="n">point</span><span class="p">)</span> <span class="c1"># This uses the mongoize instance method.</span>
-<span class="n">venue</span> <span class="o">=</span> <span class="no">Venue</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">location</span><span class="p">:</span> <span class="o">[</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">24</span> <span class="o">]</span><span class="p">)</span> <span class="c1"># This uses the mongoize class method.</span>
+<p>The instance method <code class="docutils literal notranslate"><span class="pre">mongoize</span></code> takes an instance of your custom type object, and
+converts it into a represenation of how it will be stored in the database, i.e. to pass
+to the MongoDB Ruby driver. In our example above, we want to store our <code class="docutils literal notranslate"><span class="pre">Point</span></code>
+object as an <code class="docutils literal notranslate"><span class="pre">Array</span></code> in the form <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">x,</span> <span class="pre">y</span> <span class="pre">]</span></code>.</p>
+<p>The class method <code class="docutils literal notranslate"><span class="pre">mongoize</span></code> is similar to the instance method, however it must handle
+objects of all possible types as inputs. The <code class="docutils literal notranslate"><span class="pre">mongoize</span></code> method is used when calling the
+setter methods for fields of your custom type.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="no">Point</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="n">venue</span> <span class="o">=</span> <span class="no">Venue</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">location</span><span class="p">:</span> <span class="n">point</span><span class="p">)</span> <span class="c1"># This uses the Point#mongoize instance method.</span>
+<span class="n">venue</span> <span class="o">=</span> <span class="no">Venue</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">location</span><span class="p">:</span> <span class="o">[</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">24</span> <span class="o">]</span><span class="p">)</span> <span class="c1"># This uses the Point.mongoize class method.</span>
 </pre></div>
 </div>
-</div>
-<p>The class method <code class="docutils literal notranslate"><span class="pre">evolve</span></code> takes an object, and determines how it is to be transformed
-for use in criteria. For example we may want to write a query like so:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="no">Point</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-<span class="no">Venue</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">location</span><span class="p">:</span> <span class="n">point</span><span class="p">)</span>
+<p>The class method <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> does the inverse of <code class="docutils literal notranslate"><span class="pre">mongoize</span></code>. It takes the raw object
+from the MongoDB Ruby driver and converts it to an instance of your custom type.
+In this case, the database driver returns an <code class="docutils literal notranslate"><span class="pre">Array</span></code> and we instantiate a <code class="docutils literal notranslate"><span class="pre">Point</span></code> from it.
+The <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> method is used when calling the getters of fields for your custom type.
+Note that in the example above, since <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> calls <code class="docutils literal notranslate"><span class="pre">Point.new</span></code>, a new instance of
+<code class="docutils literal notranslate"><span class="pre">Point</span></code> will be generated on each call to the getter.</p>
+<p>Lastly, the class method <code class="docutils literal notranslate"><span class="pre">evolve</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">mongoize</span></code>, however it is used
+when transforming objects for use in Mongoid query criteria.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="no">Point</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="no">Venue</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">location</span><span class="p">:</span> <span class="n">point</span><span class="p">)</span> <span class="c1"># This uses Point.evolve</span>
 </pre></div>
 </div>
-</div>
-<p>Note that when accessing custom fields from the document, you will get a new instance
-of that object with each call to the getter. This is because Mongoid is generating a new
-object from the raw attributes on each access.</p>
-<p>We need the point object in the criteria to be transformed to a Mongo friendly value when
-it is not as well, <code class="docutils literal notranslate"><span class="pre">evolve</span></code> is the method that takes care of this. We check if the passed
-in object is a <code class="docutils literal notranslate"><span class="pre">Point</span></code> first, in case we also want to be able to pass in ordinary arrays instead.</p>
-</div>
-<div class="section" id="reserved-names">
-<h3>Reserved Names<a class="headerlink" href="#reserved-names" title="Permalink to this headline">¶</a></h3>
-<p>Attempting to define a field on a document that conflicts with a reserved
-method name in Mongoid will raise an error. The list of reserved names can
-be obtained by invoking the <code class="docutils literal notranslate"><span class="pre">Mongoid.destructive_fields</span></code> method.</p>
-</div>
-<div class="section" id="field-redefinition">
-<h3>Field Redefinition<a class="headerlink" href="#field-redefinition" title="Permalink to this headline">¶</a></h3>
-<p>By default Mongoid allows redefining fields on a model. To raise an error
-when a field is redefined, set the <code class="docutils literal notranslate"><span class="pre">duplicate_fields_exception</span></code>
-<a class="reference internal" href="configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<p>With the option set to true, the following example will raise an error:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<section id="phantom-custom-field-types">
+<span id="id13"></span><h4>Phantom Custom Field Types<a class="headerlink" href="#phantom-custom-field-types" title="Permalink to this headline">#</a></h4>
+<p>The custom field type may perform conversions from user-visible attribute
+values to the values stored in the database when the user-visible attribute
+value type is different from the declared field type. For example, this
+can be used to implement a mapping from one enumeration to another, to
+have more descriptive values in the application and more compact values stored
+in the database:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ColorMapping</span>
+
+  <span class="no">MAPPING</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;black&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;white&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="p">}</span><span class="o">.</span><span class="n">freeze</span>
+
+  <span class="no">INVERSE_MAPPING</span> <span class="o">=</span> <span class="no">MAPPING</span><span class="o">.</span><span class="n">invert</span><span class="o">.</span><span class="n">freeze</span>
+
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+
+    <span class="c1"># Takes application-scope value and converts it to how it would be</span>
+    <span class="c1"># stored in the database. Converts invalid values to nil.</span>
+    <span class="k">def</span> <span class="nf">mongoize</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
+      <span class="no">MAPPING</span><span class="o">[</span><span class="n">object</span><span class="o">]</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Get the value as it was stored in the database, and convert to</span>
+    <span class="c1"># application-scope value. Converts invalid values to nil.</span>
+    <span class="k">def</span> <span class="nf">demongoize</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
+      <span class="no">INVERSE_MAPPING</span><span class="o">[</span><span class="n">object</span><span class="o">]</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Converts the object that was supplied to a criteria and converts it</span>
+    <span class="c1"># into a query-friendly form. Returns invalid values as is.</span>
+    <span class="k">def</span> <span class="nf">evolve</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
+      <span class="no">MAPPING</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">object</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Profile</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">field</span> <span class="ss">:color</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">ColorMapping</span>
+<span class="k">end</span>
 
-  <span class="n">field</span> <span class="ss">:name</span>
+<span class="n">profile</span> <span class="o">=</span> <span class="no">Profile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">color</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">profile</span><span class="o">.</span><span class="n">color</span>
+<span class="c1"># =&gt; &quot;white&quot;</span>
 
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
+<span class="c1"># Writes 0 to color field</span>
+<span class="n">profile</span><span class="o">.</span><span class="n">save!</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="custom-field-options">
+<span id="id14"></span><h3>Custom Field Options<a class="headerlink" href="#custom-field-options" title="Permalink to this headline">#</a></h3>
+<p>You may define custom options for the <code class="docutils literal notranslate"><span class="pre">field</span></code> macro function
+which extend its behavior at the your time model classes are loaded.</p>
+<p>As an example, we will define a <code class="docutils literal notranslate"><span class="pre">:required</span></code> option which will add a presence
+validator for the field. First, declare the new field option in an initializer,
+specifiying its handler function as a block:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># in /config/initializers/mongoid_custom_fields.rb</span>
+
+<span class="no">Mongoid</span><span class="o">::</span><span class="no">Fields</span><span class="o">.</span><span class="n">option</span> <span class="ss">:required</span> <span class="k">do</span> <span class="o">|</span><span class="n">model</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+  <span class="n">model</span><span class="o">.</span><span class="n">validates_presence_of</span> <span class="n">field</span> <span class="k">if</span> <span class="n">value</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<p>To define the field anyway, use the <code class="docutils literal notranslate"><span class="pre">overwrite:</span> <span class="pre">true</span></code> option:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<p>Then, use it your model class:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
 
-  <span class="n">field</span> <span class="ss">:name</span>
-
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">overwrite</span><span class="p">:</span> <span class="kp">true</span>
+  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">required</span><span class="p">:</span> <span class="kp">true</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="custom-ids">
-<span id="custom-id"></span><h3>Custom Ids<a class="headerlink" href="#custom-ids" title="Permalink to this headline">¶</a></h3>
-<p>By default, Mongoid defines the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field on documents to contain a
-<code class="docutils literal notranslate"><span class="pre">BSON::ObjcetId</span></code> value which is automatically generated by Mongoid.</p>
-<p>It is possible to replace the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field definition to change the type
-of the <code class="docutils literal notranslate"><span class="pre">_id</span></code> values or have different default values:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-  <span class="n">field</span> <span class="ss">:_id</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span> <span class="nb">name</span> <span class="p">}</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-<p>It is possible to omit the default entirely:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-  <span class="n">field</span> <span class="ss">:_id</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-<p>If the default on <code class="docutils literal notranslate"><span class="pre">_id</span></code> is omitted, and no <code class="docutils literal notranslate"><span class="pre">_id</span></code> value is provided by
-your application, Mongoid will persist the document without the <code class="docutils literal notranslate"><span class="pre">_id</span></code>
-value. In this case, if the document is a top-level document, an <code class="docutils literal notranslate"><span class="pre">_id</span></code>
-value will be assigned by the server; if the document is an embedded document,
-no <code class="docutils literal notranslate"><span class="pre">_id</span></code> value will be assigned. Mongoid will not automatically retrieve
-this value, if assigned, when the document is persisted - you
-must obtain the persisted value (and the complete persisted document) using
-other means:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;Band _id: , &gt;</span>
-<span class="n">band</span><span class="o">.</span><span class="n">id</span>
-<span class="o">=&gt;</span> <span class="kp">nil</span>
-<span class="n">band</span><span class="o">.</span><span class="n">reload</span>
-<span class="c1"># raises Mongoid::Errors::DocumentNotFound</span>
-<span class="no">Band</span><span class="o">.</span><span class="n">last</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;Band _id: 5fc681c22c97a6791f324b99, &gt;</span>
-</pre></div>
-</div>
-</div>
-<p>Omitting <code class="docutils literal notranslate"><span class="pre">_id</span></code> fields is more common in <a class="reference internal" href="associations.html#omit-id"><span class="std std-ref">embedded documents</span></a>.</p>
-<p>Mongoid also defines the <code class="docutils literal notranslate"><span class="pre">id</span></code> field aliased to <code class="docutils literal notranslate"><span class="pre">_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">id</span></code>
-alias can <a class="reference internal" href="#unalias-id"><span class="std std-ref">be removed</span></a> if desired (such as to integrate
-with systems that use the <code class="docutils literal notranslate"><span class="pre">id</span></code> field to store value different from <code class="docutils literal notranslate"><span class="pre">_id</span></code>.</p>
-</div>
-</div>
-<div class="section" id="dynamic-fields">
-<span id="id3"></span><h2>Dynamic Fields<a class="headerlink" href="#dynamic-fields" title="Permalink to this headline">¶</a></h2>
+<p>Note that the handler function will be invoked whenever the option is used
+in the field definition, even if the option’s value is false or nil.</p>
+</section>
+</section>
+<section id="dynamic-fields">
+<span id="id15"></span><h2>Dynamic Fields<a class="headerlink" href="#dynamic-fields" title="Permalink to this headline">#</a></h2>
 <p>By default, Mongoid requires all fields that may be set on a document to
 be explicitly defined using <code class="docutils literal notranslate"><span class="pre">field</span></code> declarations. Mongoid also supports
 creating fields on the fly from an arbitrary hash or documents stored in
@@ -1031,12 +1850,7 @@ the database. When a model uses fields not explicitly defined, such fields
 are called <em>dynamic fields</em>.</p>
 <p>To enable dynamic fields, include <code class="docutils literal notranslate"><span class="pre">Mongoid::Attributes::Dynamic</span></code> module
 in the model:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Attributes</span><span class="o">::</span><span class="no">Dynamic</span>
 <span class="k">end</span>
@@ -1046,7 +1860,6 @@ copy</a>
 <span class="c1"># =&gt; &quot;Bob&quot;</span>
 </pre></div>
 </div>
-</div>
 <p>It is possible to use <code class="docutils literal notranslate"><span class="pre">field</span></code> declarations and dynamic fields in the same
 model class. Attributes for which there is a <code class="docutils literal notranslate"><span class="pre">field</span></code> declaration will be
 treated according to the <code class="docutils literal notranslate"><span class="pre">field</span></code> declaration, with remaining attributes
@@ -1055,12 +1868,7 @@ being treated as dynamic fields.</p>
 passing the attribute hash to the constructor, mass assignment via
 <code class="docutils literal notranslate"><span class="pre">attributes=</span></code>, mass assignment via <code class="docutils literal notranslate"><span class="pre">[]=</span></code>, using <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code>,
 or they must already be present in the database.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># OK</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># OK</span>
 <span class="n">bob</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
 
 <span class="c1"># OK</span>
@@ -1086,16 +1894,10 @@ copy</a>
 <span class="n">bob</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>If an attribute is not present in a particular model instance’s attributes
 hash, both the reader and the writer for the corresponding field are not
 defined, and invoking them raises <code class="docutils literal notranslate"><span class="pre">NoMethodError</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bob</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bob</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span>
 <span class="n">bob</span><span class="o">.</span><span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span><span class="ss">age</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
 <span class="n">bob</span><span class="o">.</span><span class="n">age</span>
@@ -1114,15 +1916,9 @@ copy</a>
 <span class="c1"># =&gt; &quot;Bob&quot;</span>
 </pre></div>
 </div>
-</div>
 <p>Attributes can always be read using mass attribute access or <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code>
-(this appies to models not using dynamic fields as well):</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bob</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span>
+(this applies to models not using dynamic fields as well):</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bob</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">age</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># OK - string access</span>
 <span class="n">bob</span><span class="o">[</span><span class="s1">&#39;name&#39;</span><span class="o">]</span>
@@ -1169,16 +1965,15 @@ copy</a>
 <span class="c1"># =&gt; 42</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The values returned from the <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> method, and those stored in
+the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash, are the <code class="docutils literal notranslate"><span class="pre">mongoized</span></code> values.</p>
 </div>
-<div class="section" id="special-characters-in-field-names">
-<h3>Special Characters in Field Names<a class="headerlink" href="#special-characters-in-field-names" title="Permalink to this headline">¶</a></h3>
+<section id="special-characters-in-field-names">
+<h3>Special Characters in Field Names<a class="headerlink" href="#special-characters-in-field-names" title="Permalink to this headline">#</a></h3>
 <p>Mongoid permits dynamic field names to include spaces and punctuation:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bob</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MDB&#39;</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">bob</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MDB&#39;</span><span class="p">)</span>
 <span class="n">bob</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
 <span class="c1"># =&gt; &quot;MDB&quot;</span>
 
@@ -1187,32 +1982,20 @@ copy</a>
 <span class="c1"># =&gt; &quot;MDB&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="localized-fields">
-<h2>Localized Fields<a class="headerlink" href="#localized-fields" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="localized-fields">
+<h2>Localized Fields<a class="headerlink" href="#localized-fields" title="Permalink to this headline">#</a></h2>
 <p>Mongoid supports localized fields via <a class="reference external" href="https://github.com/ruby-i18n/i18n">i18n</a>.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Product</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Product</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">localize</span><span class="p">:</span> <span class="kp">true</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>By telling the field to <code class="docutils literal notranslate"><span class="pre">localize</span></code>, Mongoid will under the covers store the field
 as a hash of locale/value pairs, but normal access to it will behave like a string.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">I18n</span><span class="o">.</span><span class="n">default_locale</span> <span class="o">=</span> <span class="ss">:en</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">I18n</span><span class="o">.</span><span class="n">default_locale</span> <span class="o">=</span> <span class="ss">:en</span>
 <span class="n">product</span> <span class="o">=</span> <span class="no">Product</span><span class="o">.</span><span class="n">new</span>
 <span class="n">product</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Marvelous!&quot;</span>
 <span class="no">I18n</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="ss">:de</span>
@@ -1222,100 +2005,64 @@ copy</a>
 <span class="c1"># { &quot;description&quot; =&gt; { &quot;en&quot; =&gt; &quot;Marvelous!&quot;, &quot;de&quot; =&gt; &quot;Fantastisch!&quot; }</span>
 </pre></div>
 </div>
-</div>
 <p>You can get and set all the translations at once by using the corresponding <code class="docutils literal notranslate"><span class="pre">_translations</span></code> method.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">description_translations</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">product</span><span class="o">.</span><span class="n">description_translations</span>
 <span class="c1"># { &quot;en&quot; =&gt; &quot;Marvelous!&quot;, &quot;de&quot; =&gt; &quot;Fantastisch!&quot; }</span>
 <span class="n">product</span><span class="o">.</span><span class="n">description_translations</span> <span class="o">=</span>
   <span class="p">{</span> <span class="s2">&quot;en&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Marvelous!&quot;</span><span class="p">,</span> <span class="s2">&quot;de&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Wunderbar!&quot;</span> <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="fallbacks">
-<h3>Fallbacks<a class="headerlink" href="#fallbacks" title="Permalink to this headline">¶</a></h3>
+<section id="fallbacks">
+<h3>Fallbacks<a class="headerlink" href="#fallbacks" title="Permalink to this headline">#</a></h3>
 <p>Mongoid integrates with
 <a class="reference external" href="https://github.com/ruby-i18n/i18n/wiki/Fallbacks">i18n fallbacks</a>.
 To use the fallbacks, the respective functionality must be explicitly enabled.</p>
 <p>In a Rails application, set the <code class="docutils literal notranslate"><span class="pre">config.i18n.fallbacks</span></code> configuration setting
 to <code class="docutils literal notranslate"><span class="pre">true</span></code> in your environment and specify the fallback languages:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="kp">true</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="kp">true</span>
 <span class="n">config</span><span class="o">.</span><span class="n">after_initialize</span> <span class="k">do</span>
   <span class="no">I18n</span><span class="o">.</span><span class="n">fallbacks</span><span class="o">[</span><span class="ss">:de</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:en</span><span class="p">,</span> <span class="ss">:es</span> <span class="o">]</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>In a non-Rails application, include the fallbacks module into the I18n backend
 you are using and specify the fallback languages:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s2">&quot;i18n/backend/fallbacks&quot;</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s2">&quot;i18n/backend/fallbacks&quot;</span>
 <span class="no">I18n</span><span class="o">::</span><span class="no">Backend</span><span class="o">::</span><span class="no">Simple</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:include</span><span class="p">,</span> <span class="no">I18n</span><span class="o">::</span><span class="no">Backend</span><span class="o">::</span><span class="no">Fallbacks</span><span class="p">)</span>
 <span class="no">I18n</span><span class="o">.</span><span class="n">fallbacks</span><span class="o">[</span><span class="ss">:de</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:en</span><span class="p">,</span> <span class="ss">:es</span> <span class="o">]</span>
 </pre></div>
 </div>
-</div>
 <p>When fallbacks are enabled, if a translation is not present in the active
 language, translations will be looked up in the fallback languages:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">product</span> <span class="o">=</span> <span class="no">Product</span><span class="o">.</span><span class="n">new</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">product</span> <span class="o">=</span> <span class="no">Product</span><span class="o">.</span><span class="n">new</span>
 <span class="no">I18n</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="ss">:en</span>
 <span class="n">product</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Marvelous!&quot;</span>
 <span class="no">I18n</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="ss">:de</span>
 <span class="n">product</span><span class="o">.</span><span class="n">description</span> <span class="c1"># &quot;Marvelous!&quot;</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In i18n 1.1, the behavior of fallbacks <a class="reference external" href="https://github.com/ruby-i18n/i18n/pull/415">changed</a>
+<p class="admonition-title">Note</p>
+<p>In i18n 1.1, the behavior of fallbacks <a class="reference external" href="https://github.com/ruby-i18n/i18n/pull/415">changed</a>
 to always require an explicit list of fallback locales rather than falling
 back to the default locale when no fallback locales have been provided.</p>
 </div>
-</div>
-<div class="section" id="querying">
-<h3>Querying<a class="headerlink" href="#querying" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="querying">
+<h3>Querying<a class="headerlink" href="#querying" title="Permalink to this headline">#</a></h3>
 <p>When querying for localized fields using Mongoid’s criteria API, Mongoid will automatically
 alter the criteria to match the current locale.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Match all products with Marvelous as the description. Locale is en.</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Match all products with Marvelous as the description. Locale is en.</span>
 <span class="no">Product</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="s2">&quot;Marvelous!&quot;</span><span class="p">)</span>
 <span class="c1"># The resulting MongoDB query filter: { &quot;description.en&quot; : &quot;Marvelous!&quot; }</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="indexing">
-<h3>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="indexing">
+<h3>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h3>
 <p>If you plan to be querying extensively on localized fields, you should index each of the
 locales that you plan on searching on.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Product</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Product</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">localize</span><span class="p">:</span> <span class="kp">true</span>
 
@@ -1324,20 +2071,14 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="read-only-attributes">
-<span id="read-only"></span><h2>Read-Only Attributes<a class="headerlink" href="#read-only-attributes" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="read-only-attributes">
+<span id="read-only"></span><h2>Read-Only Attributes<a class="headerlink" href="#read-only-attributes" title="Permalink to this headline">#</a></h2>
 <p>You can tell Mongoid that certain attributes are read-only. This will allow
 documents to be created with these attributes, but changes to them will be
 ignored when using mass update methods such as <code class="docutils literal notranslate"><span class="pre">update_attributes</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
   <span class="n">field</span> <span class="ss">:origin</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">String</span>
@@ -1349,45 +2090,38 @@ copy</a>
 <span class="n">band</span><span class="o">.</span><span class="n">update_attributes</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span> <span class="c1"># Filters out the name change.</span>
 </pre></div>
 </div>
-</div>
 <p>If you explicitly try to update or remove a read-only attribute by itself,
 a <code class="docutils literal notranslate"><span class="pre">ReadonlyAttribute</span></code> exception will be raised:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">update_attribute</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span> <span class="c1"># Raises the error.</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">update_attribute</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s2">&quot;Tool&quot;</span><span class="p">)</span> <span class="c1"># Raises the error.</span>
 <span class="n">band</span><span class="o">.</span><span class="n">remove_attribute</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span> <span class="c1"># Raises the error.</span>
 </pre></div>
 </div>
+<p>Assignments to read-only attributes using their setters will be ignored:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;The Rolling Stones&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Band _id: 6287a3d5d1327a5292535383, name: &quot;The Rolling Stones&quot;, origin: nil&gt;</span>
+<span class="n">b</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;The Smashing Pumpkins&quot;</span>
+<span class="c1"># =&gt; &quot;The Smashing Pumpkins&quot;</span>
+<span class="n">b</span><span class="o">.</span><span class="n">name</span>
+<span class="c1"># =&gt; &quot;The Rolling Stones&quot;</span>
+</pre></div>
 </div>
-</div>
-<div class="section" id="timestamp-fields">
-<h2>Timestamp Fields<a class="headerlink" href="#timestamp-fields" title="Permalink to this headline">¶</a></h2>
+<p>Calls to atomic persistence operators, like <code class="docutils literal notranslate"><span class="pre">bit</span></code> and <code class="docutils literal notranslate"><span class="pre">inc</span></code>, will persist
+changes to readonly fields.</p>
+</section>
+<section id="timestamp-fields">
+<h2>Timestamp Fields<a class="headerlink" href="#timestamp-fields" title="Permalink to this headline">#</a></h2>
 <p>Mongoid supplies a timestamping module in <code class="docutils literal notranslate"><span class="pre">Mongoid::Timestamps</span></code> which
 can be included to get basic behavior for <code class="docutils literal notranslate"><span class="pre">created_at</span></code> and
 <code class="docutils literal notranslate"><span class="pre">updated_at</span></code> fields.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Timestamps</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>You may also choose to only have specific timestamps for creation or
 modification.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Timestamps</span><span class="o">::</span><span class="no">Created</span>
 <span class="k">end</span>
@@ -1398,27 +2132,15 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>If you want to turn off timestamping for specific calls, use the timeless
 method:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">timeless</span><span class="o">.</span><span class="n">save</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">timeless</span><span class="o">.</span><span class="n">save</span>
 <span class="no">Person</span><span class="o">.</span><span class="n">timeless</span><span class="o">.</span><span class="n">create!</span>
 </pre></div>
 </div>
-</div>
 <p>If you’d like shorter timestamp fields with aliases on them to save space,
 you can include the short versions of the modules.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Timestamps</span><span class="o">::</span><span class="no">Short</span> <span class="c1"># For c_at and u_at.</span>
 <span class="k">end</span>
@@ -1434,49 +2156,108 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+<section id="field-names-with-dots-periods-and-dollar-signs">
+<span id="field-names-with-periods-and-dollar-signs"></span><h2>Field Names with Dots/Periods (<code class="docutils literal notranslate"><span class="pre">.</span></code>) and Dollar Signs (<code class="docutils literal notranslate"><span class="pre">$</span></code>)<a class="headerlink" href="#field-names-with-dots-periods-and-dollar-signs" title="Permalink to this headline">#</a></h2>
+<p>Using dots/periods (<code class="docutils literal notranslate"><span class="pre">.</span></code>) in fields names and starting a field name with
+a dollar sign (<code class="docutils literal notranslate"><span class="pre">$</span></code>) is not recommended, as Mongoid provides limited support
+for retrieving and operating on the documents stored in those fields.</p>
+<p>Both Mongoid and MongoDB query language (MQL) generally use the dot/period
+character (<code class="docutils literal notranslate"><span class="pre">.</span></code>) to separate field names in a field path that traverses
+embedded documents, and words beginning with the dollar sign (<code class="docutils literal notranslate"><span class="pre">$</span></code>) as
+operators. MongoDB provides <a class="reference external" href="https://www.mongodb.com/docs/manual/core/dot-dollar-considerations/#std-label-crud-concepts-dot-dollar-considerations">limited support</a>
+for using field names containing dots and starting with the dollar sign
+for interoperability with other software,
+however, due to this support being confined to specific operators
+(e.g. <a href="#id16"><span class="problematic" id="id17">:manual:`getField &lt;/reference/operator/aggregation/getField/&gt;`</span></a>,
+<a href="#id18"><span class="problematic" id="id19">:manual:`setField &lt;/reference/operator/aggregation/setField/&gt;`</span></a>) and
+requiring the usage of the aggregation pipeline for both queries and updates,
+applications should avoid using dots in field names and starting field names
+with the dollar sign if possible.</p>
+<p>Mongoid, starting in version 8, now allows users to access fields that begin with
+dollar signs and that contain dots/periods. They can be accessed using the <code class="docutils literal notranslate"><span class="pre">send</span></code>
+method as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+  <span class="n">field</span> <span class="p">:</span><span class="s2">&quot;first.last&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">String</span>
+  <span class="n">field</span> <span class="p">:</span><span class="s2">&quot;$_amount&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Integer</span>
+<span class="n">end</span>
 
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">first</span>
+<span class="n">user</span><span class="o">.</span><span class="n">send</span><span class="p">(:</span><span class="s2">&quot;first.last&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; Mike.Trout</span>
+<span class="n">user</span><span class="o">.</span><span class="n">send</span><span class="p">(:</span><span class="s2">&quot;$_amount&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; 42650000</span>
+</pre></div>
+</div>
+<p>It is also possible to use <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> to access these fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">read_attribute</span><span class="p">(</span><span class="s2">&quot;first.last&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; Mike.Trout</span>
+</pre></div>
+</div>
+<p>Due to <a class="reference external" href="https://www.mongodb.com/docs/manual/core/dot-dollar-considerations/">server limitations</a>,
+updating and replacing fields containing dots and dollars requires using special
+operators. For this reason, calling setters on these fields is prohibited and
+will raise an error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+  <span class="n">field</span> <span class="p">:</span><span class="s2">&quot;first.last&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">String</span>
+  <span class="n">field</span> <span class="p">:</span><span class="s2">&quot;$_amount&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Integer</span>
+<span class="n">end</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">new</span>
+<span class="n">user</span><span class="o">.</span><span class="n">send</span><span class="p">(:</span><span class="s2">&quot;first.last=&quot;</span><span class="p">,</span> <span class="s2">&quot;Shohei.Ohtani&quot;</span><span class="p">)</span>
+<span class="c1"># raises a InvalidDotDollarAssignment error</span>
+<span class="n">user</span><span class="o">.</span><span class="n">send</span><span class="p">(:</span><span class="s2">&quot;$_amount=&quot;</span><span class="p">,</span> <span class="mi">8500000</span><span class="p">)</span>
+<span class="c1"># raises a InvalidDotDollarAssignment error</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="../schema-configuration.html" title="Previous Section: Schema Configuration"><span>Schema Configuration</span></a>
-      <a class="btn-next-text" href="inheritance.html" title="Next Section: Inheritance"><span>Inheritance</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../schema-configuration.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Schema Configuration</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="inheritance.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Inheritance</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = [];
-  </script></body>
+
+  </body>
 </html>

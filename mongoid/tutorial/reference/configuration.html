@@ -1,317 +1,758 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Configuration &#8212; Mongoid  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Rails Integration" href="rails-integration.html" />
+    <link rel="prev" title="Compatibility" href="compatibility.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mongoid  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../installation-configuration.html">
+   Installation &amp; Configuration
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compatibility.html">
+     Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rails-integration.html">
+     Rails Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-sinatra.html">
+     Getting Started (Sinatra)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-rails.html">
+     Getting Started (Rails)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/documents.html">
+     Documents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../schema-configuration.html">
+   Schema Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fields.html">
+     Field Definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inheritance.html">
+     Inheritance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="associations.html">
+     Associations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-configuration.html">
+     Collection Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexes.html">
+     Index Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sharding.html">
+     Sharding Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../working-with-data.html">
+   Working With Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="queries.html">
+     Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation Pipeline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map/Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="persistence-configuration.html">
+     Persistence Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nested-attributes.html">
+     Nested Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="callbacks.html">
+     Callbacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/mongoid/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.0.html">
+     Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.4.html">
+     Mongoid 7.4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.3.html">
+     Mongoid 7.3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.2.html">
+     Mongoid 7.2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.1.html">
+     Mongoid 7.1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.0.html">
+     Mongoid 7.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-6.html">
+     Mongoid 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-5.html">
+     Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ecosystem.html">
+   Ecosystem
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
-    <title>Configuration</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/reference/configuration.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/reference/configuration/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="Mongoid Manual" href="../index.html" />
-<link rel="up" title="Installation &amp; Configuration" href="../installation-configuration.html" />
-<link rel="next" title="Rails Integration" href="rails-integration.html" />
-<link rel="prev" title="Compatibility" href="compatibility.html" /></head>
-<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Mongoid"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">Mongoid Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="mongoid/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.3">
-                
-                Version 7.3 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.2">
-                
-                Version 7.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.1">
-                
-                Version 7.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.0">
-                
-                Version 7.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.4">
-                
-                Version 6.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.3">
-                
-                Version 6.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.2">
-                
-                Version 6.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.1">
-                
-                Version 6.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/5.4">
-                
-                Version 5.4
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1 current"><a class="reference internal" href="../installation-configuration.html">Installation &amp; Configuration</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2"><a class="reference internal" href="compatibility.html">Compatibility</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="rails-integration.html">Rails Integration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/documents.html">Documents</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../schema-configuration.html">Schema Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="collection-configuration.html">Collection Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="indexes.html">Index Management</a></li><li class="toctree-l2"><a class="reference internal" href="sharding.html">Sharding Configuration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../working-with-data.html">Working With Data</a><ul><li class="toctree-l2"><a class="reference internal" href="crud.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="queries.html">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/configuration.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-default-configuration">
+   Generating Default Configuration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-mongoid-configuration">
+   Loading Mongoid Configuration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mongoid-configuration-options">
+   Mongoid Configuration Options
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#erb-preprocessing">
+   ERb Preprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logging">
+   Logging
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-ruby-on-rails-application">
+     In Ruby on Rails Application
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standalone">
+     Standalone
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-zones">
+   Time Zones
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-sslcontext">
+   Configuring
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SSLContext
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#client-side-encryption">
+   Client-Side Encryption
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-with-forking-servers">
+   Usage with Forking Servers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#puma">
+     Puma
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unicorn">
+     Unicorn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#passenger">
+     Passenger
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query-cache-middleware">
+   Query Cache Middleware
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#development-configuration">
+   Development Configuration
+  </a>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Configuration</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-default-configuration">
+   Generating Default Configuration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-mongoid-configuration">
+   Loading Mongoid Configuration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mongoid-configuration-options">
+   Mongoid Configuration Options
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#erb-preprocessing">
+   ERb Preprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logging">
+   Logging
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-ruby-on-rails-application">
+     In Ruby on Rails Application
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standalone">
+     Standalone
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-zones">
+   Time Zones
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-sslcontext">
+   Configuring
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SSLContext
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#client-side-encryption">
+   Client-Side Encryption
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-with-forking-servers">
+   Usage with Forking Servers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#puma">
+     Puma
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unicorn">
+     Unicorn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#passenger">
+     Passenger
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query-cache-middleware">
+   Query Cache Middleware
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#development-configuration">
+   Development Configuration
+  </a>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/configuration">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="../installation-configuration.html">Installation &amp; Configuration</a><span class="bcpoint"> > </span></li>
-            <li>Configuration</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="configuration">
-<span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+  <section id="configuration">
+<span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#generating-default-configuration" id="id5">Generating Default Configuration</a></li>
-<li><a class="reference internal" href="#loading-mongoid-configuration" id="id6">Loading Mongoid Configuration</a></li>
-<li><a class="reference internal" href="#mongoid-configuration-options" id="id7">Mongoid Configuration Options</a></li>
-<li><a class="reference internal" href="#erb-preprocessing" id="id8">ERb Preprocessing</a></li>
-<li><a class="reference internal" href="#logging" id="id9">Logging</a><ul>
-<li><a class="reference internal" href="#in-ruby-on-rails-application" id="id10">In Ruby on Rails Application</a></li>
-<li><a class="reference internal" href="#standalone" id="id11">Standalone</a></li>
+<li><p><a class="reference internal" href="#generating-default-configuration" id="id6">Generating Default Configuration</a></p></li>
+<li><p><a class="reference internal" href="#loading-mongoid-configuration" id="id7">Loading Mongoid Configuration</a></p></li>
+<li><p><a class="reference internal" href="#mongoid-configuration-options" id="id8">Mongoid Configuration Options</a></p></li>
+<li><p><a class="reference internal" href="#erb-preprocessing" id="id9">ERb Preprocessing</a></p></li>
+<li><p><a class="reference internal" href="#logging" id="id10">Logging</a></p>
+<ul>
+<li><p><a class="reference internal" href="#in-ruby-on-rails-application" id="id11">In Ruby on Rails Application</a></p></li>
+<li><p><a class="reference internal" href="#standalone" id="id12">Standalone</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#time-zones" id="id12">Time Zones</a></li>
-<li><a class="reference internal" href="#configuring-sslcontext" id="id13">Configuring <code class="docutils literal notranslate"><span class="pre">SSLContext</span></code></a></li>
-<li><a class="reference internal" href="#usage-with-forking-servers" id="id14">Usage with Forking Servers</a><ul>
-<li><a class="reference internal" href="#puma" id="id15">Puma</a></li>
-<li><a class="reference internal" href="#unicorn" id="id16">Unicorn</a></li>
-<li><a class="reference internal" href="#passenger" id="id17">Passenger</a></li>
+<li><p><a class="reference internal" href="#time-zones" id="id13">Time Zones</a></p></li>
+<li><p><a class="reference internal" href="#configuring-sslcontext" id="id14">Configuring <code class="docutils literal notranslate"><span class="pre">SSLContext</span></code></a></p></li>
+<li><p><a class="reference internal" href="#client-side-encryption" id="id15">Client-Side Encryption</a></p></li>
+<li><p><a class="reference internal" href="#usage-with-forking-servers" id="id16">Usage with Forking Servers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#puma" id="id17">Puma</a></p></li>
+<li><p><a class="reference internal" href="#unicorn" id="id18">Unicorn</a></p></li>
+<li><p><a class="reference internal" href="#passenger" id="id19">Passenger</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#query-cache-middleware" id="id18">Query Cache Middleware</a></li>
-<li><a class="reference internal" href="#development-configuration" id="id19">Development Configuration</a></li>
+<li><p><a class="reference internal" href="#query-cache-middleware" id="id20">Query Cache Middleware</a></p></li>
+<li><p><a class="reference internal" href="#development-configuration" id="id21">Development Configuration</a></p></li>
 </ul>
 </div>
 <p>Mongoid is customarily configured through a <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> file that specifies
 options and clients. The simplest configuration is as follows, which configures
 Mongoid to talk to a MongoDB server at “localhost:27017” and use the database
 named “mongoid”.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
-  <span class="nt">clients</span><span class="p">:</span>
-    <span class="nt">default</span><span class="p">:</span>
-      <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongoid</span>
-      <span class="nt">hosts</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">localhost:27017</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">clients</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongoid</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hosts</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost:27017</span><span class="w"></span>
 </pre></div>
-</div>
 </div>
 <p>The top level key in the configuration file, <code class="docutils literal notranslate"><span class="pre">development</span></code> in the above
 example, refers to the environment name which the application is executing in,
 i.e. <code class="docutils literal notranslate"><span class="pre">development</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code> or <code class="docutils literal notranslate"><span class="pre">production</span></code>. The third level key,
 <code class="docutils literal notranslate"><span class="pre">default</span></code> in the above example, refers to the Mongo client name.
 Most applications will use a single client named <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
-<div class="section" id="generating-default-configuration">
-<h2>Generating Default Configuration<a class="headerlink" href="#generating-default-configuration" title="Permalink to this headline">¶</a></h2>
+<section id="generating-default-configuration">
+<h2>Generating Default Configuration<a class="headerlink" href="#generating-default-configuration" title="Permalink to this headline">#</a></h2>
 <p>If you are using Ruby on Rails, you can have Mongoid generate a default
 configuration file for you by running the following command:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span>rails g mongoid:config
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rails g mongoid:config
 </pre></div>
-</div>
 </div>
 <p>The configuration file will be placed in <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code>.</p>
 <p>If you are not using Ruby on Rails, you can copy the minimal configuration
 given above and save it as <code class="docutils literal notranslate"><span class="pre">config/mongoid.yml</span></code>.</p>
-</div>
-<div class="section" id="loading-mongoid-configuration">
-<h2>Loading Mongoid Configuration<a class="headerlink" href="#loading-mongoid-configuration" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="loading-mongoid-configuration">
+<h2>Loading Mongoid Configuration<a class="headerlink" href="#loading-mongoid-configuration" title="Permalink to this headline">#</a></h2>
 <p>If you are using Ruby on Rails, Mongoid configuration is automatically loaded
 for the current environment as stored in <code class="docutils literal notranslate"><span class="pre">Rails.env</span></code> when the application
 loads.</p>
 <p>You may need to configure the ORM for your application to be Mongoid by
 adding the following to <code class="docutils literal notranslate"><span class="pre">application.rb</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
   <span class="n">g</span><span class="o">.</span><span class="n">orm</span> <span class="ss">:mongoid</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>If you are not using Ruby on Rails, Mongoid configuration must be loaded
 manually. This can be done via the <code class="docutils literal notranslate"><span class="pre">Mongoid.load!</span></code> method, which takes
 the configuration file path as its argument, as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use automatically detected environment name</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use automatically detected environment name</span>
 <span class="no">Mongoid</span><span class="o">.</span><span class="n">load!</span><span class="p">(</span><span class="s2">&quot;path/to/your/mongoid.yml&quot;</span><span class="p">)</span>
 
 <span class="c1"># Specify environment name manually</span>
 <span class="no">Mongoid</span><span class="o">.</span><span class="n">load!</span><span class="p">(</span><span class="s2">&quot;path/to/your/mongoid.yml&quot;</span><span class="p">,</span> <span class="ss">:production</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <p>When Mongoid is asked to automatically detect the environment name,
 it does so by examining the following sources, in order:</p>
 <ul class="simple">
-<li>If <code class="docutils literal notranslate"><span class="pre">Rails</span></code> top level constant is defined, <code class="docutils literal notranslate"><span class="pre">Rails.env</span></code>.</li>
-<li>If <code class="docutils literal notranslate"><span class="pre">Sinatra</span></code> top level constant is defined, <code class="docutils literal notranslate"><span class="pre">Sinatra::Base.environment</span></code>.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">RACK_ENV</span></code> environment variable.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">MONGOID_ENV</span></code> environment variable.</li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Rails</span></code> top level constant is defined, <code class="docutils literal notranslate"><span class="pre">Rails.env</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Sinatra</span></code> top level constant is defined, <code class="docutils literal notranslate"><span class="pre">Sinatra::Base.environment</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">RACK_ENV</span></code> environment variable.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MONGOID_ENV</span></code> environment variable.</p></li>
 </ul>
 <p>It is also possible to configure Mongoid directly in Ruby, without using
 a configuration file. This configuration style does not support the concept
 of environments - whatever configuration is provided, it is applied to the
 current environment - but it does support defining multiple clients.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">hosts</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;localhost:27017&#39;</span><span class="o">]</span><span class="p">,</span>
     <span class="ss">database</span><span class="p">:</span> <span class="s1">&#39;my_db&#39;</span><span class="p">,</span>
@@ -321,231 +762,363 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Mongoid must be configured <em>before</em> any component of it is used or referenced.
+<p class="admonition-title">Note</p>
+<p>Mongoid must be configured <em>before</em> any component of it is used or referenced.
 Once a component is used or referenced, changing configuration may not apply
 changes to already instantiated components.</p>
 </div>
-</div>
-<div class="section" id="mongoid-configuration-options">
-<span id="configuration-options"></span><h2>Mongoid Configuration Options<a class="headerlink" href="#mongoid-configuration-options" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="mongoid-configuration-options">
+<span id="configuration-options"></span><h2>Mongoid Configuration Options<a class="headerlink" href="#mongoid-configuration-options" title="Permalink to this headline">#</a></h2>
 <p>The following annotated example <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> demonstrates how Mongoid
 can be configured.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
-  <span class="c1"># Configure available database clients. (required)</span>
-  <span class="nt">clients</span><span class="p">:</span>
-    <span class="c1"># Define the default client. (required)</span>
-    <span class="nt">default</span><span class="p">:</span>
-      <span class="c1"># A uri may be defined for a client:</span>
-      <span class="c1"># uri: &#39;mongodb://user:password@myhost1.mydomain.com:27017/my_db&#39;</span>
-      <span class="c1"># Please see driver documentation for details. Alternatively, you can</span>
-      <span class="c1"># define the following:</span>
-      <span class="c1">#</span>
-      <span class="c1"># Define the name of the default database that Mongoid can connect to.</span>
-      <span class="c1"># (required).</span>
-      <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_db</span>
-      <span class="c1"># Provide the hosts the default client can connect to. Must be an array</span>
-      <span class="c1"># of host:port pairs. (required)</span>
-      <span class="nt">hosts</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">myhost1.mydomain.com:27017</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">myhost2.mydomain.com:27017</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">myhost3.mydomain.com:27017</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="c1"># These options are Ruby driver options, documented in</span>
-        <span class="c1"># https://docs.mongodb.com/ruby-driver/current/tutorials/ruby-driver-create-client/</span>
+<p>Mongoid delegates to the Ruby driver for client configuration. Please review
+<a class="reference external" href="https://mongodb.com/docs/ruby-driver/current/reference/create-client/">the driver documentation</a>
+for details on driver options.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Configure available database clients. (required)</span><span class="w"></span>
+<span class="w">  </span><span class="nt">clients</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Define the default client. (required)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># A uri may be defined for a client:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># uri: &#39;mongodb://user:password@myhost1.mydomain.com:27017/my_db&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Please see driver documentation for details. Alternatively, you can</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># define the following:</span><span class="w"></span>
+<span class="w">      </span><span class="c1">#</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Define the name of the default database that Mongoid can connect to.</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># (required).</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_db</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Provide the hosts the default client can connect to. Must be an array</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># of host:port pairs. (required)</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hosts</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myhost1.mydomain.com:27017</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myhost2.mydomain.com:27017</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myhost3.mydomain.com:27017</span><span class="w"></span>
+<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># These options are Ruby driver options, documented in</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># https://mongodb.com/docs/ruby-driver/current/reference/create-client/</span><span class="w"></span>
 
-        <span class="c1"># Change the default write concern. (default = { w: 1 })</span>
-        <span class="nt">write</span><span class="p">:</span>
-          <span class="nt">w</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="c1"># Change the default write concern. (default = { w: 1 })</span><span class="w"></span>
+<span class="w">        </span><span class="nt">write</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">w</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
 
-        <span class="c1"># Change the default read preference. Valid options for mode are: :secondary,</span>
-        <span class="c1"># :secondary_preferred, :primary, :primary_preferred, :nearest</span>
-        <span class="c1"># (default: primary)</span>
-        <span class="nt">read</span><span class="p">:</span>
-          <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:secondary_preferred</span>
-          <span class="nt">tag_sets</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="nt">use</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">        </span><span class="c1"># Change the default read preference. Valid options for mode are: :secondary,</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># :secondary_preferred, :primary, :primary_preferred, :nearest</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># (default: primary)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">read</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">:secondary_preferred</span><span class="w"></span>
+<span class="w">          </span><span class="nt">tag_sets</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">use</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span><span class="w"></span>
 
-        <span class="c1"># The name of the user for authentication.</span>
-        <span class="nt">user</span><span class="p">:</span> <span class="s">&#39;user&#39;</span>
+<span class="w">        </span><span class="c1"># The name of the user for authentication.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;user&#39;</span><span class="w"></span>
 
-        <span class="c1"># The password of the user for authentication.</span>
-        <span class="nt">password</span><span class="p">:</span> <span class="s">&#39;password&#39;</span>
+<span class="w">        </span><span class="c1"># The password of the user for authentication.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;password&#39;</span><span class="w"></span>
 
-        <span class="c1"># The user&#39;s database roles.</span>
-        <span class="nt">roles</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="s">&#39;dbOwner&#39;</span>
+<span class="w">        </span><span class="c1"># The user&#39;s database roles.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">roles</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;dbOwner&#39;</span><span class="w"></span>
 
-        <span class="c1"># Change the default authentication mechanism. Valid options are: :scram,</span>
-        <span class="c1"># :mongodb_cr, :mongodb_x509, and :plain. (default on 3.0 is :scram, default</span>
-        <span class="c1"># on 2.4 and 2.6 is :plain)</span>
-        <span class="nt">auth_mech</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:scram</span>
+<span class="w">        </span><span class="c1"># Change the default authentication mechanism. Please see the</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># driver documentation linked above for details on how to configure</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># authentication. Valid options are :aws, :gssapi, :mongodb_cr,</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># :mongodb_x509, :plain, :scram and :scram256 (default on 3.0</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># and higher servers is :scram, default on 2.6 servers is :plain)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">auth_mech</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">:scram</span><span class="w"></span>
 
-        <span class="c1"># The database or source to authenticate the user against. (default: admin)</span>
-        <span class="nt">auth_source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">        </span><span class="c1"># Specify the auth source, i.e. the database or other source which</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># contains the user&#39;s login credentials. Allowed values for auth source</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># depend on the authentication mechanism, as explained in the server documentation:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># https://mongodb.com/docs/manual/reference/connection-string/#mongodb-urioption-urioption.authSource</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># If no auth source is specified, the default auth source as</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># determined by the driver will be used. Please refer to:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># https://mongodb.com/docs/ruby-driver/current/reference/authentication/#auth-source</span><span class="w"></span>
+<span class="w">        </span><span class="nt">auth_source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span><span class="w"></span>
 
-        <span class="c1"># Force the driver to connect in a specific way instead of auto-</span>
-        <span class="c1"># discovering. Can be one of: :direct, :replica_set, :sharded. Set to :direct</span>
-        <span class="c1"># when connecting to hidden members of a replica set.</span>
-        <span class="nt">connect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:direct</span>
+<span class="w">        </span><span class="c1"># Connect directly to and perform all operations on the specified</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># server, bypassing replica set node discovery and monitoring.</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Exactly one host address must be specified. (default: false)</span><span class="w"></span>
+<span class="w">        </span><span class="c1">#direct_connection: true</span><span class="w"></span>
 
-        <span class="c1"># Change the default time in seconds the server monitors refresh their status</span>
-        <span class="c1"># via ismaster commands. (default: 10)</span>
-        <span class="nt">heartbeat_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="c1"># Deprecated. Force the driver to connect in a specific way instead</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># of automatically discovering the deployment type and connecting</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># accordingly. To connect directly to a replica set node bypassing</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># node discovery and monitoring, use direct_connection: true instead</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># of this option. Possible values: :direct, :replica_set, :sharded.</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># (default: none)</span><span class="w"></span>
+<span class="w">        </span><span class="c1">#connect: :direct</span><span class="w"></span>
 
-        <span class="c1"># The time in seconds for selecting servers for a near read preference. (default: 0.015)</span>
-        <span class="nt">local_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.015</span>
+<span class="w">        </span><span class="c1"># Change the default time in seconds the server monitors refresh their status</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># via hello commands. (default: 10)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">heartbeat_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
 
-        <span class="c1"># The timeout in seconds for selecting a server for an operation. (default: 30)</span>
-        <span class="nt">server_selection_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">        </span><span class="c1"># The time in seconds for selecting servers for a near read preference. (default: 0.015)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">local_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span><span class="w"></span>
 
-        <span class="c1"># The maximum number of connections in the connection pool. (default: 5)</span>
-        <span class="nt">max_pool_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="c1"># The timeout in seconds for selecting a server for an operation. (default: 30)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">server_selection_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span><span class="w"></span>
 
-        <span class="c1"># The minimum number of connections in the connection pool. (default: 1)</span>
-        <span class="nt">min_pool_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="c1"># The maximum number of connections in the connection pool. (default: 5)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">max_pool_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
 
-        <span class="c1"># The time to wait, in seconds, in the connection pool for a connection</span>
-        <span class="c1"># to be checked in before timing out. (default: 1)</span>
-        <span class="nt">wait_queue_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="c1"># The minimum number of connections in the connection pool. (default: 1)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">min_pool_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
 
-        <span class="c1"># The time to wait to establish a connection before timing out, in seconds.</span>
-        <span class="c1"># (default: 10)</span>
-        <span class="nt">connect_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="c1"># The time to wait, in seconds, in the connection pool for a connection</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># to be checked in before timing out. (default: 1)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">wait_queue_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
 
-        <span class="c1"># The timeout to wait to execute operations on a socket before raising an error.</span>
-        <span class="c1"># (default: nil)</span>
-        <span class="nt">socket_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="c1"># The time to wait to establish a connection before timing out, in seconds.</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># (default: 10)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">connect_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
 
-        <span class="c1"># The name of the replica set to connect to. Servers provided as seeds that do</span>
-        <span class="c1"># not belong to this replica set will be ignored.</span>
-        <span class="nt">replica_set</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_replica_set</span>
+<span class="w">        </span><span class="c1"># How long to wait for a response for each operation sent to the</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># server. This timeout should be set to a value larger than the</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># processing time for the longest operation that will be executed</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># by the application. Note that this is a client-side timeout;</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># the server may continue executing an operation after the client</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># aborts it with the SocketTimeout exception.</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># (default: nil, meaning no timeout)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">socket_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
 
-        <span class="c1"># Whether to connect to the servers via ssl. (default: false)</span>
-        <span class="nt">ssl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="c1"># The name of the replica set to connect to. Servers provided as seeds that do</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># not belong to this replica set will be ignored.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">replica_set</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_replica_set</span><span class="w"></span>
 
-        <span class="c1"># The certificate file used to identify the connection against MongoDB.</span>
-        <span class="nt">ssl_cert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/my.cert</span>
+<span class="w">        </span><span class="c1"># Whether to connect to the servers via ssl. (default: false)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-        <span class="c1"># The private keyfile used to identify the connection against MongoDB.</span>
-        <span class="c1"># Note that even if the key is stored in the same file as the certificate,</span>
-        <span class="c1"># both need to be explicitly specified.</span>
-        <span class="nt">ssl_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/my.key</span>
+<span class="w">        </span><span class="c1"># The certificate file used to identify the connection against MongoDB.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ssl_cert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/my.cert</span><span class="w"></span>
 
-        <span class="c1"># A passphrase for the private key.</span>
-        <span class="nt">ssl_key_pass_phrase</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">        </span><span class="c1"># The private keyfile used to identify the connection against MongoDB.</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Note that even if the key is stored in the same file as the certificate,</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># both need to be explicitly specified.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ssl_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/my.key</span><span class="w"></span>
 
-        <span class="c1"># Whether or not to do peer certification validation. (default: true)</span>
-        <span class="nt">ssl_verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="c1"># A passphrase for the private key.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ssl_key_pass_phrase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
 
-        <span class="c1"># The file containing a set of concatenated certification authority certifications</span>
-        <span class="c1"># used to validate certs passed from the other end of the connection.</span>
-        <span class="nt">ssl_ca_cert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/ca.cert</span>
+<span class="w">        </span><span class="c1"># Whether or not to do peer certification validation. (default: true)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ssl_verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-        <span class="c1"># Compressors to use. (default is to not use compression)</span>
-        <span class="nt">compressors</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">zlib</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="c1"># The file containing a set of concatenated certification authority certifications</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># used to validate certs passed from the other end of the connection.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ssl_ca_cert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/ca.cert</span><span class="w"></span>
 
-  <span class="c1"># Configure Mongoid specific options. (optional)</span>
-  <span class="nt">options</span><span class="p">:</span>
-    <span class="c1"># Application name that is printed to the mongodb logs upon establishing</span>
-    <span class="c1"># a connection in server versions &gt;= 3.4. Note that the name cannot</span>
-    <span class="c1"># exceed 128 bytes. It is also used as the database name if the</span>
-    <span class="c1"># database name is not explicitly defined. (default: nil)</span>
-    <span class="nt">app_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyApplicationName</span>
+<span class="w">        </span><span class="c1"># Compressors to use. (default is to not use compression)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">compressors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">zlib</span><span class="p p-Indicator">]</span><span class="w"></span>
 
-    <span class="c1"># Create indexes in background by default. (default: false)</span>
-    <span class="nt">background_indexing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="c1"># Configure Mongoid-specific options. (optional)</span><span class="w"></span>
+<span class="w">  </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Application name that is printed to the MongoDB logs upon establishing</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># a connection in server versions 3.4 or greater. Note that the name</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># cannot exceed 128 bytes in length. It is also used as the database name</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># if the database name is not explicitly defined. (default: nil)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyApplicationName</span><span class="w"></span>
 
-    <span class="c1"># Mark belongs_to associations as required by default, so that saving a</span>
-    <span class="c1"># model with a missing belongs_to association will trigger a validation</span>
-    <span class="c1"># error. (default: true)</span>
-    <span class="nt">belongs_to_required_by_default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="c1"># Mark belongs_to associations as required by default, so that saving a</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># model with a missing belongs_to association will trigger a validation</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># error. (default: true)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">belongs_to_required_by_default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-    <span class="c1"># Set the global discriminator key. (default: &quot;_type&quot;)</span>
-    <span class="nt">discriminator_key</span><span class="p">:</span> <span class="s">&quot;_type&quot;</span>
+<span class="w">    </span><span class="c1"># Maintain broken behavior of sum over empty result sets for backwards</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># compatibility. When calculating a sum on a field with a null context,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># for example:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Product.none.sum(:price)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ... return field name (`:price&#39;) instead of 0.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># When calculating a sum via a database query with an empty result set,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># for example:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Product.where(impossible_condition: true).sum(:price)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ... return nil instead of 0.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#broken_aggregables: true</span><span class="w"></span>
 
-    <span class="c1"># Raise an exception when a field is redefined. (default: false)</span>
-    <span class="nt">duplicate_fields_exception</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Ignore aliased fields in embedded documents when performing pluck and</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># distinct operations, for backwards compatibility.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#broken_alias_handling: true</span><span class="w"></span>
 
-    <span class="c1"># Include the root model name in json serialization. (default: false)</span>
-    <span class="nt">include_root_in_json</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Maintain broken `and&#39; method behavior that existed in Mongoid 7.3</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># and earlier for backwards compatibility: in some situations, conditions</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># already present in a Criteria object would be replaced by newer</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># conditions when `and&#39; method is used instead of the new conditions</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># being added to the existing conditions. This would happen when using</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># the same operator on the same field multiple times. For example:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Band.where(id: 1).and({year: {&#39;$in&#39; =&gt; [2020]}}, {year: {&#39;$in&#39; =&gt; [2021]}}).where(id: 2)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># yields the following criteria:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># &lt;Mongoid::Criteria</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># selector: {&quot;_id&quot;=&gt;1, &quot;year&quot;=&gt;{&quot;$in&quot;=&gt;[2020]}, &quot;$and&quot;=&gt;[{&quot;_id&quot;=&gt;2}]}</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># options:  {}</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># class:    Band</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># embedded: false&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># This is obviously incorrect as the {&quot;$in&quot;=&gt;[2021]} clause is lost.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Notice that the clause is only lost when both clauses are added using</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># the #and method.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#broken_and: true</span><span class="w"></span>
 
-    <span class="c1"># Include the _type field in serialization. (default: false)</span>
-    <span class="nt">include_type_for_serialization</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># When exiting a nested `with_scope&#39; block, set the current scope to</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># nil instead of the parent scope for backwards compatibility.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#broken_scoping: true</span><span class="w"></span>
 
-    <span class="c1"># Whether to join nested persistence contexts for atomic operations</span>
-    <span class="c1"># to parent contexts by default. (default: false)</span>
-    <span class="nt">join_contexts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Maintain broken update behavior in some cases for backwards</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># compatibility.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># In Mongoid 7.3 and earlier, when assigning a value to an embedded</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># document, then setting it to nil, then assigning the original value</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># to it again, the second update would not work and the value for the</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># embedded document would remain nil. Take this case:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># canvas.palette = palette</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># canvas.palette = nil</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># canvas.palette = palette</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ... where canvas embeds_one palette.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># In Mongoid 7.3 and earlier, canvas.palette would be nil when we would</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># expect it to be palette. Set this option to true to keep this behavior,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># set the option to false to perform the second update correctly.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#broken_updates: true</span><span class="w"></span>
 
-    <span class="c1"># Set the Mongoid and Ruby driver log levels when Mongoid is not using</span>
-    <span class="c1"># Ruby on Rails logger instance. (default: :info)</span>
-    <span class="nt">log_level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:info</span>
+<span class="w">    </span><span class="c1"># Time objects in Ruby have nanosecond precision, whereas MongoDB server</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># can only store times with millisecond precision. Set this option to</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># true to truncate times to millisecond precision when performing</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># queries on already loaded embedded associations (this is also called</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># &quot;embedded matching&quot; and is done completely in Ruby), to obtain the</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># same query results when performing time comparisons regardless of</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># which documents are being queried. Setting this option to false will</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># produce different results for queries on embedded associations that</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># are already loaded into memory vs queries on unloaded associations and</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># top-level models. (default: true)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#compare_time_by_ms: false</span><span class="w"></span>
 
-    <span class="c1"># Preload all models in development, needed when models use</span>
-    <span class="c1"># inheritance. (default: false)</span>
-    <span class="nt">preload_models</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Set the global discriminator key. (default: &quot;_type&quot;)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">discriminator_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;_type&quot;</span><span class="w"></span>
 
-    <span class="c1"># Raise an error when performing a #find and the document is not found.</span>
-    <span class="c1"># (default: true)</span>
-    <span class="nt">raise_not_found_error</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="c1"># Raise an exception when a field is redefined. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">duplicate_fields_exception</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 
-    <span class="c1"># Raise an error when defining a scope with the same name as an</span>
-    <span class="c1"># existing method. (default: false)</span>
-    <span class="nt">scope_overwrite_exception</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Include the root model name in json serialization. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">include_root_in_json</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 
-    <span class="c1"># Use ActiveSupport&#39;s time zone in time operations instead of</span>
-    <span class="c1"># the Ruby default time zone. See the time zone section below for</span>
-    <span class="c1"># further information. (default: true)</span>
-    <span class="nt">use_activesupport_time_zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="c1"># Include the _type field in serialization. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">include_type_for_serialization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 
-    <span class="c1"># Return stored times as UTC. See the time zone section below for</span>
-    <span class="c1"># further information. Most applications should not use this option.</span>
-    <span class="c1"># (default: false)</span>
-    <span class="nt">use_utc</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Whether to join nested persistence contexts for atomic operations</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># to parent contexts by default. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">join_contexts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># When this flag is true, the attributes method on a document will return</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># a BSON::Document when that document is retrieved from the database, and</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># a Hash otherwise. When this flag is false, the attributes method will</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># always return a Hash. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#legacy_attributes: true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Maintain legacy behavior of pluck and distinct, which does not demongoize</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># values on returning them. Setting this option to false will cause</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># pluck and distinct to return demongoized values. Setting this option to</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># false will also allow retrieving *_translations fields from pluck and</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># distinct and will return embedded values themselves (i.e. without</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># putting them in a hash).</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#legacy_pluck_distinct: true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Maintain legacy behavior of === on Mongoid document classes, which</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># returns true in a number of cases where Ruby&#39;s === implementation would</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># return false. Note that the behavior of === on Mongoid document</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># instances differs from both the behavior of === on document classes</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># and from Ruby&#39;s behavior of === on simple object instances regardless</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># of the value of this option.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#legacy_triple_equals: true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Set the Mongoid and Ruby driver log levels when Mongoid is not using</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Ruby on Rails logger instance. (default: :info)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">:info</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># When using the BigDecimal field type, store the value in the database</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># as a BSON::Decimal128 instead of a string. (default: true)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#map_big_decimal_to_decimal128: true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Force ``BSON::ObjectId#as_json`` method to return the hash</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># { &quot;$oid&quot; =&gt; id.to_s }. When this option is false, and bson-ruby 5</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># is used, the return value will be the hexadecimal ObjectId string only.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#object_id_as_json_oid: true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># When chaining the same operators that use the same field, setting this</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># feature flag to false will cause those operators to be combined using an</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># and. Setting this feature flag to true will cause the later chained</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># operators to overwrite the earlier ones. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#overwrite_chained_operators: false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Preload all models in development, needed when models use</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># inheritance. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">preload_models</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Raise an error when performing a #find and the document is not found.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: true)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">raise_not_found_error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Raise an error when defining a scope with the same name as an</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># existing method. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">scope_overwrite_exception</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Use ActiveSupport&#39;s time zone in time operations instead of</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># the Ruby default time zone. See the time zone section below for</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># further information. (default: true)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">use_activesupport_time_zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Return stored times as UTC. See the time zone section below for</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># further information. Most applications should not use this option.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">use_utc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># (Deprecated) In MongoDB 4.0 and earlier, set whether to create</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># indexes in the background by default. (default: false)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">background_indexing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<p>The Ruby driver options may be found in
-<a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/tutorials/ruby-driver-create-client/">the driver documentation</a>.</p>
-</div>
-<div class="section" id="erb-preprocessing">
-<h2>ERb Preprocessing<a class="headerlink" href="#erb-preprocessing" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="erb-preprocessing">
+<h2>ERb Preprocessing<a class="headerlink" href="#erb-preprocessing" title="Permalink to this headline">#</a></h2>
 <p>When loading a configuration file, Mongoid processes it with ERb before
 parsing it as YAML. This allows, for example, constructing the contents of
 the configuration file at runtime based on environment variables:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
-  <span class="nt">clients</span><span class="p">:</span>
-    <span class="nt">default</span><span class="p">:</span>
-      <span class="nt">uri</span><span class="p">:</span> <span class="s">&quot;&lt;%=</span><span class="nv"> </span><span class="s">ENV[&#39;MONGODB_URI&#39;]</span><span class="nv"> </span><span class="s">%&gt;&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">clients</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;%=</span><span class="nv"> </span><span class="s">ENV[&#39;MONGODB_URI&#39;]</span><span class="nv"> </span><span class="s">%&gt;&quot;</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When outputting values from ERb, ensure the values are valid YAML and
+<p class="admonition-title">Note</p>
+<p>When outputting values from ERb, ensure the values are valid YAML and
 escape them as needed.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Since ERb rendering is performed prior to YAML parsing, all ERb directives
+<p class="admonition-title">Note</p>
+<p>Since ERb rendering is performed prior to YAML parsing, all ERb directives
 in the configuration file are evaluated, including those occurring in YAML
 comments.</p>
 </div>
-</div>
-<div class="section" id="logging">
-<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">#</a></h2>
 <p>When configuring logging, it is important to keep in mind that Mongoid
 provides a model layer on top of the MongoDB Ruby driver, and the driver
 dispatches the CRUD operations to the MongoDB deployment. Therefore, some
@@ -554,65 +1127,42 @@ itself, and some comes from the driver.</p>
 <p>The Mongo client is a Ruby driver client instance, therefore
 the logger of a Mongo client is the Ruby driver logger, not the Mongoid
 logger. In other words:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ruby driver logger, not Mongoid logger</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ruby driver logger, not Mongoid logger</span>
 <span class="no">Mongoid</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="ss">:default</span><span class="p">)</span><span class="o">.</span><span class="n">logger</span>
 </pre></div>
-</div>
 </div>
 <p>Depending on whether Mongoid is used in a Ruby on Rails application, and how
 both Mongoid and Ruby driver are configured, they may use the same logger
 instance or different instances, potentially with different configurations.</p>
-<div class="section" id="in-ruby-on-rails-application">
-<h3>In Ruby on Rails Application<a class="headerlink" href="#in-ruby-on-rails-application" title="Permalink to this headline">¶</a></h3>
+<section id="in-ruby-on-rails-application">
+<h3>In Ruby on Rails Application<a class="headerlink" href="#in-ruby-on-rails-application" title="Permalink to this headline">#</a></h3>
 <p>When used in a Ruby on Rails application, Mongoid by default inherits
 the logger and the log level from Rails, and sets the driver’s logger
 to the same logger instance:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">logger</span> <span class="o">===</span> <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">logger</span> <span class="o">===</span> <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span>
 <span class="c1"># =&gt; true</span>
 
 <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span> <span class="o">===</span> <span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span>
 <span class="c1"># =&gt; true</span>
 </pre></div>
 </div>
-</div>
 <p>To change the log level, use <a class="reference external" href="https://guides.rubyonrails.org/debugging_rails_applications.html#log-levels">standard Rails configuration</a>.
 Place the following in one of environment configuration files, such as
 <code class="docutils literal notranslate"><span class="pre">config/environments/production.rb</span></code>:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
   <span class="n">config</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="ss">:debug</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">log_level</span></code> Mongoid <a class="reference external" href="configuration-options">configuration option</a>
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">log_level</span></code> Mongoid <a class="reference external" href="configuration-options">configuration option</a>
 is not used when Mongoid operates in a Rails application, because Mongoid
 inherits Rails’ log level in this case.</p>
 </div>
 <p>To configure either Mongoid or driver logger differently from the Rails logger,
 use an initializer as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span>
   <span class="n">config</span><span class="o">.</span><span class="n">after_initialize</span> <span class="k">do</span>
     <span class="c1"># Change Mongoid log destination and/or level</span>
     <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
@@ -627,10 +1177,9 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">There is currently no provision in the Ruby standard library <code class="docutils literal notranslate"><span class="pre">Logger</span></code>
+<p class="admonition-title">Note</p>
+<p>There is currently no provision in the Ruby standard library <code class="docutils literal notranslate"><span class="pre">Logger</span></code>
 to return the log device (i.e. the <code class="docutils literal notranslate"><span class="pre">IO</span></code> object) that a logger is using.
 To have, for example, Mongoid and/or the Ruby driver log to the
 standard Rails log file (e.g. <code class="docutils literal notranslate"><span class="pre">log/development.log</span></code>) but with a
@@ -639,99 +1188,63 @@ file must be opened separately and the resulting <code class="docutils literal n
 the <code class="docutils literal notranslate"><span class="pre">Logger</span></code> constructor.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Since by default Mongoid sets its own logger and the driver’s logger to the
 same instance as the Rails logger, modifying any of the instances affects
 all of them. For example the following changes log level for all three
 loggers, unless the application assigned a separate <code class="docutils literal notranslate"><span class="pre">Logger</span></code> instance
 to <cite>Mongo::Logger.logger`</cite> as described above:</p>
-<div class="last button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="standalone">
-<h3>Standalone<a class="headerlink" href="#standalone" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="standalone">
+<h3>Standalone<a class="headerlink" href="#standalone" title="Permalink to this headline">#</a></h3>
 <p>When not loaded in a Ruby on Rails application, Mongoid respects the
 <code class="docutils literal notranslate"><span class="pre">log_level</span></code> top level <a class="reference external" href="configuration-options">configuration option</a>.
 It can be given in the configuration file as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
-  <span class="nt">clients</span><span class="p">:</span>
-    <span class="nt">default</span><span class="p">:</span>
-      <span class="c1"># ...</span>
-  <span class="nt">options</span><span class="p">:</span>
-    <span class="nt">log_level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">:debug</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">clients</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># ...</span><span class="w"></span>
+<span class="w">  </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">:debug</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
 <p>… or when configuring Mongoid inline:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="ss">:debug</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>The default log destination in Mongoid 7.1 and higher is standard error.
 The default log destination in Mongoid 7.0 and lower is standard output.
 To change the log destination, create a new logger instance as follows:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
   <span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
 <span class="k">end</span>
 </pre></div>
-</div>
 </div>
 <p>To change the Ruby driver log level or destination:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">)</span><span class="o">.</span><span class="n">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">logger</span><span class="o">|</span>
   <span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
 <p>To set the driver logger to be the same as the Mongoid logger:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Logger</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Mongoid</span><span class="o">.</span><span class="n">logger</span>
 </pre></div>
 </div>
-</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Mongoid does not alter the driver’s logger when running in
+<p class="admonition-title">Note</p>
+<p>Mongoid does not alter the driver’s logger when running in
 standalone mode.</p>
 </div>
-</div>
-</div>
-<div class="section" id="time-zones">
-<span id="id3"></span><h2>Time Zones<a class="headerlink" href="#time-zones" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="time-zones">
+<span id="id3"></span><h2>Time Zones<a class="headerlink" href="#time-zones" title="Permalink to this headline">#</a></h2>
 <p>Ruby has limited time zone support in the standard library. ActiveSupport
 (which Mongoid depends on) offers more comprehensive time zone support.
 Importantly, Ruby and ActiveSupport may be configured with different default
@@ -740,26 +1253,15 @@ time zones.</p>
 of this tutorial, the easiest and most reliable way of achieving correct
 time zone handling is as follows:</p>
 <ol class="arabic simple">
-<li>Set the operating system’s time zone to UTC. For example, on Linux:</li>
+<li><p>Set the operating system’s time zone to UTC. For example, on Linux:</p></li>
 </ol>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-bash notranslate"><div class="highlight"><pre><span></span>cp /usr/share/zoneinfo/UTC /etc/localtime
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp /usr/share/zoneinfo/UTC /etc/localtime
 </pre></div>
 </div>
-</div>
 <ol class="arabic simple" start="2">
-<li>Set ActiveSupport’s time zone to UTC:</li>
+<li><p>Set ActiveSupport’s time zone to UTC:</p></li>
 </ol>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># If using Rails, in application.rb:</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># If using Rails, in application.rb:</span>
 <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
   <span class="n">config</span><span class="o">.</span><span class="n">time_zone</span> <span class="o">=</span> <span class="s1">&#39;UTC&#39;</span>
 <span class="k">end</span>
@@ -768,18 +1270,17 @@ copy</a>
 <span class="no">Time</span><span class="o">.</span><span class="n">zone</span> <span class="o">=</span> <span class="s1">&#39;UTC&#39;</span>
 </pre></div>
 </div>
-</div>
 <ol class="arabic simple" start="3">
-<li>Store and persist all times in UTC. Perform all calculations on times
-in UTC.</li>
-<li>When working with user input in local time, convert such user input to UTC
-times as soon as possible, and then work with the UTC times.</li>
-<li>When rendering or otherwise presenting times, convert them to local time
-after performing all calculations, when actually rendering.</li>
-<li>Date to time (for example, the time when a particular day starts or ends)
+<li><p>Store and persist all times in UTC. Perform all calculations on times
+in UTC.</p></li>
+<li><p>When working with user input in local time, convert such user input to UTC
+times as soon as possible, and then work with the UTC times.</p></li>
+<li><p>When rendering or otherwise presenting times, convert them to local time
+after performing all calculations, when actually rendering.</p></li>
+<li><p>Date to time (for example, the time when a particular day starts or ends)
 conversions are a common source of errors. Such conversions should generally
 be performed while explicitly specifying the time zone in which the date
-is understood to be.</li>
+is understood to be.</p></li>
 </ol>
 <p>Applications using Mongoid should generally configure ActiveSupport’s
 time zone as described above, and then use <code class="docutils literal notranslate"><span class="pre">Time.zone</span></code> rather than <code class="docutils literal notranslate"><span class="pre">Time</span></code>
@@ -789,7 +1290,7 @@ when the system time zone is not UTC, as is common in development environments.<
 <p>Note that MongoDB stores all times in UTC without time zone information.</p>
 <p>Mongoid offers the following time zone-related configuration options:</p>
 <ul>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code>: If true, prefer to work with times using
+<li><p><code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code>: If true, prefer to work with times using
 <code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code>. Values in fields of type <code class="docutils literal notranslate"><span class="pre">Time</span></code>
 will be returned as instances of <code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code>.
 When parsing times without time zone information (such as when
@@ -806,7 +1307,7 @@ fields of types <code class="docutils literal notranslate"><span class="pre">Dat
 <code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code> classes internally, as appropriate,
 regardless of the <code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code> setting.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">use_utc</span></code>:
+<li><p><code class="docutils literal notranslate"><span class="pre">use_utc</span></code>:
 If true, times stored in MongoDB will be returned in UTC.
 If false, times stored in MongoDB will be returned in local time
 (as instances of either <code class="docutils literal notranslate"><span class="pre">Time</span></code> or <code class="docutils literal notranslate"><span class="pre">ActiveSupport::TimeWithZone</span></code>,
@@ -828,9 +1329,9 @@ throw away time zone information when it is available. For example, a Time
 instance does have an associated time zone, and this time zone will be used
 even if it is different from ActiveSupport’s configured time zone when
 <code class="docutils literal notranslate"><span class="pre">use_activesupport_time_zone</span></code> is true.</p>
-</div>
-<div class="section" id="configuring-sslcontext">
-<h2>Configuring <code class="docutils literal notranslate"><span class="pre">SSLContext</span></code><a class="headerlink" href="#configuring-sslcontext" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="configuring-sslcontext">
+<h2>Configuring <code class="docutils literal notranslate"><span class="pre">SSLContext</span></code><a class="headerlink" href="#configuring-sslcontext" title="Permalink to this headline">#</a></h2>
 <p>It may be desirable to further configure TLS options in your application, for
 example by enabling or disabling certain ciphers.</p>
 <p>This can be done by setting TLS context hooks on the Ruby driver – TLS context
@@ -840,12 +1341,7 @@ hooks are user-provided <code class="docutils literal notranslate"><span class="
 <p>To set TLS context hooks, add <code class="docutils literal notranslate"><span class="pre">Proc``s</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">``Mongo.tls_context_hooks</span></code>
 array. This can be done in an initializer. The example below adds a hook
 that only enables the “AES256-SHA” cipher.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">.</span><span class="n">tls_context_hooks</span><span class="o">.</span><span class="n">push</span><span class="p">(</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">.</span><span class="n">tls_context_hooks</span><span class="o">.</span><span class="n">push</span><span class="p">(</span>
   <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">context</span><span class="o">|</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ciphers</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;AES256-SHA&quot;</span><span class="o">]</span>
   <span class="p">}</span>
@@ -853,7 +1349,6 @@ copy</a>
 
 <span class="c1"># Only the AES256-SHA cipher will be enabled from this point forward</span>
 </pre></div>
-</div>
 </div>
 <p>Every <code class="docutils literal notranslate"><span class="pre">Proc</span></code> in <code class="docutils literal notranslate"><span class="pre">Mongo.tls_context_hooks</span></code> will be passed an
 <code class="docutils literal notranslate"><span class="pre">OpenSSL::SSL::SSLContext</span></code> object as its sole argument. These procs will
@@ -864,14 +1359,47 @@ in an application.
 </pre></div>
 </div>
 <p>For more information about TLS context hooks, including best practices for
-assigning and removing them, see <a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/tutorials/ruby-driver-create-client/#modifying-sslcontext">the Ruby driver documentation</a>.</p>
+assigning and removing them, see <a class="reference external" href="https://mongodb.com/docs/ruby-driver/current/reference/create-client/#modifying-sslcontext">the Ruby driver documentation</a>.</p>
+</section>
+<section id="client-side-encryption">
+<h2>Client-Side Encryption<a class="headerlink" href="#client-side-encryption" title="Permalink to this headline">#</a></h2>
+<p>When loading the configuration file, Mongoid permits the file to contain
+<code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code> instances which are used for specifying <code class="docutils literal notranslate"><span class="pre">keyId</span></code> in
+the schema map for <a class="reference external" href="https://www.mongodb.com/docs/ruby-driver/current/reference/client-side-encryption/">client-side encryption</a>,
+as the following example shows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">clients</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blog_development</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">localhost</span><span class="p p-Indicator">:</span><span class="nv">27017</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">auto_encryption_options</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">key_vault_namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;keyvault.datakeys&#39;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">kms_providers</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">local</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;z7iYiYKLuYymEWtk4kfny1ESBwwFdA58qMqff96A8ghiOcIK75lJGPUIocku8LOFjQuEgeIP4xlln3s7r93FV9J5sAE7zg8U&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">schema_map</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">blog_development.comments</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">message</span><span class="p">:</span><span class="w"></span>
+<span class="w">                  </span><span class="nt">encrypt</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">keyId</span><span class="p">:</span><span class="w"></span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!ruby/object:BSON::Binary</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="kt">!binary</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">                          </span><span class="no">R/AgNcxASFiiJWKXqWGo5w==</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">:uuid</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">bsonType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AEAD_AES_256_CBC_HMAC_SHA_512-Deterministic&quot;</span><span class="w"></span>
+<span class="w">              </span><span class="nt">bsonType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="w"></span>
+</pre></div>
 </div>
-<div class="section" id="usage-with-forking-servers">
-<h2>Usage with Forking Servers<a class="headerlink" href="#usage-with-forking-servers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="usage-with-forking-servers">
+<h2>Usage with Forking Servers<a class="headerlink" href="#usage-with-forking-servers" title="Permalink to this headline">#</a></h2>
 <p>When using Mongoid with a forking web server such as Puma, Unicorn or
 Passenger, it is recommended to not perform any operations on Mongoid models
 in the parent process prior to the fork.</p>
-<p>When a process forks, Ruby threads are not transfered to the child processes
+<p>When a process forks, Ruby threads are not transferred to the child processes
 and the Ruby driver Client objects lose their background monitoring. The
 application will typically seem to work just fine until the deployment
 state changes (for example due to network errors, a maintenance event) at
@@ -887,22 +1415,17 @@ client and does not close it, the parent process will continue consuming a
 connection slot in the cluster and will continue monitoring the cluster for
 as long as the parent remains alive.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The close/reconnect pattern described here should be used with Ruby driver
+<p class="admonition-title">Note</p>
+<p>The close/reconnect pattern described here should be used with Ruby driver
 version 2.6.2 or higher. Previous driver versions did not recreate
 monitoring threads when reconnecting.</p>
 </div>
-<div class="section" id="puma">
-<h3>Puma<a class="headerlink" href="#puma" title="Permalink to this headline">¶</a></h3>
+<section id="puma">
+<h3>Puma<a class="headerlink" href="#puma" title="Permalink to this headline">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">on_worker_boot</span></code> hook to reconnect clients in the workers and
 the <code class="docutils literal notranslate"><span class="pre">before_fork</span></code> hook to close clients in the parent process
 (<a class="reference external" href="https://puma.io/puma/">Puma documentation</a>):</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">on_worker_boot</span> <span class="k">do</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">on_worker_boot</span> <span class="k">do</span>
   <span class="no">Mongoid</span><span class="o">::</span><span class="no">Clients</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">client</span><span class="o">|</span>
     <span class="n">client</span><span class="o">.</span><span class="n">close</span>
     <span class="n">client</span><span class="o">.</span><span class="n">reconnect</span>
@@ -914,19 +1437,13 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="unicorn">
-<h3>Unicorn<a class="headerlink" href="#unicorn" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="unicorn">
+<h3>Unicorn<a class="headerlink" href="#unicorn" title="Permalink to this headline">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">after_fork</span></code> hook to reconnect clients in the workers and
 the <code class="docutils literal notranslate"><span class="pre">before_fork</span></code> hook to close clients in the parent process
 (<a class="reference external" href="https://yhbt.net/unicorn/Unicorn/Configurator.html">Unicorn documentation</a>):</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">after_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">after_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
   <span class="no">Mongoid</span><span class="o">::</span><span class="no">Clients</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">client</span><span class="o">|</span>
     <span class="n">client</span><span class="o">.</span><span class="n">close</span>
     <span class="n">client</span><span class="o">.</span><span class="n">reconnect</span>
@@ -938,20 +1455,14 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="passenger">
-<h3>Passenger<a class="headerlink" href="#passenger" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="passenger">
+<h3>Passenger<a class="headerlink" href="#passenger" title="Permalink to this headline">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">starting_worker_process</span></code> hook to reconnect clients in the workers
 (<a class="reference external" href="https://www.phusionpassenger.com/library/indepth/ruby/spawn_methods/#unintentional-file-descriptor-sharing">Passenger documentation</a>).
 Passenger does not appear to have a hook that is invoked in the parent process
 before the workers are forked.</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="no">PhusionPassenger</span><span class="p">)</span>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="no">PhusionPassenger</span><span class="p">)</span>
   <span class="no">PhusionPassenger</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="ss">:starting_worker_process</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">forked</span><span class="o">|</span>
     <span class="no">Mongoid</span><span class="o">::</span><span class="no">Clients</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">client</span><span class="o">|</span>
       <span class="n">client</span><span class="o">.</span><span class="n">close</span>
@@ -961,104 +1472,95 @@ copy</a>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="query-cache-middleware">
-<span id="id4"></span><h2>Query Cache Middleware<a class="headerlink" href="#query-cache-middleware" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="query-cache-middleware">
+<span id="id5"></span><h2>Query Cache Middleware<a class="headerlink" href="#query-cache-middleware" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When used with Ruby driver version 2.15 or newer, Mongoid’s query cache
-middleware delegates to <a class="reference external" href="https://docs.mongodb.com/ruby-driver/master/tutorials/query-cache/#query-cache-middleware" title="(in ruby-manual vmaster)"><span class="xref std std-ref">the driver’s query cache middleware</span></a>.</p>
+<p class="admonition-title">Note</p>
+<p>When used with Ruby driver version 2.15 or newer, Mongoid’s Query Cache
+Middleware delegates to <span class="xref std std-ref">the driver’s Query Cache Middleware</span>.</p>
 </div>
-<p>Mongoid provides a Rack middleware which enables the <a class="reference internal" href="queries.html#query-cache"><span class="std std-ref">query cache</span></a> for the duration of each web request. Below is an example of
-how to enable the query cache middleware in a Ruby on Rails application:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/application.rb</span>
+<p>Mongoid provides a Rack middleware which enables the <a class="reference internal" href="queries.html#query-cache"><span class="std std-ref">Query Cache</span></a> for the duration of each web request. Below is an example of
+how to enable the Query Cache Middleware in a Ruby on Rails application:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/application.rb</span>
 
 <span class="c1"># Add Mongoid::QueryCache::Middleware at the bottom of the middleware stack</span>
 <span class="c1"># or before other middleware that queries MongoDB.</span>
 <span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">use</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">QueryCache</span><span class="o">::</span><span class="no">Middleware</span>
 </pre></div>
 </div>
-</div>
 <p>Please refer to the <a class="reference external" href="https://guides.rubyonrails.org/rails_on_rack.html#configuring-middleware-stack">Rails on Rack guide</a>
 for more information about using Rack middleware in Rails applications.</p>
-</div>
-<div class="section" id="development-configuration">
-<h2>Development Configuration<a class="headerlink" href="#development-configuration" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="development-configuration">
+<h2>Development Configuration<a class="headerlink" href="#development-configuration" title="Permalink to this headline">#</a></h2>
 <p>Driver’s default configuration is suitable for production deployment.
 In development, some settings can be adjusted to provide a better developer
 experience.</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">:server_selection_timeout</span></code>: set this to a low value (e.g., <code class="docutils literal notranslate"><span class="pre">1</span></code>)
+<li><p><code class="docutils literal notranslate"><span class="pre">:server_selection_timeout</span></code>: set this to a low value (e.g., <code class="docutils literal notranslate"><span class="pre">1</span></code>)
 if your MongoDB server is running locally and you start it manually. A low
 server selection timeout will cause the driver to fail quickly when there is
-no server running.</li>
+no server running.</p></li>
 </ul>
 <p>Sample recommended development configuration:</p>
-<div class="button-code-block">
-<div class="button-row">
-<a class="code-button--copy code-button" role="button">
-copy</a>
-</div>
-<div class="copyable-code-block highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span>
-  <span class="nt">clients</span><span class="p">:</span>
-    <span class="nt">default</span><span class="p">:</span>
-      <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongoid</span>
-      <span class="nt">hosts</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">localhost:27017</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="nt">server_selection_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">clients</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongoid</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hosts</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost:27017</span><span class="w"></span>
+<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">server_selection_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="compatibility.html" title="Previous Section: Compatibility"><span>Compatibility</span></a>
-      <a class="btn-next-text" href="rails-integration.html" title="Next Section: Rails Integration"><span>Rails Integration</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="compatibility.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Compatibility</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="rails-integration.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Rails Integration</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = [];
-  </script></body>
+
+  </body>
 </html>

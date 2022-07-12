@@ -1,609 +1,1029 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Compatibility &#8212; Mongoid  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Installation" href="../installation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mongoid  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../installation-configuration.html">
+   Installation &amp; Configuration
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Compatibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="configuration.html">
+     Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rails-integration.html">
+     Rails Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorials.html">
+   Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-sinatra.html">
+     Getting Started (Sinatra)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/getting-started-rails.html">
+     Getting Started (Rails)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/documents.html">
+     Documents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/common-errors.html">
+     Common Errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../schema-configuration.html">
+   Schema Configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fields.html">
+     Field Definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inheritance.html">
+     Inheritance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="associations.html">
+     Associations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collection-configuration.html">
+     Collection Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="indexes.html">
+     Index Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sharding.html">
+     Sharding Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../working-with-data.html">
+   Working With Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="crud.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="queries.html">
+     Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text-search.html">
+     Text Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aggregation.html">
+     Aggregation Pipeline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map/Reduce
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="persistence-configuration.html">
+     Persistence Configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nested-attributes.html">
+     Nested Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="callbacks.html">
+     Callbacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sessions.html">
+     Sessions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transactions.html">
+     Transactions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://mongodb.com/docs/mongoid/master/api/">
+   API
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../release-notes.html">
+   Release Notes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.0.html">
+     Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.4.html">
+     Mongoid 7.4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.3.html">
+     Mongoid 7.3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.2.html">
+     Mongoid 7.2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.1.html">
+     Mongoid 7.1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.0.html">
+     Mongoid 7.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-6.html">
+     Mongoid 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-5.html">
+     Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../additional-resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ecosystem.html">
+   Ecosystem
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+          
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
-    <title>Compatibility</title><link rel="shortcut icon" href="https://media.mongodb.org/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
 
-  <meta name="release" content="upcoming"/>
-  <meta name="version" content="master"/>
-  <meta name="DC.Source" content="https://github.com/mongodb/docs-mongoid/blob/master/source/reference/compatibility.txt"/>
-  <meta property="og:image" content="http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-  <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png">
-    <link rel="canonical" href="https://docs.mongodb.com/mongoid/current/reference/compatibility/" />
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-   <link rel="stylesheet" href="../_static/mongodb-docs.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-   <link rel="stylesheet" href="../_static/css/navbar.min.css?t=nocache" type="text/css" />
-    
-    <script type="text/javascript" src="../_static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="../_static/lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/controller.js"></script>
-      <link rel="search" type="application/opensearchdescription+xml" href="https://docs.mongodb.com/osd.xml" title="MongoDB Help"/>
-<link rel="search" title="Search" href="../search.html" />
-<link rel="top" title="Mongoid Manual" href="../index.html" />
-<link rel="up" title="Installation &amp; Configuration" href="../installation-configuration.html" />
-<link rel="next" title="Configuration" href="configuration.html" />
-<link rel="prev" title="Installation" href="../installation.html" /></head>
-<body data-project="mongoid" data-project-title="Mongoid Manual" data-branch="master" data-enable-marian=1 data-eol="">
-  <!-- Google Tag Manager -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-  {'gtm.start':new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-GDFN');
-  </script>
-  <!-- End Google Tag Manager -->
-   <script>
-     window.googleSearchCx = "014132741538533607290:xl0kbqanc9y"
-     window.googleSearchPlaceholder = "Search Mongoid"
-     window.googleSearchResultsUrl = "http://docs.mongodb.com/mongoid/master/search/"
-   </script><div class="content" >
 
-   <div id="left-column">
-         <aside id="sidebar" class="sidebar">
-             
-  <div class="sphinxsidebar" id="sphinxsidebar">
-    <div id="sphinxsidebarwrapper" class="sphinxsidebarwrapper"><a href="javascript:void(0)" class="closeNav" id="closeNav">Close &times;</a>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
 
+</label>
 
-<h3>
-  <a href="../index.html">Mongoid Manual</a>
-</h3>
-
-
-    <div class="btn-group version-sidebar">
-      
-        <button type="button" class="version-button dropdown-toggle" data-toggle="dropdown">
-          
-          
-          master (upcoming)<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          
-            
-            <li class="active">
-            
-              <a href="#" data-path="mongoid/current">
-                
-                master (upcoming)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.3">
-                
-                Version 7.3 (current)
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.2">
-                
-                Version 7.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.1">
-                
-                Version 7.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/7.0">
-                
-                Version 7.0
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.4">
-                
-                Version 6.4
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.3">
-                
-                Version 6.3
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.2">
-                
-                Version 6.2
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/6.1">
-                
-                Version 6.1
-              </a>
-            </li>
-          
-            
-            <li>
-            
-              <a class="version-selector" href="#" data-path="mongoid/5.4">
-                
-                Version 5.4
-              </a>
-            </li>
-          
-        </ul>
-      
+        
     </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
 
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
 
-<ul class="current"><li class="toctree-l1 current"><a class="reference internal" href="../installation-configuration.html">Installation &amp; Configuration</a><ul class="current"><li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li><li class="toctree-l2 current"><a class="reference internal current" href="">Compatibility</a></li><li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="rails-integration.html">Rails Integration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-sinatra.html">Getting Started (Sinatra)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/getting-started-rails.html">Getting Started (Rails)</a></li><li class="toctree-l2"><a class="reference internal" href="../tutorials/documents.html">Documents</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../schema-configuration.html">Schema Configuration</a><ul><li class="toctree-l2"><a class="reference internal" href="fields.html">Field Definition</a></li><li class="toctree-l2"><a class="reference internal" href="inheritance.html">Inheritance</a></li><li class="toctree-l2"><a class="reference internal" href="associations.html">Associations</a></li><li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li><li class="toctree-l2"><a class="reference internal" href="collection-configuration.html">Collection Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="indexes.html">Index Management</a></li><li class="toctree-l2"><a class="reference internal" href="sharding.html">Sharding Configuration</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../working-with-data.html">Working With Data</a><ul><li class="toctree-l2"><a class="reference internal" href="crud.html">CRUD Operations</a></li><li class="toctree-l2"><a class="reference internal" href="queries.html">Queries</a></li><li class="toctree-l2"><a class="reference internal" href="text-search.html">Text Search</a></li><li class="toctree-l2"><a class="reference internal" href="map-reduce.html">Map/Reduce</a></li><li class="toctree-l2"><a class="reference internal" href="persistence-configuration.html">Persistence Configuration</a></li><li class="toctree-l2"><a class="reference internal" href="nested-attributes.html">Nested Attributes</a></li><li class="toctree-l2"><a class="reference internal" href="callbacks.html">Callbacks</a></li><li class="toctree-l2"><a class="reference internal" href="sessions.html">Sessions</a></li><li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li></ul></li><li class="toctree-l1"><a class="reference external" href="https://docs.mongodb.com/mongoid/master/api/">API</a></li><li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.3.html">Mongoid 7.3</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.2.html">Mongoid 7.2</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.1.html">Mongoid 7.1</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-7.0.html">Mongoid 7.0</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-6.html">Mongoid 6</a></li><li class="toctree-l2"><a class="reference internal" href="../release-notes/mongoid-5.html">Mongoid 5</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../additional-resources.html">Additional Resources</a></li><li class="toctree-l1"><a class="reference internal" href="../ecosystem.html">Ecosystem</a></li></ul>
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/reference/compatibility.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.txt</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
-  </div>
-           
-         </aside>
+</div>
 
-   </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ruby-mongodb-driver-compatibility">
+   Ruby MongoDB Driver Compatibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ruby-compatibility">
+   Ruby Compatibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mongodb-server-compatibility">
+   MongoDB Server Compatibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rails-compatibility">
+   Rails Compatibility
+  </a>
+ </li>
+</ul>
 
-    <div id="main-column" class="main-column">
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Compatibility</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ruby-mongodb-driver-compatibility">
+   Ruby MongoDB Driver Compatibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ruby-compatibility">
+   Ruby Compatibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mongodb-server-compatibility">
+   MongoDB Server Compatibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rails-compatibility">
+   Rails Compatibility
+  </a>
+ </li>
+</ul>
 
-    <span id="showNav" class="showNav">Navigation</span>
-
-      
-      
-        <div class="document">
-            <div class="documentwrapper"><div class="bodywrapper">
-              <div class="body" data-pagename="reference/compatibility">
-
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-  <div class="bc">
-    
-      <ul>
-          <li><a href="../installation-configuration.html">Installation &amp; Configuration</a><span class="bcpoint"> > </span></li>
-            <li>Compatibility</li> 
-      </ul>
-    
-    
-  </div>
+              <div>
                 
-                  <div class="section" id="compatibility">
-<h1>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h1>
+  <section id="compatibility">
+<h1>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">#</a></h1>
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><a class="reference internal" href="#ruby-mongodb-driver-compatibility" id="id11">Ruby MongoDB Driver Compatibility</a></li>
-<li><a class="reference internal" href="#ruby-compatibility" id="id12">Ruby Compatibility</a></li>
-<li><a class="reference internal" href="#mongodb-server-compatibility" id="id13">MongoDB Server Compatibility</a></li>
-<li><a class="reference internal" href="#rails-compatibility" id="id14">Rails Compatibility</a></li>
+<li><p><a class="reference internal" href="#ruby-mongodb-driver-compatibility" id="id26">Ruby MongoDB Driver Compatibility</a></p></li>
+<li><p><a class="reference internal" href="#ruby-compatibility" id="id27">Ruby Compatibility</a></p></li>
+<li><p><a class="reference internal" href="#mongodb-server-compatibility" id="id28">MongoDB Server Compatibility</a></p></li>
+<li><p><a class="reference internal" href="#rails-compatibility" id="id29">Rails Compatibility</a></p></li>
 </ul>
 </div>
-<div class="section" id="ruby-mongodb-driver-compatibility">
-<h2>Ruby MongoDB Driver Compatibility<a class="headerlink" href="#ruby-mongodb-driver-compatibility" title="Permalink to this headline">¶</a></h2>
-<p>The following compatibility table specifies the versions of <a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/">Ruby driver for
+<section id="ruby-mongodb-driver-compatibility">
+<h2>Ruby MongoDB Driver Compatibility<a class="headerlink" href="#ruby-mongodb-driver-compatibility" title="Permalink to this headline">#</a></h2>
+<p>The following compatibility table specifies the versions of <a class="reference external" href="https://mongodb.com/docs/ruby-driver/current/">Ruby driver for
 MongoDB</a>
 (the <code class="docutils literal notranslate"><span class="pre">mongo</span></code> gem) supported by the most recent patch releases of the
 specified Mongoid versions.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Older versions of Mongoid within the same minor release may support older
+<p class="admonition-title">Note</p>
+<p>Older versions of Mongoid within the same minor release may support older
 driver versions. For example, Mongoid 7.0.5 supports driver versions 2.5 and
 newer, whereas Mongoid 7.0.6 requires driver version 2.7 or newer.</p>
 </div>
-<table border="1" class="compatibility-large no-padding docutils">
+<table class="compatibility-large no-padding table">
 <colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head stub">Mongoid</th>
-<th class="head">Driver 2.14-2.10</th>
-<th class="head">Driver 2.9-2.7</th>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Mongoid</p></th>
+<th class="head"><p>Driver 2.17-2.10</p></th>
+<th class="head"><p>Driver 2.9-2.7</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><th class="stub">7.3</th>
-<td>✓</td>
-<td>&#160;</td>
+<tbody>
+<tr class="row-even"><th class="stub"><p>8.0</p></th>
+<td><p>✓</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><th class="stub">7.2</th>
-<td>✓</td>
-<td>&#160;</td>
+<tr class="row-odd"><th class="stub"><p>7.5</p></th>
+<td><p>✓</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><th class="stub">7.1</th>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-even"><th class="stub"><p>7.4</p></th>
+<td><p>✓</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><th class="stub">7.0</th>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-odd"><th class="stub"><p>7.3</p></th>
+<td><p>✓</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><th class="stub">6.4</th>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-even"><th class="stub"><p>7.2</p></th>
+<td><p>✓</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>7.1</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>7.0</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>6.4</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="ruby-compatibility">
-<h2>Ruby Compatibility<a class="headerlink" href="#ruby-compatibility" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ruby-compatibility">
+<h2>Ruby Compatibility<a class="headerlink" href="#ruby-compatibility" title="Permalink to this headline">#</a></h2>
 <p>The following compatibility table specifies the versions of Ruby interpreters
 supported by Mongoid. “D” in a column means support for that Ruby version
 is deprecated.</p>
-<table border="1" class="compatibility-large no-padding docutils">
+<table class="compatibility-large no-padding table">
 <colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head stub">Mongoid</th>
-<th class="head">Ruby 3.0</th>
-<th class="head">Ruby 2.7</th>
-<th class="head">Ruby 2.6</th>
-<th class="head">Ruby 2.5</th>
-<th class="head">Ruby 2.4</th>
-<th class="head">Ruby 2.3</th>
-<th class="head">Ruby 2.2</th>
-<th class="head">JRuby 9.2</th>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Mongoid</p></th>
+<th class="head"><p>Ruby 3.1</p></th>
+<th class="head"><p>Ruby 3.0</p></th>
+<th class="head"><p>Ruby 2.7</p></th>
+<th class="head"><p>Ruby 2.6</p></th>
+<th class="head"><p>Ruby 2.5</p></th>
+<th class="head"><p>Ruby 2.4</p></th>
+<th class="head"><p>Ruby 2.3</p></th>
+<th class="head"><p>Ruby 2.2</p></th>
+<th class="head"><p>JRuby 9.2</p></th>
+<th class="head"><p>JRuby 9.3</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><th class="stub">7.3</th>
-<td>&#160;</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>D</td>
-<td>D</td>
-<td>&#160;</td>
-<td>✓</td>
+<tbody>
+<tr class="row-even"><th class="stub"><p>8.0</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
 </tr>
-<tr class="row-odd"><th class="stub">7.2</th>
-<td>&#160;</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>D</td>
-<td>D</td>
-<td>&#160;</td>
-<td>✓</td>
+<tr class="row-odd"><th class="stub"><p>7.5</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>D</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><th class="stub">7.1</th>
-<td>&#160;</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓ <a class="footnote-reference" href="#ruby-2-4" id="id1">[1]</a></td>
-<td>✓</td>
-<td>&#160;</td>
-<td>✓</td>
+<tr class="row-even"><th class="stub"><p>7.4</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><th class="stub">7.0</th>
-<td>&#160;</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓ <a class="footnote-reference" href="#ruby-2-4" id="id2">[1]</a></td>
-<td>✓</td>
-<td>✓ <a class="footnote-reference" href="#ruby-2-2" id="id3">[2]</a></td>
-<td>✓</td>
+<tr class="row-odd"><th class="stub"><p>7.3</p></th>
+<td><p>✓ <a class="footnote-reference brackets" href="#mongoid-7-3-ruby-3-0" id="id1">1</a></p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#mongoid-7-3-ruby-3-0" id="id2">1</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><th class="stub">6.4</th>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓ <a class="footnote-reference" href="#ruby-2-4" id="id4">[1]</a></td>
-<td>✓</td>
-<td>✓ <a class="footnote-reference" href="#ruby-2-2" id="id5">[2]</a></td>
-<td>✓</td>
+<tr class="row-even"><th class="stub"><p>7.2</p></th>
+<td><p>✓ <a class="footnote-reference brackets" href="#mongoid-7-2-ruby-3-0" id="id3">2</a></p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#mongoid-7-2-ruby-3-0" id="id4">2</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>7.1</p></th>
+<td><p>✓ <a class="footnote-reference brackets" href="#mongoid-7-1-ruby-3-0" id="id5">3</a></p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#mongoid-7-1-ruby-3-0" id="id6">3</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#ruby-2-4" id="id7">4</a></p></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>7.0</p></th>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#ruby-2-4" id="id8">4</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#ruby-2-2" id="id9">5</a></p></td>
+<td><p>✓</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>6.4</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#ruby-2-4" id="id10">4</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#ruby-2-2" id="id11">5</a></p></td>
+<td><p>✓</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="ruby-2-4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>)</em> Ruby version 2.4.1 or higher is required.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="ruby-2-2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> Ruby version 2.2.2 or higher is required.</td></tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="mongodb-server-compatibility">
-<h2>MongoDB Server Compatibility<a class="headerlink" href="#mongodb-server-compatibility" title="Permalink to this headline">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="mongoid-7-3-ruby-3-0"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>Mongoid version 7.3.2 or higher is required.</p>
+</dd>
+<dt class="label" id="mongoid-7-2-ruby-3-0"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>
+<dd><p>Mongoid version 7.2.5 or higher is required.</p>
+</dd>
+<dt class="label" id="mongoid-7-1-ruby-3-0"><span class="brackets">3</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>)</span></dt>
+<dd><p>Mongoid version 7.1.10 or higher is required.</p>
+</dd>
+<dt class="label" id="ruby-2-4"><span class="brackets">4</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>,<a href="#id10">3</a>)</span></dt>
+<dd><p>Ruby version 2.4.1 or higher is required.</p>
+</dd>
+<dt class="label" id="ruby-2-2"><span class="brackets">5</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id11">2</a>)</span></dt>
+<dd><p>Ruby version 2.2.2 or higher is required.</p>
+</dd>
+</dl>
+</section>
+<section id="mongodb-server-compatibility">
+<h2>MongoDB Server Compatibility<a class="headerlink" href="#mongodb-server-compatibility" title="Permalink to this headline">#</a></h2>
 <p>The following compatibility table specifies the recommended
 version(s) of Mongoid for use with a specific version of MongoDB server.</p>
 <p>Note that in order to use features of a particular MongoDB server version,
 both the driver and Mongoid must support that server version.
-Please refer to <a class="reference external" href="https://docs.mongodb.com/ruby-driver/current/reference/driver-compatibility/">the driver compatibility page</a>
+Please refer to <a class="reference external" href="https://mongodb.com/docs/ruby-driver/current/reference/driver-compatibility/">the driver compatibility page</a>
 for driver compatibility matrices.</p>
-<table border="1" class="compatibility-large no-padding docutils">
+<p>“D” in a column means support for that MongoDB server version is deprecated
+and will be removed in a next version.</p>
+<table class="compatibility-large no-padding table">
 <colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head stub">Mongoid</th>
-<th class="head">MongoDB 4.4</th>
-<th class="head">MongoDB 4.2</th>
-<th class="head">MongoDB 4.0</th>
-<th class="head">MongoDB 3.6</th>
-<th class="head">MongoDB 3.4</th>
-<th class="head">MongoDB 3.2</th>
-<th class="head">MongoDB 3.0</th>
-<th class="head">MongoDB 2.6</th>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Mongoid</p></th>
+<th class="head"><p>MongoDB 6.0</p></th>
+<th class="head"><p>MongoDB 5.0</p></th>
+<th class="head"><p>MongoDB 4.4</p></th>
+<th class="head"><p>MongoDB 4.2</p></th>
+<th class="head"><p>MongoDB 4.0</p></th>
+<th class="head"><p>MongoDB 3.6</p></th>
+<th class="head"><p>MongoDB 3.4</p></th>
+<th class="head"><p>MongoDB 3.2</p></th>
+<th class="head"><p>MongoDB 3.0</p></th>
+<th class="head"><p>MongoDB 2.6</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><th class="stub">7.3</th>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<tbody>
+<tr class="row-even"><th class="stub"><p>8.0</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
-<tr class="row-odd"><th class="stub">7.2</th>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-odd"><th class="stub"><p>7.5</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
 </tr>
-<tr class="row-even"><th class="stub">7.1</th>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-even"><th class="stub"><p>7.4</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
 </tr>
-<tr class="row-odd"><th class="stub">7.0</th>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-odd"><th class="stub"><p>7.3</p></th>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
 </tr>
-<tr class="row-even"><th class="stub">6.4</th>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<tr class="row-even"><th class="stub"><p>7.2</p></th>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>7.1</p></th>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>7.0</p></th>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>6.4</p></th>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="rails-compatibility">
-<span id="id6"></span><h2>Rails Compatibility<a class="headerlink" href="#rails-compatibility" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="rails-compatibility">
+<span id="id12"></span><h2>Rails Compatibility<a class="headerlink" href="#rails-compatibility" title="Permalink to this headline">#</a></h2>
 <p>The following compatibility table specifies which versions of Ruby on Rails
 are supported by Mongoid.</p>
-<table border="1" class="compatibility-large no-padding docutils">
+<table class="compatibility-large no-padding table">
 <colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head stub">Mongoid</th>
-<th class="head">Rails 6.1</th>
-<th class="head">Rails 6.0</th>
-<th class="head">Rails 5.2</th>
-<th class="head">Rails 5.1</th>
-<th class="head">Rails 5.0</th>
-<th class="head">Rails 4.2</th>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Mongoid</p></th>
+<th class="head"><p>Rails 7.0</p></th>
+<th class="head"><p>Rails 6.1</p></th>
+<th class="head"><p>Rails 6.0</p></th>
+<th class="head"><p>Rails 5.2</p></th>
+<th class="head"><p>Rails 5.1</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><th class="stub">7.3</th>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tbody>
+<tr class="row-even"><th class="stub"><p>8.0</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-5-ruby-3-0" id="id13">6</a></p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><th class="stub">7.2</th>
-<td>✓ <a class="footnote-reference" href="#rails-6-1" id="id7">[4]</a></td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><th class="stub"><p>7.5</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-5-ruby-3-0" id="id14">6</a></p></td>
+<td><p>D</p></td>
 </tr>
-<tr class="row-even"><th class="stub">7.1</th>
-<td>✓ <a class="footnote-reference" href="#rails-6-1" id="id8">[4]</a></td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><th class="stub"><p>7.4</p></th>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-5-ruby-3-0" id="id15">6</a></p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-5-ruby-3-0" id="id16">6</a></p></td>
 </tr>
-<tr class="row-odd"><th class="stub">7.0</th>
-<td>✓ <a class="footnote-reference" href="#rails-6-1" id="id9">[4]</a></td>
-<td>✓ <a class="footnote-reference" href="#rails-6" id="id10">[3]</a></td>
-<td>✓</td>
-<td>✓</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><th class="stub"><p>7.3</p></th>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-7-mongoid-7-3" id="id17">9</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-5-ruby-3-0" id="id18">6</a></p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-5-ruby-3-0" id="id19">6</a></p></td>
 </tr>
-<tr class="row-even"><th class="stub">6.4</th>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>✓</td>
-<td>✓</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><th class="stub"><p>7.2</p></th>
+<td></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-6-1" id="id20">8</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-5-ruby-3-0" id="id21">6</a></p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-5-ruby-3-0" id="id22">6</a></p></td>
 </tr>
-<tr class="row-odd"><th class="stub">6.3</th>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>✓</td>
-<td>✓</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><th class="stub"><p>7.1</p></th>
+<td></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-6-1" id="id23">8</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
 </tr>
-<tr class="row-even"><th class="stub">6.2</th>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>✓</td>
-<td>✓</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><th class="stub"><p>7.0</p></th>
+<td></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-6-1" id="id24">8</a></p></td>
+<td><p>✓ <a class="footnote-reference brackets" href="#rails-6" id="id25">7</a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
 </tr>
-<tr class="row-odd"><th class="stub">6.1</th>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><th class="stub">6.0</th>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><th class="stub">5.4</th>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><th class="stub">5.2</th>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>✓</td>
+<tr class="row-odd"><th class="stub"><p>6.4</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="rails-6" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[3]</a></td><td>Rails 6.0 requires Mongoid 7.0.5 or later.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="rails-6-1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id8">2</a>, <a class="fn-backref" href="#id9">3</a>)</em> Rails 6.1 requires Mongoid 7.0.12, 7.1.7 or 7.2.1 in the
-respective 7.0, 7.1 and 7.2 stable branches.</td></tr>
-</tbody>
-</table>
-</div>
-</div>
+<dl class="footnote brackets">
+<dt class="label" id="rails-5-ruby-3-0"><span class="brackets">6</span><span class="fn-backref">(<a href="#id13">1</a>,<a href="#id14">2</a>,<a href="#id15">3</a>,<a href="#id16">4</a>,<a href="#id18">5</a>,<a href="#id19">6</a>,<a href="#id21">7</a>,<a href="#id22">8</a>)</span></dt>
+<dd><p>Using Rails 5.x with Ruby 3 is not supported.</p>
+</dd>
+<dt class="label" id="rails-6"><span class="brackets"><a class="fn-backref" href="#id25">7</a></span></dt>
+<dd><p>Rails 6.0 requires Mongoid 7.0.5 or later.</p>
+</dd>
+<dt class="label" id="rails-6-1"><span class="brackets">8</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id23">2</a>,<a href="#id24">3</a>)</span></dt>
+<dd><p>Rails 6.1 requires Mongoid 7.0.12, 7.1.7 or 7.2.1 in the
+respective 7.0, 7.1 and 7.2 stable branches.</p>
+</dd>
+<dt class="label" id="rails-7-mongoid-7-3"><span class="brackets"><a class="fn-backref" href="#id17">9</a></span></dt>
+<dd><p>Rails 7.x requires Mongoid 7.3.4 or later.</p>
+</dd>
+</dl>
+</section>
+</section>
 
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
                 
-    <div id="btnv">
-      <span class="btn-arrow-left">&larr; &nbsp;</span>
-      <a class="btn-prev-text" href="../installation.html" title="Previous Section: Installation"><span>Installation</span></a>
-      <a class="btn-next-text" href="configuration.html" title="Next Section: Configuration"><span>Configuration</span></a>
-      <span class="btn-arrow-right">&nbsp;&rarr;</span>
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../installation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Installation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="configuration.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Configuration</p>
     </div>
-                  <div class="footer">
-                    <div class="copyright">
-                      <p>&copy; MongoDB, Inc 2008-present. MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.</p>
-                    </div>
-                  </div>
-              </div></div>
-            </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <div class="right-column">
-      <div class="wrapper"> 
-            <div class="social">
-               <a class="slack-icon" href="https://slackpass.io/mongo-db?jmp=docs" title="https://slackpass.io/mongo-db?jmp=docs"><i class="fab fa-slack" aria-hidden="true"></i></a>
-               <a class="twitter-icon" href="https://twitter.com/MongoDB" title="https://twitter.com/MongoDB"><i class="fab fa-twitter-square"></i></a>
-               <a class="youtube-icon" href="https://www.youtube.com/user/MongoDB" title="https://www.youtube.com/user/MongoDB"><i class="fab fa-youtube-square"></i></a>
-               <a class="facebook-icon" href="https://www.facebook.com/mongodb" title="https://www.facebook.com/mongodb"><i class="fab fa-facebook-square"></i></a>
-               <a class="stack-overflow-icon" href="https://stackoverflow.com/tags/mongodb/info" title="https://stackoverflow.com/tags/mongodb/info"><i class="fab fa-stack-overflow" aria-hidden="true"></i></a>
-            </div>
-        
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2021, MongoDB.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
 
       </div>
     </div>
-    
-    <div class="clearfix"></div>
-  </div><div id="navbar" data-navprops='{"links": [{"url": "https://docs.mongodb.com/manual/","text": "Server"},{"url": "https://docs.mongodb.com/ecosystem/drivers/","text": "Drivers"},{"url": "https://docs.mongodb.com/cloud/","text": "Cloud"},{"url": "https://docs.mongodb.com/tools/","text": "Tools"},{"url": "https://docs.mongodb.com/guides/","text": "Guides","active": true}]}'></div>
-
-  <script src="../_static/navbar.min.js"></script>
-
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-  // Bootstrap array of links that should trigger a full page reload
-  window.docsExcludedNav = [];
-  </script></body>
+
+  </body>
 </html>
