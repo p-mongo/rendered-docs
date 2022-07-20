@@ -571,26 +571,12 @@ its test suite.</p>
 <li><p>Added support for Azure Key Vault, Google Cloud Key Management, and any
 KMIP compliant Key Management System to be used as master key storage for
 client side encryption.</p></li>
-<li><p>The DBRef class has been moved to bson-ruby and requires bson-ruby 4.13.0
-or greater. For backwards compatibility, BSON::DBRef is aliased as Mongo::DBRef.
-The BSON::DBRef class derives from BSON::Document, unlike Mongo::DBRef which
-derived from Object. BSON::DBRef retains all fields, unlike Mongo::DBRef which
-only allowed $ref, $id, and $db. BSON::DBRef also reorders the fields if
-necessary to place $ref, $id, and $db first, in that order.</p></li>
-<li><p>CRUD methods, methods for listing databases, collection, and indexes management
-methods now support a new option <code class="docutils literal notranslate"><span class="pre">comment</span></code>. This option enables users to
-specify an arbitrary comment to help trace the operation through the
-database profiler, currentOp and logs.</p></li>
-<li><p>Ruby Driver version 2.6.0 accidentally broke <code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code> on views
-by changing its implementation to use <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> and a <code class="docutils literal notranslate"><span class="pre">$collStats</span></code> stage
-instead of the <code class="docutils literal notranslate"><span class="pre">count</span></code> command.</p></li>
-<li><p>Ruby Driver version 2.18.0 is fixing <code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code> on views by
-reverting back to using <code class="docutils literal notranslate"><span class="pre">count</span></code> in its implementation.</p></li>
-<li><p>Due to an oversight, the <code class="docutils literal notranslate"><span class="pre">count</span></code> command was omitted from the Stable API in
-server versions 5.0.0 - 5.0.7 and 5.1.0 - 5.3.1, so users of the Stable API
-with <code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code> are recommended to upgrade their MongoDB clusters
-to 5.0.8 or 5.3.2 (if on Atlas) or set <code class="docutils literal notranslate"><span class="pre">api_strict:</span> <span class="pre">false</span></code> when constructing
-their MongoClients.</p></li>
+<li><p>It is now possible to provide the <a class="reference internal" href="reference/client-side-encryption.html#schema-map-path"><span class="std std-ref">path to a schema map file</span></a>
+instead of the entire schema map as an object.</p></li>
+<li><p>The driver now implements the <a class="reference internal" href="reference/create-client.html#feature-flags"><span class="std std-ref">feature flag</span></a> mechanism
+for incompatible changes and bug fixes. Changes gated behind feature flags
+for 2.18 are passing view filter and options to <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> and validation
+of correct usage of <code class="docutils literal notranslate"><span class="pre">update</span></code> vs <code class="docutils literal notranslate"><span class="pre">replace</span></code> methods, as described below.</p></li>
 <li><p>Added the <code class="docutils literal notranslate"><span class="pre">validate_update_replace</span></code> feature flag which validates the
 parameters to update and replace operations. If this flag is turned on, an
 error will be raised on an invalid update or replacement document.</p></li>
@@ -598,7 +584,40 @@ error will be raised on an invalid update or replacement document.</p></li>
 to be correctly propagated to the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code>, <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">count_documents</span></code>,
 <code class="docutils literal notranslate"><span class="pre">distinct</span></code>, and <code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code> mehods. When this flag is
 switched on, the view options will be ignored in those methods.</p></li>
+<li><p>The driver now permits <a class="reference internal" href="reference/crud-operations.html#dots-dollars-in-field-names"><span class="std std-ref">inserting documents with dollar-prefixed and
+dotted keys</span></a>.</p></li>
+<li><p>CRUD methods, methods for listing databases, collection, and indexes management
+methods now support a new option <code class="docutils literal notranslate"><span class="pre">:comment</span></code>. This option enables users to
+specify an arbitrary comment to help trace the operation through the
+database profiler, currentOp and logs.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">estimated_document_count</span></code> method is now using the <code class="docutils literal notranslate"><span class="pre">count</span></code> server
+command instead of <cite>$collStats`</cite> aggregation pipeline stage, to support
+operation on views. Applications using the Stable API should upgrade to
+server versions 5.0.8 (if using MongoDB 5.0) or 5.3.2 (if using MongoDB
+5.1/5.2/5.3) or newer to use the <code class="docutils literal notranslate"><span class="pre">count</span></code> command when API strict is enabled,
+or avoid setting <code class="docutils literal notranslate"><span class="pre">api_strict:</span> <span class="pre">true</span></code> when constructing <code class="docutils literal notranslate"><span class="pre">Mongo::Client</span></code>
+instances with server versions 5.0.0-5.0.7 and 5.1.0-5.3.1.</p></li>
+<li><p>The DBRef class has been moved to bson-ruby. For backwards compatibility,
+<code class="docutils literal notranslate"><span class="pre">BSON::DBRef</span></code> is aliased as <code class="docutils literal notranslate"><span class="pre">Mongo::DBRef</span></code>. The <code class="docutils literal notranslate"><span class="pre">BSON::DBRef</span></code> class
+derives from <code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code>, unlike the legacy <code class="docutils literal notranslate"><span class="pre">Mongo::DBRef</span></code> which
+derived from <code class="docutils literal notranslate"><span class="pre">Object</span></code>. <code class="docutils literal notranslate"><span class="pre">BSON::DBRef</span></code> retains all attributes passed into
+its constructor, unlike <code class="docutils literal notranslate"><span class="pre">Mongo::DBRef</span></code> which only allowed <code class="docutils literal notranslate"><span class="pre">$ref</span></code>,
+<code class="docutils literal notranslate"><span class="pre">$id</span></code>, and <code class="docutils literal notranslate"><span class="pre">$db</span></code>. <code class="docutils literal notranslate"><span class="pre">BSON::DBRef</span></code> also reorders the fields if
+necessary to place <code class="docutils literal notranslate"><span class="pre">$ref</span></code>, <code class="docutils literal notranslate"><span class="pre">$id</span></code>, and <code class="docutils literal notranslate"><span class="pre">$db</span></code> first, in that order, as
+required by the MongoDB server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BulkWrite::Result</span></code> class now has the <code class="docutils literal notranslate"><span class="pre">acknowledged?</span></code> attribute.</p></li>
+<li><p>Providing an empty array of operations to the bulk write is now an error.</p></li>
+<li><p>BSON serialization performance has been improved.</p></li>
+<li><p><a class="reference internal" href="reference/query-cache.html#query-cache-active-job-middleware"><span class="std std-ref">ActiveJob middleware</span></a> was added to
+the query cache.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:authorized_collections</span></code> options is recognized when listing collections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:wildcard_projection</span></code> option was added to the allowed index specification.</p></li>
+<li><p>Custom SRV service names are now supported with the <code class="docutils literal notranslate"><span class="pre">srvServiceName</span></code> URI option.</p></li>
+<li><p>When 0 is given as the max connection pool size, it is now interpreted to
+mean no limit.</p></li>
+<li><p>The default maximum connection pool size has been increased to 20 from 5.</p></li>
 </ul>
+<p>This release adds supports for JRuby 9.3.</p>
 </section>
 <section id="id3">
 <h2>2.17<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
