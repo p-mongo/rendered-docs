@@ -541,6 +541,15 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schema-map-path">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :schema_map_path
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bypass-auto-encryption">
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -691,6 +700,15 @@ title="Print to PDF"
      <code class="docutils literal notranslate">
       <span class="pre">
        :schema_map
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schema-map-path">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       :schema_map_path
       </span>
      </code>
     </a>
@@ -1039,7 +1057,7 @@ master key and create data keys, see the following sections of this tutorial:</p
 <section id="queryable-encryption">
 <h2>Queryable Encryption<a class="headerlink" href="#queryable-encryption" title="Permalink to this headline">#</a></h2>
 <p>Queryable encryption is a new feature in MongoDB 6.0. It also requires
-libmongocrypt version 1.5.0-rc1 or above.</p>
+libmongocrypt version 1.5.0 or above.</p>
 <p>You can find more information about queryable encryption in <a class="reference external" href="https://www.mongodb.com/docs/upcoming/core/queryable-encryption/queryable-encryption/">MongoDB Manual</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1230,7 +1248,7 @@ master key and create data keys, see the following sections of this tutorial:</p
   <span class="p">{</span>
     <span class="ss">key_id</span><span class="p">:</span> <span class="n">data_key_id</span><span class="p">,</span>
     <span class="ss">algorithm</span><span class="p">:</span> <span class="s2">&quot;Indexed&quot;</span><span class="p">,</span>
-    <span class="ss">query_type</span><span class="p">:</span> <span class="ss">:equality</span>
+    <span class="ss">query_type</span><span class="p">:</span> <span class="s2">&quot;equality&quot;</span>
   <span class="p">}</span>
 <span class="p">)</span>
 <span class="n">find_result</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">encrypted_field</span><span class="p">:</span> <span class="n">find_payload</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="s1">&#39;encrypted_field&#39;</span><span class="o">]</span>
@@ -1574,6 +1592,20 @@ create a JSON schema validator on your collection.</p>
 <p class="admonition-title">See also</p>
 <p><a href="#id14"><span class="problematic" id="id15">:drivers:`Specify Encrypted Fields Using JSON Schema&lt;/security/client-side-field-level-encryption-guide/#c-specify-encrypted-fields-using-json-schema&gt;`</span></a>,
 <a href="#id16"><span class="problematic" id="id17">:manual:`Automatic Encryption Rules&lt;/reference/security-client-side-automatic-json-schema/&gt;`</span></a></p>
+</div>
+</section>
+<section id="schema-map-path">
+<h3><code class="docutils literal notranslate"><span class="pre">:schema_map_path</span></code><a class="headerlink" href="#schema-map-path" title="Permalink to this headline">#</a></h3>
+<p>It is also possible to load schema map from a file. Prepare the schema map as
+described above, save it to file, and then pass path to the file using
+<code class="docutils literal notranslate"><span class="pre">:schema_map_path</span></code> option.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongo</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;localhost:27017],</span>
+<span class="s1">  auto_encryption_options: {</span>
+<span class="s1">    schema_map_path: &#39;</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">json</span><span class="s1">&#39;,</span>
+<span class="s1">    # ... (Fill in other options here)</span>
+<span class="s1">  }</span>
+<span class="s1">)</span>
+</pre></div>
 </div>
 </section>
 <section id="bypass-auto-encryption">
