@@ -570,6 +570,23 @@ title="Print to PDF"
      Custom IDs
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uncastable-values">
+     Uncastable Values
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#assigning-uncastable-values">
+       Assigning Uncastable Values
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reading-uncastable-values">
+       Reading Uncastable Values
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -797,6 +814,23 @@ title="Print to PDF"
      Custom IDs
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uncastable-values">
+     Uncastable Values
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#assigning-uncastable-values">
+       Assigning Uncastable Values
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reading-uncastable-values">
+       Reading Uncastable Values
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -904,48 +938,49 @@ title="Print to PDF"
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#field-types" id="id20">Field Types</a></p>
+<li><p><a class="reference internal" href="#field-types" id="id21">Field Types</a></p>
 <ul>
-<li><p><a class="reference internal" href="#omitting-field-type-definition" id="id21">Omitting Field Type Definition</a></p></li>
-<li><p><a class="reference internal" href="#field-type-stringifiedsymbol" id="id22">Field Type: StringifiedSymbol</a></p></li>
-<li><p><a class="reference internal" href="#field-type-symbol" id="id23">Field Type: Symbol</a></p></li>
-<li><p><a class="reference internal" href="#field-type-hash" id="id24">Field Type: Hash</a></p></li>
-<li><p><a class="reference internal" href="#field-type-time" id="id25">Field Type: Time</a></p></li>
-<li><p><a class="reference internal" href="#field-type-date" id="id26">Field Type: Date</a></p></li>
-<li><p><a class="reference internal" href="#field-type-datetime" id="id27">Field Type: DateTime</a></p></li>
-<li><p><a class="reference internal" href="#field-type-regexp" id="id28">Field Type: Regexp</a></p></li>
-<li><p><a class="reference internal" href="#bigdecimal-fields" id="id29">BigDecimal Fields</a></p></li>
-<li><p><a class="reference internal" href="#using-symbols-or-strings-instead-of-classes" id="id30">Using Symbols Or Strings Instead Of Classes</a></p></li>
-<li><p><a class="reference internal" href="#specifying-field-default-values" id="id31">Specifying Field Default Values</a></p></li>
-<li><p><a class="reference internal" href="#specifying-storage-field-names" id="id32">Specifying Storage Field Names</a></p></li>
-<li><p><a class="reference internal" href="#field-aliases" id="id33">Field Aliases</a></p></li>
-<li><p><a class="reference internal" href="#reserved-names" id="id34">Reserved Names</a></p></li>
-<li><p><a class="reference internal" href="#field-redefinition" id="id35">Field Redefinition</a></p></li>
-<li><p><a class="reference internal" href="#custom-ids" id="id36">Custom IDs</a></p></li>
+<li><p><a class="reference internal" href="#omitting-field-type-definition" id="id22">Omitting Field Type Definition</a></p></li>
+<li><p><a class="reference internal" href="#field-type-stringifiedsymbol" id="id23">Field Type: StringifiedSymbol</a></p></li>
+<li><p><a class="reference internal" href="#field-type-symbol" id="id24">Field Type: Symbol</a></p></li>
+<li><p><a class="reference internal" href="#field-type-hash" id="id25">Field Type: Hash</a></p></li>
+<li><p><a class="reference internal" href="#field-type-time" id="id26">Field Type: Time</a></p></li>
+<li><p><a class="reference internal" href="#field-type-date" id="id27">Field Type: Date</a></p></li>
+<li><p><a class="reference internal" href="#field-type-datetime" id="id28">Field Type: DateTime</a></p></li>
+<li><p><a class="reference internal" href="#field-type-regexp" id="id29">Field Type: Regexp</a></p></li>
+<li><p><a class="reference internal" href="#bigdecimal-fields" id="id30">BigDecimal Fields</a></p></li>
+<li><p><a class="reference internal" href="#using-symbols-or-strings-instead-of-classes" id="id31">Using Symbols Or Strings Instead Of Classes</a></p></li>
+<li><p><a class="reference internal" href="#specifying-field-default-values" id="id32">Specifying Field Default Values</a></p></li>
+<li><p><a class="reference internal" href="#specifying-storage-field-names" id="id33">Specifying Storage Field Names</a></p></li>
+<li><p><a class="reference internal" href="#field-aliases" id="id34">Field Aliases</a></p></li>
+<li><p><a class="reference internal" href="#reserved-names" id="id35">Reserved Names</a></p></li>
+<li><p><a class="reference internal" href="#field-redefinition" id="id36">Field Redefinition</a></p></li>
+<li><p><a class="reference internal" href="#custom-ids" id="id37">Custom IDs</a></p></li>
+<li><p><a class="reference internal" href="#uncastable-values" id="id38">Uncastable Values</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#customizing-field-behavior" id="id37">Customizing Field Behavior</a></p>
+<li><p><a class="reference internal" href="#customizing-field-behavior" id="id39">Customizing Field Behavior</a></p>
 <ul>
-<li><p><a class="reference internal" href="#custom-getters-and-setters" id="id38">Custom Getters And Setters</a></p></li>
-<li><p><a class="reference internal" href="#custom-field-types" id="id39">Custom Field Types</a></p></li>
-<li><p><a class="reference internal" href="#custom-field-options" id="id40">Custom Field Options</a></p></li>
+<li><p><a class="reference internal" href="#custom-getters-and-setters" id="id40">Custom Getters And Setters</a></p></li>
+<li><p><a class="reference internal" href="#custom-field-types" id="id41">Custom Field Types</a></p></li>
+<li><p><a class="reference internal" href="#custom-field-options" id="id42">Custom Field Options</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#dynamic-fields" id="id41">Dynamic Fields</a></p>
+<li><p><a class="reference internal" href="#dynamic-fields" id="id43">Dynamic Fields</a></p>
 <ul>
-<li><p><a class="reference internal" href="#special-characters-in-field-names" id="id42">Special Characters in Field Names</a></p></li>
+<li><p><a class="reference internal" href="#special-characters-in-field-names" id="id44">Special Characters in Field Names</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#localized-fields" id="id43">Localized Fields</a></p>
+<li><p><a class="reference internal" href="#localized-fields" id="id45">Localized Fields</a></p>
 <ul>
-<li><p><a class="reference internal" href="#fallbacks" id="id44">Fallbacks</a></p></li>
-<li><p><a class="reference internal" href="#querying" id="id45">Querying</a></p></li>
-<li><p><a class="reference internal" href="#indexing" id="id46">Indexing</a></p></li>
+<li><p><a class="reference internal" href="#fallbacks" id="id46">Fallbacks</a></p></li>
+<li><p><a class="reference internal" href="#querying" id="id47">Querying</a></p></li>
+<li><p><a class="reference internal" href="#indexing" id="id48">Indexing</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#read-only-attributes" id="id47">Read-Only Attributes</a></p></li>
-<li><p><a class="reference internal" href="#timestamp-fields" id="id48">Timestamp Fields</a></p></li>
-<li><p><a class="reference internal" href="#field-names-with-dots-periods-and-dollar-signs" id="id49">Field Names with Dots/Periods (<code class="docutils literal notranslate"><span class="pre">.</span></code>) and Dollar Signs (<code class="docutils literal notranslate"><span class="pre">$</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#read-only-attributes" id="id49">Read-Only Attributes</a></p></li>
+<li><p><a class="reference internal" href="#timestamp-fields" id="id50">Timestamp Fields</a></p></li>
+<li><p><a class="reference internal" href="#field-names-with-dots-periods-and-dollar-signs" id="id51">Field Names with Dots/Periods (<code class="docutils literal notranslate"><span class="pre">.</span></code>) and Dollar Signs (<code class="docutils literal notranslate"><span class="pre">$</span></code>)</a></p></li>
 </ul>
 </div>
 <section id="field-types">
@@ -1157,6 +1192,12 @@ assignment to a <code class="docutils literal notranslate"><span class="pre">Tim
 </div>
 <p>In the above example, the value was interpreted as the beginning of today in
 local time, because the application was not configured to use UTC times.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the database contains a string value for a <code class="docutils literal notranslate"><span class="pre">Time</span></code> field, Mongoid
+parses the string value using <code class="docutils literal notranslate"><span class="pre">Time.parse</span></code> which considers values without
+time zones to be in local time.</p>
+</div>
 </section>
 <section id="field-type-date">
 <span id="id6"></span><h3>Field Type: Date<a class="headerlink" href="#field-type-date" title="Permalink to this headline">#</a></h3>
@@ -1178,6 +1219,13 @@ especially if an application operates with times in different time zones it is
 recommended to explicitly convert <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Time</span></code> and <code class="docutils literal notranslate"><span class="pre">DateTime</span></code>
 objects to <code class="docutils literal notranslate"><span class="pre">Date</span></code> objects before assigning the values to fields of type
 <code class="docutils literal notranslate"><span class="pre">Date</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the database contains a string value for a <code class="docutils literal notranslate"><span class="pre">Date</span></code> field, Mongoid
+parses the string value using <code class="docutils literal notranslate"><span class="pre">Time.parse</span></code>, discards the time portion of
+the resulting <code class="docutils literal notranslate"><span class="pre">Time</span></code> object and uses the date portion. <code class="docutils literal notranslate"><span class="pre">Time.parse</span></code>
+considers values without time zones to be in local time.</p>
+</div>
 </section>
 <section id="field-type-datetime">
 <span id="field-type-date-time"></span><h3>Field Type: DateTime<a class="headerlink" href="#field-type-datetime" title="Permalink to this headline">#</a></h3>
@@ -1234,6 +1282,12 @@ the <a class="reference internal" href="configuration.html#time-zones"><span cla
 <span class="n">ticket</span><span class="o">.</span><span class="n">opened_at</span>
 <span class="c1"># =&gt; Sun, 04 Mar 2018 09:00:00 +0000</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the database contains a string value for a <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> field, Mongoid
+parses the string value using <code class="docutils literal notranslate"><span class="pre">Time.parse</span></code> which considers values without
+time zones to be in local time.</p>
 </div>
 </section>
 <section id="field-type-regexp">
@@ -1621,12 +1675,84 @@ other means:</p>
 alias can <a class="reference internal" href="#unalias-id"><span class="std std-ref">be removed</span></a> if desired (such as to integrate
 with systems that use the <code class="docutils literal notranslate"><span class="pre">id</span></code> field to store value different from <code class="docutils literal notranslate"><span class="pre">_id</span></code>.</p>
 </section>
+<section id="uncastable-values">
+<span id="id10"></span><h3>Uncastable Values<a class="headerlink" href="#uncastable-values" title="Permalink to this headline">#</a></h3>
+<p>In Mongoid 8, Mongoid has standardized the treatment of the assignment and
+reading of “uncastable” values. A value is considered “uncastable” when it
+cannot be coerced to the type of its field. For example, an array would be an
+“uncastable” value to an Integer field.</p>
+<section id="assigning-uncastable-values">
+<h4>Assigning Uncastable Values<a class="headerlink" href="#assigning-uncastable-values" title="Permalink to this headline">#</a></h4>
+<p>The assignment of uncastable values has been standardized to assign <code class="docutils literal notranslate"><span class="pre">nil</span></code> by
+default. Consider the following example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+
+  <span class="n">field</span> <span class="p">:</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Integer</span>
+<span class="n">end</span>
+
+<span class="n">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;hello&quot;</span> <span class="p">])</span>
+</pre></div>
+</div>
+<p>Assigning an array to a field of type Integer doesn’t work since an array can’t
+be coerced to an Integer. The assignment of uncastable values to a field will
+cause a <code class="docutils literal notranslate"><span class="pre">nil</span></code> to be written:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;Mike&quot;</span><span class="p">,</span> <span class="s2">&quot;Trout&quot;</span> <span class="p">])</span>
+<span class="c1"># =&gt; #&lt;User _id: 62b222d43282a47bf73e3264, name: nil&gt;</span>
+</pre></div>
+</div>
+<p>Note that the original uncastable values will be stored in the
+<code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash with their field names:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">attributes_before_type_cast</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+<span class="c1"># =&gt; [&quot;Mike&quot;, &quot;Trout&quot;]</span>
+</pre></div>
+</div>
+</section>
+<section id="reading-uncastable-values">
+<h4>Reading Uncastable Values<a class="headerlink" href="#reading-uncastable-values" title="Permalink to this headline">#</a></h4>
+<p>When documents in the database contain values of different types than their
+represenations in Mongoid, if Mongoid cannot coerce them into the correct type,
+it will replace the value with <code class="docutils literal notranslate"><span class="pre">nil</span></code>. Consider the following model and document in the
+database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+
+  <span class="n">field</span> <span class="p">:</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Integer</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;Mike&quot;</span><span class="p">,</span> <span class="s2">&quot;Trout&quot;</span> <span class="p">]</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Reading this document from the database will result in the model’s name field
+containing <code class="docutils literal notranslate"><span class="pre">nil</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">name</span>
+<span class="c1"># =&gt; nil</span>
+</pre></div>
+</div>
+<p>The database value of type array cannot be stored in the attribute, since the
+array can’t be coerced to an Integer. Note that the original uncastable values
+will be stored in the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash with their field
+names:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">attributes_before_type_cast</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+<span class="c1"># =&gt; [&quot;Mike&quot;, &quot;Trout&quot;]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> methods on container objects (i.e. Hash, Array) have not
+been changed to permit automatic persistence of mutated container attributes.
+See <a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-2951">MONGOID-2951</a> for a
+longer discussion of this topic.</p>
+</div>
+</section>
+</section>
 </section>
 <section id="customizing-field-behavior">
-<span id="id10"></span><h2>Customizing Field Behavior<a class="headerlink" href="#customizing-field-behavior" title="Permalink to this headline">#</a></h2>
+<span id="id11"></span><h2>Customizing Field Behavior<a class="headerlink" href="#customizing-field-behavior" title="Permalink to this headline">#</a></h2>
 <p>Mongoid offers several ways to customize the behavior of fields.</p>
 <section id="custom-getters-and-setters">
-<span id="id11"></span><h3>Custom Getters And Setters<a class="headerlink" href="#custom-getters-and-setters" title="Permalink to this headline">#</a></h3>
+<span id="id12"></span><h3>Custom Getters And Setters<a class="headerlink" href="#custom-getters-and-setters" title="Permalink to this headline">#</a></h3>
 <p>You may override getters and setters for fields to modify the values
 when they are being accessed or written. The getters and setters use the
 same name as the field. Use <code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> and <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code>
@@ -1681,7 +1807,7 @@ may be implemented as follows:</p>
 </div>
 </section>
 <section id="custom-field-types">
-<span id="id12"></span><h3>Custom Field Types<a class="headerlink" href="#custom-field-types" title="Permalink to this headline">#</a></h3>
+<span id="id13"></span><h3>Custom Field Types<a class="headerlink" href="#custom-field-types" title="Permalink to this headline">#</a></h3>
 <p>You can define custom types in Mongoid and determine how they are serialized
 and deserialized. In this example, we define a new field type <code class="docutils literal notranslate"><span class="pre">Point</span></code>, which we
 can use in our model class as follows:</p>
@@ -1755,6 +1881,12 @@ In this case, the database driver returns an <code class="docutils literal notra
 The <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> method is used when calling the getters of fields for your custom type.
 Note that in the example above, since <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> calls <code class="docutils literal notranslate"><span class="pre">Point.new</span></code>, a new instance of
 <code class="docutils literal notranslate"><span class="pre">Point</span></code> will be generated on each call to the getter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mongoize</span></code> and <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> methods should return <code class="docutils literal notranslate"><span class="pre">nil</span></code> on values
+that are uncastable to your custom type. See the section on <a class="reference internal" href="#uncastable-values"><span class="std std-ref">Uncastable
+Values</span></a> for more details.</p>
+</div>
 <p>Lastly, the class method <code class="docutils literal notranslate"><span class="pre">evolve</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">mongoize</span></code>, however it is used
 when transforming objects for use in Mongoid query criteria.</p>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="no">Point</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
@@ -1762,7 +1894,7 @@ when transforming objects for use in Mongoid query criteria.</p>
 </pre></div>
 </div>
 <section id="phantom-custom-field-types">
-<span id="id13"></span><h4>Phantom Custom Field Types<a class="headerlink" href="#phantom-custom-field-types" title="Permalink to this headline">#</a></h4>
+<span id="id14"></span><h4>Phantom Custom Field Types<a class="headerlink" href="#phantom-custom-field-types" title="Permalink to this headline">#</a></h4>
 <p>The custom field type may perform conversions from user-visible attribute
 values to the values stored in the database when the user-visible attribute
 value type is different from the declared field type. For example, this
@@ -1816,7 +1948,7 @@ in the database:</p>
 </section>
 </section>
 <section id="custom-field-options">
-<span id="id14"></span><h3>Custom Field Options<a class="headerlink" href="#custom-field-options" title="Permalink to this headline">#</a></h3>
+<span id="id15"></span><h3>Custom Field Options<a class="headerlink" href="#custom-field-options" title="Permalink to this headline">#</a></h3>
 <p>You may define custom options for the <code class="docutils literal notranslate"><span class="pre">field</span></code> macro function
 which extend its behavior at the your time model classes are loaded.</p>
 <p>As an example, we will define a <code class="docutils literal notranslate"><span class="pre">:required</span></code> option which will add a presence
@@ -1842,7 +1974,7 @@ in the field definition, even if the option’s value is false or nil.</p>
 </section>
 </section>
 <section id="dynamic-fields">
-<span id="id15"></span><h2>Dynamic Fields<a class="headerlink" href="#dynamic-fields" title="Permalink to this headline">#</a></h2>
+<span id="id16"></span><h2>Dynamic Fields<a class="headerlink" href="#dynamic-fields" title="Permalink to this headline">#</a></h2>
 <p>By default, Mongoid requires all fields that may be set on a document to
 be explicitly defined using <code class="docutils literal notranslate"><span class="pre">field</span></code> declarations. Mongoid also supports
 creating fields on the fly from an arbitrary hash or documents stored in
@@ -2169,8 +2301,8 @@ operators. MongoDB provides <a class="reference external" href="https://www.mong
 for using field names containing dots and starting with the dollar sign
 for interoperability with other software,
 however, due to this support being confined to specific operators
-(e.g. <a href="#id16"><span class="problematic" id="id17">:manual:`getField &lt;/reference/operator/aggregation/getField/&gt;`</span></a>,
-<a href="#id18"><span class="problematic" id="id19">:manual:`setField &lt;/reference/operator/aggregation/setField/&gt;`</span></a>) and
+(e.g. <a href="#id17"><span class="problematic" id="id18">:manual:`getField &lt;/reference/operator/aggregation/getField/&gt;`</span></a>,
+<a href="#id19"><span class="problematic" id="id20">:manual:`setField &lt;/reference/operator/aggregation/setField/&gt;`</span></a>) and
 requiring the usage of the aggregation pipeline for both queries and updates,
 applications should avoid using dots in field names and starting field names
 with the dollar sign if possible.</p>

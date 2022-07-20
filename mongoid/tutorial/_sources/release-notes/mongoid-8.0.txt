@@ -57,6 +57,78 @@ changed in Mongoid 8.0:
 Please refer to :ref:`configuration option <configuration-options>` for
 the description and effects of each of these options.
 
+Storing/Retrieving/Evolving Uncastable Values
+---------------------------------------------
+
+In Mongoid 8, Mongoid standardizes the storing, retrieving and evolving of
+"uncastable values." On attempting to read or write an uncastable value, a
+``nil`` is returned or written instead. When attempting to evolve an
+uncastable value, the inputted value is returned. See the section on
+:ref:`Uncastable Values <uncastable-values>` for more details.
+
+Some ``mongoize``, ``demongoize`` and ``evolve`` methods were also changed to
+perform consistently with rails and the other ``mongoize``, ``demongoize`` and
+``evolve`` methods. The following is a table of the changes in functionality:
+
++--------------+------------------------+------------------------+-----------------------+
+| Field Type   | Situation              | Previous Functionality | New Functionality     |
++==============+========================+========================+=======================+
+| Boolean      | When a non-boolean     | return ``false``       | return ``nil``        |
+|              | string is assigned:    |                        |                       |
+|              | "bogus value"          |                        |                       |
++--------------+------------------------+------------------------+-----------------------+
+| Array/Hash   | When a value that is   | raise ``InvalidValue`` | return ``nil``        |
+|              | not an array or hash   | error                  |                       |
+|              | is assigned            |                        |                       |
++--------------+------------------------+------------------------+-----------------------+
+| Set          | When a value that is   | raise ``NoMethodError``| return ``nil``        |
+|              | not a set is assigned: | Exception: undefined   |                       |
+|              | 1                      | method ``to_a`` for    |                       |
+|              |                        | 1:Integer              |                       |
++--------------+------------------------+------------------------+-----------------------+
+| Regexp       | When persisting and    | return a               | return a              |
+|              | reading a Regexp from  | ``BSON::Regexp::Raw``  | ``Regexp``            |
+|              | the database           |                        |                       |
++--------------+------------------------+------------------------+-----------------------+
+| Time/DateTime| When assigning a       | raise ``NoMethodError``| return ``nil``        |
+|              | bogus value: ``:bogus``| Exception: undefined   |                       |
+|              |                        | method ``to_i``        |                       |
+|              |                        | for :bogus:Symbol      |                       |
++--------------+------------------------+------------------------+-----------------------+
+| Time/DateTime| When demongoizing a    | raise ``NoMethodError``| "bogus":              |
+|              | non-Time value:        | Exception: undefined   | return ``nil``        |
+|              | "bogus",               | method ``getlocal``    |                       |
+|              | ``Date.today``         | for "bogus":String     | ``Date.today``:       |
+|              |                        |                        | return a              |
+|              |                        |                        | ``Time/DateTime``     |
++--------------+------------------------+------------------------+-----------------------+
+| Date         | When assigning or      | raise ``NoMethodError``| return ``nil``        |
+|              | demongoizing a bogus   | Exception: undefined   |                       |
+|              | value: :bogus          | method ``year``        |                       |
+|              |                        | for :bogus:Symbol      |                       |
++--------------+------------------------+------------------------+-----------------------+
+| Time/DateTime| When demongoizing a    | raise ``NoMethodError``| return a              |
+| /Date        | valid string:          | Exception: undefined   | ``Time/DateTime/Date``|
+|              | "2022-07-14 14:45:51   | method ``getlocal``    |                       |
+|              | -0400"                 | for "2022-07-14        |                       |
+|              |                        | 14:45:51 -0400":String |                       |
++--------------+------------------------+------------------------+-----------------------+
+| All Types    | When an uncastable     | undefined behavior,    | return ``nil``        |
+|              | value is assigned or   | occasionally raise     |                       |
+|              | demongoized            | ``NoMethodError``      |                       |
++--------------+------------------------+------------------------+-----------------------+
+| All Types    | When an uncastable     | undefined behavior,    | return inputted value |
+|              | value is evolved       | occasionally raise     |                       |
+|              |                        | ``NoMethodError``      |                       |
++--------------+------------------------+------------------------+-----------------------+
+
+.. note::
+
+  The ``demongoize`` methods on container objects (i.e. Hash, Array) have not
+  changed to prevent bugs when modifying and saving those objects. See
+  https://jira.mongodb.org/browse/MONGOID-2951 for a longer discussion on these
+  bugs.
+
 
 Order of Callback Invocation
 ----------------------------
@@ -586,6 +658,42 @@ The ``tally`` method accepts the dot notation and field aliases. It also
 allows for tallying localized fields.
 
 
+Implemented ``.pick`` method on ``Mongoid#Criteria``
+-----------------------------------------------------
+
+Mongoid 8 implements the ``.pick`` method on ``Mongoid#Criteria``. ``pick``
+takes one or more field names as a parameter and returns the values for those
+fields from one document. Consider the following model:
+
+.. code::
+
+  class User
+    include Mongoid::Document
+    field :age
+  end
+
+and the following documents in the database:
+
+.. code::
+
+  { _id: 1, age: 21 }
+  { _id: 2, age: 21 }
+  { _id: 3, age: 22 }
+
+Calling ``pick`` on the age field yields the following:
+
+.. code::
+
+  User.pick(:age)
+  # => 21
+
+This method does not apply a sort to the documents, so it will not necessarily
+return the values from the first document.
+
+The ``pick`` method accepts the dot notation and field aliases. It also
+allows for picking localized fields.
+
+
 ``find`` delegates to ``Enumerable#find`` when given a block
 ------------------------------------------------------------
 
@@ -634,3 +742,25 @@ ActiveRecord:
   - When reading a document from the database, the ``attributes_before_type_cast``
     hash contains the attributes as they appear in the database, as opposed to
     their ``demongoized`` form.
+
+
+Deprecated the ``geoHaystack``, ``geoSearch`` Options
+-----------------------------------------------------
+
+The ``geoHaystack`` and ``geoSearch`` options on indexes have been deprecated.
+
+
+Support Dropped for the ``:id_sort`` Option on ``#first/last``
+--------------------------------------------------------------
+
+Support for the ``:id_sort`` option on the ``#first`` and ``#last`` options has
+been dropped. These methods now only except a limit as a positional argument.
+
+
+Support Dropped for Mongoid::Criteria cache
+-------------------------------------------
+
+Support for individually caching criteria objects has been dropped in Mongoid 8.
+
+In order to get caching functionality, enable the Mongoid QueryCache. See the
+section on :ref:`QueryCache <query-cache>` for more details.

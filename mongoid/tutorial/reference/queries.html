@@ -728,11 +728,6 @@ title="Print to PDF"
      </code>
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#legacy-query-cache-limitations">
-     Legacy Query Cache Limitations
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -1028,11 +1023,6 @@ title="Print to PDF"
      </code>
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#legacy-query-cache-limitations">
-     Legacy Query Cache Limitations
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -1050,72 +1040,71 @@ title="Print to PDF"
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#condition-syntax" id="id18">Condition Syntax</a></p>
+<li><p><a class="reference internal" href="#condition-syntax" id="id17">Condition Syntax</a></p>
 <ul>
-<li><p><a class="reference internal" href="#field-syntax" id="id19">Field Syntax</a></p></li>
-<li><p><a class="reference internal" href="#mql-syntax" id="id20">MQL Syntax</a></p></li>
-<li><p><a class="reference internal" href="#symbol-operator-syntax" id="id21">Symbol Operator Syntax</a></p></li>
+<li><p><a class="reference internal" href="#field-syntax" id="id18">Field Syntax</a></p></li>
+<li><p><a class="reference internal" href="#mql-syntax" id="id19">MQL Syntax</a></p></li>
+<li><p><a class="reference internal" href="#symbol-operator-syntax" id="id20">Symbol Operator Syntax</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#embedded-documents" id="id22">Embedded Documents</a></p></li>
-<li><p><a class="reference internal" href="#field-types" id="id23">Field Types</a></p></li>
-<li><p><a class="reference internal" href="#aliases" id="id24">Aliases</a></p></li>
-<li><p><a class="reference internal" href="#logical-operations" id="id25">Logical Operations</a></p>
+<li><p><a class="reference internal" href="#embedded-documents" id="id21">Embedded Documents</a></p></li>
+<li><p><a class="reference internal" href="#field-types" id="id22">Field Types</a></p></li>
+<li><p><a class="reference internal" href="#aliases" id="id23">Aliases</a></p></li>
+<li><p><a class="reference internal" href="#logical-operations" id="id24">Logical Operations</a></p>
 <ul>
-<li><p><a class="reference internal" href="#operator-combinations" id="id26">Operator Combinations</a></p></li>
-<li><p><a class="reference internal" href="#and-behavior" id="id27"><code class="docutils literal notranslate"><span class="pre">and</span></code> Behavior</a></p></li>
-<li><p><a class="reference internal" href="#any-of-behavior" id="id28"><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Behavior</a></p></li>
-<li><p><a class="reference internal" href="#not-behavior" id="id29"><code class="docutils literal notranslate"><span class="pre">not</span></code> Behavior</a></p></li>
+<li><p><a class="reference internal" href="#operator-combinations" id="id25">Operator Combinations</a></p></li>
+<li><p><a class="reference internal" href="#and-behavior" id="id26"><code class="docutils literal notranslate"><span class="pre">and</span></code> Behavior</a></p></li>
+<li><p><a class="reference internal" href="#any-of-behavior" id="id27"><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Behavior</a></p></li>
+<li><p><a class="reference internal" href="#not-behavior" id="id28"><code class="docutils literal notranslate"><span class="pre">not</span></code> Behavior</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#incremental-query-construction" id="id30">Incremental Query Construction</a></p>
+<li><p><a class="reference internal" href="#incremental-query-construction" id="id29">Incremental Query Construction</a></p>
 <ul>
-<li><p><a class="reference internal" href="#merge-strategies" id="id31">Merge Strategies</a></p></li>
-<li><p><a class="reference internal" href="#supported-operator-methods" id="id32">Supported Operator Methods</a></p></li>
-<li><p><a class="reference internal" href="#operator-value-expansion" id="id33">Operator Value Expansion</a></p></li>
+<li><p><a class="reference internal" href="#merge-strategies" id="id30">Merge Strategies</a></p></li>
+<li><p><a class="reference internal" href="#supported-operator-methods" id="id31">Supported Operator Methods</a></p></li>
+<li><p><a class="reference internal" href="#operator-value-expansion" id="id32">Operator Value Expansion</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#query-methods" id="id34">Query Methods</a></p>
+<li><p><a class="reference internal" href="#query-methods" id="id33">Query Methods</a></p>
 <ul>
-<li><p><a class="reference internal" href="#elem-match" id="id35">elem_match</a></p></li>
+<li><p><a class="reference internal" href="#elem-match" id="id34">elem_match</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#projection" id="id36">Projection</a></p>
+<li><p><a class="reference internal" href="#projection" id="id35">Projection</a></p>
 <ul>
-<li><p><a class="reference internal" href="#only" id="id37"><code class="docutils literal notranslate"><span class="pre">only</span></code></a></p></li>
-<li><p><a class="reference internal" href="#without" id="id38"><code class="docutils literal notranslate"><span class="pre">without</span></code></a></p></li>
+<li><p><a class="reference internal" href="#only" id="id36"><code class="docutils literal notranslate"><span class="pre">only</span></code></a></p></li>
+<li><p><a class="reference internal" href="#without" id="id37"><code class="docutils literal notranslate"><span class="pre">without</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#ordering" id="id39">Ordering</a></p></li>
-<li><p><a class="reference internal" href="#pagination" id="id40">Pagination</a></p>
+<li><p><a class="reference internal" href="#ordering" id="id38">Ordering</a></p></li>
+<li><p><a class="reference internal" href="#pagination" id="id39">Pagination</a></p>
 <ul>
-<li><p><a class="reference internal" href="#limit" id="id41"><code class="docutils literal notranslate"><span class="pre">limit</span></code></a></p></li>
-<li><p><a class="reference internal" href="#skip" id="id42"><code class="docutils literal notranslate"><span class="pre">skip</span></code></a></p></li>
-<li><p><a class="reference internal" href="#batch-size" id="id43"><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></p></li>
+<li><p><a class="reference internal" href="#limit" id="id40"><code class="docutils literal notranslate"><span class="pre">limit</span></code></a></p></li>
+<li><p><a class="reference internal" href="#skip" id="id41"><code class="docutils literal notranslate"><span class="pre">skip</span></code></a></p></li>
+<li><p><a class="reference internal" href="#batch-size" id="id42"><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#finding-by-id" id="id44">Finding By <code class="docutils literal notranslate"><span class="pre">_id</span></code></a></p></li>
-<li><p><a class="reference internal" href="#additional-query-methods" id="id45">Additional Query Methods</a></p></li>
-<li><p><a class="reference internal" href="#eager-loading" id="id46">Eager Loading</a></p></li>
-<li><p><a class="reference internal" href="#regular-expressions" id="id47">Regular Expressions</a></p></li>
-<li><p><a class="reference internal" href="#conditions-on-fields" id="id48">Conditions On Fields</a></p></li>
-<li><p><a class="reference internal" href="#scoping" id="id49">Scoping</a></p>
+<li><p><a class="reference internal" href="#finding-by-id" id="id43">Finding By <code class="docutils literal notranslate"><span class="pre">_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="#additional-query-methods" id="id44">Additional Query Methods</a></p></li>
+<li><p><a class="reference internal" href="#eager-loading" id="id45">Eager Loading</a></p></li>
+<li><p><a class="reference internal" href="#regular-expressions" id="id46">Regular Expressions</a></p></li>
+<li><p><a class="reference internal" href="#conditions-on-fields" id="id47">Conditions On Fields</a></p></li>
+<li><p><a class="reference internal" href="#scoping" id="id48">Scoping</a></p>
 <ul>
-<li><p><a class="reference internal" href="#named-scopes" id="id50">Named Scopes</a></p></li>
-<li><p><a class="reference internal" href="#default-scopes" id="id51">Default Scopes</a></p></li>
-<li><p><a class="reference internal" href="#runtime-default-scope-override" id="id52">Runtime Default Scope Override</a></p></li>
-<li><p><a class="reference internal" href="#class-methods" id="id53">Class Methods</a></p></li>
+<li><p><a class="reference internal" href="#named-scopes" id="id49">Named Scopes</a></p></li>
+<li><p><a class="reference internal" href="#default-scopes" id="id50">Default Scopes</a></p></li>
+<li><p><a class="reference internal" href="#runtime-default-scope-override" id="id51">Runtime Default Scope Override</a></p></li>
+<li><p><a class="reference internal" href="#class-methods" id="id52">Class Methods</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#queries-persistence" id="id54">Queries + Persistence</a></p></li>
-<li><p><a class="reference internal" href="#query-cache" id="id55">Query Cache</a></p>
+<li><p><a class="reference internal" href="#queries-persistence" id="id53">Queries + Persistence</a></p></li>
+<li><p><a class="reference internal" href="#query-cache" id="id54">Query Cache</a></p>
 <ul>
-<li><p><a class="reference internal" href="#enabling-query-cache" id="id56">Enabling Query Cache</a></p></li>
-<li><p><a class="reference internal" href="#enabling-query-cache-via-middleware" id="id57">Enabling Query Cache Via Middleware</a></p></li>
-<li><p><a class="reference internal" href="#enabling-query-cache-manually" id="id58">Enabling Query Cache Manually</a></p></li>
-<li><p><a class="reference internal" href="#query-cache-shared-with-driver" id="id59">Query Cache Shared With Driver</a></p></li>
-<li><p><a class="reference internal" href="#caching-the-result-of-first" id="id60">Caching the Result of <code class="docutils literal notranslate"><span class="pre">#first</span></code></a></p></li>
-<li><p><a class="reference internal" href="#legacy-query-cache-limitations" id="id61">Legacy Query Cache Limitations</a></p></li>
+<li><p><a class="reference internal" href="#enabling-query-cache" id="id55">Enabling Query Cache</a></p></li>
+<li><p><a class="reference internal" href="#enabling-query-cache-via-middleware" id="id56">Enabling Query Cache Via Middleware</a></p></li>
+<li><p><a class="reference internal" href="#enabling-query-cache-manually" id="id57">Enabling Query Cache Manually</a></p></li>
+<li><p><a class="reference internal" href="#query-cache-shared-with-driver" id="id58">Query Cache Shared With Driver</a></p></li>
+<li><p><a class="reference internal" href="#caching-the-result-of-first" id="id59">Caching the Result of <code class="docutils literal notranslate"><span class="pre">#first</span></code></a></p></li>
 </ul>
 </li>
 </ul>
@@ -2221,12 +2210,15 @@ return a new one.</em></p>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#first|last</span></code></p>
-<p><em>Finds a single document given the provided criteria. This automatically adds a sort on id.
-Opt out of adding the id sort with the {id_sort: :none} option.</em></p>
+<p><em>Finds a single document given the provided criteria. Get a list of
+documents by passing in a limit argument. This method automatically adds
+a sort on _id. This can cause performance issues, so if the sort is
+undesirable, Criteria#take can be used instead.</em></p>
 </td>
 <td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">first</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:members</span><span class="o">.</span><span class="n">with_size</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:members</span><span class="o">.</span><span class="n">with_size</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </td>
@@ -2283,7 +2275,28 @@ argument is supported in MongoDB 4.2 and lower.</em>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#pluck</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#pick</span></code></p>
+<p><em>Get the values from one document for the provided fields.
+Returns nil for unset fields and for non-existent fields.</em></p>
+<p><em>This method does not apply a sort to the documents, so it
+will not necessarily return the values from the first document.</em></p>
+<p><em>This method accepts the dot notation, thus permitting referencing
+fields in embedded associations.</em></p>
+<p><em>This method respects :ref:`field aliases &lt;field-aliases&gt;`,
+including those defined in embedded documents.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="s1">&#39;cities.name&#39;</span><span class="p">)</span>
+
+<span class="c1"># Using the earlier definition of Manager,</span>
+<span class="c1"># expands out to &quot;managers.name&quot; in the query:</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="s1">&#39;managers.n&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#pluck</span></code></p>
 <p><em>Get all the values for the provided field.
 Returns nil for unset fields and for non-existent fields.</em></p>
 <p><em>This method accepts the dot notation, thus permitting referencing
@@ -2302,7 +2315,7 @@ including those defined in embedded documents.</em></p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#take</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#take</span></code></p>
 <p><em>Get a list of n documents from the database or just one if no parameter
 is provided.</em></p>
 <p><em>This method does not apply a sort to the documents, so it can return
@@ -2314,7 +2327,7 @@ different document(s) than #first and #last.</em></p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#take!</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#take!</span></code></p>
 <p><em>Get a document from the database or raise an error if none exist.</em></p>
 <p><em>This method does not apply a sort to the documents, so it can return
 different document(s) than #first and #last.</em></p>
@@ -2324,7 +2337,7 @@ different document(s) than #first and #last.</em></p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#tally</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#tally</span></code></p>
 <p><em>Get a mapping of values to counts for the provided field.</em></p>
 <p><em>This method accepts the dot notation, thus permitting referencing
 fields in embedded associations.</em></p>
@@ -2898,27 +2911,16 @@ This loads all documents into memory and can be an expensive operation.</em></p>
 </section>
 <section id="query-cache">
 <span id="id14"></span><h2>Query Cache<a class="headerlink" href="#query-cache" title="Permalink to this headline">#</a></h2>
-<p>Mongoid and the underlying Ruby MongoDB driver provide query caching
-functionality. When enabled, the query cache saves the results of
-previously executed find and aggregation queries and reuses them in
-the future instead of performing the queries again, thus increasing
-application performance and reducing database load.</p>
+<p>The Ruby MongoDB driver provide query caching functionality. When enabled, the
+query cache saves the results of previously executed find and aggregation
+queries and reuses them in the future instead of performing the queries again,
+thus increasing application performance and reducing database load.</p>
 <p>The query cache has historically been provided by Mongoid but as of driver
 version 2.14.0, the query cache implementation has been moved into the driver.
 When Mongoid is used with driver version 2.14.0 or later, Mongoid delegates
-all work to the driver’s query cache implementation. When Mongoid is used
-with driver versions 2.13.x and earlier, Mongoid utilizes its own, legacy,
-query cache implementation.</p>
+all work to the driver’s query cache implementation.</p>
 <p>Please review the <a class="reference external" href="https://mongodb.com/docs/ruby-driver/current/reference/query-cache/">driver query cache documentation</a>
 for details about the driver’s query cache behavior.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The legacy query cache implementation that Mongoid uses when it detects
-driver version 2.13.x and earlier has a number of limitations and
-known issues, some of which are severe. If you wish to use the query cache,
-it is strongly recommended to use driver 2.14.0 or later. The limitations
-of the legacy Mongoid query cache are <a class="reference internal" href="#legacy-query-cache-limitations"><span class="std std-ref">described below</span></a>.</p>
-</div>
 <p>The rest of this section assumes that driver 2.14.0 or later is being used and
 Mongoid delegates to the driver’s query cache.</p>
 <section id="enabling-query-cache">
@@ -3003,24 +3005,7 @@ will query the database and separately cache their results.</p>
 </pre></div>
 </div>
 <p>To use the cached results, call <code class="docutils literal notranslate"><span class="pre">all.to_a.first</span></code> on the model class.</p>
-</section>
-<section id="legacy-query-cache-limitations">
-<span id="id17"></span><h3>Legacy Query Cache Limitations<a class="headerlink" href="#legacy-query-cache-limitations" title="Permalink to this headline">#</a></h3>
-<p>When Mongoid uses its legacy query cache due to driver version being older
-than 2.14.0, the following limitations apply:</p>
-<ul class="simple">
-<li><p>The query cache does not cache query results that exceed the batch size.
-The default batch size is 1000 documents (refer to <a class="reference internal" href="#batch-size"><span class="std std-ref">batch_size</span></a>.)</p></li>
-<li><p>The query cache does not take into account read preference or read concern
-when deciding whether to return cached results. When performing the same
-query with a different read preference or read concern with the query cache
-enabled, incorrect results may be returned.</p></li>
-<li><p>Bulk writes, as well as <code class="docutils literal notranslate"><span class="pre">$out</span></code> and <code class="docutils literal notranslate"><span class="pre">$merge</span></code> aggregation pipeline stages
-do not invalidate the query cache. Cached results may be stale after performing
-any of these operations.</p></li>
-<li><p>Aggregation results are not cached.</p></li>
-</ul>
-</section>
+<span class="target" id="legacy-query-cache-limitations"></span></section>
 </section>
 </section>
 
