@@ -33,6 +33,8 @@
     <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mongoid 7.4" href="mongoid-7.4.html" />
+    <link rel="prev" title="Mongoid 8.0" href="mongoid-8.0.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -79,7 +81,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../installation-configuration.html">
    Installation &amp; Configuration
@@ -258,19 +260,24 @@
    API
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../release-notes.html">
    Release Notes
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="mongoid-8.0.html">
      Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Mongoid 7.5
     </a>
    </li>
    <li class="toctree-l2">
@@ -453,75 +460,19 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-update-values-and-hash-update-values-deprecated">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Array#update_values
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Hash#update_values
-    </span>
-   </code>
-   deprecated
+  <a class="reference internal nav-link" href="#ruby-jruby-and-rails-version-support">
+   Ruby, JRuby and Rails Version Support
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ruby-2-5-deprecated">
-   Ruby 2.5 Deprecated
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jruby-9-2-deprecated">
-   JRuby 9.2 Deprecated
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rails-5-1-deprecated">
-   Rails 5.1 Deprecated
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#document-to-a-deprecated">
+  <a class="reference internal nav-link" href="#implemented-criteria-take-take-method">
+   Implemented
    <code class="docutils literal notranslate">
     <span class="pre">
-     Document#to_a
+     Criteria#take/take!
     </span>
    </code>
-   deprecated
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combine-chained-operators-using-and-instead-of-override">
-   Combine Chained Operators Using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     and
-    </span>
-   </code>
-   Instead of
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     override
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-one-warnings-in-upsert">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     update_one
-    </span>
-   </code>
-   Warnings in
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     upsert
-    </span>
-   </code>
+   Method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -538,17 +489,6 @@ title="Print to PDF"
      Hash
     </span>
    </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implemented-criteria-take-take-method">
-   Implemented
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Criteria#take/take!
-    </span>
-   </code>
-   Method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -574,6 +514,38 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combine-chained-operators-using-and-instead-of-override">
+   Combine Chained Operators Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     and
+    </span>
+   </code>
+   Instead of
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     override
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pluck-usage-of-map-deprecated">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pluck
+    </span>
+   </code>
+   Usage of
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     map
+    </span>
+   </code>
+   Deprecated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mongoid-criteria-cache-deprecated">
    <code class="docutils literal notranslate">
     <span class="pre">
@@ -581,6 +553,47 @@ title="Print to PDF"
     </span>
    </code>
    cache deprecated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#array-update-values-and-hash-update-values-deprecated">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Array#update_values
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hash#update_values
+    </span>
+   </code>
+   deprecated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#document-to-a-deprecated">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Document#to_a
+    </span>
+   </code>
+   deprecated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-one-warnings-in-upsert">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     update_one
+    </span>
+   </code>
+   Warnings in
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     upsert
+    </span>
+   </code>
   </a>
  </li>
 </ul>
@@ -603,75 +616,19 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-update-values-and-hash-update-values-deprecated">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Array#update_values
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Hash#update_values
-    </span>
-   </code>
-   deprecated
+  <a class="reference internal nav-link" href="#ruby-jruby-and-rails-version-support">
+   Ruby, JRuby and Rails Version Support
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ruby-2-5-deprecated">
-   Ruby 2.5 Deprecated
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jruby-9-2-deprecated">
-   JRuby 9.2 Deprecated
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rails-5-1-deprecated">
-   Rails 5.1 Deprecated
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#document-to-a-deprecated">
+  <a class="reference internal nav-link" href="#implemented-criteria-take-take-method">
+   Implemented
    <code class="docutils literal notranslate">
     <span class="pre">
-     Document#to_a
+     Criteria#take/take!
     </span>
    </code>
-   deprecated
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combine-chained-operators-using-and-instead-of-override">
-   Combine Chained Operators Using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     and
-    </span>
-   </code>
-   Instead of
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     override
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-one-warnings-in-upsert">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     update_one
-    </span>
-   </code>
-   Warnings in
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     upsert
-    </span>
-   </code>
+   Method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -688,17 +645,6 @@ title="Print to PDF"
      Hash
     </span>
    </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implemented-criteria-take-take-method">
-   Implemented
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Criteria#take/take!
-    </span>
-   </code>
-   Method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -724,6 +670,38 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combine-chained-operators-using-and-instead-of-override">
+   Combine Chained Operators Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     and
+    </span>
+   </code>
+   Instead of
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     override
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pluck-usage-of-map-deprecated">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pluck
+    </span>
+   </code>
+   Usage of
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     map
+    </span>
+   </code>
+   Deprecated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mongoid-criteria-cache-deprecated">
    <code class="docutils literal notranslate">
     <span class="pre">
@@ -731,6 +709,47 @@ title="Print to PDF"
     </span>
    </code>
    cache deprecated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#array-update-values-and-hash-update-values-deprecated">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Array#update_values
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hash#update_values
+    </span>
+   </code>
+   deprecated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#document-to-a-deprecated">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Document#to_a
+    </span>
+   </code>
+   deprecated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-one-warnings-in-upsert">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     update_one
+    </span>
+   </code>
+   Warnings in
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     upsert
+    </span>
+   </code>
   </a>
  </li>
 </ul>
@@ -748,47 +767,123 @@ title="Print to PDF"
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#array-update-values-and-hash-update-values-deprecated" id="id1"><code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> deprecated</a></p></li>
-<li><p><a class="reference internal" href="#ruby-2-5-deprecated" id="id2">Ruby 2.5 Deprecated</a></p></li>
-<li><p><a class="reference internal" href="#jruby-9-2-deprecated" id="id3">JRuby 9.2 Deprecated</a></p></li>
-<li><p><a class="reference internal" href="#rails-5-1-deprecated" id="id4">Rails 5.1 Deprecated</a></p></li>
-<li><p><a class="reference internal" href="#document-to-a-deprecated" id="id5"><code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> deprecated</a></p></li>
-<li><p><a class="reference internal" href="#combine-chained-operators-using-and-instead-of-override" id="id6">Combine Chained Operators Using <code class="docutils literal notranslate"><span class="pre">and</span></code> Instead of <code class="docutils literal notranslate"><span class="pre">override</span></code></a></p></li>
-<li><p><a class="reference internal" href="#update-one-warnings-in-upsert" id="id7"><code class="docutils literal notranslate"><span class="pre">update_one</span></code> Warnings in <code class="docutils literal notranslate"><span class="pre">upsert</span></code></a></p></li>
-<li><p><a class="reference internal" href="#force-the-attributes-method-to-always-return-a-hash" id="id8">Force the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> Method to Always Return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code></a></p></li>
-<li><p><a class="reference internal" href="#implemented-criteria-take-take-method" id="id9">Implemented <code class="docutils literal notranslate"><span class="pre">Criteria#take/take!</span></code> Method</a></p></li>
-<li><p><a class="reference internal" href="#deprecate-id-sort-option-and-support-limit-on-first-last" id="id10">Deprecate <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option and Support <code class="docutils literal notranslate"><span class="pre">limit</span></code> on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code></a></p></li>
-<li><p><a class="reference internal" href="#mongoid-criteria-cache-deprecated" id="id11"><code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> cache deprecated</a></p></li>
+<li><p><a class="reference internal" href="#ruby-jruby-and-rails-version-support" id="id1">Ruby, JRuby and Rails Version Support</a></p></li>
+<li><p><a class="reference internal" href="#implemented-criteria-take-take-method" id="id2">Implemented <code class="docutils literal notranslate"><span class="pre">Criteria#take/take!</span></code> Method</a></p></li>
+<li><p><a class="reference internal" href="#force-the-attributes-method-to-always-return-a-hash" id="id3">Force the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> Method to Always Return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code></a></p></li>
+<li><p><a class="reference internal" href="#deprecate-id-sort-option-and-support-limit-on-first-last" id="id4">Deprecate <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option and Support <code class="docutils literal notranslate"><span class="pre">limit</span></code> on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code></a></p></li>
+<li><p><a class="reference internal" href="#combine-chained-operators-using-and-instead-of-override" id="id5">Combine Chained Operators Using <code class="docutils literal notranslate"><span class="pre">and</span></code> Instead of <code class="docutils literal notranslate"><span class="pre">override</span></code></a></p></li>
+<li><p><a class="reference internal" href="#pluck-usage-of-map-deprecated" id="id6"><code class="docutils literal notranslate"><span class="pre">pluck</span></code> Usage of <code class="docutils literal notranslate"><span class="pre">map</span></code> Deprecated</a></p></li>
+<li><p><a class="reference internal" href="#mongoid-criteria-cache-deprecated" id="id7"><code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> cache deprecated</a></p></li>
+<li><p><a class="reference internal" href="#array-update-values-and-hash-update-values-deprecated" id="id8"><code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> deprecated</a></p></li>
+<li><p><a class="reference internal" href="#document-to-a-deprecated" id="id9"><code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> deprecated</a></p></li>
+<li><p><a class="reference internal" href="#update-one-warnings-in-upsert" id="id10"><code class="docutils literal notranslate"><span class="pre">update_one</span></code> Warnings in <code class="docutils literal notranslate"><span class="pre">upsert</span></code></a></p></li>
 </ul>
 </div>
 <p>This page describes significant changes and improvements in Mongoid 7.5.
 The complete list of releases is available <a class="reference external" href="https://github.com/mongodb/mongoid/releases">on GitHub</a> and <a class="reference external" href="https://jira.mongodb.org/projects/MONGOID?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page">in JIRA</a>;
 please consult GitHub releases for detailed release notes and JIRA for
 the complete list of issues fixed in each release, including bug fixes.</p>
-<section id="array-update-values-and-hash-update-values-deprecated">
-<h2><code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> deprecated<a class="headerlink" href="#array-update-values-and-hash-update-values-deprecated" title="Permalink to this headline">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> methods are deprecated in
-Mongoid 7.5. It is recommended to use ActiveSupport’s <code class="docutils literal notranslate"><span class="pre">transform_values!</span></code>
-method instead.</p>
+<section id="ruby-jruby-and-rails-version-support">
+<h2>Ruby, JRuby and Rails Version Support<a class="headerlink" href="#ruby-jruby-and-rails-version-support" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 7.5 deprecates support for Ruby 2.5, JRuby 9.2 and Rails 5.1.
+Mongoid 8 will requir Ruby 2.6 or newer, JRuby 9.3 or newer and Rails 5.2 or
+newer.</p>
 </section>
-<section id="ruby-2-5-deprecated">
-<h2>Ruby 2.5 Deprecated<a class="headerlink" href="#ruby-2-5-deprecated" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 7.5 deprecates support for Ruby 2.5.
-Mongoid 8 will require Ruby 2.6 or newer.</p>
+<section id="implemented-criteria-take-take-method">
+<h2>Implemented <code class="docutils literal notranslate"><span class="pre">Criteria#take/take!</span></code> Method<a class="headerlink" href="#implemented-criteria-take-take-method" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 7.5 introduces the <code class="docutils literal notranslate"><span class="pre">#take</span></code> method which returns a document
+or a set of documents from the database without ordering by <code class="docutils literal notranslate"><span class="pre">_id</span></code>:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+<span class="k">end</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">take</span>
+<span class="c1"># =&gt; #&lt;Band _id: 62c835813282a4470c07d530, &gt;</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; [ #&lt;Band _id: 62c835813282a4470c07d530, &gt;, #&lt;Band _id: 62c835823282a4470c07d531, &gt; ]</span>
+</pre></div>
+</div>
+<p>If a parameter is given to <code class="docutils literal notranslate"><span class="pre">#take</span></code>, an array of documents is returned. If no parameter is
+given, a singular document is returned.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#take!</span></code> method functions the same as calling <code class="docutils literal notranslate"><span class="pre">#take</span></code> without arguments,
+but raises an DocumentNotFound error instead of returning nil if no documents
+are found.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">take!</span>
+<span class="c1"># =&gt; #&lt;Band _id: 62c835813282a4470c07d530, &gt;</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">#take/take!</span></code> methods do not apply a sort to the view before
+retrieving the documents from the database, and therefore they may return different
+results than the <code class="docutils literal notranslate"><span class="pre">#first</span></code> and <code class="docutils literal notranslate"><span class="pre">#last</span></code> methods. <code class="docutils literal notranslate"><span class="pre">#take</span></code> is equivalent to
+calling <code class="docutils literal notranslate"><span class="pre">#first</span></code> or <code class="docutils literal notranslate"><span class="pre">#last</span></code> with the <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">id_sort:</span> <span class="pre">:none</span> <span class="pre">}</span></code> option. This
+option has been deprecated in Mongoid 7.5 and it is recommended to use <code class="docutils literal notranslate"><span class="pre">#take</span></code>
+instead going forward. Support for the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> option will be dropped in
+Mongoid 8.</p>
 </section>
-<section id="jruby-9-2-deprecated">
-<h2>JRuby 9.2 Deprecated<a class="headerlink" href="#jruby-9-2-deprecated" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 7.5 deprecates support for JRuby 9.2.
-Mongoid 8 will require JRuby 9.3 or newer.</p>
+<section id="force-the-attributes-method-to-always-return-a-hash">
+<h2>Force the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> Method to Always Return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code><a class="headerlink" href="#force-the-attributes-method-to-always-return-a-hash" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 7.5 with the <code class="docutils literal notranslate"><span class="pre">Mongoid.legacy_attributes</span></code> option set to <code class="docutils literal notranslate"><span class="pre">false</span></code>
+will always return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code> when calling the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> method.
+For example:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:name</span>
+<span class="k">end</span>
+
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;The Rolling Stones&quot;</span><span class="p">)</span>
+<span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">class</span>
+<span class="c1"># =&gt; Hash</span>
+
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">class</span>
+<span class="c1"># =&gt; Hash</span>
+</pre></div>
+</div>
+<p>In Mongoid 7.4 and earlier, and in 7.5 with the <code class="docutils literal notranslate"><span class="pre">Mongoid.legacy_attributes</span></code>
+option set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> method on a document will return a
+<code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code> when retrieving that document from the database, but will
+return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code> when instantiating a new document:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;The Rolling Stones&quot;</span><span class="p">)</span>
+<span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">class</span>
+<span class="c1"># =&gt; Hash</span>
+
+<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">class</span>
+<span class="c1"># =&gt; BSON::Document</span>
+</pre></div>
+</div>
 </section>
-<section id="rails-5-1-deprecated">
-<h2>Rails 5.1 Deprecated<a class="headerlink" href="#rails-5-1-deprecated" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 7.5 deprecates support for Rails 5.1.
-Mongoid 8 will require Rails 5.2 or newer.</p>
-</section>
-<section id="document-to-a-deprecated">
-<h2><code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> deprecated<a class="headerlink" href="#document-to-a-deprecated" title="Permalink to this headline">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> method is deprecated in Mongoid 7.5.</p>
+<section id="deprecate-id-sort-option-and-support-limit-on-first-last">
+<h2>Deprecate <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option and Support <code class="docutils literal notranslate"><span class="pre">limit</span></code> on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code><a class="headerlink" href="#deprecate-id-sort-option-and-support-limit-on-first-last" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 7.5 deprecates the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> keyword argument for the
+<code class="docutils literal notranslate"><span class="pre">Criteria#first</span></code> and <code class="docutils literal notranslate"><span class="pre">Criteria#last</span></code> methods. Please use <code class="docutils literal notranslate"><span class="pre">Criteria#take</span></code>
+to retrieve documents without sorting by id.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> methods now take the number of documents to return
+as a positional argument, mirroring the functionality of Ruby’s <code class="docutils literal notranslate"><span class="pre">Enumerable</span></code>
+method and ActiveRecord’s <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> methods. Both invocations
+(with limit as a positional arguments and with the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> option) remain
+supported in Mongoid 7.x, but the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> invocation will be removed in
+Mongoid 8.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; #&lt;Band _id: 62c835813282a4470c07d530, &gt;</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; [ #&lt;Band _id: 62c835813282a4470c07d530, &gt;, #&lt;Band _id: 62c835823282a4470c07d531, &gt; ]</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">last</span>
+<span class="c1"># =&gt; #&lt;Band _id: 62c835823282a4470c07d531, &gt;</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; [#&lt;Band _id: 62c835813282a4470c07d530, &gt;, #&lt;Band _id: 62c835823282a4470c07d531, &gt;]</span>
+</pre></div>
+</div>
+<p>When providing a limit, <code class="docutils literal notranslate"><span class="pre">#first/last</span></code> will return a list of documents, and
+when not providing a limit (or providing <code class="docutils literal notranslate"><span class="pre">nil</span></code>), a single document will be
+returned.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">#first/last</span></code> methods apply a sort on <code class="docutils literal notranslate"><span class="pre">_id</span></code>, which can
+cause performance issues. To get a document without sorting first, use the
+<code class="docutils literal notranslate"><span class="pre">Critera#take</span></code> method.</p>
 </section>
 <section id="combine-chained-operators-using-and-instead-of-override">
 <h2>Combine Chained Operators Using <code class="docutils literal notranslate"><span class="pre">and</span></code> Instead of <code class="docutils literal notranslate"><span class="pre">override</span></code><a class="headerlink" href="#combine-chained-operators-using-and-instead-of-override" title="Permalink to this headline">#</a></h2>
@@ -840,107 +935,18 @@ the selector can be strings or symbols, depending on what was passed to the
 operator.</p>
 </div>
 </section>
-<section id="update-one-warnings-in-upsert">
-<h2><code class="docutils literal notranslate"><span class="pre">update_one</span></code> Warnings in <code class="docutils literal notranslate"><span class="pre">upsert</span></code><a class="headerlink" href="#update-one-warnings-in-upsert" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 7.5 fixes incorrect usage of the driver’s <code class="docutils literal notranslate"><span class="pre">update_one</span></code> method from
-Mongoid’s <code class="docutils literal notranslate"><span class="pre">upsert</span></code> method. Mongoid’s <code class="docutils literal notranslate"><span class="pre">upsert</span></code> actually performs a
-replacing upsert, and Mongoid 7.5 correctly calls <code class="docutils literal notranslate"><span class="pre">replace_one</span></code>.</p>
-</section>
-<section id="force-the-attributes-method-to-always-return-a-hash">
-<h2>Force the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> Method to Always Return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code><a class="headerlink" href="#force-the-attributes-method-to-always-return-a-hash" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 7.5 with the <code class="docutils literal notranslate"><span class="pre">Mongoid.legacy_attributes</span></code> option set to <code class="docutils literal notranslate"><span class="pre">false</span></code>
-will always return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code> when calling the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> method.
-For example:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+<section id="pluck-usage-of-map-deprecated">
+<h2><code class="docutils literal notranslate"><span class="pre">pluck</span></code> Usage of <code class="docutils literal notranslate"><span class="pre">map</span></code> Deprecated<a class="headerlink" href="#pluck-usage-of-map-deprecated" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 7.5 deprecates the usage of <code class="docutils literal notranslate"><span class="pre">map</span></code> as pluck, as in the following
+example:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
 
-  <span class="n">field</span> <span class="ss">:name</span>
-<span class="k">end</span>
-
-<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;The Rolling Stones&quot;</span><span class="p">)</span>
-<span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">class</span>
-<span class="c1"># =&gt; Hash</span>
-
-<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
-<span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">class</span>
-<span class="c1"># =&gt; Hash</span>
+<span class="c1"># Equivalent to:</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In Mongoid 7.4 and earlier, and in 7.5 with the <code class="docutils literal notranslate"><span class="pre">Mongoid.legacy_attributes</span></code>
-option set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> method on a document will return a
-<code class="docutils literal notranslate"><span class="pre">BSON::Document</span></code> when retrieving that document from the database, but will
-return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code> when instantiating a new document:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;The Rolling Stones&quot;</span><span class="p">)</span>
-<span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">class</span>
-<span class="c1"># =&gt; Hash</span>
-
-<span class="n">band</span> <span class="o">=</span> <span class="no">Band</span><span class="o">.</span><span class="n">first</span>
-<span class="nb">p</span> <span class="n">band</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">class</span>
-<span class="c1"># =&gt; BSON::Document</span>
-</pre></div>
-</div>
-</section>
-<section id="implemented-criteria-take-take-method">
-<h2>Implemented <code class="docutils literal notranslate"><span class="pre">Criteria#take/take!</span></code> Method<a class="headerlink" href="#implemented-criteria-take-take-method" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 7.5 introduces the <code class="docutils literal notranslate"><span class="pre">#take</span></code> method which returns a document
-or a set of documents from the database without ordering by <code class="docutils literal notranslate"><span class="pre">_id</span></code>:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Band</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-<span class="k">end</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
-<span class="no">Band</span><span class="o">.</span><span class="n">create!</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">take</span>
-<span class="c1"># =&gt; #&lt;Band _id: 62c835813282a4470c07d530, &gt;</span>
-<span class="no">Band</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="c1"># =&gt; [ #&lt;Band _id: 62c835813282a4470c07d530, &gt;, #&lt;Band _id: 62c835823282a4470c07d531, &gt; ]</span>
-</pre></div>
-</div>
-<p>If a parameter is given to <code class="docutils literal notranslate"><span class="pre">#take</span></code>, an array of documents is returned. If no parameter is
-given, a singular document is returned.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">#take!</span></code> method functions the same as calling <code class="docutils literal notranslate"><span class="pre">#take</span></code> without arguments,
-but raises an DocumentNotFound error instead of returning nil if no documents
-are found.</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">take!</span>
-<span class="c1"># =&gt; #&lt;Band _id: 62c835813282a4470c07d530, &gt;</span>
-</pre></div>
-</div>
-<p>Note that the <code class="docutils literal notranslate"><span class="pre">#take/take!</span></code> methods do not apply a sort to the view before
-retrieving the documents from the database, and therefore they may return different
-results than the <code class="docutils literal notranslate"><span class="pre">#first</span></code> and <code class="docutils literal notranslate"><span class="pre">#last</span></code> methods. <code class="docutils literal notranslate"><span class="pre">#take</span></code> is equivalent to
-calling <code class="docutils literal notranslate"><span class="pre">#first</span></code> or <code class="docutils literal notranslate"><span class="pre">#last</span></code> with the <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">id_sort:</span> <span class="pre">:none</span> <span class="pre">}</span></code> option. This
-option has been deprecated in Mongoid 7.5 and it is recommended to use <code class="docutils literal notranslate"><span class="pre">#take</span></code>
-instead going forward. Support for the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> option will be dropped in
-Mongoid 8.</p>
-</section>
-<section id="deprecate-id-sort-option-and-support-limit-on-first-last">
-<h2>Deprecate <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option and Support <code class="docutils literal notranslate"><span class="pre">limit</span></code> on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code><a class="headerlink" href="#deprecate-id-sort-option-and-support-limit-on-first-last" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 7.5 deprecates the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> keyword argument for the
-<code class="docutils literal notranslate"><span class="pre">Criteria#first</span></code> and <code class="docutils literal notranslate"><span class="pre">Criteria#last</span></code> methods. Please use <code class="docutils literal notranslate"><span class="pre">Criteria#take</span></code>
-to retrieve documents without sorting by id.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> methods now take the number of documents to return
-as a positional argument, mirroring the functionality of Ruby’s <code class="docutils literal notranslate"><span class="pre">Enumerable</span></code>
-method and ActiveRecord’s <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> methods. Both invocations
-(with limit as a positional arguments and with the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> option) remain
-supported in Mongoid 7.x, but the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> invocation will be removed in
-Mongoid 8.</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">first</span>
-<span class="c1"># =&gt; #&lt;Band _id: 62c835813282a4470c07d530, &gt;</span>
-<span class="no">Band</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="c1"># =&gt; [ #&lt;Band _id: 62c835813282a4470c07d530, &gt;, #&lt;Band _id: 62c835823282a4470c07d531, &gt; ]</span>
-<span class="no">Band</span><span class="o">.</span><span class="n">last</span>
-<span class="c1"># =&gt; #&lt;Band _id: 62c835823282a4470c07d531, &gt;</span>
-<span class="no">Band</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="c1"># =&gt; [#&lt;Band _id: 62c835813282a4470c07d530, &gt;, #&lt;Band _id: 62c835823282a4470c07d531, &gt;]</span>
-</pre></div>
-</div>
-<p>When providing a limit, <code class="docutils literal notranslate"><span class="pre">#first/last</span></code> will return a list of documents, and
-when not providing a limit (or providing <code class="docutils literal notranslate"><span class="pre">nil</span></code>), a single document will be
-returned.</p>
-<p>Note that the <code class="docutils literal notranslate"><span class="pre">#first/last</span></code> methods apply a sort on <code class="docutils literal notranslate"><span class="pre">_id</span></code>, which can
-cause performance issues. To get a document without sorting first, use the
-<code class="docutils literal notranslate"><span class="pre">Critera#take</span></code> method.</p>
+<p>This usage will no longer be supported in Mongoid 8, which will not accept
+arguments to <code class="docutils literal notranslate"><span class="pre">map</span></code>.</p>
 </section>
 <section id="mongoid-criteria-cache-deprecated">
 <h2><code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> cache deprecated<a class="headerlink" href="#mongoid-criteria-cache-deprecated" title="Permalink to this headline">#</a></h2>
@@ -948,6 +954,22 @@ cause performance issues. To get a document without sorting first, use the
 7.5 and will be dropped in Mongoid 8.</p>
 <p>In order to get caching functionality, enable the Mongoid QueryCache. See the
 section on <a class="reference internal" href="../reference/queries.html#query-cache"><span class="std std-ref">QueryCache</span></a> for more details.</p>
+</section>
+<section id="array-update-values-and-hash-update-values-deprecated">
+<h2><code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> deprecated<a class="headerlink" href="#array-update-values-and-hash-update-values-deprecated" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> methods are deprecated in
+Mongoid 7.5. It is recommended to use ActiveSupport’s <code class="docutils literal notranslate"><span class="pre">transform_values!</span></code>
+method instead.</p>
+</section>
+<section id="document-to-a-deprecated">
+<h2><code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> deprecated<a class="headerlink" href="#document-to-a-deprecated" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> method is deprecated in Mongoid 7.5.</p>
+</section>
+<section id="update-one-warnings-in-upsert">
+<h2><code class="docutils literal notranslate"><span class="pre">update_one</span></code> Warnings in <code class="docutils literal notranslate"><span class="pre">upsert</span></code><a class="headerlink" href="#update-one-warnings-in-upsert" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 7.5 fixes incorrect usage of the driver’s <code class="docutils literal notranslate"><span class="pre">update_one</span></code> method from
+Mongoid’s <code class="docutils literal notranslate"><span class="pre">upsert</span></code> method. Mongoid’s <code class="docutils literal notranslate"><span class="pre">upsert</span></code> actually performs a
+replacing upsert, and Mongoid 7.5 correctly calls <code class="docutils literal notranslate"><span class="pre">replace_one</span></code>.</p>
 </section>
 </section>
 
@@ -959,6 +981,20 @@ section on <a class="reference internal" href="../reference/queries.html#query-c
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="mongoid-8.0.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Mongoid 8.0</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="mongoid-7.4.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mongoid 7.4</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
