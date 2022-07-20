@@ -1091,6 +1091,26 @@ for details on driver options.</p>
 <span class="w">    </span><span class="c1"># (Deprecated) In MongoDB 4.0 and earlier, set whether to create</span><span class="w"></span>
 <span class="w">    </span><span class="c1"># indexes in the background by default. (default: false)</span><span class="w"></span>
 <span class="w">    </span><span class="nt">background_indexing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Configure driver-specific options. (optional)</span><span class="w"></span>
+<span class="w">  </span><span class="nt">driver_options</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># When this flag is turned off, inline options will be correctly</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># propagated to Mongoid and Driver finder methods. When this flag is turned</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># on those options will be ignored. For example, with this flag turned</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># off, Band.all.limit(1).count will take the limit into account, while</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># when this flag is turned on, that limit is ignored. The affected driver</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># methods are: aggregate, count, count_documents, distinct, and</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># estimated_document_count. The corresponding Mongoid methods are also</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># affected. (default: false, driver version: 2.18.0+)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#broken_view_options: false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Validates that there are no atomic operators (those that start with $)</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># in the root of a replacement document, and that there are only atomic</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># operators at the root of an update document. If this feature flag is on,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># an error will be raised on an invalid update or replacement document,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># if not, a warning will be output to the logs. This flag does not affect</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Mongoid as of 8.0, but will affect calls to driver update/replace</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># methods. (default: false, driver version: 2.18.0+)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#validate_update_replace: false</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
