@@ -271,6 +271,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.1.html">
+     Mongoid 8.1
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-8.0.html">
      Mongoid 8.0
     </a>
@@ -313,6 +318,23 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-5.html">
      Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contributing/code-documentation.html">
+     Code Documentation
     </a>
    </li>
   </ul>
@@ -475,6 +497,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-based-defaults">
+   Version Based Defaults
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#erb-preprocessing">
    ERb Preprocessing
   </a>
@@ -583,6 +610,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-based-defaults">
+   Version Based Defaults
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#erb-preprocessing">
    ERb Preprocessing
   </a>
@@ -674,25 +706,26 @@ title="Print to PDF"
 <li><p><a class="reference internal" href="#generating-default-configuration" id="id6">Generating Default Configuration</a></p></li>
 <li><p><a class="reference internal" href="#loading-mongoid-configuration" id="id7">Loading Mongoid Configuration</a></p></li>
 <li><p><a class="reference internal" href="#mongoid-configuration-options" id="id8">Mongoid Configuration Options</a></p></li>
-<li><p><a class="reference internal" href="#erb-preprocessing" id="id9">ERb Preprocessing</a></p></li>
-<li><p><a class="reference internal" href="#logging" id="id10">Logging</a></p>
+<li><p><a class="reference internal" href="#version-based-defaults" id="id9">Version Based Defaults</a></p></li>
+<li><p><a class="reference internal" href="#erb-preprocessing" id="id10">ERb Preprocessing</a></p></li>
+<li><p><a class="reference internal" href="#logging" id="id11">Logging</a></p>
 <ul>
-<li><p><a class="reference internal" href="#in-ruby-on-rails-application" id="id11">In Ruby on Rails Application</a></p></li>
-<li><p><a class="reference internal" href="#standalone" id="id12">Standalone</a></p></li>
+<li><p><a class="reference internal" href="#in-ruby-on-rails-application" id="id12">In Ruby on Rails Application</a></p></li>
+<li><p><a class="reference internal" href="#standalone" id="id13">Standalone</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#time-zones" id="id13">Time Zones</a></p></li>
-<li><p><a class="reference internal" href="#configuring-sslcontext" id="id14">Configuring <code class="docutils literal notranslate"><span class="pre">SSLContext</span></code></a></p></li>
-<li><p><a class="reference internal" href="#client-side-encryption" id="id15">Client-Side Encryption</a></p></li>
-<li><p><a class="reference internal" href="#usage-with-forking-servers" id="id16">Usage with Forking Servers</a></p>
+<li><p><a class="reference internal" href="#time-zones" id="id14">Time Zones</a></p></li>
+<li><p><a class="reference internal" href="#configuring-sslcontext" id="id15">Configuring <code class="docutils literal notranslate"><span class="pre">SSLContext</span></code></a></p></li>
+<li><p><a class="reference internal" href="#client-side-encryption" id="id16">Client-Side Encryption</a></p></li>
+<li><p><a class="reference internal" href="#usage-with-forking-servers" id="id17">Usage with Forking Servers</a></p>
 <ul>
-<li><p><a class="reference internal" href="#puma" id="id17">Puma</a></p></li>
-<li><p><a class="reference internal" href="#unicorn" id="id18">Unicorn</a></p></li>
-<li><p><a class="reference internal" href="#passenger" id="id19">Passenger</a></p></li>
+<li><p><a class="reference internal" href="#puma" id="id18">Puma</a></p></li>
+<li><p><a class="reference internal" href="#unicorn" id="id19">Unicorn</a></p></li>
+<li><p><a class="reference internal" href="#passenger" id="id20">Passenger</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#query-cache-middleware" id="id20">Query Cache Middleware</a></p></li>
-<li><p><a class="reference internal" href="#development-configuration" id="id21">Development Configuration</a></p></li>
+<li><p><a class="reference internal" href="#query-cache-middleware" id="id21">Query Cache Middleware</a></p></li>
+<li><p><a class="reference internal" href="#development-configuration" id="id22">Development Configuration</a></p></li>
 </ul>
 </div>
 <p>Mongoid is customarily configured through a <code class="docutils literal notranslate"><span class="pre">mongoid.yml</span></code> file that specifies
@@ -1116,6 +1149,52 @@ for details on driver options.</p>
 <span class="w">    </span><span class="c1"># Mongoid as of 8.0, but will affect calls to driver update/replace</span><span class="w"></span>
 <span class="w">    </span><span class="c1"># methods. (default: false, driver version: 2.18.0+)</span><span class="w"></span>
 <span class="w">    </span><span class="c1">#validate_update_replace: false</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="version-based-defaults">
+<span id="load-defaults"></span><h2>Version Based Defaults<a class="headerlink" href="#version-based-defaults" title="Permalink to this headline">#</a></h2>
+<p>Mongoid supports setting the configuration options to the defaults for specific
+versions. This is useful for upgrading to a new Mongoid version. When upgrading
+your Mongoid version, the following should be set on <code class="docutils literal notranslate"><span class="pre">Mongoid::Config</span></code>:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">load_defaults</span> <span class="o">&lt;</span><span class="no">OLD</span> <span class="no">VERSION</span><span class="o">&gt;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>This way, when upgrading to a new version of Mongoid, your code will run with
+the configuration options from the previous version of Mongoid. Then,
+one-by-one, you can change the feature flags for the new version, and test that
+your code still acts as expected. Once all of the new feature flags have been
+accounted for, the call to <code class="docutils literal notranslate"><span class="pre">load_defaults</span></code> can be changed to take in the <em>new</em>
+version, and all of the changed feature flags can be removed. For example, say
+we’re upgrading from 7.5 to 8.0. Between these two versions, only two feature
+flags were added: <code class="docutils literal notranslate"><span class="pre">legacy_attributes</span></code> and <code class="docutils literal notranslate"><span class="pre">map_big_decimal_to_decimal128</span></code>.
+Before upgrading to Mongoid 8, the following line can be added:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">load_defaults</span> <span class="mi">7</span><span class="o">.</span><span class="mi">5</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Now, after upgrading, those two feature flags will default to their 7.5
+functionality (<code class="docutils literal notranslate"><span class="pre">legacy_attributes:</span> <span class="pre">true,</span> <span class="pre">map_big_decimal_to_decimal128:</span> <span class="pre">false</span></code>).
+Now you can set these feature flags one-by-one and flip them to their 8.0
+behavior:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">load_defaults</span> <span class="mi">7</span><span class="o">.</span><span class="mi">5</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">legacy_attributes</span> <span class="o">=</span> <span class="kp">false</span>
+  <span class="c1"># config.map_big_decimal_to_decimal128 = true</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>It is advised to do these one at a time, so I have left the second flag
+commented out. After verifying your code works as expected with the
+<code class="docutils literal notranslate"><span class="pre">legacy_attributes</span></code> flag turned off, the <code class="docutils literal notranslate"><span class="pre">map_big_decimal_to_decimal128</span></code>
+setting can be uncommented. Once that functionality is verified as well, both
+of those lines can be removed and the <code class="docutils literal notranslate"><span class="pre">load_defaults</span></code> replaced with:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Mongoid</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">load_defaults</span> <span class="mi">8</span><span class="o">.</span><span class="mi">0</span>
+<span class="k">end</span>
 </pre></div>
 </div>
 </section>

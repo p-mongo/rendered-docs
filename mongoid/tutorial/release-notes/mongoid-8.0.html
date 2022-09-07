@@ -34,7 +34,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Mongoid 7.5" href="mongoid-7.5.html" />
-    <link rel="prev" title="Release Notes" href="../release-notes.html" />
+    <link rel="prev" title="Mongoid 8.1" href="mongoid-8.1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -270,6 +270,11 @@
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-8.1.html">
+     Mongoid 8.1
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Mongoid 8.0
@@ -313,6 +318,23 @@
    <li class="toctree-l2">
     <a class="reference internal" href="mongoid-5.html">
      Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contributing/code-documentation.html">
+     Code Documentation
     </a>
    </li>
   </ul>
@@ -480,23 +502,40 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decimal128-backed-bigdecimal-fields">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Decimal128
+    </span>
+   </code>
+   -backed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BigDecimal
+    </span>
+   </code>
+   Fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#storing-retrieving-evolving-uncastable-values">
    Storing/Retrieving/Evolving Uncastable Values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#order-of-callback-invocation">
-   Order of Callback Invocation
+  <a class="reference internal nav-link" href="#changes-to-the-attributes-before-type-cast-hash">
+   Changes to the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     attributes_before_type_cast
+    </span>
+   </code>
+   Hash
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#any-of-adds-multiple-arguments-as-top-level-conditions">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     any_of
-    </span>
-   </code>
-   Adds Multiple Arguments As Top-Level Conditions
+  <a class="reference internal nav-link" href="#order-of-callback-invocation">
+   Order of Callback Invocation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -542,6 +581,16 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#any-of-adds-multiple-arguments-as-top-level-conditions">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     any_of
+    </span>
+   </code>
+   Adds Multiple Arguments As Top-Level Conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pluck-on-embedded-criteria-returns-nil-values">
    <code class="docutils literal notranslate">
     <span class="pre">
@@ -558,39 +607,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-drop-dups-option-from-indexes">
-   Removed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     :drop_dups
-    </span>
-   </code>
-   Option from Indexes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-document-to-a-method">
-   Removed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Document#to_a
-    </span>
-   </code>
-   Method
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-mongoid-errors-eagerload-exception-class">
-   Removed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Mongoid::Errors::EagerLoad
-    </span>
-   </code>
-   Exception Class
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial">
    Replaced
    <code class="docutils literal notranslate">
@@ -604,65 +620,6 @@ title="Print to PDF"
      #geo_spatial
     </span>
    </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-deprecated-constants">
-   Removed Deprecated Constants
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-array-update-values-and-hash-update-values-methods">
-   Removed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Array#update_values
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Hash#update_values
-    </span>
-   </code>
-   methods
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations">
-   No Longer Persisting Documents with Invalid
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     belongs_to
-    </span>
-   </code>
-   Associations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-local-habtm-association-correctly">
-   Update Local HABTM Association Correctly
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#repaired-storing-strings-in-bson-binary-fields">
-   Repaired Storing Strings in BSON::Binary fields
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decimal128-backed-bigdecimal-fields">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Decimal128
-    </span>
-   </code>
-   -backed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     BigDecimal
-    </span>
-   </code>
-   fields
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -714,14 +671,79 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#changes-to-the-attributes-before-type-cast-hash">
-   Changes to the
+  <a class="reference internal nav-link" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations">
+   No Longer Persisting Documents with Invalid
    <code class="docutils literal notranslate">
     <span class="pre">
-     attributes_before_type_cast
+     belongs_to
     </span>
    </code>
-   Hash
+   Associations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-local-habtm-association-correctly">
+   Update Local HABTM Association Correctly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repaired-storing-strings-in-bson-binary-fields">
+   Repaired Storing Strings in BSON::Binary fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-document-to-a-method">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Document#to_a
+    </span>
+   </code>
+   Method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-drop-dups-option-from-indexes">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     :drop_dups
+    </span>
+   </code>
+   Option from Indexes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-mongoid-errors-eagerload-exception-class">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongoid::Errors::EagerLoad
+    </span>
+   </code>
+   Exception Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-deprecated-constants">
+   Removed Deprecated Constants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-array-update-values-and-hash-update-values-methods">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Array#update_values
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hash#update_values
+    </span>
+   </code>
+   methods
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -742,8 +764,7 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#support-dropped-for-the-id-sort-option-on-first-last">
-   Support Dropped for the
+  <a class="reference internal nav-link" href="#id-sort-option-on-first-last-removed">
    <code class="docutils literal notranslate">
     <span class="pre">
      :id_sort
@@ -755,11 +776,12 @@ title="Print to PDF"
      #first/last
     </span>
    </code>
+   Removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#support-dropped-for-mongoid-criteria-cache">
-   Support Dropped for Mongoid::Criteria cache
+  <a class="reference internal nav-link" href="#mongoid-criteria-cache-removed">
+   Mongoid::Criteria Cache Removed
   </a>
  </li>
 </ul>
@@ -802,23 +824,40 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decimal128-backed-bigdecimal-fields">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Decimal128
+    </span>
+   </code>
+   -backed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BigDecimal
+    </span>
+   </code>
+   Fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#storing-retrieving-evolving-uncastable-values">
    Storing/Retrieving/Evolving Uncastable Values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#order-of-callback-invocation">
-   Order of Callback Invocation
+  <a class="reference internal nav-link" href="#changes-to-the-attributes-before-type-cast-hash">
+   Changes to the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     attributes_before_type_cast
+    </span>
+   </code>
+   Hash
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#any-of-adds-multiple-arguments-as-top-level-conditions">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     any_of
-    </span>
-   </code>
-   Adds Multiple Arguments As Top-Level Conditions
+  <a class="reference internal nav-link" href="#order-of-callback-invocation">
+   Order of Callback Invocation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -864,6 +903,16 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#any-of-adds-multiple-arguments-as-top-level-conditions">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     any_of
+    </span>
+   </code>
+   Adds Multiple Arguments As Top-Level Conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pluck-on-embedded-criteria-returns-nil-values">
    <code class="docutils literal notranslate">
     <span class="pre">
@@ -880,39 +929,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-drop-dups-option-from-indexes">
-   Removed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     :drop_dups
-    </span>
-   </code>
-   Option from Indexes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-document-to-a-method">
-   Removed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Document#to_a
-    </span>
-   </code>
-   Method
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-mongoid-errors-eagerload-exception-class">
-   Removed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Mongoid::Errors::EagerLoad
-    </span>
-   </code>
-   Exception Class
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial">
    Replaced
    <code class="docutils literal notranslate">
@@ -926,65 +942,6 @@ title="Print to PDF"
      #geo_spatial
     </span>
    </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-deprecated-constants">
-   Removed Deprecated Constants
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removed-array-update-values-and-hash-update-values-methods">
-   Removed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Array#update_values
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Hash#update_values
-    </span>
-   </code>
-   methods
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations">
-   No Longer Persisting Documents with Invalid
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     belongs_to
-    </span>
-   </code>
-   Associations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-local-habtm-association-correctly">
-   Update Local HABTM Association Correctly
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#repaired-storing-strings-in-bson-binary-fields">
-   Repaired Storing Strings in BSON::Binary fields
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decimal128-backed-bigdecimal-fields">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Decimal128
-    </span>
-   </code>
-   -backed
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     BigDecimal
-    </span>
-   </code>
-   fields
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1036,14 +993,79 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#changes-to-the-attributes-before-type-cast-hash">
-   Changes to the
+  <a class="reference internal nav-link" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations">
+   No Longer Persisting Documents with Invalid
    <code class="docutils literal notranslate">
     <span class="pre">
-     attributes_before_type_cast
+     belongs_to
     </span>
    </code>
-   Hash
+   Associations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-local-habtm-association-correctly">
+   Update Local HABTM Association Correctly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repaired-storing-strings-in-bson-binary-fields">
+   Repaired Storing Strings in BSON::Binary fields
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-document-to-a-method">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Document#to_a
+    </span>
+   </code>
+   Method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-drop-dups-option-from-indexes">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     :drop_dups
+    </span>
+   </code>
+   Option from Indexes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-mongoid-errors-eagerload-exception-class">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mongoid::Errors::EagerLoad
+    </span>
+   </code>
+   Exception Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-deprecated-constants">
+   Removed Deprecated Constants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#removed-array-update-values-and-hash-update-values-methods">
+   Removed
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Array#update_values
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hash#update_values
+    </span>
+   </code>
+   methods
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1064,8 +1086,7 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#support-dropped-for-the-id-sort-option-on-first-last">
-   Support Dropped for the
+  <a class="reference internal nav-link" href="#id-sort-option-on-first-last-removed">
    <code class="docutils literal notranslate">
     <span class="pre">
      :id_sort
@@ -1077,11 +1098,12 @@ title="Print to PDF"
      #first/last
     </span>
    </code>
+   Removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#support-dropped-for-mongoid-criteria-cache">
-   Support Dropped for Mongoid::Criteria cache
+  <a class="reference internal nav-link" href="#mongoid-criteria-cache-removed">
+   Mongoid::Criteria Cache Removed
   </a>
  </li>
 </ul>
@@ -1103,30 +1125,30 @@ title="Print to PDF"
 <li><p><a class="reference internal" href="#support-for-ruby-2-5-dropped" id="id2">Support for Ruby 2.5 Dropped</a></p></li>
 <li><p><a class="reference internal" href="#support-for-rails-5-1-dropped" id="id3">Support for Rails 5.1 Dropped</a></p></li>
 <li><p><a class="reference internal" href="#default-option-values-changed" id="id4">Default Option Values Changed</a></p></li>
-<li><p><a class="reference internal" href="#storing-retrieving-evolving-uncastable-values" id="id5">Storing/Retrieving/Evolving Uncastable Values</a></p></li>
-<li><p><a class="reference internal" href="#order-of-callback-invocation" id="id6">Order of Callback Invocation</a></p></li>
-<li><p><a class="reference internal" href="#any-of-adds-multiple-arguments-as-top-level-conditions" id="id7"><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Adds Multiple Arguments As Top-Level Conditions</a></p></li>
-<li><p><a class="reference internal" href="#changeable-module-behavior-made-compatible-with-activemodel-dirty" id="id8"><code class="docutils literal notranslate"><span class="pre">Changeable</span></code> Module Behavior Made Compatible With <code class="docutils literal notranslate"><span class="pre">ActiveModel::Dirty</span></code></a></p></li>
-<li><p><a class="reference internal" href="#previously-was-previously-new-record-and-previously-persisted-helpers" id="id9"><code class="docutils literal notranslate"><span class="pre">*_previously_was</span></code>, <code class="docutils literal notranslate"><span class="pre">previously_new_record?</span></code>, and <code class="docutils literal notranslate"><span class="pre">previously_persisted?</span></code> helpers</a></p></li>
-<li><p><a class="reference internal" href="#unknown-field-type-symbols-strings-prohibited" id="id10">Unknown Field Type Symbols/Strings Prohibited</a></p></li>
-<li><p><a class="reference internal" href="#pluck-on-embedded-criteria-returns-nil-values" id="id11"><code class="docutils literal notranslate"><span class="pre">#pluck</span></code> on Embedded Criteria Returns <code class="docutils literal notranslate"><span class="pre">nil</span></code> Values</a></p></li>
-<li><p><a class="reference internal" href="#removed-drop-dups-option-from-indexes" id="id12">Removed <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> Option from Indexes</a></p></li>
-<li><p><a class="reference internal" href="#removed-document-to-a-method" id="id13">Removed <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> Method</a></p></li>
-<li><p><a class="reference internal" href="#removed-mongoid-errors-eagerload-exception-class" id="id14">Removed <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> Exception Class</a></p></li>
-<li><p><a class="reference internal" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial" id="id15">Replaced <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria#geo_spacial</span></code> with <code class="docutils literal notranslate"><span class="pre">#geo_spatial</span></code></a></p></li>
-<li><p><a class="reference internal" href="#removed-deprecated-constants" id="id16">Removed Deprecated Constants</a></p></li>
-<li><p><a class="reference internal" href="#removed-array-update-values-and-hash-update-values-methods" id="id17">Removed <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> methods</a></p></li>
+<li><p><a class="reference internal" href="#decimal128-backed-bigdecimal-fields" id="id5"><code class="docutils literal notranslate"><span class="pre">Decimal128</span></code>-backed <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> Fields</a></p></li>
+<li><p><a class="reference internal" href="#storing-retrieving-evolving-uncastable-values" id="id6">Storing/Retrieving/Evolving Uncastable Values</a></p></li>
+<li><p><a class="reference internal" href="#changes-to-the-attributes-before-type-cast-hash" id="id7">Changes to the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> Hash</a></p></li>
+<li><p><a class="reference internal" href="#order-of-callback-invocation" id="id8">Order of Callback Invocation</a></p></li>
+<li><p><a class="reference internal" href="#changeable-module-behavior-made-compatible-with-activemodel-dirty" id="id9"><code class="docutils literal notranslate"><span class="pre">Changeable</span></code> Module Behavior Made Compatible With <code class="docutils literal notranslate"><span class="pre">ActiveModel::Dirty</span></code></a></p></li>
+<li><p><a class="reference internal" href="#previously-was-previously-new-record-and-previously-persisted-helpers" id="id10"><code class="docutils literal notranslate"><span class="pre">*_previously_was</span></code>, <code class="docutils literal notranslate"><span class="pre">previously_new_record?</span></code>, and <code class="docutils literal notranslate"><span class="pre">previously_persisted?</span></code> helpers</a></p></li>
+<li><p><a class="reference internal" href="#unknown-field-type-symbols-strings-prohibited" id="id11">Unknown Field Type Symbols/Strings Prohibited</a></p></li>
+<li><p><a class="reference internal" href="#any-of-adds-multiple-arguments-as-top-level-conditions" id="id12"><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Adds Multiple Arguments As Top-Level Conditions</a></p></li>
+<li><p><a class="reference internal" href="#pluck-on-embedded-criteria-returns-nil-values" id="id13"><code class="docutils literal notranslate"><span class="pre">#pluck</span></code> on Embedded Criteria Returns <code class="docutils literal notranslate"><span class="pre">nil</span></code> Values</a></p></li>
+<li><p><a class="reference internal" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial" id="id14">Replaced <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria#geo_spacial</span></code> with <code class="docutils literal notranslate"><span class="pre">#geo_spatial</span></code></a></p></li>
+<li><p><a class="reference internal" href="#implemented-tally-method-on-mongoid-criteria" id="id15">Implemented <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code></a></p></li>
+<li><p><a class="reference internal" href="#implemented-pick-method-on-mongoid-criteria" id="id16">Implemented <code class="docutils literal notranslate"><span class="pre">.pick</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code></a></p></li>
+<li><p><a class="reference internal" href="#find-delegates-to-enumerable-find-when-given-a-block" id="id17"><code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to <code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code> when given a block</a></p></li>
 <li><p><a class="reference internal" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations" id="id18">No Longer Persisting Documents with Invalid <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> Associations</a></p></li>
 <li><p><a class="reference internal" href="#update-local-habtm-association-correctly" id="id19">Update Local HABTM Association Correctly</a></p></li>
 <li><p><a class="reference internal" href="#repaired-storing-strings-in-bson-binary-fields" id="id20">Repaired Storing Strings in BSON::Binary fields</a></p></li>
-<li><p><a class="reference internal" href="#decimal128-backed-bigdecimal-fields" id="id21"><code class="docutils literal notranslate"><span class="pre">Decimal128</span></code>-backed <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> fields</a></p></li>
-<li><p><a class="reference internal" href="#implemented-tally-method-on-mongoid-criteria" id="id22">Implemented <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code></a></p></li>
-<li><p><a class="reference internal" href="#implemented-pick-method-on-mongoid-criteria" id="id23">Implemented <code class="docutils literal notranslate"><span class="pre">.pick</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code></a></p></li>
-<li><p><a class="reference internal" href="#find-delegates-to-enumerable-find-when-given-a-block" id="id24"><code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to <code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code> when given a block</a></p></li>
-<li><p><a class="reference internal" href="#changes-to-the-attributes-before-type-cast-hash" id="id25">Changes to the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> Hash</a></p></li>
+<li><p><a class="reference internal" href="#removed-document-to-a-method" id="id21">Removed <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> Method</a></p></li>
+<li><p><a class="reference internal" href="#removed-drop-dups-option-from-indexes" id="id22">Removed <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> Option from Indexes</a></p></li>
+<li><p><a class="reference internal" href="#removed-mongoid-errors-eagerload-exception-class" id="id23">Removed <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> Exception Class</a></p></li>
+<li><p><a class="reference internal" href="#removed-deprecated-constants" id="id24">Removed Deprecated Constants</a></p></li>
+<li><p><a class="reference internal" href="#removed-array-update-values-and-hash-update-values-methods" id="id25">Removed <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> methods</a></p></li>
 <li><p><a class="reference internal" href="#deprecated-the-geohaystack-geosearch-options" id="id26">Deprecated the <code class="docutils literal notranslate"><span class="pre">geoHaystack</span></code>, <code class="docutils literal notranslate"><span class="pre">geoSearch</span></code> Options</a></p></li>
-<li><p><a class="reference internal" href="#support-dropped-for-the-id-sort-option-on-first-last" id="id27">Support Dropped for the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code></a></p></li>
-<li><p><a class="reference internal" href="#support-dropped-for-mongoid-criteria-cache" id="id28">Support Dropped for Mongoid::Criteria cache</a></p></li>
+<li><p><a class="reference internal" href="#id-sort-option-on-first-last-removed" id="id27"><code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code> Removed</a></p></li>
+<li><p><a class="reference internal" href="#mongoid-criteria-cache-removed" id="id28">Mongoid::Criteria Cache Removed</a></p></li>
 </ul>
 </div>
 <p>This page describes significant changes and improvements in Mongoid 8.0.
@@ -1157,7 +1179,7 @@ changed in Mongoid 8.0:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">:broken_scoping</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">:broken_updates</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">:compare_time_by_ms</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">:legacy_attributes</span></code> =&gt; true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:legacy_attributes</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">:legacy_pluck_distinct</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">:legacy_triple_equals</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">:object_id_as_json_oid</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
@@ -1166,12 +1188,24 @@ changed in Mongoid 8.0:</p>
 <p>Please refer to <a class="reference internal" href="../reference/configuration.html#configuration-options"><span class="std std-ref">configuration option</span></a> for
 the description and effects of each of these options.</p>
 </section>
+<section id="decimal128-backed-bigdecimal-fields">
+<h2><code class="docutils literal notranslate"><span class="pre">Decimal128</span></code>-backed <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> Fields<a class="headerlink" href="#decimal128-backed-bigdecimal-fields" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 introduces the <code class="docutils literal notranslate"><span class="pre">map_big_decimal_to_decimal128</span></code> feature flag, which
+allows values assigned to a field of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> to be stored as type
+<code class="docutils literal notranslate"><span class="pre">String</span></code> in the database for compatibility with Mongoid 7 and earlier. In
+Mongoid 8 by default (with this feature flag turned on), values assigned to
+fields of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> are stored in the database as type
+<code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code>. In Mongoid 7 and earlier, and in Mongoid 8 with this
+feature flag turned off, values assigned to fields of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> are
+stored as Strings. See the section on <a class="reference internal" href="../reference/fields.html#field-type-big-decimal"><span class="std std-ref">BigDecimal Fields</span></a>
+for more details.</p>
+</section>
 <section id="storing-retrieving-evolving-uncastable-values">
 <h2>Storing/Retrieving/Evolving Uncastable Values<a class="headerlink" href="#storing-retrieving-evolving-uncastable-values" title="Permalink to this headline">#</a></h2>
-<p>In Mongoid 8, Mongoid standardizes the storing, retrieving and evolving of
-“uncastable values.” On attempting to read or write an uncastable value, a
-<code class="docutils literal notranslate"><span class="pre">nil</span></code> is returned or written instead. When attempting to evolve an
-uncastable value, the inputted value is returned. See the section on
+<p><strong>Breaking change:</strong> In Mongoid 8, Mongoid standardizes the storing, retrieving
+and evolving of “uncastable values.” On attempting to read or write an
+uncastable value, a <code class="docutils literal notranslate"><span class="pre">nil</span></code> is returned or written instead. When attempting to
+evolve an uncastable value, the inputted value is returned. See the section on
 <a class="reference internal" href="../reference/fields.html#uncastable-values"><span class="std std-ref">Uncastable Values</span></a> for more details.</p>
 <p>Some <code class="docutils literal notranslate"><span class="pre">mongoize</span></code>, <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> and <code class="docutils literal notranslate"><span class="pre">evolve</span></code> methods were also changed to
 perform consistently with rails and the other <code class="docutils literal notranslate"><span class="pre">mongoize</span></code>, <code class="docutils literal notranslate"><span class="pre">demongoize</span></code> and
@@ -1300,6 +1334,30 @@ changed to prevent bugs when modifying and saving those objects. See
 <a class="reference external" href="https://jira.mongodb.org/browse/MONGOID-2951">https://jira.mongodb.org/browse/MONGOID-2951</a> for a longer discussion on these
 bugs.</p>
 </div>
+</section>
+<section id="changes-to-the-attributes-before-type-cast-hash">
+<h2>Changes to the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> Hash<a class="headerlink" href="#changes-to-the-attributes-before-type-cast-hash" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash has been changed to function more like
+ActiveRecord:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>On instantiation of a new model (without parameters), the
+<code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash has the same contents as the
+<code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash. If parameters are passed to the initializer, those
+values will be stored in the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash before
+they are <code class="docutils literal notranslate"><span class="pre">mongoized</span></code>.</p></li>
+<li><p>When assigning a value to the model, the <code class="docutils literal notranslate"><span class="pre">mongoized</span></code> value (i.e. when
+assiging ‘1’ to an Integer field, it is <code class="docutils literal notranslate"><span class="pre">mongoized</span></code> to 1) is stored in
+the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash, whereas the raw value (i.e. ‘1’) is stored in the
+<code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash.</p></li>
+<li><p>When saving, creating (i.e. using the <code class="docutils literal notranslate"><span class="pre">create!</span></code> method), or reloading the
+model, the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash is reset to have the same
+contents as the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash.</p></li>
+<li><p>When reading a document from the database, the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code>
+hash contains the attributes as they appear in the database, as opposed to
+their <code class="docutils literal notranslate"><span class="pre">demongoized</span></code> form.</p></li>
+</ul>
+</div></blockquote>
 </section>
 <section id="order-of-callback-invocation">
 <h2>Order of Callback Invocation<a class="headerlink" href="#order-of-callback-invocation" title="Permalink to this headline">#</a></h2>
@@ -1457,55 +1515,6 @@ invocation for documents with associations.</p>
 </tbody>
 </table>
 </section>
-<section id="any-of-adds-multiple-arguments-as-top-level-conditions">
-<h2><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Adds Multiple Arguments As Top-Level Conditions<a class="headerlink" href="#any-of-adds-multiple-arguments-as-top-level-conditions" title="Permalink to this headline">#</a></h2>
-<p><strong>Breaking change:</strong> When <code class="docutils literal notranslate"><span class="pre">any_of</span></code> is invoked with multiple conditions, the
-conditions are now added to the top level of the criteria, same as when
-<code class="docutils literal notranslate"><span class="pre">any_of</span></code> is invoked with a single condition. Previously when multiple
-conditions were provided, and the criteria already had an <code class="docutils literal notranslate"><span class="pre">$or</span></code> operator,
-the new conditions would be added to the existing <code class="docutils literal notranslate"><span class="pre">$or</span></code> as an additional
-branch.</p>
-<p>Mongoid 8.0 behavior:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span>
-  <span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="ss">last_tour</span><span class="p">:</span> <span class="mi">1995</span><span class="p">})</span>
-<span class="c1"># =&gt;</span>
-<span class="c1"># #&lt;Mongoid::Criteria</span>
-<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}],</span>
-<span class="c1">#     &quot;$and&quot;=&gt;[{&quot;$or&quot;=&gt;[{&quot;members&quot;=&gt;2}, {&quot;last_tour&quot;=&gt;1995}]}]}</span>
-<span class="c1">#   options:  {}</span>
-<span class="c1">#   class:    Band</span>
-<span class="c1">#   embedded: false&gt;</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
-<span class="c1"># =&gt;</span>
-<span class="c1"># #&lt;Mongoid::Criteria</span>
-<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}], &quot;members&quot;=&gt;2}</span>
-<span class="c1">#   options:  {}</span>
-<span class="c1">#   class:    Band</span>
-<span class="c1">#   embedded: false&gt;</span>
-</pre></div>
-</div>
-<p>Mongoid 7 behavior:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span>
-  <span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="ss">last_tour</span><span class="p">:</span> <span class="mi">1995</span><span class="p">})</span>
-<span class="c1"># =&gt;</span>
-<span class="c1"># #&lt;Mongoid::Criteria</span>
-<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990},</span>
-<span class="c1">#     {&quot;members&quot;=&gt;2}, {&quot;last_tour&quot;=&gt;1995}]}</span>
-<span class="c1">#   options:  {}</span>
-<span class="c1">#   class:    Band</span>
-<span class="c1">#   embedded: false&gt;</span>
-
-<span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
-<span class="c1"># =&gt;</span>
-<span class="c1"># #&lt;Mongoid::Criteria</span>
-<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}], &quot;members&quot;=&gt;2}</span>
-<span class="c1">#   options:  {}</span>
-<span class="c1">#   class:    Band</span>
-<span class="c1">#   embedded: false&gt;</span>
-</pre></div>
-</div>
-</section>
 <section id="changeable-module-behavior-made-compatible-with-activemodel-dirty">
 <h2><code class="docutils literal notranslate"><span class="pre">Changeable</span></code> Module Behavior Made Compatible With <code class="docutils literal notranslate"><span class="pre">ActiveModel::Dirty</span></code><a class="headerlink" href="#changeable-module-behavior-made-compatible-with-activemodel-dirty" title="Permalink to this headline">#</a></h2>
 <p>When updating documents, it is now possible to get updated attribute values
@@ -1567,9 +1576,9 @@ as well as ActiveRecord-compatible <code class="docutils literal notranslate"><s
 </section>
 <section id="unknown-field-type-symbols-strings-prohibited">
 <h2>Unknown Field Type Symbols/Strings Prohibited<a class="headerlink" href="#unknown-field-type-symbols-strings-prohibited" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 8 prohibits using symbols and strings as field types when these symbols
-and strings do not map to a known type. Previously such usage would create a
-field of type <code class="docutils literal notranslate"><span class="pre">Object</span></code>.</p>
+<p><strong>Breaking change:</strong> Mongoid 8 prohibits using symbols and strings as field
+types when these symbols and strings do not map to a known type. Previously
+such usage would create a field of type <code class="docutils literal notranslate"><span class="pre">Object</span></code>.</p>
 <p>Mongoid 8 behavior:</p>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
@@ -1587,6 +1596,55 @@ field of type <code class="docutils literal notranslate"><span class="pre">Objec
   <span class="c1"># Equivalent to:</span>
   <span class="n">field</span> <span class="ss">:name</span>
 <span class="k">end</span>
+</pre></div>
+</div>
+</section>
+<section id="any-of-adds-multiple-arguments-as-top-level-conditions">
+<h2><code class="docutils literal notranslate"><span class="pre">any_of</span></code> Adds Multiple Arguments As Top-Level Conditions<a class="headerlink" href="#any-of-adds-multiple-arguments-as-top-level-conditions" title="Permalink to this headline">#</a></h2>
+<p><strong>Breaking change:</strong> When <code class="docutils literal notranslate"><span class="pre">any_of</span></code> is invoked with multiple conditions, the
+conditions are now added to the top level of the criteria, same as when
+<code class="docutils literal notranslate"><span class="pre">any_of</span></code> is invoked with a single condition. Previously when multiple
+conditions were provided, and the criteria already had an <code class="docutils literal notranslate"><span class="pre">$or</span></code> operator,
+the new conditions would be added to the existing <code class="docutils literal notranslate"><span class="pre">$or</span></code> as an additional
+branch.</p>
+<p>Mongoid 8.0 behavior:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span>
+  <span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="ss">last_tour</span><span class="p">:</span> <span class="mi">1995</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}],</span>
+<span class="c1">#     &quot;$and&quot;=&gt;[{&quot;$or&quot;=&gt;[{&quot;members&quot;=&gt;2}, {&quot;last_tour&quot;=&gt;1995}]}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}], &quot;members&quot;=&gt;2}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+</pre></div>
+</div>
+<p>Mongoid 7 behavior:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span>
+  <span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="ss">last_tour</span><span class="p">:</span> <span class="mi">1995</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990},</span>
+<span class="c1">#     {&quot;members&quot;=&gt;2}, {&quot;last_tour&quot;=&gt;1995}]}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
+
+<span class="no">Band</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">},</span> <span class="p">{</span><span class="ss">founded</span><span class="p">:</span> <span class="mi">1990</span><span class="p">})</span><span class="o">.</span><span class="n">any_of</span><span class="p">({</span><span class="ss">members</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="c1"># =&gt;</span>
+<span class="c1"># #&lt;Mongoid::Criteria</span>
+<span class="c1">#   selector: {&quot;$or&quot;=&gt;[{&quot;name&quot;=&gt;&quot;The Rolling Stones&quot;}, {&quot;founded&quot;=&gt;1990}], &quot;members&quot;=&gt;2}</span>
+<span class="c1">#   options:  {}</span>
+<span class="c1">#   class:    Band</span>
+<span class="c1">#   embedded: false&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -1637,43 +1695,85 @@ with how <code class="docutils literal notranslate"><span class="pre">#pluck</sp
 </pre></div>
 </div>
 </section>
-<section id="removed-drop-dups-option-from-indexes">
-<h2>Removed <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> Option from Indexes<a class="headerlink" href="#removed-drop-dups-option-from-indexes" title="Permalink to this headline">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> option has been removed from the <code class="docutils literal notranslate"><span class="pre">index</span></code> macro. This option
-was specific to MongoDB server 2.6 and earlier, which Mongoid no longer supports.</p>
-</section>
-<section id="removed-document-to-a-method">
-<h2>Removed <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> Method<a class="headerlink" href="#removed-document-to-a-method" title="Permalink to this headline">#</a></h2>
-<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> method has been removed in
-Mongoid 8.</p>
-</section>
-<section id="removed-mongoid-errors-eagerload-exception-class">
-<h2>Removed <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> Exception Class<a class="headerlink" href="#removed-mongoid-errors-eagerload-exception-class" title="Permalink to this headline">#</a></h2>
-<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> exception class
-has been removed in Mongoid 8. It has not been used by Mongoid since
-version 7.1.1 when eager loading for polymorphic <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> associations
-was implemented.</p>
-</section>
 <section id="replaced-mongoid-criteria-geo-spacial-with-geo-spatial">
 <h2>Replaced <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria#geo_spacial</span></code> with <code class="docutils literal notranslate"><span class="pre">#geo_spatial</span></code><a class="headerlink" href="#replaced-mongoid-criteria-geo-spacial-with-geo-spatial" title="Permalink to this headline">#</a></h2>
 <p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria#geo_spacial</span></code> method has been
 removed in Mongoid 8. It has been replaced one-for-one with <code class="docutils literal notranslate"><span class="pre">#geo_spatial</span></code>
 which was added in Mongoid 7.2.0.</p>
 </section>
-<section id="removed-deprecated-constants">
-<h2>Removed Deprecated Constants<a class="headerlink" href="#removed-deprecated-constants" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 8 removes the following deprecated constants that are not expected
-to have been used outside of Mongoid:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Extensions::Date::EPOCH</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Extensions::Time::EPOCH</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Factory::TYPE</span></code></p></li>
-</ul>
+<section id="implemented-tally-method-on-mongoid-criteria">
+<h2>Implemented <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code><a class="headerlink" href="#implemented-tally-method-on-mongoid-criteria" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 implements the <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code>. <code class="docutils literal notranslate"><span class="pre">tally</span></code>
+takes a field name as a parameter and returns a mapping from values to their
+counts. For example, take the following model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+  <span class="n">field</span> <span class="p">:</span><span class="n">age</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>and the following documents in the database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
+<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
+<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">22</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">tally</span></code> on the age field yields the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="o">.</span><span class="n">tally</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; { 21 =&gt; 2, 22 =&gt; 1 }</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">tally</span></code> method accepts the dot notation and field aliases. It also
+allows for tallying localized fields.</p>
 </section>
-<section id="removed-array-update-values-and-hash-update-values-methods">
-<h2>Removed <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> methods<a class="headerlink" href="#removed-array-update-values-and-hash-update-values-methods" title="Permalink to this headline">#</a></h2>
-<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code>
-methods have been removed in Mongoid 8.</p>
+<section id="implemented-pick-method-on-mongoid-criteria">
+<h2>Implemented <code class="docutils literal notranslate"><span class="pre">.pick</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code><a class="headerlink" href="#implemented-pick-method-on-mongoid-criteria" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 implements the <code class="docutils literal notranslate"><span class="pre">.pick</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code>. <code class="docutils literal notranslate"><span class="pre">pick</span></code>
+takes one or more field names as a parameter and returns the values for those
+fields from one document. Consider the following model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
+  <span class="n">field</span> <span class="p">:</span><span class="n">age</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>and the following documents in the database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
+<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
+<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">22</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">pick</span></code> on the age field yields the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="o">.</span><span class="n">pick</span><span class="p">(:</span><span class="n">age</span><span class="p">)</span>
+<span class="c1"># =&gt; 21</span>
+</pre></div>
+</div>
+<p>This method does not apply a sort to the documents, so it will not necessarily
+return the values from the first document.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pick</span></code> method accepts the dot notation and field aliases. It also
+allows for picking localized fields.</p>
+</section>
+<section id="find-delegates-to-enumerable-find-when-given-a-block">
+<h2><code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to <code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code> when given a block<a class="headerlink" href="#find-delegates-to-enumerable-find-when-given-a-block" title="Permalink to this headline">#</a></h2>
+<p>When given a block, without <code class="docutils literal notranslate"><span class="pre">_id</span></code> arguments, <code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to
+<code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code>. Consider the following model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>class Band
+  include Mongoid::Document
+  field :name, type: String
+end
+
+Band.create!(name: &quot;Depeche Mode&quot;)
+Band.create!(name: &quot;The Rolling Stones&quot;)
+</pre></div>
+</div>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">find</span></code> with a block returns the first document for which the block
+returns <code class="docutils literal notranslate"><span class="pre">true</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Band</span><span class="o">.</span><span class="n">find</span> <span class="n">do</span> <span class="o">|</span><span class="n">b</span><span class="o">|</span>
+  <span class="n">b</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Depeche Mode&quot;</span>
+<span class="n">end</span>
+<span class="c1"># =&gt; #&lt;Band _id: 62c58e383282a4cbe82bd74b, name: &quot;Depeche Mode&quot;&gt;</span>
+</pre></div>
+</div>
 </section>
 <section id="no-longer-persisting-documents-with-invalid-belongs-to-associations">
 <h2>No Longer Persisting Documents with Invalid <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> Associations<a class="headerlink" href="#no-longer-persisting-documents-with-invalid-belongs-to-associations" title="Permalink to this headline">#</a></h2>
@@ -1762,9 +1862,9 @@ Mongoid 8 correctly updates the number of elements without requiring a reload.</
 </section>
 <section id="repaired-storing-strings-in-bson-binary-fields">
 <h2>Repaired Storing Strings in BSON::Binary fields<a class="headerlink" href="#repaired-storing-strings-in-bson-binary-fields" title="Permalink to this headline">#</a></h2>
-<p>In Mongoid 8, storing a String in a field of type <code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code> will be
-stored in and returned from the database as a <code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code>. Prior to Mongoid 8
-it was stored and returned as a String.</p>
+<p><strong>Breaking change:</strong> In Mongoid 8, storing a String in a field of type
+<code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code> will be stored in and returned from the database as a
+<code class="docutils literal notranslate"><span class="pre">BSON::Binary</span></code>. Prior to Mongoid 8 it was stored and returned as a String:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>class Registry
   include Mongoid::Document
   field :data, type: BSON::Binary
@@ -1782,130 +1882,52 @@ p registry.data
 </pre></div>
 </div>
 </section>
-<section id="decimal128-backed-bigdecimal-fields">
-<h2><code class="docutils literal notranslate"><span class="pre">Decimal128</span></code>-backed <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> fields<a class="headerlink" href="#decimal128-backed-bigdecimal-fields" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 8 introduces the <code class="docutils literal notranslate"><span class="pre">map_big_decimal_to_decimal128</span></code> feature flag, which
-allows values assigned to a field of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> to be stored as type
-<code class="docutils literal notranslate"><span class="pre">String</span></code> in the database for compatibility with Mongoid 7 and earlier. In
-Mongoid 8 by default (with this feature flag turned on), values assigned to
-fields of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> are stored in the database as type
-<code class="docutils literal notranslate"><span class="pre">BSON::Decimal128</span></code>. In Mongoid 7 and earlier, and in Mongoid 8 with this
-feature flag turned off, values assigned to fields of type <code class="docutils literal notranslate"><span class="pre">BigDecimal</span></code> are
-stored as Strings. See the section on <a class="reference internal" href="../reference/fields.html#bigdecimal-fields"><span class="std std-ref">BigDecimal Fields</span></a>
-for more details.</p>
+<section id="removed-document-to-a-method">
+<h2>Removed <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> Method<a class="headerlink" href="#removed-document-to-a-method" title="Permalink to this headline">#</a></h2>
+<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> method has been removed in
+Mongoid 8.</p>
 </section>
-<section id="implemented-tally-method-on-mongoid-criteria">
-<h2>Implemented <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code><a class="headerlink" href="#implemented-tally-method-on-mongoid-criteria" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 8 implements the <code class="docutils literal notranslate"><span class="pre">.tally</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code>. <code class="docutils literal notranslate"><span class="pre">tally</span></code>
-takes a field name as a parameter and returns a mapping from values to their
-counts. For example, take the following model:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
-  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
-  <span class="n">field</span> <span class="p">:</span><span class="n">age</span>
-<span class="n">end</span>
-</pre></div>
-</div>
-<p>and the following documents in the database:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
-<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
-<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">22</span> <span class="p">}</span>
-</pre></div>
-</div>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">tally</span></code> on the age field yields the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="o">.</span><span class="n">tally</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">)</span>
-<span class="c1"># =&gt; { 21 =&gt; 2, 22 =&gt; 1 }</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">tally</span></code> method accepts the dot notation and field aliases. It also
-allows for tallying localized fields.</p>
+<section id="removed-drop-dups-option-from-indexes">
+<h2>Removed <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> Option from Indexes<a class="headerlink" href="#removed-drop-dups-option-from-indexes" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">:drop_dups</span></code> option has been removed from the <code class="docutils literal notranslate"><span class="pre">index</span></code> macro. This option
+was specific to MongoDB server 2.6 and earlier, which Mongoid no longer supports.</p>
 </section>
-<section id="implemented-pick-method-on-mongoid-criteria">
-<h2>Implemented <code class="docutils literal notranslate"><span class="pre">.pick</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code><a class="headerlink" href="#implemented-pick-method-on-mongoid-criteria" title="Permalink to this headline">#</a></h2>
-<p>Mongoid 8 implements the <code class="docutils literal notranslate"><span class="pre">.pick</span></code> method on <code class="docutils literal notranslate"><span class="pre">Mongoid#Criteria</span></code>. <code class="docutils literal notranslate"><span class="pre">pick</span></code>
-takes one or more field names as a parameter and returns the values for those
-fields from one document. Consider the following model:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
-  <span class="n">include</span> <span class="n">Mongoid</span><span class="p">::</span><span class="n">Document</span>
-  <span class="n">field</span> <span class="p">:</span><span class="n">age</span>
-<span class="n">end</span>
-</pre></div>
-</div>
-<p>and the following documents in the database:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
-<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span> <span class="p">}</span>
-<span class="p">{</span> <span class="n">_id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">22</span> <span class="p">}</span>
-</pre></div>
-</div>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">pick</span></code> on the age field yields the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="o">.</span><span class="n">pick</span><span class="p">(:</span><span class="n">age</span><span class="p">)</span>
-<span class="c1"># =&gt; 21</span>
-</pre></div>
-</div>
-<p>This method does not apply a sort to the documents, so it will not necessarily
-return the values from the first document.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">pick</span></code> method accepts the dot notation and field aliases. It also
-allows for picking localized fields.</p>
+<section id="removed-mongoid-errors-eagerload-exception-class">
+<h2>Removed <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> Exception Class<a class="headerlink" href="#removed-mongoid-errors-eagerload-exception-class" title="Permalink to this headline">#</a></h2>
+<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::EagerLoad</span></code> exception class
+has been removed in Mongoid 8. It has not been used by Mongoid since
+version 7.1.1 when eager loading for polymorphic <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> associations
+was implemented.</p>
 </section>
-<section id="find-delegates-to-enumerable-find-when-given-a-block">
-<h2><code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to <code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code> when given a block<a class="headerlink" href="#find-delegates-to-enumerable-find-when-given-a-block" title="Permalink to this headline">#</a></h2>
-<p>When given a block, without <code class="docutils literal notranslate"><span class="pre">_id</span></code> arguments, <code class="docutils literal notranslate"><span class="pre">find</span></code> delegates to
-<code class="docutils literal notranslate"><span class="pre">Enumerable#find</span></code>. Consider the following model:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>class Band
-  include Mongoid::Document
-  field :name, type: String
-end
-
-Band.create!(name: &quot;Depeche Mode&quot;)
-Band.create!(name: &quot;The Rolling Stones&quot;)
-</pre></div>
-</div>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">find</span></code> with a block returns the first document for which the block
-returns <code class="docutils literal notranslate"><span class="pre">true</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Band</span><span class="o">.</span><span class="n">find</span> <span class="n">do</span> <span class="o">|</span><span class="n">b</span><span class="o">|</span>
-  <span class="n">b</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Depeche Mode&quot;</span>
-<span class="n">end</span>
-<span class="c1"># =&gt; #&lt;Band _id: 62c58e383282a4cbe82bd74b, name: &quot;Depeche Mode&quot;&gt;</span>
-</pre></div>
-</div>
-</section>
-<section id="changes-to-the-attributes-before-type-cast-hash">
-<h2>Changes to the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> Hash<a class="headerlink" href="#changes-to-the-attributes-before-type-cast-hash" title="Permalink to this headline">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash has been changed to function more like
-ActiveRecord:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>On instantiation of a new model (without parameters), the
-<code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash has the same contents as the
-<code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash. If parameters are passed to the initializer, those
-values will be stored in the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash before
-they are <code class="docutils literal notranslate"><span class="pre">mongoized</span></code>.</p></li>
-<li><p>When assigning a value to the model, the <code class="docutils literal notranslate"><span class="pre">mongoized</span></code> value (i.e. when
-assiging ‘1’ to an Integer field, it is <code class="docutils literal notranslate"><span class="pre">mongoized</span></code> to 1) is stored in
-the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash, whereas the raw value (i.e. ‘1’) is stored in the
-<code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash.</p></li>
-<li><p>When saving, creating (i.e. using the <code class="docutils literal notranslate"><span class="pre">create!</span></code> method), or reloading the
-model, the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code> hash is reset to have the same
-contents as the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> hash.</p></li>
-<li><p>When reading a document from the database, the <code class="docutils literal notranslate"><span class="pre">attributes_before_type_cast</span></code>
-hash contains the attributes as they appear in the database, as opposed to
-their <code class="docutils literal notranslate"><span class="pre">demongoized</span></code> form.</p></li>
+<section id="removed-deprecated-constants">
+<h2>Removed Deprecated Constants<a class="headerlink" href="#removed-deprecated-constants" title="Permalink to this headline">#</a></h2>
+<p>Mongoid 8 removes the following deprecated constants that are not expected
+to have been used outside of Mongoid:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Extensions::Date::EPOCH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Extensions::Time::EPOCH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mongoid::Factory::TYPE</span></code></p></li>
 </ul>
-</div></blockquote>
+</section>
+<section id="removed-array-update-values-and-hash-update-values-methods">
+<h2>Removed <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> methods<a class="headerlink" href="#removed-array-update-values-and-hash-update-values-methods" title="Permalink to this headline">#</a></h2>
+<p>The previously deprecated <code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code>
+methods have been removed in Mongoid 8.</p>
 </section>
 <section id="deprecated-the-geohaystack-geosearch-options">
 <h2>Deprecated the <code class="docutils literal notranslate"><span class="pre">geoHaystack</span></code>, <code class="docutils literal notranslate"><span class="pre">geoSearch</span></code> Options<a class="headerlink" href="#deprecated-the-geohaystack-geosearch-options" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">geoHaystack</span></code> and <code class="docutils literal notranslate"><span class="pre">geoSearch</span></code> options on indexes have been deprecated.</p>
 </section>
-<section id="support-dropped-for-the-id-sort-option-on-first-last">
-<h2>Support Dropped for the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code><a class="headerlink" href="#support-dropped-for-the-id-sort-option-on-first-last" title="Permalink to this headline">#</a></h2>
+<section id="id-sort-option-on-first-last-removed">
+<h2><code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code> Removed<a class="headerlink" href="#id-sort-option-on-first-last-removed" title="Permalink to this headline">#</a></h2>
 <p>Support for the <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> option on the <code class="docutils literal notranslate"><span class="pre">#first</span></code> and <code class="docutils literal notranslate"><span class="pre">#last</span></code> options has
 been dropped. These methods now only except a limit as a positional argument.</p>
 </section>
-<section id="support-dropped-for-mongoid-criteria-cache">
-<h2>Support Dropped for Mongoid::Criteria cache<a class="headerlink" href="#support-dropped-for-mongoid-criteria-cache" title="Permalink to this headline">#</a></h2>
+<section id="mongoid-criteria-cache-removed">
+<h2>Mongoid::Criteria Cache Removed<a class="headerlink" href="#mongoid-criteria-cache-removed" title="Permalink to this headline">#</a></h2>
 <p>Support for individually caching criteria objects has been dropped in Mongoid 8.</p>
-<p>In order to get caching functionality, enable the Mongoid QueryCache. See the
-section on <a class="reference internal" href="../reference/queries.html#query-cache"><span class="std std-ref">QueryCache</span></a> for more details.</p>
+<p>In order to get caching functionality, enable the Mongoid Query Cache. See the
+section on <a class="reference internal" href="../reference/queries.html#query-cache"><span class="std std-ref">Query Cache</span></a> for more details.</p>
 </section>
 </section>
 
@@ -1917,11 +1939,11 @@ section on <a class="reference internal" href="../reference/queries.html#query-c
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../release-notes.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="mongoid-8.1.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Release Notes</p>
+            <p class="prev-next-title">Mongoid 8.1</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="mongoid-7.5.html" title="next page">

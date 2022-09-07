@@ -271,8 +271,18 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.1.html">
+     Mongoid 8.1
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-8.0.html">
      Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.5.html">
+     Mongoid 7.5
     </a>
    </li>
    <li class="toctree-l2">
@@ -308,6 +318,23 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-5.html">
      Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contributing/code-documentation.html">
+     Code Documentation
     </a>
    </li>
   </ul>
@@ -455,6 +482,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#changing-the-discriminator-key">
    Changing the Discriminator Key
   </a>
@@ -472,6 +504,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#associations">
    Associations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persistence-contexts">
+   Persistence Contexts
   </a>
  </li>
 </ul>
@@ -494,6 +531,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#changing-the-discriminator-key">
    Changing the Discriminator Key
   </a>
@@ -513,6 +555,11 @@ title="Print to PDF"
    Associations
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persistence-contexts">
+   Persistence Contexts
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -528,12 +575,16 @@ title="Print to PDF"
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#changing-the-discriminator-key" id="id2">Changing the Discriminator Key</a></p></li>
-<li><p><a class="reference internal" href="#changing-the-discriminator-value" id="id3">Changing the Discriminator Value</a></p></li>
-<li><p><a class="reference internal" href="#querying-subclasses" id="id4">Querying Subclasses</a></p></li>
-<li><p><a class="reference internal" href="#associations" id="id5">Associations</a></p></li>
+<li><p><a class="reference internal" href="#overview" id="id2">Overview</a></p></li>
+<li><p><a class="reference internal" href="#changing-the-discriminator-key" id="id3">Changing the Discriminator Key</a></p></li>
+<li><p><a class="reference internal" href="#changing-the-discriminator-value" id="id4">Changing the Discriminator Value</a></p></li>
+<li><p><a class="reference internal" href="#querying-subclasses" id="id5">Querying Subclasses</a></p></li>
+<li><p><a class="reference internal" href="#associations" id="id6">Associations</a></p></li>
+<li><p><a class="reference internal" href="#persistence-contexts" id="id7">Persistence Contexts</a></p></li>
 </ul>
 </div>
+<section id="overview">
+<span id="inheritance-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <p>Mongoid supports inheritance in both top level and embedded documents. When
 a child document inherits from a parent document, the parent document’s
 fields, associations, validations and scopes are copied to the child document.</p>
@@ -582,6 +633,7 @@ of the Shape class.</p>
 that do not have a discriminator value, or whose discriminator value does not map to either the parent
 or any of its descendants, will be returned as instances of the parent class.</p>
 </div>
+</section>
 <section id="changing-the-discriminator-key">
 <span id="discriminator-key"></span><h2>Changing the Discriminator Key<a class="headerlink" href="#changing-the-discriminator-key" title="Permalink to this headline">#</a></h2>
 <p>Mongoid supports changing the discriminator key from the default <code class="docutils literal notranslate"><span class="pre">_type</span></code>. There are a few
@@ -734,6 +786,51 @@ either normal setting or through the build and create methods on the association
 <span class="n">rect</span> <span class="o">=</span> <span class="no">Rectangle</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">height</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">firefox</span><span class="o">.</span><span class="n">shapes</span>
 </pre></div>
+</div>
+</section>
+<section id="persistence-contexts">
+<span id="inheritance-persistence-context"></span><h2>Persistence Contexts<a class="headerlink" href="#persistence-contexts" title="Permalink to this headline">#</a></h2>
+<p>Mongoid allows the persistence context of a subclass to be changed from the
+persistence context of its parent. This means that, using the <code class="docutils literal notranslate"><span class="pre">store_in</span></code>
+method, we can store the documents of the subclasses in different collections
+(as well as different databases, clients) than their parents:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Shape</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+  <span class="n">store_in</span> <span class="ss">collection</span><span class="p">:</span> <span class="ss">:shapes</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Circle</span> <span class="o">&lt;</span> <span class="no">Shape</span>
+  <span class="n">store_in</span> <span class="ss">collection</span><span class="p">:</span> <span class="ss">:circles</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Square</span> <span class="o">&lt;</span> <span class="no">Shape</span>
+  <span class="n">store_in</span> <span class="ss">collection</span><span class="p">:</span> <span class="ss">:squares</span>
+<span class="k">end</span>
+
+<span class="no">Shape</span><span class="o">.</span><span class="n">create!</span>
+<span class="no">Circle</span><span class="o">.</span><span class="n">create!</span>
+<span class="no">Square</span><span class="o">.</span><span class="n">create!</span>
+</pre></div>
+</div>
+<p>Setting the collection on the children causes the documents for those children
+to be stored in the set collection, instead of in the parent’s collection:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">shapes</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"> </span><span class="s2">&quot;_id&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;62fe9a493282a43d6b725e10&quot;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;_type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Shape&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">circles</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"> </span><span class="s2">&quot;_id&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;62fe9a493282a43d6b725e11&quot;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;_type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Circle&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">squares</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"> </span><span class="s2">&quot;_id&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;62fe9a493282a43d6b725e12&quot;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;_type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Square&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If the collection is set on some of the subclasses and not others, the subclasses
+with set collections will store documents in those collections, and the
+subclasses without set collections will be store documents in the parent’s
+collection.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that changing the collection that a subclass is stored in will cause
+documents of that subclass to no longer be found in the results of querying
+its parent class.</p>
 </div>
 </section>
 </section>

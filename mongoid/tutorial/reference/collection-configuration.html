@@ -271,6 +271,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.1.html">
+     Mongoid 8.1
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-8.0.html">
      Mongoid 8.0
     </a>
@@ -313,6 +318,23 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-5.html">
      Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contributing/code-documentation.html">
+     Code Documentation
     </a>
    </li>
   </ul>
@@ -460,13 +482,30 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#capped-collections">
-   Capped Collections
+  <a class="reference internal nav-link" href="#configuring-a-document-collection">
+   Configuring a Document Collection
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-series-collection">
+     Time Series Collection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#capped-collections">
+     Capped Collections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-a-default-collation-on-a-collection">
+     Set a Default Collation on a Collection
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-a-default-collation-on-a-collection">
-   Set a Default Collation on a Collection
+  <a class="reference internal nav-link" href="#collection-management-rake-task">
+   Collection Management Rake Task
   </a>
  </li>
 </ul>
@@ -489,13 +528,30 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#capped-collections">
-   Capped Collections
+  <a class="reference internal nav-link" href="#configuring-a-document-collection">
+   Configuring a Document Collection
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-series-collection">
+     Time Series Collection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#capped-collections">
+     Capped Collections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-a-default-collation-on-a-collection">
+     Set a Default Collation on a Collection
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-a-default-collation-on-a-collection">
-   Set a Default Collation on a Collection
+  <a class="reference internal nav-link" href="#collection-management-rake-task">
+   Collection Management Rake Task
   </a>
  </li>
 </ul>
@@ -513,42 +569,93 @@ title="Print to PDF"
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#capped-collections" id="id1">Capped Collections</a></p></li>
-<li><p><a class="reference internal" href="#set-a-default-collation-on-a-collection" id="id2">Set a Default Collation on a Collection</a></p></li>
+<li><p><a class="reference internal" href="#configuring-a-document-collection" id="id1">Configuring a Document Collection</a></p>
+<ul>
+<li><p><a class="reference internal" href="#time-series-collection" id="id2">Time Series Collection</a></p></li>
+<li><p><a class="reference internal" href="#capped-collections" id="id3">Capped Collections</a></p></li>
+<li><p><a class="reference internal" href="#set-a-default-collation-on-a-collection" id="id4">Set a Default Collation on a Collection</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#collection-management-rake-task" id="id5">Collection Management Rake Task</a></p></li>
 </ul>
 </div>
+<section id="configuring-a-document-collection">
+<h2>Configuring a Document Collection<a class="headerlink" href="#configuring-a-document-collection" title="Permalink to this headline">#</a></h2>
+<p>You can specify collection options for documents using the <code class="docutils literal notranslate"><span class="pre">store_in</span></code> macro.
+This macro accepts <code class="docutils literal notranslate"><span class="pre">:collection_options</span></code> argument, which can contain any collection
+options that are supported by the driver.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to apply the options, the collection must be explicitly created up-front.
+This should be done using  <a class="reference internal" href="#collection-management-task"><span class="std std-ref">Collection Management Rake Task</span></a>.</p>
+</div>
+<p>Please refer to <a class="reference external" href="https://mongodb.com/docs/ruby-driver/current/reference/collection-tasks/">the driver collections page</a>
+for the more information about collection options.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Collection options depend on the driver version and MongoDB server version.
+It is possible that some options, like time series collections, are not available
+on older server versions.</p>
+</div>
+<section id="time-series-collection">
+<h3>Time Series Collection<a class="headerlink" href="#time-series-collection" title="Permalink to this headline">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Measurement</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">field</span> <span class="ss">:temperature</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="nb">Integer</span>
+  <span class="n">field</span> <span class="ss">:timestamp</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="no">Time</span>
+
+  <span class="n">store_in</span> <span class="ss">collection_options</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">time_series</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">timeField</span><span class="p">:</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">,</span>
+      <span class="ss">granularity</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+    <span class="p">},</span>
+    <span class="ss">expire_after</span><span class="p">:</span> <span class="mi">604800</span>
+  <span class="p">}</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</section>
 <section id="capped-collections">
-<h2>Capped Collections<a class="headerlink" href="#capped-collections" title="Permalink to this headline">#</a></h2>
-<p>Mongoid does not provide a mechanism for creating capped collections on the fly - you
-will need to create these yourself one time up front either with the driver or via the
-Mongo console.</p>
-<p>To create a capped collection with the driver, first retrieve the client:</p>
+<h3>Capped Collections<a class="headerlink" href="#capped-collections" title="Permalink to this headline">#</a></h3>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Name</span>
   <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">store_in</span> <span class="ss">collection_options</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">capped</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+    <span class="ss">size</span><span class="p">:</span> <span class="mi">1024</span>
+  <span class="p">}</span>
 <span class="k">end</span>
-<span class="n">client</span> <span class="o">=</span> <span class="no">Name</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">client</span>
-</pre></div>
-</div>
-<p>Then create the collection:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="ss">:capped</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">1024</span><span class="o">].</span><span class="n">create</span>
-</pre></div>
-</div>
-<p>To create a capped collection from the Mongo console:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">createCollection</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">capped</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">size</span><span class="o">:</span> <span class="mf">1024</span> <span class="p">});</span>
 </pre></div>
 </div>
 </section>
 <section id="set-a-default-collation-on-a-collection">
-<h2>Set a Default Collation on a Collection<a class="headerlink" href="#set-a-default-collation-on-a-collection" title="Permalink to this headline">#</a></h2>
-<p>Mongoid does not provide a mechanism for creating a collection with a default collation.
-Like capped collections, you will need to create the collection yourself one time, up-front,
-either with the driver or via the Mongo console.</p>
-<p>To create a collection with a default collation with the driver:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="ss">:collation</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:locale</span> <span class="o">=&gt;</span> <span class="s1">&#39;fr&#39;</span><span class="p">}</span><span class="o">].</span><span class="n">create</span>
+<h3>Set a Default Collation on a Collection<a class="headerlink" href="#set-a-default-collation-on-a-collection" title="Permalink to this headline">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Name</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">store_in</span> <span class="ss">collection_options</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">collation</span><span class="p">:</span> <span class="p">{</span>
+      <span class="ss">locale</span><span class="p">:</span> <span class="s1">&#39;fr&#39;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="k">end</span>
 </pre></div>
 </div>
-<p>To create a collection with a default collation from the Mongo console:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">createCollection</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">collation</span><span class="o">:</span> <span class="p">{</span> <span class="nx">locale</span><span class="o">:</span> <span class="s1">&#39;fr&#39;</span> <span class="p">}</span> <span class="p">});</span>
+</section>
+</section>
+<section id="collection-management-rake-task">
+<span id="collection-management-task"></span><h2>Collection Management Rake Task<a class="headerlink" href="#collection-management-rake-task" title="Permalink to this headline">#</a></h2>
+<p>If you specify collection options for a document, then the corresponding collection
+must be explicitly created prior to use. To do so, use the provided
+<code class="docutils literal notranslate"><span class="pre">db:mongoid:create_collections</span></code> Rake task:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rake db:mongoid:create_collections
+</pre></div>
+</div>
+<p>The create collections command also works for just one model by running
+in Rails console:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create collection for Model</span>
+<span class="no">Model</span><span class="o">.</span><span class="n">create_collection</span>
 </pre></div>
 </div>
 </section>

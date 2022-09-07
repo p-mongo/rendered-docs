@@ -271,6 +271,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.1.html">
+     Mongoid 8.1
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-8.0.html">
      Mongoid 8.0
     </a>
@@ -313,6 +318,23 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-5.html">
      Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contributing/code-documentation.html">
+     Code Documentation
     </a>
    </li>
   </ul>
@@ -1766,9 +1788,9 @@ operation is sometimes called “projection”.</p>
 </pre></div>
 </div>
 <p>Attempting to reference attributes which have not been loaded results in
-<code class="docutils literal notranslate"><span class="pre">ActiveModel::MissingAttributeError</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::AttributeNotLoaded</span></code>.</p>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">label</span>
-<span class="c1"># ActiveModel::MissingAttributeError (Missing attribute: &#39;label&#39;.)</span>
+<span class="c1">#=&gt; raises Mongoid::Errors::AttributeNotLoaded</span>
 </pre></div>
 </div>
 <p>Even though Mongoid currently allows writing to attributes that have not
@@ -2169,6 +2191,25 @@ are 1 or more.</em></p>
 </div>
 </td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#fifth</span></code></p>
+<p><em>Get the fifth document for the given criteria.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">fifth</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#fifth!</span></code></p>
+<p><em>Get the fifth document for the given criteria, or raise an error if
+none exist.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">fifth!</span>
+</pre></div>
+</div>
+</td>
+</tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#find_by</span></code></p>
 <p><em>Find a document by the provided attributes. If not found,
 raise an error or return nil depending on the value of the</em>
@@ -2228,7 +2269,20 @@ undesirable, Criteria#take can be used instead.</em></p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_create</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#first!|last!</span></code></p>
+<p><em>Finds a single document given the provided criteria, or raises an error
+if none are found. This method automatically adds a sort on _id if no
+sort is given. This can cause performance issues, so if the sort is
+undesirable, Criteria#take! can be used instead.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">first!</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:members</span><span class="o">.</span><span class="n">with_size</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">first!</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:members</span><span class="o">.</span><span class="n">with_size</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">last!</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_create</span></code></p>
 <p><em>Find the first document by the provided attributes, and if not found
 create and return a newly persisted one.</em></p>
 </td>
@@ -2237,7 +2291,7 @@ create and return a newly persisted one.</em></p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_create!</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_create!</span></code></p>
 <p><em>Find the first document by the provided attributes, and if not found
 create and return a newly persisted one using</em> <code class="docutils literal notranslate"><span class="pre">create!</span></code>.</p>
 </td>
@@ -2246,7 +2300,7 @@ create and return a newly persisted one using</em> <code class="docutils literal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_initialize</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#first_or_initialize</span></code></p>
 <p><em>Find the first document by the provided attributes, and if not found
 return a new one.</em></p>
 </td>
@@ -2255,7 +2309,7 @@ return a new one.</em></p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#for_js</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#for_js</span></code></p>
 <p><em>Find documents for a provided JavaScript expression, optionally with
 the specified variables added to the evaluation scope. The scope
 argument is supported in MongoDB 4.2 and lower.</em>
@@ -2271,7 +2325,26 @@ argument is supported in MongoDB 4.2 and lower.</em>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#length|size</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#fourth</span></code></p>
+<p><em>Get the fourth document for the given criteria.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">fourth</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#fourth!</span></code></p>
+<p><em>Get the fourth document for the given criteria, or raise an error if
+none exist.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">fourth!</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#length|size</span></code></p>
 <p><em>Same as count but caches subsequent calls to the database</em></p>
 </td>
 <td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">length</span>
@@ -2280,7 +2353,7 @@ argument is supported in MongoDB 4.2 and lower.</em>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#pick</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#pick</span></code></p>
 <p><em>Get the values from one document for the provided fields.
 Returns nil for unset fields and for non-existent fields.</em></p>
 <p><em>This method does not apply a sort to the documents, so it
@@ -2301,7 +2374,7 @@ including those defined in embedded documents.</em></p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#pluck</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#pluck</span></code></p>
 <p><em>Get all the values for the provided field.
 Returns nil for unset fields and for non-existent fields.</em></p>
 <p><em>This method accepts the dot notation, thus permitting referencing
@@ -2310,12 +2383,66 @@ fields in embedded associations.</em></p>
 including those defined in embedded documents.</em></p>
 </td>
 <td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
+  <span class="c1">#=&gt; [&quot;Daft Punk&quot;, &quot;Aphex Twin&quot;, &quot;Ween&quot;]</span>
 
-<span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="s1">&#39;cities.name&#39;</span><span class="p">)</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="s1">&#39;address.city&#39;</span><span class="p">)</span>
+  <span class="c1">#=&gt; [&quot;Paris&quot;, &quot;Limerick&quot;, &quot;New Hope&quot;]</span>
 
 <span class="c1"># Using the earlier definition of Manager,</span>
 <span class="c1"># expands out to &quot;managers.name&quot; in the query:</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="s1">&#39;managers.n&#39;</span><span class="p">)</span>
+  <span class="c1">#=&gt; [ [&quot;Berry Gordy&quot;, &quot;Tommy Mottola&quot;], [], [&quot;Quincy Jones&quot;] ]</span>
+
+<span class="c1"># Accepts multiple field arguments, in which case</span>
+<span class="c1"># the result will be returned as an Array of Arrays.</span>
+<span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:likes</span><span class="p">)</span>
+  <span class="c1">#=&gt; [ [&quot;Daft Punk&quot;, 342], [&quot;Aphex Twin&quot;, 98], [&quot;Ween&quot;, 227] ]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#read</span></code></p>
+<p><em>Sets the read preference for the criteria.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="ss">mode</span><span class="p">:</span> <span class="ss">:primary</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#second</span></code></p>
+<p><em>Get the second document for the given criteria.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">second</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#second!</span></code></p>
+<p><em>Get the second document for the given criteria, or raise an error if
+none exist.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">second!</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#second_to_last</span></code></p>
+<p><em>Get the second to last document for the given criteria.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">second_to_last</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#second_to_last!</span></code></p>
+<p><em>Get the second to last document for the given criteria, or raise an
+error if none exist.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">second_to_last!</span>
 </pre></div>
 </div>
 </td>
@@ -2356,6 +2483,44 @@ including those defined in embedded documents.</em></p>
 <span class="c1"># Using the earlier definition of Manager,</span>
 <span class="c1"># expands out to &quot;managers.name&quot; in the query:</span>
 <span class="no">Band</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">tally</span><span class="p">(</span><span class="s1">&#39;managers.n&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#third</span></code></p>
+<p><em>Get the third document for the given criteria.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">third</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#third!</span></code></p>
+<p><em>Get the third document for the given criteria, or raise an error if
+none exist.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">third!</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#third_to_last</span></code></p>
+<p><em>Get the third to last document for the given criteria.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">third_to_last</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Criteria#third_to_last!</span></code></p>
+<p><em>Get the third to last document for the given criteria, or raise an
+error if none exist.</em></p>
+<p><em>This method automatically adds a sort on _id if no sort is given.</em></p>
+</td>
+<td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Band</span><span class="o">.</span><span class="n">third_to_last!</span>
 </pre></div>
 </div>
 </td>

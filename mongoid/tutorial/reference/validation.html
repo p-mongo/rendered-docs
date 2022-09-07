@@ -271,8 +271,18 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.1.html">
+     Mongoid 8.1
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-8.0.html">
      Mongoid 8.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-7.5.html">
+     Mongoid 7.5
     </a>
    </li>
    <li class="toctree-l2">
@@ -308,6 +318,23 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-5.html">
      Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contributing/code-documentation.html">
+     Code Documentation
     </a>
    </li>
   </ul>
@@ -470,6 +497,16 @@ title="Print to PDF"
    Option
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-preference-with-validates-uniqueness-of">
+   Read preference with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     validates_uniqueness_of
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -505,6 +542,16 @@ title="Print to PDF"
    Option
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-preference-with-validates-uniqueness-of">
+   Read preference with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     validates_uniqueness_of
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -521,6 +568,7 @@ title="Print to PDF"
 <p class="topic-title">On this page</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#validates-uniqueness-of-and-conditions-option" id="id1"><code class="docutils literal notranslate"><span class="pre">validates_uniqueness_of</span></code> and <code class="docutils literal notranslate"><span class="pre">:conditions</span></code>  Option</a></p></li>
+<li><p><a class="reference internal" href="#read-preference-with-validates-uniqueness-of" id="id2">Read preference with <code class="docutils literal notranslate"><span class="pre">validates_uniqueness_of</span></code></a></p></li>
 </ul>
 </div>
 <p>Mongoid includes <code class="docutils literal notranslate"><span class="pre">ActiveModel::Validations</span></code> to supply the basic
@@ -557,6 +605,14 @@ value of the respective field from the model. Consider the following example:</p
 <span class="no">Band</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Sun Project&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="read-preference-with-validates-uniqueness-of">
+<h2>Read preference with <code class="docutils literal notranslate"><span class="pre">validates_uniqueness_of</span></code><a class="headerlink" href="#read-preference-with-validates-uniqueness-of" title="Permalink to this headline">#</a></h2>
+<p>In order to validate the uniqueness of an attribute, Mongoid must check that
+the value for that attribute does not already exist in the database. If Mongoid
+queries a secondary member of the replica set, there is a possibility that it
+is reading stale data. Because of this, the queries used to check a
+<code class="docutils literal notranslate"><span class="pre">validates_uniqueness_of</span></code> validation always use read preference <code class="docutils literal notranslate"><span class="pre">primary</span></code>.</p>
 </section>
 </section>
 

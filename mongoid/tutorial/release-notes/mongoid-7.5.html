@@ -271,6 +271,11 @@
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="mongoid-8.1.html">
+     Mongoid 8.1
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="mongoid-8.0.html">
      Mongoid 8.0
     </a>
@@ -313,6 +318,23 @@
    <li class="toctree-l2">
     <a class="reference internal" href="mongoid-5.html">
      Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contributing/code-documentation.html">
+     Code Documentation
     </a>
    </li>
   </ul>
@@ -462,6 +484,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ruby-jruby-and-rails-version-support">
    Ruby, JRuby and Rails Version Support
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-flags-summary">
+   Feature Flags Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -621,6 +648,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-flags-summary">
+   Feature Flags Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implemented-criteria-take-take-method">
    Implemented
    <code class="docutils literal notranslate">
@@ -768,15 +800,16 @@ title="Print to PDF"
 <p class="topic-title">On this page</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#ruby-jruby-and-rails-version-support" id="id1">Ruby, JRuby and Rails Version Support</a></p></li>
-<li><p><a class="reference internal" href="#implemented-criteria-take-take-method" id="id2">Implemented <code class="docutils literal notranslate"><span class="pre">Criteria#take/take!</span></code> Method</a></p></li>
-<li><p><a class="reference internal" href="#force-the-attributes-method-to-always-return-a-hash" id="id3">Force the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> Method to Always Return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code></a></p></li>
-<li><p><a class="reference internal" href="#deprecate-id-sort-option-and-support-limit-on-first-last" id="id4">Deprecate <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option and Support <code class="docutils literal notranslate"><span class="pre">limit</span></code> on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code></a></p></li>
-<li><p><a class="reference internal" href="#combine-chained-operators-using-and-instead-of-override" id="id5">Combine Chained Operators Using <code class="docutils literal notranslate"><span class="pre">and</span></code> Instead of <code class="docutils literal notranslate"><span class="pre">override</span></code></a></p></li>
-<li><p><a class="reference internal" href="#pluck-usage-of-map-deprecated" id="id6"><code class="docutils literal notranslate"><span class="pre">pluck</span></code> Usage of <code class="docutils literal notranslate"><span class="pre">map</span></code> Deprecated</a></p></li>
-<li><p><a class="reference internal" href="#mongoid-criteria-cache-deprecated" id="id7"><code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> cache deprecated</a></p></li>
-<li><p><a class="reference internal" href="#array-update-values-and-hash-update-values-deprecated" id="id8"><code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> deprecated</a></p></li>
-<li><p><a class="reference internal" href="#document-to-a-deprecated" id="id9"><code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> deprecated</a></p></li>
-<li><p><a class="reference internal" href="#update-one-warnings-in-upsert" id="id10"><code class="docutils literal notranslate"><span class="pre">update_one</span></code> Warnings in <code class="docutils literal notranslate"><span class="pre">upsert</span></code></a></p></li>
+<li><p><a class="reference internal" href="#feature-flags-summary" id="id2">Feature Flags Summary</a></p></li>
+<li><p><a class="reference internal" href="#implemented-criteria-take-take-method" id="id3">Implemented <code class="docutils literal notranslate"><span class="pre">Criteria#take/take!</span></code> Method</a></p></li>
+<li><p><a class="reference internal" href="#force-the-attributes-method-to-always-return-a-hash" id="id4">Force the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> Method to Always Return a <code class="docutils literal notranslate"><span class="pre">Hash</span></code></a></p></li>
+<li><p><a class="reference internal" href="#deprecate-id-sort-option-and-support-limit-on-first-last" id="id5">Deprecate <code class="docutils literal notranslate"><span class="pre">:id_sort</span></code> Option and Support <code class="docutils literal notranslate"><span class="pre">limit</span></code> on <code class="docutils literal notranslate"><span class="pre">#first/last</span></code></a></p></li>
+<li><p><a class="reference internal" href="#combine-chained-operators-using-and-instead-of-override" id="id6">Combine Chained Operators Using <code class="docutils literal notranslate"><span class="pre">and</span></code> Instead of <code class="docutils literal notranslate"><span class="pre">override</span></code></a></p></li>
+<li><p><a class="reference internal" href="#pluck-usage-of-map-deprecated" id="id7"><code class="docutils literal notranslate"><span class="pre">pluck</span></code> Usage of <code class="docutils literal notranslate"><span class="pre">map</span></code> Deprecated</a></p></li>
+<li><p><a class="reference internal" href="#mongoid-criteria-cache-deprecated" id="id8"><code class="docutils literal notranslate"><span class="pre">Mongoid::Criteria</span></code> cache deprecated</a></p></li>
+<li><p><a class="reference internal" href="#array-update-values-and-hash-update-values-deprecated" id="id9"><code class="docutils literal notranslate"><span class="pre">Array#update_values</span></code> and <code class="docutils literal notranslate"><span class="pre">Hash#update_values</span></code> deprecated</a></p></li>
+<li><p><a class="reference internal" href="#document-to-a-deprecated" id="id10"><code class="docutils literal notranslate"><span class="pre">Document#to_a</span></code> deprecated</a></p></li>
+<li><p><a class="reference internal" href="#update-one-warnings-in-upsert" id="id11"><code class="docutils literal notranslate"><span class="pre">update_one</span></code> Warnings in <code class="docutils literal notranslate"><span class="pre">upsert</span></code></a></p></li>
 </ul>
 </div>
 <p>This page describes significant changes and improvements in Mongoid 7.5.
@@ -786,8 +819,28 @@ the complete list of issues fixed in each release, including bug fixes.</p>
 <section id="ruby-jruby-and-rails-version-support">
 <h2>Ruby, JRuby and Rails Version Support<a class="headerlink" href="#ruby-jruby-and-rails-version-support" title="Permalink to this headline">#</a></h2>
 <p>Mongoid 7.5 deprecates support for Ruby 2.5, JRuby 9.2 and Rails 5.1.
-Mongoid 8 will requir Ruby 2.6 or newer, JRuby 9.3 or newer and Rails 5.2 or
+Mongoid 8 will require Ruby 2.6 or newer, JRuby 9.3 or newer and Rails 5.2 or
 newer.</p>
+</section>
+<section id="feature-flags-summary">
+<h2>Feature Flags Summary<a class="headerlink" href="#feature-flags-summary" title="Permalink to this headline">#</a></h2>
+<p>To ensure a stable upgrade path from Mongoid 7.4, Mongoid 7.5
+introduces feature flags which are further explained in the
+sections below.</p>
+<p>To enable all new behavior in Mongoid 7.5, please use the following
+<a class="reference internal" href="../reference/configuration.html#configuration-options"><span class="std std-ref">configuration options</span></a> in your mongoid.yml file.
+We recommend newly created apps to do this as well.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Enable all new behavior in Mongoid 7.5</span><span class="w"></span>
+<span class="w">    </span><span class="nt">legacy_attributes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">overwrite_chained_operators</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In addition, please refer to the release notes of earlier 7.x versions for
+feature flags introduced in each version. For clarity, Mongoid 7.5 does
+not switch the behavior of any previously introduced feature flag.</p>
 </section>
 <section id="implemented-criteria-take-take-method">
 <h2>Implemented <code class="docutils literal notranslate"><span class="pre">Criteria#take/take!</span></code> Method<a class="headerlink" href="#implemented-criteria-take-take-method" title="Permalink to this headline">#</a></h2>

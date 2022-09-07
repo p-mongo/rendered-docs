@@ -271,6 +271,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/mongoid-8.1.html">
+     Mongoid 8.1
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-8.0.html">
      Mongoid 8.0
     </a>
@@ -313,6 +318,23 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../release-notes/mongoid-5.html">
      Mongoid 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contributing/code-documentation.html">
+     Code Documentation
     </a>
    </li>
   </ul>
@@ -713,35 +735,35 @@ title="Print to PDF"
 <div class="contents singlecol local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#saving-documents" id="id2">Saving Documents</a></p>
+<li><p><a class="reference internal" href="#saving-documents" id="id4">Saving Documents</a></p>
 <ul>
-<li><p><a class="reference internal" href="#standard" id="id3">Standard</a></p></li>
-<li><p><a class="reference internal" href="#atomic" id="id4">Atomic</a></p></li>
+<li><p><a class="reference internal" href="#standard" id="id5">Standard</a></p></li>
+<li><p><a class="reference internal" href="#atomic" id="id6">Atomic</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#reloading" id="id5">Reloading</a></p>
+<li><p><a class="reference internal" href="#reloading" id="id7">Reloading</a></p>
 <ul>
-<li><p><a class="reference internal" href="#reloading-unsaved-documents" id="id6">Reloading Unsaved Documents</a></p></li>
+<li><p><a class="reference internal" href="#reloading-unsaved-documents" id="id8">Reloading Unsaved Documents</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#accessing-field-values" id="id7">Accessing Field Values</a></p>
+<li><p><a class="reference internal" href="#accessing-field-values" id="id9">Accessing Field Values</a></p>
 <ul>
-<li><p><a class="reference internal" href="#getters-setters" id="id8">Getters &amp; Setters</a></p></li>
-<li><p><a class="reference internal" href="#custom-getters-setters" id="id9">Custom Getters &amp; Setters</a></p></li>
-<li><p><a class="reference internal" href="#read-attribute-write-attribute" id="id10"><code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code></a></p></li>
-<li><p><a class="reference internal" href="#hash-access" id="id11">Hash Access</a></p></li>
-<li><p><a class="reference internal" href="#bulk-attribute-writes" id="id12">Bulk Attribute Writes</a></p></li>
+<li><p><a class="reference internal" href="#getters-setters" id="id10">Getters &amp; Setters</a></p></li>
+<li><p><a class="reference internal" href="#custom-getters-setters" id="id11">Custom Getters &amp; Setters</a></p></li>
+<li><p><a class="reference internal" href="#read-attribute-write-attribute" id="id12"><code class="docutils literal notranslate"><span class="pre">read_attribute</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">write_attribute</span></code></a></p></li>
+<li><p><a class="reference internal" href="#hash-access" id="id13">Hash Access</a></p></li>
+<li><p><a class="reference internal" href="#bulk-attribute-writes" id="id14">Bulk Attribute Writes</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#dirty-tracking" id="id13">Dirty Tracking</a></p>
+<li><p><a class="reference internal" href="#dirty-tracking" id="id15">Dirty Tracking</a></p>
 <ul>
-<li><p><a class="reference internal" href="#viewing-changes" id="id14">Viewing Changes</a></p></li>
-<li><p><a class="reference internal" href="#resetting-changes" id="id15">Resetting Changes</a></p></li>
-<li><p><a class="reference internal" href="#persistence" id="id16">Persistence</a></p></li>
-<li><p><a class="reference internal" href="#viewing-previous-changes" id="id17">Viewing Previous Changes</a></p></li>
+<li><p><a class="reference internal" href="#viewing-changes" id="id16">Viewing Changes</a></p></li>
+<li><p><a class="reference internal" href="#resetting-changes" id="id17">Resetting Changes</a></p></li>
+<li><p><a class="reference internal" href="#persistence" id="id18">Persistence</a></p></li>
+<li><p><a class="reference internal" href="#viewing-previous-changes" id="id19">Viewing Previous Changes</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#updating-container-fields" id="id18">Updating Container Fields</a></p></li>
+<li><p><a class="reference internal" href="#updating-container-fields" id="id20">Updating Container Fields</a></p></li>
 </ul>
 </div>
 <section id="saving-documents">
@@ -868,6 +890,10 @@ if there were any validation errors. Raises an exception if
 the document passed validation but there was a server error during
 the save.</em></p>
 <p><em>Pass</em> <code class="docutils literal notranslate"><span class="pre">validate:</span> <span class="pre">false</span></code> <em>option to bypass validations.</em></p>
+<p><em>Pass</em> <code class="docutils literal notranslate"><span class="pre">touch:</span> <span class="pre">false</span></code> <em>option to ignore the updates to the updated_at
+field. If the document being save has not been previously persisted,
+this option is ignored and the created_at and updated_at fields will be
+updated with the current time.</em></p>
 </td>
 <td><div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="ss">first_name</span><span class="p">:</span> <span class="s2">&quot;Heinrich&quot;</span><span class="p">,</span>
@@ -875,6 +901,7 @@ the save.</em></p>
 <span class="p">)</span>
 <span class="n">person</span><span class="o">.</span><span class="n">save</span>
 <span class="n">person</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="ss">validate</span><span class="p">:</span> <span class="kp">false</span><span class="p">)</span>
+<span class="n">person</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="ss">touch</span><span class="p">:</span> <span class="kp">false</span><span class="p">)</span>
 
 <span class="n">person</span><span class="o">.</span><span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;Christian Johan&quot;</span>
 <span class="n">person</span><span class="o">.</span><span class="n">save</span>
@@ -1043,11 +1070,10 @@ to the database. Opposite of</em> <code class="docutils literal notranslate"><sp
 </section>
 <section id="atomic">
 <h3>Atomic<a class="headerlink" href="#atomic" title="Permalink to this headline">#</a></h3>
-<p>Although Mongoid performs atomic operations under the covers by default,
-there may be cases where you want to do this explicitly without persisting
-other fields. Mongoid provides support for all of these operations as well.
-When executing atomic operations via these methods, callbacks and validations
-are not invoked.</p>
+<p>Mongoid exposes <a href="#id1"><span class="problematic" id="id2">:manual:`MongoDB update operators &lt;/reference/operator/update/&gt;`</span></a>
+as methods on Mongoid documents. When these methods are used, callbacks are
+not invoked and validations are not performed. The supported update operators
+are:</p>
 <table class="colwidths-given table">
 <colgroup>
 <col style="width: 33%" />
@@ -1191,8 +1217,12 @@ does not correctly work in such cases.</em></p>
 </tr>
 </tbody>
 </table>
+<p>Note that, because these methods skip validations, it is possible to both
+save invalid documents into the database and end up with invalid documents
+in the application (which would subsequently fail to save via a <code class="docutils literal notranslate"><span class="pre">save</span></code>
+call due to the failing validations).</p>
 <section id="atomic-operation-grouping">
-<span id="id1"></span><h4>Atomic Operation Grouping<a class="headerlink" href="#atomic-operation-grouping" title="Permalink to this headline">#</a></h4>
+<span id="id3"></span><h4>Atomic Operation Grouping<a class="headerlink" href="#atomic-operation-grouping" title="Permalink to this headline">#</a></h4>
 <p>Atomic operations may be grouped together using the <code class="docutils literal notranslate"><span class="pre">#atomically</span></code> method
 on a document. All operations inside the block given to <code class="docutils literal notranslate"><span class="pre">#atomically</span></code>
 are sent to the cluster in a single atomic command. For example:</p>
@@ -1347,7 +1377,7 @@ specified in the document (and the shard key value, if a shard key is defined):<
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All of the access methods described below raise
-<code class="docutils literal notranslate"><span class="pre">ActiveModel::MissingAttributeError</span></code> when the field being accessed is
+<code class="docutils literal notranslate"><span class="pre">Mongoid::Errors::AttributeNotLoaded</span></code> when the field being accessed is
 <a class="reference internal" href="queries.html#projection"><span class="std std-ref">projected out</span></a>, either by virtue of not being included in
 <a class="reference internal" href="queries.html#only"><span class="std std-ref">only</span></a> or by virtue of being included in
 <a class="reference internal" href="queries.html#without"><span class="std std-ref">without</span></a>. This applies to both reads and writes.</p>

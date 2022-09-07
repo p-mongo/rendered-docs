@@ -28,17 +28,14 @@ Field type definitions determine how Mongoid behaves when constructing queries
 and retrieving/writing fields from/to the database. Specifically:
 
 1. When assigning values to fields at runtime, the values are converted to the
-specified type.
-
+   specified type.
 2. When persisting data to MongoDB, the data is sent in an appropriate
-type, permitting richer data manipulation within MongoDB or by other
-tools.
-
+   type, permitting richer data manipulation within MongoDB or by other
+   tools.
 3. When querying documents, query parameters are converted to the specified
-type before being sent to MongoDB.
-
+   type before being sent to MongoDB.
 4. When retrieving documents from the database, field values are converted
-to the specified type.
+   to the specified type.
 
 Changing the field definitions in a model class does not alter data already stored in
 MongoDB. To update type or contents of fields of existing documents,
@@ -63,25 +60,26 @@ on a person by using the ``field`` macro.
 The valid types for fields are as follows:
 
 - ``Array``
-- ``BigDecimal``
+- ``BSON::Binary``
+- :ref:`BigDecimal <field-type-big-decimal>`
 - ``Mongoid::Boolean``, which may be specified simply as ``Boolean`` in the
   scope of a class which included ``Mongoid::Document``.
-- ``Date``
-- ``DateTime``
+- :ref:`Date <field-type-date>`
+- :ref:`DateTime <field-type-date-time>`
 - ``Float``
-- ``Hash``
+- :ref:`Hash <field-type-hash>`
 - ``Integer``
+- :ref:`Object <untyped-fields>`
 - ``BSON::ObjectId``
-- ``BSON::Binary``
 - ``Range``
-- ``Regexp``
+- :ref:`Regexp <field-type-regexp>`
 - ``Set``
 - ``String``
-- ``Mongoid::StringifiedSymbol``, which may be specified simply as
-  ``StringifiedSymbol`` in the scope of a class which included
-  ``Mongoid::Document``.
-- ``Symbol``
-- ``Time``
+- :ref:`Mongoid::StringifiedSymbol <field-type-stringified-symbol>`,
+  which may be specified simply as ``StringifiedSymbol`` in the scope of a
+  class which included ``Mongoid::Document``.
+- :ref:`Symbol <field-type-stringified-symbol>`
+- :ref:`Time <field-type-time>`
 - ``ActiveSupport::TimeWithZone``
 
 Mongoid also recognizes the string ``"Boolean"`` as an alias for the
@@ -97,34 +95,60 @@ To define custom field types, refer to :ref:`Custom Field Types <custom-field-ty
   ``BSON::Decimal128`` will return values of type ``BSON::Decimal128`` in
   BSON <=4 and values of type ``BigDecimal`` in BSON 5+.
 
-.. _omitting-field-type-definition:
 
-Omitting Field Type Definition
-------------------------------
+.. _untyped-fields:
 
-If you decide not to specify the type of field with the definition, Mongoid will treat
-it as an object and not try to typecast it when sending the values to the database.
-This can be advantageous as the lack of attempted conversion will yield a slight
-performance gain. However some types are not supported if not defined as fields.
-You can safely omit type specifications when:
+Untyped Fields
+--------------
 
-- You're not using a web front end and values are already properly cast.
-- All of your fields are strings.
+Not specifying a type for a field is the same as specifying the ``Object``
+type. Such fields are untyped:
 
 .. code-block:: ruby
 
-   class Person
-     include Mongoid::Document
-     field :first_name
-     field :middle_name
-     field :last_name
-   end
+  class Product
+    include Mongoid::Document
 
-Types that are not supported as dynamic attributes since they cannot be cast are:
+    field :properties
+    # Equivalent to:
+    field :properties, type: Object
+  end
 
-- ``Date``
-- ``DateTime``
-- ``Range``
+An untyped field can store values of any type which is directly serializable
+to BSON. This is useful when a field may contain values of different types
+(i.e. it is a variant type field), or when the type of values is not known
+ahead of time:
+
+.. code-block:: ruby
+
+  product = Product.new(properties: "color=white,size=large")
+  product.properties
+  # => "color=white,size=large"
+
+  product = Product.new(properties: {color: "white", size: "large"})
+  product.properties
+  # => {:color=>"white", :size=>"large"}
+
+When values are assigned to the field, Mongoid still performs mongoization but
+uses the class of the value rather than the field type for mongoization logic.
+
+.. code-block:: ruby
+
+  product = Product.new(properties: 0..10)
+  product.properties
+  # The range 0..10, mongoized:
+  # => {"min"=>0, "max"=>10}
+
+When reading data from the database, Mongoid does not perform any type
+conversions on untyped fields. For this reason, even though it is possible
+to write any BSON-serializable value into an untyped fields, values which
+require special handling on the database reading side will generally not work
+correctly in an untyped field. Among field types supported by Mongoid,
+values of the following types should not be stored in untyped fields:
+
+- ``Date`` (values will be returned as ``Time``)
+- ``DateTime`` (values will be returned as ``Time``)
+- ``Range`` (values will be returned as ``Hash``)
 
 
 .. _field-type-stringified-symbol:
@@ -447,7 +471,7 @@ matches strings containing "hello" before a newline, besides strings ending in
 This is because the meaning of ``$`` is different between PCRE and Ruby
 regular expressions.
 
-.. _bigdecimal-fields:
+.. _field-type-big-decimal:
 
 BigDecimal Fields
 -----------------
@@ -890,6 +914,15 @@ Note that the original uncastable values will be stored in the
   user.attributes_before_type_cast["name"]
   # => ["Mike", "Trout"]
 
+.. note::
+
+  Note that for numeric fields, any class that defines ``to_i`` for Integer
+  fields, ``to_f`` for Floats, and ``to_d`` for BigDecimals, is castable.
+  Strings are the exception and will only call the corresponding ``to_*``
+  method if the string is numeric. If a class only defines ``to_i`` and not
+  ``to_f`` and is being assigned to a Float field, this is uncastable, and Mongoid
+  will not perform a two-step conversion (i.e. ``to_i`` and then ``to_f``).
+
 
 Reading Uncastable Values
 `````````````````````````
@@ -1094,11 +1127,25 @@ The ``demongoize`` method is used when calling the getters of fields for your cu
 Note that in the example above, since ``demongoize`` calls ``Point.new``, a new instance of
 ``Point`` will be generated on each call to the getter.
 
-.. note::
+Mongoid will always call the ``demongoize`` method on values that were
+retrieved from the database, but applications may, in theory, call
+``demongoize`` with arbitrary input. It is recommended that applications add
+handling for arbitrary input in their ``demongoize`` methods. We can rewrite
+``Point``'s demongoize method as follows:
 
-  The ``mongoize`` and ``demongoize`` methods should return ``nil`` on values
-  that are uncastable to your custom type. See the section on :ref:`Uncastable
-  Values <uncastable-values>` for more details.
+.. code:: ruby
+
+  def demongoize(object)
+    if object.is_a?(Array) && object.length == 2
+      Point.new(object[0], object[1])
+    end
+  end
+
+Notice that ``demongoize`` will only create a new ``Point`` if given an array
+of length 2, and will return ``nil`` otherwise. Both the ``mongoize`` and
+``demongoize`` methods should be prepared to receive arbitrary input and should
+return ``nil`` on values that are uncastable to your custom type. See the
+section on :ref:`Uncastable Values <uncastable-values>` for more details.
 
 Lastly, the class method ``evolve`` is similar to ``mongoize``, however it is used
 when transforming objects for use in Mongoid query criteria.
@@ -1107,6 +1154,11 @@ when transforming objects for use in Mongoid query criteria.
 
    point = Point.new(12, 24)
    Venue.where(location: point) # This uses Point.evolve
+
+The ``evolve`` method should also be prepared to receive arbitrary input,
+however, unlike the ``mongoize`` and ``demongoize`` methods, it should return
+the inputted value on values that are uncastable to your custom type. See the
+section on :ref:`Uncastable Values <uncastable-values>` for more details.
 
 
 .. _phantom-custom-field-types:
@@ -1175,7 +1227,7 @@ Custom Field Options
 You may define custom options for the ``field`` macro function
 which extend its behavior at the your time model classes are loaded.
 
-As an example, we will define a ``:required`` option which will add a presence
+As an example, we will define a ``:max_length`` option which will add a length
 validator for the field. First, declare the new field option in an initializer,
 specifiying its handler function as a block:
 
@@ -1183,8 +1235,8 @@ specifiying its handler function as a block:
 
   # in /config/initializers/mongoid_custom_fields.rb
 
-  Mongoid::Fields.option :required do |model, field, value|
-    model.validates_presence_of field if value
+  Mongoid::Fields.option :max_length do |model, field, value|
+    model.validates_length_of field.name, maximum: value
   end
 
 Then, use it your model class:
@@ -1194,7 +1246,7 @@ Then, use it your model class:
   class Person
     include Mongoid::Document
 
-    field :name, type: String, required: true
+    field :name, type: String, max_length: 10
   end
 
 Note that the handler function will be invoked whenever the option is used
@@ -1369,7 +1421,7 @@ Mongoid supports localized fields via `i18n <https://github.com/ruby-i18n/i18n>`
 
    class Product
      include Mongoid::Document
-     field :description, localize: true
+     field :description, type: String, localize: true
    end
 
 By telling the field to ``localize``, Mongoid will under the covers store the field
@@ -1394,6 +1446,72 @@ You can get and set all the translations at once by using the corresponding ``_t
    # { "en" => "Marvelous!", "de" => "Fantastisch!" }
    product.description_translations =
      { "en" => "Marvelous!", "de" => "Wunderbar!" }
+
+Localized fields can be used with any field type. For example, they can be used
+with float fields for differences with currency:
+
+.. code:: ruby
+
+  class Product
+    include Mongoid::Document
+
+    field :price, type: Float, localize: true
+    field :currency, type: String, localize: true
+  end
+
+By creating the model in this way, we can separate the price from the currency
+type, which allows you to use all of the number-related functionalities on the
+price when querying or aggregating that field (provided that you index into the
+stored translations hash). We can create an instance of this model as follows:
+
+.. code:: ruby
+
+  product = Product.new
+  I18n.locale = :en
+  product.price = 1.00
+  product.currency = "$"
+  I18n.locale = :he
+  product.price = 3.24
+  product.currency = "₪"
+
+  product.attributes
+  # => { "price" => { "en" => 1.0, "he" => 3.24 }, "currency" => { "en" => "$", "he" => "₪"  } }
+
+
+.. _present-fields:
+
+Localize ``:present`` Field Option
+----------------------------------
+
+Mongoid supports the ``:present`` option when creating a localized field:
+
+.. code-block:: ruby
+
+   class Product
+     include Mongoid::Document
+     field :description, localize: :present
+   end
+
+This option automatically removes ``blank`` values (i.e. those that return true
+for the ``blank?`` method) from the ``_translations`` hash:
+
+.. code-block:: ruby
+
+   I18n.default_locale = :en
+   product = Product.new
+   product.description = "Marvelous!"
+   I18n.locale = :de
+   product.description = "Fantastisch!"
+
+   product.description_translations
+   # { "en" => "Marvelous!", "de" => "Fantastisch!" }
+
+   product.description = ""
+   product.description_translations
+   # { "en" => "Marvelous!" }
+
+When the empty string is written for the ``:de`` locale, the ``"de"`` key is
+removed from the ``_translations`` hash instead of writing the empty string.
 
 
 Fallbacks
@@ -1432,6 +1550,24 @@ language, translations will be looked up in the fallback languages:
   product.description = "Marvelous!"
   I18n.locale = :de
   product.description # "Marvelous!"
+
+Mongoid also defines a ``:fallbacks`` option on fields, which can be used to
+disable fallback functionality on a specific field:
+
+.. code:: ruby
+
+  class Product
+    include Mongoid::Document
+    field :description, type: String, localize: true, fallbacks: false
+  end
+
+  product = Product.new
+  I18n.locale = :en
+  product.description = "Marvelous!"
+  I18n.locale = :de
+  product.description # nil
+
+Note that this option defaults to ``true``.
 
 .. note::
 
